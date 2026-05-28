@@ -27,3 +27,7 @@ $main-text-color: var(--main-text-color);
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
+
+html, body {
+  background: yellow !important;
+}
