@@ -1118,7 +1118,23 @@
             },
             "icon": "sicon-store",
             "path": "src.views.components.square-images",
-            "fields": []
+            "fields": [
+                {
+                    "id": "slider",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "Slider",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "2",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "8"
+                }
+            ]
         }
     ],
     "support_url": "https://velourapremium.com",
