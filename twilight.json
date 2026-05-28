@@ -1120,6 +1120,15 @@
             "path": "src.views.components.square-images",
             "fields": [
                 {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "عدد الصور في الجوال",
+                    "variant": "h3",
+                    "icon": "sicon-format-text"
+                },
+                {
                     "id": "slider",
                     "type": "number",
                     "format": "slider",
@@ -1129,10 +1138,47 @@
                     "labelHTML": null,
                     "icon": "sicon-pin",
                     "value": "2",
+                    "required": true,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "8",
+                    "public": true
+                },
+                {
+                    "id": "title_1",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 1",
+                    "value": "عدد الصور في اللابتوب",
+                    "variant": "h3",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "slider_1",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "Slider 1",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "4",
                     "required": false,
                     "step": "1",
                     "minimum": "0",
                     "maximum": "8"
+                },
+                {
+                    "id": "image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "Image",
+                    "description": "صورة البنر",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false
                 }
             ]
         }
