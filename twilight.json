@@ -1110,6 +1110,16 @@
             "icon": "sicon-ellipsis-vertical-filled",
             "path": "square-images",
             "fields": []
+        },
+        {
+            "key": "0b743f8d-78a3-4cd3-8799-33c5a83a9ade",
+            "title": {
+                "en": "صور مربعة حديثة",
+                "ar": "صور مربعة حديثة"
+            },
+            "icon": "sicon-store",
+            "path": "src.views.components.square-images",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
