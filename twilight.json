@@ -1178,7 +1178,35 @@
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
                     "value": null,
-                    "required": false
+                    "required": true,
+                    "public": false
+                },
+                {
+                    "id": "collection",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "Collection",
+                    "description": "إضافة",
+                    "labelHTML": null,
+                    "item_label": "إضافة",
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "collection.image_1",
+                            "type": "string",
+                            "format": "image",
+                            "label": "Image 1",
+                            "description": "صورة البنر",
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "100000"
                 }
             ]
         }
