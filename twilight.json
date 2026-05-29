@@ -247,6 +247,20 @@
             "icon": "sicon-format-text"
         },
         {
+            "id": "collection",
+            "type": "collection",
+            "format": "collection",
+            "label": "Collection",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 5
+        },
+        {
             "id": "switch",
             "type": "boolean",
             "format": "switch",
@@ -256,6 +270,28 @@
             "icon": "sicon-toggle-off",
             "value": true,
             "selected": true,
+            "required": false,
+            "public": true
+        },
+        {
+            "id": "title_1",
+            "type": "static",
+            "format": "title",
+            "label": "Title 1",
+            "value": "لون الخلفية الأساسي في الوضع الداكن",
+            "variant": "h1",
+            "icon": "sicon-format-text"
+        },
+        {
+            "id": "color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "Color",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#000000",
             "required": false,
             "public": true
         }
