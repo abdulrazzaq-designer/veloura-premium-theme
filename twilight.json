@@ -289,7 +289,7 @@
             "inputType": "color",
             "label": "Color",
             "description": null,
-            "labelHTML": null,
+            "labelHTML": "<img  class=\"my-2\" src=\"https://jhmi.me/14.png\">",
             "icon": "sicon-format-fill",
             "value": "#000000",
             "required": false,
