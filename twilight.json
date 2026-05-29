@@ -1200,108 +1200,75 @@
                             "icon": "sicon-format-text"
                         },
                         {
-                            "id": "collection.checkbox_list",
+                            "id": "collection.dropdown_list",
                             "type": "items",
-                            "format": "checkbox-list",
-                            "label": "Checkbox List",
+                            "format": "dropdown-list",
+                            "label": "Dropdown List",
                             "description": null,
                             "labelHTML": null,
-                            "icon": "sicon-list-check",
+                            "icon": "sicon-keyboard_arrow_down",
                             "selected": [],
                             "options": [
                                 {
                                     "label": "منتج",
                                     "value": null,
-                                    "key": "44ef8e6f-771e-4c99-a32d-0814c3c03fbf"
+                                    "key": "f5749ab8-d7fd-4cc9-82d8-88e05bfb712d"
                                 },
                                 {
                                     "label": "تصنيف",
-                                    "value": null,
-                                    "key": "f298454f-4470-462c-8004-3581ad68d789"
+                                    "value": "Value 2",
+                                    "key": "7f2b8f19-f205-4bf6-a590-6b9d024bbfb7"
                                 },
                                 {
                                     "label": "ماركة تجارية",
-                                    "value": "Value 4",
-                                    "key": "5c6ba600-81f6-4ea7-b154-c1bb6adefa2e"
+                                    "value": "Value 3",
+                                    "key": "42d0b1e4-f633-4245-83d3-8c83211887f1"
                                 },
                                 {
                                     "label": "صفحة تعريفية",
-                                    "value": "Value 5",
-                                    "key": "ce6a385c-5b93-4dce-b9d8-99c7c35267fb"
+                                    "value": "Value 4",
+                                    "key": "687beddc-f65a-45e6-9c1a-2101d7f06687"
                                 },
                                 {
                                     "label": "مقالة",
-                                    "value": "Value 6",
-                                    "key": "5ab8282e-85c7-4a5f-8bdd-8e1c5236a8e7"
+                                    "value": "Value 5",
+                                    "key": "a681c47a-8d82-4724-b22b-00639f656578"
                                 },
                                 {
                                     "label": "تصنيف ضمن المندونة",
-                                    "value": "Value 7",
-                                    "key": "1cda6ff2-ce57-4898-8e0b-1a16a671367b"
+                                    "value": "Value 6",
+                                    "key": "e66d78cd-f778-4878-8d6b-7b734d06dcec"
                                 },
                                 {
                                     "label": "التخفيضات",
                                     "value": "Value 7",
-                                    "key": "58cb1559-6d37-43d5-9dac-669e48c1d343"
+                                    "key": "7bbc93db-02db-4ce6-8bda-33481e614f7c"
                                 },
                                 {
                                     "label": "الماركات التجارية",
                                     "value": "Value 8",
-                                    "key": "331645ca-3ff9-4581-9edb-3f2ec77ff568"
+                                    "key": "8b6e9fa7-5fce-4aed-bc91-b56d96650ce7"
                                 },
                                 {
                                     "label": "المدونة",
                                     "value": "Value 9",
-                                    "key": "0f0c4d32-bafd-4648-88e6-0ecdef3a67f8"
+                                    "key": "37df6390-398b-4d8c-9382-2a5bade12719"
                                 },
                                 {
                                     "label": "رابط خارجي",
                                     "value": "Value 10",
-                                    "key": "a82f11d6-91c9-4d13-ab05-0864930d7782"
+                                    "key": "b4adc25a-aac7-413a-b990-06ecb595c086"
                                 }
                             ],
                             "source": "Manual",
-                            "multichoice": false,
-                            "required": true
-                        },
-                        {
-                            "id": "collection.url",
-                            "type": "string",
-                            "format": "url",
-                            "inputType": "url",
-                            "label": "URL",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://salla.sa",
-                            "icon": "sicon-link",
-                            "value": "الرابط الخارجي",
-                            "required": false,
-                            "minLength": 6,
-                            "maxLength": 30
+                            "multichoice": true,
+                            "searchable": true,
+                            "required": false
                         }
                     ],
                     "value": [],
                     "minLength": 1,
                     "maxLength": "100000"
-                },
-                {
-                    "id": "radio_list",
-                    "type": "items",
-                    "format": "radio-list",
-                    "label": "Radio List",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-list",
-                    "selected": [],
-                    "options": [
-                        {
-                            "label": null,
-                            "value": "Value 1",
-                            "key": "a0e7cf8d-996c-46b0-90fc-d1d4772e2072"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": false
                 }
             ]
         }
