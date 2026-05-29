@@ -1211,155 +1211,386 @@
             "path": "src.views.components.square-images",
             "fields": [
                 {
-                    "id": "title",
+                    "id": "khearat_asaset",
                     "type": "static",
                     "format": "title",
-                    "label": "Title",
-                    "value": "عدد الصور في الجوال",
-                    "variant": "h3",
+                    "label": "خيارات أساسية",
+                    "value": null,
+                    "variant": "h1",
                     "icon": "sicon-format-text"
                 },
                 {
-                    "id": "slider",
+                    "id": "merge_previous",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "دمج مع العنصر السابق",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "merge_offset",
                     "type": "number",
                     "format": "slider",
                     "inputType": "range",
-                    "label": "Slider",
+                    "label": "مقدار الدمج (المسافة للأعلى)",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-pin",
-                    "value": "2",
-                    "required": true,
+                    "value": "50",
+                    "required": false,
                     "step": "1",
-                    "minimum": "0",
-                    "maximum": "8",
-                    "public": true
+                    "minimum": "-100",
+                    "maximum": "250"
                 },
                 {
-                    "id": "title_1",
+                    "id": "show_section_title",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة عنوان للقسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "section_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "عنوان القسم",
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "section_description",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "ضع الوصف هنا",
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "titles_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العناوين",
+                    "description": "يشمل عناوين القسم وعناوين الصور",
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#323232",
+                    "required": false
+                },
+                {
+                    "id": "description-images",
                     "type": "static",
-                    "format": "title",
-                    "label": "Title 1",
-                    "value": "عدد الصور في اللابتوب",
-                    "variant": "h3",
-                    "icon": "sicon-format-text"
+                    "format": "description",
+                    "label": "خيارات أساسية",
+                    "value": "يمكنك تخصيص القسم حسب احتياجك وعمل قسم آخر من نفس النوع بخيارات وإعدادات مختلفة",
+                    "variant": "h1",
+                    "icon": "sicon-format-size"
                 },
                 {
-                    "id": "slider_1",
+                    "id": "images_gap",
                     "type": "number",
                     "format": "slider",
                     "inputType": "range",
-                    "label": "Slider 1",
-                    "description": null,
+                    "label": "المسافة بين الصور",
+                    "description": "يمكنك من وضع مسافة رأسية وأفقية بين الصور",
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "60"
+                },
+                {
+                    "id": "display_grid",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض على شكل شبكة بدلًا من سلايدر",
+                    "description": "عند تفعيل هذا الخيار يتم عرض الصور على شكل أعمدة وصفوف (شبكة) بدلًا من صف واحد منزلق (سلايدر)",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "desktop_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد الأعمدة في الكمبيوتر والتابلت",
+                    "description": "الحد المسموح به من 1 إلى 8 صور",
                     "labelHTML": null,
                     "icon": "sicon-pin",
                     "value": "4",
                     "required": false,
                     "step": "1",
-                    "minimum": "0",
+                    "minimum": "1",
                     "maximum": "8"
+                },
+                {
+                    "id": "mobile_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد الأعمدة في الجوال",
+                    "description": "الحد المسموح به من 1 إلى 6 صور",
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "2",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "6"
+                },
+                {
+                    "id": "image_radius",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حواف الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "a6b42fae-6395-4e79-ae32-6bddaf9c3f6d"
+                        },
+                        {
+                            "label": "ناعم قليلاً",
+                            "value": "soft",
+                            "key": "51176fdb-89eb-45a7-90fc-1d9a58fd224c"
+                        },
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "ef8d99d5-5872-4741-8870-7257515923e4"
+                        },
+                        {
+                            "label": "ناعم جداً",
+                            "value": "large",
+                            "key": "6333f487-2b9c-4522-a449-9685745ae688"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "circle",
+                            "key": "4416155f-352a-470c-ba3a-dbe7d47e3a57"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "image_ratio",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "أبعاد الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "تلقائي",
+                            "value": "auto",
+                            "key": "c483b5eb-4cd7-4d6f-b570-ca75908416cb"
+                        },
+                        {
+                            "label": "6/2",
+                            "value": "6-2",
+                            "key": "4d198cad-8491-42d8-ac73-c3aa03ae17d6"
+                        },
+                        {
+                            "label": "4/2",
+                            "value": "4-2",
+                            "key": "a9d2e463-d40f-43b3-b847-05d9c7cff549"
+                        },
+                        {
+                            "label": "5/3",
+                            "value": "5-3",
+                            "key": "6d4c069d-e43f-44d5-8ae4-8b76cc261649"
+                        },
+                        {
+                            "label": "4/3",
+                            "value": "4-3",
+                            "key": "822ff87c-28d5-44e5-915a-cc26826253e9"
+                        },
+                        {
+                            "label": "1/1",
+                            "value": "1-1",
+                            "key": "ecc8a770-2163-4154-b34a-1e5f515d7560"
+                        },
+                        {
+                            "label": "3/4",
+                            "value": "3-4",
+                            "key": "7fc03c54-bf20-4cb7-a794-f2b1947e83d2"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "khearat_slaedr_alsor",
+                    "type": "static",
+                    "format": "title",
+                    "label": "خيارات سلايدر الصور",
+                    "value": null,
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "la_taaml_alkhearat_altalet_fe_hal_tfaael_\"aard_aala_shkl_shbkt\"",
+                    "type": "static",
+                    "format": "description",
+                    "label": "لا تعمل الخيارات التالية في حال تفعيل \"عرض على شكل شبكة\"",
+                    "value": null,
+                    "variant": "h1",
+                    "icon": "sicon-format-size"
+                },
+                {
+                    "id": "free_mode",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الوضع الحر للسلايدر الصور",
+                    "description": "تغيير طريقة التنقل بين الصور داخل السلايدر لوضع أكثر سلاسة",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "حركة تلقائية للصور",
+                    "description": "عند تفعيل هذا الخيار تتحرك الصور تلقائياً داخل السلايدر دون الحاجة للسحب أو التنقل بالأسهم",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "دوران الصور بلا نهاية",
+                    "description": "قد يؤثر هذا الخيار على أداء العنصر",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "scrollbar",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل شريط السكرول أسفل السلايدر",
+                    "description": "إظهار جزء من الصورة الأخيرة في الجوال فقط",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "hide_navigation",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء أسهم التنقل",
+                    "description": "في الكمبيوتر والتابلت فقط",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "center_titles",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "توسيط النصوص بالنسبة للصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "titles_on_image",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض النصوص على الصور بدلاً من تحتها",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "idaft_alsor",
+                    "type": "static",
+                    "format": "title",
+                    "label": "إضافة الصور",
+                    "value": null,
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "emknk_idaft_aadd_la_nhaee_mn_alsor_bae_mqas_thtagh",
+                    "type": "static",
+                    "format": "description",
+                    "label": "يمكنك إضافة عدد لا نهائي من الصور بأي مقاس تحتاجه",
+                    "value": null,
+                    "variant": "h1",
+                    "icon": "sicon-format-size"
                 },
                 {
                     "id": "collection",
                     "type": "collection",
                     "format": "collection",
                     "label": "Collection",
-                    "description": "إضافة",
+                    "description": null,
                     "labelHTML": null,
-                    "item_label": "إضافة",
+                    "item_label": null,
                     "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "collection.image_1",
-                            "type": "string",
-                            "format": "image",
-                            "label": "Image 1",
-                            "description": "صورة البنر",
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": false
-                        },
-                        {
-                            "id": "collection.title_2",
-                            "type": "static",
-                            "format": "title",
-                            "label": "Title 2",
-                            "value": "رابط الصورة",
-                            "variant": "h1",
-                            "icon": "sicon-format-text"
-                        },
-                        {
-                            "id": "collection.dropdown_list",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "Dropdown List",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
-                            "options": [
-                                {
-                                    "label": "منتج",
-                                    "value": null,
-                                    "key": "f5749ab8-d7fd-4cc9-82d8-88e05bfb712d"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "value": "Value 2",
-                                    "key": "7f2b8f19-f205-4bf6-a590-6b9d024bbfb7"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "value": "Value 3",
-                                    "key": "42d0b1e4-f633-4245-83d3-8c83211887f1"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "value": "Value 4",
-                                    "key": "687beddc-f65a-45e6-9c1a-2101d7f06687"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "value": "Value 5",
-                                    "key": "a681c47a-8d82-4724-b22b-00639f656578"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المندونة",
-                                    "value": "Value 6",
-                                    "key": "e66d78cd-f778-4878-8d6b-7b734d06dcec"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "value": "Value 7",
-                                    "key": "7bbc93db-02db-4ce6-8bda-33481e614f7c"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "value": "Value 8",
-                                    "key": "8b6e9fa7-5fce-4aed-bc91-b56d96650ce7"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "value": "Value 9",
-                                    "key": "37df6390-398b-4d8c-9382-2a5bade12719"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "value": "Value 10",
-                                    "key": "b4adc25a-aac7-413a-b990-06ecb595c086"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": true,
-                            "searchable": true,
-                            "required": false
-                        }
-                    ],
+                    "fields": [],
                     "value": [],
                     "minLength": 1,
-                    "maxLength": "100000"
+                    "maxLength": 5
                 }
             ]
         }
