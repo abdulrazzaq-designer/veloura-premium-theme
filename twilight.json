@@ -1169,19 +1169,6 @@
                     "maximum": "8"
                 },
                 {
-                    "id": "image",
-                    "type": "string",
-                    "format": "image",
-                    "label": "Image",
-                    "description": "صورة البنر",
-                    "labelHTML": null,
-                    "placeholder": "e.g. https://hostname.com/image.png",
-                    "icon": "sicon-image",
-                    "value": null,
-                    "required": true,
-                    "public": false
-                },
-                {
                     "id": "collection",
                     "type": "collection",
                     "format": "collection",
@@ -1202,6 +1189,46 @@
                             "icon": "sicon-image",
                             "value": null,
                             "required": false
+                        },
+                        {
+                            "id": "collection.title_2",
+                            "type": "static",
+                            "format": "title",
+                            "label": "Title 2",
+                            "value": "رابط الصورة",
+                            "variant": "h1",
+                            "icon": "sicon-format-text"
+                        },
+                        {
+                            "id": "collection.url",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url",
+                            "label": "URL",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://salla.sa",
+                            "icon": "sicon-link",
+                            "value": "الرابط الخارجي",
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "collection.dropdown_list",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "Dropdown List",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [],
+                            "source": "Products",
+                            "multichoice": true,
+                            "searchable": true,
+                            "required": false,
+                            "value": []
                         }
                     ],
                     "value": [],
