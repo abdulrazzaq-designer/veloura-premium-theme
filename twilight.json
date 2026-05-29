@@ -274,13 +274,56 @@
             "public": true
         },
         {
-            "id": "title_1",
-            "type": "static",
-            "format": "title",
-            "label": "Title 1",
-            "value": "لون الخلفية الأساسي في الوضع الداكن",
-            "variant": "h1",
-            "icon": "sicon-format-text"
+            "id": "image",
+            "type": "string",
+            "format": "image",
+            "label": "Image",
+            "description": "شعار الوضع الداكن",
+            "labelHTML": "ارفع شعار خاص بالوضع الداكن للقسم العلوي والسفلي",
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false,
+            "public": false
+        },
+        {
+            "id": "color_copy",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "Color copy",
+            "description": "لون الخلفية الأساسي في الوضع الداكن",
+            "labelHTML": "<div><img  class=\"my-2\" src=\"https://jhmi.me/14.png\"></div>",
+            "icon": "sicon-format-fill",
+            "value": "#000000",
+            "required": false,
+            "public": true
+        },
+        {
+            "id": "color_copy_1",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "Color copy 1",
+            "description": "لون الخلفية الثانوي في الوضع الداكن",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#1a1a1a",
+            "required": false,
+            "public": true
+        },
+        {
+            "id": "color_copy_2",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "Color copy 2",
+            "description": "لون النص الأساسي في الوضع الداكن",
+            "labelHTML": "يجب اختيار لون فاتح مثل الأبيض",
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "public": true
         },
         {
             "id": "color",
@@ -288,12 +331,24 @@
             "format": "color",
             "inputType": "color",
             "label": "Color",
-            "description": null,
-            "labelHTML": "<img  class=\"my-2\" src=\"https://jhmi.me/14.png\">",
+            "description": "لون النصوص الثانوي ( الفرعي ) في الوضع الداكن",
+            "labelHTML": null,
             "icon": "sicon-format-fill",
-            "value": "#000000",
+            "value": "#cfcfcf",
             "required": false,
             "public": true
+        },
+        {
+            "id": "color_1",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "Color 1",
+            "description": "لون خلفية بطاقة المنتج في الوضع الداكن",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#1a1a1a",
+            "required": false
         }
     ],
     "components": [
