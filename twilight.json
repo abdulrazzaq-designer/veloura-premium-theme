@@ -1200,6 +1200,71 @@
                             "icon": "sicon-format-text"
                         },
                         {
+                            "id": "collection.checkbox_list",
+                            "type": "items",
+                            "format": "checkbox-list",
+                            "label": "Checkbox List",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-list-check",
+                            "selected": [],
+                            "options": [
+                                {
+                                    "label": "منتج",
+                                    "value": null,
+                                    "key": "44ef8e6f-771e-4c99-a32d-0814c3c03fbf"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "value": null,
+                                    "key": "f298454f-4470-462c-8004-3581ad68d789"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "value": "Value 4",
+                                    "key": "5c6ba600-81f6-4ea7-b154-c1bb6adefa2e"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "value": "Value 5",
+                                    "key": "ce6a385c-5b93-4dce-b9d8-99c7c35267fb"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "value": "Value 6",
+                                    "key": "5ab8282e-85c7-4a5f-8bdd-8e1c5236a8e7"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المندونة",
+                                    "value": "Value 7",
+                                    "key": "1cda6ff2-ce57-4898-8e0b-1a16a671367b"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "value": "Value 7",
+                                    "key": "58cb1559-6d37-43d5-9dac-669e48c1d343"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "value": "Value 8",
+                                    "key": "331645ca-3ff9-4581-9edb-3f2ec77ff568"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "value": "Value 9",
+                                    "key": "0f0c4d32-bafd-4648-88e6-0ecdef3a67f8"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "value": "Value 10",
+                                    "key": "a82f11d6-91c9-4d13-ab05-0864930d7782"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "required": true
+                        },
+                        {
                             "id": "collection.url",
                             "type": "string",
                             "format": "url",
@@ -1213,27 +1278,30 @@
                             "required": false,
                             "minLength": 6,
                             "maxLength": 30
-                        },
-                        {
-                            "id": "collection.dropdown_list",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "Dropdown List",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
-                            "options": [],
-                            "source": "Products",
-                            "multichoice": true,
-                            "searchable": true,
-                            "required": false,
-                            "value": []
                         }
                     ],
                     "value": [],
                     "minLength": 1,
                     "maxLength": "100000"
+                },
+                {
+                    "id": "radio_list",
+                    "type": "items",
+                    "format": "radio-list",
+                    "label": "Radio List",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": null,
+                            "value": "Value 1",
+                            "key": "a0e7cf8d-996c-46b0-90fc-d1d4772e2072"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": false
                 }
             ]
         }
