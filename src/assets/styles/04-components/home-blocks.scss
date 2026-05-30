@@ -400,22 +400,47 @@
 }
 
 .pro-square-images {
+  &__heading {
+    text-align: center;
+    margin-bottom: 24px;
+
+    h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #777;
+    }
+  }
+
+  &__debug {
+    background: #111;
+    color: #fff;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    direction: ltr;
+  }
+
   &__grid {
     display: grid;
-    grid-template-columns: repeat(var(--mobile-columns), 1fr) !important;
-    gap: 16px;
+    grid-template-columns: repeat(var(--mobile-columns), 1fr);
+    gap: var(--images-gap);
 
     @media (min-width: 768px) {
-      grid-template-columns: repeat(var(--desktop-columns), 1fr) !important;
+      grid-template-columns: repeat(var(--desktop-columns), 1fr);
     }
   }
 
   &__card {
     position: relative;
     display: block;
-    aspect-ratio: 1 / 1;
+    height: 350px;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: var(--image-radius);
     background: #f7f7f7;
     box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
     transition: .35s ease;
@@ -446,7 +471,7 @@
     justify-content: flex-end;
     text-align: center;
     color: #fff;
-    background: linear-gradient(to top, rgba(0,0,0,.55), transparent 65%);
+    background: linear-gradient(to top, rgba(0, 0, 0, .55), transparent 65%);
 
     h3 {
       font-size: 16px;
@@ -457,6 +482,61 @@
     p {
       font-size: 13px;
       opacity: .9;
+    }
+  }
+
+  &.is-slider:not(.is-grid) {
+    .pro-square-images__grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: var(--images-gap);
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .pro-square-images__card {
+      flex: 0 0 calc(100% / var(--mobile-columns));
+      scroll-snap-align: start;
+
+      @media (min-width: 768px) {
+        flex-basis: calc(100% / var(--desktop-columns));
+      }
+    }
+  }
+
+  &.show-partial.is-slider:not(.is-grid) {
+    .pro-square-images__card {
+      flex-basis: 75%;
+
+      @media (min-width: 768px) {
+        flex-basis: calc(100% / var(--desktop-columns) - 24px);
+      }
+    }
+  }
+
+  &.has-scrollbar {
+    .pro-square-images__grid::-webkit-scrollbar {
+      display: block;
+      height: 6px;
+    }
+
+    .pro-square-images__grid::-webkit-scrollbar-thumb {
+      background: #999;
+      border-radius: 20px;
+    }
+  }
+
+  &.hide-arrows::before {
+    content: "الأسهم مخفية";
+    display: none;
+  }
+
+  &.is-free-mode {
+    .pro-square-images__grid {
+      scroll-snap-type: none;
     }
   }
 }

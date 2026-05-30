@@ -10,11 +10,59 @@
 | position                        | int      | Sorting number start from zero                                               |
 #}
 
+{% set radius_map = {
+  'sharp': '0px',
+  'soft': '8px',
+  'medium': '18px',
+  'large': '30px',
+  'round': '999px'
+} %}
+
 <section
-  class="s-block s-block--banners container pro-square-images"
-  style="--desktop-columns: {{ component.desktop_columns }}; --mobile-columns: {{ component.mobile_columns }};"
+  class="s-block s-block--banners container pro-square-images
+    {{ component.display_grid ? 'is-grid' : 'is-slider' }}
+    {{ component.slider_free_mode ? 'is-free-mode' : '' }}
+    {{ component.slider_autoplay ? 'is-autoplay' : '' }}
+    {{ component.slider_loop ? 'is-loop' : '' }}
+    {{ component.slider_scrollbar ? 'has-scrollbar' : '' }}
+    {{ component.slider_show_partial ? 'show-partial' : '' }}
+    {{ component.slider_hide_arrows ? 'hide-arrows' : '' }}
+  "
+  style="
+    --desktop-columns: {{ component.desktop_columns|default(3) }};
+    --mobile-columns: {{ component.mobile_columns|default(2) }};
+    --images-gap: {{ component.images_gap|default(16) }}px;
+    --image-radius: {{ radius_map[component.image_radius|default('medium')]|default('18px') }};
+  "
 >
-  <div class="pro-square-images__grid {{ component.banners|length <= 3 ? 'is-one-row' : 'is-two-row' }}">
+
+  {% if component.section_title or component.section_subtitle %}
+    <div class="pro-square-images__heading">
+      {% if component.section_title %}
+        <h2>{{ component.section_title }}</h2>
+      {% endif %}
+
+      {% if component.section_subtitle %}
+        <p>{{ component.section_subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="pro-square-images__debug">
+    grid: {{ component.display_grid ? 'yes' : 'no' }} |
+    free: {{ component.slider_free_mode ? 'yes' : 'no' }} |
+    autoplay: {{ component.slider_autoplay ? 'yes' : 'no' }} |
+    loop: {{ component.slider_loop ? 'yes' : 'no' }} |
+    scrollbar: {{ component.slider_scrollbar ? 'yes' : 'no' }} |
+    partial: {{ component.slider_show_partial ? 'yes' : 'no' }} |
+    arrows hidden: {{ component.slider_hide_arrows ? 'yes' : 'no' }} |
+    radius: {{ component.image_radius }} |
+    desktop: {{ component.desktop_columns }} |
+    mobile: {{ component.mobile_columns }} |
+    gap: {{ component.images_gap }}
+  </div>
+
+  <div class="pro-square-images__grid">
     {% for index, banner in component.banners %}
       <a
         href="{{ banner.url }}"
