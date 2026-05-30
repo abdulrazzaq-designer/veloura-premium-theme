@@ -865,7 +865,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "Title 1",
-                    "value": "<div class=\"sub-section\">   <div class=\"sub_title\">خيارات أساسية</div>   <div>يمكنك تخصيص القسم حسب احتياجك وعمل قسم آخر من نفس النوع بخيارات وإعدادات مختلفة</div> </div>  &lt;style&gt; .sub_title {   font-weight: 700; }  .sub-section {   display: flex;   align-items: center;   justify-content: center;   flex-direction: column;   padding: 10px;   background-color: #383330;   border-radius: 6px;   color: #ffffff;   text-align: center; } &lt;/style&gt;",
+                    "value": "<div class=\"builder-note\"> خيارات أساسية<br> يمكنك تخصيص القسم حسب احتياجك وعمل قسم آخر من نفس النوع بخيارات مختلفة </div>",
                     "variant": "h1",
                     "icon": "sicon-format-text"
                 },
@@ -1277,15 +1277,6 @@
                             "maxLength": 255
                         }
                     ]
-                },
-                {
-                    "id": "title",
-                    "type": "static",
-                    "format": "title",
-                    "label": "Title",
-                    "value": null,
-                    "variant": "h1",
-                    "icon": "sicon-format-text"
                 }
             ]
         },
