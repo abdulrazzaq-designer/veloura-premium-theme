@@ -48,19 +48,7 @@
     </div>
   {% endif %}
 
-  <div class="pro-square-images__debug">
-    grid: {{ component.display_grid ? 'yes' : 'no' }} |
-    free: {{ component.slider_free_mode ? 'yes' : 'no' }} |
-    autoplay: {{ component.slider_autoplay ? 'yes' : 'no' }} |
-    loop: {{ component.slider_loop ? 'yes' : 'no' }} |
-    scrollbar: {{ component.slider_scrollbar ? 'yes' : 'no' }} |
-    partial: {{ component.slider_show_partial ? 'yes' : 'no' }} |
-    arrows hidden: {{ component.slider_hide_arrows ? 'yes' : 'no' }} |
-    radius: {{ component.image_radius }} |
-    desktop: {{ component.desktop_columns }} |
-    mobile: {{ component.mobile_columns }} |
-    gap: {{ component.images_gap }}
-  </div>
+  
 
   <div class="pro-square-images__grid">
     {% for index, banner in component.banners %}
