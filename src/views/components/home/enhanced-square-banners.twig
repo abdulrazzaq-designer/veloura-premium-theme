@@ -35,7 +35,6 @@
     --image-radius: {{ radius_map[component.image_radius|default('medium')]|default('18px') }};
   "
 >
-
   {% if component.section_title or component.section_subtitle %}
     <div class="pro-square-images__heading">
       {% if component.section_title %}
@@ -48,41 +47,98 @@
     </div>
   {% endif %}
 
-  
+  {% if component.display_grid %}
+    <div class="pro-square-images__grid">
+      {% for index, banner in component.banners %}
+        <a
+          href="{{ banner.url }}"
+          aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
+          class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
+        >
+          {% set banner_image = banner.image %}
 
-  <div class="pro-square-images__grid">
-    {% for index, banner in component.banners %}
-      <a
-        href="{{ banner.url }}"
-        aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
-        class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
-      >
-        {% set banner_image = banner.image %}
+          {% if banner.use_image_url and banner.image_url %}
+            {% set banner_image = banner.image_url %}
+          {% endif %}
 
-{% if banner.use_image_url and banner.image_url %}
-  {% set banner_image = banner.image_url %}
-{% endif %}
+          {% if banner_image %}
+            <img
+              src="{{ banner_image }}"
+              alt="{{ banner.title ? banner.title : 'banner' }}"
+              loading="lazy"
+            >
+          {% endif %}
 
-{% if banner_image %}
-  <img
-    src="{{ banner_image }}"
-    alt="{{ banner.title ? banner.title : 'banner' }}"
-    loading="lazy"
-  >
-{% endif %}
+          {% if banner.title or banner.description %}
+            <article class="pro-square-images__content">
+              {% if banner.title %}
+                <h3>{{ banner.title }}</h3>
+              {% endif %}
 
-        {% if banner.title or banner.description %}
-          <article class="pro-square-images__content">
-            {% if banner.title %}
-              <h3>{{ banner.title }}</h3>
-            {% endif %}
+              {% if banner.description %}
+                <p>{{ banner.description }}</p>
+              {% endif %}
+            </article>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <salla-slider
+      id="pro-square-images-{{ position }}"
+      {% if component.slider_autoplay %}auto-play{% endif %}
+      {% if component.slider_loop %}loop{% endif %}
+      {{ component.slider_hide_arrows ? 'show-controls="false"' : '' }}
+      static-when-single
+      slider-config='{
+        "slidesPerView": {{ component.mobile_columns|default(2) }},
+        "spaceBetween": {{ component.images_gap|default(16) }},
+        "freeMode": {{ component.slider_free_mode ? "true" : "false" }},
+        "breakpoints": {
+          "768": {
+            "slidesPerView": {{ component.desktop_columns|default(3) }},
+            "spaceBetween": {{ component.images_gap|default(16) }}
+          }
+        }
+      }'
+    >
+      <div slot="items">
+        {% for index, banner in component.banners %}
+          <div class="swiper-slide">
+            <a
+              href="{{ banner.url }}"
+              aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
+              class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
+            >
+              {% set banner_image = banner.image %}
 
-            {% if banner.description %}
-              <p>{{ banner.description }}</p>
-            {% endif %}
-          </article>
-        {% endif %}
-      </a>
-    {% endfor %}
-  </div>
+              {% if banner.use_image_url and banner.image_url %}
+                {% set banner_image = banner.image_url %}
+              {% endif %}
+
+              {% if banner_image %}
+                <img
+                  src="{{ banner_image }}"
+                  alt="{{ banner.title ? banner.title : 'banner' }}"
+                  loading="lazy"
+                >
+              {% endif %}
+
+              {% if banner.title or banner.description %}
+                <article class="pro-square-images__content">
+                  {% if banner.title %}
+                    <h3>{{ banner.title }}</h3>
+                  {% endif %}
+
+                  {% if banner.description %}
+                    <p>{{ banner.description }}</p>
+                  {% endif %}
+                </article>
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </salla-slider>
+  {% endif %}
 </section>
