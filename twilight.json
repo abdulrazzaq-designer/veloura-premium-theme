@@ -1199,7 +1199,17 @@
             },
             "icon": "sicon-store",
             "path": "home.advanced-images",
-            "fields": []
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "ببجي",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                }
+            ]
         }
     ],
     "support_url": "https://velourapremium.com",
