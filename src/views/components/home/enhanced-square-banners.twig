@@ -75,23 +75,25 @@
           {% endif %}
 
           {% if banner.title or banner.description %}
-            <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
-              <div class="premium-title-box {{ component.title_box_class }}">
-                {% if banner.title %}
-                  <h3
-  class="premium-title"
-  style="font-size: {{ title_size_map[component.title_size.value|default('md')] }}"
->
-  {{ banner.title|raw }}
-</h3>
-                {% endif %}
+  <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
+    <div class="premium-title-box {{ component.title_box_class }}">
+      {% if banner.title %}
+        <h3
+          class="premium-title"
+          style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
+        >
+          {{ banner.title|raw }}
+        </h3>
+      {% endif %}
 
-                {% if banner.description %}
-                  <div class="premium-subtitle">{{ banner.description|raw }}</div>
-                {% endif %}
-              </div>
-            </article>
-          {% endif %}
+      {% if banner.description %}
+        <div class="premium-subtitle">
+          {{ banner.description|raw }}
+        </div>
+      {% endif %}
+    </div>
+  </article>
+{% endif %}
         </a>
       {% endfor %}
     </div>
@@ -139,23 +141,25 @@
               {% endif %}
 
               {% if banner.title or banner.description %}
-                <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
-                  <div class="premium-title-box {{ component.title_box_class }}">
-                    {% if banner.title %}
-                      <h3
-  class="premium-title"
-  style="font-size: {{ title_size_map[component.title_size.value|default('md')] }}"
->
-  {{ banner.title|raw }}
-</h3>
-                    {% endif %}
+  <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
+    <div class="premium-title-box {{ component.title_box_class }}">
+      {% if banner.title %}
+        <h3
+          class="premium-title"
+          style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
+        >
+          {{ banner.title|raw }}
+        </h3>
+      {% endif %}
 
-                    {% if banner.description %}
-                      <div class="premium-subtitle">{{ banner.description|raw }}</div>
-                    {% endif %}
-                  </div>
-                </article>
-              {% endif %}
+      {% if banner.description %}
+        <div class="premium-subtitle">
+          {{ banner.description|raw }}
+        </div>
+      {% endif %}
+    </div>
+  </article>
+{% endif %}
             </a>
           </div>
         {% endfor %}
