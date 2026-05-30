@@ -18,8 +18,19 @@
   'round': '999px'
 } %}
 
+{% set title_size_map = {
+  'xs': '12px',
+  'sm': '14px',
+  'md': '18px',
+  'lg': '22px',
+  'xl': '28px',
+  'xxl': '36px'
+} %}
+
+{% if not component.hide_section %}
 <section
-  class="s-block s-block--banners container pro-square-images
+  class="s-block s-block--banners pro-square-images
+    {{ component.full_width_desktop ? 'is-full-width-desktop' : 'container' }}
     {{ component.custom_classes }}
     {{ component.show_mobile_only ? 'show-mobile-only' : '' }}
     {{ component.show_desktop_only ? 'show-desktop-only' : '' }}
@@ -36,17 +47,18 @@
     --mobile-columns: {{ component.mobile_columns|default(2) }};
     --images-gap: {{ component.images_gap|default(16) }}px;
     --image-radius: {{ radius_map[component.image_radius|default('medium')]|default('18px') }};
+    padding-inline: {{ component.custom_horizontal_spacing ? component.horizontal_spacing|default(25) ~ 'px' : '0px' }};
   "
 >
-
-
   {% if component.display_grid %}
     <div class="pro-square-images__grid">
       {% for index, banner in component.banners %}
         <a
           href="{{ banner.url }}"
           aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
-          class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
+          class="pro-square-images__card
+            {{ component.title_overlay ? 'has-overlay' : '' }}
+          "
         >
           {% set banner_image = banner.image %}
 
@@ -58,23 +70,28 @@
             <img
               src="{{ banner_image }}"
               alt="{{ banner.title ? banner.title : 'banner' }}"
-              loading="lazy"
+              loading="{{ component.image_loading|default('lazy') }}"
             >
           {% endif %}
 
           {% if banner.title or banner.description %}
-  <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
-    <div class="premium-title-box">
-      {% if banner.title %}
-        <h3 class="premium-title">{{ banner.title }}</h3>
-      {% endif %}
+            <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
+              <div class="premium-title-box {{ component.title_box_class }}">
+                {% if banner.title %}
+                  <h3
+                    class="premium-title"
+                    style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
+                  >
+                    {{ banner.title|raw }}
+                  </h3>
+                {% endif %}
 
-      {% if banner.description %}
-        <div class="premium-subtitle">{{ banner.description }}</div>
-      {% endif %}
-    </div>
-  </article>
-{% endif %}
+                {% if banner.description %}
+                  <div class="premium-subtitle">{{ banner.description|raw }}</div>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
         </a>
       {% endfor %}
     </div>
@@ -103,7 +120,9 @@
             <a
               href="{{ banner.url }}"
               aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
-              class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
+              class="pro-square-images__card
+                {{ component.title_overlay ? 'has-overlay' : '' }}
+              "
             >
               {% set banner_image = banner.image %}
 
@@ -115,23 +134,28 @@
                 <img
                   src="{{ banner_image }}"
                   alt="{{ banner.title ? banner.title : 'banner' }}"
-                  loading="lazy"
+                  loading="{{ component.image_loading|default('lazy') }}"
                 >
               {% endif %}
 
               {% if banner.title or banner.description %}
-  <article class="pro-square-images__content">
-    <div class="premium-title-box {{ component.title_box_class }}">
-      {% if banner.title %}
-        <h3 class="premium-title">{{ banner.title|raw }}</h3>
-      {% endif %}
+                <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
+                  <div class="premium-title-box {{ component.title_box_class }}">
+                    {% if banner.title %}
+                      <h3
+                        class="premium-title"
+                        style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
+                      >
+                        {{ banner.title|raw }}
+                      </h3>
+                    {% endif %}
 
-      {% if banner.description %}
-        <div class="premium-subtitle">{{ banner.description|raw }}</div>
-      {% endif %}
-    </div>
-  </article>
-{% endif %}
+                    {% if banner.description %}
+                      <div class="premium-subtitle">{{ banner.description|raw }}</div>
+                    {% endif %}
+                  </div>
+                </article>
+              {% endif %}
             </a>
           </div>
         {% endfor %}
@@ -139,3 +163,4 @@
     </salla-slider>
   {% endif %}
 </section>
+{% endif %}
