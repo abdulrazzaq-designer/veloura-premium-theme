@@ -599,3 +599,30 @@
     display: none;
   }
 }
+
+.pro-square-images__content.is-below-image {
+  position: relative;
+  inset: auto;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  margin-top: 12px;
+  padding: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.pro-square-images__content.is-below-image .premium-title-box {
+  position: relative;
+  background: transparent;
+  color: inherit;
+}
+
+.pro-square-images__content.is-below-image .premium-title {
+  color: #222;
+}
+
+.pro-square-images__content.is-below-image .premium-subtitle {
+  color: #666;
+}

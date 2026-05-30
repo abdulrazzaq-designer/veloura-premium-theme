@@ -35,12 +35,6 @@
     {{ component.show_mobile_only ? 'show-mobile-only' : '' }}
     {{ component.show_desktop_only ? 'show-desktop-only' : '' }}
     {{ component.display_grid ? 'is-grid' : 'is-slider' }}
-    {{ component.slider_free_mode ? 'is-free-mode' : '' }}
-    {{ component.slider_autoplay ? 'is-autoplay' : '' }}
-    {{ component.slider_loop ? 'is-loop' : '' }}
-    {{ component.slider_scrollbar ? 'has-scrollbar' : '' }}
-    {{ component.slider_show_partial ? 'show-partial' : '' }}
-    {{ component.slider_hide_arrows ? 'hide-arrows' : '' }}
   "
   style="
     --desktop-columns: {{ component.desktop_columns|default(3) }};
@@ -50,88 +44,49 @@
     padding-inline: {{ component.custom_horizontal_spacing ? component.horizontal_spacing|default(25) ~ 'px' : '0px' }};
   "
 >
-  {% if component.display_grid %}
-    <div class="pro-square-images__grid">
-      {% for index, banner in component.banners %}
-        <a
-          href="{{ banner.url }}"
-          aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
-          class="pro-square-images__card
-            {{ component.title_overlay ? 'has-overlay' : '' }}
-          "
-        >
-          {% set banner_image = banner.image %}
 
-          {% if banner.use_image_url and banner.image_url %}
-            {% set banner_image = banner.image_url %}
-          {% endif %}
-
-          {% if banner_image %}
-            <img
-              src="{{ banner_image }}"
-              alt="{{ banner.title ? banner.title : 'banner' }}"
-              loading="{{ component.image_loading|default('lazy') }}"
-            >
-          {% endif %}
-
-          {% if banner.title or banner.description %}
-  <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
-    <div class="premium-title-box {{ component.title_box_class }}">
-      {% if banner.title %}
-        <h3
-          class="premium-title"
-          style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
-        >
-          {{ banner.title|raw }}
-        </h3>
-      {% endif %}
-
-      {% if banner.description %}
-        <div class="premium-subtitle">
-          {{ banner.description|raw }}
-        </div>
-      {% endif %}
-    </div>
-  </article>
-{% endif %}
-        </a>
-      {% endfor %}
-    </div>
-  {% else %}
-    <salla-slider
-      id="pro-square-images-{{ position }}"
-      {% if component.slider_autoplay %}auto-play{% endif %}
-      {% if component.slider_loop %}loop{% endif %}
-      {{ component.slider_hide_arrows ? 'show-controls="false"' : '' }}
-      static-when-single
-      slider-config='{
-        "slidesPerView": {{ component.mobile_columns|default(2) }},
-        "spaceBetween": {{ component.images_gap|default(16) }},
-        "freeMode": {{ component.slider_free_mode ? "true" : "false" }},
-        "breakpoints": {
-          "768": {
-            "slidesPerView": {{ component.desktop_columns|default(3) }},
-            "spaceBetween": {{ component.images_gap|default(16) }}
-          }
+{% if component.display_grid %}
+  <div class="pro-square-images__grid">
+    {% for index, banner in component.banners %}
+      <div class="pro-square-images__item">
+        {% include 'components.home.partials.square-image-card' ignore missing %}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <salla-slider
+    id="pro-square-images-{{ position }}"
+    {% if component.slider_autoplay %}auto-play{% endif %}
+    {% if component.slider_loop %}loop{% endif %}
+    {{ component.slider_hide_arrows ? 'show-controls="false"' : '' }}
+    static-when-single
+    slider-config='{
+      "slidesPerView": {{ component.mobile_columns|default(2) }},
+      "spaceBetween": {{ component.images_gap|default(16) }},
+      "freeMode": {{ component.slider_free_mode ? "true" : "false" }},
+      "breakpoints": {
+        "768": {
+          "slidesPerView": {{ component.desktop_columns|default(3) }},
+          "spaceBetween": {{ component.images_gap|default(16) }}
         }
-      }'
-    >
-      <div slot="items">
-        {% for index, banner in component.banners %}
-          <div class="swiper-slide">
+      }
+    }'
+  >
+    <div slot="items">
+      {% for index, banner in component.banners %}
+        <div class="swiper-slide">
+          <div class="pro-square-images__item">
+
+            {% set banner_image = banner.image %}
+            {% if banner.use_image_url and banner.image_url %}
+              {% set banner_image = banner.image_url %}
+            {% endif %}
+
             <a
               href="{{ banner.url }}"
               aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
-              class="pro-square-images__card
-                {{ component.title_overlay ? 'has-overlay' : '' }}
-              "
+              class="pro-square-images__card {{ component.text_on_image and component.title_overlay ? 'has-overlay' : '' }}"
             >
-              {% set banner_image = banner.image %}
-
-              {% if banner.use_image_url and banner.image_url %}
-                {% set banner_image = banner.image_url %}
-              {% endif %}
-
               {% if banner_image %}
                 <img
                   src="{{ banner_image }}"
@@ -140,31 +95,43 @@
                 >
               {% endif %}
 
-              {% if banner.title or banner.description %}
-  <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
-    <div class="premium-title-box {{ component.title_box_class }}">
-      {% if banner.title %}
-        <h3
-          class="premium-title"
-          style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
-        >
-          {{ banner.title|raw }}
-        </h3>
-      {% endif %}
-
-      {% if banner.description %}
-        <div class="premium-subtitle">
-          {{ banner.description|raw }}
-        </div>
-      {% endif %}
-    </div>
-  </article>
-{% endif %}
+              {% if component.text_on_image and (banner.title or banner.description) %}
+                <article class="pro-square-images__content is-on-image {{ component.center_text ? 'is-centered' : '' }}">
+                  <div class="premium-title-box {{ component.title_box_class }}">
+                    {% if banner.title %}
+                      <h3 class="premium-title" style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};">
+                        {{ banner.title|raw }}
+                      </h3>
+                    {% endif %}
+                    {% if banner.description %}
+                      <div class="premium-subtitle">{{ banner.description|raw }}</div>
+                    {% endif %}
+                  </div>
+                </article>
+              {% endif %}
             </a>
+
+            {% if not component.text_on_image and (banner.title or banner.description) %}
+              <article class="pro-square-images__content is-below-image {{ component.center_text ? 'is-centered' : '' }}">
+                <div class="premium-title-box {{ component.title_box_class }}">
+                  {% if banner.title %}
+                    <h3 class="premium-title" style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};">
+                      {{ banner.title|raw }}
+                    </h3>
+                  {% endif %}
+                  {% if banner.description %}
+                    <div class="premium-subtitle">{{ banner.description|raw }}</div>
+                  {% endif %}
+                </div>
+              </article>
+            {% endif %}
+
           </div>
-        {% endfor %}
-      </div>
-    </salla-slider>
-  {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </salla-slider>
+{% endif %}
+
 </section>
 {% endif %}
