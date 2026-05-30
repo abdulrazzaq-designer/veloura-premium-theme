@@ -1240,6 +1240,16 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+            "key": "100f596e-cdfc-48d1-afa1-41a4ddb8a317",
+            "title": {
+                "en": "Test Component",
+                "ar": "Test Component"
+            },
+            "icon": "sicon-store",
+            "path": "advanced-images",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
