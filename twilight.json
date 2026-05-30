@@ -867,27 +867,12 @@
             "path": "home.enhanced-square-banners",
             "fields": [
                 {
-                    "type": "static",
-                    "format": "description",
-                    "id": "with-bg",
-                    "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1'></div>"
-                },
-                {
                     "id": "title",
                     "type": "static",
                     "format": "title",
                     "label": "Title",
-                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div>   </div> </div>",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم بكل تفاصيل العنصر كما تشاء</div>   </div> </div>",
                     "variant": "h1",
-                    "icon": "sicon-format-text"
-                },
-                {
-                    "id": "custom_title",
-                    "type": "static",
-                    "format": "title",
-                    "label": null,
-                    "value": "خيارات الصور المربعة",
-                    "variant": "h6",
                     "icon": "sicon-format-text"
                 },
                 {
@@ -961,6 +946,15 @@
                     "value": true,
                     "selected": false,
                     "required": false
+                },
+                {
+                    "id": "title_1",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 1",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات سلايدر الصور</strong>     <div class=\"text-sm opacity-75 mt-1\">لا تعمل الخيارات التالية في حال تفعيل \"عرض على شكل شبكة\"</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
                 },
                 {
                     "id": "khearat_slaedr_alsor",
