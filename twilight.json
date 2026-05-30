@@ -2151,6 +2151,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "401c1303-421c-47b0-b812-e487aafbb776",
+            "title": {
+                "en": "صور مميزة مربعة",
+                "ar": "صور مميزة مربعة"
+            },
+            "icon": "sicon-store",
+            "path": "home.advanced-images",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
