@@ -1,19 +1,13 @@
 <section class="container">
-    <h2>{{ title }}</h2>
+  <div style="background:#111;color:#fff;padding:40px">
+    <h2>Title: {{ title }}</h2>
 
     {% for item in items %}
-        <div style="background:red;color:white;padding:20px;margin:10px 0">
-            TEXT: {{ item.text }}
-
-            <br>
-
-            IMAGE:
-            {{ item.image.url }}
-
-            <br>
-
-            URL:
-            {{ item.url }}
-        </div>
+      <div style="background:red;color:white;padding:20px;margin-top:15px">
+        <p>TEXT: {{ item.text }}</p>
+        <p>URL: {{ item.url }}</p>
+        <p>IMAGE: {{ item.image.url }}</p>
+      </div>
     {% endfor %}
+  </div>
 </section>
