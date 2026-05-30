@@ -141,12 +141,62 @@
             "value": "<div class='rounded-lg' ><h6 > خيارات أسفل الصفحة</h6></div>",
             "variant": "h6"
         },
+
         {
   "id": "title",
   "type": "static",
   "format": "h1",
   "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},          
+{
+            "id": "title_1",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
 },
+{
+            "id": "title_2",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},
+{
+            "id": "title_3",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},
+{
+            "id": "title_4",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},
+{
+            "id": "title_5",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},
+{
+            "id": "title_6",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},
+{
+            "id": "title_7",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+},
+{
+  "id": "title_one",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong></div></div>"
+},
+
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
