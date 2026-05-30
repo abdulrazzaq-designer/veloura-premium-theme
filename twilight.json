@@ -141,14 +141,12 @@
             "value": "<div class='rounded-lg' ><h6 > خيارات أسفل الصفحة</h6></div>",
             "variant": "h6"
         },
-
         {
             "id": "title",
             "type": "static",
             "format": "h1",
             "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
         },
-        
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
@@ -1114,6 +1112,64 @@
                     "required": false
                 },
                 {
+                    "id": "title_overlay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة طبقة على الصورة تجعل العنوان أوضح",
+                    "description": "تعمل في حال اختيار مكان عرض العنوان على الصورة",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "title_size",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حجم النص (عناوين الصور)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "صغير جداً",
+                            "value": "xs",
+                            "key": "b2ef9384-adad-42b9-b8d8-c8cb9842e9dd"
+                        },
+                        {
+                            "label": "صغير",
+                            "value": "sm",
+                            "key": "b83369bb-dc57-42e7-a11a-ff075222f5f8"
+                        },
+                        {
+                            "label": "متوسط",
+                            "value": "md",
+                            "key": "f5f4ceed-1de9-47bd-a8ca-b0f39d0040f6"
+                        },
+                        {
+                            "label": "كبير",
+                            "value": "lg",
+                            "key": "6aebbe5e-9f6e-4ee9-a223-caa7888baefb"
+                        },
+                        {
+                            "label": "كبير جداً",
+                            "value": "xl",
+                            "key": "671d443e-19e5-465a-ac78-f90785a6a475"
+                        },
+                        {
+                            "label": "ضخم",
+                            "value": "xxl",
+                            "key": "fe6dd9d3-4949-47af-aa9d-e59d6fa1bd63"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
+                {
                     "id": "images_gap",
                     "type": "number",
                     "format": "slider",
@@ -1326,6 +1382,33 @@
                     "icon": "sicon-format-text"
                 },
                 {
+                    "id": "custom_horizontal_spacing",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+                    "description": "يمكنك عرض القسم بكامل الشاشة أو بمسافة مخصصة من اليمين واليسار",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "horizontal_spacing",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "مقدار المسافة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "25",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "100"
+                },
+                {
                     "id": "show_mobile_only",
                     "type": "boolean",
                     "format": "switch",
@@ -1343,6 +1426,18 @@
                     "format": "switch",
                     "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
                     "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "hide_section",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء هذا العنصر أو القسم بالكامل",
+                    "description": "سيتم إخفاء القسم كامل من الصفحة الرئيسية، ويمكنك إظهاره لاحقًا في أي وقت",
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
                     "value": true,
