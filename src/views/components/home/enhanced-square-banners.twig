@@ -70,16 +70,18 @@
           {% endif %}
 
           {% if banner.title or banner.description %}
-            <article class="pro-square-images__content">
-              {% if banner.title %}
-                <h3>{{ banner.title }}</h3>
-              {% endif %}
+  <article class="pro-square-images__content">
+    <div class="premium-title-box">
+      {% if banner.title %}
+        <h3 class="premium-title">{{ banner.title }}</h3>
+      {% endif %}
 
-              {% if banner.description %}
-                <p>{{ banner.description }}</p>
-              {% endif %}
-            </article>
-          {% endif %}
+      {% if banner.description %}
+        <div class="premium-subtitle">{{ banner.description }}</div>
+      {% endif %}
+    </div>
+  </article>
+{% endif %}
         </a>
       {% endfor %}
     </div>
@@ -125,16 +127,18 @@
               {% endif %}
 
               {% if banner.title or banner.description %}
-                <article class="pro-square-images__content">
-                  {% if banner.title %}
-                    <h3>{{ banner.title }}</h3>
-                  {% endif %}
+  <article class="pro-square-images__content">
+    <div class="premium-title-box {{ component.title_box_class }}">
+      {% if banner.title %}
+        <h3 class="premium-title">{{ banner.title|raw }}</h3>
+      {% endif %}
 
-                  {% if banner.description %}
-                    <p>{{ banner.description }}</p>
-                  {% endif %}
-                </article>
-              {% endif %}
+      {% if banner.description %}
+        <div class="premium-subtitle">{{ banner.description|raw }}</div>
+      {% endif %}
+    </div>
+  </article>
+{% endif %}
             </a>
           </div>
         {% endfor %}
