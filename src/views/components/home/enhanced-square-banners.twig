@@ -35,9 +35,9 @@
     --image-radius: {{ radius_map[component.image_radius|default('medium')]|default('18px') }};
   "
 >
-  {% if component.description-eneer %}
-  {{ component.description-eneer|raw }}
-{% endif %}
+  <h1 class="pro-square-images-title">
+  {{ component.custom_title }}
+</h1>
 
   {% if component.display_grid %}
     <div class="pro-square-images__grid">
