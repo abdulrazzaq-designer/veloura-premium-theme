@@ -1185,6 +1185,12 @@ input:where([type='file']):focus{
 .h-px{
     height: 1px;
 }
+.h-banner{
+    height: 200px;
+}
+.h-lg-banner{
+    height: 428px;
+}
 .max-h-0{
     max-height: 0px;
 }

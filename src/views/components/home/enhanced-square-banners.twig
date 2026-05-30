@@ -11,28 +11,27 @@
 #}
 
 <section class="s-block s-block--banners container pro-square-images">
-  {% if title %}
-    <div class="s-block__title">
-      <div class="right-side">
-        <h2>{{ title }}</h2>
-      </div>
-    </div>
-  {% endif %}
-
-  <div class="pro-square-images__grid">
-    {% for item in items %}
-      <a class="pro-square-images__card"
-         href="{{ item.url ? item.url : '#' }}"
-         {% if item.link_type == 'external_link' %}target="_blank"{% endif %}>
-
-        {% if item.image %}
-          <img src="{{ item.image.url }}" alt="{{ item.text }}" loading="lazy">
+  <div class="pro-square-images__grid {{ component.banners|length <= 3 ? 'is-one-row' : 'is-two-row' }}">
+    {% for index, banner in component.banners %}
+      <a
+        href="{{ banner.url }}"
+        aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
+        class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
+      >
+        {% if banner.image %}
+          <img src="{{ banner.image }}" alt="{{ banner.title ? banner.title : 'banner' }}" loading="lazy">
         {% endif %}
 
-        {% if item.text %}
-          <div class="pro-square-images__overlay">
-            <h3>{{ item.text }}</h3>
-          </div>
+        {% if banner.title or banner.description %}
+          <article class="pro-square-images__content">
+            {% if banner.title %}
+              <h3>{{ banner.title }}</h3>
+            {% endif %}
+
+            {% if banner.description %}
+              <p>{{ banner.description }}</p>
+            {% endif %}
+          </article>
         {% endif %}
       </a>
     {% endfor %}
