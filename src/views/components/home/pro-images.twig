@@ -1,11 +1,32 @@
 <section class="container">
   <div style="background:#111;color:#fff;padding:40px">
-    <h2>{{ title }}</h2>
+    <h2>Title: {{ title }}</h2>
 
+    <h3>Test items</h3>
     {% for item in items %}
-      <div style="background:red;color:white;padding:20px;margin:15px 0">
-        <p>TEXT: {{ item.text }}</p>
-        <p>URL: {{ item.url }}</p>
+      <div style="background:red;color:white;padding:15px;margin:10px">
+        items: {{ item.text }}
+      </div>
+    {% endfor %}
+
+    <h3>Test collection</h3>
+    {% for item in collection %}
+      <div style="background:blue;color:white;padding:15px;margin:10px">
+        collection: {{ item.text }}
+      </div>
+    {% endfor %}
+
+    <h3>Test component.items</h3>
+    {% for item in component.items %}
+      <div style="background:green;color:white;padding:15px;margin:10px">
+        component.items: {{ item.text }}
+      </div>
+    {% endfor %}
+
+    <h3>Test component.collection</h3>
+    {% for item in component.collection %}
+      <div style="background:purple;color:white;padding:15px;margin:10px">
+        component.collection: {{ item.text }}
       </div>
     {% endfor %}
   </div>
