@@ -1,12 +1,19 @@
 <section class="container">
-  <div style="background:#111;color:#fff;padding:30px;margin:20px 0">
-    <h2>PRO IMAGES TEST</h2>
-    <p>Title: {{ title }}</p>
-  </div>
+    <h2>{{ title }}</h2>
 
-  {% for item in items %}
-    <div style="background:red;color:white;padding:20px;margin:10px">
-      ITEM FOUND: {{ item.text }}
-    </div>
-  {% endfor %}
+    {% for item in items %}
+        <div style="background:red;color:white;padding:20px;margin:10px 0">
+            TEXT: {{ item.text }}
+
+            <br>
+
+            IMAGE:
+            {{ item.image.url }}
+
+            <br>
+
+            URL:
+            {{ item.url }}
+        </div>
+    {% endfor %}
 </section>
