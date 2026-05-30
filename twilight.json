@@ -1190,56 +1190,6 @@
                     "maxLength": 30
                 }
             ]
-        },
-        {
-            "key": "8d26d57d-e722-408a-9cae-ecec277b3863",
-            "title": {
-                "en": "صور متقدمة",
-                "ar": "صور متقدمة"
-            },
-            "icon": "sicon-store",
-            "path": "home.advanced-images",
-            "fields": [
-                {
-                    "id": "title",
-                    "type": "static",
-                    "format": "title",
-                    "label": "Title",
-                    "value": "ببجي",
-                    "variant": "h1",
-                    "icon": "sicon-format-text"
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الصور",
-                    "description": null,
-                    "labelHTML": null,
-                    "item_label": null,
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "items.text",
-                            "type": "string",
-                            "format": "text",
-                            "label": "النص",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": false,
-                            "required": false,
-                            "minLength": 6,
-                            "maxLength": 30
-                        }
-                    ],
-                    "value": [],
-                    "minLength": 1,
-                    "maxLength": 5
-                }
-            ]
         }
     ],
     "support_url": "https://velourapremium.com",
