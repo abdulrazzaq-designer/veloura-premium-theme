@@ -28148,6 +28148,53 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .pro-square-images.is-free-mode .pro-square-images__grid {
   scroll-snap-type: none;
 }
+.pro-square-images__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.pro-square-images__content.is-centered {
+  text-align: center;
+}
+.pro-square-images__content.is-below-image {
+  position: static;
+  padding: 12px 0 0;
+  color: #222;
+}
+.pro-square-images__content.is-below-image .premium-title-box {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #222;
+}
+.pro-square-images__content.is-below-image .premium-title {
+  color: #222;
+}
+.pro-square-images__content.is-below-image .premium-subtitle {
+  color: #666;
+}
+.show-mobile-only {
+  display: none;
+}
+@media (max-width: 767px) {
+  .show-mobile-only {
+    display: block;
+  }
+}
+.show-desktop-only {
+  display: block;
+}
+@media (max-width: 767px) {
+  .show-desktop-only {
+    display: none;
+  }
+}
 salla-slider{
     display: block;
 }

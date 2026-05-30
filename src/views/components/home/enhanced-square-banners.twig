@@ -20,6 +20,9 @@
 
 <section
   class="s-block s-block--banners container pro-square-images
+    {{ component.custom_classes }}
+    {{ component.show_mobile_only ? 'show-mobile-only' : '' }}
+    {{ component.show_desktop_only ? 'show-desktop-only' : '' }}
     {{ component.display_grid ? 'is-grid' : 'is-slider' }}
     {{ component.slider_free_mode ? 'is-free-mode' : '' }}
     {{ component.slider_autoplay ? 'is-autoplay' : '' }}
@@ -60,7 +63,7 @@
           {% endif %}
 
           {% if banner.title or banner.description %}
-  <article class="pro-square-images__content">
+  <article class="pro-square-images__content {{ component.text_on_image ? 'is-on-image' : 'is-below-image' }} {{ component.center_text ? 'is-centered' : '' }}">
     <div class="premium-title-box">
       {% if banner.title %}
         <h3 class="premium-title">{{ banner.title }}</h3>
