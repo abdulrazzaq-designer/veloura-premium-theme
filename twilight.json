@@ -142,11 +142,11 @@
             "variant": "h6"
         },
         {
-  "id": "title",
-  "type": "static",
-  "format": "h1",
-  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
-},
+            "id": "title",
+            "type": "static",
+            "format": "h1",
+            "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
+        },
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
@@ -877,7 +877,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "Title",
-                    "value": "<div >     <div >         إعدادات عامة للعنصر     </div>      <div >         تحكم كامل بخيارات العنصر وإعداداته     </div> </div>",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div>   </div> </div>",
                     "variant": "h1",
                     "icon": "sicon-format-text"
                 },
