@@ -35,17 +35,9 @@
     --image-radius: {{ radius_map[component.image_radius|default('medium')]|default('18px') }};
   "
 >
-  {% if component.section_title or component.section_subtitle %}
-    <div class="pro-square-images__heading">
-      {% if component.section_title %}
-        <h2>{{ component.section_title }}</h2>
-      {% endif %}
-
-      {% if component.section_subtitle %}
-        <p>{{ component.section_subtitle }}</p>
-      {% endif %}
-    </div>
-  {% endif %}
+  {% if component.description-eneer %}
+  {{ component.description-eneer|raw }}
+{% endif %}
 
   {% if component.display_grid %}
     <div class="pro-square-images__grid">
