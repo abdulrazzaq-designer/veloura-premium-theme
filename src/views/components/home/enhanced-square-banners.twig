@@ -69,9 +69,19 @@
         aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
         class="pro-square-images__card {{ banner.title ? 'has-overlay' : '' }}"
       >
-        {% if banner.image %}
-          <img src="{{ banner.image }}" alt="{{ banner.title ? banner.title : 'banner' }}" loading="lazy">
-        {% endif %}
+        {% set banner_image = banner.image %}
+
+{% if banner.use_image_url and banner.image_url %}
+  {% set banner_image = banner.image_url %}
+{% endif %}
+
+{% if banner_image %}
+  <img
+    src="{{ banner_image }}"
+    alt="{{ banner.title ? banner.title : 'banner' }}"
+    loading="lazy"
+  >
+{% endif %}
 
         {% if banner.title or banner.description %}
           <article class="pro-square-images__content">
