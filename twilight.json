@@ -1217,7 +1217,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "items",
+                    "id": "collection",
                     "type": "collection",
                     "format": "collection",
                     "label": "الصور",
@@ -1227,7 +1227,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "items.image",
+                            "id": "collection.items.image",
                             "type": "string",
                             "format": "image",
                             "label": "الصورة",
@@ -1239,7 +1239,7 @@
                             "required": false
                         },
                         {
-                            "id": "items.url",
+                            "id": "collection.items.url",
                             "type": "string",
                             "format": "url",
                             "inputType": "url",
@@ -1254,7 +1254,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "items.text",
+                            "id": "collection.items.text",
                             "type": "string",
                             "format": "text",
                             "label": "النص",
