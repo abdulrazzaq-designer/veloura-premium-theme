@@ -1070,6 +1070,30 @@
                     "required": false
                 },
                 {
+                    "id": "center_text",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "توسيط النصوص بالنسبة للصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "text_on_image",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض النصوص على الصور بدلًا من تحتها",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
                     "id": "images_gap",
                     "type": "number",
                     "format": "slider",
@@ -1262,6 +1286,45 @@
                             "maxLength": 255
                         }
                     ]
+                },
+                {
+                    "id": "show_mobile_only",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض العنصر في الجوال فقط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "show_desktop_only",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "custom_classes",
+                    "type": "string",
+                    "format": "text",
+                    "label": "Classes",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "ex: container dark p-4 custom",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "3000000000"
                 }
             ]
         },
