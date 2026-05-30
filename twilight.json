@@ -874,18 +874,12 @@
                 },
                 {
                     "id": "title_box_class",
-                    "type": "string",
-                    "format": "text",
-                    "label": null,
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": null,
-                    "multilanguage": false,
-                    "required": false,
-                    "minLength": 6,
-                    "maxLength": 30
+                    "type": "static",
+                    "format": "description",
+                    "label": "خيارات الصور المربعة",
+                    "value": "تحكم في تصميم الصور والنصوص بشكل كامل",
+                    "variant": "h1",
+                    "icon": "sicon-format-size"
                 },
                 {
                     "id": "section_title",
