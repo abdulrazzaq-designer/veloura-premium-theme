@@ -1190,6 +1190,16 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+            "key": "8d26d57d-e722-408a-9cae-ecec277b3863",
+            "title": {
+                "en": "صور متقدمة",
+                "ar": "صور متقدمة"
+            },
+            "icon": "sicon-store",
+            "path": "home.advanced-images",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
