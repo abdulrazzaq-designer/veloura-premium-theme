@@ -402,11 +402,11 @@
 .pro-square-images {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(var(--mobile-columns), 1fr);
+    grid-template-columns: repeat(var(--mobile-columns), 1fr) !important;
     gap: 16px;
 
     @media (min-width: 768px) {
-      grid-template-columns: repeat(var(--desktop-columns), 1fr);
+      grid-template-columns: repeat(var(--desktop-columns), 1fr) !important;
     }
   }
 

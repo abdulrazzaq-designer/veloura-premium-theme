@@ -28013,14 +28013,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-top: 2em;
 }
 .pro-square-images__grid {
+  grid-template-columns: repeat(var(--mobile-columns), 1fr) !important;
+}
+.pro-square-images__grid {
   display: grid;
-  grid-template-columns: repeat(var(--mobile-columns), 1fr);
   grid-gap: 16px;
   gap: 16px;
 }
 @media (min-width: 768px) {
   .pro-square-images__grid {
-    grid-template-columns: repeat(var(--desktop-columns), 1fr);
+    grid-template-columns: repeat(var(--desktop-columns), 1fr) !important;
   }
 }
 .pro-square-images__card {
