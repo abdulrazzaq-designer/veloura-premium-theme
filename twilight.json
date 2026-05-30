@@ -903,6 +903,36 @@
                     "maxLength": 30
                 },
                 {
+                    "id": "mobile_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد الصور في الجوال",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "2",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "6"
+                },
+                {
+                    "id": "desktop_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد الصور في اللابتوب",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "4",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "8"
+                },
+                {
                     "id": "display_grid",
                     "type": "boolean",
                     "format": "switch",
@@ -944,7 +974,7 @@
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
                     "value": true,
-                    "selected": false,
+                    "selected": true,
                     "required": false
                 },
                 {
@@ -1032,9 +1062,24 @@
                         }
                     ],
                     "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
+                    "multichoice": false,
+                    "searchable": false,
                     "required": false
+                },
+                {
+                    "id": "images_gap",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "المسافة بين الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "60"
                 },
                 {
                     "id": "banners",
@@ -1214,51 +1259,6 @@
                             "maxLength": 255
                         }
                     ]
-                },
-                {
-                    "id": "desktop_columns",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "عدد الصور في اللابتوب",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "4",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "1",
-                    "maximum": "8"
-                },
-                {
-                    "id": "mobile_columns",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "عدد الصور في الجوال",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "2",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "1",
-                    "maximum": "6"
-                },
-                {
-                    "id": "images_gap",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "المسافة بين الصور",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "16",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "0",
-                    "maximum": "60"
                 }
             ]
         },
