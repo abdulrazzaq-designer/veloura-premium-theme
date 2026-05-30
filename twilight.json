@@ -1044,7 +1044,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "Title 2",
-                    "value": "<div style=\"background:#0f766e;border-radius:20px;padding:12px;color:white;text-align:center;\"><strong style=\"font-size:18px;\">إضافة الصور</strong><div style=\"font-size:12px;opacity:.85;margin-top:4px;\">يمكنك إضافة عدد لانهائي من الصور بأي مقاس تحتاجه</div></div>",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات سلايدر الصور</strong>     <div class=\"text-sm opacity-75 mt-1\">لا تعمل الخيارات التالية في حال تفعيل \"عرض على شكل شبكة\"</div>   </div> </div>",
                     "variant": "h1",
                     "icon": "sicon-format-text"
                 },
@@ -1133,7 +1133,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "Title 3",
-                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات سلايدر الصور</strong>     <div class=\"text-sm opacity-75 mt-1\">لا تعمل الخيارات التالية في حال تفعيل \"عرض على شكل شبكة\"</div>   </div> </div>",
+                    "value": "{             \"id\": \"title_2\",   \"type\": \"static\",   \"format\": \"h1\",   \"value\": \"<div class=\\\"text-center p-2 bg-primary text-white rounded\\\"><div class=\\\"ml-1 mr-2 text-center\\\"><strong class=\\\"text-lg\\\">إضافة الصور</strong><div class=\\\"text-sm opacity-75 mt-1\\\">يمكنك إضافة عدد لانهائي من الصور بأي مقاس تحتاجه</div></div></div>\" },",
                     "variant": "h1",
                     "icon": "sicon-format-text"
                 },
