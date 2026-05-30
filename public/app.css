@@ -1125,6 +1125,9 @@ input:where([type='file']):focus{
 .hidden{
     display: none;
 }
+.aspect-square{
+    aspect-ratio: 1 / 1;
+}
 .\!h-36{
     height: 9rem !important;
 }
@@ -1573,6 +1576,9 @@ input:where([type='file']):focus{
 }
 .rounded-sm{
     border-radius: 0.125rem;
+}
+.rounded-xl{
+    border-radius: 0.75rem;
 }
 .rounded-b-none{
     border-bottom-right-radius: 0px;

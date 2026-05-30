@@ -1,5 +1,27 @@
-<section class="container">
-  <div style="background:#111;color:#fff;padding:60px;text-align:center;font-size:28px">
-    PRO IMAGES COMPONENT
-  </div>
+<section class="s-block container pro-images">
+  {% if title %}
+    <div class="s-block__title">
+      <div class="right-side">
+        <h2>{{ title }}</h2>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if items %}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {% for item in items %}
+        <a href="{{ item.url }}" class="block rounded-xl overflow-hidden bg-white">
+          {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.text }}" loading="lazy" class="w-full aspect-square object-cover">
+          {% endif %}
+
+          {% if item.text %}
+            <div class="p-3 text-center">
+              <h3 class="font-bold text-sm">{{ item.text }}</h3>
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
 </section>
