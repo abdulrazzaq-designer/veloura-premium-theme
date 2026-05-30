@@ -1315,6 +1315,15 @@
                     ]
                 },
                 {
+                    "id": "title_one",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 4",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
                     "id": "show_mobile_only",
                     "type": "boolean",
                     "format": "switch",
