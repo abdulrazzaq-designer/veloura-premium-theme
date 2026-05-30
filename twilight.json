@@ -867,6 +867,15 @@
                     "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1'></div>"
                 },
                 {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "<div >     <div >         إعدادات عامة للعنصر     </div>      <div >         تحكم كامل بخيارات العنصر وإعداداته     </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
                     "id": "custom_title",
                     "type": "static",
                     "format": "title",
