@@ -49,7 +49,25 @@
   <div class="pro-square-images__grid">
     {% for index, banner in component.banners %}
       <div class="pro-square-images__item">
-        {% include 'components.home.partials.square-image-card' ignore missing %}
+        {% set banner_image = banner.image %}
+
+{% if banner.use_image_url and banner.image_url %}
+  {% set banner_image = banner.image_url %}
+{% endif %}
+
+<a
+  href="{{ banner.url }}"
+  aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}"
+  class="pro-square-images__card {{ component.text_on_image and component.title_overlay ? 'has-overlay' : '' }}"
+>
+  {% if banner_image %}
+    <img
+      src="{{ banner_image }}"
+      alt="{{ banner.title ? banner.title : 'banner' }}"
+      loading="{{ component.image_loading|default('lazy') }}"
+    >
+  {% endif %}
+</a>
       </div>
     {% endfor %}
   </div>
