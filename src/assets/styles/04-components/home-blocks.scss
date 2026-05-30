@@ -398,3 +398,9 @@
 .s-block--tabs-produtcs + .s-block--tabs-produtcs {
   padding-top: 2em;
 }
+
+.custom-square-photos {
+  border: 5px solid red !important;
+  border-radius: 30px !important;
+  overflow: hidden !important;
+}

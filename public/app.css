@@ -28018,6 +28018,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .s-block--tabs-produtcs + .s-block--tabs-produtcs {
   padding-top: 2em;
 }
+.custom-square-photos {
+  border: 5px solid red !important;
+  border-radius: 30px !important;
+  overflow: hidden !important;
+}
 salla-slider{
     display: block;
 }
