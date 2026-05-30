@@ -28148,14 +28148,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .pro-square-images.is-free-mode .pro-square-images__grid {
   scroll-snap-type: none;
 }
-.pro-square-images-title {
-  background: #383330;
-  color: #fff;
-  border: 1px solid #c0c0c0;
-  border-radius: 10px;
-  padding: 15px 20px;
-  text-align: center;
-}
 salla-slider{
     display: block;
 }
