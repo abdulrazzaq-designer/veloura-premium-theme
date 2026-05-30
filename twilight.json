@@ -1259,6 +1259,15 @@
                             "maxLength": 255
                         }
                     ]
+                },
+                {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "<b >TEST</b>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
                 }
             ]
         },
