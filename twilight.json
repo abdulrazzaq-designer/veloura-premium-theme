@@ -1190,6 +1190,16 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+            "key": "a32fd54f-da46-4afd-8f20-b05ab5ec3a01",
+            "title": {
+                "en": "صور احترافية",
+                "ar": "صور احترافية"
+            },
+            "icon": "sicon-store",
+            "path": "home.pro-images",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
