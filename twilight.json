@@ -1190,16 +1190,6 @@
                     "maxLength": 30
                 }
             ]
-        },
-        {
-            "key": "f4d8e43d-47d5-42fe-9d9d-0870bd080c41",
-            "title": {
-                "en": "veloura",
-                "ar": "صور مربعة فيلورا"
-            },
-            "icon": "sicon-ellipsis-vertical-filled",
-            "path": "square-images",
-            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
