@@ -1258,7 +1258,7 @@
                             "type": "string",
                             "format": "text",
                             "label": "النص",
-                            "description": null,
+                            "description": "تجربة",
                             "labelHTML": null,
                             "placeholder": "Placeholder text ..",
                             "icon": "sicon-format-text-alt",
