@@ -80,7 +80,7 @@
                 {% if banner.title %}
                   <h3
   class="premium-title"
-  style="font-size: {{ title_size_map[component.title_size|default('md')] }}"
+  style="font-size: {{ title_size_map[component.title_size.value|default('md')] }}"
 >
   {{ banner.title|raw }}
 </h3>
@@ -144,7 +144,7 @@
                     {% if banner.title %}
                       <h3
   class="premium-title"
-  style="font-size: {{ title_size_map[component.title_size|default('md')] }}"
+  style="font-size: {{ title_size_map[component.title_size.value|default('md')] }}"
 >
   {{ banner.title|raw }}
 </h3>
