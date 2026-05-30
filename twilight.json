@@ -867,30 +867,12 @@
                     "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1'></div>"
                 },
                 {
-                    "id": "title",
-                    "type": "static",
-                    "format": "title",
-                    "label": "Title",
-                    "value": "<div class=\"sub-section mb-8\">   <h2 class=\"sub-title\">خيارات الصور المربعة</h2>   <p>تحكم في تصميم الصور والنصوص بشكل كامل</p> </div>  &lt;style&gt; .sub-title {   font-weight: 700; }  .sub-section {   display: flex;   align-items: center;   justify-content: center;   flex-direction: column;   padding: 10px;   background-color: #383330;   border-radius: 6px;   color: #ffffff;   text-align: center; } &lt;/style&gt;",
-                    "variant": "h2",
-                    "icon": "sicon-format-text"
-                },
-                {
-                    "id": "description",
-                    "type": "static",
-                    "format": "description",
-                    "label": "Description",
-                    "value": "<div class=\"sub-section mb-8\">   <h2 class=\"sub-title\">خيارات الصور المربعة</h2>   <p>تحكم في تصميم الصور والنصوص بشكل كامل</p> </div>  &lt;style&gt; .sub-title {   font-weight: 700; }  .sub-section {   display: flex;   align-items: center;   justify-content: center;   flex-direction: column;   padding: 10px;   background-color: #383330;   border-radius: 6px;   color: #ffffff;   text-align: center; } &lt;/style&gt;",
-                    "variant": "h1",
-                    "icon": "sicon-format-size"
-                },
-                {
                     "id": "custom_title",
                     "type": "static",
                     "format": "title",
                     "label": null,
                     "value": "خيارات الصور المربعة",
-                    "variant": "h1",
+                    "variant": "h6",
                     "icon": "sicon-format-text"
                 },
                 {
