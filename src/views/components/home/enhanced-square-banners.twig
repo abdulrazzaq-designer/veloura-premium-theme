@@ -11,6 +11,10 @@
 #}
 
 <section class="s-block s-block--banners container pro-square-images">
+style="
+    --desktop-columns: {{ component.desktop_columns|default(3) }};
+    --mobile-columns: {{ component.mobile_columns|default(2) }};
+  "
   <div class="pro-square-images__grid {{ component.banners|length <= 3 ? 'is-one-row' : 'is-two-row' }}">
     {% for index, banner in component.banners %}
       <a
