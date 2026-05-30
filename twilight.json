@@ -873,6 +873,170 @@
                     "value": "<div ><strong >تنبيه:</strong> يتم اقتصاص الصور من الأطراف لتناسب مقاسات الشاشات، لذا يُرجى مراعاة الأجزاء المقتصّة طولاً وعرضاً عند التصميم لتظهر الصورة كاملة قدر الإمكان.</div>"
                 },
                 {
+                    "id": "section_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم الرئيسي",
+                    "description": "اتركه فارغاً لإخفائه",
+                    "labelHTML": null,
+                    "placeholder": "اكتب هنا ...",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "section_subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم الفرعي",
+                    "description": "اتركه فارغاً لإخفائه",
+                    "labelHTML": null,
+                    "placeholder": "اكتب هنا ...",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "display_grid",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض على شكل شبكة بدل سلايدر",
+                    "description": "* عند تفعيل هذا الخيار يتم عرض الصور على شكل أعمدة وصفوف (شبكة) بدلًا من صف واحد منزلق (سلايدر).",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "khearat_slaedr_alsor",
+                    "type": "static",
+                    "format": "title",
+                    "label": "خيارات سلايدر الصور",
+                    "value": "لا تعمل الخيارات التالية في حال تفعيل \"عرض على شكل شبكة\"",
+                    "variant": "h3",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "slider_free_mode",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الوضع الحر للسلايدر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "slider_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "حركة تلقائية للصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "slider_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "دوران الصور بلا نهاية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "slider_scrollbar",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل شريط السكرول أسفل السلايدر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "slider_show_partial",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار جزء من الصورة الأخيرة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "slider_hide_arrows",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء أسهم التنقل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "image_radius",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حواف الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "e0b2aca8-eb09-4da7-8efe-2815b4f0c6c5"
+                        },
+                        {
+                            "label": "ناعم قليلاً",
+                            "value": "soft",
+                            "key": "7027a744-07d4-4e8d-9d9d-bd7a33489861"
+                        },
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "f444031c-39a7-416e-95b5-199489617f1a"
+                        },
+                        {
+                            "label": "ناعم جداً",
+                            "value": "large",
+                            "key": "6352057f-378d-4460-8ddd-1fbbb24f18a4"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "round",
+                            "key": "d81af4e5-699e-4903-aa85-9ee720d2d9c9"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
+                {
                     "id": "banners",
                     "type": "collection",
                     "format": "collection",
@@ -928,6 +1092,33 @@
                                 "height": 427,
                                 "width": 640
                             }
+                        },
+                        {
+                            "id": "banners.use_image_url",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "إضافة صورة عن طريق رابط",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "banners.image_url",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رابط الصورة",
+                            "description": "في حال وضع رابط صورة هنا سيتم تجاهل الصور السابقة الصيغ المقبولة webm, png, gif, webp, jpg, jpeg ,svg",
+                            "labelHTML": null,
+                            "placeholder": null,
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
                         },
                         {
                             "type": "items",
