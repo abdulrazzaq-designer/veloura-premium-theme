@@ -10,8 +10,10 @@
 | position                        | int      | Sorting number start from zero                                               |
 #}
 
-<section class="s-block s-block--banners container pro-square-images">
-style="--desktop-columns: {{ component.desktop_columns }}; --mobile-columns: {{ component.mobile_columns }};"
+<section
+  class="s-block s-block--banners container pro-square-images"
+  style="--desktop-columns: {{ component.desktop_columns }}; --mobile-columns: {{ component.mobile_columns }};"
+>
   <div class="pro-square-images__grid {{ component.banners|length <= 3 ? 'is-one-row' : 'is-two-row' }}">
     {% for index, banner in component.banners %}
       <a
