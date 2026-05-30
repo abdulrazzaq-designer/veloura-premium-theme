@@ -79,11 +79,11 @@
               <div class="premium-title-box {{ component.title_box_class }}">
                 {% if banner.title %}
                   <h3
-                    class="premium-title"
-                    style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
-                  >
-                    {{ banner.title|raw }}
-                  </h3>
+  class="premium-title"
+  style="font-size: {{ title_size_map[component.title_size|default('md')] }}"
+>
+  {{ banner.title|raw }}
+</h3>
                 {% endif %}
 
                 {% if banner.description %}
@@ -143,11 +143,11 @@
                   <div class="premium-title-box {{ component.title_box_class }}">
                     {% if banner.title %}
                       <h3
-                        class="premium-title"
-                        style="font-size: {{ title_size_map[component.title_size|default('md')]|default('18px') }};"
-                      >
-                        {{ banner.title|raw }}
-                      </h3>
+  class="premium-title"
+  style="font-size: {{ title_size_map[component.title_size|default('md')] }}"
+>
+  {{ banner.title|raw }}
+</h3>
                     {% endif %}
 
                     {% if banner.description %}
