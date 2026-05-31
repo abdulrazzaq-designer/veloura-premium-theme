@@ -1280,7 +1280,7 @@
     {
       "id": "ultra_banners.use_image_url",
       "operation": "=",
-      "value": true
+      "value": "true"
     }
   ]
                         },
@@ -1299,7 +1299,7 @@
     {
       "id": "ultra_banners.use_image_url",
       "operation": "=",
-      "value": true
+      "value": "true"
     }
   ],
                             "sources": [
