@@ -1510,7 +1510,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "عدد الصور في الجوال",
+                    "id": "ultra_mobile_columns",
                     "type": "number",
                     "format": "slider",
                     "inputType": "range",
@@ -1960,7 +1960,7 @@
                     "required": false
                 },
                 {
-                    "id": "classes",
+                    "id": "ultra_custom_classes",
                     "type": "string",
                     "format": "text",
                     "label": "Classes",
