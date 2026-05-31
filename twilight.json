@@ -1276,10 +1276,11 @@
                             "required": false,
                             "minLength": 6,
                             "maxLength": 30,
-                            "depends_on": {
-    "field": "ultra_banners.use_image_url",
-    "value": true
-  }
+                            "condition": {
+  "field": "use_image_url",
+  "operator": "==",
+  "value": true
+}
                         },
                         {
                             "type": "items",
@@ -1292,10 +1293,11 @@
                             "format": "variable-list",
                             "searchable": true,
                             "source": "custom",
-                            "depends_on": {
-    "field": "ultra_banners.use_image_url",
-    "value": true
-  },
+                            "condition": {
+  "field": "use_image_url",
+  "operator": "==",
+  "value": true
+},
                             "sources": [
                                 {
                                     "label": "منتج",
