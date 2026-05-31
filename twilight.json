@@ -1717,7 +1717,512 @@
             },
             "icon": "sicon-store",
             "path": "home.ultra-square-images",
-            "fields": []
+            "fields": [
+                {
+                    "id": "ultra_title_general",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم بكل تفاصيل العنصر كما تشاء</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "ultra_section_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "ultra_section_subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "عدد الصور في الجوال",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد الصور في الجوال",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "2",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "6"
+                },
+                {
+                    "id": "ultra_desktop_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد الصور في الكمبيوتر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "4",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "8"
+                },
+                {
+                    "id": "ultra_display_grid",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض على شكل شبكة بدل سلايدر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_title_layout",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 1",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات سلايدر الصور</strong>     <div class=\"text-sm opacity-75 mt-1\">لا تعمل الخيارات التالية في حال تفعيل \"عرض على شكل شبكة\"</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "ultra_slider_free_mode",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الوضع الحر للسلايدر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_slider_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "حركة تلقائية للصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_slider_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "دوران الصور بلا نهاية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_slider_scrollbar",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار شريط التمرير",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_slider_show_partial",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار جزء من الصورة التالية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_slider_hide_arrows",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء أسهم التنقل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "title_2",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 2",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات الصور المربعة</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في تصميم الصور والنصوص بشكل كامل</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "ultra_image_radius",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حواف الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "996d389e-98f9-4383-8bfd-2e174ed64f0d"
+                        },
+                        {
+                            "label": "ناعم قليلاً",
+                            "value": "soft",
+                            "key": "a8215cd5-7728-4bb1-8c5d-dc53db249f22"
+                        },
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "8de74152-6fcf-4a5c-9d85-1c1611478200"
+                        },
+                        {
+                            "label": "ناعم جداً",
+                            "value": "large",
+                            "key": "38d50a74-1bd0-4bb3-bddd-b3f6043e7a56"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "round",
+                            "key": "b17fc5b3-21df-4f76-b1a4-449f966f93af"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
+                {
+                    "id": "ultra_center_text",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "توسيط النصوص بالنسبة للصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "ultra_text_on_image",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض النصوص على الصور بدلًا من تحتها",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_title_overlay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة طبقة على الصورة تجعل العنوان أوضح",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_title_size",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حجم النص (عناوين الصور)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "صغير جداً",
+                            "value": "xs",
+                            "key": "f01dba3d-6253-4ffb-bc88-2189f690a395"
+                        },
+                        {
+                            "label": "صغير",
+                            "value": "sm",
+                            "key": "dd0a9ef1-52be-4b57-ab43-35bdd1c62a0e"
+                        },
+                        {
+                            "label": "متوسط",
+                            "value": "md",
+                            "key": "b1bf71e1-7b46-4b16-93db-78ceac4713e6"
+                        },
+                        {
+                            "label": "كبير",
+                            "value": "lg",
+                            "key": "fa5206c6-e407-4070-bc5a-cb19fa06cd8c"
+                        },
+                        {
+                            "label": "كبير جداً",
+                            "value": "xl",
+                            "key": "9f712906-44b9-4ed6-8f0a-089968f3cc2b"
+                        },
+                        {
+                            "label": "ضخم",
+                            "value": "xxl",
+                            "key": "f535e1f4-0823-48f8-a6cf-aea5e12c53b6"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
+                {
+                    "id": "ultra_images_gap",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "المسافة بين الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "60"
+                },
+                {
+                    "id": "title_3",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 3",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إضافة الصور</strong>     <div class=\"text-sm opacity-75 mt-1\">يمكنك إضافة عدد لانهائي من الصور بأي مقاس تحتاجه</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "ultra_banners",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "قائمة الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": "صورة",
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "ultra_banners.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة البنر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        },
+                        {
+                            "id": "ultra_banners.use_image_url",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "إضافة صورة عن طريق رابط",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "ultra_banners.image_url",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رابط الصورة",
+                            "description": "في حال وضع رابط صورة هنا سيتم تجاهل الصور السابقة الصيغ المقبولة webm, png, gif, webp, jpg, jpeg ,svg",
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "0",
+                            "maxLength": "2000"
+                        },
+                        {
+                            "id": "ultra_banners.url",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url",
+                            "label": "الرابط",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://salla.sa",
+                            "icon": "sicon-link",
+                            "value": null,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": "3000"
+                        },
+                        {
+                            "id": "ultra_banners.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "عنوان رئيسي",
+                            "description": "نص يتم إضافته على الصورة بنمط خط كبير",
+                            "labelHTML": null,
+                            "placeholder": "أدخل النص هنا...",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": "100"
+                        },
+                        {
+                            "id": "ultra_banners.description",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "نص توضيحي",
+                            "description": "نص يتم إضافته على الصورة بخط أصغر من العنوان الرئيسي",
+                            "labelHTML": null,
+                            "placeholder": "أدخل النص هنا...",
+                            "icon": "sicon-typography",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 20,
+                            "maxLength": 255
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "9999999999999999"
+                },
+                {
+                    "id": "ultra_title_advanced",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 4",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "ultra_custom_horizontal_spacing",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_horizontal_spacing",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "مقدار المسافة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "25",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "100"
+                },
+                {
+                    "id": "ultra_show_mobile_only",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض العنصر في الجوال فقط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_show_desktop_only",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "ultra_hide_section",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء هذا العنصر أو القسم بالكامل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "classes",
+                    "type": "string",
+                    "format": "text",
+                    "label": "Classes",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "ex: container dark p-4 custom",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": "4",
+                    "maxLength": "30000"
+                }
+            ]
         }
     ],
     "support_url": "https://velourapremium.com",
