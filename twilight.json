@@ -1278,7 +1278,7 @@
                             "maxLength": 30,
                             "conditions": [
     {
-      "id": "use_image_url",
+      "id": "ultra_banners.use_image_url",
       "operation": "=",
       "value": true
     }
@@ -1295,6 +1295,13 @@
                             "format": "variable-list",
                             "searchable": true,
                             "source": "custom",
+                            "conditions": [
+    {
+      "id": "ultra_banners.use_image_url",
+      "operation": "=",
+      "value": true
+    }
+  ],
                             "sources": [
                                 {
                                     "label": "منتج",
