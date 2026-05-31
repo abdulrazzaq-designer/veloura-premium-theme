@@ -1921,7 +1921,14 @@
                     "required": false,
                     "step": "1",
                     "minimum": "0",
-                    "maximum": "100"
+                    "maximum": "100",
+                    "conditions": [
+    {
+      "id": "ultra_custom_horizontal_spacing",
+      "operation": "=",
+      "value": true
+    }
+  ]
                 },
                 {
                     "id": "ultra_show_mobile_only",
