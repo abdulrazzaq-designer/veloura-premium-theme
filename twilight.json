@@ -1276,13 +1276,10 @@
                             "required": false,
                             "minLength": 6,
                             "maxLength": 30,
-                            "conditions": [
-    {
-      "id": "ultra_banners.use_image_url",
-      "operation": "=",
-      "value": "true"
-    }
-  ]
+                            "depends_on": {
+    "field": "ultra_banners.use_image_url",
+    "value": true
+  }
                         },
                         {
                             "type": "items",
@@ -1295,13 +1292,10 @@
                             "format": "variable-list",
                             "searchable": true,
                             "source": "custom",
-                            "conditions": [
-    {
-      "id": "ultra_banners.use_image_url",
-      "operation": "=",
-      "value": "true"
-    }
-  ],
+                            "depends_on": {
+    "field": "ultra_banners.use_image_url",
+    "value": true
+  },
                             "sources": [
                                 {
                                     "label": "منتج",
