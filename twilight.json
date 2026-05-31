@@ -1277,7 +1277,7 @@
                             "minLength": 6,
                             "maxLength": 30,
                             "condition": {
-  "field": "use_image_url",
+  "field": "ultra_banners.use_image_url",
   "operator": "==",
   "value": true
 }
@@ -1293,9 +1293,8 @@
                             "format": "variable-list",
                             "searchable": true,
                             "source": "custom",
-                            "condition": {
-  "field": "use_image_url",
-  "operator": "==",
+                            "visible_if": {
+  "id": "ultra_banners.use_image_url",
   "value": true
 },
                             "sources": [
