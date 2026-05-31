@@ -843,16 +843,28 @@
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  width: calc(
+    (100% - (var(--ultra-gap) * (var(--ultra-mobile-columns) - 1)))
+    / var(--ultra-mobile-columns)
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    width: calc(
+      (100% - (var(--ultra-gap) * (var(--ultra-desktop-columns) - 1)))
+      / var(--ultra-desktop-columns)
+    );
   }
+}
 
   &__card {
     position: relative;
     display: block;
-    width: fit-content;
+    width: 100%;
     max-width: 100%;
     height: auto !important;
     overflow: visible !important;
@@ -862,7 +874,7 @@
 
   &__card img {
     display: block;
-    width: auto;
+    width: 100%;
     height: auto !important;
     max-width: 100%;
     object-fit: contain !important;
