@@ -1678,8 +1678,8 @@
                         }
                     ],
                     "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
+                    "multichoice": false,
+                    "searchable": false,
                     "required": false
                 },
                 {
@@ -1760,8 +1760,8 @@
                         }
                     ],
                     "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
+                    "multichoice": false,
+                    "searchable": false,
                     "required": false
                 },
                 {
