@@ -1278,7 +1278,7 @@
                             "maxLength": 30,
                             "conditions": [
     {
-      "id": "banners.use_image_url",
+      "id": "use_image_url",
       "operation": "=",
       "value": true
     }
