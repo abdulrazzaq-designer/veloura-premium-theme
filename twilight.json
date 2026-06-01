@@ -2286,7 +2286,7 @@
                             "type": "static",
                             "format": "title",
                             "label": "Title 1",
-                            "value": null,
+                            "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">أضف الصورة أو الفيديو</strong>   </div> </div>",
                             "variant": "h1",
                             "icon": "sicon-format-text"
                         },
@@ -2340,6 +2340,15 @@
                             "required": false,
                             "minLength": 6,
                             "maxLength": 30
+                        },
+                        {
+                            "id": "animated_banners.title_3",
+                            "type": "static",
+                            "format": "title",
+                            "label": "Title 3",
+                            "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات النصوص</strong>   </div> </div>",
+                            "variant": "h1",
+                            "icon": "sicon-format-text"
                         },
                         {
                             "id": "animated_banners.banner_title",
@@ -2400,7 +2409,7 @@
                             "type": "static",
                             "format": "title",
                             "label": "Title 2",
-                            "value": null,
+                            "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">عداد الخصم</strong>   </div> </div>",
                             "variant": "h1",
                             "icon": "sicon-format-text"
                         },
@@ -2427,6 +2436,15 @@
                             "icon": "sicon-calendar-date",
                             "value": "2020-10-01",
                             "required": false
+                        },
+                        {
+                            "id": "animated_banners.title_4",
+                            "type": "static",
+                            "format": "title",
+                            "label": "Title 4",
+                            "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات الزر والرابط</strong>   </div> </div>",
+                            "variant": "h1",
+                            "icon": "sicon-format-text"
                         },
                         {
                             "type": "items",
@@ -2559,6 +2577,15 @@
                     "value": [],
                     "minLength": 1,
                     "maxLength": "10000"
+                },
+                {
+                    "id": "title_5",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 5",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
                 }
             ]
         }
