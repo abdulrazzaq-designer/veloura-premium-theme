@@ -2207,8 +2207,8 @@
                         }
                     ],
                     "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
+                    "multichoice": false,
+                    "searchable": false,
                     "required": false
                 },
                 {
@@ -2302,7 +2302,7 @@
                     "required": false
                 },
                 {
-                    "id": "collection",
+                    "id": "animated_banners",
                     "type": "collection",
                     "format": "collection",
                     "label": "Collection",
@@ -2312,7 +2312,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "collection.title_1",
+                            "id": "animated_banners.collection.title_1",
                             "type": "static",
                             "format": "title",
                             "label": "Title 1",
@@ -2321,7 +2321,7 @@
                             "icon": "sicon-format-text"
                         },
                         {
-                            "id": "collection.banner_image",
+                            "id": "animated_banners.collection.banner_image",
                             "type": "string",
                             "format": "image",
                             "label": "ارفع صورة البانر الأساسية",
@@ -2333,7 +2333,7 @@
                             "required": false
                         },
                         {
-                            "id": "collection.banner_image_mobile",
+                            "id": "animated_banners.collection.banner_image_mobile",
                             "type": "string",
                             "format": "image",
                             "label": "صورة البنر للجوال",
@@ -2345,7 +2345,7 @@
                             "required": false
                         },
                         {
-                            "id": "collection.use_image_url",
+                            "id": "animated_banners.collection.use_image_url",
                             "type": "boolean",
                             "format": "switch",
                             "label": "استخدام رابط بدلاً من الصورة",
@@ -2357,7 +2357,7 @@
                             "required": false
                         },
                         {
-                            "id": "collection.image_url",
+                            "id": "animated_banners.collection.image_url",
                             "type": "string",
                             "format": "text",
                             "label": "رابط الصورة البديل",
@@ -2372,7 +2372,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "collection.banner_title",
+                            "id": "animated_banners.collection.banner_title",
                             "type": "string",
                             "format": "text",
                             "label": "عنوان رئيسي",
@@ -2387,7 +2387,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "collection.banner_title_color",
+                            "id": "animated_banners.collection.banner_title_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -2399,7 +2399,7 @@
                             "required": false
                         },
                         {
-                            "id": "collection.banner_subtitle",
+                            "id": "animated_banners.collection.banner_subtitle",
                             "type": "string",
                             "format": "text",
                             "label": "عنوان فرعي",
@@ -2414,7 +2414,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "collection.banner_subtitle_color",
+                            "id": "animated_banners.collection.banner_subtitle_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -2426,7 +2426,7 @@
                             "required": false
                         },
                         {
-                            "id": "collection.title_2",
+                            "id": "animated_banners.collection.title_2",
                             "type": "static",
                             "format": "title",
                             "label": "Title 2",
@@ -2435,7 +2435,7 @@
                             "icon": "sicon-format-text"
                         },
                         {
-                            "id": "collection.discount.enable",
+                            "id": "animated_banners.collection.discount.enable",
                             "type": "boolean",
                             "format": "switch",
                             "label": "Switch",
@@ -2447,7 +2447,7 @@
                             "required": false
                         },
                         {
-                            "id": "collection.discount.end_date",
+                            "id": "animated_banners.collection.discount.end_date",
                             "type": "string",
                             "format": "date",
                             "inputType": "date",
