@@ -15,6 +15,14 @@
   'xxl': '36px'
 } %}
 
+{% set subtitle_size_map = {
+  'xs': '11px',
+  'sm': '13px',
+  'md': '15px',
+  'lg': '18px',
+  'xl': '22px'
+} %}
+
 {% if not component.ultra_hide_section %}
 <section
   class="s-block ultra-square-images
@@ -87,7 +95,9 @@
                   {% endif %}
 
                   {% if banner.description %}
-                    <p>{{ banner.description|raw }}</p>
+                    <p dir="auto" style="font-size: {{ subtitle_size_map[component.ultra_subtitle_size|default('sm')]|default('13px') }};">
+  {{ banner.description|raw }}
+</p>
                   {% endif %}
                 </div>
               {% endif %}
@@ -103,16 +113,18 @@
         {{ component.ultra_slider_hide_arrows ? 'show-controls="false"' : '' }}
         static-when-single
         slider-config='{
-          "slidesPerView": {{ component.ultra_mobile_columns|default(2) }},
-          "spaceBetween": {{ component.ultra_images_gap|default(16) }},
-          "freeMode": {{ component.ultra_slider_free_mode ? "true" : "false" }},
-          "breakpoints": {
-            "768": {
-              "slidesPerView": {{ component.ultra_desktop_columns|default(4) }},
-              "spaceBetween": {{ component.ultra_images_gap|default(16) }}
-            }
-          }
-        }'
+  "slidesPerView": {{ component.ultra_slider_show_partial ? 1.35 : component.ultra_mobile_columns|default(2) }},
+  "spaceBetween": {{ component.ultra_images_gap|default(16) }},
+  "freeMode": {{ component.ultra_slider_free_mode ? "true" : "false" }},
+  "autoplay": {{ component.ultra_slider_autoplay ? "{\"delay\": 900, \"disableOnInteraction\": false}" : "false" }},
+  "scrollbar": {{ component.ultra_slider_scrollbar ? "{\"draggable\": true}" : "false" }},
+  "breakpoints": {
+    "768": {
+      "slidesPerView": {{ component.ultra_slider_show_partial ? component.ultra_desktop_columns|default(4) + 0.35 : component.ultra_desktop_columns|default(4) }},
+      "spaceBetween": {{ component.ultra_images_gap|default(16) }}
+    }
+  }
+}'
       >
         <div slot="items">
           {% for banner in component.ultra_banners %}
@@ -135,13 +147,13 @@
                     {% if component.ultra_text_on_image and (banner.title or banner.description) %}
                       <div class="ultra-square-images__content is-on-image {{ component.ultra_title_overlay ? 'has-overlay' : '' }} {{ component.ultra_center_text ? 'is-centered' : 'is-start' }}">
                         {% if banner.title %}
-                          <h3 style="font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};">
+                          <h3 dir="auto" style="font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};">
                             {{ banner.title|raw }}
                           </h3>
                         {% endif %}
 
                         {% if banner.description %}
-                          <p>{{ banner.description|raw }}</p>
+                          <p dir="auto" >{{ banner.description|raw }}</p>
                         {% endif %}
                       </div>
                     {% endif %}

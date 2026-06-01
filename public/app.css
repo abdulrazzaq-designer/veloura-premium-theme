@@ -28486,6 +28486,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   text-align: left;
   align-items: flex-start;
 }
+.ultra-square-images__content h3,
+.ultra-square-images__content p {
+  unicode-bidi: plaintext;
+}
 salla-slider{
     display: block;
 }

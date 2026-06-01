@@ -943,3 +943,8 @@
   text-align: start;
   align-items: flex-start;
 }
+
+.ultra-square-images__content h3,
+.ultra-square-images__content p {
+  unicode-bidi: plaintext;
+}
