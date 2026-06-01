@@ -2225,7 +2225,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
+                    "selected": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "7a865be9-b7d9-4a45-bb53-934f84f5a89d"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "حاد",
@@ -2499,7 +2505,7 @@
     {
       "label": "يمين",
       "value": "right",
-      "key": "right"
+      "key": "8c8a77e7-060c-475c-801a-50c5225625ff"
     }
   ],
                             "options": [
