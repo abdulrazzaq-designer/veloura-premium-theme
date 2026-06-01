@@ -2784,7 +2784,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
-                    "value": true,
+                    "value": false,
                     "selected": false,
                     "required": false
                 },
