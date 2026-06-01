@@ -1774,6 +1774,47 @@
                     "required": false
                 },
                 {
+                    "id": "ultra_subtitle_size",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حجم النص (العناوين الفرعية)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "صغير جداً",
+                            "value": "xs",
+                            "key": "d68f2b22-382d-43c6-a937-081f50ed43c6"
+                        },
+                        {
+                            "label": "صغير",
+                            "value": "sm",
+                            "key": "11e31084-c523-4916-86ad-6169e6e50cb5"
+                        },
+                        {
+                            "label": "متوسط",
+                            "value": "md",
+                            "key": "a1be800e-06e9-4eb2-abd7-424e58686023"
+                        },
+                        {
+                            "label": "كبير",
+                            "value": "lg",
+                            "key": "b269a54a-faf4-4c23-b809-10b5aee59780"
+                        },
+                        {
+                            "label": "كبير جداً",
+                            "value": "xl",
+                            "key": "8c0112b9-c78c-4f4b-adbb-e4e04fd51a77"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
                     "id": "ultra_images_gap",
                     "type": "number",
                     "format": "slider",
