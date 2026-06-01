@@ -44,11 +44,15 @@
     {% if component.ultra_section_title or component.ultra_section_subtitle %}
       <div class="ultra-square-images__heading">
         {% if component.ultra_section_title %}
-          <h2>{{ component.ultra_section_title }}</h2>
+          <h2 style="color: {{ component.ultra_section_text_color|default('#222222') }};">
+  {{ component.ultra_section_title }}
+</h2>
         {% endif %}
 
         {% if component.ultra_section_subtitle %}
-          <p>{{ component.ultra_section_subtitle }}</p>
+          <p style="color: {{ component.ultra_section_text_color|default('#222222') }};">
+  {{ component.ultra_section_subtitle }}
+</p>
         {% endif %}
       </div>
     {% endif %}
@@ -124,7 +128,7 @@
         id="ultra-square-images-{{ position }}"
         {% if component.ultra_slider_autoplay %}auto-play{% endif %}
         {% if component.ultra_slider_loop %}loop{% endif %}
-        {% if component.ultra_slider_scrollbar %}show-scrollbar{% endif %}
+        {% if component.ultra_slider_scrollbar %}pagination="scrollbar"{% endif %}
         {{ component.ultra_slider_hide_arrows ? 'show-controls="false"' : '' }}
         static-when-single
         slider-config='{
