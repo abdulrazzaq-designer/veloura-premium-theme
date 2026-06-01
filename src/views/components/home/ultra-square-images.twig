@@ -139,7 +139,7 @@
   "scrollbar": {{ component.ultra_slider_scrollbar ? "{\"draggable\": true}" : "false" }},
   "breakpoints": {
     "768": {
-      "slidesPerView": {{ component.ultra_slider_show_partial ? component.ultra_desktop_columns|default(4) + 0.35 : component.ultra_desktop_columns|default(4) }},
+      "slidesPerView": {{ component.ultra_desktop_columns|default(4) }},
       "spaceBetween": {{ component.ultra_images_gap|default(16) }}
     }
   }
