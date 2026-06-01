@@ -1,15 +1,25 @@
-<section class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'container' }}">
+{% if not component.animated_hide_section %}
+<section
+  class="s-block animated-banners
+    {{ component.animated_full_width ? 'is-full-width' : 'container' }}
+    {{ component.animated_custom_classes }}
+    {{ component.animated_show_mobile_only ? 'animated-mobile-only' : '' }}
+    {{ component.animated_show_desktop_only ? 'animated-desktop-only' : '' }}
+  "
+  style="padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};"
+>
   {% if component.animated_banners %}
     <salla-slider
       id="animated-banners-{{ position }}"
+      type="carousel"
       {% if component.animated_autoplay %}auto-play{% endif %}
       {% if component.animated_loop %}loop{% endif %}
       {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
       slider-config='{
-        "effect": "{{ component.animated_transition_type|default("fade") }}",
+        "effect": "{{ component.animated_transition_type|default("slide") }}",
         "speed": {{ component.animated_transition_speed|default(600) }},
-        "autoplay": {{ component.animated_autoplay ? "{\"delay\": " ~ component.animated_autoplay_delay|default(3000) ~ ", \"disableOnInteraction\": false}" : "false" }},
-        "pagination": {{ component.animated_hide_dots ? "false" : "{\"clickable\": true}" }}
+        "autoplay": {{ component.animated_autoplay ? "{\"delay\":" ~ component.animated_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
+        "pagination": {{ component.animated_hide_dots ? "false" : "{\"clickable\":true}" }}
       }'
     >
       <div slot="items">
@@ -22,9 +32,14 @@
 
           {% set mobile_image = banner.banner_image_mobile ?: image_src %}
 
+          {% set banner_link = '#' %}
+          {% if banner.url %}
+            {% set banner_link = banner.url %}
+          {% endif %}
+
           {% if image_src %}
             <div class="swiper-slide animated-banners__slide">
-              <a href="#" class="animated-banners__card">
+              <a href="{{ banner_link }}" class="animated-banners__card">
                 <picture>
                   <source media="(max-width: 767px)" srcset="{{ mobile_image }}">
                   <img src="{{ image_src }}" alt="{{ banner.banner_title ?: 'banner' }}" loading="lazy">
@@ -33,14 +48,28 @@
                 <div class="animated-banners__content">
                   {% if banner.banner_title %}
                     <h2 style="color: {{ banner.banner_title_color|default('#ffffff') }};">
-                      {{ banner.banner_title }}
+                      {{ banner.banner_title|raw }}
                     </h2>
                   {% endif %}
 
                   {% if banner.banner_subtitle %}
                     <p style="color: {{ banner.banner_subtitle_color|default('#ffffff') }};">
-                      {{ banner.banner_subtitle }}
+                      {{ banner.banner_subtitle|raw }}
                     </p>
+                  {% endif %}
+
+                  {% if banner.button_text %}
+                    <span class="
+                      animated-banners__button
+                      {{ banner.button_no_bg ? 'is-outline' : '' }}
+                      {{ banner.button_rounded ? 'is-rounded' : '' }}
+                      {{ banner.button_icon_reverse ? 'is-reverse' : '' }}
+                    ">
+                      {% if not banner.button_hide_icon %}
+                        <i class="sicon-arrow-left"></i>
+                      {% endif %}
+                      {{ banner.button_text }}
+                    </span>
                   {% endif %}
                 </div>
 
@@ -57,3 +86,4 @@
     </salla-slider>
   {% endif %}
 </section>
+{% endif %}
