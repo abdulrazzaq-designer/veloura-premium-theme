@@ -2155,7 +2155,228 @@
             },
             "icon": "sicon-store",
             "path": "home.animated-banners",
-            "fields": []
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم بكل تفاصيل العنصر كما تشاء</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "animated_transition_type",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "Dropdown List",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "شرائح",
+                            "value": "slide",
+                            "key": "502d783a-b6be-42fb-9ea9-729784e9b212"
+                        },
+                        {
+                            "label": "ظهور",
+                            "value": "fade",
+                            "key": "e27bbd10-5ae4-4a9e-a5b3-175b1fc87040"
+                        },
+                        {
+                            "label": "مكعب",
+                            "value": "cube",
+                            "key": "b243889d-23de-4a56-a1ac-be310978e4de"
+                        },
+                        {
+                            "label": "معرض",
+                            "value": "coverflow",
+                            "key": "d6dd94a9-ce79-416e-9a97-e9d608669919"
+                        },
+                        {
+                            "label": "دوران",
+                            "value": "flip",
+                            "key": "1e401ead-e682-400f-bb69-1c55d56f2445"
+                        },
+                        {
+                            "label": "بطاقات",
+                            "value": "cards",
+                            "key": "5c4c7011-21e5-4345-8982-8159781f8dd0"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
+                {
+                    "id": "animated_transition_speed",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "سرعة الانتقال",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "600",
+                    "required": false,
+                    "step": "100",
+                    "minimum": "100",
+                    "maximum": "3000"
+                },
+                {
+                    "id": "animated_autoplay_delay",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "مدة الانتظار قبل الانتقال",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "3000",
+                    "required": false,
+                    "step": "500",
+                    "minimum": "500",
+                    "maximum": "10000"
+                },
+                {
+                    "id": "animated_full_width",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تكبير حجم البنر بعرض الشاشة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "animated_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "دوران البنرات بلا نهاية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "animated_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تحريك البنرات تلقائياً",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "animated_hide_dots",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء نقاط التنقل أسفل البنرات",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "animated_hide_arrows_desktop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء أسهم التنقل في الكمبيوتر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "collection",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "Collection",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "collection.title_1",
+                            "type": "static",
+                            "format": "title",
+                            "label": "Title 1",
+                            "value": null,
+                            "variant": "h1",
+                            "icon": "sicon-format-text"
+                        },
+                        {
+                            "id": "collection.banner_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "ارفع صورة البانر الأساسية",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        },
+                        {
+                            "id": "collection.banner_image_mobile",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة البنر للجوال",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        },
+                        {
+                            "id": "collection.use_image_url",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "استخدام رابط بدلاً من الصورة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "collection.image_url",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رابط الصورة البديل",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "10000"
+                }
+            ]
         }
     ],
     "support_url": "https://velourapremium.com",
