@@ -2161,7 +2161,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "Title",
-                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم بكل تفاصيل العنصر كما تشاء</div>   </div> </div>",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في خيارات سلايدر البنرات</div>   </div> </div>",
                     "variant": "h1",
                     "icon": "sicon-format-text"
                 },
@@ -2272,10 +2272,19 @@
                     "required": false
                 },
                 {
+                    "id": "title_6",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 6",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إضافة البنرات</strong>     <div class=\"text-sm opacity-75 mt-1\">أضف عدد لانهائي من البنرات مع خيارات الزر والرابط لكل بانر</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
                     "id": "animated_banners",
                     "type": "collection",
                     "format": "collection",
-                    "label": "Collection",
+                    "label": "بنر رقم",
                     "description": null,
                     "labelHTML": null,
                     "item_label": null,
@@ -2417,7 +2426,7 @@
                             "id": "animated_banners.discount.enable",
                             "type": "boolean",
                             "format": "switch",
-                            "label": "Switch",
+                            "label": "تفعيل عداد الخصم في البانر",
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-toggle-off",
@@ -2430,7 +2439,7 @@
                             "type": "string",
                             "format": "date",
                             "inputType": "date",
-                            "label": "Date",
+                            "label": "حدد تاريخ إنتهاء الخصم",
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-calendar-date",
