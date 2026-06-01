@@ -2491,6 +2491,69 @@
                                     "value": "custom"
                                 }
                             ]
+                        },
+                        {
+                            "id": "animated_banners.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "ابدأ الآن",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "3",
+                            "maxLength": "40"
+                        },
+                        {
+                            "id": "animated_banners.button_hide_icon",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "إخفاء أيقونة الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "animated_banners.button_no_bg",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "زر بدون لون خلفية",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "animated_banners.button_rounded",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "زر مع حواف دائرية",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "animated_banners.button_icon_reverse",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "عكس اتجاه أيقونة الزر مع النص",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
                         }
                     ],
                     "value": [],
