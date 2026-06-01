@@ -6,7 +6,6 @@
   'round': '999px'
 } %}
 
-
 <section
   class="s-block animated-banners
     {{ component.animated_full_width ? 'is-full-width' : 'container' }}
@@ -14,8 +13,9 @@
     {{ component.animated_show_mobile_only ? 'animated-mobile-only' : '' }}
     {{ component.animated_show_desktop_only ? 'animated-desktop-only' : '' }}
   "
-  style="padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
-  --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};
+  style="
+    padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
+    --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};
   "
 >
   {% if component.animated_banners %}
@@ -23,17 +23,6 @@
       id="animated-banners-{{ position }}"
       type="carousel"
       {% if component.animated_autoplay %}auto-play{% endif %}
-      {% set image_src = banner.banner_image %}
-
-{% if banner.use_image_url and banner.image_url %}
-  {% set image_src = banner.image_url %}
-{% endif %}
-
-{% set mobile_image = banner.banner_image_mobile ?: image_src %}
-
-{% if banner.use_mobile_image_url and banner.mobile_image_url %}
-  {% set mobile_image = banner.mobile_image_url %}
-{% endif %}
       {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
       slider-config='{
         "effect": "{{ component.animated_transition_type|default("slide") }}",
@@ -45,17 +34,15 @@
       <div slot="items">
         {% for banner in component.animated_banners %}
           {% set image_src = banner.banner_image %}
-
           {% if banner.use_image_url and banner.image_url %}
             {% set image_src = banner.image_url %}
           {% endif %}
-
           {% set mobile_image = banner.banner_image_mobile ?: image_src %}
-
-          {% set banner_link = '#' %}
-          {% if banner.url %}
-            {% set banner_link = banner.url %}
+          {% if banner.use_mobile_image_url and banner.mobile_image_url %}
+            {% set mobile_image = banner.mobile_image_url %}
           {% endif %}
+
+          {% set banner_link = banner.url ?: '#' %}
 
           {% if image_src %}
             <div class="swiper-slide animated-banners__slide">
@@ -86,8 +73,8 @@
                       {{ banner.button_icon_reverse ? 'is-reverse' : '' }}
                     ">
                       {% if not banner.button_hide_icon %}
-  <i class="{{ banner.button_icon|default('sicon-arrow-left') }}"></i>
-{% endif %}
+                        <i class="{{ banner.button_icon|default('sicon-arrow-left') }}"></i>
+                      {% endif %}
                       {{ banner.button_text }}
                     </span>
                   {% endif %}
