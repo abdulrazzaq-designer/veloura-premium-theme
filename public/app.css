@@ -28591,6 +28591,30 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding: 6px 12px;
   border-radius: 8px;
 }
+.animated-banners__card {
+  border-radius: var(--animated-radius);
+  overflow: hidden;
+}
+.animated-banners__card img {
+  border-radius: var(--animated-radius);
+}
+.animated-banners__content {
+  padding: 32px;
+}
+.animated-banners__content.align-right {
+  align-items: flex-end;
+  text-align: right;
+  padding-right: 48px;
+}
+.animated-banners__content.align-left {
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 48px;
+}
+.animated-banners__content.align-center {
+  align-items: center;
+  text-align: center;
+}
 salla-slider{
     display: block;
 }
