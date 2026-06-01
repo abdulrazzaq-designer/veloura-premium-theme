@@ -110,13 +110,14 @@
         id="ultra-square-images-{{ position }}"
         {% if component.ultra_slider_autoplay %}auto-play{% endif %}
         {% if component.ultra_slider_loop %}loop{% endif %}
+        {% if component.ultra_slider_scrollbar %}show-scrollbar{% endif %}
         {{ component.ultra_slider_hide_arrows ? 'show-controls="false"' : '' }}
         static-when-single
         slider-config='{
   "slidesPerView": {{ component.ultra_slider_show_partial ? 1.35 : component.ultra_mobile_columns|default(2) }},
   "spaceBetween": {{ component.ultra_images_gap|default(16) }},
   "freeMode": {{ component.ultra_slider_free_mode ? "true" : "false" }},
-  "autoplay": {{ component.ultra_slider_autoplay ? "{\"delay\": 900, \"disableOnInteraction\": false}" : "false" }},
+  "autoplay": {{ component.ultra_slider_autoplay ? "{\"delay\": 1200, \"disableOnInteraction\": false}" : "false" }},
   "scrollbar": {{ component.ultra_slider_scrollbar ? "{\"draggable\": true}" : "false" }},
   "breakpoints": {
     "768": {
@@ -147,14 +148,28 @@
                     {% if component.ultra_text_on_image and (banner.title or banner.description) %}
                       <div class="ultra-square-images__content is-on-image {{ component.ultra_title_overlay ? 'has-overlay' : '' }} {{ component.ultra_center_text ? 'is-centered' : 'is-start' }}">
                         {% if banner.title %}
-                          <h3 dir="auto" style="font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};">
-                            {{ banner.title|raw }}
-                          </h3>
-                        {% endif %}
+  <h3
+    dir="auto"
+    style="
+      font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};
+      text-align: start;
+    "
+  >
+    {{ banner.title|raw }}
+  </h3>
+{% endif %}
 
-                        {% if banner.description %}
-                          <p dir="auto" >{{ banner.description|raw }}</p>
-                        {% endif %}
+{% if banner.description %}
+  <p
+    dir="auto"
+    style="
+      font-size: {{ subtitle_size_map[component.ultra_subtitle_size|default('sm')]|default('13px') }};
+      text-align: start;
+    "
+  >
+    {{ banner.description|raw }}
+  </p>
+{% endif %}
                       </div>
                     {% endif %}
                   </a>

@@ -1658,7 +1658,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
+                    "selected": [
+  {
+    "label": "ناعم",
+    "value": "medium",
+    "key": "8de74152-6fcf-4a5c-9d85-1c1611478200"
+  }
+],
                     "options": [
                         {
                             "label": "حاد",
@@ -1735,7 +1741,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
+                    "selected": [
+  {
+    "label": "متوسط",
+    "value": "md",
+    "key": "b1bf71e1-7b46-4b16-93db-78ceac4713e6"
+  }
+],
                     "options": [
                         {
                             "label": "صغير جداً",
@@ -1781,7 +1793,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
+                    "selected": [
+  {
+    "label": "صغير",
+    "value": "sm",
+    "key": "11e31084-c523-4916-86ad-6169e6e50cb5"
+  }
+],
                     "options": [
                         {
                             "label": "صغير جداً",
