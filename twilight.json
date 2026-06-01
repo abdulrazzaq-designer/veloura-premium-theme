@@ -2169,7 +2169,7 @@
                     "id": "animated_transition_type",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "Dropdown List",
+                    "label": "اختر طريقة انتقال البنرات",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
@@ -2623,12 +2623,12 @@
                     "minimum": "0",
                     "maximum": "100",
                     "conditions": [
-  {
-    "id": "animated_custom_horizontal_spacing",
-    "operation": "=",
-    "value": true
-  }
-]
+                        {
+                            "id": "animated_custom_horizontal_spacing",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
                 },
                 {
                     "id": "animated_show_mobile_only",
