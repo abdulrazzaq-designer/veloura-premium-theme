@@ -1561,6 +1561,18 @@
                     "required": false
                 },
                 {
+                    "id": "ultra_rows_center",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "توسيط الصفوف الناقصة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
                     "id": "ultra_title_layout",
                     "type": "static",
                     "format": "title",
