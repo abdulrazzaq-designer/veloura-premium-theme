@@ -2432,7 +2432,7 @@
                             "type": "items",
                             "icon": "sicon-link",
                             "label": "الرابط",
-                            "id": "ultra_banners.url",
+                            "id": "animated_banners.url",
                             "value": [],
                             "description": null,
                             "required": false,
@@ -2500,7 +2500,6 @@
             ]
         }
     ],
-    
     "support_url": "https://velourapremium.com",
     "description": {
         "ar": "",
