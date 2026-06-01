@@ -1,0 +1,59 @@
+<section class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'container' }}">
+  {% if component.animated_banners %}
+    <salla-slider
+      id="animated-banners-{{ position }}"
+      {% if component.animated_autoplay %}auto-play{% endif %}
+      {% if component.animated_loop %}loop{% endif %}
+      {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
+      slider-config='{
+        "effect": "{{ component.animated_transition_type|default("fade") }}",
+        "speed": {{ component.animated_transition_speed|default(600) }},
+        "autoplay": {{ component.animated_autoplay ? "{\"delay\": " ~ component.animated_autoplay_delay|default(3000) ~ ", \"disableOnInteraction\": false}" : "false" }},
+        "pagination": {{ component.animated_hide_dots ? "false" : "{\"clickable\": true}" }}
+      }'
+    >
+      <div slot="items">
+        {% for banner in component.animated_banners %}
+          {% set image_src = banner.banner_image %}
+
+          {% if banner.use_image_url and banner.image_url %}
+            {% set image_src = banner.image_url %}
+          {% endif %}
+
+          {% set mobile_image = banner.banner_image_mobile ?: image_src %}
+
+          {% if image_src %}
+            <div class="swiper-slide animated-banners__slide">
+              <a href="#" class="animated-banners__card">
+                <picture>
+                  <source media="(max-width: 767px)" srcset="{{ mobile_image }}">
+                  <img src="{{ image_src }}" alt="{{ banner.banner_title ?: 'banner' }}" loading="lazy">
+                </picture>
+
+                <div class="animated-banners__content">
+                  {% if banner.banner_title %}
+                    <h2 style="color: {{ banner.banner_title_color|default('#ffffff') }};">
+                      {{ banner.banner_title }}
+                    </h2>
+                  {% endif %}
+
+                  {% if banner.banner_subtitle %}
+                    <p style="color: {{ banner.banner_subtitle_color|default('#ffffff') }};">
+                      {{ banner.banner_subtitle }}
+                    </p>
+                  {% endif %}
+                </div>
+
+                {% if banner.discount.enable and banner.discount.end_date %}
+                  <div class="animated-banners__discount">
+                    {{ banner.discount.end_date }}
+                  </div>
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </salla-slider>
+  {% endif %}
+</section>
