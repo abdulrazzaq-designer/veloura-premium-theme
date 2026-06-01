@@ -2348,7 +2348,7 @@
                             "multilanguage": false,
                             "required": false,
                             "minLength": 6,
-                            "maxLength": 30
+                            "maxLength": "3000000"
                         },
                         {
                             "id": "animated_banners.title_3",
