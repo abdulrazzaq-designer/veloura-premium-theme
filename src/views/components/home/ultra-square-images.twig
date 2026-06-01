@@ -74,13 +74,27 @@
                 {% if component.ultra_text_on_image and (banner.title or banner.description) %}
                   <div class="ultra-square-images__content is-on-image {{ component.ultra_title_overlay ? 'has-overlay' : '' }} {{ component.ultra_center_text ? 'is-centered' : 'is-start' }}">
                     {% if banner.title %}
-                      <h3 style="font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};">
-                        {{ banner.title|raw }}
-                      </h3>
+                      <h3
+  dir="auto"
+  style="
+    font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};
+    text-align: {{ component.ultra_center_text ? 'center' : 'start' }};
+  "
+>
+  {{ banner.title|raw }}
+</h3>
                     {% endif %}
 
                     {% if banner.description %}
-                      <p>{{ banner.description|raw }}</p>
+                      <p
+  dir="auto"
+  style="
+    font-size: {{ subtitle_size_map[component.ultra_subtitle_size|default('sm')]|default('13px') }};
+    text-align: {{ component.ultra_center_text ? 'center' : 'start' }};
+  "
+>
+  {{ banner.description|raw }}
+</p>
                     {% endif %}
                   </div>
                 {% endif %}
@@ -177,13 +191,27 @@
                   {% if not component.ultra_text_on_image and (banner.title or banner.description) %}
                     <div class="ultra-square-images__content is-below-image {{ component.ultra_center_text ? 'is-centered' : 'is-start' }}">
                       {% if banner.title %}
-                        <h3 style="font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};">
-                          {{ banner.title|raw }}
-                        </h3>
+                        <h3
+  dir="auto"
+  style="
+    font-size: {{ title_size_map[component.ultra_title_size|default('md')]|default('18px') }};
+    text-align: {{ component.ultra_center_text ? 'center' : 'start' }};
+  "
+>
+  {{ banner.title|raw }}
+</h3>
                       {% endif %}
 
                       {% if banner.description %}
-                        <p>{{ banner.description|raw }}</p>
+                        <p
+  dir="auto"
+  style="
+    font-size: {{ subtitle_size_map[component.ultra_subtitle_size|default('sm')]|default('13px') }};
+    text-align: {{ component.ultra_center_text ? 'center' : 'start' }};
+  "
+>
+  {{ banner.description|raw }}
+</p>
                       {% endif %}
                     </div>
                   {% endif %}
