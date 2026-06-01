@@ -58,8 +58,7 @@
     {% endif %}
 
     {% if component.ultra_display_grid %}
-      <div class="ultra-square-images__grid
-  {{ component.ultra_align_partial_row_center ? 'align-center' : 'align-right' }}">
+      <div class="ultra-square-images__grid">
         {% for banner in component.ultra_banners %}
           {% set image_src = banner.image %}
 
