@@ -2495,7 +2495,13 @@
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
+                            "selected": [
+    {
+      "label": "يمين",
+      "value": "right",
+      "key": "right"
+    }
+  ],
                             "options": [
                                 {
                                     "label": "يمين",
