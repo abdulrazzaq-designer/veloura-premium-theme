@@ -2173,7 +2173,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
+                    "selected": [
+  {
+    "label": "ظهور",
+    "value": "fade",
+    "key": "e27bbd10-5ae4-4a9e-a5b3-175b1fc87040"
+  }
+],
                     "options": [
                         {
                             "label": "شرائح",
