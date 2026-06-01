@@ -2146,6 +2146,16 @@
                     "maxLength": "30000"
                 }
             ]
+        },
+        {
+            "key": "7fa21e61-303d-49c6-95b0-38a5f08c1445",
+            "title": {
+                "en": "بنرات متحركة (فيلورا)",
+                "ar": "بنرات متحركة (فيلورا)"
+            },
+            "icon": "sicon-store",
+            "path": "home.animated-banners",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
