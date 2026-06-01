@@ -2212,6 +2212,47 @@
                     "required": false
                 },
                 {
+                    "id": "animated_image_radius",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حواف الصور",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "7a865be9-b7d9-4a45-bb53-934f84f5a89d"
+                        },
+                        {
+                            "label": "ناعم قليلاً",
+                            "value": "soft",
+                            "key": "4d5ccec4-2f66-4c64-89ef-10e299f44113"
+                        },
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "fcb45248-1e06-4fe0-a0c1-9b71270b2889"
+                        },
+                        {
+                            "label": "ناعم جداً",
+                            "value": "large",
+                            "key": "9324e955-faa2-4634-9e4c-898714cf1bc2"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "round",
+                            "key": "ddcc32fa-4690-4693-8294-736a0daa988c"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
                     "id": "animated_full_width",
                     "type": "boolean",
                     "format": "switch",
@@ -2351,6 +2392,33 @@
                             "maxLength": "3000000"
                         },
                         {
+                            "id": "animated_banners.use_mobile_image_url",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "استخدام رابط بدل صورة الجوال",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "animated_banners.mobile_image_url",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رابط صورة الجوال البديل",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "https://...",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": "30000"
+                        },
+                        {
                             "id": "animated_banners.title_3",
                             "type": "static",
                             "format": "title",
@@ -2411,6 +2479,37 @@
                             "labelHTML": null,
                             "icon": "sicon-format-fill",
                             "value": "#ffffff",
+                            "required": false
+                        },
+                        {
+                            "id": "animated_banners.text_align",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة النصوص على البنر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [
+                                {
+                                    "label": "يمين",
+                                    "value": "right",
+                                    "key": "8c8a77e7-060c-475c-801a-50c5225625ff"
+                                },
+                                {
+                                    "label": "وسط",
+                                    "value": "center",
+                                    "key": "3a037a6a-8182-44d7-b8ce-57fd61f3ea58"
+                                },
+                                {
+                                    "label": "يسار",
+                                    "value": "left",
+                                    "key": "408ef538-37dc-46a9-aff0-3e81364ccdfa"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": false,
                             "required": false
                         },
                         {
@@ -2518,6 +2617,17 @@
                                     "value": "custom"
                                 }
                             ]
+                        },
+                        {
+                            "id": "animated_banners.button_icon",
+                            "type": "string",
+                            "format": "icon",
+                            "label": "اختر ايقونة الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-user-circle",
+                            "value": "sicon-store",
+                            "required": false
                         },
                         {
                             "id": "animated_banners.button_text",
