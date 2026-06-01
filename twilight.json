@@ -2284,10 +2284,10 @@
                     "id": "animated_banners",
                     "type": "collection",
                     "format": "collection",
-                    "label": "بنر رقم",
+                    "label": null,
                     "description": null,
                     "labelHTML": null,
-                    "item_label": null,
+                    "item_label": "بنر رقم",
                     "icon": "sicon-list-add",
                     "fields": [
                         {
