@@ -28513,21 +28513,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .ultra-square-images.is-slider .ultra-square-images__card img {
   width: 100%;
 }
-.ultra-square-images__grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ultra-gap);
-  align-items: flex-start;
-}
-.ultra-square-images__grid.align-right {
-  justify-content: flex-end;
-}
-.ultra-square-images__grid.align-center {
-  justify-content: center;
-}
-.ultra-square-images__grid.align-left {
-  justify-content: flex-start;
-}
 salla-slider{
     display: block;
 }
