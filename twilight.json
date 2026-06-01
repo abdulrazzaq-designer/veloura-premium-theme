@@ -1651,6 +1651,18 @@
                     "icon": "sicon-format-text"
                 },
                 {
+                    "id": "ultra_section_text_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون عنوان ووصف القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#222222",
+                    "required": false
+                },
+                {
                     "id": "ultra_image_radius",
                     "type": "items",
                     "format": "dropdown-list",
@@ -1659,12 +1671,12 @@
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [
-  {
-    "label": "ناعم",
-    "value": "medium",
-    "key": "8de74152-6fcf-4a5c-9d85-1c1611478200"
-  }
-],
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "8de74152-6fcf-4a5c-9d85-1c1611478200"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "حاد",
@@ -1742,12 +1754,12 @@
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [
-  {
-    "label": "متوسط",
-    "value": "md",
-    "key": "b1bf71e1-7b46-4b16-93db-78ceac4713e6"
-  }
-],
+                        {
+                            "label": "متوسط",
+                            "value": "md",
+                            "key": "b1bf71e1-7b46-4b16-93db-78ceac4713e6"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "صغير جداً",
@@ -1794,12 +1806,12 @@
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [
-  {
-    "label": "صغير",
-    "value": "sm",
-    "key": "11e31084-c523-4916-86ad-6169e6e50cb5"
-  }
-],
+                        {
+                            "label": "صغير",
+                            "value": "sm",
+                            "key": "11e31084-c523-4916-86ad-6169e6e50cb5"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "صغير جداً",
