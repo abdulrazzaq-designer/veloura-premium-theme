@@ -2373,7 +2373,13 @@
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
+                            "selected": [
+                                {
+                                    "label": "يمين",
+                                    "value": "right",
+                                    "key": "52c27e69-47bd-4fe7-bcc7-bde6d8a9a48e"
+                                }
+                            ],
                             "options": [
                                 {
                                     "label": "يمين",
