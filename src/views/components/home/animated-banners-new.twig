@@ -24,8 +24,8 @@
       {% if component.animated_new_hide_arrows_desktop %}show-controls="false"{% endif %}
       slider-config='{
         "effect": "{{ component.animated_new_transition_type|default("fade") }}",
-        "speed": {{ component.animated_new_transition_speed|default(600) }},
-        "autoplay": {{ component.animated_new_autoplay ? "{\"delay\":" ~ component.animated_new_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
+        "speed": 600,
+        "autoplay": {{ component.animated_new_autoplay ? '{"delay":3000,"disableOnInteraction":false}' : 'false' }},
         "pagination": {{ component.animated_new_hide_dots ? "false" : "{\"clickable\":true}" }}
       }'
     >

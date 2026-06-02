@@ -2923,28 +2923,6 @@
       "required": false
     },
     {
-      "id": "animated_new_transition_speed",
-  "type": "number",
-  "format": "slider",
-  "inputType": "range",
-  "label": "سرعة الانتقال",
-  "value": 600,
-  "step": 100,
-  "minimum": 100,
-  "maximum": 3000
-    },
-    {
-      "id": "animated_new_autoplay_delay",
-  "type": "number",
-  "format": "slider",
-  "inputType": "range",
-  "label": "مدة الانتظار قبل الانتقال",
-  "value": 3000,
-  "step": 500,
-  "minimum": 500,
-  "maximum": 10000
-    },
-    {
       "id": "animated_new_full_width",
       "type": "boolean",
       "format": "switch",
