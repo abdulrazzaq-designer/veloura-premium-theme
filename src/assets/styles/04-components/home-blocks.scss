@@ -1009,3 +1009,35 @@
     border-radius: 8px;
   }
 }
+
+
+
+
+
+
+
+.animated-banners {
+  &.is-full-width { width: 100%; }
+
+  &__card { position: relative; display: block; overflow: hidden; border-radius: 18px; }
+  &__card img, &__card picture { display: block; width: 100%; height: auto; }
+
+  &__content {
+    position: absolute; inset: 0; z-index: 2; padding: 24px;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: start;
+  }
+
+  &__content.align-right { align-items: flex-end; text-align: right; padding-inline-end: 48px; }
+  &__content.align-left { align-items: flex-start; text-align: left; padding-inline-start: 48px; }
+  &__content.align-center { align-items: center; text-align: center; }
+
+  &__button { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: #111; padding: 10px 18px; border-radius: 8px; font-weight: 700; }
+  &__button.is-outline { background: transparent; border: 1px solid currentColor; color: #fff; }
+  &__button.is-rounded { border-radius: 999px; }
+  &__button.is-reverse { flex-direction: row-reverse; }
+
+  &__discount { position: absolute; bottom: 16px; inset-inline-end: 16px; z-index: 3; background: #000; color: #fff; padding: 6px 12px; border-radius: 8px; }
+}
+
+.animated-mobile-only { @media (min-width: 768px) { display: none !important; } }
+.animated-desktop-only { @media (max-width: 767px) { display: none !important; } }
