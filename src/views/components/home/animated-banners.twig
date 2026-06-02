@@ -60,7 +60,9 @@
                     </p>
                   {% endif %}
                   {% if banner.discount_enable and banner.discount_end_date %}
-  <div class="animated-banners__countdown" data-countdown="{{ banner.discount_end_date }}">
+  <div style="color:red;font-size:20px">
+{{ banner.discount_end_date|json_encode }}
+</div>
     <div><strong data-days>0</strong><span>يوم</span></div>
     <div><strong data-hours>0</strong><span>ساعة</span></div>
     <div><strong data-minutes>0</strong><span>دقيقة</span></div>
