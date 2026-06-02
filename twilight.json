@@ -2365,23 +2365,9 @@
                             "variant": "h1",
                             "icon": "sicon-format-text"
                         },
+                        
                         {
-                            "id": "animated_banners.text_center",
-                            "type": "boolean",
-                            "format": "switch",
-                            "label": "توسيط النصوص",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-toggle-off",
-                            "value": true,
-                            "selected": false,
-                            "required": false
-                        },
-                        {
-                            "id": "animated_banners.banner_title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "عنوان رئيسي",
+                           
                             "description": null,
                             "labelHTML": null,
                             "placeholder": "Placeholder text ..",
