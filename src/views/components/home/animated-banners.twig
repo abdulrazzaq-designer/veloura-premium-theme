@@ -9,16 +9,13 @@
 <section
   class="s-block animated-banners
     {{ component.animated_full_width ? 'is-full-width' : 'container' }}
-    {{ component.animated_custom_classes }}
-    {{ component.animated_show_mobile_only ? 'animated-mobile-only' : '' }}
-    {{ component.animated_show_desktop_only ? 'animated-desktop-only' : '' }}
-  "
+    {{ component.animated_custom_classes }}"
   style="
     padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
     --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};
   "
 >
-  {% if component.animated_banners %}
+  {% if component.animated_banners|length > 0 %}
     <salla-slider
       id="animated-banners-{{ position }}"
       type="carousel"
@@ -41,7 +38,6 @@
           {% if banner.use_mobile_image_url and banner.mobile_image_url %}
             {% set mobile_image = banner.mobile_image_url %}
           {% endif %}
-
           {% set banner_link = banner.url ?: '#' %}
 
           {% if image_src %}
@@ -58,7 +54,6 @@
                       {{ banner.banner_title|raw }}
                     </h2>
                   {% endif %}
-
                   {% if banner.banner_subtitle %}
                     <p style="color: {{ banner.banner_subtitle_color|default('#ffffff') }};">
                       {{ banner.banner_subtitle|raw }}
