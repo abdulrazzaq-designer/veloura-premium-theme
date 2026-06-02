@@ -2429,7 +2429,7 @@
                             "icon": "sicon-format-text"
                         },
                         {
-                            "id": "animated_banners.discount.enable",
+                            "id": "animated_banners.discount_enable",
                             "type": "boolean",
                             "format": "switch",
                             "label": "تفعيل عداد الخصم في البانر",
@@ -2441,7 +2441,7 @@
                             "required": false
                         },
                         {
-                            "id": "animated_banners.discount.end_date",
+                            "id": "animated_banners.discount_end_date",
                             "type": "string",
                             "format": "date",
                             "inputType": "date",
