@@ -19,7 +19,6 @@
   {% if component.animated_banners|length > 0 %}
     <salla-slider
   id="animated-banners-{{ position }}"
-  type="carousel"
   {% if component.animated_autoplay %}auto-play{% endif %}
   {% if component.animated_loop %}loop{% endif %}
   {% if not component.animated_hide_dots %}pagination="scrollbar"{% endif %}
@@ -28,13 +27,12 @@
   slider-config='{
     "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
     "spaceBetween": {{ component.animated_show_partial ? "14" : "0" }},
-    "effect": "slide",
-    "speed": 600,
-    "loop": {{ component.animated_loop ? "true" : "false" }},
+    "freeMode": false,
     "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }},
     "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
   }'
 >
+
       <div slot="items">
         {% for banner in component.animated_banners %}
           {% set image_src = banner.banner_image %}
