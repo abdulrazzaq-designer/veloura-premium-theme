@@ -101,7 +101,17 @@
 
 <script>
 document.querySelectorAll('[data-countdown]').forEach(function(timer) {
-  const endDate = new Date(timer.dataset.countdown + 'T23:59:59').getTime();
+  const dateString = timer.dataset.countdown;
+
+const parts = dateString.split('-');
+
+const day = parseInt(parts[0]);
+const month = parseInt(parts[1]) - 1;
+const year = parseInt(parts[2]);
+
+const endDate = new Date(year, month, day, 23, 59, 59).getTime();
+console.log(timer.dataset.countdown);
+console.log(new Date(year, month, day, 23, 59, 59));
 
   function updateTimer() {
     const now = new Date().getTime();
