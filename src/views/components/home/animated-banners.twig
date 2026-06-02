@@ -19,20 +19,13 @@
   {% if component.animated_banners|length > 0 %}
     <salla-slider
   id="animated-banners-{{ position }}"
-  type="carousel"
-  
-  {% if component.animated_loop %}loop{% endif %}
-  {% if not component.animated_hide_dots %}pagination="scrollbar"{% endif %}
+
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
   static-when-single
   slider-config='{
-  "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
-  "spaceBetween": {{ component.animated_show_partial ? "14" : "0" }},
-  "effect": "slide",
-  "speed": 600,
-  "loop": {{ component.animated_loop ? "true" : "false" }},
-  "autoplay": false,
-  "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
+  "slidesPerView": 1,
+  "spaceBetween": 0,
+  "loop": false
 }'
 >
       <div slot="items">
