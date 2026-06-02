@@ -28735,17 +28735,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners.is-full-width .container {
   max-width: 100%;
 }
-.animated-banners:not(.is-partial) salla-slider,
-.animated-banners:not(.is-partial) .swiper,
-.animated-banners:not(.is-partial) .swiper-wrapper {
-  overflow: hidden !important;
-}
-.animated-banners:not(.is-partial) .swiper-slide {
-  width: 100% !important;
-}
-.animated-banners.is-partial .swiper {
-  overflow: visible !important;
-}
 salla-slider{
     display: block;
 }

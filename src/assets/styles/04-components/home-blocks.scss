@@ -1168,19 +1168,3 @@
   max-width: 100%;
 }
 
-
-
-
-.animated-banners:not(.is-partial) salla-slider,
-.animated-banners:not(.is-partial) .swiper,
-.animated-banners:not(.is-partial) .swiper-wrapper {
-  overflow: hidden !important;
-}
-
-.animated-banners:not(.is-partial) .swiper-slide {
-  width: 100% !important;
-}
-
-.animated-banners.is-partial .swiper {
-  overflow: visible !important;
-}
