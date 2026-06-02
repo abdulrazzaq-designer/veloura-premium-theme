@@ -2441,17 +2441,21 @@
                             "required": false
                         },
                         {
-                            "id": "animated_banners.discount_end_date",
-                            "type": "string",
-                            "format": "date",
-                            "inputType": "date",
-                            "label": "حدد تاريخ إنتهاء الخصم",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-calendar-date",
-                            "value": "2020-10-01",
-                            "required": false
-                        },
+  "id": "animated_banners.discount_end_date",
+  "type": "string",
+  "format": "date",
+  "inputType": "date",
+  "label": "حدد تاريخ إنتهاء الخصم",
+  "value": "",
+  "required": false,
+  "conditions": [
+    {
+      "id": "animated_banners.discount_enable",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
                         {
                             "id": "animated_banners.title_4",
                             "type": "static",

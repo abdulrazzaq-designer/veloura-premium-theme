@@ -28674,6 +28674,29 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     display: none !important;
   }
 }
+.animated-banners__countdown {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0;
+}
+.animated-banners__countdown div {
+  min-width: 76px;
+  padding: 14px 10px;
+  border-radius: 8px;
+  background: rgba(13, 10, 36, 0.9);
+  color: #fff;
+  text-align: center;
+}
+.animated-banners__countdown strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+}
+.animated-banners__countdown span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.7;
+}
 salla-slider{
     display: block;
 }

@@ -59,6 +59,14 @@
                       {{ banner.banner_subtitle|raw }}
                     </p>
                   {% endif %}
+                  {% if banner.discount_enable and banner.discount_end_date %}
+  <div class="animated-banners__countdown" data-countdown="{{ banner.discount_end_date }}">
+    <div><strong data-days>0</strong><span>يوم</span></div>
+    <div><strong data-hours>0</strong><span>ساعة</span></div>
+    <div><strong data-minutes>0</strong><span>دقيقة</span></div>
+    <div><strong data-seconds>0</strong><span>ثانية</span></div>
+  </div>
+{% endif %}
 
                   {% if banner.button_text %}
                     <span class="
@@ -88,3 +96,27 @@
     </salla-slider>
   {% endif %}
 </section>
+
+<script>
+document.querySelectorAll('[data-countdown]').forEach(function(timer) {
+  const endDate = new Date(timer.dataset.countdown + 'T23:59:59').getTime();
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    if (distance <= 0) {
+      timer.style.display = 'none';
+      return;
+    }
+
+    timer.querySelector('[data-days]').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+    timer.querySelector('[data-hours]').textContent = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    timer.querySelector('[data-minutes]').textContent = Math.floor((distance / (1000 * 60)) % 60);
+    timer.querySelector('[data-seconds]').textContent = Math.floor((distance / 1000) % 60);
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+});
+</script>
