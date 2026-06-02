@@ -8,6 +8,7 @@
 
 <section
   class="s-block animated-banners
+    {{ component.animated_show_partial ? 'is-partial' : '' }}
     {{ component.animated_full_width ? 'is-full-width' : 'container' }}
     {{ component.animated_custom_classes }}"
   style="
@@ -25,16 +26,15 @@
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
   static-when-single
   slider-config='{
-    "slidesPerView": 1,
-    "spaceBetween": 0,
-    "effect": "{{ component.animated_transition_type|default("slide") }}",
-    "speed": {{ component.animated_transition_speed|default(600) }},
-    "loop": {{ component.animated_loop ? "true" : "false" }},
-    "autoplay": {{ component.animated_autoplay ? "{\"delay\":" ~ component.animated_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
-    "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }},
-    "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
-"spaceBetween": {{ component.animated_show_partial ? "14" : "0" }}
-  }'
+  "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
+  "spaceBetween": {{ component.animated_show_partial ? "14" : "0" }},
+  "centeredSlides": false,
+  "effect": "{{ component.animated_transition_type|default("slide") }}",
+  "speed": {{ component.animated_transition_speed|default(600) }},
+  "loop": {{ component.animated_loop ? "true" : "false" }},
+  "autoplay": {{ component.animated_autoplay ? "{\"delay\":" ~ component.animated_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
+  "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
+}'
 >
       <div slot="items">
         {% for banner in component.animated_banners %}
