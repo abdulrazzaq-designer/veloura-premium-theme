@@ -19,14 +19,21 @@
   {% if component.animated_banners|length > 0 %}
     <salla-slider
   id="animated-banners-{{ position }}"
-
+  type="carousel"
+  {% if component.animated_autoplay %}auto-play{% endif %}
+  {% if component.animated_loop %}loop{% endif %}
+  {% if not component.animated_hide_dots %}pagination="scrollbar"{% endif %}
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
   static-when-single
   slider-config='{
-  "slidesPerView": 1,
-  "spaceBetween": 0,
-  "loop": false
-}'
+    "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
+    "spaceBetween": {{ component.animated_show_partial ? "14" : "0" }},
+    "effect": "slide",
+    "speed": 600,
+    "loop": {{ component.animated_loop ? "true" : "false" }},
+    "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }},
+    "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
+  }'
 >
       <div slot="items">
         {% for banner in component.animated_banners %}
@@ -41,7 +48,7 @@
           {% set banner_link = banner.url ?: '#' %}
 
           {% if image_src %}
-            <div class="swiper-slide animated-banners__slide">
+            <div class="animated-banners__slide">
               <a href="{{ banner_link }}" class="animated-banners__card">
                 <picture>
                   <source media="(max-width: 767px)" srcset="{{ mobile_image }}">
