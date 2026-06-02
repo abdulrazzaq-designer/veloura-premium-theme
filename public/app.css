@@ -3009,6 +3009,9 @@ textarea.s-input{
         display: none;
     }
 }
+.animated-banners.is-full-width .s-advertisement-content {
+  max-width: 100%;
+}
 .s-block--testimonials.s-advertisement-content{
     padding: 0px;
 }
@@ -28725,6 +28728,13 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   text-align: center !important;
   margin-left: 0 !important;
 }
+.animated-banners.is-full-width {
+  max-width: 100%;
+  width: 100%;
+}
+.animated-banners.is-full-width .container {
+  max-width: 100%;
+}
 salla-slider{
     display: block;
 }
@@ -29149,6 +29159,9 @@ model-viewer[style*=width]:before{
   .main-menu .sub-menu li.mega-menu .s-comments-product .s-comments-container > div{
         display: none;
     }
+}
+.animated-banners.is-full-width .s-comments-product .s-comments-container {
+  max-width: 100%;
 }
 .s-block--testimonials.s-comments-product .s-comments-container{
     padding: 0px;

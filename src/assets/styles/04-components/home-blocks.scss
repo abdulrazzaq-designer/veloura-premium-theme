@@ -1158,3 +1158,12 @@
   text-align: center !important;
   margin-left: 0 !important;
 }
+
+.animated-banners.is-full-width {
+  max-width: 100%;
+  width: 100%;
+}
+
+.animated-banners.is-full-width .container {
+  max-width: 100%;
+}

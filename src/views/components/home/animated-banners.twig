@@ -24,8 +24,9 @@
       slider-config='{
         "effect": "{{ component.animated_transition_type|default("slide") }}",
         "speed": {{ component.animated_transition_speed|default(600) }},
+        "loop": {{ component.animated_loop ? "true" : "false" }},
         "autoplay": {{ component.animated_autoplay ? "{\"delay\":" ~ component.animated_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
-        "pagination": {{ component.animated_hide_dots ? "false" : "{\"clickable\":true}" }}
+        "pagination": {{ component.animated_hide_dots ? "false" : "{\"el\":\".swiper-pagination\",\"clickable\":true}" }}
       }'
     >
       <div slot="items">
