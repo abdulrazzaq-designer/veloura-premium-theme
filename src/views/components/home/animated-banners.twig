@@ -49,8 +49,9 @@
                 </picture>
 
                 <div class="animated-banners__content {{ banner.text_center ? 'is-center' : 'is-right' }}">
-                <div style="background:red;color:white;padding:10px;z-index:9999">
-  text_center = {{ banner.text_center ? 'true' : 'false' }}
+                <div style="background:red;color:#fff">
+class =
+{{ banner.text_center ? 'is-center' : 'is-right' }}
 </div>
                   {% if banner.banner_title %}
                     <h2 style="color: {{ banner.banner_title_color|default('#ffffff') }};">

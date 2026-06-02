@@ -28698,30 +28698,32 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   opacity: 0.7;
 }
 .animated-banners__content.is-right {
-  text-align: right;
-  align-items: flex-end;
-  padding-right: 50px;
-}
-.animated-banners__content.is-center {
-  text-align: center;
-  align-items: center;
-}
-.animated-banners__content.is-right {
-  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
   align-items: flex-end !important;
+  text-align: right !important;
 }
-.animated-banners__content.is-right {
-  padding-right: 50px;
+.animated-banners__content.is-right h2,
+.animated-banners__content.is-right p,
+.animated-banners__content.is-right .animated-banners__countdown,
+.animated-banners__content.is-right .animated-banners__button {
+  text-align: right !important;
+  margin-left: auto !important;
 }
 .animated-banners__content.is-center {
-  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
   align-items: center !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
+  text-align: center !important;
 }
 .animated-banners__content.is-center h2,
-.animated-banners__content.is-center p {
+.animated-banners__content.is-center p,
+.animated-banners__content.is-center .animated-banners__countdown,
+.animated-banners__content.is-center .animated-banners__button {
   text-align: center !important;
+  margin-left: 0 !important;
 }
 salla-slider{
     display: block;
