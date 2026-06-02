@@ -10483,6 +10483,16 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
         padding-right: 0px;
     }
 }
+.s-loyalty-program-rewards-container .\!swiper{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+@media (min-width: 768px){
+    .s-loyalty-program-rewards-container .\!swiper{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
 .s-loyalty-program-rewards-action-base{
     margin-left: auto;
     margin-right: auto;
@@ -10704,6 +10714,9 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     }
 }
 .s-loyalty-program-rewards-container-cart .swiper{
+    padding: 1.25rem;
+}
+.s-loyalty-program-rewards-container-cart .\!swiper{
     padding: 1.25rem;
 }
 .s-loyalty-program-rewards-cart-header{
@@ -12749,6 +12762,9 @@ input[type=radio].sr-only:checked ~ div.s-modal-close {
     gap: 1rem;
 }
 .s-multiple-bundle-product-wrapper-slider .swiper{
+    display: block !important;
+}
+.s-multiple-bundle-product-wrapper-slider .\!swiper{
     display: block !important;
 }
 .s-multiple-bundle-product-wrapper-slider .swiper-pagination{
@@ -20423,8 +20439,41 @@ input[type=radio].sr-only:checked ~ div.s-reviews-quote-icon svg {
     .s-reviews-testimonials-slider .swiper .s-slider-button-prev{
         margin-left: 200px;
     }
+    .s-reviews-testimonials-slider .\!swiper{
+        margin-left: -200px;
+        margin-right: -200px;
+    }
+}
+.s-reviews-testimonials-slider .\!swiper:where([dir="ltr"], [dir="ltr"] *){
+    padding-right: 3rem;
+    padding-left: 1.25rem;
+}
+@media (min-width: 1024px){
+    .s-reviews-testimonials-slider .\!swiper:where([dir="ltr"], [dir="ltr"] *){
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+.s-reviews-testimonials-slider .\!swiper:where([dir="rtl"], [dir="rtl"] *){
+    padding-left: 3rem;
+    padding-right: 1.25rem;
+}
+@media (min-width: 1024px){
+    .s-reviews-testimonials-slider .\!swiper:where([dir="rtl"], [dir="rtl"] *){
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .s-reviews-testimonials-slider .\!swiper .s-slider-button-next{
+        margin-right: 200px;
+    }
+    .s-reviews-testimonials-slider .\!swiper .s-slider-button-prev{
+        margin-left: 200px;
+    }
 }
 .s-reviews-testimonials-slider .swiper:not(.swiper-initialized){
+    opacity: 0;
+}
+.s-reviews-testimonials-slider .\!swiper:not(.swiper-initialized){
     opacity: 0;
 }
 .s-reviews-testimonial__inner{
@@ -22139,6 +22188,64 @@ salla-slider[type]:not(.hydrated) > div:where([dir="rtl"], [dir="rtl"] *), salla
         padding-left: 0px;
     }
 }
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div, .carousel-slider .\!swiper{
+    margin-left: -0.625rem;
+    margin-right: -0.625rem;
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+@media (min-width: 640px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div, .carousel-slider .\!swiper{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="ltr"], [dir="ltr"] *), .carousel-slider .\!swiper:where([dir="ltr"], [dir="ltr"] *){
+    padding-right: 3rem;
+}
+@media (min-width: 1024px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="ltr"], [dir="ltr"] *), .carousel-slider .\!swiper:where([dir="ltr"], [dir="ltr"] *){
+        padding-right: 0px;
+    }
+}
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="rtl"], [dir="rtl"] *), .carousel-slider .\!swiper:where([dir="rtl"], [dir="rtl"] *){
+    padding-left: 3rem;
+}
+@media (min-width: 1024px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="rtl"], [dir="rtl"] *), .carousel-slider .\!swiper:where([dir="rtl"], [dir="rtl"] *){
+        padding-left: 0px;
+    }
+}
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div, .carousel-slider .\!swiper{
+    margin-left: -0.625rem;
+    margin-right: -0.625rem;
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+@media (min-width: 640px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div, .carousel-slider .\!swiper{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="ltr"], [dir="ltr"] *), .carousel-slider .\!swiper:where([dir="ltr"], [dir="ltr"] *){
+    padding-right: 3rem;
+}
+@media (min-width: 1024px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="ltr"], [dir="ltr"] *), .carousel-slider .\!swiper:where([dir="ltr"], [dir="ltr"] *){
+        padding-right: 0px;
+    }
+}
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="rtl"], [dir="rtl"] *), .carousel-slider .\!swiper:where([dir="rtl"], [dir="rtl"] *){
+    padding-left: 3rem;
+}
+@media (min-width: 1024px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div:where([dir="rtl"], [dir="rtl"] *), .carousel-slider .\!swiper:where([dir="rtl"], [dir="rtl"] *){
+        padding-left: 0px;
+    }
+}
 salla-slider[type]:not(.hydrated) > div > div, salla-slider[type]:not(.hydrated) .swiper > div > div > div, .carousel-slider .swiper-wrapper > div{
     flex-shrink: 0;
     padding-left: 5px;
@@ -22146,6 +22253,17 @@ salla-slider[type]:not(.hydrated) > div > div, salla-slider[type]:not(.hydrated)
 }
 @media (min-width: 640px){
     salla-slider[type]:not(.hydrated) > div > div, salla-slider[type]:not(.hydrated) .swiper > div > div > div, .carousel-slider .swiper-wrapper > div{
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+    }
+}
+ salla-slider[type]:not(.hydrated) .\!swiper > div > div > div{
+    flex-shrink: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+@media (min-width: 640px){
+     salla-slider[type]:not(.hydrated) .\!swiper > div > div > div{
         padding-left: 0.625rem;
         padding-right: 0.625rem;
     }

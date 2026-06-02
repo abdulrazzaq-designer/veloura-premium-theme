@@ -29,6 +29,13 @@
         "pagination": {{ component.animated_hide_dots ? "false" : "{\"el\":\".swiper-pagination\",\"clickable\":true}" }}
       }'
     >
+    {% if not component.animated_hide_dots %}
+  <div class="animated-banners__dots" data-slider-dots="animated-banners-{{ position }}">
+    {% for banner in component.animated_banners %}
+      <button type="button" data-dot="{{ loop.index0 }}" class="{{ loop.first ? 'is-active' : '' }}"></button>
+    {% endfor %}
+  </div>
+{% endif %}
       <div slot="items">
         {% for banner in component.animated_banners %}
           {% set image_src = banner.banner_image %}
@@ -130,4 +137,38 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateTimer, 1000);
   });
 });
+
+document.querySelectorAll('[data-slider-dots]').forEach(function(dotsWrap) {
+  const sliderId = dotsWrap.dataset.sliderDots;
+  const slider = document.getElementById(sliderId);
+  const dots = dotsWrap.querySelectorAll('[data-dot]');
+
+  function initDots() {
+    const swiper = slider && slider.swiper;
+
+    if (!swiper) {
+      setTimeout(initDots, 300);
+      return;
+    }
+
+    dots.forEach(function(dot, index) {
+      dot.addEventListener('click', function() {
+        if (swiper.slideToLoop) {
+          swiper.slideToLoop(index);
+        } else {
+          swiper.slideTo(index);
+        }
+      });
+    });
+
+    swiper.on('slideChange', function() {
+      dots.forEach(dot => dot.classList.remove('is-active'));
+      const activeIndex = swiper.realIndex || 0;
+      if (dots[activeIndex]) dots[activeIndex].classList.add('is-active');
+    });
+  }
+
+  initDots();
+});
+
 </script>

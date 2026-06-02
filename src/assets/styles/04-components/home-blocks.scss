@@ -1167,3 +1167,24 @@
 .animated-banners.is-full-width .container {
   max-width: 100%;
 }
+
+
+.animated-banners__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.animated-banners__dots button {
+  width: 22px;
+  height: 8px;
+  border-radius: 999px;
+  background: #ddd;
+  border: 0;
+  cursor: pointer;
+}
+
+.animated-banners__dots button.is-active {
+  background: var(--color-primary);
+}
