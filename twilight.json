@@ -2366,6 +2366,37 @@
                             "icon": "sicon-format-text"
                         },
                         {
+                            "id": "animated_banners.text_align",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة النصوص على البنر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [
+                                {
+                                    "label": "يمين",
+                                    "value": "right",
+                                    "key": "52c27e69-47bd-4fe7-bcc7-bde6d8a9a48e"
+                                },
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "3b756565-7ef9-441c-a4e7-26f5b9e8b7ac"
+                                },
+                                {
+                                    "label": "يسار",
+                                    "value": "left",
+                                    "key": "18fcf387-5a47-438a-8fd9-4c10cea4dd3b"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": false,
+                            "required": false
+                        },
+                        {
                             "id": "animated_banners.banner_title",
                             "type": "string",
                             "format": "text",
@@ -2441,21 +2472,21 @@
                             "required": false
                         },
                         {
-  "id": "animated_banners.discount_end_date",
-  "type": "string",
-  "format": "date",
-  "inputType": "date",
-  "label": "حدد تاريخ إنتهاء الخصم",
-  "value": "",
-  "required": false,
-  "conditions": [
-    {
-      "id": "animated_banners.discount_enable",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
+                            "id": "animated_banners.discount_end_date",
+                            "type": "string",
+                            "format": "date",
+                            "inputType": "date",
+                            "label": "حدد تاريخ إنتهاء الخصم",
+                            "value": null,
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "animated_banners.discount_enable",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
                         {
                             "id": "animated_banners.title_4",
                             "type": "static",
