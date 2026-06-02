@@ -31,7 +31,9 @@
     "speed": {{ component.animated_transition_speed|default(600) }},
     "loop": {{ component.animated_loop ? "true" : "false" }},
     "autoplay": {{ component.animated_autoplay ? "{\"delay\":" ~ component.animated_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
-    "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
+    "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }},
+    "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
+"spaceBetween": {{ component.animated_show_partial ? "14" : "0" }}
   }'
 >
       <div slot="items">
