@@ -2218,6 +2218,18 @@
                     "required": false
                 },
                 {
+                    "id": "animated_show_partial",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار جزء من البنر التالي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
                     "id": "animated_full_width",
                     "type": "boolean",
                     "format": "switch",
@@ -2366,12 +2378,13 @@
                             "icon": "sicon-format-text"
                         },
                         {
-  "id": "text_center",
-  "type": "boolean",
-  "format": "switch",
-  "label": "توسيط النصوص",
-  "value": false
-},                        {
+                            "id": "animated_banners.text_center",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "توسيط النصوص",
+                            "value": false
+                        },
+                        {
                             "id": "animated_banners.banner_title",
                             "type": "string",
                             "format": "text",
