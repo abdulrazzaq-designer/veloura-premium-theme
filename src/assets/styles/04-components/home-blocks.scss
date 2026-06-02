@@ -1136,3 +1136,20 @@
   text-align: center;
   align-items: center;
 }
+
+.animated-banners__content.is-right {
+  text-align: right !important;
+  align-items: flex-end !important;
+  padding-inline-end: 50px;
+}
+
+.animated-banners__content.is-center {
+  text-align: center !important;
+  align-items: center !important;
+  padding-inline: 24px !important;
+}
+
+.animated-banners__content.is-center h2,
+.animated-banners__content.is-center p {
+  text-align: center !important;
+}

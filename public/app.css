@@ -28697,6 +28697,32 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 13px;
   opacity: 0.7;
 }
+.animated-banners__content.is-right {
+  text-align: right;
+  align-items: flex-end;
+  padding-right: 50px;
+}
+.animated-banners__content.is-center {
+  text-align: center;
+  align-items: center;
+}
+.animated-banners__content.is-right {
+  text-align: right !important;
+  align-items: flex-end !important;
+}
+.animated-banners__content.is-right {
+  padding-right: 50px;
+}
+.animated-banners__content.is-center {
+  text-align: center !important;
+  align-items: center !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+.animated-banners__content.is-center h2,
+.animated-banners__content.is-center p {
+  text-align: center !important;
+}
 salla-slider{
     display: block;
 }
