@@ -48,7 +48,7 @@
           {% set banner_link = banner.url ?: '#' %}
 
           {% if image_src %}
-            <div class="animated-banners__slide">
+            <div class="swiper-slide animated-banners__slide">
               <a href="{{ banner_link }}" class="animated-banners__card">
                 <picture>
                   <source media="(max-width: 767px)" srcset="{{ mobile_image }}">
