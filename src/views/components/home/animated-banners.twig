@@ -48,7 +48,7 @@
                   <img src="{{ image_src }}" alt="{{ banner.banner_title ?: 'banner' }}" loading="lazy">
                 </picture>
 
-                <div class="animated-banners__content">
+                <div class="animated-banners__content {{ banner.text_center ? 'is-center' : 'is-right' }}">
                   {% if banner.banner_title %}
                     <h2 style="color: {{ banner.banner_title_color|default('#ffffff') }};">
                       {{ banner.banner_title|raw }}

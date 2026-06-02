@@ -1124,3 +1124,15 @@
   font-size: 13px;
   opacity: .7;
 }
+
+
+.animated-banners__content.is-right {
+  text-align: right;
+  align-items: flex-end;
+  padding-inline-end: 50px;
+}
+
+.animated-banners__content.is-center {
+  text-align: center;
+  align-items: center;
+}
