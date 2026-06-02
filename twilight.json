@@ -2812,239 +2812,34 @@
             ]
         },
         {
-  "key": "c2d4a1c5-6b6e-4df3-9c92-5b4f6f5b9a11",
+  "key": "38e7b9e1-8e33-4a7a-9f3a-c8d5f2a6f3f1",
   "title": {
-    "en": "Animated Banners",
-    "ar": "البنرات المتحركة"
+    "en": "Animated Banners New",
+    "ar": "بنرات متحركة جديدة"
   },
-  "icon": "sicon-image",
+  "icon": "sicon-store",
   "path": "home.animated-banners-new",
   "fields": [
     {
-      "id": "animated_transition_type",
-      "type": "string",
-      "format": "text",
-      "label": "نوع الانتقال",
-      "value": "slide",
-      "required": false
-    },
-    {
-      "id": "animated_transition_speed",
-      "type": "number",
-      "format": "slider",
-      "label": "سرعة الانتقال (مللي ثانية)",
-      "value": 600,
-      "required": false,
-      "step": 50,
-      "minimum": 100,
-      "maximum": 5000
-    },
-    {
-      "id": "animated_autoplay",
-      "type": "boolean",
-      "format": "switch",
-      "label": "تشغيل تلقائي",
-      "value": true,
-      "required": false
-    },
-    {
-      "id": "animated_autoplay_delay",
-      "type": "number",
-      "format": "slider",
-      "label": "مدة الانتظار قبل الانتقال التلقائي",
-      "value": 3000,
-      "required": false,
-      "step": 100,
-      "minimum": 500,
-      "maximum": 10000,
-      "conditions": [
-        {
-          "id": "animated_autoplay",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "animated_full_width",
-      "type": "boolean",
-      "format": "switch",
-      "label": "عرض كامل",
-      "value": false,
-      "required": false
-    },
-    {
-      "id": "animated_loop",
-      "type": "boolean",
-      "format": "switch",
-      "label": "تكرار العرض",
-      "value": true,
-      "required": false
-    },
-    {
-      "id": "animated_hide_dots",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إخفاء نقاط التصفح",
-      "value": false,
-      "required": false
-    },
-    {
-      "id": "animated_hide_arrows_desktop",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إخفاء الأسهم على سطح المكتب",
-      "value": false,
-      "required": false
-    },
-    {
-      "id": "animated_banners",
+      "id": "animated_banners_new",
       "type": "collection",
       "format": "collection",
-      "label": "البنرات",
+      "label": "إضافة البنرات الجديدة",
       "item_label": "بنر",
-      "value": [],
-      "minLength": 1,
-      "maxLength": 20,
       "fields": [
-        {
-          "id": "animated_banners.banner_image",
-          "type": "string",
-          "format": "image",
-          "label": "صورة البنر",
-          "required": true
-        },
-        {
-          "id": "animated_banners.banner_image_mobile",
-          "type": "string",
-          "format": "image",
-          "label": "صورة الجوال",
-          "required": false
-        },
-        {
-          "id": "animated_banners.use_image_url",
-          "type": "boolean",
-          "format": "switch",
-          "label": "استخدام رابط للصورة",
-          "value": false,
-          "required": false
-        },
-        {
-          "id": "animated_banners.image_url",
-          "type": "string",
-          "format": "text",
-          "label": "رابط الصورة",
-          "conditions": [
-            {
-              "id": "animated_banners.use_image_url",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "animated_banners.banner_title",
-          "type": "string",
-          "format": "text",
-          "label": "عنوان البنر",
-          "required": false
-        },
-        {
-          "id": "animated_banners.banner_title_color",
-          "type": "color",
-          "format": "color",
-          "label": "لون العنوان الرئيسي",
-          "required": false
-        },
-        {
-          "id": "animated_banners.banner_subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان الفرعي",
-          "required": false
-        },
-        {
-          "id": "animated_banners.banner_subtitle_color",
-          "type": "color",
-          "format": "color",
-          "label": "لون العنوان الفرعي",
-          "required": false
-        },
-        {
-          "id": "animated_banners.text_align",
-          "type": "string",
-          "format": "dropdown-list",
-          "label": "محاذاة النص",
-          "options": [
-            {"label": "يمين", "value": "right"},
-            {"label": "يسار", "value": "left"},
-            {"label": "منتصف", "value": "center"}
-          ],
-          "value": "right"
-        },
-        {
-          "id": "animated_banners.button_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر",
-          "required": false
-        },
-        {
-          "id": "animated_banners.button_icon",
-          "type": "string",
-          "format": "icon",
-          "label": "أيقونة الزر",
-          "required": false
-        },
-        {
-          "id": "animated_banners.button_hide_icon",
-          "type": "boolean",
-          "format": "switch",
-          "label": "إخفاء الأيقونة",
-          "required": false
-        },
-        {
-          "id": "animated_banners.button_no_bg",
-          "type": "boolean",
-          "format": "switch",
-          "label": "زر بدون خلفية",
-          "required": false
-        },
-        {
-          "id": "animated_banners.button_rounded",
-          "type": "boolean",
-          "format": "switch",
-          "label": "زر دائري",
-          "required": false
-        },
-        {
-          "id": "animated_banners.button_icon_reverse",
-          "type": "boolean",
-          "format": "switch",
-          "label": "عكس اتجاه الأيقونة",
-          "required": false
-        },
-        {
-          "id": "animated_banners.discount.enable",
-          "type": "boolean",
-          "format": "switch",
-          "label": "تفعيل عرض الخصم",
-          "required": false
-        },
-        {
-          "id": "animated_banners.discount.end_date",
-          "type": "date",
-          "format": "date",
-          "label": "تاريخ انتهاء الخصم",
-          "required": false,
-          "conditions": [
-            {
-              "id": "animated_banners.discount.enable",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        }
+        { "id": "banner_image", "type": "string", "format": "image", "label": "صورة البنر الأساسية" },
+        { "id": "banner_image_mobile", "type": "string", "format": "image", "label": "صورة البنر للجوال" },
+        { "id": "use_image_url", "type": "boolean", "format": "switch", "label": "استخدام رابط بدل الصورة" },
+        { "id": "image_url", "type": "string", "format": "text", "label": "رابط الصورة البديل" },
+        { "id": "banner_title", "type": "string", "format": "text", "label": "عنوان رئيسي" },
+        { "id": "banner_title_color", "type": "string", "format": "color", "label": "لون العنوان الرئيسي", "value": "#ffffff" },
+        { "id": "banner_subtitle", "type": "string", "format": "text", "label": "عنوان فرعي" },
+        { "id": "banner_subtitle_color", "type": "string", "format": "color", "label": "لون العنوان الفرعي", "value": "#ffffff" },
+        { "id": "text_align", "type": "items", "format": "dropdown-list", "label": "محاذاة النصوص", "options": [
+          {"label": "يمين","value":"right","key":"1"},
+          {"label": "وسط","value":"center","key":"2"},
+          {"label": "يسار","value":"left","key":"3"}
+        ]}
       ]
     }
   ]
