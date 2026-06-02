@@ -21,12 +21,12 @@
       type="carousel"
       {% if component.animated_autoplay %}auto-play{% endif %}
       {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
+      {% if not component.animated_hide_dots %}pagination="scrollbar"{% endif %}
       slider-config='{
         "effect": "{{ component.animated_transition_type|default("slide") }}",
         "speed": {{ component.animated_transition_speed|default(600) }},
         "loop": {{ component.animated_loop ? "true" : "false" }},
         "autoplay": {{ component.animated_autoplay ? "{\"delay\":" ~ component.animated_autoplay_delay|default(3000) ~ ",\"disableOnInteraction\":false}" : "false" }},
-        "pagination": {{ component.animated_hide_dots ? "false" : "{\"el\":\".swiper-pagination\",\"clickable\":true}" }}
       }'
     >
     {% if not component.animated_hide_dots %}
@@ -137,38 +137,4 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateTimer, 1000);
   });
 });
-
-document.querySelectorAll('[data-slider-dots]').forEach(function(dotsWrap) {
-  const sliderId = dotsWrap.dataset.sliderDots;
-  const slider = document.getElementById(sliderId);
-  const dots = dotsWrap.querySelectorAll('[data-dot]');
-
-  function initDots() {
-    const swiper = slider && slider.swiper;
-
-    if (!swiper) {
-      setTimeout(initDots, 300);
-      return;
-    }
-
-    dots.forEach(function(dot, index) {
-      dot.addEventListener('click', function() {
-        if (swiper.slideToLoop) {
-          swiper.slideToLoop(index);
-        } else {
-          swiper.slideTo(index);
-        }
-      });
-    });
-
-    swiper.on('slideChange', function() {
-      dots.forEach(dot => dot.classList.remove('is-active'));
-      const activeIndex = swiper.realIndex || 0;
-      if (dots[activeIndex]) dots[activeIndex].classList.add('is-active');
-    });
-  }
-
-  initDots();
-});
-
 </script>
