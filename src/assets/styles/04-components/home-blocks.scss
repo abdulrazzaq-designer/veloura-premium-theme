@@ -1168,3 +1168,14 @@
   max-width: 100%;
 }
 
+.animated-banners.show-partial {
+  padding-inline-end: 60px;
+}
+
+.animated-banners.show-partial .swiper {
+  overflow: visible;
+}
+
+.animated-banners.show-partial .swiper-slide {
+  width: calc(100% - 60px);
+}
