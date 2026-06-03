@@ -12,19 +12,11 @@
     {{ component.animated_full_width ? 'is-full-width' : 'container' }}
     {{ component.animated_custom_classes }}"
   style="
-    padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
+    padding-inline: 0;
     --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};
   "
 >
   {% if component.animated_banners|length > 0 %}
-  <div style="background:red;color:white;padding:10px;position:relative;z-index:9999">
-  full_width = {{ component.animated_full_width ? 'true' : 'false' }}
-  <br>
-  class = {{ component.animated_full_width ? 'is-full-width' : 'container' }}
-</div>
-  full_width = {{ component.animated_full_width ? 'true' : 'false' }}
-</div>
-<div class="{{ component.animated_full_width ? '' : 'container' }}">
     <salla-slider
   id="animated-banners-{{ position }}"
   {% if component.animated_autoplay %}auto-play{% endif %}
@@ -39,7 +31,7 @@
     "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
   }'
 >
-</div>
+
       <div slot="items">
         {% for banner in component.animated_banners %}
           {% set image_src = banner.banner_image %}
