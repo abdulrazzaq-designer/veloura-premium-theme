@@ -28719,17 +28719,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   text-align: center !important;
   margin-left: 0 !important;
 }
-.animated-banners.show-partial {
-  padding-right: 60px;
-}
-.animated-banners.show-partial .swiper {
-  overflow: visible;
-}
-.s-block.animated-banners.is-full-width {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+.animated-banners.is-full-width {
+  width: 100%;
+  max-width: 100%;
 }
 .animated-banners__card {
   border-radius: var(--animated-radius);

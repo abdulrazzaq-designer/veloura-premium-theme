@@ -7,7 +7,7 @@
 } %}
 
 <section
-  class="s-block animated-banners 
+  class="s-block animated-banners
     {{ component.animated_show_partial ? 'show-partial' : '' }}
     {{ component.animated_full_width ? 'is-full-width' : 'container' }}
     {{ component.animated_custom_classes }}"
@@ -30,7 +30,8 @@
     "slidesPerView": {{ component.animated_show_partial ? "1.08" : "1" }},
     "spaceBetween": {{ component.animated_show_partial ? "14" : "0" }},
     "centeredSlides": false,
-    "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }}
+    "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }},
+  "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
   }'
 >
 

@@ -1154,21 +1154,11 @@
   margin-left: 0 !important;
 }
 
-.animated-banners.show-partial {
-  padding-inline-end: 60px;
-}
-
-.animated-banners.show-partial .swiper {
-  overflow: visible;
-}
 
 
-
-
-.s-block.animated-banners.is-full-width {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding-inline: 0 !important;
+.animated-banners.is-full-width {
+  width: 100%;
+  max-width: 100%;
 }
 
 .animated-banners__card {
