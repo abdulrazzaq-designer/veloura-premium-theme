@@ -8,8 +8,8 @@
 
 <section
   class="s-block animated-banners
-    {{ component.animated_show_partial ? 'show-partial' : '' }}
-    {{ component.animated_full_width ? 'is-full-width' : 'container' }}
+    {{ component.animated_show_partial ? 'show-partial' : 'no-partial' }}
+    {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}
     {{ component.animated_custom_classes }}"
   style="
     padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
@@ -31,8 +31,6 @@
   "spaceBetween": {{ component.animated_show_partial ? "16" : "0" }},
   "centeredSlides": false,
   "watchOverflow": true,
-  "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }},
-  "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }},
   "breakpoints": {
     "768": {
       "slidesPerView": 1,

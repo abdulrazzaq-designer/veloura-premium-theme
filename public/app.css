@@ -3009,11 +3009,6 @@ textarea.s-input{
         display: none;
     }
 }
-.animated-banners.s-advertisement-content {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .s-block--testimonials.s-advertisement-content{
     padding: 0px;
 }
@@ -28518,6 +28513,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .ultra-square-images.is-slider .ultra-square-images__card img {
   width: 100%;
 }
+.animated-banners {
+  width: 100%;
+}
+.animated-banners.is-contained {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
 .animated-banners.is-full-width {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -28528,14 +28533,15 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-.animated-banners.container {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .animated-banners__slider {
   width: 100%;
   overflow: hidden;
+}
+.animated-banners.show-partial .animated-banners__slider {
+  overflow: visible !important;
+}
+.animated-banners.no-partial .animated-banners__slider {
+  overflow: hidden !important;
 }
 .animated-banners__slide {
   height: auto;
@@ -28553,9 +28559,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   height: auto;
   border-radius: 28px;
   border-radius: var(--animated-radius, 28px);
-}
-.animated-banners.is-full-width .animated-banners__card, .animated-banners.is-full-width .animated-banners__card img, .animated-banners.is-full-width .animated-banners__card picture {
-  border-radius: 0;
 }
 .animated-banners__content {
   position: absolute;
@@ -28577,17 +28580,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners__content.is-center {
   align-items: center;
   text-align: center;
-}
-@media (max-width: 767px) {
-  .animated-banners.show-partial {
-    padding-right: 0 !important;
-  }
-  .animated-banners.show-partial .animated-banners__slider {
-    overflow: visible;
-  }
-  .animated-banners:not(.show-partial) .animated-banners__slider {
-    overflow: hidden;
-  }
 }
 @media (min-width: 768px) {
   .animated-mobile-only {
@@ -29023,11 +29015,6 @@ model-viewer[style*=width]:before{
   .main-menu .sub-menu li.mega-menu .s-comments-product .s-comments-container > div{
         display: none;
     }
-}
-.animated-banners.s-comments-product .s-comments-container {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .s-block--testimonials.s-comments-product .s-comments-container{
     padding: 0px;
