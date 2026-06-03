@@ -7,7 +7,7 @@
 } %}
 
 <section
-  class="s-block animated-banners
+   class="s-block animated-banners
     {{ component.animated_show_partial ? 'show-partial' : 'no-partial' }}
     {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}
     {{ component.animated_custom_classes }}"
@@ -33,8 +33,8 @@
   "watchOverflow": true,
   "breakpoints": {
     "768": {
-      "slidesPerView": 1,
-      "spaceBetween": 0
+      "slidesPerView": {{ component.animated_show_partial ? "1.12" : "1" }},
+      "spaceBetween": {{ component.animated_show_partial ? "16" : "0" }}
     }
   }
 }'

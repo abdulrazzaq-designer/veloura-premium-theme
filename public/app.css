@@ -28524,27 +28524,31 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-right: 16px;
 }
 .animated-banners.is-full-width {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.animated-banners.is-full-width {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
 .animated-banners__slider {
+  display: block;
   width: 100%;
-  overflow: hidden;
 }
-.animated-banners.show-partial .animated-banners__slider {
-  overflow: visible !important;
-}
-.animated-banners.no-partial .animated-banners__slider {
+.animated-banners.no-partial {
   overflow: hidden !important;
 }
-.animated-banners__slide {
-  height: auto;
+.animated-banners.no-partial .animated-banners__slider, .animated-banners.no-partial .swiper, .animated-banners.no-partial .swiper-container {
+  overflow: hidden !important;
+}
+.animated-banners.no-partial .swiper-slide {
+  width: 100% !important;
+}
+.animated-banners.show-partial {
+  overflow: visible !important;
+}
+.animated-banners.show-partial .animated-banners__slider, .animated-banners.show-partial .swiper, .animated-banners.show-partial .swiper-container {
+  overflow: visible !important;
 }
 .animated-banners__card {
   position: relative;
@@ -28559,37 +28563,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   height: auto;
   border-radius: 28px;
   border-radius: var(--animated-radius, 28px);
-}
-.animated-banners__content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.animated-banners__content.is-right {
-  align-items: flex-end;
-  text-align: right;
-  padding-right: 48px;
-}
-.animated-banners__content.is-center {
-  align-items: center;
-  text-align: center;
-}
-@media (min-width: 768px) {
-  .animated-mobile-only {
-    display: none !important;
-  }
-}
-@media (max-width: 767px) {
-  .animated-desktop-only {
-    display: none !important;
-  }
 }
 salla-slider{
     display: block;
