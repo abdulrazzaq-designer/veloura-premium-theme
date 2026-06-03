@@ -24,6 +24,7 @@
 </div>
   full_width = {{ component.animated_full_width ? 'true' : 'false' }}
 </div>
+<div class="{{ component.animated_full_width ? '' : 'container' }}">
     <salla-slider
   id="animated-banners-{{ position }}"
   {% if component.animated_autoplay %}auto-play{% endif %}
@@ -38,7 +39,7 @@
     "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
   }'
 >
-
+</div>
       <div slot="items">
         {% for banner in component.animated_banners %}
           {% set image_src = banner.banner_image %}
