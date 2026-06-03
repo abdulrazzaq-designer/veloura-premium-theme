@@ -28741,9 +28741,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners.show-partial .swiper {
   overflow: visible;
 }
-.animated-banners.show-partial .swiper-slide {
-  width: calc(100% - 60px);
-}
 salla-slider{
     display: block;
 }
