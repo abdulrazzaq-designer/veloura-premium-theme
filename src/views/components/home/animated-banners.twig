@@ -25,8 +25,8 @@
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
   static-when-single
   slider-config='{
-    "slidesPerView": 1,
-    "spaceBetween": 0,
+    "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
+"spaceBetween": {{ component.animated_show_partial ? "16" : "0" }},
     "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }},
     "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
   }'
