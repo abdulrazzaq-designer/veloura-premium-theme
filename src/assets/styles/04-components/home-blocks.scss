@@ -1171,8 +1171,14 @@
   padding-inline: 0 !important;
 }
 
-.s-block.animated-banners.is-full-width .animated-banners__card,
-.s-block.animated-banners.is-full-width .animated-banners__card img,
-.s-block.animated-banners.is-full-width .animated-banners__card picture {
-  border-radius: 0 !important;
+.animated-banners__card {
+  border-radius: var(--animated-radius);
+  overflow: hidden;
+}
+
+.animated-banners__card img,
+.animated-banners__card picture {
+  border-radius: var(--animated-radius);
+  width: 100%;
+  display: block;
 }
