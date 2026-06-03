@@ -3009,6 +3009,11 @@ textarea.s-input{
         display: none;
     }
 }
+.animated-banners.s-advertisement-content {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .s-block--testimonials.s-advertisement-content{
     padding: 0px;
 }
@@ -28513,26 +28518,44 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .ultra-square-images.is-slider .ultra-square-images__card img {
   width: 100%;
 }
-@media (min-width: 768px) {
-  .animated-mobile-only {
-    display: none !important;
-  }
+.animated-banners.is-full-width {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
-@media (max-width: 767px) {
-  .animated-desktop-only {
-    display: none !important;
-  }
+.animated-banners.is-full-width {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.animated-banners.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.animated-banners__slider {
+  width: 100%;
+  overflow: hidden;
+}
+.animated-banners__slide {
+  height: auto;
 }
 .animated-banners__card {
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 28px;
+  border-radius: var(--animated-radius, 28px);
 }
 .animated-banners__card img, .animated-banners__card picture {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 28px;
+  border-radius: var(--animated-radius, 28px);
+}
+.animated-banners.is-full-width .animated-banners__card, .animated-banners.is-full-width .animated-banners__card img, .animated-banners.is-full-width .animated-banners__card picture {
+  border-radius: 0;
 }
 .animated-banners__content {
   position: absolute;
@@ -28545,118 +28568,26 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  text-align: left;
 }
-.animated-banners__content h2 {
-  margin: 0 0 8px;
-  font-size: 32px;
-  font-weight: 800;
-}
-.animated-banners__content p {
-  margin: 0 0 16px;
-  font-size: 18px;
-}
-.animated-banners__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  color: #111;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 700;
-}
-.animated-banners__button.is-outline {
-  background: transparent;
-  border: 1px solid currentColor;
-  color: #fff;
-}
-.animated-banners__button.is-rounded {
-  border-radius: 999px;
-}
-.animated-banners__button.is-reverse {
-  flex-direction: row-reverse;
-}
-.animated-banners__discount {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  z-index: 3;
-  background: #000;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
-}
-.animated-banners__card {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 18px;
-}
-.animated-banners__card img, .animated-banners__card picture {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.animated-banners__content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: left;
-}
-.animated-banners__content.align-right {
+.animated-banners__content.is-right {
   align-items: flex-end;
   text-align: right;
   padding-right: 48px;
 }
-.animated-banners__content.align-left {
-  align-items: flex-start;
-  text-align: left;
-  padding-left: 48px;
-}
-.animated-banners__content.align-center {
+.animated-banners__content.is-center {
   align-items: center;
   text-align: center;
 }
-.animated-banners__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  color: #111;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 700;
-}
-.animated-banners__button.is-outline {
-  background: transparent;
-  border: 1px solid currentColor;
-  color: #fff;
-}
-.animated-banners__button.is-rounded {
-  border-radius: 999px;
-}
-.animated-banners__button.is-reverse {
-  flex-direction: row-reverse;
-}
-.animated-banners__discount {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  z-index: 3;
-  background: #000;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
+@media (max-width: 767px) {
+  .animated-banners.show-partial {
+    padding-right: 0 !important;
+  }
+  .animated-banners.show-partial .animated-banners__slider {
+    overflow: visible;
+  }
+  .animated-banners:not(.show-partial) .animated-banners__slider {
+    overflow: hidden;
+  }
 }
 @media (min-width: 768px) {
   .animated-mobile-only {
@@ -28667,71 +28598,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .animated-desktop-only {
     display: none !important;
   }
-}
-.animated-banners__countdown {
-  display: flex;
-  gap: 10px;
-  margin: 18px 0;
-}
-.animated-banners__countdown div {
-  min-width: 76px;
-  padding: 14px 10px;
-  border-radius: 8px;
-  background: rgba(13, 10, 36, 0.9);
-  color: #fff;
-  text-align: center;
-}
-.animated-banners__countdown strong {
-  display: block;
-  font-size: 20px;
-  font-weight: 800;
-}
-.animated-banners__countdown span {
-  display: block;
-  font-size: 13px;
-  opacity: 0.7;
-}
-.animated-banners__content.is-right {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: flex-end !important;
-  text-align: right !important;
-}
-.animated-banners__content.is-right h2,
-.animated-banners__content.is-right p,
-.animated-banners__content.is-right .animated-banners__countdown,
-.animated-banners__content.is-right .animated-banners__button {
-  text-align: right !important;
-  margin-left: auto !important;
-}
-.animated-banners__content.is-center {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-}
-.animated-banners__content.is-center h2,
-.animated-banners__content.is-center p,
-.animated-banners__content.is-center .animated-banners__countdown,
-.animated-banners__content.is-center .animated-banners__button {
-  text-align: center !important;
-  margin-left: 0 !important;
-}
-.animated-banners.is-full-width {
-  width: 100%;
-  max-width: 100%;
-}
-.animated-banners__card {
-  border-radius: var(--animated-radius);
-  overflow: hidden;
-}
-.animated-banners__card img,
-.animated-banners__card picture {
-  display: block;
-  width: 100%;
-  border-radius: var(--animated-radius);
 }
 salla-slider{
     display: block;
@@ -29157,6 +29023,11 @@ model-viewer[style*=width]:before{
   .main-menu .sub-menu li.mega-menu .s-comments-product .s-comments-container > div{
         display: none;
     }
+}
+.animated-banners.s-comments-product .s-comments-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .s-block--testimonials.s-comments-product .s-comments-container{
     padding: 0px;
