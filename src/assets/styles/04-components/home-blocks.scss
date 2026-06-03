@@ -972,8 +972,6 @@
   }
 }
 .animated-banners {
-  width: 100%;
-
   &.is-contained {
     max-width: 1280px;
     margin-inline: auto;
@@ -988,37 +986,23 @@
     padding-inline: 0 !important;
   }
 
-  &__slider {
-    display: block;
-    width: 100%;
-  }
-
-  &.no-partial {
-    overflow: hidden !important;
-  }
-
-  &.no-partial &__slider,
-  &.no-partial .swiper,
-  &.no-partial .swiper-container {
-    overflow: hidden !important;
-  }
-
   &.no-partial .swiper-slide {
     width: 100% !important;
   }
 
-  &.show-partial {
-    overflow: visible !important;
+  &.no-partial .swiper,
+  &.no-partial .swiper-container,
+  &.no-partial .animated-banners__slider {
+    overflow: hidden !important;
   }
 
-  &.show-partial &__slider,
   &.show-partial .swiper,
-  &.show-partial .swiper-container {
+  &.show-partial .swiper-container,
+  &.show-partial .animated-banners__slider {
     overflow: visible !important;
   }
 
   &__card {
-    position: relative;
     display: block;
     overflow: hidden;
     border-radius: var(--animated-radius, 28px);

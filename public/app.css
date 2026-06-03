@@ -28513,9 +28513,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .ultra-square-images.is-slider .ultra-square-images__card img {
   width: 100%;
 }
-.animated-banners {
-  width: 100%;
-}
 .animated-banners.is-contained {
   max-width: 1280px;
   margin-left: auto;
@@ -28531,27 +28528,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.animated-banners__slider {
-  display: block;
-  width: 100%;
-}
-.animated-banners.no-partial {
-  overflow: hidden !important;
-}
-.animated-banners.no-partial .animated-banners__slider, .animated-banners.no-partial .swiper, .animated-banners.no-partial .swiper-container {
-  overflow: hidden !important;
-}
 .animated-banners.no-partial .swiper-slide {
   width: 100% !important;
 }
-.animated-banners.show-partial {
-  overflow: visible !important;
+.animated-banners.no-partial .swiper, .animated-banners.no-partial .swiper-container, .animated-banners.no-partial .animated-banners__slider {
+  overflow: hidden !important;
 }
-.animated-banners.show-partial .animated-banners__slider, .animated-banners.show-partial .swiper, .animated-banners.show-partial .swiper-container {
+.animated-banners.show-partial .swiper, .animated-banners.show-partial .swiper-container, .animated-banners.show-partial .animated-banners__slider {
   overflow: visible !important;
 }
 .animated-banners__card {
-  position: relative;
   display: block;
   overflow: hidden;
   border-radius: 28px;
