@@ -1159,13 +1159,12 @@
   margin-left: 0 !important;
 }
 
-.animated-banners.is-full-width {
-  max-width: 100%;
-  width: 100%;
-}
-
-.animated-banners.is-full-width .container {
-  max-width: 100%;
+.animated-banners {
+  &.is-full-width {
+    width: 100vw;
+    max-width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
 }
 
 .animated-banners.show-partial {

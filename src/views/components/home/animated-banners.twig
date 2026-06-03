@@ -17,6 +17,9 @@
   "
 >
   {% if component.animated_banners|length > 0 %}
+  <div style="background:red;color:white;padding:10px;position:relative;z-index:9999">
+  full_width = {{ component.animated_full_width ? 'true' : 'false' }}
+</div>
     <salla-slider
   id="animated-banners-{{ position }}"
   {% if component.animated_autoplay %}auto-play{% endif %}
