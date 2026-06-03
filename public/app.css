@@ -28725,12 +28725,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   text-align: center !important;
   margin-left: 0 !important;
 }
-.animated-banners.is-full-width {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
 .animated-banners.show-partial {
   padding-right: 60px;
 }
