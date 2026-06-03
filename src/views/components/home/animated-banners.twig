@@ -7,7 +7,7 @@
 } %}
 
 <section
-  class="s-block animated-banners s-block--photos-slider
+  class="s-block animated-banners 
     {{ component.animated_show_partial ? 'show-partial' : '' }}
     {{ component.animated_full_width ? 'is-full-width' : 'container' }}
     {{ component.animated_custom_classes }}"
@@ -19,7 +19,7 @@
   {% if component.animated_banners|length > 0 %}
     <salla-slider
     type="carousel"
-      class="home-slider photos-slider animated-banners__slider"
+      class="animated-banners__slider"
   id="animated-banners-{{ position }}"
   {% if component.animated_autoplay %}auto-play{% endif %}
   {% if component.animated_loop %}loop{% endif %}
@@ -27,10 +27,10 @@
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
   static-when-single
   slider-config='{
-    "slidesPerView": {{ component.animated_show_partial ? "1.15" : "1" }},
-"spaceBetween": {{ component.animated_show_partial ? "16" : "0" }},
-    "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }},
-    "scrollbar": {{ component.animated_hide_dots ? "false" : "{\"draggable\":true}" }}
+    "slidesPerView": {{ component.animated_show_partial ? "1.08" : "1" }},
+    "spaceBetween": {{ component.animated_show_partial ? "14" : "0" }},
+    "centeredSlides": false,
+    "autoplay": {{ component.animated_autoplay ? "{\"delay\":3000,\"disableOnInteraction\":false}" : "false" }}
   }'
 >
 

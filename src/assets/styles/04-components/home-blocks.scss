@@ -1178,7 +1178,7 @@
 
 .animated-banners__card img,
 .animated-banners__card picture {
-  border-radius: var(--animated-radius);
-  width: 100%;
   display: block;
+  width: 100%;
+  border-radius: var(--animated-radius);
 }
