@@ -971,7 +971,11 @@
     object-fit: contain !important;
   }
 }
+
 .animated-banners {
+  width: 100%;
+  overflow: hidden;
+
   &.is-contained {
     max-width: 1280px;
     margin-inline: auto;
@@ -986,23 +990,23 @@
     padding-inline: 0 !important;
   }
 
-  &.no-partial .swiper-slide {
-    width: 100% !important;
-  }
-
-  &.no-partial .swiper,
-  &.no-partial .swiper-container,
-  &.no-partial .animated-banners__slider {
+  &__slider {
+    width: 100%;
     overflow: hidden !important;
   }
 
-  &.show-partial .swiper,
-  &.show-partial .swiper-container,
-  &.show-partial .animated-banners__slider {
-    overflow: visible !important;
+  .swiper,
+  .swiper-container,
+  .swiper-wrapper {
+    overflow: hidden !important;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
   }
 
   &__card {
+    position: relative;
     display: block;
     overflow: hidden;
     border-radius: var(--animated-radius, 28px);
@@ -1014,5 +1018,26 @@
     width: 100%;
     height: auto;
     border-radius: var(--animated-radius, 28px);
+  }
+
+  &__content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__content.is-right {
+    align-items: flex-end;
+    text-align: right;
+    padding-inline-end: 48px;
+  }
+
+  &__content.is-center {
+    align-items: center;
+    text-align: center;
   }
 }
