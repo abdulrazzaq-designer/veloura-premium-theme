@@ -28534,14 +28534,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners {
   overflow: hidden;
 }
-.animated-banners.is-contained {
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-.animated-banners.is-contained {
-  width: 100%;
-}
 @media (min-width: 992px) {
   .animated-banners.is-full-width-desktop {
     width: 100vw !important;
