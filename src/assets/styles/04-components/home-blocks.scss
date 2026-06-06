@@ -1059,3 +1059,18 @@ section.animated-banners picture,
 section.animated-banners img {
   max-width: 100% !important;
 }
+
+.animated-banners.is-contained {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--horizontal-spacing, 0px);
+}
+
+.animated-banners.is-full-width {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline-start: calc(50% - 50vw);
+  margin-inline-end: calc(50% - 50vw);
+
+  padding-inline: var(--horizontal-spacing, 0px);
+}
