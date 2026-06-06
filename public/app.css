@@ -28534,22 +28534,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-.animated-banners__slider {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-}
-.animated-banners .swiper-slide {
-  margin: 0 !important;
-}
-.animated-banners .swiper-slide {
-  height: auto;
-  overflow: hidden;
-}
 .animated-banners__card {
-  position: relative;
   display: block;
-  width: 100%;
   overflow: hidden;
   border-radius: 28px;
   border-radius: var(--animated-radius, 28px);
@@ -28581,6 +28567,27 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners__card picture,
 .animated-banners__card img {
   width: 100%;
+}
+.animated-banners.is-full-width {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.animated-banners.is-full-width {
+  overflow: hidden;
+}
+.animated-banners.is-full-width .animated-banners__card,
+.animated-banners.is-full-width picture,
+.animated-banners.is-full-width img {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.animated-banners.is-full-width img {
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
 }
 salla-slider{
     display: block;
