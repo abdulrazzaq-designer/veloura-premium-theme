@@ -28536,16 +28536,18 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   width: 100%;
 }
 .animated-banners__card {
+  border-radius: var(--animated-radius) !important;
+}
+.animated-banners__card {
   display: block;
   overflow: hidden;
-  border-radius: 28px;
-  border-radius: var(--animated-radius, 28px);
+}
+.animated-banners__card picture, .animated-banners__card img {
+  border-radius: var(--animated-radius) !important;
 }
 .animated-banners__card picture, .animated-banners__card img {
   display: block;
   height: auto;
-  border-radius: 28px;
-  border-radius: var(--animated-radius, 28px);
 }
 salla-slider{
     display: block;
