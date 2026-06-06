@@ -6,13 +6,12 @@
   'round': '999px'
 } %}
 
-<section class="s-block animated-banners
-  {{ component.animated_full_width ? 'is-full-width' : 'container' }}"
+<section class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}"
   
   style="
     padding-inline: {{ component.use_h_spacing ? component.h_spacing|default(0) ~ 'px' : '0px' }};
     --horizontal-spacing: {{ component.h_spacing|default(0) }}px;
-  --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
+    --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
   "
 >
   {% if component.animated_banners|length > 0 %}
