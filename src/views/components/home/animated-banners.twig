@@ -11,12 +11,12 @@
   {% set h_spacing = 12 %}
 {% endif %}
 
-
+{% set h_spacing = component.use_h_spacing ? component.h_spacing|default(0) : 0 %}
 
 <section
-class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width-desktop' : 'is-contained' }}"
+class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}"
   style="
-    --horizontal-spacing: {{ component.h_spacing|default(0) }}px;
+    --banner-margin: {{ h_spacing }}px;
     --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
   "
 >
