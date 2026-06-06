@@ -15,7 +15,6 @@
   "
 >
   {% if component.animated_banners|length > 0 %}
-  <div class="animated-banners__inner">
    <salla-slider
   class="animated-banners__slider"
   id="animated-banners-{{ position }}"
@@ -24,7 +23,7 @@
   {% if not component.animated_hide_dots %}pagination{% endif %}
   static-when-single
 >
-</div>
+
       <div slot="items">
         {% for banner in component.animated_banners %}
           {% set image_src = banner.banner_image %}

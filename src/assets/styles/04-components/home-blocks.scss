@@ -1061,21 +1061,18 @@
   max-width: 100vw !important;
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
-  padding-inline: 0 !important;
+  padding-inline: 12px !important;
 }
 
-.animated-banners__inner {
+.animated-banners__slider,
+.animated-banners__card,
+.animated-banners__card picture,
+.animated-banners__card img {
   width: 100%;
-  overflow: hidden;
-}
-
-.animated-banners.is-full-width .animated-banners__inner {
-  padding-inline: 12px;
 }
 
 .animated-banners__card {
   display: block;
-  width: 100%;
   overflow: hidden;
   border-radius: var(--animated-radius, 28px);
 }
@@ -1083,7 +1080,6 @@
 .animated-banners__card picture,
 .animated-banners__card img {
   display: block;
-  width: 100%;
   height: auto;
   border-radius: var(--animated-radius, 28px);
 }
