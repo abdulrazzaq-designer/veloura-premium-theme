@@ -3012,6 +3012,8 @@ textarea.s-input{
 .animated-banners.s-advertisement-content {
   padding-left: 16px;
   padding-right: 16px;
+  padding-left: var(--horizontal-spacing, 16px);
+  padding-right: var(--horizontal-spacing, 16px);
 }
 .s-block--testimonials.s-advertisement-content{
     padding: 0px;
@@ -28520,19 +28522,21 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners {
   overflow: hidden;
 }
+.animated-banners.is-full-width {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: var(--horizontal-spacing, 0px) !important;
+  padding-right: var(--horizontal-spacing, 0px) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
 .animated-banners.container {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-.animated-banners.is-full-width {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-.animated-banners.is-full-width {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  padding-left: var(--horizontal-spacing, 16px) !important;
+  padding-right: var(--horizontal-spacing, 16px) !important;
 }
 .animated-banners__card {
   display: block;
@@ -28595,10 +28599,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .animated-banners {
   overflow: hidden;
-}
-.animated-banners.container {
-  padding-left: 16px !important;
-  padding-right: 16px !important;
 }
 .animated-banners.is-full-width {
   width: 100vw !important;
@@ -29055,6 +29055,8 @@ model-viewer[style*=width]:before{
 .animated-banners.s-comments-product .s-comments-container {
   padding-left: 16px;
   padding-right: 16px;
+  padding-left: var(--horizontal-spacing, 16px);
+  padding-right: var(--horizontal-spacing, 16px);
 }
 .s-block--testimonials.s-comments-product .s-comments-container{
     padding: 0px;

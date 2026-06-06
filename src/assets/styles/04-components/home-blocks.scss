@@ -975,17 +975,18 @@
 .animated-banners {
   overflow: hidden;
 
-  &.container {
-    padding-inline: 16px;
-  }
-
   &.is-full-width {
-    width: 100vw;
-    max-width: 100vw;
-    margin-inline-start: calc(50% - 50vw);
-    margin-inline-end: calc(50% - 50vw);
-    padding-inline: 0 !important;
-  }
+  padding-inline: var(--horizontal-spacing, 0px) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+&.container {
+  padding-inline: var(--horizontal-spacing, 16px) !important;
+}
+
 
   &__card {
     display: block;
@@ -1050,10 +1051,6 @@
 
 .animated-banners {
   overflow: hidden;
-}
-
-.animated-banners.container {
-  padding-inline: 16px !important;
 }
 
 .animated-banners.is-full-width {
