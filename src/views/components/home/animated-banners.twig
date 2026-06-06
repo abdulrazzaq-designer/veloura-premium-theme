@@ -8,7 +8,6 @@
 
 <section
   class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'container' }}"
-
   style="
     padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
     --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};
@@ -17,7 +16,7 @@
   {% if component.animated_banners|length > 0 %}
    <salla-slider
   type="carousel"
-  class="home-slider photos-slider animated-banners__slider"
+  class="home-slider animated-banners__slider"
   id="animated-banners-{{ position }}"
   {% if component.animated_autoplay %}auto-play{% endif %}
   {% if not component.animated_hide_dots %}pagination{% endif %}
