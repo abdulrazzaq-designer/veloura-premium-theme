@@ -28514,14 +28514,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   width: 100%;
 }
 .ultra-square-images__container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: var(--ultra-horizontal-spacing, 0px) !important;
+  padding-right: var(--ultra-horizontal-spacing, 0px) !important;
+}
+.ultra-square-images__container {
   width: 100%;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-left: var(--ultra-spacing, 0px);
-  padding-right: var(--ultra-spacing, 0px);
 }
 .animated-banners,
 .animated-banners *,
