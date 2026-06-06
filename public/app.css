@@ -3010,8 +3010,10 @@ textarea.s-input{
     }
 }
 .animated-banners.s-advertisement-content {
-  padding-left: var(--horizontal-spacing);
-  padding-right: var(--horizontal-spacing);
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-left: var(--horizontal-spacing, 0px);
+  padding-right: var(--horizontal-spacing, 0px);
 }
 .s-block--testimonials.s-advertisement-content{
     padding: 0px;
@@ -28521,33 +28523,36 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   overflow: hidden;
 }
 .animated-banners.container {
-  padding-left: var(--horizontal-spacing) !important;
-  padding-right: var(--horizontal-spacing) !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: var(--horizontal-spacing, 0px) !important;
+  padding-right: var(--horizontal-spacing, 0px) !important;
 }
 .animated-banners.is-full-width {
   width: 100vw !important;
   max-width: 100vw !important;
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
-  padding-left: var(--horizontal-spacing) !important;
-  padding-right: var(--horizontal-spacing) !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: var(--horizontal-spacing, 0px) !important;
+  padding-right: var(--horizontal-spacing, 0px) !important;
 }
 .animated-banners__slider, .animated-banners__card, .animated-banners__card picture, .animated-banners__card img {
   width: 100%;
-}
-.animated-banners__card {
-  border-radius: var(--animated-radius) !important;
+  max-width: 100%;
 }
 .animated-banners__card {
   display: block;
   overflow: hidden;
-}
-.animated-banners__card picture, .animated-banners__card img {
-  border-radius: var(--animated-radius) !important;
+  border-radius: 0px;
+  border-radius: var(--animated-radius, 0px);
 }
 .animated-banners__card picture, .animated-banners__card img {
   display: block;
   height: auto;
+  border-radius: 0px;
+  border-radius: var(--animated-radius, 0px);
 }
 salla-slider{
     display: block;
@@ -28975,8 +28980,10 @@ model-viewer[style*=width]:before{
     }
 }
 .animated-banners.s-comments-product .s-comments-container {
-  padding-left: var(--horizontal-spacing);
-  padding-right: var(--horizontal-spacing);
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-left: var(--horizontal-spacing, 0px);
+  padding-right: var(--horizontal-spacing, 0px);
 }
 .s-block--testimonials.s-comments-product .s-comments-container{
     padding: 0px;
