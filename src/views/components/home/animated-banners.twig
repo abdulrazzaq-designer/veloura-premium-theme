@@ -14,7 +14,7 @@
 {% set h_spacing = component.use_h_spacing ? component.h_spacing|default(0) : 0 %}
 
 <section
-  class="s-block animated-banners {{ not component.animated_full_width ? 'container' : '' }} {{ component.animated_full_width ? 'is-full-width-desktop' : '' }}"
+  class="s-block animated-banners {{ component.animated_full_width ? 'full-banner is-full-width-desktop' : 'container' }}"
   style="
     --banner-margin: {{ h_spacing }}px;
     --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
@@ -22,7 +22,8 @@
 >
   {% if component.animated_banners|length > 0 %}
    <salla-slider
-  class="animated-banners__slider"
+  class="animated-banners__slider {{ component.animated_full_width ? 'fullwidth-slider' : '' }}"
+  type="{{ component.animated_full_width ? 'fullwidth' : 'slider' }}"
   id="animated-banners-{{ position }}"
   show-controls="false"
   {% if component.animated_autoplay %}auto-play{% endif %}

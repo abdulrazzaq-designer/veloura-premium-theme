@@ -28534,14 +28534,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners {
   overflow: hidden;
 }
-@media (min-width: 992px) {
-  .animated-banners.is-full-width-desktop {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-  }
-}
 .animated-banners__slider {
   display: block;
   width: 100%;
@@ -28572,6 +28564,13 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   width: 100%;
   max-width: 100%;
   height: auto;
+}
+/* لابتوب فقط */
+@media (min-width: 992px) {
+  .animated-banners.is-full-width-desktop {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 salla-slider{
     display: block;
