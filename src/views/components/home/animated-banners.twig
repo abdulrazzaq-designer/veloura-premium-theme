@@ -13,16 +13,16 @@
 
 
 
-<section class="s-block animated-banners-v2 {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}"
+<section class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}"
   
   style="
     --horizontal-spacing: {{ component.h_spacing|default(0) }}px;
-    --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
+  --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
   "
 >
   {% if component.animated_banners|length > 0 %}
    <salla-slider
-  class="animated-banners-v2__slider"
+  class="animated-banners__slider"
   id="animated-banners-{{ position }}"
   show-controls="false"
   {% if component.animated_autoplay %}auto-play{% endif %}
@@ -44,7 +44,7 @@
 
           {% if image_src %}
             <div class="swiper-slide animated-banners__slide">
-              <a href="{{ banner_link }}" class="animated-banners-v2__card"
+              <a href="{{ banner_link }}" class="animated-banners__card">
                 <picture>
                   <source media="(max-width: 767px)" srcset="{{ mobile_image }}">
                   <img src="{{ image_src }}" alt="{{ banner.banner_title ?: 'banner' }}" loading="lazy">
