@@ -7,7 +7,7 @@
 } %}
 
 <section
-  class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : '' }}"
+  class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'container' }}"
   style="
     padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
     --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};
@@ -15,20 +15,11 @@
 >
   {% if component.animated_banners|length > 0 %}
    <salla-slider
-  type="carousel"
-  class=" animated-banners__slider"
+  class="animated-banners__slider"
   id="animated-banners-{{ position }}"
-  style="--slider-padding: 0px;"
   {% if component.animated_autoplay %}auto-play{% endif %}
   {% if not component.animated_hide_dots %}pagination{% endif %}
   static-when-single
-  slider-config='{
-    "slidesPerView": 1,
-    "spaceBetween": 0,
-    "centeredSlides": false,
-    "slidesOffsetBefore": 0,
-    "slidesOffsetAfter": 0
-  }'
 >
 
       <div slot="items">
