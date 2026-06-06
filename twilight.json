@@ -2221,7 +2221,7 @@
                     "id": "animated_image_radius",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "Dropdown List",
+                    "label": "حواف الصور",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
