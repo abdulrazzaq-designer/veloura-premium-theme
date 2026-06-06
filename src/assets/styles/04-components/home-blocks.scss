@@ -1084,22 +1084,3 @@
   border-radius: var(--animated-radius, 28px);
 }
 
-/* الوضع العادي */
-.animated-banners .animated-banners__slider {
-  overflow: hidden;
-}
-
-/* إظهار جزء من البنر التالي */
-.animated-banners.show-partial .animated-banners__slider {
-  overflow: visible;
-}
-
-.animated-banners.show-partial {
-  overflow: visible;
-}
-
-@media (max-width: 768px) {
-  .animated-banners.show-partial {
-    padding-inline-end: 40px !important;
-  }
-}
