@@ -989,42 +989,5 @@
 
   &__slider {
     width: 100%;
-    overflow: hidden;
-  }
-
-  &__card {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: var(--animated-radius, 28px);
-  }
-
-  &__card picture,
-  &__card img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: var(--animated-radius, 28px);
-  }
-
-  &__content {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__content.is-right {
-    align-items: flex-end;
-    text-align: right;
-    padding-inline-end: 48px;
-  }
-
-  &__content.is-center {
-    align-items: center;
-    text-align: center;
   }
 }
