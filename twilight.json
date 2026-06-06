@@ -2684,7 +2684,7 @@
                     "value": "25",
                     "required": false,
                     "step": "1",
-                    "minimum": "12",
+                    "minimum": "0",
                     "maximum": "100",
                     "conditions": [
                         {
