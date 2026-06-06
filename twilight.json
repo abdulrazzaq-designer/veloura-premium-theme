@@ -2661,7 +2661,7 @@
                     "icon": "sicon-format-text"
                 },
                 {
-                    "id": "animated_custom_horizontal_spacing",
+                    "id": "use_h_spacing",
                     "type": "boolean",
                     "format": "switch",
                     "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
