@@ -2673,7 +2673,7 @@
                     "required": false
                 },
                 {
-                    "id": "animated_horizontal_spacing",
+                    "id": "h_spacing",
                     "type": "number",
                     "format": "slider",
                     "inputType": "range",
