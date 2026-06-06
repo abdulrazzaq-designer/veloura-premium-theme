@@ -1019,3 +1019,19 @@
     max-width: 100%;
   }
 }
+
+.animated-banners.has-3d-effect,
+.animated-banners.has-3d-effect .animated-banners__slider,
+.animated-banners.has-3d-effect .swiper,
+.animated-banners.has-3d-effect .swiper-wrapper,
+.animated-banners.has-3d-effect .swiper-slide {
+  overflow: visible !important;
+}
+
+.animated-banners.has-3d-effect {
+  padding-block: 24px;
+}
+
+.animated-banners:not(.has-3d-effect) {
+  overflow: hidden;
+}

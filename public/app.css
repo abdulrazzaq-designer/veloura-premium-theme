@@ -28572,6 +28572,17 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     max-width: 100%;
   }
 }
+.animated-banners.has-3d-effect,
+.animated-banners.has-3d-effect .animated-banners__slider,
+.animated-banners.has-3d-effect .swiper,
+.animated-banners.has-3d-effect .swiper-wrapper,
+.animated-banners.has-3d-effect .swiper-slide {
+  overflow: visible !important;
+}
+.animated-banners.has-3d-effect {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
 salla-slider{
     display: block;
 }
