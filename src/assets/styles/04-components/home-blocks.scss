@@ -971,6 +971,14 @@
     object-fit: contain !important;
   }
 }
+.ultra-square-images__container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--ultra-spacing, 0px);
+}
+
+
 .animated-banners,
 .animated-banners *,
 .animated-banners *::before,
