@@ -7,7 +7,7 @@
 } %}
 
 <section
-  class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'container' }}"
+  class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : '' }}"
   style="
     padding-inline: {{ component.animated_custom_horizontal_spacing ? component.animated_horizontal_spacing|default(0) ~ 'px' : '0px' }};
     --animated-radius: {{ radius_map[component.animated_image_radius|default('large')]|default('28px') }};

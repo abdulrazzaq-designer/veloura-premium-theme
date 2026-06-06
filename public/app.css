@@ -28561,6 +28561,27 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   border-radius: 28px;
   border-radius: var(--animated-radius, 28px);
 }
+.animated-banners:not(.is-full-width) {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+@media (min-width: 1280px) {
+  .animated-banners:not(.is-full-width) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .animated-banners:not(.is-full-width) {
+    max-width: 1280px;
+  }
+}
+.animated-banners__slider,
+.animated-banners__card,
+.animated-banners__card picture,
+.animated-banners__card img {
+  width: 100%;
+}
 salla-slider{
     display: block;
 }

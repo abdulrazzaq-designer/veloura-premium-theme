@@ -1015,3 +1015,23 @@
     border-radius: var(--animated-radius, 28px);
   }
 }
+
+
+.animated-banners:not(.is-full-width) {
+  padding-inline: 16px !important;
+}
+
+@media (min-width: 1280px) {
+  .animated-banners:not(.is-full-width) {
+    max-width: 1280px;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+  }
+}
+
+.animated-banners__slider,
+.animated-banners__card,
+.animated-banners__card picture,
+.animated-banners__card img {
+  width: 100%;
+}
