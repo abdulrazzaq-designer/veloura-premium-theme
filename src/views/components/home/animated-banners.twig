@@ -13,15 +13,11 @@
 
 
 
-<section class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width' : 'is-contained' }}"
+<section class="s-block animated-banners is-contained"
   {% set spacing = component.h_spacing|default(0) %}
   style="
-   --horizontal-spacing: {{
-    component.animated_full_width and spacing < 12
-      ? 12
-      : spacing
-  }}px;
-  --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
+   --horizontal-spacing: {{ component.h_spacing|default(0) }}px;
+    --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
   "
 >
   {% if component.animated_banners|length > 0 %}

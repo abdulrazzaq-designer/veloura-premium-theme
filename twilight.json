@@ -2277,6 +2277,19 @@
                     "required": false
                 },
                 {
+  "id": "full_width_note",
+  "type": "static",
+  "format": "description",
+  "value": "<div style='padding:12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.8;font-size:13px;'>لجعل البنر قريب من عرض الشاشة الكامل، انزل للأسفل إلى خيار <strong>مقدار المسافة</strong> واجعل القيمة <strong>0</strong>. هذا الزر تنبيهي فقط ولا يغير العرض تلقائيًا.</div>",
+  "conditions": [
+    {
+      "id": "animated_full_width",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+                {
                     "id": "animated_loop",
                     "type": "boolean",
                     "format": "switch",
