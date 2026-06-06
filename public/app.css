@@ -28536,42 +28536,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .animated-banners__slider {
   width: 100%;
-  overflow: hidden;
-}
-.animated-banners__card {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 28px;
-  border-radius: var(--animated-radius, 28px);
-}
-.animated-banners__card picture, .animated-banners__card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 28px;
-  border-radius: var(--animated-radius, 28px);
-}
-.animated-banners__content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.animated-banners__content.is-right {
-  align-items: flex-end;
-  text-align: right;
-  padding-right: 48px;
-}
-.animated-banners__content.is-center {
-  align-items: center;
-  text-align: center;
 }
 salla-slider{
     display: block;

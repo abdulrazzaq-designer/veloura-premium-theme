@@ -991,3 +991,19 @@
     width: 100%;
   }
 }
+
+.animated-banners {
+  overflow: hidden !important;
+}
+
+.animated-banners .swiper,
+.animated-banners .swiper-container,
+.animated-banners .swiper-wrapper,
+.animated-banners__slider {
+  overflow: hidden !important;
+}
+
+.animated-banners .swiper-slide {
+  width: 100% !important;
+  flex: 0 0 100% !important;
+}
