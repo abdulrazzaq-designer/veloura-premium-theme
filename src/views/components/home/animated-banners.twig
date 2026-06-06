@@ -13,10 +13,10 @@
 
 
 
-<section class="s-block animated-banners is-contained"
-  {% set spacing = component.h_spacing|default(0) %}
+<section
+class="s-block animated-banners {{ component.animated_full_width ? 'is-full-width-desktop' : 'is-contained' }}"
   style="
-   --horizontal-spacing: {{ component.h_spacing|default(0) }}px;
+    --horizontal-spacing: {{ component.h_spacing|default(0) }}px;
     --animated-radius: {{ radius_map[component.animated_image_radius|default('sharp')]|default('0px') }};
   "
 >
