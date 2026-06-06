@@ -2218,6 +2218,53 @@
                     "required": false
                 },
                 {
+                    "id": "animated_image_radius",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "Dropdown List",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "8fcd58a8-efe3-4515-b454-042805eb895a"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "bcc2d562-8ab2-4b91-9389-4cdf5109bd35"
+                        },
+                        {
+                            "label": "ناعم قليلاً",
+                            "value": "soft",
+                            "key": "bb09af4f-1121-4811-ab5b-d6e3c3d7a2c7"
+                        },
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "8fcd58a8-efe3-4515-b454-042805eb895a"
+                        },
+                        {
+                            "label": "ناعم جداً",
+                            "value": "large",
+                            "key": "9ec70a00-a9ca-4f57-9c62-75b3d37110ed"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "round",
+                            "key": "69ddbca6-f909-4fe1-941f-939283460cf8"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
                     "id": "animated_full_width",
                     "type": "boolean",
                     "format": "switch",
