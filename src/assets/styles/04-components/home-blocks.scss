@@ -973,36 +973,23 @@
 }
 
 .animated-banners {
-  width: 100%;
   overflow: hidden;
 
-  &.is-contained {
-    max-width: 1280px;
-    margin-inline: auto;
+  &.container {
     padding-inline: 16px;
   }
 
   &.is-full-width {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-inline-start: calc(50% - 50vw) !important;
-    margin-inline-end: calc(50% - 50vw) !important;
+    width: 100vw;
+    max-width: 100vw;
+    margin-inline-start: calc(50% - 50vw);
+    margin-inline-end: calc(50% - 50vw);
     padding-inline: 0 !important;
   }
 
   &__slider {
     width: 100%;
-    overflow: hidden !important;
-  }
-
-  .swiper,
-  .swiper-container,
-  .swiper-wrapper {
-    overflow: hidden !important;
-  }
-
-  .swiper-slide {
-    width: 100% !important;
+    overflow: hidden;
   }
 
   &__card {
@@ -1012,8 +999,8 @@
     border-radius: var(--animated-radius, 28px);
   }
 
-  &__card img,
-  &__card picture {
+  &__card picture,
+  &__card img {
     display: block;
     width: 100%;
     height: auto;
