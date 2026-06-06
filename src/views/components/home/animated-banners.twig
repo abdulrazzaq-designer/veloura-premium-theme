@@ -23,6 +23,12 @@
   {% if component.animated_autoplay %}auto-play{% endif %}
   {% if not component.animated_hide_dots %}pagination{% endif %}
   static-when-single
+  slider-config='{
+    "slidesPerView": 1,
+    "spaceBetween": 0,
+    "centeredSlides": true,
+    "loop": true
+  }'
 >
 
       <div slot="items">
