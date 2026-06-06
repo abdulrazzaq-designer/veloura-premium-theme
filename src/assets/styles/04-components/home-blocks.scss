@@ -985,10 +985,6 @@
   box-sizing: border-box;
 }
 
-.animated-banners {
-  overflow: hidden;
-}
-
 .animated-banners__slider {
   display: block;
   width: 100%;
@@ -1020,18 +1016,36 @@
   }
 }
 
-.animated-banners.has-3d-effect,
-.animated-banners.has-3d-effect .animated-banners__slider,
-.animated-banners.has-3d-effect .swiper,
-.animated-banners.has-3d-effect .swiper-wrapper,
-.animated-banners.has-3d-effect .swiper-slide {
-  overflow: visible !important;
-}
-
 .animated-banners.has-3d-effect {
   padding-block: 24px;
 }
 
 .animated-banners:not(.has-3d-effect) {
   overflow: hidden;
+}
+.animated-banners.has-3d-effect,
+.animated-banners.has-3d-effect .animated-banners__slider,
+.animated-banners.has-3d-effect .swiper,
+.animated-banners.has-3d-effect .swiper-wrapper,
+.animated-banners.has-3d-effect .swiper-slide,
+.animated-banners.has-3d-effect .animated-banners__card,
+.animated-banners.has-3d-effect picture,
+.animated-banners.has-3d-effect img {
+  overflow: visible !important;
+}
+
+.animated-banners.has-3d-effect .animated-banners__card {
+  border-radius: 0 !important;
+}
+
+.animated-banners.has-3d-effect .animated-banners__card {
+  width: 100% !important;
+  margin-inline: 0 !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+}
+
+.animated-banners.has-3d-effect .animated-banners__card picture,
+.animated-banners.has-3d-effect .animated-banners__card img {
+  border-radius: 0 !important;
 }
