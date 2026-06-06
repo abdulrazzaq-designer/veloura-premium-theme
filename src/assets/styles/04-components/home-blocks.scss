@@ -1008,3 +1008,19 @@
   flex: 0 0 100% !important;
 }
 
+.animated-banners.photos-slider .swiper-slide,
+.animated-banners .photos-slider .swiper-slide,
+.animated-banners__slider.photos-slider .swiper-slide {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.animated-banners .animated-banners__card {
+  border-radius: var(--animated-radius, 28px) !important;
+  overflow: hidden !important;
+}
+
+.animated-banners .animated-banners__card img,
+.animated-banners .animated-banners__card picture {
+  border-radius: var(--animated-radius, 28px) !important;
+}
