@@ -1,3 +1,14 @@
-<section class="s-block container" style="padding:80px;background:red;color:white;font-size:40px;z-index:9999;">
-  TEST VELOURA COMPONENT
+<section class="s-block veloura-store-features container">
+    
+    <h2>{{ component.veloura_section_title }}</h2>
+
+    <div>
+        {% for item in component.veloura_features_collection %}
+            <div>
+                <h3>{{ item.veloura_feature_title }}</h3>
+                <p>{{ item.veloura_feature_subtitle }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
 </section>
