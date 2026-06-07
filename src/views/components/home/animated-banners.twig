@@ -32,12 +32,18 @@
   id="animated-banners-{{ position }}"
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
   {% if not component.animated_hide_dots %}pagination{% endif %}
+  {% if component.animated_autoplay %}auto-play{% endif %}
   static-when-single
   slider-config='{
-  "effect": "{{ safe_effect }}",
-  "loop": {{ component.animated_loop ? "true" : "false" }},
+  "effect": "{{ effect }}",
+  "loop": {{ effect == "cards" ? "false" : (component.animated_loop ? "true" : "false") }},
   "speed": 800,
-  "autoplay": {{ component.animated_autoplay ? "{\"delay\":2500,\"disableOnInteraction\":false}" : "false" }}
+  "autoplay": {{ component.animated_autoplay ? "{\"delay\":2500,\"disableOnInteraction\":false}" : "false" }},
+  "cardsEffect": {
+    "slideShadows": true,
+    "perSlideOffset": 12,
+    "perSlideRotate": 3
+  }
 }'
 >
 
