@@ -13,7 +13,14 @@
 >
 
   {% if component.veloura_section_title or component.veloura_section_subtitle %}
-    <div class="veloura-store-features__heading" style="color: {{ component.veloura_title_color }}">
+    <div class="veloura-store-features__heading"
+  style="
+    text-align:
+    {{ app.is_mobile
+      ? component.veloura_alignment_mobile
+      : component.veloura_alignment_desktop
+    }};
+  ">
       {% if component.veloura_section_title %}
         <h2>{{ component.veloura_section_title }}</h2>
       {% endif %}

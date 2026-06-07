@@ -28728,6 +28728,14 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     grid-template-columns: repeat(var(--veloura-desktop-cols, 3), minmax(0, 1fr));
   }
 }
+.veloura-store-features__item.is-centered .veloura-store-features__icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+.veloura-store-features__icon {
+  margin-right: 0;
+  margin-left: auto;
+}
 salla-slider{
     display: block;
 }

@@ -1195,3 +1195,15 @@
     }
   }
 }
+
+.veloura-store-features__item.is-centered {
+  .veloura-store-features__icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.veloura-store-features__icon {
+  margin-right: 0;
+  margin-left: auto;
+}
