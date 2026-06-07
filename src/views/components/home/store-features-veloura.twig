@@ -1,7 +1,68 @@
-<pre>{{ component|json_encode }}</pre>
+{% if not component.veloura_hide_section %}
 
-<h1>TEST 1</h1>
-{{ component.mmezat_almtgr }}
+<section
+  class="s-block veloura-store-features container {{ component.veloura_custom_classes }}"
+  style="
+    --veloura-gap: {{ component.veloura_gap_between_features|default(16) }}px;
+    --veloura-mobile-cols: {{ component.veloura_mobile_columns|default(2) }};
+    --veloura-desktop-cols: {{ component.veloura_desktop_columns|default(3) }};
+    --veloura-icon-width: {{ component.veloura_feature_image_width|default(70) }}px;
+    --veloura-icon-height: {{ component.veloura_feature_image_height and component.veloura_feature_image_height > 0 ? component.veloura_feature_image_height : 70 }}px;
+  "
+>
 
-<h1>TEST 2</h1>
-{{ component['mmezat_almtgr']|json_encode }}
+  {% if component.veloura_section_title or component.veloura_section_subtitle %}
+    <div class="veloura-store-features__heading" style="color: {{ component.veloura_title_color }}">
+      {% if component.veloura_section_title %}
+        <h2>{{ component.veloura_section_title }}</h2>
+      {% endif %}
+
+      {% if component.veloura_section_subtitle %}
+        <p>{{ component.veloura_section_subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="veloura-store-features__grid">
+
+    {% for item in component.veloura_features_collection %}
+
+      <div
+        class="veloura-store-features__item {{ component.veloura_floating_icon ? 'has-floating-icon' : '' }} {{ component.veloura_center_features ? 'is-centered' : '' }}"
+        style="
+          background: {{ item.veloura_feature_background_transparent ? 'transparent' : item.veloura_feature_background }};
+          color: {{ item.veloura_feature_text_color }};
+        "
+      >
+
+        <div
+          class="veloura-store-features__icon"
+          style="
+            background: {{ item.veloura_feature_icon_background_transparent ? 'transparent' : item.veloura_feature_icon_background }};
+            color: {{ item.veloura_feature_icon_color }};
+          "
+        >
+          {% if item.veloura_feature_image %}
+            <img src="{{ item.veloura_feature_image }}" alt="{{ item.veloura_feature_title }}" loading="lazy">
+          {% elseif item.veloura_feature_icon %}
+            <i class="{{ item.veloura_feature_icon }}"></i>
+          {% endif %}
+        </div>
+
+        {% if item.veloura_feature_title %}
+          <h3>{{ item.veloura_feature_title }}</h3>
+        {% endif %}
+
+        {% if item.veloura_feature_subtitle %}
+          <p>{{ item.veloura_feature_subtitle }}</p>
+        {% endif %}
+
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endif %}
