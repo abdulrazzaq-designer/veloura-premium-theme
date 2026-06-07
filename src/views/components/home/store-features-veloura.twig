@@ -1,3 +1,29 @@
-<pre>
-{{ component|json_encode }}
-</pre>
+<section class="s-block veloura-store-features container {{ component.veloura_custom_classes }}">
+
+  <div class="veloura-store-features__grid">
+    {% for item in component.mmezat_almtgr %}
+
+      <div class="veloura-store-features__item">
+        
+        <div class="veloura-store-features__icon">
+          {% if item.veloura_feature_image %}
+            <img src="{{ item.veloura_feature_image }}" alt="{{ item.veloura_feature_title }}" loading="lazy">
+          {% elseif item.veloura_feature_icon %}
+            <i class="{{ item.veloura_feature_icon }}"></i>
+          {% endif %}
+        </div>
+
+        {% if item.veloura_feature_title %}
+          <h3>{{ item.veloura_feature_title }}</h3>
+        {% endif %}
+
+        {% if item.veloura_feature_subtitle %}
+          <p>{{ item.veloura_feature_subtitle }}</p>
+        {% endif %}
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+</section>
