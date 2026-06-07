@@ -12,6 +12,8 @@
 {% endif %}
 
 {% set h_spacing = component.use_h_spacing ? component.h_spacing|default(0) : 0 %}
+{% set effect = component.animated_transition_type|default('slide') %}
+{% set safe_effect = effect == 'cards' ? 'slide' : effect %}
 
 <section
   class="s-block animated-banners
@@ -32,18 +34,10 @@
   {% if not component.animated_hide_dots %}pagination{% endif %}
   static-when-single
   slider-config='{
-  "effect": "{{ component.animated_transition_type|default('slide') }}",
-  "loop": true,
+  "effect": "{{ safe_effect }}",
+  "loop": {{ component.animated_loop ? "true" : "false" }},
   "speed": 800,
-  "autoplay": {
-    "delay": 2500,
-    "disableOnInteraction": false
-  },
-  "cardsEffect": {
-    "slideShadows": true,
-    "perSlideOffset": 12,
-    "perSlideRotate": 3
-  }
+  "autoplay": {{ component.animated_autoplay ? "{\"delay\":2500,\"disableOnInteraction\":false}" : "false" }}
 }'
 >
 
