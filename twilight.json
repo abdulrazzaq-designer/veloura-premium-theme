@@ -3041,7 +3041,7 @@
                     "icon": "sicon-hashtag",
                     "value": 70,
                     "required": false,
-                    "step": "1",
+                    "step": "5",
                     "minimum": "0",
                     "maximum": "140"
                 },
@@ -3057,7 +3057,7 @@
                     "icon": "sicon-hashtag",
                     "value": 70,
                     "required": false,
-                    "step": "1",
+                    "step": "5",
                     "minimum": "0",
                     "maximum": "140"
                 },
@@ -3195,9 +3195,13 @@
                     "step": "1",
                     "minimum": "0",
                     "maximum": "100",
-                    "conditions": {
-    "veloura_enable_custom_spacing": true
-  }
+                    "conditions": [
+                        {
+                            "id": "veloura_enable_custom_spacing",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
                 },
                 {
                     "id": "veloura_show_mobile_only",
