@@ -29,15 +29,22 @@
   type="{{ component.animated_full_width ? 'fullwidth' : 'slider' }}"
   id="animated-banners-{{ position }}"
   {% if component.animated_hide_arrows_desktop %}show-controls="false"{% endif %}
-  {% if component.animated_autoplay %}auto-play{% endif %}
-  {% if component.animated_loop %}loop{% endif %}
   {% if not component.animated_hide_dots %}pagination{% endif %}
   static-when-single
   slider-config='{
-    "effect": "{{ component.animated_transition_type|default('slide') }}",
-    "loop": {{ component.animated_loop ? "true" : "false" }},
-    "speed": 800
-  }'
+  "effect": "{{ component.animated_transition_type|default('slide') }}",
+  "loop": true,
+  "speed": 800,
+  "autoplay": {
+    "delay": 2500,
+    "disableOnInteraction": false
+  },
+  "cardsEffect": {
+    "slideShadows": true,
+    "perSlideOffset": 12,
+    "perSlideRotate": 3
+  }
+}'
 >
 
       <div slot="items">
