@@ -1089,6 +1089,10 @@
     min-height: 140px;
   }
 
+  &__item.is-centered {
+    text-align: center;
+  }
+
   &__icon {
     width: var(--veloura-icon-width, 70px);
     height: var(--veloura-icon-height, 70px);
@@ -1114,11 +1118,9 @@
     }
   }
 
-  &__item.is-centered {
-    .veloura-store-features__icon {
-      margin-inline-start: auto;
-      margin-inline-end: auto;
-    }
+  &__item.is-centered &__icon {
+    margin-inline-start: auto;
+    margin-inline-end: auto;
   }
 
   &__item.has-floating-icon {
@@ -1150,7 +1152,7 @@
       font-size: 17px;
       font-weight: 800;
       color: inherit;
-      text-align: right;
+      text-align: inherit;
     }
 
     p {
@@ -1159,7 +1161,7 @@
       line-height: 1.7;
       color: inherit;
       opacity: .85;
-      text-align: right;
+      text-align: inherit;
     }
   }
 }

@@ -28636,6 +28636,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   overflow: visible;
   min-height: 140px;
 }
+.veloura-store-features__item.is-centered {
+  text-align: center;
+}
 .veloura-store-features__icon {
   width: 70px;
   width: var(--veloura-icon-width, 70px);
@@ -28688,7 +28691,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 17px;
   font-weight: 800;
   color: inherit;
-  text-align: right;
+  text-align: inherit;
 }
 .veloura-store-features__content p {
   margin: 0;
@@ -28696,7 +28699,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   line-height: 1.7;
   color: inherit;
   opacity: 0.85;
-  text-align: right;
+  text-align: inherit;
 }
 @media (min-width: 768px) {
   .veloura-store-features__heading {
