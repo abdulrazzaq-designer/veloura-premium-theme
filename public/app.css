@@ -28637,6 +28637,97 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin: 0;
   line-height: 1.8;
 }
+.veloura-store-features {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.veloura-store-features__heading {
+  margin-bottom: 32px;
+  color: #111;
+  color: var(--veloura-title-color, #111);
+}
+.veloura-store-features__heading h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+}
+.veloura-store-features__heading p {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.75;
+}
+.veloura-store-features__grid {
+  display: grid;
+  grid-gap: 16px;
+  grid-gap: var(--veloura-gap, 16px);
+  gap: 16px;
+  gap: var(--veloura-gap, 16px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--veloura-mobile-cols, 2), minmax(0, 1fr));
+}
+.veloura-store-features__item {
+  position: relative;
+  padding: 32px 20px;
+  border-radius: 18px;
+  border-radius: var(--veloura-radius, 18px);
+  text-align: center;
+  overflow: visible;
+  min-height: 140px;
+}
+.veloura-store-features__icon {
+  width: 70px;
+  width: var(--veloura-icon-width, 70px);
+  height: 70px;
+  height: var(--veloura-icon-height, 70px);
+  border-radius: 999px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.veloura-store-features__icon i,
+.veloura-store-features__icon span {
+  font-size: 34px;
+  line-height: 1;
+}
+.veloura-store-features__icon img {
+  width: 70%;
+  height: 70%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.veloura-store-features__item.has-floating-icon {
+  padding-top: 52px;
+  margin-top: 35px;
+}
+.veloura-store-features__item.has-floating-icon .veloura-store-features__icon {
+  position: absolute;
+  top: calc(70px / -2);
+  top: calc(var(--veloura-icon-height, 70px) / -2);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 2;
+}
+.veloura-store-features__content h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 800;
+  color: inherit;
+}
+.veloura-store-features__content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: inherit;
+  opacity: 0.85;
+}
+@media (min-width: 768px) {
+  .veloura-store-features__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--veloura-desktop-cols, 3), minmax(0, 1fr));
+  }
+}
 salla-slider{
     display: block;
 }
