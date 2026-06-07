@@ -1,3 +1,90 @@
-<section class="s-block container">
-  TEST
+{% if not component.veloura_hide_section %}
+
+{% set section_classes = [
+  's-block',
+  'veloura-store-features',
+  'container',
+  component.veloura_custom_classes ?: ''
+] %}
+
+{% if component.veloura_show_mobile_only %}
+  {% set section_classes = section_classes|merge(['veloura-show-mobile-only']) %}
+{% endif %}
+
+{% if component.veloura_show_desktop_only %}
+  {% set section_classes = section_classes|merge(['veloura-show-desktop-only']) %}
+{% endif %}
+
+<section
+  class="{{ section_classes|join(' ') }}"
+  style="
+    --veloura-gap: {{ component.veloura_gap_between_features|default(16) }}px;
+    --veloura-mobile-cols: {{ component.veloura_mobile_columns|default(2) }};
+    --veloura-desktop-cols: {{ component.veloura_desktop_columns|default(3) }};
+    --veloura-title-color: {{ component.veloura_title_color|default('#111111') }};
+    --veloura-heading-align: {{ component.veloura_alignment_desktop|default('center') }};
+    --veloura-icon-width: {{ component.veloura_feature_image_width|default(70) }}px;
+    --veloura-icon-height: {{ component.veloura_feature_image_height and component.veloura_feature_image_height > 0 ? component.veloura_feature_image_height : 70 }}px;
+    --veloura-custom-spacing: {{ component.veloura_enable_custom_spacing ? component.veloura_custom_spacing|default(0) : 0 }}px;
+  "
+>
+
+  {% if component.veloura_section_title or component.veloura_section_subtitle %}
+    <div class="veloura-store-featuresheading">
+      {% if component.veloura_section_title %}
+        <h2>{{ component.veloura_section_title }}</h2>
+      {% endif %}
+
+      {% if component.veloura_section_subtitle %}
+        <p>{{ component.veloura_section_subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if component.veloura_features_collection %}
+    <div class="veloura-store-featuresgrid">
+
+      {% for item in component.veloura_features_collection %}
+
+        <div
+          class="veloura-store-featuresitem {{ component.veloura_floating_icon ? 'has-floating-icon' : '' }} {{ component.veloura_center_features ? 'is-centered' : '' }}"
+          style="
+            background: {{ item.veloura_feature_background_transparent ? 'transparent' : item.veloura_feature_background|default('#004956') }};
+            color: {{ item.veloura_feature_text_color|default('#ffffff') }};
+          "
+        >
+
+          <div
+            class="veloura-store-featuresicon"
+            style="
+              background: {{ item.veloura_feature_icon_background_transparent ? 'transparent' : item.veloura_feature_icon_background|default('#2b2b2b') }};
+              color: {{ item.veloura_feature_icon_color|default('#ffffff') }};
+            "
+          >
+            {% if item.veloura_feature_image %}
+              <img src="{{ item.veloura_feature_image }}" alt="{{ item.veloura_feature_title|default('feature') }}" loading="lazy">
+            {% elseif item.veloura_feature_icon %}
+              <span class="{{ item.veloura_feature_icon }}"></span>
+            {% endif %}
+          </div>
+
+          <div class="veloura-store-features__content">
+            {% if item.veloura_feature_title %}
+              <h3>{{ item.veloura_feature_title }}</h3>
+            {% endif %}
+
+            {% if item.veloura_feature_subtitle %}
+              <p>{{ item.veloura_feature_subtitle }}</p>
+            {% endif %}
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+  {% endif %}
+
 </section>
+
+{% endif %}
