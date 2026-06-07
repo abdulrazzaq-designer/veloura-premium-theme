@@ -1,29 +1,21 @@
-<section class="s-block veloura-store-features container {{ component.veloura_custom_classes }}">
+<section class="s-block container" style="padding:40px;background:#eee;">
+  <h2 style="color:red;">عدد العناصر: {{ component.mmezat_almtgr|length }}</h2>
 
-  <div class="veloura-store-features__grid">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
     {% for item in component.mmezat_almtgr %}
-
-      <div class="veloura-store-features__item">
-        
-        <div class="veloura-store-features__icon">
-          {% if item.veloura_feature_image %}
-            <img src="{{ item.veloura_feature_image }}" alt="{{ item.veloura_feature_title }}" loading="lazy">
-          {% elseif item.veloura_feature_icon %}
-            <i class="{{ item.veloura_feature_icon }}"></i>
-          {% endif %}
+      <div style="background:#004956;color:#fff;padding:30px;text-align:center;border-radius:16px;">
+        <div style="width:70px;height:70px;background:#2b2b2b;border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;">
+          <i class="{{ item.veloura_feature_icon }}" style="font-size:34px;color:#fff;"></i>
         </div>
 
-        {% if item.veloura_feature_title %}
-          <h3>{{ item.veloura_feature_title }}</h3>
-        {% endif %}
+        <h3>
+          {{ item.veloura_feature_title ?: 'عنوان تجريبي' }}
+        </h3>
 
-        {% if item.veloura_feature_subtitle %}
-          <p>{{ item.veloura_feature_subtitle }}</p>
-        {% endif %}
-
+        <p>
+          {{ item.veloura_feature_subtitle ?: 'وصف تجريبي للميزة' }}
+        </p>
       </div>
-
     {% endfor %}
   </div>
-
 </section>
