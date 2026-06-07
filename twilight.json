@@ -2851,7 +2851,7 @@
                     "maximum": "7"
                 },
                 {
-                    "id": "mmezat_almtgr",
+                    "id": "veloura_features_collection",
                     "type": "collection",
                     "format": "collection",
                     "label": "مميزات المتجر",
@@ -2861,7 +2861,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "mmezat_almtgr.veloura_feature_icon",
+                            "id": "veloura_features_collection.veloura_feature_icon",
                             "type": "string",
                             "format": "icon",
                             "label": "اختر الأيقونة",
@@ -2872,7 +2872,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_icon_color",
+                            "id": "veloura_features_collection.veloura_feature_icon_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -2884,7 +2884,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_image",
+                            "id": "veloura_features_collection.veloura_feature_image",
                             "type": "string",
                             "format": "image",
                             "label": "صورة بديلة للأيقونة",
@@ -2896,7 +2896,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_icon_background",
+                            "id": "veloura_features_collection.veloura_feature_icon_background",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -2908,7 +2908,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_icon_background_transparent",
+                            "id": "veloura_features_collection.veloura_feature_icon_background_transparent",
                             "type": "boolean",
                             "format": "switch",
                             "label": "جعل خلفية الأيقونة شفافة",
@@ -2920,7 +2920,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_title",
+                            "id": "veloura_features_collection.veloura_feature_title",
                             "type": "string",
                             "format": "text",
                             "label": "عنوان رئيسي",
@@ -2935,7 +2935,7 @@
                             "maxLength": "3000"
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_subtitle",
+                            "id": "veloura_features_collection.veloura_feature_subtitle",
                             "type": "string",
                             "format": "text",
                             "label": "عنوان فرعي",
@@ -2950,7 +2950,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_background",
+                            "id": "veloura_features_collection.veloura_feature_background",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -2962,7 +2962,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_text_color",
+                            "id": "veloura_features_collection.veloura_feature_text_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -2974,7 +2974,7 @@
                             "required": false
                         },
                         {
-                            "id": "mmezat_almtgr.veloura_feature_background_transparent",
+                            "id": "veloura_features_collection.veloura_feature_background_transparent",
                             "type": "boolean",
                             "format": "switch",
                             "label": "جعل خلفية الميزة شفافة",
