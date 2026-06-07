@@ -2277,18 +2277,18 @@
                     "required": false
                 },
                 {
-  "id": "full_width_note",
-  "type": "static",
-  "format": "description",
-  "value": "<div style='padding:12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.8;font-size:13px;'>لجعل البنر بعرض الشاشة الكامل، انزل للأسفل إلى خيار <strong> مسافة أفقية مخصصة (يمين ويسار القسم)</strong>. هذا الزر تنبيهي فقط ولا يغير العرض تلقائيًا.</div>",
-  "conditions": [
-    {
-      "id": "animated_full_width",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
+                    "id": "full_width_note",
+                    "type": "static",
+                    "format": "description",
+                    "value": "<div style='padding:12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.8;font-size:13px;'>لجعل البنر بعرض الشاشة الكامل، انزل للأسفل إلى خيار <strong> مسافة أفقية مخصصة (يمين ويسار القسم)</strong>. هذا الزر تنبيهي فقط ولا يغير العرض تلقائيًا.</div>",
+                    "conditions": [
+                        {
+                            "id": "animated_full_width",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
                 {
                     "id": "animated_loop",
                     "type": "boolean",
@@ -2759,6 +2759,16 @@
                     "maxLength": "30000"
                 }
             ]
+        },
+        {
+            "key": "142a4507-28e1-4ece-8062-36df5781b04c",
+            "title": {
+                "en": "مميزات المتجر (فيلورا)",
+                "ar": "مميزات المتجر (فيلورا)"
+            },
+            "icon": "sicon-store",
+            "path": "home.store-features-veloura",
+            "fields": []
         }
     ],
     "support_url": "https://velourapremium.com",
