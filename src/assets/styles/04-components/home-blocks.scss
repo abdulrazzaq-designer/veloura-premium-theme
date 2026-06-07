@@ -1166,14 +1166,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .veloura-store-features {
-    &__heading {
-      text-align: var(--veloura-heading-align-desktop, center);
-    }
-
-    &__grid {
-      grid-template-columns: repeat(var(--veloura-desktop-cols, 3), minmax(0, 1fr));
-    }
-  }
+.veloura-store-features__heading {
+  text-align: var(--veloura-heading-align, center);
 }

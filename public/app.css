@@ -28701,15 +28701,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   opacity: 0.85;
   text-align: inherit;
 }
-@media (min-width: 768px) {
-  .veloura-store-features__heading {
-    text-align: center;
-    text-align: var(--veloura-heading-align-desktop, center);
-  }
-  .veloura-store-features__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-columns: repeat(var(--veloura-desktop-cols, 3), minmax(0, 1fr));
-  }
+.veloura-store-features__heading {
+  text-align: center;
+  text-align: var(--veloura-heading-align, center);
 }
 salla-slider{
     display: block;

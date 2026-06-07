@@ -3055,54 +3055,17 @@
                     "labelHTML": null,
                     "placeholder": null,
                     "icon": "sicon-hashtag",
-                    "value": 0,
+                    "value": 70,
                     "required": false,
                     "step": "1",
                     "minimum": "0",
                     "maximum": "140"
                 },
                 {
-                    "id": "veloura_alignment_mobile",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "توسيط عناوين القسم (للجوال)",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [
-                        {
-                            "label": "وسط",
-                            "value": "center",
-                            "key": "2d9f7333-6d0c-49f7-ae58-7ce7c906eadd"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "يمين",
-                            "value": "right",
-                            "key": "659e1c16-3253-440c-bb13-dc273ed47350"
-                        },
-                        {
-                            "label": "وسط",
-                            "value": "center",
-                            "key": "2d9f7333-6d0c-49f7-ae58-7ce7c906eadd"
-                        },
-                        {
-                            "label": "يسار",
-                            "value": "left",
-                            "key": "bff9a280-d038-4b0c-9420-7613844f006c"
-                        }
-                    ],
-                    "source": "Manual",
-                    "multichoice": false,
-                    "searchable": false,
-                    "required": false
-                },
-                {
                     "id": "veloura_alignment_desktop",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "توسيط عناوين القسم (للكمبيوتر)",
+                    "label": "محاذاة عناوين القسم",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
@@ -3143,7 +3106,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
+                    "selected": [
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "5f655ebd-604c-4558-88b8-f469c6091e92"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "حاد",
