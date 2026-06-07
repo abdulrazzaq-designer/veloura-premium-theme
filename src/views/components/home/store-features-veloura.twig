@@ -1,14 +1,13 @@
-<section class="s-block veloura-store-features container">
-    
-    <h2>{{ component.veloura_section_title }}</h2>
+<section class="s-block container" style="padding:40px;background:#111;color:#fff;direction:ltr;text-align:left;">
+  <h2 style="color:#00ff99;font-size:26px;">COMPONENT DATA</h2>
 
-    <div>
-        {% for item in component.veloura_features_collection %}
-            <div>
-                <h3>{{ item.veloura_feature_title }}</h3>
-                <p>{{ item.veloura_feature_subtitle }}</p>
-            </div>
-        {% endfor %}
-    </div>
+  <pre style="white-space:pre-wrap;font-size:14px;line-height:1.6;">
+{{ component|json_encode }}
+  </pre>
 
+  <h2 style="color:#00ff99;font-size:26px;">ITEMS DATA</h2>
+
+  <pre style="white-space:pre-wrap;font-size:14px;line-height:1.6;">
+{{ items|json_encode }}
+  </pre>
 </section>
