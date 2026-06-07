@@ -2768,7 +2768,517 @@
             },
             "icon": "sicon-store",
             "path": "home.store-features-veloura",
-            "fields": []
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">خصص مميزات المتجر على ذوقك</div>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "veloura_section_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "100"
+                },
+                {
+                    "id": "veloura_section_subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان فرعي (اختياري)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "100"
+                },
+                {
+                    "id": "veloura_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون عناوين القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#292929",
+                    "required": false
+                },
+                {
+                    "id": "veloura_mobile_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد العناصر في الجوال",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "2",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "4"
+                },
+                {
+                    "id": "veloura_desktop_columns",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "عدد العناصر في الكمبيوتر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "3",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "7"
+                },
+                {
+                    "id": "mmezat_almtgr",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "مميزات المتجر",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": "ميزة",
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_icon",
+                            "type": "string",
+                            "format": "icon",
+                            "label": "اختر الأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-user-circle",
+                            "value": "sicon-store",
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_icon_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون الأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#ffffff",
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة بديلة للأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_icon_background",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "خلفية الأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#2b2b2b",
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_icon_background_transparent",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "جعل خلفية الأيقونة شفافة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "عنوان رئيسي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": null,
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": "3000"
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_subtitle",
+                            "type": "string",
+                            "format": "text",
+                            "label": "عنوان فرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_background",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "خلفية الميزة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#004956",
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_text_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص للعناوين",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#004956",
+                            "required": false
+                        },
+                        {
+                            "id": "mmezat_almtgr.veloura_feature_background_transparent",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "جعل خلفية الميزة شفافة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": false,
+                            "required": false
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "55555555"
+                },
+                {
+                    "id": "veloura_gap_between_features",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "المسافة بين المميزات",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "80"
+                },
+                {
+                    "id": "veloura_center_features",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "توسيط المميزات والعناوين",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_floating_icon",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "جعل الأيقونة عائمة فوق الميزة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_feature_image_width",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "حجم صورة الميزة أو الأيقونة (العرض)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 70,
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "140"
+                },
+                {
+                    "id": "veloura_feature_image_height",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "حجم صورة الميزة أو الأيقونة (الطول)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 0,
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "140"
+                },
+                {
+                    "id": "veloura_alignment_mobile",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "توسيط عناوين القسم (للجوال)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [
+                        {
+                            "label": "وسط",
+                            "value": "center",
+                            "key": "2d9f7333-6d0c-49f7-ae58-7ce7c906eadd"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يمين",
+                            "value": "right",
+                            "key": "659e1c16-3253-440c-bb13-dc273ed47350"
+                        },
+                        {
+                            "label": "وسط",
+                            "value": "center",
+                            "key": "2d9f7333-6d0c-49f7-ae58-7ce7c906eadd"
+                        },
+                        {
+                            "label": "يسار",
+                            "value": "left",
+                            "key": "bff9a280-d038-4b0c-9420-7613844f006c"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_alignment_desktop",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "توسيط عناوين القسم (للكمبيوتر)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [
+                        {
+                            "label": "وسط",
+                            "value": "center",
+                            "key": "9de5aa4f-a2c8-4a89-a576-a807165cc180"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يمين",
+                            "value": "right",
+                            "key": "53f0c24d-fa9b-4356-8398-76e01c427bae"
+                        },
+                        {
+                            "label": "وسط",
+                            "value": "center",
+                            "key": "9de5aa4f-a2c8-4a89-a576-a807165cc180"
+                        },
+                        {
+                            "label": "يسار",
+                            "value": "left",
+                            "key": "08e777a6-b224-4778-952e-e11388ec0498"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_image_radius",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حواف المميزات",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "حاد",
+                            "value": "sharp",
+                            "key": "199d683b-ad5f-4033-8a00-8bcd4e77830d"
+                        },
+                        {
+                            "label": "ناعم قليلاً",
+                            "value": "soft",
+                            "key": "fa110924-8f73-4169-aac8-c51421d8c0ad"
+                        },
+                        {
+                            "label": "ناعم",
+                            "value": "medium",
+                            "key": "5f655ebd-604c-4558-88b8-f469c6091e92"
+                        },
+                        {
+                            "label": "ناعم جداً",
+                            "value": "large",
+                            "key": "dfb6c9cc-6660-4510-86b8-8fb8fe9d3cfb"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "round",
+                            "key": "e7d0faf3-75bb-485c-9fcb-3889820da5f6"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_enable_counter",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة تأثير عداد متحرك للعناوين",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_counter_on_view",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "بدء العداد عند الوصول للقسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_enable_custom_spacing",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_custom_spacing",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "قيمة المسافة المخصصة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "100"
+                },
+                {
+                    "id": "veloura_show_mobile_only",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض العنصر في الجوال فقط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_show_desktop_only",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض العنصر في الكمبيوتر فقط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_hide_section",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء هذا العنصر أو القسم بالكامل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "veloura_custom_classes",
+                    "type": "string",
+                    "format": "text",
+                    "label": "Classes",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "30000"
+                }
+            ]
         }
     ],
     "support_url": "https://velourapremium.com",
