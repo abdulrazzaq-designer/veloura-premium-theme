@@ -1169,3 +1169,28 @@
 .veloura-store-features__heading {
   text-align: var(--veloura-heading-align, center);
 }
+.veloura-store-features {
+  padding-inline: var(--veloura-custom-spacing, 0);
+}
+
+.veloura-store-features__heading {
+  text-align: var(--veloura-heading-align, center);
+}
+
+.veloura-show-mobile-only {
+  display: block;
+}
+
+.veloura-show-desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .veloura-show-mobile-only {
+    display: none;
+  }
+
+  .veloura-show-desktop-only {
+    display: block;
+  }
+}

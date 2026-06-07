@@ -28705,6 +28705,30 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   text-align: center;
   text-align: var(--veloura-heading-align, center);
 }
+.veloura-store-features {
+  padding-left: 0;
+  padding-right: 0;
+  padding-left: var(--veloura-custom-spacing, 0);
+  padding-right: var(--veloura-custom-spacing, 0);
+}
+.veloura-store-features__heading {
+  text-align: center;
+  text-align: var(--veloura-heading-align, center);
+}
+.veloura-show-mobile-only {
+  display: block;
+}
+.veloura-show-desktop-only {
+  display: none;
+}
+@media (min-width: 768px) {
+  .veloura-show-mobile-only {
+    display: none;
+  }
+  .veloura-show-desktop-only {
+    display: block;
+  }
+}
 salla-slider{
     display: block;
 }
