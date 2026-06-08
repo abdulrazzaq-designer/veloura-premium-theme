@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefix = originalText.slice(0, match.index);
     const suffix = originalText.slice(match.index + match[1].length);
 
-    const duration = 6000;
+    const duration = 4000;
     const startTime = performance.now();
 
     const update = (now) => {

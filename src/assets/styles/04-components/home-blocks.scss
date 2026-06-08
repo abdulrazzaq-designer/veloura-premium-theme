@@ -978,6 +978,33 @@
   padding-inline: var(--ultra-horizontal-spacing, 0px) !important;
 }
 
+.ultra-square-images.is-slider {
+  salla-slider,
+  .s-slider-container,
+  .swiper {
+    overflow: visible;
+  }
+
+  .swiper-pagination,
+  .s-slider-pagination,
+  .salla-slider-pagination {
+    position: relative !important;
+    inset: auto !important;
+    bottom: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin-top: 18px !important;
+    z-index: 1;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+}
+
+
+
+
 .animated-banners,
 .animated-banners *,
 .animated-banners *::before,

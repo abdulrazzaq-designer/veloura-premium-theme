@@ -28525,6 +28525,30 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin-left: auto;
   margin-right: auto;
 }
+.ultra-square-images.is-slider salla-slider,
+.ultra-square-images.is-slider .s-slider-container,
+.ultra-square-images.is-slider .swiper {
+  overflow: visible;
+}
+.ultra-square-images.is-slider .swiper-pagination,
+.ultra-square-images.is-slider .s-slider-pagination,
+.ultra-square-images.is-slider .salla-slider-pagination {
+  position: relative !important;
+  right: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  transform: none !important;
+  margin-top: 18px !important;
+}
+.ultra-square-images.is-slider .swiper-pagination,
+.ultra-square-images.is-slider .s-slider-pagination,
+.ultra-square-images.is-slider .salla-slider-pagination {
+  z-index: 1;
+}
+.ultra-square-images.is-slider .swiper-wrapper {
+  align-items: stretch;
+}
 .animated-banners,
 .animated-banners *,
 .animated-banners *::before,
