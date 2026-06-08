@@ -1,15 +1,53 @@
-<section class="s-block container veloura-faq" style="padding:40px;background:#eee;">
-  <h2 style="color:red;">{{ component.veloura_faq_title }}</h2>
+{% set radius_map = {
+  'sharp': '0px',
+  'soft': '8px',
+  'medium': '14px',
+  'large': '22px',
+  'round': '999px'
+} %}
 
-  {% for item in component.veloura_faq_items %}
-    <div class="veloura-faq__item">
-      <button type="button" class="veloura-faq__question">
-        {{ item.veloura_faq_question }}
-      </button>
+{% if not component.veloura_faq_hide_section %}
 
-      <div class="veloura-faq__answer">
-        {{ item.veloura_faq_answer }}
+<section
+  class="s-block container veloura-faq {{ component.veloura_faq_custom_classes }}"
+  style="
+    --faq-title-color: {{ component.veloura_faq_title_color|default('#383838') }};
+    --faq-bg: {{ component.veloura_faq_background_color|default('#eeeeee') }};
+    --faq-text: {{ component.veloura_faq_text_color|default('#323232') }};
+    --faq-border: {{ component.veloura_faq_hide_border ? 'transparent' : component.veloura_faq_border_color|default('#323232') }};
+    --faq-radius: {{ radius_map[component.veloura_faq_radius|default('large')]|default('22px') }};
+    --faq-spacing: {{ component.veloura_faq_enable_custom_spacing ? component.veloura_faq_custom_spacing|default(0) : 0 }}px;
+  "
+>
+
+  <div class="veloura-faq__inner">
+
+    {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
+      <div class="veloura-faq__heading">
+        {% if component.veloura_faq_title %}
+          <h2>{{ component.veloura_faq_title }}</h2>
+        {% endif %}
+
+        {% if component.veloura_faq_subtitle %}
+          <p>{{ component.veloura_faq_subtitle }}</p>
+        {% endif %}
       </div>
-    </div>
-  {% endfor %}
+    {% endif %}
+
+    {% for item in component.veloura_faq_items %}
+      <div class="veloura-faq__item">
+        <button type="button" class="veloura-faq__question">
+          {{ item.veloura_faq_question }}
+        </button>
+
+        <div class="veloura-faq__answer">
+          {{ item.veloura_faq_answer }}
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
 </section>
+
+{% endif %}

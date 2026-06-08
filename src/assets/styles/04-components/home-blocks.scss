@@ -1199,44 +1199,54 @@
 
 
 
-
 .veloura-faq {
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-inline: var(--faq-spacing, 0);
 }
 
 .veloura-faq__heading {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  color: var(--faq-title-color);
+  text-align: center;
+}
+
+.veloura-faq__heading h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.veloura-faq__heading p {
+  margin: 0;
+  font-size: 15px;
+  opacity: .75;
 }
 
 .veloura-faq__item {
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-  border-radius: 12px;
+  border: 1px solid var(--faq-border);
+  border-radius: var(--faq-radius);
+  margin-bottom: 14px;
   overflow: hidden;
+  background: var(--faq-bg);
+  color: var(--faq-text);
 }
 
 .veloura-faq__question {
   width: 100%;
-  border: 0;
-  background: #f5f5f5;
   padding: 18px;
+  border: 0;
+  background: transparent;
+  color: inherit;
   text-align: right;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
 }
 
 .veloura-faq__answer {
   display: none;
   padding: 18px;
-  background: #fff;
-}
-
-.veloura-faq__item.is-open .veloura-faq__answer {
-  display: block;
-}
-
-.veloura-faq__answer {
-  display: none;
+  color: inherit;
 }
 
 .veloura-faq__item.is-open .veloura-faq__answer {
