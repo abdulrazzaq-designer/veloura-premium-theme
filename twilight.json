@@ -3277,6 +3277,17 @@
       "maxLength": "100"
     },
     {
+  "id": "veloura_faq_subtitle",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان فرعي (اختياري)",
+  "icon": "sicon-format-text-alt",
+  "value": "ادخل عنوان فرعي هنا",
+  "required": false,
+  "minLength": 0,
+  "maxLength": "200"
+},
+    {
       "id": "veloura_faq_items",
       "type": "collection",
       "format": "collection",
