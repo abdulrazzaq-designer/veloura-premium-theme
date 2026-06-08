@@ -3513,7 +3513,14 @@
   "required": false,
   "step": "1",
   "minimum": "0",
-  "maximum": "100"
+  "maximum": "100",
+  "conditions": [
+                        {
+                            "id": "veloura_enable_custom_spacing",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
 },
 {
   "id": "veloura_faq_show_mobile_only",
