@@ -285,3 +285,57 @@ isElementLoaded(selector){
 }
 
 salla.onReady(() => (new App).loadTheApp());
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const counters = document.querySelectorAll('.veloura-counter');
+
+    const animateCounter = (element) => {
+
+        const text = element.textContent.trim();
+        const number = parseInt(text.replace(/[^\d]/g, ''));
+
+        if (isNaN(number)) return;
+
+        const suffix = text.replace(/[\d]/g, '');
+
+        let current = 0;
+        const duration = 1500;
+        const stepTime = Math.max(10, duration / number);
+
+        const timer = setInterval(() => {
+
+            current += Math.ceil(number / 60);
+
+            if (current >= number) {
+                current = number;
+                clearInterval(timer);
+            }
+
+            element.textContent = current + suffix;
+
+        }, stepTime);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+
+                entry.target.dataset.animated = 'true';
+                animateCounter(entry.target);
+            }
+
+        });
+
+    }, {
+        threshold: 0.3
+    });
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+
+});

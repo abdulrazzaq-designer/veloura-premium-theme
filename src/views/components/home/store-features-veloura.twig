@@ -71,12 +71,14 @@
 
           <div class="veloura-store-features__content">
             {% if item.veloura_feature_title %}
-              <h3>{{ item.veloura_feature_title }}</h3>
-            {% endif %}
+        <h3 class="{{ component.veloura_enable_counter ? 'veloura-counter' : '' }}">
+            {{ item.veloura_feature_title }}
+        </h3>
+    {% endif %}
 
-            {% if item.veloura_feature_subtitle %}
-              <p>{{ item.veloura_feature_subtitle }}</p>
-            {% endif %}
+    {% if item.veloura_feature_subtitle %}
+        <p>{{ item.veloura_feature_subtitle }}</p>
+    {% endif %}
           </div>
 
         </div>

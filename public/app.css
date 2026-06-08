@@ -28658,8 +28658,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-store-features__icon i,
 .veloura-store-features__icon span {
-  font-size: calc(70px * 0.45);
-  font-size: calc(var(--veloura-icon-width, 70px) * 0.45);
+  font-size: calc(70px * 0.55);
+  font-size: calc(var(--veloura-icon-width, 70px) * 0.55);
   line-height: 1;
 }
 .veloura-store-features__icon img {
