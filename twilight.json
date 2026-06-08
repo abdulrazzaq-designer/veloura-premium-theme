@@ -3439,6 +3439,47 @@
   "step": "1",
   "minimum": "0",
   "maximum": "100"
+},
+{
+  "id": "veloura_faq_show_mobile_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الجوال فقط",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_faq_show_desktop_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الكمبيوتر فقط",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_faq_hide_section",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء هذا العنصر بالكامل",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_faq_custom_classes",
+  "type": "string",
+  "format": "text",
+  "label": "Classes",
+  "icon": "sicon-format-text-alt",
+  "value": null,
+  "required": false,
+  "minLength": 0,
+  "maxLength": "30000"
 }
   ]
 }
