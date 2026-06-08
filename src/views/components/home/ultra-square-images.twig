@@ -128,26 +128,25 @@
       </div>
     {% else %}
       <salla-slider
-        id="ultra-square-images-{{ position }}"
-        {% if component.ultra_slider_autoplay %}auto-play{% endif %}
-        {% if component.ultra_slider_loop %}loop{% endif %}
-        {% if component.ultra_slider_scrollbar %}pagination="scrollbar"{% endif %}
-        {{ component.ultra_slider_hide_arrows ? 'show-controls="false"' : '' }}
-        static-when-single
-        slider-config='{
-  "slidesPerView": {{ component.ultra_slider_show_partial ? 1.35 : component.ultra_mobile_columns|default(2) }},
-  "spaceBetween": {{ component.ultra_images_gap|default(16) }},
-  "freeMode": {{ component.ultra_slider_free_mode ? "true" : "false" }},
-  "autoplay": {{ component.ultra_slider_autoplay ? "{\"delay\": 1200, \"disableOnInteraction\": false}" : "false" }},
-  "scrollbar": {{ component.ultra_slider_scrollbar ? "{\"draggable\": true}" : "false" }},
-  "breakpoints": {
-    "768": {
-      "slidesPerView": {{ component.ultra_desktop_columns|default(4) }},
-      "spaceBetween": {{ component.ultra_images_gap|default(16) }}
+  id="ultra-square-images-{{ position }}"
+  pagination
+  {% if component.ultra_slider_autoplay %}auto-play{% endif %}
+  {% if component.ultra_slider_loop %}loop{% endif %}
+  {{ component.ultra_slider_hide_arrows ? 'show-controls="false"' : '' }}
+  static-when-single
+  slider-config='{
+    "slidesPerView": {{ component.ultra_slider_show_partial ? 1.35 : component.ultra_mobile_columns|default(2) }},
+    "spaceBetween": {{ component.ultra_images_gap|default(16) }},
+    "freeMode": {{ component.ultra_slider_free_mode ? "true" : "false" }},
+    "autoplay": {{ component.ultra_slider_autoplay ? "{\"delay\": 1200, \"disableOnInteraction\": false}" : "false" }},
+    "breakpoints": {
+      "768": {
+        "slidesPerView": {{ component.ultra_desktop_columns|default(4) }},
+        "spaceBetween": {{ component.ultra_images_gap|default(16) }}
+      }
     }
-  }
-}'
-      >
+  }'
+>
         <div slot="items">
           {% for banner in component.ultra_banners %}
             {% set image_src = banner.image %}
