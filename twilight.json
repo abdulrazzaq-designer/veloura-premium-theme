@@ -2931,7 +2931,7 @@
                             "value": null,
                             "multilanguage": false,
                             "required": false,
-                            "minLength": 6,
+                            "minLength": 0,
                             "maxLength": "3000"
                         },
                         {
@@ -2946,8 +2946,8 @@
                             "value": null,
                             "multilanguage": false,
                             "required": false,
-                            "minLength": 6,
-                            "maxLength": 30
+                            "minLength": 0,
+                            "maxLength": "3000"
                         },
                         {
                             "id": "veloura_features_collection.veloura_feature_background",
