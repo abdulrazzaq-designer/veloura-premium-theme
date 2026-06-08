@@ -6,7 +6,8 @@
   'round': '999px'
 } %}
 
-{% if not component.veloura_faq_hide_section %}
+{% set show_mobile = component.veloura_faq_show_mobile_only == true or component.veloura_faq_show_mobile_only == 'true' or component.veloura_faq_show_mobile_only == 1 or component.veloura_faq_show_mobile_only == '1' %}
+{% set show_desktop = component.veloura_faq_show_desktop_only == true or component.veloura_faq_show_desktop_only == 'true' or component.veloura_faq_show_desktop_only == 1 or component.veloura_faq_show_desktop_only == '1' %}
 
 {% set faq_classes = [
   's-block',
@@ -15,11 +16,11 @@
   component.veloura_faq_custom_classes ?: ''
 ] %}
 
-{% if component.veloura_faq_show_mobile_only %}
+{% if show_mobile %}
   {% set faq_classes = faq_classes|merge(['veloura-faq-mobile-only']) %}
 {% endif %}
 
-{% if component.veloura_faq_show_desktop_only %}
+{% if show_desktop %}
   {% set faq_classes = faq_classes|merge(['veloura-faq-desktop-only']) %}
 {% endif %}
 

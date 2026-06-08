@@ -1253,20 +1253,20 @@
   display: block;
 }
 
-.veloura-faq-mobile-only {
-  display: block;
+.veloura-faq.veloura-faq-mobile-only {
+  display: block !important;
 }
 
-.veloura-faq-desktop-only {
-  display: none;
+.veloura-faq.veloura-faq-desktop-only {
+  display: none !important;
 }
 
 @media (min-width: 768px) {
-  .veloura-faq-mobile-only {
-    display: none;
+  .veloura-faq.veloura-faq-mobile-only {
+    display: none !important;
   }
 
-  .veloura-faq-desktop-only {
-    display: block;
+  .veloura-faq.veloura-faq-desktop-only {
+    display: block !important;
   }
 }
