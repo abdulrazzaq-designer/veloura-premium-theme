@@ -28597,6 +28597,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .animated-banners.has-3d-effect .animated-banners__card img {
   border-radius: 0 !important;
 }
+.animated-banners.has-mobile-spacing {
+  padding-left: var(--banner-margin);
+  padding-right: var(--banner-margin);
+}
+@media (min-width: 1024px) {
+  .animated-banners.has-mobile-spacing {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .veloura-store-features {
   padding-top: 40px;
   padding-bottom: 40px;

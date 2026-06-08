@@ -19,6 +19,7 @@
   class="s-block animated-banners
   {{ component.animated_full_width ? 'full-banner is-full-width-desktop' : '' }}
   {{ not component.use_h_spacing and not component.animated_full_width ? 'container' : '' }}
+  {{ component.use_h_spacing and not component.animated_full_width ? 'container has-mobile-spacing' : '' }}
   {{ component.animated_transition_type in ['cube', 'flip'] ? 'has-3d-effect' : '' }}"
   style="
     --banner-margin: {{ component.use_h_spacing ? component.h_spacing|default(0) : 0 }}px;

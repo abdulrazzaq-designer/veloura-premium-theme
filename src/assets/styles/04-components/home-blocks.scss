@@ -1050,6 +1050,16 @@
   border-radius: 0 !important;
 }
 
+.animated-banners.has-mobile-spacing {
+  padding-inline: var(--banner-margin);
+}
+
+@media (min-width: 1024px) {
+  .animated-banners.has-mobile-spacing {
+    padding-inline: 0;
+  }
+}
+
 
 
 .veloura-store-features {

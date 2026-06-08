@@ -288,54 +288,52 @@ salla.onReady(() => (new App).loadTheApp());
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const counters = document.querySelectorAll('.veloura-counter');
 
     const animateCounter = (element) => {
+        const originalText = element.textContent.trim();
 
-        const text = element.textContent.trim();
-        const number = parseInt(text.replace(/[^\d]/g, ''));
+        const match = originalText.match(/(\d+)/);
+        if (!match) return;
 
-        if (isNaN(number)) return;
+        const target = parseInt(match[1], 10);
+        const prefix = originalText.slice(0, match.index);
+        const suffix = originalText.slice(match.index + match[1].length);
 
-        const suffix = text.replace(/[\d]/g, '');
+        const duration = 9000; // زودها لـ 8000 لو بدك أبطأ
+        const startTime = performance.now();
 
-        let current = 0;
-        const duration = 1500;
-        const stepTime = Math.max(10, duration / number);
+        const update = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
 
-        const timer = setInterval(() => {
+            // حركة ناعمة وبطيئة بالنهاية
+            const eased = 1 - Math.pow(1 - progress, 3);
 
-            current += Math.ceil(number / 60);
+            const current = Math.floor(eased * target);
 
-            if (current >= number) {
-                current = number;
-                clearInterval(timer);
+            element.textContent = prefix + current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = originalText;
             }
+        };
 
-            element.textContent = current + suffix;
-
-        }, stepTime);
+        requestAnimationFrame(update);
     };
 
     const observer = new IntersectionObserver((entries) => {
-
         entries.forEach(entry => {
-
             if (entry.isIntersecting && !entry.target.dataset.animated) {
-
                 entry.target.dataset.animated = 'true';
                 animateCounter(entry.target);
             }
-
         });
-
     }, {
-        threshold: 0.3
+        threshold: 0.4
     });
 
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
-
+    counters.forEach(counter => observer.observe(counter));
 });
