@@ -3416,7 +3416,30 @@
       "value": [],
       "minLength": 1,
       "maxLength": "100"
-    }
+    },
+    {
+  "id": "veloura_faq_enable_custom_spacing",
+  "type": "boolean",
+  "format": "switch",
+  "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_faq_custom_spacing",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "مقدار المسافة",
+  "icon": "sicon-pin",
+  "value": "0",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "100"
+}
   ]
 }
     ],
