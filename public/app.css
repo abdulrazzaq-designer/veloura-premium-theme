@@ -28743,6 +28743,35 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     display: block;
   }
 }
+.veloura-faq {
+  padding: 40px 0;
+}
+.veloura-faq__heading {
+  margin-bottom: 20px;
+}
+.veloura-faq__item {
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.veloura-faq__question {
+  width: 100%;
+  border: 0;
+  background: #f5f5f5;
+  padding: 18px;
+  text-align: right;
+  font-weight: 700;
+  cursor: pointer;
+}
+.veloura-faq__answer {
+  display: none;
+  padding: 18px;
+  background: #fff;
+}
+.veloura-faq__item.is-open .veloura-faq__answer {
+  display: block;
+}
 salla-slider{
     display: block;
 }

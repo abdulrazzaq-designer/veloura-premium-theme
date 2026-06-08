@@ -1,10 +1,27 @@
-<section class="s-block container" style="padding:40px;background:#eee;">
-  <h2 style="color:red;">FAQ Veloura يعمل</h2>
+<section class="s-block container veloura-faq">
 
-  {% for item in component.veloura_faq_items %}
-    <div>
-      <h3>{{ item.veloura_faq_question }}</h3>
-      <p>{{ item.veloura_faq_answer }}</p>
-    </div>
-  {% endfor %}
+    {% if component.veloura_faq_title %}
+        <div class="veloura-faq__heading">
+            <h2>{{ component.veloura_faq_title }}</h2>
+        </div>
+    {% endif %}
+
+    {% for item in component.veloura_faq_items %}
+        <div class="veloura-faq__item">
+
+            <button
+                type="button"
+                class="veloura-faq__question"
+                onclick="this.parentNode.classList.toggle('is-open')"
+            >
+                {{ item.veloura_faq_question }}
+            </button>
+
+            <div class="veloura-faq__answer">
+                {{ item.veloura_faq_answer }}
+            </div>
+
+        </div>
+    {% endfor %}
+
 </section>
