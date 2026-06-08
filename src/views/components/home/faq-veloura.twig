@@ -8,8 +8,23 @@
 
 {% if not component.veloura_faq_hide_section %}
 
+{% set faq_classes = [
+  's-block',
+  'container',
+  'veloura-faq',
+  component.veloura_faq_custom_classes ?: ''
+] %}
+
+{% if component.veloura_faq_show_mobile_only %}
+  {% set faq_classes = faq_classes|merge(['veloura-faq-mobile-only']) %}
+{% endif %}
+
+{% if component.veloura_faq_show_desktop_only %}
+  {% set faq_classes = faq_classes|merge(['veloura-faq-desktop-only']) %}
+{% endif %}
+
 <section
-  class="s-block container veloura-faq {{ component.veloura_faq_custom_classes }}"
+  class="{{ faq_classes|join(' ') }}"
   style="
     --faq-title-color: {{ component.veloura_faq_title_color|default('#383838') }};
     --faq-bg: {{ component.veloura_faq_background_color|default('#eeeeee') }};
