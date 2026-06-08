@@ -3287,6 +3287,26 @@
   "minLength": 0,
   "maxLength": "200"
 },
+{
+  "id": "veloura_faq_title_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون عناوين القسم",
+  "icon": "sicon-format-fill",
+  "value": "#383838",
+  "required": false
+},
+{
+  "id": "veloura_faq_background_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون خلفية الأسئلة الشائعة",
+  "icon": "sicon-format-fill",
+  "value": "#eeeeee",
+  "required": false
+},
     {
       "id": "veloura_faq_items",
       "type": "collection",
