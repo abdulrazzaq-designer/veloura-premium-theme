@@ -3307,6 +3307,26 @@
   "value": "#eeeeee",
   "required": false
 },
+{
+  "id": "veloura_faq_text_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون النص للأسئلة الشائعة",
+  "icon": "sicon-format-fill",
+  "value": "#323232",
+  "required": false
+},
+{
+  "id": "veloura_faq_border_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون الإطار",
+  "icon": "sicon-format-fill",
+  "value": "#323232",
+  "required": false
+},
     {
       "id": "veloura_faq_items",
       "type": "collection",
