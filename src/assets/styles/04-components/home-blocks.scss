@@ -1206,46 +1206,63 @@
 }
 
 .veloura-faq__heading {
-  margin-bottom: 24px;
-  color: var(--faq-title-color);
   text-align: center;
+  margin-bottom: 28px;
+  color: var(--faq-title-color);
 }
 
 .veloura-faq__heading h2 {
-  margin: 0 0 8px;
-  font-size: 28px;
+  margin: 0 0 10px;
+  font-size: 32px;
   font-weight: 800;
 }
 
 .veloura-faq__heading p {
   margin: 0;
   font-size: 15px;
-  opacity: .75;
+  opacity: .8;
 }
 
 .veloura-faq__item {
-  border: 1px solid var(--faq-border);
-  border-radius: var(--faq-radius);
-  margin-bottom: 14px;
-  overflow: hidden;
   background: var(--faq-bg);
   color: var(--faq-text);
+  border: 1px solid var(--faq-border);
+  border-radius: var(--faq-radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  transition: .25s ease;
 }
 
 .veloura-faq__question {
   width: 100%;
-  padding: 18px;
-  border: 0;
   background: transparent;
-  color: inherit;
+  border: 0;
+  padding: 22px 24px;
   text-align: right;
+  color: inherit;
+  font-size: 17px;
   font-weight: 800;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.veloura-faq__question::after {
+  content: "+";
+  font-size: 26px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.veloura-faq__item.is-open .veloura-faq__question::after {
+  content: "−";
 }
 
 .veloura-faq__answer {
   display: none;
-  padding: 18px;
+  padding: 0 24px 22px;
+  line-height: 1.9;
   color: inherit;
 }
 

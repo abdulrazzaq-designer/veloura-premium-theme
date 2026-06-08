@@ -3411,7 +3411,28 @@
           "required": false,
           "minLength": 0,
           "maxLength": "5000"
-        }
+        },
+        {
+  "id": "veloura_faq_items.veloura_faq_button_text",
+  "type": "string",
+  "format": "text",
+  "label": "نص الزر",
+  "icon": "sicon-format-text-alt",
+  "value": "إقرأ المزيد",
+  "required": false,
+  "minLength": 0,
+  "maxLength": "100"
+},
+{
+  "id": "veloura_faq_items.veloura_faq_show_button",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار الزر",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+}
       ],
       "value": [],
       "minLength": 1,
