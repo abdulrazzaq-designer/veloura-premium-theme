@@ -343,3 +343,13 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(counter);
   });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.veloura-faq__question').forEach((button) => {
+    button.addEventListener('click', () => {
+      button.closest('.veloura-faq__item').classList.toggle('is-open');
+    });
+  });
+});

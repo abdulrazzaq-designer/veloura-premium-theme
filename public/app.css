@@ -28772,6 +28772,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-faq__item.is-open .veloura-faq__answer {
   display: block;
 }
+.veloura-faq__answer {
+  display: none;
+}
+.veloura-faq__item.is-open .veloura-faq__answer {
+  display: block;
+}
 salla-slider{
     display: block;
 }
