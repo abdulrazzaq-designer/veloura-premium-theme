@@ -3277,6 +3277,67 @@
       "maxLength": "100"
     },
     {
+  "id": "veloura_faq_subtitle",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان فرعي (اختياري)",
+  "icon": "sicon-format-text-alt",
+  "value": "ادخل عنوان فرعي هنا",
+  "required": false,
+  "minLength": 0,
+  "maxLength": "200"
+},
+{
+  "id": "veloura_faq_title_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون عناوين القسم",
+  "icon": "sicon-format-fill",
+  "value": "#383838",
+  "required": false
+},
+{
+  "id": "veloura_faq_background_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون خلفية الأسئلة الشائعة",
+  "icon": "sicon-format-fill",
+  "value": "#eeeeee",
+  "required": false
+},
+{
+  "id": "veloura_faq_text_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون النص للأسئلة الشائعة",
+  "icon": "sicon-format-fill",
+  "value": "#323232",
+  "required": false
+},
+{
+  "id": "veloura_faq_border_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون الإطار أو الحواف",
+  "icon": "sicon-format-fill",
+  "value": "#323232",
+  "required": false
+},
+{
+  "id": "veloura_faq_hide_border",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء الإطار",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+    {
       "id": "veloura_faq_items",
       "type": "collection",
       "format": "collection",
