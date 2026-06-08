@@ -3413,6 +3413,70 @@
           "maxLength": "5000"
         },
         {
+  "type": "items",
+  "icon": "sicon-link",
+  "label": "رابط الزر",
+  "id": "veloura_faq_items.veloura_faq_url",
+  "value": null,
+  "description": null,
+  "required": false,
+  "format": "variable-list",
+  "searchable": true,
+  "source": "custom",
+  "sources": [
+    {
+      "label": "منتج",
+      "key": "products",
+      "value": "products"
+    },
+    {
+      "label": "تصنيف",
+      "key": "categories",
+      "value": "categories"
+    },
+    {
+      "label": "ماركة تجارية",
+      "key": "brands",
+      "value": "brands"
+    },
+    {
+      "label": "صفحة تعريفية",
+      "key": "pages",
+      "value": "pages"
+    },
+    {
+      "label": "مقالة",
+      "key": "blog_articles",
+      "value": "blog_articles"
+    },
+    {
+      "label": "تصنيف ضمن المدونة",
+      "key": "blog_categories",
+      "value": "blog_categories"
+    },
+    {
+      "label": "التخفيضات",
+      "key": "offers_link",
+      "value": "offers_link"
+    },
+    {
+      "label": "الماركات التجارية",
+      "key": "brands_link",
+      "value": "brands_link"
+    },
+    {
+      "label": "المدونة",
+      "key": "blog_link",
+      "value": "blog_link"
+    },
+    {
+      "label": "رابط خارجي",
+      "key": "custom",
+      "value": "custom"
+    }
+  ]
+},  
+        {
   "id": "veloura_faq_items.veloura_faq_button_text",
   "type": "string",
   "format": "text",
@@ -3422,16 +3486,6 @@
   "required": false,
   "minLength": 0,
   "maxLength": "100"
-},
-{
-  "id": "veloura_faq_items.veloura_faq_show_button",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إظهار الزر",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
 }
       ],
       "value": [],
