@@ -985,22 +985,36 @@
     overflow: visible;
   }
 
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
   .swiper-pagination,
   .s-slider-pagination,
   .salla-slider-pagination {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
     position: relative !important;
     inset: auto !important;
     bottom: auto !important;
     top: auto !important;
+    left: auto !important;
+    right: auto !important;
     transform: none !important;
-    margin-top: 18px !important;
-    z-index: 1;
-  }
 
-  .swiper-wrapper {
-    align-items: stretch;
+    margin-top: 18px !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    z-index: 10;
   }
 }
+
+
+
 
 
 
