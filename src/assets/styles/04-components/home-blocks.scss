@@ -960,6 +960,20 @@
   }
 }
 
+.ultra-square-images {
+  .ultra-square-images__container {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: var(--ultra-horizontal-spacing, 0px);
+    box-sizing: border-box;
+  }
+}
+
+.ultra-square-images.is-slider .swiper-wrapper {
+  box-sizing: border-box;
+}
+
 
 
 
