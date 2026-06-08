@@ -3418,7 +3418,7 @@
   "format": "text",
   "label": "نص الزر",
   "icon": "sicon-format-text-alt",
-  "value": "إقرأ المزيد",
+  "value": null,
   "required": false,
   "minLength": 0,
   "maxLength": "100"

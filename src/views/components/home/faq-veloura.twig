@@ -37,6 +37,12 @@
 
   <div class="veloura-faq__inner">
 
+  {% if item.veloura_faq_button_text %}
+  <a href="#" class="veloura-faq__button">
+    {{ item.veloura_faq_button_text }}
+  </a>
+{% endif %}
+
     {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
       <div class="veloura-faq__heading">
         {% if component.veloura_faq_title %}
