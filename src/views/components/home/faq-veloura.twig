@@ -37,35 +37,35 @@
 
   <div class="veloura-faq__inner">
 
-  {% if item.veloura_faq_button_text %}
-  <a href="#" class="veloura-faq__button">
-    {{ item.veloura_faq_button_text }}
-  </a>
-{% endif %}
+  {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
+    <div class="veloura-faq__heading">
+      {% if component.veloura_faq_title %}
+        <h2>{{ component.veloura_faq_title }}</h2>
+      {% endif %}
 
-    {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
-      <div class="veloura-faq__heading">
-        {% if component.veloura_faq_title %}
-          <h2>{{ component.veloura_faq_title }}</h2>
-        {% endif %}
+      {% if component.veloura_faq_subtitle %}
+        <p>{{ component.veloura_faq_subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
 
-        {% if component.veloura_faq_subtitle %}
-          <p>{{ component.veloura_faq_subtitle }}</p>
+  {% for item in component.veloura_faq_items %}
+    <div class="veloura-faq__item">
+      <button type="button" class="veloura-faq__question">
+        {{ item.veloura_faq_question }}
+      </button>
+
+      <div class="veloura-faq__answer">
+        {{ item.veloura_faq_answer }}
+
+        {% if item.veloura_faq_button_text %}
+          <a href="#" class="veloura-faq__button">
+            {{ item.veloura_faq_button_text }}
+          </a>
         {% endif %}
       </div>
-    {% endif %}
-
-    {% for item in component.veloura_faq_items %}
-      <div class="veloura-faq__item">
-        <button type="button" class="veloura-faq__question">
-          {{ item.veloura_faq_question }}
-        </button>
-
-        <div class="veloura-faq__answer">
-          {{ item.veloura_faq_answer }}
-        </div>
-      </div>
-    {% endfor %}
+    </div>
+  {% endfor %}
 
   </div>
 
