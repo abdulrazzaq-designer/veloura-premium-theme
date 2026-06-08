@@ -1055,11 +1055,12 @@
 .veloura-store-features {
   padding-top: 40px;
   padding-bottom: 40px;
+  padding-inline: var(--veloura-custom-spacing, 0);
 
   &__heading {
     margin-bottom: 32px;
     color: var(--veloura-title-color, #111);
-    text-align: var(--veloura-heading-align-mobile, center);
+    text-align: var(--veloura-heading-align, center);
 
     h2 {
       margin: 0 0 8px;
@@ -1107,13 +1108,13 @@
 
     i,
     span {
-      font-size: 34px;
+      font-size: calc(var(--veloura-icon-width, 70px) * 0.45);
       line-height: 1;
     }
 
     img {
-      width: 70%;
-      height: 70%;
+      width: 60%;
+      height: 60%;
       object-fit: contain;
     }
   }
@@ -1130,19 +1131,11 @@
     .veloura-store-features__icon {
       position: absolute;
       top: calc(var(--veloura-icon-height, 70px) / -2);
-      right: 20px;
-      left: auto;
-      transform: none;
-      margin: 0;
-      z-index: 2;
-    }
-  }
-
-  &__item.has-floating-icon.is-centered {
-    .veloura-store-features__icon {
       right: 50%;
       left: auto;
       transform: translateX(50%);
+      margin: 0;
+      z-index: 2;
     }
   }
 
@@ -1166,17 +1159,6 @@
   }
 }
 
-.veloura-store-features__heading {
-  text-align: var(--veloura-heading-align, center);
-}
-.veloura-store-features {
-  padding-inline: var(--veloura-custom-spacing, 0);
-}
-
-.veloura-store-features__heading {
-  text-align: var(--veloura-heading-align, center);
-}
-
 .veloura-show-mobile-only {
   display: block;
 }
@@ -1186,6 +1168,12 @@
 }
 
 @media (min-width: 768px) {
+  .veloura-store-features {
+    &__grid {
+      grid-template-columns: repeat(var(--veloura-desktop-cols, 3), minmax(0, 1fr));
+    }
+  }
+
   .veloura-show-mobile-only {
     display: none;
   }
