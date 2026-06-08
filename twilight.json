@@ -3255,7 +3255,373 @@
                     "maxLength": "30000"
                 }
             ]
+        },
+        {
+  "key": "a8c712fd-ef56-43e9-a2de-f1f005fe6f50",
+  "title": {
+    "ar": "الأسئلة الشائعة - Veloura",
+    "en": "FAQ - Veloura"
+  },
+  "icon": "sicon-help-circle",
+  "path": "home.faq-veloura",
+  "fields": [
+    {
+      "id": "veloura_faq_heading_static",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات الأسئلة الشائعة</strong>     <div class=\"text-sm opacity-75 mt-1\">خصص قسم الأسئلة الشائعة على ذوقك</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_faq_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "الأسئلة الشائعة",
+      "icon": "sicon-format-text-alt",
+      "value": "الأسئلة الشائعة",
+      "multilanguage": false,
+      "required": false,
+      "minLength": 0,
+      "maxLength": "100"
+    },
+    {
+      "id": "veloura_faq_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان فرعي (اختياري)",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "ادخل عنوان فرعي هنا",
+      "icon": "sicon-format-text-alt",
+      "value": "ادخل عنوان فرعي هنا",
+      "multilanguage": false,
+      "required": false,
+      "minLength": 0,
+      "maxLength": "200"
+    },
+    {
+      "id": "veloura_faq_title_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون عناوين القسم",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-format-fill",
+      "value": "#383838",
+      "required": false
+    },
+    {
+      "id": "veloura_faq_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حواف الأسئلة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم جداً",
+          "value": "large",
+          "key": "faq-radius-large"
         }
+      ],
+      "options": [
+        {
+          "label": "حاد",
+          "value": "sharp",
+          "key": "faq-radius-sharp"
+        },
+        {
+          "label": "ناعم قليلاً",
+          "value": "soft",
+          "key": "faq-radius-soft"
+        },
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "faq-radius-medium"
+        },
+        {
+          "label": "ناعم جداً",
+          "value": "large",
+          "key": "faq-radius-large"
+        },
+        {
+          "label": "دائري",
+          "value": "round",
+          "key": "faq-radius-round"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_faq_background_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية الأسئلة الشائعة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-format-fill",
+      "value": "#eeeeee",
+      "required": false
+    },
+    {
+      "id": "veloura_faq_text_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون النص للأسئلة الشائعة (السؤال والإجابة)",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-format-fill",
+      "value": "#323232",
+      "required": false
+    },
+    {
+      "id": "veloura_faq_border_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون الإطار أو الحواف للأسئلة الشائعة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-format-fill",
+      "value": "#323232",
+      "required": false
+    },
+    {
+      "id": "veloura_faq_hide_border",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء الإطار",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_faq_items",
+      "type": "collection",
+      "format": "collection",
+      "label": "الأسئلة الشائعة",
+      "description": null,
+      "labelHTML": null,
+      "item_label": "السؤال",
+      "icon": "sicon-list-add",
+      "fields": [
+        {
+          "id": "veloura_faq_items.veloura_faq_question",
+          "type": "string",
+          "format": "text",
+          "label": "السؤال",
+          "description": null,
+          "labelHTML": null,
+          "placeholder": "ادخل السؤال هنا",
+          "icon": "sicon-format-text-alt",
+          "value": "ادخل السؤال هنا",
+          "multilanguage": false,
+          "required": false,
+          "minLength": 0,
+          "maxLength": "300"
+        },
+        {
+          "id": "veloura_faq_items.veloura_faq_answer",
+          "type": "string",
+          "format": "richtext",
+          "label": "الإجابة",
+          "description": null,
+          "labelHTML": null,
+          "placeholder": "ادخل الإجابة هنا",
+          "icon": "sicon-format-text",
+          "value": "ادخل الإجابة هنا",
+          "multilanguage": false,
+          "required": false,
+          "minLength": 0,
+          "maxLength": "5000"
+        },
+        {
+          "id": "veloura_faq_items.veloura_faq_url",
+          "type": "items",
+          "icon": "sicon-link",
+          "label": "رابط الزر",
+          "value": null,
+          "description": null,
+          "required": false,
+          "format": "variable-list",
+          "searchable": true,
+          "source": "custom",
+          "sources": [
+            {
+              "label": "منتج",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "تصنيف",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "ماركة تجارية",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "صفحة تعريفية",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "مقالة",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "تصنيف ضمن المدونة",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "التخفيضات",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "الماركات التجارية",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "المدونة",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "رابط خارجي",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "veloura_faq_items.veloura_faq_button_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزر",
+          "description": null,
+          "labelHTML": null,
+          "placeholder": "إقرأ المزيد",
+          "icon": "sicon-format-text-alt",
+          "value": "إقرأ المزيد",
+          "multilanguage": false,
+          "required": false,
+          "minLength": 0,
+          "maxLength": "100"
+        }
+      ],
+      "value": [],
+      "minLength": 1,
+      "maxLength": "55555555"
+    },
+    {
+      "id": "veloura_faq_enable_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_faq_custom_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-pin",
+      "value": "0",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_faq_enable_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_faq_show_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_faq_show_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر فقط",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_faq_hide_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر بالكامل",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_faq_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "ex: container dark p-5 custom",
+      "icon": "sicon-format-text-alt",
+      "value": null,
+      "multilanguage": false,
+      "required": false,
+      "minLength": 0,
+      "maxLength": "30000"
+    }
+  ]
+}
     ],
     "support_url": "https://velourapremium.com",
     "description": {
