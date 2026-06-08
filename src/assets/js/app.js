@@ -288,52 +288,58 @@ salla.onReady(() => (new App).loadTheApp());
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const counters = document.querySelectorAll('.veloura-counter');
+  const counters = document.querySelectorAll('.veloura-counter');
 
-    const animateCounter = (element) => {
-        const originalText = element.textContent.trim();
+  const animateCounter = (element) => {
+    if (element.dataset.animated) return;
 
-        const match = originalText.match(/(\d+)/);
-        if (!match) return;
+    element.dataset.animated = 'true';
 
-        const target = parseInt(match[1], 10);
-        const prefix = originalText.slice(0, match.index);
-        const suffix = originalText.slice(match.index + match[1].length);
+    const originalText = element.textContent.trim();
+    const match = originalText.match(/(\d+)/);
 
-        const duration = 9000; // زودها لـ 8000 لو بدك أبطأ
-        const startTime = performance.now();
+    if (!match) return;
 
-        const update = (now) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+    const target = parseInt(match[1], 10);
+    const prefix = originalText.slice(0, match.index);
+    const suffix = originalText.slice(match.index + match[1].length);
 
-            // حركة ناعمة وبطيئة بالنهاية
-            const eased = 1 - Math.pow(1 - progress, 3);
+    const duration = 6000;
+    const startTime = performance.now();
 
-            const current = Math.floor(eased * target);
+    const update = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const current = Math.floor(progress * target);
 
-            element.textContent = prefix + current + suffix;
+      element.textContent = prefix + current + suffix;
 
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            } else {
-                element.textContent = originalText;
-            }
-        };
-
+      if (progress < 1) {
         requestAnimationFrame(update);
+      } else {
+        element.textContent = originalText;
+      }
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.dataset.animated) {
-                entry.target.dataset.animated = 'true';
-                animateCounter(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.4
-    });
+    requestAnimationFrame(update);
+  };
 
-    counters.forEach(counter => observer.observe(counter));
+  counters.forEach((counter) => {
+    const startOnView = counter.dataset.startOnView === 'true';
+
+    if (!startOnView) {
+      animateCounter(counter);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(counter);
+  });
 });
