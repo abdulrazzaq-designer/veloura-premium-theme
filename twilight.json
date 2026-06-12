@@ -3259,8 +3259,8 @@
         {
             "key": "a8c712fd-ef56-43e9-a2de-f1f005fe6f50",
             "title": {
-                "ar": "الأسئلة الشائعة - Veloura",
-                "en": "FAQ - Veloura"
+                "ar": "الأسئلة الشائعة (فيلورا)",
+                "en": "الأسئلة الشائعة (فيلورا)"
             },
             "icon": "sicon-help",
             "path": "home.faq-veloura",
