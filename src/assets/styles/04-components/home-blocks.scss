@@ -1319,14 +1319,11 @@
 }
 
 .veloura-title__inner {
-  text-align: center;
+  text-align: var(--veloura-title-align, center);
 }
 
 .veloura-title__heading {
-  margin: 0;
-  color: var(--veloura-title-color);
-  font-size: 32px;
-  font-weight: 800;
+  font-size: var(--veloura-title-size, 32px);
 }
 
 .veloura-title__heading span {

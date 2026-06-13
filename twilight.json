@@ -3637,6 +3637,54 @@
   "icon": "sicon-format-fill",
   "value": "#111111",
   "required": false
+},
+{
+  "id": "veloura_title_align",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "محاذاة العنوان",
+  "icon": "sicon-keyboard_arrow_down",
+  "selected": [
+    {
+      "label": "وسط",
+      "value": "center",
+      "key": "title-align-center"
+    }
+  ],
+  "options": [
+    {
+      "label": "يمين",
+      "value": "right",
+      "key": "title-align-right"
+    },
+    {
+      "label": "وسط",
+      "value": "center",
+      "key": "title-align-center"
+    },
+    {
+      "label": "يسار",
+      "value": "left",
+      "key": "title-align-left"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": false
+},
+{
+  "id": "veloura_title_size",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "حجم العنوان",
+  "icon": "sicon-pin",
+  "value": "32",
+  "required": false,
+  "step": "1",
+  "minimum": "16",
+  "maximum": "64"
 }
   ]
 }
