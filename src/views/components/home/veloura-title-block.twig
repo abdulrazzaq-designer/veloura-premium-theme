@@ -10,10 +10,10 @@
 {% set subtitle_size_map = {
   'xs': '12px',
   'sm': '14px',
-  'medium': '15px',
-  'lg': '17px',
-  'xl': '19px',
-  'xxl': '22px'
+  'medium': '18px',
+  'lg': '22px',
+  'xl': '28px',
+  'xxl': '34px'
 } %}
 
 {% if not component.veloura_title_hide_section %}
@@ -37,13 +37,14 @@
 {% if component.veloura_title_text or component.veloura_title_subtitle %}
 <section
   class="{{ title_classes|join(' ') }}"
+  data-title-for-next="{{ component.veloura_title_for_next_section ? 'true' : 'false' }}"
   style="
     --veloura-title-color: {{ component.veloura_title_color|default('#323232') }};
     --veloura-title-line-color: {{ component.veloura_title_line_color|default('#111111') }};
     --veloura-title-align: {{ component.veloura_title_align|default('center') }};
     --veloura-title-size: {{ title_size_map[component.veloura_title_size|default('medium')]|default('28px') }};
-    --veloura-title-spacing: {{ component.veloura_title_enable_custom_spacing ? component.veloura_title_custom_spacing|default(0) : 0 }}px;
     --veloura-subtitle-size: {{ subtitle_size_map[component.veloura_title_size|default('medium')]|default('15px') }};
+    --veloura-title-spacing: {{ component.veloura_title_enable_custom_spacing ? component.veloura_title_custom_spacing|default(0) : 0 }}px;
   "
 >
   <div class="veloura-title__inner">

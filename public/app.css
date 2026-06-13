@@ -28889,6 +28889,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     display: block;
   }
 }
+.veloura-title.is-title-for-next {
+  padding-bottom: 16px;
+}
 salla-slider{
     display: block;
 }

@@ -375,3 +375,30 @@ document.addEventListener('click', function (e) {
     });
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.veloura-title[data-title-for-next="true"]').forEach((titleBlock) => {
+    const nextSection = titleBlock.nextElementSibling;
+
+    if (!nextSection) return;
+
+    const nextHeading = nextSection.querySelector(
+      [
+        '.s-block__title',
+        '.s-block__heading',
+        '.section-title',
+        '.s-block-title',
+        '.s-slider-block__title',
+        'h2',
+        'h3'
+      ].join(',')
+    );
+
+    if (nextHeading) {
+      nextHeading.style.display = 'none';
+    }
+
+    titleBlock.classList.add('is-title-for-next');
+  });
+});
