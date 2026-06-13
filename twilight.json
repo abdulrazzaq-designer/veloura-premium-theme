@@ -3589,187 +3589,187 @@
       "value": ""
     },
     {
-  "id": "veloura_title_color",
-  "type": "string",
-  "format": "color",
-  "inputType": "color",
-  "label": "لون العناوين",
-  "icon": "sicon-format-fill",
-  "value": "#323232",
-  "required": false
-},
-{
-  "id": "veloura_title_line_type",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "نوع الخط حول العنوان",
-  "icon": "sicon-keyboard_arrow_down",
-  "selected": [
+      "id": "veloura_title_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون العناوين",
+      "icon": "sicon-format-fill",
+      "value": "#323232",
+      "required": false
+    },
     {
-      "label": "بدون خط",
-      "value": "none",
-      "key": "title-line-none"
+      "id": "veloura_title_line_type",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "نوع الخط حول العنوان",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "بدون خط",
+          "value": "none",
+          "key": "title-line-none"
+        }
+      ],
+      "options": [
+        {
+          "label": "بدون خط",
+          "value": "none",
+          "key": "title-line-none"
+        },
+        {
+          "label": "خط يمين ويسار",
+          "value": "both",
+          "key": "title-line-both"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_line_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون الخط",
+      "icon": "sicon-format-fill",
+      "value": "#111111",
+      "required": false
+    },
+    {
+      "id": "veloura_title_align",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "محاذاة العنوان",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "وسط",
+          "value": "center",
+          "key": "title-align-center"
+        }
+      ],
+      "options": [
+        {
+          "label": "يمين",
+          "value": "right",
+          "key": "title-align-right"
+        },
+        {
+          "label": "وسط",
+          "value": "center",
+          "key": "title-align-center"
+        },
+        {
+          "label": "يسار",
+          "value": "left",
+          "key": "title-align-left"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_size",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حجم النص (للعناوين)",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "متوسط",
+          "value": "medium",
+          "key": "title-size-medium"
+        }
+      ],
+      "options": [
+        {
+          "label": "صغير جداً",
+          "value": "xs",
+          "key": "title-size-xs"
+        },
+        {
+          "label": "صغير",
+          "value": "sm",
+          "key": "title-size-sm"
+        },
+        {
+          "label": "متوسط",
+          "value": "medium",
+          "key": "title-size-medium"
+        },
+        {
+          "label": "كبير",
+          "value": "lg",
+          "key": "title-size-lg"
+        },
+        {
+          "label": "كبير جداً",
+          "value": "xl",
+          "key": "title-size-xl"
+        },
+        {
+          "label": "ضخم",
+          "value": "xxl",
+          "key": "title-size-xxl"
+        },
+        {
+          "label": "ضخم جداً",
+          "value": "xxxl",
+          "key": "title-size-xxxl"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_for_next_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "جعله عنوان للقسم التالي",
+      "description": "يتم إخفاء عنوان القسم التالي إن وجد واستبداله بهذا العنوان",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_enable_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_custom_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-pin",
+      "value": "0",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_title_enable_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
     }
-  ],
-  "options": [
-    {
-      "label": "بدون خط",
-      "value": "none",
-      "key": "title-line-none"
-    },
-    {
-      "label": "خط يمين ويسار",
-      "value": "both",
-      "key": "title-line-both"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": false,
-  "required": false
-},
-{
-  "id": "veloura_title_line_color",
-  "type": "string",
-  "format": "color",
-  "inputType": "color",
-  "label": "لون الخط",
-  "icon": "sicon-format-fill",
-  "value": "#111111",
-  "required": false
-},
-{
-  "id": "veloura_title_align",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "محاذاة العنوان",
-  "icon": "sicon-keyboard_arrow_down",
-  "selected": [
-    {
-      "label": "وسط",
-      "value": "center",
-      "key": "title-align-center"
-    }
-  ],
-  "options": [
-    {
-      "label": "يمين",
-      "value": "right",
-      "key": "title-align-right"
-    },
-    {
-      "label": "وسط",
-      "value": "center",
-      "key": "title-align-center"
-    },
-    {
-      "label": "يسار",
-      "value": "left",
-      "key": "title-align-left"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": false,
-  "required": false
-},
-{
-  "id": "veloura_title_size",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "حجم النص (للعناوين)",
-  "icon": "sicon-keyboard_arrow_down",
-  "selected": [
-    {
-      "label": "متوسط",
-      "value": "medium",
-      "key": "title-size-medium"
-    }
-  ],
-  "options": [
-    {
-      "label": "صغير جداً",
-      "value": "xs",
-      "key": "title-size-xs"
-    },
-    {
-      "label": "صغير",
-      "value": "sm",
-      "key": "title-size-sm"
-    },
-    {
-      "label": "متوسط",
-      "value": "medium",
-      "key": "title-size-medium"
-    },
-    {
-      "label": "كبير",
-      "value": "lg",
-      "key": "title-size-lg"
-    },
-    {
-      "label": "كبير جداً",
-      "value": "xl",
-      "key": "title-size-xl"
-    },
-    {
-      "label": "ضخم",
-      "value": "xxl",
-      "key": "title-size-xxl"
-    },
-    {
-      "label": "ضخم جداً",
-      "value": "xxxl",
-      "key": "title-size-xxxl"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": false,
-  "required": false
-}
   ]
-},
-{
-  "id": "veloura_title_for_next_section",
-  "type": "boolean",
-  "format": "switch",
-  "label": "جعله عنوان للقسم التالي",
-  "description": "يتم إخفاء عنوان القسم التالي إن وجد واستبداله بهذا العنوان",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_enable_custom_spacing",
-  "type": "boolean",
-  "format": "switch",
-  "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_custom_spacing",
-  "type": "number",
-  "format": "slider",
-  "inputType": "range",
-  "label": "مقدار المسافة",
-  "icon": "sicon-pin",
-  "value": "0",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "100",
-  "conditions": [
-  {
-    "id": "veloura_title_enable_custom_spacing",
-    "operation": "=",
-    "value": true
-  }
-]
 }
     ],
     "support_url": "https://velourapremium.com",
