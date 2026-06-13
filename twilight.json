@@ -3874,17 +3874,6 @@
       ]
     },
     {
-      "id": "veloura_spacer_remove_next_top",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إلغاء المسافة العلوية للعنصر التالي",
-      "description": "اختياري، مفيد عند دمج بعض العناصر مع بعض بدون أي مسافة",
-      "icon": "sicon-toggle-off",
-      "value": false,
-      "selected": false,
-      "required": false
-    },
-    {
       "id": "veloura_spacer_custom_classes",
       "type": "string",
       "format": "text",

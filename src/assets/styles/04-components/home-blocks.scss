@@ -1400,8 +1400,3 @@
     height: var(--veloura-spacer-desktop, 60px);
   }
 }
-
-.veloura-spacer.is-remove-next-top + .s-block {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}

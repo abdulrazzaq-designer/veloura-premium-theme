@@ -405,3 +405,4 @@ document.addEventListener('DOMContentLoaded', initVelouraTitleNextSection);
 document.addEventListener('theme::ready', initVelouraTitleNextSection);
 setTimeout(initVelouraTitleNextSection, 500);
 setTimeout(initVelouraTitleNextSection, 1500);
+
