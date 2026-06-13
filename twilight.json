@@ -3587,7 +3587,57 @@
       "format": "text",
       "label": "عنوان فرعي (اختياري)",
       "value": ""
+    },
+    {
+  "id": "veloura_title_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون العناوين",
+  "icon": "sicon-format-fill",
+  "value": "#323232",
+  "required": false
+},
+{
+  "id": "veloura_title_line_type",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "نوع الخط حول العنوان",
+  "icon": "sicon-keyboard_arrow_down",
+  "selected": [
+    {
+      "label": "بدون خط",
+      "value": "none",
+      "key": "title-line-none"
     }
+  ],
+  "options": [
+    {
+      "label": "بدون خط",
+      "value": "none",
+      "key": "title-line-none"
+    },
+    {
+      "label": "خط يمين ويسار",
+      "value": "both",
+      "key": "title-line-both"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": false
+},
+{
+  "id": "veloura_title_line_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون الخط",
+  "icon": "sicon-format-fill",
+  "value": "#111111",
+  "required": false
+}
   ]
 }
     ],

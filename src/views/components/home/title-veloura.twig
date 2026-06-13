@@ -1,11 +1,18 @@
-{% if component.veloura_title_text %}
-<section class="s-block container veloura-title">
-
+{% if component.veloura_title_text or component.veloura_title_subtitle %}
+<section
+  class="s-block container veloura-title {{ component.veloura_title_line_type == 'both' ? 'has-side-lines' : '' }}"
+  style="
+    --veloura-title-color: {{ component.veloura_title_color|default('#323232') }};
+    --veloura-title-line-color: {{ component.veloura_title_line_color|default('#111111') }};
+  "
+>
   <div class="veloura-title__inner">
 
-    <h2 class="veloura-title__heading">
-      {{ component.veloura_title_text }}
-    </h2>
+    {% if component.veloura_title_text %}
+      <h2 class="veloura-title__heading">
+        <span>{{ component.veloura_title_text }}</span>
+      </h2>
+    {% endif %}
 
     {% if component.veloura_title_subtitle %}
       <p class="veloura-title__subtitle">
@@ -14,6 +21,5 @@
     {% endif %}
 
   </div>
-
 </section>
 {% endif %}

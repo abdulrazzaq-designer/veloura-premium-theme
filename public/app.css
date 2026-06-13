@@ -28837,6 +28837,37 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   background: rgba(255, 255, 255, 0.18);
   transform: translateY(-1px);
 }
+.veloura-title {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.veloura-title__inner {
+  text-align: center;
+}
+.veloura-title__heading {
+  margin: 0;
+  color: var(--veloura-title-color);
+  font-size: 32px;
+  font-weight: 800;
+}
+.veloura-title__heading span {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.veloura-title.has-side-lines .veloura-title__heading span::before,
+.veloura-title.has-side-lines .veloura-title__heading span::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--veloura-title-line-color);
+}
+.veloura-title__subtitle {
+  margin: 10px 0 0;
+  font-size: 15px;
+  opacity: 0.75;
+}
 salla-slider{
     display: block;
 }
