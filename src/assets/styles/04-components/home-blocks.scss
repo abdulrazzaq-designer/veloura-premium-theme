@@ -1372,3 +1372,12 @@
 .veloura-title.is-title-for-next {
   padding-bottom: 16px;
 }
+
+
+
+.is-title-next-section + .s-block .s-block__title,
+.is-title-next-section + .s-block .s-section-main-title,
+.is-title-next-section + .s-block .section-title,
+.is-title-next-section + .s-block .features--title-outer {
+  display: none !important;
+}

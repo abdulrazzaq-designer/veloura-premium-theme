@@ -379,26 +379,31 @@ document.addEventListener('click', function (e) {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.veloura-title[data-title-for-next="true"]').forEach((titleBlock) => {
-    const nextSection = titleBlock.nextElementSibling;
+    let nextSection = titleBlock.nextElementSibling;
+
+    while (nextSection && !nextSection.classList.contains('s-block')) {
+      nextSection = nextSection.nextElementSibling;
+    }
 
     if (!nextSection) return;
 
-    const nextHeading = nextSection.querySelector(
-      [
-        '.s-block__title',
-        '.s-block__heading',
-        '.section-title',
-        '.s-block-title',
-        '.s-slider-block__title',
-        'h2',
-        'h3'
-      ].join(',')
-    );
+    const headings = nextSection.querySelectorAll(`
+      .s-block__title,
+      .s-block__heading,
+      .section-title,
+      .s-block-title,
+      .s-slider-block__title,
+      .s-products-slider-card__title,
+      h1,
+      h2,
+      h3
+    `);
 
-    if (nextHeading) {
-      nextHeading.style.display = 'none';
-    }
+    headings.forEach((heading) => {
+      heading.style.display = 'none';
+    });
 
     titleBlock.classList.add('is-title-for-next');
+    nextSection.classList.add('has-veloura-title-before');
   });
 });
