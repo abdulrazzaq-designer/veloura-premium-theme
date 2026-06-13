@@ -347,9 +347,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.veloura-faq__question').forEach((button) => {
-    button.addEventListener('click', () => {
-      button.closest('.veloura-faq__item').classList.toggle('is-open');
+  document.querySelectorAll('.veloura-faq__item').forEach((item) => {
+    const btn = item.querySelector('.veloura-faq__question');
+    const answer = item.querySelector('.veloura-faq__answer');
+
+    if (!btn || !answer) return;
+
+    answer.style.height = '0px';
+
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      if (isOpen) {
+        answer.style.height = answer.scrollHeight + 'px';
+
+        requestAnimationFrame(() => {
+          answer.style.height = '0px';
+        });
+
+        item.classList.remove('is-open');
+      } else {
+        item.classList.add('is-open');
+        answer.style.height = answer.scrollHeight + 'px';
+
+        answer.addEventListener('transitionend', function handler() {
+          if (item.classList.contains('is-open')) {
+            answer.style.height = 'auto';
+          }
+          answer.removeEventListener('transitionend', handler);
+        });
+      }
     });
   });
 });

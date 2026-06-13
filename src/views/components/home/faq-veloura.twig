@@ -56,16 +56,16 @@
       </button>
 
       <div class="veloura-faq__answer">
-        {{ item.veloura_faq_answer }}
+  <div class="veloura-faq__answer-inner">
+    {{ item.veloura_faq_answer }}
 
-        {% if item.veloura_faq_button_text %}
-  <a
-    href="{{ item.veloura_faq_url ?: '#' }}"
-    class="veloura-faq__button"
-  >
-    {{ item.veloura_faq_button_text }}
-  </a>
-{% endif %}
+    {% if item.veloura_faq_button_text %}
+      <a href="{{ item.veloura_faq_url ?: '#' }}" class="veloura-faq__button">
+        {{ item.veloura_faq_button_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
       </div>
     </div>
   {% endfor %}
