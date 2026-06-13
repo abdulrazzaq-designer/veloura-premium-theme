@@ -1,3 +1,14 @@
+{% set title_size_map = {
+  'xs': '18px',
+  'sm': '22px',
+  'medium': '28px',
+  'lg': '34px',
+  'xl': '42px',
+  'xxl': '52px',
+  'xxxl': '64px'
+} %}
+
+
 {% if component.veloura_title_text or component.veloura_title_subtitle %}
 <section
   class="s-block container veloura-title {{ component.veloura_title_line_type == 'both' ? 'has-side-lines' : '' }}"
@@ -5,7 +16,7 @@
     --veloura-title-color: {{ component.veloura_title_color|default('#323232') }};
     --veloura-title-line-color: {{ component.veloura_title_line_color|default('#111111') }};
     --veloura-title-align: {{ component.veloura_title_align|default('center') }};
-    --veloura-title-size: {{ component.veloura_title_size|default(32) }}px;
+    --veloura-title-size: {{ title_size_map[component.veloura_title_size|default('medium')]|default('28px') }};
   "
 >
   <div class="veloura-title__inner">
