@@ -8,31 +8,51 @@
   'xxxl': '64px'
 } %}
 
+{% if not component.veloura_title_hide_section %}
 
-{% if component.veloura_title_text or component.veloura_title_subtitle %}
-<section
-  class="s-block container veloura-title {{ component.veloura_title_line_type == 'both' ? 'has-side-lines' : '' }}"
-  style="
-    --veloura-title-color: {{ component.veloura_title_color|default('#323232') }};
-    --veloura-title-line-color: {{ component.veloura_title_line_color|default('#111111') }};
-    --veloura-title-align: {{ component.veloura_title_align|default('center') }};
-    --veloura-title-size: {{ title_size_map[component.veloura_title_size|default('medium')]|default('28px') }};
-  "
->
-  <div class="veloura-title__inner">
+  {% set title_classes = [
+    's-block',
+    'container',
+    'veloura-title',
+    component.veloura_title_line_type == 'both' ? 'has-side-lines' : '',
+    component.veloura_title_custom_classes ?: ''
+  ] %}
 
-    {% if component.veloura_title_text %}
-      <h2 class="veloura-title__heading">
-        <span>{{ component.veloura_title_text }}</span>
-      </h2>
-    {% endif %}
+  {% if component.veloura_title_show_mobile_only %}
+    {% set title_classes = title_classes|merge(['veloura-title-mobile-only']) %}
+  {% endif %}
 
-    {% if component.veloura_title_subtitle %}
-      <p class="veloura-title__subtitle">
-        {{ component.veloura_title_subtitle }}
-      </p>
-    {% endif %}
+  {% if component.veloura_title_show_desktop_only %}
+    {% set title_classes = title_classes|merge(['veloura-title-desktop-only']) %}
+  {% endif %}
 
-  </div>
-</section>
+  {% if component.veloura_title_text or component.veloura_title_subtitle %}
+    <section
+      class="{{ title_classes|join(' ') }}"
+      style="
+        --veloura-title-color: {{ component.veloura_title_color|default('#323232') }};
+        --veloura-title-line-color: {{ component.veloura_title_line_color|default('#111111') }};
+        --veloura-title-align: {{ component.veloura_title_alignment|default('center') }};
+        --veloura-title-size: {{ title_size_map[component.veloura_title_size|default('medium')]|default('28px') }};
+        --veloura-title-spacing: {{ component.veloura_title_enable_custom_spacing ? component.veloura_title_custom_spacing|default(0) : 0 }}px;
+      "
+    >
+      <div class="veloura-title__inner">
+
+        {% if component.veloura_title_text %}
+          <h2 class="veloura-title__heading {{ component.veloura_title_line_type == 'both' ? 'has-lines' : '' }}">
+            <span>{{ component.veloura_title_text }}</span>
+          </h2>
+        {% endif %}
+
+        {% if component.veloura_title_subtitle %}
+          <p class="veloura-title__subtitle">
+            {{ component.veloura_title_subtitle }}
+          </p>
+        {% endif %}
+
+      </div>
+    </section>
+  {% endif %}
+
 {% endif %}
