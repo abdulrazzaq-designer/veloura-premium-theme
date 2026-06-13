@@ -3801,6 +3801,11 @@
   "label": "Classes",
   "icon": "sicon-format-text-alt",
   "value": ""
+}
+
+
+
+  ]
 },
 {
   "key": "e72c5a4b-36d1-4b41-91f3-1c3e9f5d8a22",
@@ -3890,8 +3895,6 @@
       "minLength": 0,
       "maxLength": "30000"
     }
-  ]
-}
   ]
 }
     ],
