@@ -3572,7 +3572,7 @@
     "en": "Title - Veloura"
   },
   "icon": "sicon-format-text",
-  "path": "home.title-veloura",
+  "path": "home.veloura-title-block",
   "fields": [
     {
       "id": "veloura_title_text",
