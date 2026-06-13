@@ -1376,3 +1376,32 @@
 .veloura-title.is-title-next-section {
   margin-bottom: -20px !important;
 }
+
+
+
+
+.veloura-spacer {
+  display: block;
+  width: 100%;
+  height: var(--veloura-spacer-mobile, 60px);
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .veloura-spacer {
+    height: var(--veloura-spacer-tablet, 60px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .veloura-spacer {
+    height: var(--veloura-spacer-desktop, 60px);
+  }
+}
+
+.veloura-spacer.is-remove-next-top + .s-block {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}

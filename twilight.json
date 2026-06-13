@@ -3801,6 +3801,96 @@
   "label": "Classes",
   "icon": "sicon-format-text-alt",
   "value": ""
+},
+{
+  "key": "e72c5a4b-36d1-4b41-91f3-1c3e9f5d8a22",
+  "title": {
+    "ar": "فاصل (فيلورا)",
+    "en": "Spacer - Veloura"
+  },
+  "icon": "sicon-minus",
+  "path": "home.veloura-spacer",
+  "fields": [
+    {
+      "id": "veloura_spacer_mobile",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة الرأسية (في الجوال)",
+      "icon": "sicon-pin",
+      "value": "60",
+      "required": false,
+      "step": "1",
+      "minimum": "-200",
+      "maximum": "200"
+    },
+    {
+      "id": "veloura_spacer_desktop",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة الرأسية (في اللابتوب)",
+      "icon": "sicon-pin",
+      "value": "60",
+      "required": false,
+      "step": "1",
+      "minimum": "-250",
+      "maximum": "200"
+    },
+    {
+      "id": "veloura_spacer_enable_tablet",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إضافة مسافة مخصصة للتابلت أيضاً",
+      "description": "اختياري",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_spacer_tablet",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة الرأسية (آيباد وتابلت)",
+      "icon": "sicon-pin",
+      "value": "60",
+      "required": false,
+      "step": "1",
+      "minimum": "-250",
+      "maximum": "200",
+      "conditions": [
+        {
+          "id": "veloura_spacer_enable_tablet",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_spacer_remove_next_top",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إلغاء المسافة العلوية للعنصر التالي",
+      "description": "اختياري، مفيد عند دمج بعض العناصر مع بعض بدون أي مسافة",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_spacer_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "icon": "sicon-format-text-alt",
+      "value": "",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "30000"
+    }
+  ]
 }
   ]
 }

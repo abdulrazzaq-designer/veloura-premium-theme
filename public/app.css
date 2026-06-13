@@ -28895,6 +28895,33 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-title.is-title-next-section {
   padding-bottom: 16px;
 }
+.veloura-spacer {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.veloura-spacer {
+  display: block;
+  width: 100%;
+  height: 60px;
+  height: var(--veloura-spacer-mobile, 60px);
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .veloura-spacer {
+    height: 60px;
+    height: var(--veloura-spacer-tablet, 60px);
+  }
+}
+@media (min-width: 1024px) {
+  .veloura-spacer {
+    height: 60px;
+    height: var(--veloura-spacer-desktop, 60px);
+  }
+}
+.veloura-spacer.is-remove-next-top + .s-block {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 salla-slider{
     display: block;
 }
