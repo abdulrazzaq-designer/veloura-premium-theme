@@ -1346,8 +1346,9 @@
 
 .veloura-title__subtitle {
   margin-top: 10px;
-  font-size: 15px;
-  opacity: .75;
+  font-size: var(--veloura-subtitle-size, 15px);
+  color: var(--veloura-title-color);
+  opacity: .65;
 }
 
 .veloura-title-mobile-only {

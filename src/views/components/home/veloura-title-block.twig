@@ -4,8 +4,7 @@
   'medium': '28px',
   'lg': '34px',
   'xl': '42px',
-  'xxl': '52px',
-  'xxxl': '64px'
+  'xxl': '52px'
 } %}
 
 {% if not component.veloura_title_hide_section %}
@@ -35,6 +34,7 @@
     --veloura-title-align: {{ component.veloura_title_align|default('center') }};
     --veloura-title-size: {{ title_size_map[component.veloura_title_size|default('medium')]|default('28px') }};
     --veloura-title-spacing: {{ component.veloura_title_enable_custom_spacing ? component.veloura_title_custom_spacing|default(0) : 0 }}px;
+    --veloura-subtitle-size: {{ subtitle_size_map[component.veloura_title_size|default('medium')]|default('15px') }};
   "
 >
   <div class="veloura-title__inner">

@@ -3716,11 +3716,6 @@
           "label": "ضخم",
           "value": "xxl",
           "key": "title-size-xxl"
-        },
-        {
-          "label": "ضخم جداً",
-          "value": "xxxl",
-          "key": "title-size-xxxl"
         }
       ],
       "source": "Manual",
