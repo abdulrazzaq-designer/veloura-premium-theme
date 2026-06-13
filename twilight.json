@@ -3564,7 +3564,32 @@
                     "maxLength": "30000"
                 }
             ]
-        }
+        },
+        {
+  "key": "c93a6c8e-8e2f-4d85-9f74-7e2b6f4b7a11",
+  "title": {
+    "ar": "عنوان مميز (فيلورا)",
+    "en": "Title - Veloura"
+  },
+  "icon": "sicon-format-text",
+  "path": "home.title-veloura",
+  "fields": [
+    {
+      "id": "veloura_title_text",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الأساسي الثابت",
+      "value": "اكتب عنوان هنا"
+    },
+    {
+      "id": "veloura_title_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان فرعي (اختياري)",
+      "value": ""
+    }
+  ]
+}
     ],
     "support_url": "https://velourapremium.com",
     "description": {

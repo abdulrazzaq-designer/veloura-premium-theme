@@ -28805,28 +28805,37 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-faq__answer {
   height: 0;
   overflow: hidden;
+  color: var(--faq-text);
   opacity: 0;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
   transition: height 0.35s ease, opacity 0.25s ease;
 }
 .veloura-faq__answer-inner {
   padding: 0 24px 22px;
   line-height: 1.9;
+  opacity: 0.75;
 }
 .veloura-faq__item.is-open .veloura-faq__answer {
   opacity: 1;
 }
 .veloura-faq__button {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 14px;
   padding: 10px 18px;
   border-radius: 999px;
-  background: #414042;
-  background: var(--color-primary);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  color: color-mix(in srgb, var(--faq-text) 75%, white);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-weight: 700;
   -webkit-text-decoration: none;
   text-decoration: none;
+  transition: 0.25s ease;
+}
+.veloura-faq__button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
 }
 salla-slider{
     display: block;

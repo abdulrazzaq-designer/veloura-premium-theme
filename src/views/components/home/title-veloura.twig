@@ -1,0 +1,19 @@
+{% if component.veloura_title_text %}
+<section class="s-block container veloura-title">
+
+  <div class="veloura-title__inner">
+
+    <h2 class="veloura-title__heading">
+      {{ component.veloura_title_text }}
+    </h2>
+
+    {% if component.veloura_title_subtitle %}
+      <p class="veloura-title__subtitle">
+        {{ component.veloura_title_subtitle }}
+      </p>
+    {% endif %}
+
+  </div>
+
+</section>
+{% endif %}
