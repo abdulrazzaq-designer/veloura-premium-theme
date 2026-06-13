@@ -28892,10 +28892,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-title.is-title-for-next {
   padding-bottom: 16px;
 }
-.is-title-next-section + .s-block .s-block__title,
-.is-title-next-section + .s-block .s-section-main-title,
-.is-title-next-section + .s-block .section-title,
-.is-title-next-section + .s-block .features--title-outer {
+.veloura-title.is-title-next-section + .s-block .section-main-title,
+.veloura-title.is-title-next-section + .s-block .s-block__title {
   display: none !important;
 }
 salla-slider{

@@ -376,7 +376,7 @@ document.addEventListener('click', function (e) {
   }
 });
 
-
+/*
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.veloura-title[data-title-for-next="true"]').forEach((titleBlock) => {
     let nextSection = titleBlock.nextElementSibling;
@@ -406,4 +406,4 @@ document.addEventListener('DOMContentLoaded', () => {
     titleBlock.classList.add('is-title-for-next');
     nextSection.classList.add('has-veloura-title-before');
   });
-});
+});*/
