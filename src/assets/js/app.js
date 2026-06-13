@@ -380,32 +380,28 @@ function initVelouraTitleNextSection() {
   document.querySelectorAll('.veloura-title.is-title-next-section').forEach((titleBlock) => {
     let next = titleBlock.nextElementSibling;
 
-    while (
-      next &&
-      (
-        !next.classList ||
-        next.classList.contains('s-design-before') ||
-        next.classList.contains('s-design-after') ||
-        !next.classList.contains('s-block')
-      )
-    ) {
+    while (next && (!next.classList || !next.classList.contains('s-block'))) {
       next = next.nextElementSibling;
     }
 
     if (!next) return;
 
-    const sectionTitle = next.querySelector(
-      '.section-main-title, .s-block__title'
-    );
+    next.classList.add('has-veloura-title-before');
+
+    next.style.setProperty('margin-top', '1rem', 'important');
+    next.style.setProperty('padding-top', '0', 'important');
+
+    const sectionTitle = next.querySelector('.section-main-title, .s-block__title');
 
     if (sectionTitle) {
-      sectionTitle.style.display = 'none';
+      sectionTitle.style.setProperty('display', 'none', 'important');
+      sectionTitle.style.setProperty('margin', '0', 'important');
+      sectionTitle.style.setProperty('padding', '0', 'important');
     }
   });
 }
 
 document.addEventListener('DOMContentLoaded', initVelouraTitleNextSection);
 document.addEventListener('theme::ready', initVelouraTitleNextSection);
-
 setTimeout(initVelouraTitleNextSection, 500);
 setTimeout(initVelouraTitleNextSection, 1500);

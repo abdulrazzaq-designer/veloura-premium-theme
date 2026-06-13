@@ -28890,13 +28890,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   }
 }
 .veloura-title.is-title-next-section {
+  margin-bottom: -20px !important;
+}
+.veloura-title.is-title-next-section {
   padding-bottom: 16px;
 }
-/*
-.veloura-title.is-title-next-section + .s-block .section-main-title,
-.veloura-title.is-title-next-section + .s-block .s-block__title {
-  display: none !important;
-}*/
 salla-slider{
     display: block;
 }
