@@ -3770,47 +3770,6 @@
     "value": true
   }
 ]
-},
-{
-  "id": "veloura_title_show_mobile_only",
-  "type": "boolean",
-  "format": "switch",
-  "label": "عرض العنصر في الجوال فقط",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_show_desktop_only",
-  "type": "boolean",
-  "format": "switch",
-  "label": "عرض العنصر في الكمبيوتر فقط",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_hide_section",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إخفاء هذا العنصر بالكامل",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_custom_classes",
-  "type": "string",
-  "format": "text",
-  "label": "Classes",
-  "icon": "sicon-format-text-alt",
-  "value": null,
-  "required": false,
-  "minLength": 0,
-  "maxLength": "30000"
 }
     ],
     "support_url": "https://velourapremium.com",
