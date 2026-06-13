@@ -376,34 +376,36 @@ document.addEventListener('click', function (e) {
   }
 });
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.veloura-title[data-title-for-next="true"]').forEach((titleBlock) => {
-    let nextSection = titleBlock.nextElementSibling;
+function initVelouraTitleNextSection() {
+  document.querySelectorAll('.veloura-title.is-title-next-section').forEach((titleBlock) => {
+    let next = titleBlock.nextElementSibling;
 
-    while (nextSection && !nextSection.classList.contains('s-block')) {
-      nextSection = nextSection.nextElementSibling;
+    while (
+      next &&
+      (
+        !next.classList ||
+        next.classList.contains('s-design-before') ||
+        next.classList.contains('s-design-after') ||
+        !next.classList.contains('s-block')
+      )
+    ) {
+      next = next.nextElementSibling;
     }
 
-    if (!nextSection) return;
+    if (!next) return;
 
-    const headings = nextSection.querySelectorAll(`
-      .s-block__title,
-      .s-block__heading,
-      .section-title,
-      .s-block-title,
-      .s-slider-block__title,
-      .s-products-slider-card__title,
-      h1,
-      h2,
-      h3
-    `);
+    const sectionTitle = next.querySelector(
+      '.section-main-title, .s-block__title'
+    );
 
-    headings.forEach((heading) => {
-      heading.style.display = 'none';
-    });
-
-    titleBlock.classList.add('is-title-for-next');
-    nextSection.classList.add('has-veloura-title-before');
+    if (sectionTitle) {
+      sectionTitle.style.display = 'none';
+    }
   });
-});*/
+}
+
+document.addEventListener('DOMContentLoaded', initVelouraTitleNextSection);
+document.addEventListener('theme::ready', initVelouraTitleNextSection);
+
+setTimeout(initVelouraTitleNextSection, 500);
+setTimeout(initVelouraTitleNextSection, 1500);
