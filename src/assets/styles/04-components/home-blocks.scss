@@ -1198,7 +1198,6 @@
 
 
 
-
 .veloura-faq {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -1230,7 +1229,7 @@
   border-radius: var(--faq-radius);
   overflow: hidden;
   margin-bottom: 16px;
-  transition: box-shadow .25s ease, transform .25s ease;
+  transition: box-shadow .25s ease;
 }
 
 .veloura-faq__item.is-open {
@@ -1261,36 +1260,24 @@
 }
 
 .veloura-faq__item.is-open .veloura-faq__question::after {
-  content: "−";
-  transform: rotate(180deg);
+  transform: rotate(45deg);
 }
 
 .veloura-faq__answer {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
+  height: 0;
   overflow: hidden;
-  background: rgba(255, 255, 255, .35);
-  transition: grid-template-rows .45s ease, opacity .35s ease;
+  opacity: 0;
+  background: rgba(255, 255, 255, .12);
+  transition: height .35s ease, opacity .25s ease;
 }
 
 .veloura-faq__answer-inner {
-  min-height: 0;
-  overflow: hidden;
-  padding: 0 24px;
+  padding: 0 24px 22px;
   line-height: 1.9;
-  transform: translateY(-6px);
-  transition: padding .35s ease, transform .35s ease;
 }
 
 .veloura-faq__item.is-open .veloura-faq__answer {
-  grid-template-rows: 1fr;
-  opacity: .85;
-}
-
-.veloura-faq__item.is-open .veloura-faq__answer-inner {
-  padding: 0 24px 22px;
-  transform: translateY(0);
+  opacity: 1;
 }
 
 .veloura-faq__button {

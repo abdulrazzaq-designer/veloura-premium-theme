@@ -34,44 +34,41 @@
     --faq-spacing: {{ component.veloura_faq_enable_custom_spacing ? component.veloura_faq_custom_spacing|default(0) : 0 }}px;
   "
 >
-
   <div class="veloura-faq__inner">
 
-  {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
-    <div class="veloura-faq__heading">
-      {% if component.veloura_faq_title %}
-        <h2>{{ component.veloura_faq_title }}</h2>
-      {% endif %}
+    {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
+      <div class="veloura-faq__heading">
+        {% if component.veloura_faq_title %}
+          <h2>{{ component.veloura_faq_title }}</h2>
+        {% endif %}
 
-      {% if component.veloura_faq_subtitle %}
-        <p>{{ component.veloura_faq_subtitle }}</p>
-      {% endif %}
-    </div>
-  {% endif %}
-
-  {% for item in component.veloura_faq_items %}
-    <div class="veloura-faq__item">
-      <button type="button" class="veloura-faq__question">
-        {{ item.veloura_faq_question }}
-      </button>
-
-      <div class="veloura-faq__answer">
-  <div class="veloura-faq__answer-inner">
-    {{ item.veloura_faq_answer }}
-
-    {% if item.veloura_faq_button_text %}
-      <a href="{{ item.veloura_faq_url ?: '#' }}" class="veloura-faq__button">
-        {{ item.veloura_faq_button_text }}
-      </a>
-    {% endif %}
-  </div>
-</div>
+        {% if component.veloura_faq_subtitle %}
+          <p>{{ component.veloura_faq_subtitle }}</p>
+        {% endif %}
       </div>
-    </div>
-  {% endfor %}
+    {% endif %}
+
+    {% for item in component.veloura_faq_items %}
+      <div class="veloura-faq__item">
+        <button type="button" class="veloura-faq__question">
+          {{ item.veloura_faq_question }}
+        </button>
+
+        <div class="veloura-faq__answer">
+          <div class="veloura-faq__answer-inner">
+            {{ item.veloura_faq_answer }}
+
+            {% if item.veloura_faq_button_text %}
+              <a href="{{ item.veloura_faq_url ?: '#' }}" class="veloura-faq__button">
+                {{ item.veloura_faq_button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
 
   </div>
-
 </section>
 
 {% endif %}
