@@ -94,6 +94,16 @@
   block-title=""
   block-subTitle=""
   slider-id="veloura-products-{{ position }}"
+  slider-config='{
+    "slidesPerView": {{ component.veloura_products_mobile_cols ?: 2 }},
+    "spaceBetween": 24,
+    "breakpoints": {
+      "768": {
+        "slidesPerView": {{ component.veloura_products_desktop_cols ?: 4 }},
+        "spaceBetween": 24
+      }
+    }
+  }'
 ></salla-products-slider>
   {% endif %}
 
