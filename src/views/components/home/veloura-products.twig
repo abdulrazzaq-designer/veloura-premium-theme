@@ -1,13 +1,27 @@
-
+{% set raw_source = component.veloura_products_source ?: 'latest' %}
 {% set source_value = null %}
-{% set product_source = component.veloura_products_source ?: 'latest' %}
 
-{% if product_source == 'selected' %}
+{% if raw_source in ['latest_products', 'latest'] %}
+  {% set slider_source = 'latest_products' %}
+  {% set list_source = 'latest' %}
+{% elseif raw_source in ['chosen_products', 'selected'] %}
+  {% set slider_source = 'selected' %}
+  {% set list_source = 'selected' %}
   {% set source_value = component.veloura_products_chosen %}
-{% elseif product_source == 'categories' %}
+{% elseif raw_source in ['category', 'categories'] %}
+  {% set slider_source = 'categories' %}
+  {% set list_source = 'categories' %}
   {% set source_value = component.veloura_products_category %}
+{% elseif raw_source in ['most_sales', 'sales'] %}
+  {% set slider_source = 'sales' %}
+  {% set list_source = 'sales' %}
+{% elseif raw_source == 'offers' %}
+  {% set slider_source = 'offers' %}
+  {% set list_source = 'offers' %}
+{% else %}
+  {% set slider_source = raw_source %}
+  {% set list_source = raw_source %}
 {% endif %}
-
 <section
   class="s-block container veloura-products
   {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}
