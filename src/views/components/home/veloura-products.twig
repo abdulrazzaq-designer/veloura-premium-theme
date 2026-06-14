@@ -4,15 +4,26 @@
   {% set source_value = component.veloura_products_chosen %}
 {% elseif component.veloura_products_source == 'category' %}
   {% set source_value = component.veloura_products_category %}
+{% elseif component.veloura_products_source == 'tag' %}
+  {% set source_value = component.veloura_products_tag %}
 {% endif %}
 
-<salla-products-slider
-  source="{{ component.veloura_products_source }}"
-  limit="{{ component.veloura_products_limit ?: 10 }}"
-  autoplay
-  source-value="{{ source_value|json_encode }}"
-  display-all-url="{{ component.veloura_products_button_link }}"
-  block-title="{{ component.veloura_products_title }}"
-  block-subTitle="{{ component.veloura_products_subtitle|raw }}"
-  slider-id="veloura-products-{{ position }}"
-></salla-products-slider>
+<section class="s-block container veloura-products">
+  {% if component.veloura_products_grid_mode %}
+    {# هنا لاحقاً كود الشبكة #}
+    <div class="veloura-products__test">
+      عرض الشبكة مفعل
+    </div>
+  {% else %}
+    <salla-products-slider
+      source="{{ component.veloura_products_source }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      autoplay
+      source-value="{{ source_value|json_encode }}"
+      display-all-url="{{ component.veloura_products_button_link }}"
+      block-title="{{ component.veloura_products_title }}"
+      block-subTitle="{{ component.veloura_products_subtitle|raw }}"
+      slider-id="veloura-products-{{ position }}"
+    ></salla-products-slider>
+  {% endif %}
+</section>

@@ -3951,6 +3951,42 @@
       "required": false
     },
     {
+  "id": "veloura_products_desktop_cols",
+  "type": "number",
+  "format": "range",
+  "label": "عدد الأعمدة في الكمبيوتر والتابلت",
+  "description": "الحد المسموح به من 1 إلى 8 منتجات.",
+  "icon": "sicon-grid",
+  "value": 4,
+  "min": 1,
+  "max": 8,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_products_mobile_cols",
+  "type": "number",
+  "format": "range",
+  "label": "عدد الأعمدة في الجوال",
+  "description": "الحد المسموح به من 1 إلى 3 منتجات.",
+  "icon": "sicon-grid",
+  "value": 2,
+  "min": 1,
+  "max": 3,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+    {
   "id": "veloura_products_show_button",
   "type": "boolean",
   "format": "switch",
@@ -4044,6 +4080,59 @@
   ]
 },
 {
+  "id": "veloura_products_center_titles",
+  "type": "boolean",
+  "format": "switch",
+  "label": "توسيط العناوين",
+  "icon": "sicon-align-center",
+  "value": false
+},
+{
+  "id": "veloura_products_show_excerpt",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار جزء من المنتج الآخر",
+  "icon": "sicon-eye",
+  "value": true,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_products_center_desktop",
+  "type": "boolean",
+  "format": "switch",
+  "label": "توسيط المنتجات في الكمبيوتر",
+  "icon": "sicon-align-center",
+  "value": false,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_products_wide_desktop",
+  "type": "boolean",
+  "format": "switch",
+  "label": "توسيع عرض المنتجات في الكمبيوتر",
+  "icon": "sicon-resize-full",
+  "value": false,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
   "id": "veloura_products_add_title",
   "type": "static",
   "format": "title",
@@ -4114,6 +4203,24 @@
   "value": 10,
   "min": 1,
   "max": 32
+},
+{
+  "id": "veloura_products_tag",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "الوسم",
+  "description": "اختر وسم المنتجات التي تريد عرضها",
+  "icon": "sicon-tag",
+  "value": null,
+  "searchable": true,
+  "source": "tags",
+  "conditions": [
+    {
+      "id": "veloura_products_source",
+      "operation": "=",
+      "value": "tag"
+    }
+  ]
 }
   ]
 }
