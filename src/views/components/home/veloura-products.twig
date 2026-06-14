@@ -61,39 +61,31 @@
 
   {% if component.veloura_products_grid_mode %}
     <salla-products-list
-      source="{{ list_source }}"
-      limit="{{ component.veloura_products_limit ?: 10 }}"
-      source-value="{{ source_value|json_encode }}"
-      includes="[]"
-      style="
-        --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
-        --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
-      "
-    ></salla-products-list>
+  source="{{ list_source }}"
+  limit="{{ component.veloura_products_limit ?: 10 }}"
+  source-value="{{ source_value|json_encode }}"
+  includes="[]"
+></salla-products-list>
   {% else %}
     <salla-products-slider
-      source="{{ product_source }}"
-      limit="{{ component.veloura_products_limit ?: 10 }}"
-      autoplay
-      source-value="{{ source_value|json_encode }}"
-      display-all-url=""
-      block-title=""
-      block-subTitle=""
-      slider-id="veloura-products-{{ position }}"
-      style="
-        --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
-        --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
-      "
-    ></salla-products-slider>
+  source="{{ slider_source }}"
+  limit="{{ component.veloura_products_limit ?: 10 }}"
+  autoplay
+  source-value="{{ source_value|json_encode }}"
+  display-all-url=""
+  block-title=""
+  block-subTitle=""
+  slider-id="veloura-products-{{ position }}"
+></salla-products-slider>
   {% endif %}
 
 </section>
 
 <pre style="direction:ltr;text-align:left;background:#fff;padding:15px">
-source: {{ product_source }}
+raw_source: {{ raw_source }}
+slider_source: {{ slider_source }}
 list_source: {{ list_source }}
 source_value: {{ source_value|json_encode }}
-chosen: {{ component.veloura_products_chosen|json_encode }}
 category: {{ component.veloura_products_category|json_encode }}
-tag: {{ component.veloura_products_tag|json_encode }}
+chosen: {{ component.veloura_products_chosen|json_encode }}
 </pre>
