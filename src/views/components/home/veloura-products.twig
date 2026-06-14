@@ -1,4 +1,5 @@
 {% set source_value = null %}
+{% set is_vertical = theme.settings.get('vertical_fixed_products', true) %}
 
 {% if component.veloura_products_source == 'chosen_products' %}
   {% set source_value = component.veloura_products_chosen %}
@@ -36,26 +37,19 @@
   {% endif %}
 
   {% if component.veloura_products_grid_mode %}
-    {% if source_value %}
-      <div style="background:red;color:#fff;padding:20px">
-GRID MODE WORKING
-</div>
-    {% endif %}
+    <salla-products-list
+      source="{{ component.veloura_products_source ?: 'latest_products' }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      source-value="{{ source_value|json_encode }}"
+      {{ is_vertical ? '' : 'horizontal-cards' }}
+    ></salla-products-list>
   {% else %}
-    {% if source_value %}
-      <salla-products-slider
-        source="{{ component.veloura_products_source ?: 'latest_products' }}"
-        limit="{{ component.veloura_products_limit ?: 10 }}"
-        source-value="{{ source_value|json_encode }}"
-        slider-id="veloura-products-{{ position }}"
-      ></salla-products-slider>
-    {% else %}
-      <salla-products-slider
-        source="{{ component.veloura_products_source ?: 'latest_products' }}"
-        limit="{{ component.veloura_products_limit ?: 10 }}"
-        slider-id="veloura-products-{{ position }}"
-      ></salla-products-slider>
-    {% endif %}
+    <salla-products-slider
+      source="{{ component.veloura_products_source ?: 'latest_products' }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      source-value="{{ source_value|json_encode }}"
+      slider-id="veloura-products-{{ position }}"
+    ></salla-products-slider>
   {% endif %}
 
 </section>
