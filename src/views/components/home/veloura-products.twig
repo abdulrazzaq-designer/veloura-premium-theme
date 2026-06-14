@@ -9,14 +9,33 @@
 {% endif %}
 
 <section class="s-block container veloura-products">
-  <salla-products-slider
-    source="{{ component.veloura_products_source ?: 'latest_products' }}"
-    limit="{{ component.veloura_products_limit ?: 10 }}"
-    autoplay
-    source-value="{{ source_value|json_encode }}"
-    display-all-url="{{ component.veloura_products_show_button ? component.veloura_products_button_link : '' }}"
-    block-title="{{ component.veloura_products_title }}"
-    block-subTitle="{{ component.veloura_products_subtitle|raw }}"
-    slider-id="veloura-products-{{ position }}"
-  ></salla-products-slider>
+
+  {% if component.veloura_products_grid_mode %}
+
+    <salla-products-list
+      source="{{ component.veloura_products_source == 'latest_products' ? 'latest' : component.veloura_products_source }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      {% if source_value %}
+        source-value="{{ source_value|json_encode }}"
+      {% endif %}
+      includes="[]"
+      style="
+        --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
+        --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
+      "
+    ></salla-products-list>
+
+  {% else %}
+
+    <salla-products-slider
+      source="{{ component.veloura_products_source }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      {% if source_value %}
+        source-value="{{ source_value|json_encode }}"
+      {% endif %}
+      slider-id="veloura-products-{{ position }}"
+    ></salla-products-slider>
+
+  {% endif %}
+
 </section>
