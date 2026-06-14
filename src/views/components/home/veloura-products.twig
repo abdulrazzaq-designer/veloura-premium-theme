@@ -1,5 +1,9 @@
 {% set source = component.veloura_products_source ?: 'latest' %}
 {% set source_value = null %}
+{% set mobile_cols = component.veloura_products_mobile_cols|default(2) %}
+{% set desktop_cols = component.veloura_products_desktop_cols|default(4) %}
+{% set mobile_slides = component.veloura_products_show_excerpt ? mobile_cols + 0.35 : mobile_cols %}
+{% set desktop_slides = component.veloura_products_show_excerpt ? desktop_cols + 0.35 : desktop_cols %}
 
 {% if source == 'selected' and component.veloura_products_chosen %}
   {% set product_ids = [] %}
@@ -83,28 +87,34 @@
     --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
   "
   slider-config='{
-    "observer": true,
-    "observeParents": true,
-    "slidesPerView": {{ component.veloura_products_show_excerpt ? 1.35 : component.veloura_products_mobile_cols ?: 2 }},
-    "speed": 600,
-    "breakpoints": {
-      "0": {
-        "slidesPerView": {{ component.veloura_products_show_excerpt ? 1.35 : component.veloura_products_mobile_cols ?: 2 }}
-      },
-      "640": {
-        "slidesPerView": {{ component.veloura_products_show_excerpt ? 1.35 : component.veloura_products_mobile_cols ?: 2 }}
-      },
-      "768": {
-        "slidesPerView": {{ component.veloura_products_show_excerpt ? component.veloura_products_desktop_cols|default(4) + 0.35 : component.veloura_products_desktop_cols|default(4) }}
-      },
-      "1024": {
-        "slidesPerView": {{ component.veloura_products_show_excerpt ? component.veloura_products_desktop_cols|default(4) + 0.35 : component.veloura_products_desktop_cols|default(4) }}
-      },
-      "1280": {
-        "slidesPerView": {{ component.veloura_products_show_excerpt ? component.veloura_products_desktop_cols|default(4) + 0.35 : component.veloura_products_desktop_cols|default(4) }}
-      }
+  "observer": true,
+  "observeParents": true,
+  "slidesPerView": {{ mobile_slides }},
+  "speed": 600,
+  "spaceBetween": 24,
+  "breakpoints": {
+    "0": {
+      "slidesPerView": {{ mobile_slides }},
+      "spaceBetween": 14
+    },
+    "640": {
+      "slidesPerView": {{ mobile_slides }},
+      "spaceBetween": 14
+    },
+    "768": {
+      "slidesPerView": {{ desktop_slides }},
+      "spaceBetween": 24
+    },
+    "1024": {
+      "slidesPerView": {{ desktop_slides }},
+      "spaceBetween": 24
+    },
+    "1280": {
+      "slidesPerView": {{ desktop_slides }},
+      "spaceBetween": 24
     }
-  }'
+  }
+}'
 ></salla-products-slider>
   {% endif %}
 
