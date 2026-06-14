@@ -29035,6 +29035,21 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     width: calc((100% - 14px * (var(--mob-products-cols, 2) - 1)) / var(--mob-products-cols, 2)) !important;
   }
 }
+.veloura-products.as-slider {
+  overflow: hidden;
+}
+.veloura-products.as-slider.has-partial {
+  overflow: visible;
+}
+.veloura-products.as-slider.is-desktop-centered salla-products-slider {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.veloura-products.as-slider.is-desktop-wide {
+  max-width: 100%;
+  width: 100%;
+}
 salla-slider{
     display: block;
 }

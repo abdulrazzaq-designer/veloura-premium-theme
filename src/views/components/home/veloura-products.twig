@@ -19,7 +19,10 @@
 <section
   class="s-block container veloura-products
   {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}
-  {{ component.veloura_products_center_titles ? 'is-centered' : '' }}"
+  {{ component.veloura_products_center_titles ? 'is-centered' : '' }}
+  {{ component.veloura_products_show_excerpt ? 'has-partial' : '' }}
+  {{ component.veloura_products_center_desktop ? 'is-desktop-centered' : '' }}
+  {{ component.veloura_products_wide_desktop ? 'is-desktop-wide' : '' }}"
   style="
     --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
     --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
@@ -65,7 +68,37 @@
   source="{{ source }}"
   limit="{{ component.veloura_products_limit ?: 10 }}"
   source-value="{{ source_value|json_encode }}"
+  display-all-url=""
+  block-title=""
+  block-subTitle=""
   slider-id="veloura-products-{{ position }}"
+  style="
+    --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
+    --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
+  "
+  slider-config='{
+    "observer": true,
+    "observeParents": true,
+    "slidesPerView": {{ component.veloura_products_mobile_cols ?: 2 }},
+    "speed": 600,
+    "breakpoints": {
+      "0": {
+        "slidesPerView": {{ component.veloura_products_mobile_cols ?: 2 }}
+      },
+      "640": {
+        "slidesPerView": {{ component.veloura_products_mobile_cols ?: 2 }}
+      },
+      "768": {
+        "slidesPerView": {{ component.veloura_products_desktop_cols ?: 4 }}
+      },
+      "1024": {
+        "slidesPerView": {{ component.veloura_products_desktop_cols ?: 4 }}
+      },
+      "1280": {
+        "slidesPerView": {{ component.veloura_products_desktop_cols ?: 4 }}
+      }
+    }
+  }'
 ></salla-products-slider>
   {% endif %}
 

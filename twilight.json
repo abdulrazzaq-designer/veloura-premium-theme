@@ -4178,36 +4178,40 @@
                     "required": false
                 },
                 {
-                    "id": "veloura_products_chosen",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "اختر المنتجات",
-                    "source": "products",
-                    "multichoice": true,
-                    "conditions": [
-                        {
-                            "id": "veloura_products_source",
-                            "operation": "=",
-                            "value": "selected"
-                        }
-                    ],
-                    "value": []
-                },
+  "id": "veloura_products_chosen",
+  "type": "items",
+  "format": "variable-list",
+  "label": "اختر المنتجات",
+  "icon": "sicon-shopping-bag",
+  "source": "products",
+  "searchable": true,
+  "multichoice": true,
+  "value": [],
+  "conditions": [
+    {
+      "id": "veloura_products_source",
+      "operation": "=",
+      "value": "selected"
+    }
+  ]
+},
                 {
-                    "id": "veloura_products_category",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "اختر التصنيف",
-                    "source": "categories",
-                    "conditions": [
-                        {
-                            "id": "veloura_products_source",
-                            "operation": "=",
-                            "value": "categories"
-                        }
-                    ],
-                    "value": []
-                },
+  "id": "veloura_products_category",
+  "type": "items",
+  "format": "variable-list",
+  "label": "اختر التصنيف",
+  "icon": "sicon-folder",
+  "source": "categories",
+  "searchable": true,
+  "value": [],
+  "conditions": [
+    {
+      "id": "veloura_products_source",
+      "operation": "=",
+      "value": "categories"
+    }
+  ]
+},
                 {
                     "id": "veloura_products_limit",
                     "type": "number",
