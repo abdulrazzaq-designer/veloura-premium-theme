@@ -4071,28 +4071,26 @@
   ]
 },
 {
-  "id": "veloura_products_selected",
+  "id": "veloura_products_chosen",
   "type": "items",
-  "format": "variable-list",
+  "format": "dropdown-list",
   "label": "اختر المنتجات",
-  "description": "اختر المنتجات التي تريد عرضها داخل المكون",
   "icon": "sicon-shopping-bag",
-  "value": [],
-  "required": false,
+  "value": null,
   "searchable": true,
   "source": "products",
   "conditions": [
     {
-      "id": "veloura_products_type",
+      "id": "veloura_products_source",
       "operation": "=",
-      "value": "selected"
+      "value": "chosen_products"
     }
   ]
 },
 {
   "id": "veloura_products_category",
   "type": "items",
-  "format": "variable-list",
+  "format": "dropdown-list",
   "label": "اختر التصنيف",
   "icon": "sicon-folder",
   "value": null,
@@ -4100,7 +4098,7 @@
   "source": "categories",
   "conditions": [
     {
-      "id": "veloura_products_type",
+      "id": "veloura_products_source",
       "operation": "=",
       "value": "category"
     }
