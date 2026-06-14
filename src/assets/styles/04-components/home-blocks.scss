@@ -1523,3 +1523,39 @@
     text-align: center;
   }
 }  
+
+
+
+.veloura-products.as-grid {
+  .s-products-list-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(var(--products-cols, 4), minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+
+.veloura-products.as-slider {
+  .swiper-slide {
+    width: calc((100% - (24px * (var(--products-cols, 4) - 1))) / var(--products-cols, 4)) !important;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .veloura-products.as-grid {
+    .s-products-list-wrapper {
+      grid-template-columns: repeat(var(--mob-products-cols, 2), minmax(0, 1fr)) !important;
+      gap: 14px !important;
+    }
+  }
+
+  .veloura-products.as-slider {
+    .swiper-slide {
+      width: calc((100% - (14px * (var(--mob-products-cols, 2) - 1))) / var(--mob-products-cols, 2)) !important;
+    }
+  }
+}
