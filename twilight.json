@@ -3953,13 +3953,16 @@
     {
   "id": "veloura_products_desktop_cols",
   "type": "number",
-  "format": "range",
+  "format": "slider",
+  "inputType": "range",
   "label": "عدد الأعمدة في الكمبيوتر والتابلت",
-  "description": "الحد المسموح به من 1 إلى 8 منتجات.",
+  "description": "الحد المسموح من 1 إلى 8 منتجات.",
   "icon": "sicon-grid",
-  "value": 4,
-  "min": 1,
-  "max": 8,
+  "value": "4",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "8",
   "conditions": [
     {
       "id": "veloura_products_grid_mode",
@@ -3971,13 +3974,16 @@
 {
   "id": "veloura_products_mobile_cols",
   "type": "number",
-  "format": "range",
+  "format": "slider",
+  "inputType": "range",
   "label": "عدد الأعمدة في الجوال",
-  "description": "الحد المسموح به من 1 إلى 3 منتجات.",
+  "description": "الحد المسموح من 1 إلى 3 منتجات.",
   "icon": "sicon-grid",
-  "value": 2,
-  "min": 1,
-  "max": 3,
+  "value": "2",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "3",
   "conditions": [
     {
       "id": "veloura_products_grid_mode",
@@ -4148,17 +4154,55 @@
   "label": "نوع المنتجات",
   "icon": "sicon-products",
   "value": "latest_products",
-  "source": "custom",
-  "sources": [
-    { "label": "منتجات من تصنيف", "key": "category", "value": "category" },
-    { "label": "الأكثر مبيعاً", "key": "most_sales", "value": "most_sales" },
-    { "label": "أحدث المنتجات", "key": "latest_products", "value": "latest_products" },
-    { "label": "منتجات مختارة", "key": "chosen_products", "value": "chosen_products" },
-    { "label": "منتجات عشوائية", "key": "random_products", "value": "random_products" },
-    { "label": "الأعلى تقييماً", "key": "top_rated_products", "value": "top_rated_products" },
-    { "label": "منتجات مع وسم", "key": "tag", "value": "tag" }
-  ]
-},
+  "selected": [
+    {
+      "label": "أحدث المنتجات",
+      "value": "latest_products",
+      "key": "latest_products"
+    }
+  ],
+  "options": [
+    {
+      "label": "منتجات من تصنيف",
+      "value": "category",
+      "key": "category"
+    },
+    {
+      "label": "الأكثر مبيعاً",
+      "value": "most_sales",
+      "key": "most_sales"
+    },
+    {
+      "label": "أحدث المنتجات",
+      "value": "latest_products",
+      "key": "latest_products"
+    },
+    {
+      "label": "منتجات مختارة",
+      "value": "chosen_products",
+      "key": "chosen_products"
+    },
+    {
+      "label": "منتجات عشوائية",
+      "value": "random_products",
+      "key": "random_products"
+    },
+    {
+      "label": "الأعلى تقييماً",
+      "value": "top_rated_products",
+      "key": "top_rated_products"
+    },
+    {
+      "label": "منتجات مع وسم",
+      "value": "tag",
+      "key": "tag"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": true
+},  
 {
   "id": "veloura_products_chosen",
   "type": "items",
@@ -4196,13 +4240,16 @@
 {
   "id": "veloura_products_limit",
   "type": "number",
-  "format": "range",
+  "format": "slider",
+  "inputType": "range",
   "label": "حدد عدد المنتجات",
   "description": "الحد المسموح من 1 إلى 32 منتج.",
   "icon": "sicon-list",
-  "value": 10,
-  "min": 1,
-  "max": 32
+  "value": "10",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "32"
 },
 {
   "id": "veloura_products_tag",
