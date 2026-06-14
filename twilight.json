@@ -4300,6 +4300,7 @@
   "type": "string",
   "format": "text",
   "label": "Classes",
+  "placeholder": "ex: container dark p-5 custom",
   "icon": "sicon-code",
   "value": "",
   "required": false

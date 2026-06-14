@@ -29073,6 +29073,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin-left: auto !important;
   margin-right: auto !important;
 }
+@media (min-width: 768px) {
+  .veloura-products.as-slider.is-products-centered .swiper-wrapper.s-slider-swiper-wrapper {
+    justify-content: center !important;
+  }
+}
 salla-slider{
     display: block;
 }

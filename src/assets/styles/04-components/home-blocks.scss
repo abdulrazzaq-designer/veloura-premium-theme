@@ -1581,3 +1581,11 @@
     margin-inline: auto !important;
   }
 }
+
+@media (min-width: 768px) {
+  .veloura-products.as-slider.is-products-centered {
+    .swiper-wrapper.s-slider-swiper-wrapper {
+      justify-content: center !important;
+    }
+  }
+}
