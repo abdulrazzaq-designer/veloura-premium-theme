@@ -1,6 +1,4 @@
 {% set source = component.veloura_products_source ?: 'latest' %}
-{% set slider_source = source %}
-{% set list_source = source %}
 {% set source_value = null %}
 
 {% if source == 'selected' and component.veloura_products_chosen %}
@@ -16,20 +14,7 @@
     {% set category_ids = category_ids|merge([category.id]) %}
   {% endfor %}
   {% set source_value = category_ids %}
-
-{% elseif source == 'tag' and component.veloura_products_tag %}
-  {% set tag_ids = [] %}
-  {% for tag in component.veloura_products_tag %}
-    {% set tag_ids = tag_ids|merge([tag.id]) %}
-  {% endfor %}
-  {% set source_value = tag_ids %}
 {% endif %}
-
-{% if source == 'latest' %}
-  {% set slider_source = 'latest_products' %}
-  {% set list_source = 'latest' %}
-{% endif %}
-
 
 <section
   class="s-block container veloura-products
@@ -70,31 +55,17 @@
 
   {% if component.veloura_products_grid_mode %}
     <salla-products-list
-  source="{{ list_source }}"
+  source="{{ source }}"
   limit="{{ component.veloura_products_limit ?: 10 }}"
   source-value="{{ source_value|json_encode }}"
   includes="[]"
 ></salla-products-list>
   {% else %}
     <salla-products-slider
-  source="{{ slider_source }}"
+  source="{{ source }}"
   limit="{{ component.veloura_products_limit ?: 10 }}"
-  autoplay
   source-value="{{ source_value|json_encode }}"
-  display-all-url=""
-  block-title=""
-  block-subTitle=""
   slider-id="veloura-products-{{ position }}"
-  slider-config='{
-    "slidesPerView": {{ component.veloura_products_mobile_cols ?: 2 }},
-    "spaceBetween": 24,
-    "breakpoints": {
-      "768": {
-        "slidesPerView": {{ component.veloura_products_desktop_cols ?: 4 }},
-        "spaceBetween": 24
-      }
-    }
-  }'
 ></salla-products-slider>
   {% endif %}
 
