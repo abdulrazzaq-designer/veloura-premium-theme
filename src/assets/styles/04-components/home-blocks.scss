@@ -1565,3 +1565,19 @@
     }
   }
 }
+
+.veloura-products.as-slider.is-products-wide {
+  .veloura-products__container {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.veloura-products.as-slider.is-products-centered {
+  salla-products-slider,
+  salla-slider,
+  .s-slider-container,
+  .swiper {
+    margin-inline: auto !important;
+  }
+}
