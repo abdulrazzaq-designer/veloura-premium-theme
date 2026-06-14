@@ -22,10 +22,16 @@
   {{ component.veloura_products_center_titles ? 'is-centered' : '' }}
  {{ component.veloura_products_show_excerpt ? 'has-partial' : 'no-partial' }}
   {{ component.veloura_products_center_desktop ? 'is-desktop-centered' : '' }}
-  {{ component.veloura_products_wide_desktop ? 'is-desktop-wide' : '' }}"
+  {{ component.veloura_products_wide_desktop ? 'is-desktop-wide' : '' }}
+  {{ component.veloura_products_custom_spacing ? 'has-custom-spacing' : '' }}
+{{ component.veloura_products_mobile_only ? 'veloura-mobile-only' : '' }}
+{{ component.veloura_products_desktop_only ? 'veloura-desktop-only' : '' }}
+{{ component.veloura_products_custom_classes }}
+  "
   style="
     --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
     --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
+    --veloura-products-spacing: {{ component.veloura_products_custom_spacing ? component.veloura_products_spacing_amount|default(0) : 0 }}px;
   "
 >
 
