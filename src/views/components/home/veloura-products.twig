@@ -24,6 +24,10 @@
     منتجات فيلورا يعمل
   </div>
 </section>
-<pre style="direction:ltr;text-align:left;background:#f7f7f7;padding:20px;border-radius:12px;overflow:auto;">
-{{ component.veloura_products_selected|json_encode }}
+<pre style="direction:ltr;text-align:left;background:#fff;padding:20px;border-radius:12px;overflow:auto;">
+selected:
+{{ component.veloura_products_selected|json_encode(constant('JSON_PRETTY_PRINT')) }}
+
+all component:
+{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}
 </pre>

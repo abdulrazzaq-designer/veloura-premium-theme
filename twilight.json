@@ -4058,23 +4058,13 @@
   "format": "dropdown-list",
   "label": "نوع المنتجات",
   "icon": "sicon-products",
-  "value": "latest",
+  "value": "selected",
   "source": "custom",
   "sources": [
-    {
-      "label": "أحدث المنتجات",
-      "key": "latest",
-      "value": "latest"
-    },
     {
       "label": "منتجات مختارة",
       "key": "selected",
       "value": "selected"
-    },
-    {
-      "label": "منتجات من تصنيف",
-      "key": "category",
-      "value": "category"
     }
   ]
 },
@@ -4083,8 +4073,10 @@
   "type": "items",
   "format": "variable-list",
   "label": "اختر المنتجات",
+  "description": "اختر المنتجات التي تريد عرضها داخل المكون",
   "icon": "sicon-shopping-bag",
   "value": [],
+  "required": false,
   "searchable": true,
   "source": "products",
   "conditions": [
