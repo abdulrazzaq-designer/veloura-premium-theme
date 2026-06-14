@@ -1,43 +1,34 @@
-{% set raw_source = component.veloura_products_source ?: 'latest' %}
+{% set source = component.veloura_products_source ?: 'latest' %}
+{% set slider_source = source %}
+{% set list_source = source %}
 {% set source_value = null %}
-{% set slider_source = raw_source %}
-{% set list_source = raw_source %}
 
-{% if component.veloura_products_category %}
-  {% set slider_source = 'categories' %}
-  {% set list_source = 'categories' %}
-
-  {% set category_ids = [] %}
-  {% for cat in component.veloura_products_category %}
-    {% set category_ids = category_ids|merge([cat.id]) %}
-  {% endfor %}
-
-  {% set source_value = category_ids %}
-
-{% elseif component.veloura_products_chosen %}
-  {% set slider_source = 'selected' %}
-  {% set list_source = 'selected' %}
-
+{% if source == 'selected' and component.veloura_products_chosen %}
   {% set product_ids = [] %}
   {% for product in component.veloura_products_chosen %}
     {% set product_ids = product_ids|merge([product.id]) %}
   {% endfor %}
-
   {% set source_value = product_ids %}
 
-{% elseif raw_source in ['latest', 'latest_products'] %}
-  {% set slider_source = 'latest_products' %}
-  {% set list_source = 'latest' %}
+{% elseif source == 'categories' and component.veloura_products_category %}
+  {% set category_ids = [] %}
+  {% for category in component.veloura_products_category %}
+    {% set category_ids = category_ids|merge([category.id]) %}
+  {% endfor %}
+  {% set source_value = category_ids %}
 
-{% elseif raw_source in ['sales', 'most_sales'] %}
-  {% set slider_source = 'sales' %}
-  {% set list_source = 'sales' %}
-
-{% elseif raw_source == 'offers' %}
-  {% set slider_source = 'offers' %}
-  {% set list_source = 'offers' %}
+{% elseif source == 'tag' and component.veloura_products_tag %}
+  {% set tag_ids = [] %}
+  {% for tag in component.veloura_products_tag %}
+    {% set tag_ids = tag_ids|merge([tag.id]) %}
+  {% endfor %}
+  {% set source_value = tag_ids %}
 {% endif %}
 
+{% if source == 'latest' %}
+  {% set slider_source = 'latest_products' %}
+  {% set list_source = 'latest' %}
+{% endif %}
 
 
 <section
