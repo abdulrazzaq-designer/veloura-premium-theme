@@ -4272,86 +4272,8 @@
       "multichoice": false,
       "searchable": false,
       "required": false
-    },
-    {
-      "id": "veloura_title_for_next_section",
-      "type": "boolean",
-      "format": "switch",
-      "label": "جعله عنوان للقسم التالي",
-      "description": "يتم إخفاء عنوان القسم التالي إن وجد واستبداله بهذا العنوان",
-      "icon": "sicon-toggle-off",
-      "value": false,
-      "selected": false,
-      "required": false
-    },
-    {
-      "id": "veloura_title_enable_custom_spacing",
-      "type": "boolean",
-      "format": "switch",
-      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
-      "icon": "sicon-toggle-off",
-      "value": false,
-      "selected": false,
-      "required": false
-    },
-    {
-      "id": "veloura_title_custom_spacing",
-      "type": "number",
-      "format": "slider",
-      "inputType": "range",
-      "label": "مقدار المسافة",
-      "icon": "sicon-pin",
-      "value": "0",
-      "required": false,
-      "step": "1",
-      "minimum": "0",
-      "maximum": "100",
-      "conditions": [
-        {
-          "id": "veloura_title_enable_custom_spacing",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-{
-  "id": "veloura_title_show_mobile_only",
-  "type": "boolean",
-  "format": "switch",
-  "label": "عرض العنصر في الجوال فقط",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_show_desktop_only",
-  "type": "boolean",
-  "format": "switch",
-  "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_hide_section",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إخفاء هذا العنصر بالكامل",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
-{
-  "id": "veloura_title_custom_classes",
-  "type": "string",
-  "format": "text",
-  "label": "Classes",
-  "icon": "sicon-format-text-alt",
-  "value": ""
-}
+    }
+    
 
 
   ]
