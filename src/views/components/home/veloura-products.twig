@@ -39,10 +39,11 @@
 
   {% if component.veloura_products_grid_mode == true %}
   <salla-products-list
-    source="{{ component.veloura_products_source ?: 'latest_products' }}"
-    limit="{{ component.veloura_products_limit ?: 10 }}"
-    source-value="{{ source_value|json_encode }}"
-  ></salla-products-list>
+  source="{{ component.veloura_products_source ?: 'latest_products' }}"
+  limit="{{ component.veloura_products_limit ?: 10 }}"
+  source-value="{{ source_value|json_encode }}"
+  class="vertical-products"
+></salla-products-list>
 {% else %}
   <salla-products-slider
     source="{{ component.veloura_products_source ?: 'latest_products' }}"
