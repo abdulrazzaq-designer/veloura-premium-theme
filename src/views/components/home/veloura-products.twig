@@ -1,5 +1,22 @@
-<salla-products-list
-  source="latest_products"
-  limit="8"
-  source-value="[]"
-></salla-products-list>
+{% set source_value = null %}
+
+{% if component.veloura_products_source == 'chosen_products' %}
+  {% set source_value = component.veloura_products_chosen %}
+{% elseif component.veloura_products_source == 'category' %}
+  {% set source_value = component.veloura_products_category %}
+{% elseif component.veloura_products_source == 'tag' %}
+  {% set source_value = component.veloura_products_tag %}
+{% endif %}
+
+<section class="s-block container veloura-products">
+  <salla-products-slider
+    source="{{ component.veloura_products_source ?: 'latest_products' }}"
+    limit="{{ component.veloura_products_limit ?: 10 }}"
+    autoplay
+    source-value="{{ source_value|json_encode }}"
+    display-all-url="{{ component.veloura_products_show_button ? component.veloura_products_button_link : '' }}"
+    block-title="{{ component.veloura_products_title }}"
+    block-subTitle="{{ component.veloura_products_subtitle|raw }}"
+    slider-id="veloura-products-{{ position }}"
+  ></salla-products-slider>
+</section>
