@@ -3940,7 +3940,7 @@
       "required": false
     },
      {
-  "id": "grid",
+  "id": "veloura_products_grid_mode",
   "type": "boolean",
   "format": "switch",
   "label": "عرض المنتجات على شكل شبكة بدلاً من سلايدر",

@@ -8,15 +8,54 @@
   {% set source_value = component.veloura_products_tag %}
 {% endif %}
 
-<section class="s-block container veloura-products {{ component.veloura_products_center_titles ? 'is-title-centered' : '' }}">
-  <salla-products-slider
-  source="{{ component.veloura_products_source ?: 'latest_products' }}"
-  limit="{{ component.veloura_products_limit ?: 10 }}"
-  source-value="{{ source_value|json_encode }}"
-  display-all-url="{{ component.veloura_products_show_button ? component.veloura_products_button_link : '' }}"
-  block-title="{{ component.veloura_products_title }}"
-  block-subTitle="{{ component.veloura_products_subtitle|raw }}"
-  slider-id="veloura-products-{{ position }}"
-  {% if component.grid %}grid{% endif %}
-></salla-products-slider>
+{% set is_vertical = theme.settings.get('vertical_fixed_products', true) %}
+
+<section class="s-block container veloura-products {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}">
+
+  {% if component.veloura_products_title or component.veloura_products_subtitle or component.veloura_products_show_button %}
+    <div class="s-block__title veloura-products__title">
+      <div class="right-side">
+        {% if component.veloura_products_title_icon %}
+          <img src="{{ component.veloura_products_title_icon }}" class="veloura-products__icon" alt="">
+        {% endif %}
+
+        {% if component.veloura_products_title %}
+          <h2>{{ component.veloura_products_title }}</h2>
+        {% endif %}
+
+        {% if component.veloura_products_subtitle %}
+          <p>{{ component.veloura_products_subtitle|raw }}</p>
+        {% endif %}
+      </div>
+
+      {% if component.veloura_products_show_button and component.veloura_products_button_link %}
+        <a href="{{ component.veloura_products_button_link }}" class="s-block__display-all">
+          {{ component.veloura_products_button_text ?: 'عرض الكل' }}
+          <i class="sicon-arrow-left"></i>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if component.veloura_products_grid_mode %}
+    <salla-products-list
+      source="{{ component.veloura_products_source ?: 'latest_products' }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      source-value="{{ source_value|json_encode }}"
+      class="{{ is_vertical ? 'vertical-products' : 'horizontal-products' }}"
+      {{ is_vertical ? '' : 'horizontal-cards' }}
+    ></salla-products-list>
+  {% else %}
+    <salla-products-slider
+      source="{{ component.veloura_products_source ?: 'latest_products' }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      {% if component.veloura_products_slider_autoplay %}autoplay{% endif %}
+      source-value="{{ source_value|json_encode }}"
+      display-all-url="{{ component.veloura_products_show_button ? component.veloura_products_button_link : '' }}"
+      block-title="{{ component.veloura_products_title }}"
+      block-subTitle="{{ component.veloura_products_subtitle|raw }}"
+      slider-id="veloura-products-{{ position }}"
+    ></salla-products-slider>
+  {% endif %}
+
 </section>
