@@ -4225,7 +4225,82 @@
                     "step": "1",
                     "minimum": "1",
                     "maximum": "32"
-                }
+                },
+                {
+  "id": "veloura_products_general_title",
+  "type": "static",
+  "format": "h1",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم في إعدادات ظهور وتنسيق العنصر</div></div></div>"
+},
+{
+  "id": "veloura_products_custom_spacing",
+  "type": "boolean",
+  "format": "switch",
+  "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_products_spacing_amount",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "مقدار المسافة",
+  "icon": "sicon-arrows-horizontal",
+  "value": "0",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "100",
+  "conditions": [
+    {
+      "id": "veloura_products_custom_spacing",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_products_mobile_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الجوال فقط",
+  "icon": "sicon-mobile",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_products_desktop_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+  "icon": "sicon-display",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_products_hide_section",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء هذا العنصر أو القسم بالكامل",
+  "icon": "sicon-eye-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_products_custom_classes",
+  "type": "string",
+  "format": "text",
+  "label": "Classes",
+  "icon": "sicon-code",
+  "value": "",
+  "required": false
+}
   ]
 }
     ],

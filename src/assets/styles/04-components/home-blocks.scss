@@ -1404,182 +1404,10 @@
 
 
 
+/* =========================
+   Veloura Products Slider
+========================= */
 
-.veloura-products {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.veloura-products__heading {
-  margin-bottom: 28px;
-}
-
-.veloura-products__heading-content {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.veloura-products__icon {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  flex: 0 0 auto;
-}
-
-.veloura-products__texts h2 {
-  margin: 0 0 6px;
-  font-size: 32px;
-  font-weight: 800;
-}
-
-.veloura-products__texts p {
-  margin: 0;
-  opacity: .75;
-}
-
-.veloura-products__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.veloura-products.is-centered {
-  .veloura-products__heading-content {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .veloura-products__icon {
-    margin: 0 auto;
-  }
-
-  .veloura-products__button {
-    justify-content: center;
-  }
-}
-
-/* Grid columns */
-.veloura-products.as-grid {
-  .s-products-list-wrapper {
-    display: grid !important;
-    grid-template-columns: repeat(var(--products-cols, 4), minmax(0, 1fr)) !important;
-    gap: 24px !important;
-  }
-}
-
-/* Slider columns */
-.veloura-products.as-slider {
-  salla-products-slider {
-    --slides-per-view: var(--products-cols, 4);
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev,
-  salla-slider .swiper-button-next,
-  salla-slider .swiper-button-prev {
-    display: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .veloura-products.as-grid {
-    .s-products-list-wrapper {
-      grid-template-columns: repeat(var(--mob-products-cols, 2), minmax(0, 1fr)) !important;
-      gap: 14px !important;
-    }
-  }
-
-  .veloura-products.as-slider {
-    salla-products-slider {
-      --slides-per-view: var(--mob-products-cols, 2);
-    }
-  }
-}
-
-
-
-.veloura-products__heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 28px;
-}
-
-.veloura-products__heading-content {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.veloura-products.is-centered {
-  .veloura-products__heading,
-  .veloura-products__heading-content {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-}  
-
-
-
-.veloura-products.as-grid {
-  .s-products-list-wrapper {
-    display: grid !important;
-    grid-template-columns: repeat(var(--products-cols, 4), minmax(0, 1fr)) !important;
-    gap: 24px !important;
-  }
-}
-
-.veloura-products.as-slider {
-  .swiper-slide {
-    width: calc((100% - (24px * (var(--products-cols, 4) - 1))) / var(--products-cols, 4)) !important;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .veloura-products.as-grid {
-    .s-products-list-wrapper {
-      grid-template-columns: repeat(var(--mob-products-cols, 2), minmax(0, 1fr)) !important;
-      gap: 14px !important;
-    }
-  }
-
-  .veloura-products.as-slider {
-    .swiper-slide {
-      width: calc((100% - (14px * (var(--mob-products-cols, 2) - 1))) / var(--mob-products-cols, 2)) !important;
-    }
-  }
-}
-
-
-.veloura-products.as-slider {
-  overflow: hidden;
-}
-
-.veloura-products.as-slider.has-partial {
-  overflow: visible;
-}
-
-.veloura-products.as-slider.is-desktop-centered {
-  salla-products-slider {
-    display: block;
-    margin-inline: auto;
-  }
-}
-
-.veloura-products.as-slider.is-desktop-wide {
-  max-width: 100%;
-  width: 100%;
-}
 .veloura-products.as-slider {
   overflow: hidden;
 
@@ -1598,5 +1426,12 @@
 
   .swiper-slide {
     max-width: 100%;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev,
+  salla-slider .swiper-button-next,
+  salla-slider .swiper-button-prev {
+    display: none !important;
   }
 }
