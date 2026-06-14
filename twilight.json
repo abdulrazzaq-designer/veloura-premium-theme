@@ -4134,41 +4134,6 @@
   "icon": "sicon-shopping-bag"
 },
 {
-  "id": "veloura_products_source",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "نوع المنتجات",
-  "source": "custom",
-  "value": "latest",
-  "sources": [
-    {
-      "label": "أحدث المنتجات",
-      "key": "latest",
-      "value": "latest"
-    },
-    {
-      "label": "الأكثر مبيعاً",
-      "key": "sales",
-      "value": "sales"
-    },
-    {
-      "label": "منتجات مختارة",
-      "key": "selected",
-      "value": "selected"
-    },
-    {
-      "label": "منتجات من تصنيف",
-      "key": "categories",
-      "value": "categories"
-    },
-    {
-      "label": "منتجات مع وسم",
-      "key": "tag",
-      "value": "tag"
-    }
-  ]
-},
-{
   "id": "veloura_products_chosen",
   "type": "items",
   "format": "dropdown-list",
