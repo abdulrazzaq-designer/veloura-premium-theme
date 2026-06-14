@@ -1,27 +1,45 @@
 {% set raw_source = component.veloura_products_source ?: 'latest' %}
 {% set source_value = null %}
+{% set slider_source = raw_source %}
+{% set list_source = raw_source %}
 
-{% if raw_source in ['latest_products', 'latest'] %}
-  {% set slider_source = 'latest_products' %}
-  {% set list_source = 'latest' %}
-{% elseif raw_source in ['chosen_products', 'selected'] %}
-  {% set slider_source = 'selected' %}
-  {% set list_source = 'selected' %}
-  {% set source_value = component.veloura_products_chosen %}
-{% elseif raw_source in ['category', 'categories'] %}
+{% if component.veloura_products_category %}
   {% set slider_source = 'categories' %}
   {% set list_source = 'categories' %}
-  {% set source_value = component.veloura_products_category %}
-{% elseif raw_source in ['most_sales', 'sales'] %}
+
+  {% set category_ids = [] %}
+  {% for cat in component.veloura_products_category %}
+    {% set category_ids = category_ids|merge([cat.id]) %}
+  {% endfor %}
+
+  {% set source_value = category_ids %}
+
+{% elseif component.veloura_products_chosen %}
+  {% set slider_source = 'selected' %}
+  {% set list_source = 'selected' %}
+
+  {% set product_ids = [] %}
+  {% for product in component.veloura_products_chosen %}
+    {% set product_ids = product_ids|merge([product.id]) %}
+  {% endfor %}
+
+  {% set source_value = product_ids %}
+
+{% elseif raw_source in ['latest', 'latest_products'] %}
+  {% set slider_source = 'latest_products' %}
+  {% set list_source = 'latest' %}
+
+{% elseif raw_source in ['sales', 'most_sales'] %}
   {% set slider_source = 'sales' %}
   {% set list_source = 'sales' %}
+
 {% elseif raw_source == 'offers' %}
   {% set slider_source = 'offers' %}
   {% set list_source = 'offers' %}
-{% else %}
-  {% set slider_source = raw_source %}
-  {% set list_source = raw_source %}
 {% endif %}
+
+
+
 <section
   class="s-block container veloura-products
   {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}
