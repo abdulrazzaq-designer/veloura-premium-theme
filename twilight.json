@@ -4176,7 +4176,7 @@
     {
       "id": "veloura_products_source",
       "operation": "=",
-      "value": "chosen_products"
+      "value": "selected"
     }
   ]
 },
@@ -4193,7 +4193,7 @@
     {
       "id": "veloura_products_source",
       "operation": "=",
-      "value": "category"
+      "value": "categories"
     }
   ]
 },
