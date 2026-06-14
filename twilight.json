@@ -4221,61 +4221,7 @@
                     "step": "1",
                     "minimum": "1",
                     "maximum": "32"
-                },
-      
-    {
-      "id": "veloura_title_size",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "حجم النص (للعناوين)",
-      "icon": "sicon-keyboard_arrow_down",
-      "selected": [
-        {
-          "label": "متوسط",
-          "value": "medium",
-          "key": "title-size-medium"
-        }
-      ],
-      "options": [
-        {
-          "label": "صغير جداً",
-          "value": "xs",
-          "key": "title-size-xs"
-        },
-        {
-          "label": "صغير",
-          "value": "sm",
-          "key": "title-size-sm"
-        },
-        {
-          "label": "متوسط",
-          "value": "medium",
-          "key": "title-size-medium"
-        },
-        {
-          "label": "كبير",
-          "value": "lg",
-          "key": "title-size-lg"
-        },
-        {
-          "label": "كبير جداً",
-          "value": "xl",
-          "key": "title-size-xl"
-        },
-        {
-          "label": "ضخم",
-          "value": "xxl",
-          "key": "title-size-xxl"
-        }
-      ],
-      "source": "Manual",
-      "multichoice": false,
-      "searchable": false,
-      "required": false
-    }
-    
-
-
+                }
   ]
 }
     ],
