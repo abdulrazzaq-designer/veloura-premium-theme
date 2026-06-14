@@ -4222,23 +4222,571 @@
                     "minimum": "1",
                     "maximum": "32"
                 },
-                {
-                    "id": "veloura_products_tag",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "اختر الوسم",
-                    "source": "tags",
-                    "conditions": [
-                        {
-                            "id": "veloura_products_source",
-                            "operation": "=",
-                            "value": "tag"
-                        }
-                    ],
-                    "value": []
-                }
-            ]
+      
+    {
+      "id": "veloura_title_size",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حجم النص (للعناوين)",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "متوسط",
+          "value": "medium",
+          "key": "title-size-medium"
         }
+      ],
+      "options": [
+        {
+          "label": "صغير جداً",
+          "value": "xs",
+          "key": "title-size-xs"
+        },
+        {
+          "label": "صغير",
+          "value": "sm",
+          "key": "title-size-sm"
+        },
+        {
+          "label": "متوسط",
+          "value": "medium",
+          "key": "title-size-medium"
+        },
+        {
+          "label": "كبير",
+          "value": "lg",
+          "key": "title-size-lg"
+        },
+        {
+          "label": "كبير جداً",
+          "value": "xl",
+          "key": "title-size-xl"
+        },
+        {
+          "label": "ضخم",
+          "value": "xxl",
+          "key": "title-size-xxl"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_for_next_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "جعله عنوان للقسم التالي",
+      "description": "يتم إخفاء عنوان القسم التالي إن وجد واستبداله بهذا العنوان",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_enable_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_title_custom_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-pin",
+      "value": "0",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_title_enable_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+{
+  "id": "veloura_title_show_mobile_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الجوال فقط",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_title_show_desktop_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_title_hide_section",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء هذا العنصر بالكامل",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_title_custom_classes",
+  "type": "string",
+  "format": "text",
+  "label": "Classes",
+  "icon": "sicon-format-text-alt",
+  "value": ""
+}
+
+
+
+  ]
+},
+{
+  "key": "e72c5a4b-36d1-4b41-91f3-1c3e9f5d8a22",
+  "title": {
+    "ar": "فاصل (فيلورا)",
+    "en": "Spacer - Veloura"
+  },
+  "icon": "sicon-minus",
+  "path": "home.veloura-spacer",
+  "fields": [
+    {
+      "id": "veloura_spacer_mobile",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة الرأسية (في الجوال)",
+      "icon": "sicon-pin",
+      "value": "60",
+      "required": false,
+      "step": "1",
+      "minimum": "-200",
+      "maximum": "200"
+    },
+    {
+      "id": "veloura_spacer_desktop",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة الرأسية (في اللابتوب)",
+      "icon": "sicon-pin",
+      "value": "60",
+      "required": false,
+      "step": "1",
+      "minimum": "-250",
+      "maximum": "200"
+    },
+    {
+      "id": "veloura_spacer_enable_tablet",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إضافة مسافة مخصصة للتابلت أيضاً",
+      "description": "اختياري",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_spacer_tablet",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة الرأسية (آيباد وتابلت)",
+      "icon": "sicon-pin",
+      "value": "60",
+      "required": false,
+      "step": "1",
+      "minimum": "-250",
+      "maximum": "200",
+      "conditions": [
+        {
+          "id": "veloura_spacer_enable_tablet",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_spacer_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "icon": "sicon-format-text-alt",
+      "value": "",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "30000"
+    }
+  ]
+},
+{
+  "key": "f84b4d92-6e4d-4a4f-92f3-37b9a3d1c601",
+  "title": {
+    "ar": "منتجات (فيلورا)",
+    "en": "Products - Veloura"
+  },
+  "icon": "sicon-shopping-bag",
+  "path": "home.veloura-products",
+  "fields": [
+    {
+      "id": "veloura_products_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في خيارات عرض المنتجات</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_products_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم الرئيسي",
+      "placeholder": "ادخل العنوان الرئيسي هنا...",
+      "icon": "sicon-format-text-alt",
+      "value": "",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "150"
+    },
+    {
+      "id": "veloura_products_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم الفرعي",
+      "placeholder": "وصل حديثاً",
+      "icon": "sicon-format-text-alt",
+      "value": "وصل حديثاً",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "200"
+    },
+    {
+      "id": "veloura_products_title_icon",
+      "type": "string",
+      "format": "image",
+      "label": "أضف أيقونة العنوان",
+      "description": "المقاس المناسب 300×300 بكسل",
+      "placeholder": "e.g. https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": null,
+      "required": false
+    },
+     {
+  "id": "veloura_products_grid_mode",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض المنتجات على شكل شبكة بدلاً من سلايدر",
+  "description": "* عند تفعيل هذا الخيار يتم عرض المنتجات على شكل أعمدة وصفوف بدلاً من صف واحد منزلق (سلايدر)",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+    {
+  "id": "veloura_products_desktop_cols",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "عدد الأعمدة في الكمبيوتر والتابلت",
+  "description": "الحد المسموح من 1 إلى 8 منتجات.",
+  "icon": "sicon-grid",
+  "value": "4",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "8"
+},
+{
+  "id": "veloura_products_mobile_cols",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "عدد الأعمدة في الجوال",
+  "description": "الحد المسموح من 1 إلى 3 منتجات.",
+  "icon": "sicon-grid",
+  "value": "2",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "3"
+},
+    {
+  "id": "veloura_products_show_button",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إضافة زر ورابط",
+  "icon": "sicon-toggle-off",
+  "value": false
+},
+{
+  "id": "veloura_products_button_text",
+  "type": "string",
+  "format": "text",
+  "label": "نص الزر",
+  "icon": "sicon-format-text",
+  "value": "عرض الكل",
+  "conditions": [
+    {
+      "id": "veloura_products_show_button",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_products_button_link",
+  "type": "items",
+  "icon": "sicon-link",
+  "label": "رابط الزر",
+  "value": null,
+  "required": false,
+  "format": "variable-list",
+  "searchable": true,
+  "source": "custom",
+  "sources": [
+    {
+      "label": "منتج",
+      "key": "products",
+      "value": "products"
+    },
+    {
+      "label": "تصنيف",
+      "key": "categories",
+      "value": "categories"
+    },
+    {
+      "label": "ماركة تجارية",
+      "key": "brands",
+      "value": "brands"
+    },
+    {
+      "label": "صفحة تعريفية",
+      "key": "pages",
+      "value": "pages"
+    },
+    {
+      "label": "مقالة",
+      "key": "blog_articles",
+      "value": "blog_articles"
+    },
+    {
+      "label": "تصنيف ضمن المدونة",
+      "key": "blog_categories",
+      "value": "blog_categories"
+    },
+    {
+      "label": "التخفيضات",
+      "key": "offers_link",
+      "value": "offers_link"
+    },
+    {
+      "label": "الماركات التجارية",
+      "key": "brands_link",
+      "value": "brands_link"
+    },
+    {
+      "label": "المدونة",
+      "key": "blog_link",
+      "value": "blog_link"
+    },
+    {
+      "label": "رابط خارجي",
+      "key": "custom",
+      "value": "custom"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_products_show_button",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_products_center_titles",
+  "type": "boolean",
+  "format": "switch",
+  "label": "توسيط العناوين",
+  "icon": "sicon-align-center",
+  "value": false
+},
+{
+  "id": "veloura_products_show_excerpt",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار جزء من المنتج الآخر",
+  "icon": "sicon-eye",
+  "value": true,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_products_center_desktop",
+  "type": "boolean",
+  "format": "switch",
+  "label": "توسيط المنتجات في الكمبيوتر",
+  "icon": "sicon-align-center",
+  "value": false,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_products_wide_desktop",
+  "type": "boolean",
+  "format": "switch",
+  "label": "توسيع عرض المنتجات في الكمبيوتر",
+  "icon": "sicon-resize-full",
+  "value": false,
+  "conditions": [
+    {
+      "id": "veloura_products_grid_mode",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_products_add_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إضافة المنتجات</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في خيارات المنتج</div>   </div> </div>",
+  "variant": "h1",
+  "icon": "sicon-shopping-bag"
+},
+{
+  "id": "veloura_products_source",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "نوع المنتجات",
+  "icon": "sicon-products",
+  "selected": [
+    {
+      "label": "أحدث المنتجات",
+      "value": "latest",
+      "key": "products-source-latest"
+    }
+  ],
+  "options": [
+    {
+      "label": "منتجات من تصنيف",
+      "value": "categories",
+      "key": "products-source-categories"
+    },
+    {
+      "label": "الأكثر مبيعاً",
+      "value": "sales",
+      "key": "products-source-sales"
+    },
+    {
+      "label": "أحدث المنتجات",
+      "value": "latest",
+      "key": "products-source-latest"
+    },
+    {
+      "label": "المنتجات المخفضة",
+      "value": "offers",
+      "key": "products-source-offers"
+    },
+    {
+      "label": "منتجات مختارة",
+      "value": "selected",
+      "key": "products-source-selected"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": false
+},
+{
+  "id": "veloura_products_chosen",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "اختر المنتجات",
+  "source": "products",
+  "multichoice": true,
+  "conditions": [
+    {
+      "id": "veloura_products_source",
+      "operation": "=",
+      "value": "selected"
+    }
+  ]
+},
+{
+  "id": "veloura_products_category",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "اختر التصنيف",
+  "source": "categories",
+  "conditions": [
+    {
+      "id": "veloura_products_source",
+      "operation": "=",
+      "value": "categories"
+    }
+  ]
+},
+{
+  "id": "veloura_products_limit",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "حدد عدد المنتجات",
+  "description": "الحد المسموح من 1 إلى 32 منتج.",
+  "icon": "sicon-list",
+  "value": "10",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "32"
+},
+{
+  "id": "veloura_products_tag",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "اختر الوسم",
+  "source": "tags",
+  "conditions": [
+    {
+      "id": "veloura_products_source",
+      "operation": "=",
+      "value": "tag"
+    }
+  ]
+}
+  ]
+}
     ],
     "support_url": "https://velourapremium.com",
     "description": {
