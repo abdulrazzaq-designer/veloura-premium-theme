@@ -28922,32 +28922,26 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-top: 40px;
   padding-bottom: 40px;
 }
-.veloura-products__heading {
-  text-align: center;
-  margin-bottom: 28px;
-}
 .veloura-products__icon {
   width: 54px;
   height: 54px;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: 0 auto 12px;
+  margin-bottom: 10px;
 }
-.veloura-products__heading h2 {
-  margin: 0 0 8px;
-  font-size: 32px;
-  font-weight: 800;
+.veloura-products.as-grid .s-products-list-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--products-cols, 4), minmax(0, 1fr)) !important;
+  grid-gap: 24px !important;
+  gap: 24px !important;
 }
-.veloura-products__heading p {
-  margin: 0;
-  font-size: 15px;
-  opacity: 0.75;
-}
-.veloura-products__test {
-  padding: 30px;
-  text-align: center;
-  border: 1px dashed #ccc;
-  border-radius: 16px;
+@media (max-width: 767px) {
+  .veloura-products.as-grid .s-products-list-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(var(--mob-products-cols, 2), minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
 }
 salla-slider{
     display: block;
