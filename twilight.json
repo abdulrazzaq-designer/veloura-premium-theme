@@ -4227,11 +4227,14 @@
                     "maximum": "32"
                 },
                 {
-            "id": "title",
-            "type": "static",
-            "format": "h1",
-            "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بطريقة عرض الصور والسلايدر</div></div></div>"
-        },
+                    "id": "title_5",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title 5",
+                    "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
 {
   "id": "veloura_products_custom_spacing",
   "type": "boolean",

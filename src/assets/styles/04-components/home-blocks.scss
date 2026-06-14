@@ -1435,3 +1435,12 @@
     display: none !important;
   }
 }
+
+.veloura-products.as-slider {
+  .carousel-slider .swiper,
+  .s-slider-container,
+  .swiper {
+    padding-left: 0 !important;
+    padding-inline-start: 0 !important;
+  }
+}
