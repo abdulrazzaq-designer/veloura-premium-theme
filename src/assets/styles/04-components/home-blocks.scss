@@ -1400,3 +1400,44 @@
     height: var(--veloura-spacer-desktop, 60px);
   }
 }
+
+
+
+
+
+
+.veloura-products {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.veloura-products__heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.veloura-products__icon {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+.veloura-products__heading h2 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.veloura-products__heading p {
+  margin: 0;
+  font-size: 15px;
+  opacity: .75;
+}
+
+.veloura-products__test {
+  padding: 30px;
+  text-align: center;
+  border: 1px dashed #ccc;
+  border-radius: 16px;
+}

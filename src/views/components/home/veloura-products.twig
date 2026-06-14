@@ -1,0 +1,26 @@
+<section class="s-block container veloura-products">
+  <div class="veloura-products__heading">
+
+    {% if component.veloura_products_title_icon %}
+      <img
+        src="{{ component.veloura_products_title_icon }}"
+        alt="{{ component.veloura_products_title ?: 'products' }}"
+        class="veloura-products__icon"
+        loading="lazy"
+      >
+    {% endif %}
+
+    {% if component.veloura_products_title %}
+      <h2>{{ component.veloura_products_title }}</h2>
+    {% endif %}
+
+    {% if component.veloura_products_subtitle %}
+      <p>{{ component.veloura_products_subtitle }}</p>
+    {% endif %}
+
+  </div>
+
+  <div class="veloura-products__test">
+    منتجات فيلورا يعمل
+  </div>
+</section>

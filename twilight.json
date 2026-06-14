@@ -3885,6 +3885,72 @@
       "maxLength": "30000"
     }
   ]
+},
+{
+  "key": "f84b4d92-6e4d-4a4f-92f3-37b9a3d1c601",
+  "title": {
+    "ar": "منتجات (فيلورا)",
+    "en": "Products - Veloura"
+  },
+  "icon": "sicon-shopping-bag",
+  "path": "home.veloura-products",
+  "fields": [
+    {
+      "id": "veloura_products_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في خيارات عرض المنتجات</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_products_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم الرئيسي",
+      "placeholder": "ادخل العنوان الرئيسي هنا...",
+      "icon": "sicon-format-text-alt",
+      "value": "",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "150"
+    },
+    {
+      "id": "veloura_products_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم الفرعي",
+      "placeholder": "وصل حديثاً",
+      "icon": "sicon-format-text-alt",
+      "value": "وصل حديثاً",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "200"
+    },
+    {
+      "id": "veloura_products_title_icon",
+      "type": "string",
+      "format": "image",
+      "label": "أضف أيقونة العنوان",
+      "description": "المقاس المناسب 300×300 بكسل",
+      "placeholder": "e.g. https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": null,
+      "required": false
+    },
+    {
+      "id": "veloura_products_grid_mode",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض المنتجات على شكل شبكة بدلاً من سلايدر",
+      "description": "عند تفعيل هذا الخيار سيتم عرض المنتجات على شكل أعمدة وصفوف بدلاً من صف واحد منزلق",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",
