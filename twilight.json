@@ -4166,12 +4166,14 @@
 {
   "id": "veloura_products_chosen",
   "type": "items",
-  "format": "dropdown-list",
+  "format": "variable-list",
   "label": "اختر المنتجات",
+  "description": "يمكنك اختيار أكثر من منتج",
   "icon": "sicon-shopping-bag",
   "value": null,
   "searchable": true,
   "source": "products",
+  "multichoice": true,
   "conditions": [
     {
       "id": "veloura_products_source",
@@ -4179,7 +4181,7 @@
       "value": "selected"
     }
   ]
-},
+},  
 {
   "id": "veloura_products_category",
   "type": "items",
