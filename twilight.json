@@ -4140,23 +4140,21 @@
   "label": "نوع المنتجات",
   "icon": "sicon-products",
   "selected": [
-    {
-      "label": "أحدث المنتجات",
-      "value": "latest",
-      "key": "latest"
-    }
-  ],
-  "options": [
-    { "label": "منتجات من تصنيف", "value": "categories", "key": "categories" },
-    { "label": "الأكثر مبيعاً", "value": "sales", "key": "sales" },
-    { "label": "أحدث المنتجات", "value": "latest", "key": "latest" },
-    { "label": "العروض", "value": "offers", "key": "offers" },
-    { "label": "منتجات مختارة", "value": "selected", "key": "selected" }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": false,
-  "required": true
+                {
+                    "label": "اظهار الصورة كاملةً في المنتصف (Contain)",
+                    "value": "contain",
+                    "key": "f4adec13-6e4c-654b-b978-b2807935ced9"
+                }
+            ],
+  "value": "latest",
+  "source": "custom",
+  "sources": [
+    { "label": "منتجات من تصنيف", "key": "categories", "value": "categories" },
+    { "label": "الأكثر مبيعاً", "key": "sales", "value": "sales" },
+    { "label": "أحدث المنتجات", "key": "latest", "value": "latest" },
+    { "label": "العروض", "key": "offers", "value": "offers" },
+    { "label": "منتجات مختارة", "key": "selected", "value": "selected" }
+  ]
 },
 {
   "id": "veloura_products_chosen",
