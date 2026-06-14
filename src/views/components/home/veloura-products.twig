@@ -1,13 +1,11 @@
-{% set source_value = null %}
-{% set product_source = component.veloura_products_source ?: 'latest_products' %}
-{% set list_source = product_source == 'latest_products' ? 'latest' : product_source %}
 
-{% if product_source == 'chosen_products' %}
+{% set source_value = null %}
+{% set product_source = component.veloura_products_source ?: 'latest' %}
+
+{% if product_source == 'selected' %}
   {% set source_value = component.veloura_products_chosen %}
-{% elseif product_source == 'category' %}
+{% elseif product_source == 'categories' %}
   {% set source_value = component.veloura_products_category %}
-{% elseif product_source == 'tag' %}
-  {% set source_value = component.veloura_products_tag %}
 {% endif %}
 
 <section

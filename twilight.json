@@ -4153,16 +4153,14 @@
   "format": "dropdown-list",
   "label": "نوع المنتجات",
   "icon": "sicon-products",
-  "value": "latest_products",
+  "value": "latest",
   "source": "custom",
   "sources": [
-    { "label": "منتجات من تصنيف", "key": "category", "value": "category" },
-    { "label": "الأكثر مبيعاً", "key": "most_sales", "value": "most_sales" },
-    { "label": "أحدث المنتجات", "key": "latest_products", "value": "latest_products" },
-    { "label": "منتجات مختارة", "key": "chosen_products", "value": "chosen_products" },
-    { "label": "منتجات عشوائية", "key": "random_products", "value": "random_products" },
-    { "label": "الأعلى تقييماً", "key": "top_rated_products", "value": "top_rated_products" },
-    { "label": "منتجات مع وسم", "key": "tag", "value": "tag" }
+    { "label": "منتجات من تصنيف", "key": "categories", "value": "categories" },
+    { "label": "الأكثر مبيعاً", "key": "sales", "value": "sales" },
+    { "label": "أحدث المنتجات", "key": "latest", "value": "latest" },
+    { "label": "العروض", "key": "offers", "value": "offers" },
+    { "label": "منتجات مختارة", "key": "selected", "value": "selected" }
   ]
 },
 {
