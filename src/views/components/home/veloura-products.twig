@@ -1,40 +1,15 @@
-{% set source_value = null %}
+{% set source_value = [] %}
 {% set is_vertical = theme.settings.get('vertical_fixed_products', true) %}
 
-{% if component.veloura_products_source == 'chosen_products' %}
+{% if component.veloura_products_source == 'chosen_products' and component.veloura_products_chosen %}
   {% set source_value = component.veloura_products_chosen %}
-{% elseif component.veloura_products_source == 'category' %}
+{% elseif component.veloura_products_source == 'category' and component.veloura_products_category %}
   {% set source_value = component.veloura_products_category %}
-{% elseif component.veloura_products_source == 'tag' %}
+{% elseif component.veloura_products_source == 'tag' and component.veloura_products_tag %}
   {% set source_value = component.veloura_products_tag %}
 {% endif %}
 
-<section class="s-block container veloura-products {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}">
-
-  {% if component.veloura_products_title or component.veloura_products_subtitle or component.veloura_products_show_button %}
-    <div class="s-block__title veloura-products__title">
-      <div class="right-side">
-        {% if component.veloura_products_title_icon %}
-          <img src="{{ component.veloura_products_title_icon }}" class="veloura-products__icon" alt="">
-        {% endif %}
-
-        {% if component.veloura_products_title %}
-          <h2>{{ component.veloura_products_title }}</h2>
-        {% endif %}
-
-        {% if component.veloura_products_subtitle %}
-          <p>{{ component.veloura_products_subtitle|raw }}</p>
-        {% endif %}
-      </div>
-
-      {% if component.veloura_products_show_button and component.veloura_products_button_link %}
-        <a href="{{ component.veloura_products_button_link }}" class="s-block__display-all">
-          {{ component.veloura_products_button_text ?: 'عرض الكل' }}
-          <i class="sicon-arrow-left"></i>
-        </a>
-      {% endif %}
-    </div>
-  {% endif %}
+<section class="s-block s-block--tabs-produtcs container veloura-products {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}">
 
   {% if component.veloura_products_grid_mode %}
     <salla-products-list
