@@ -4154,55 +4154,17 @@
   "label": "نوع المنتجات",
   "icon": "sicon-products",
   "value": "latest_products",
-  "selected": [
-    {
-      "label": "أحدث المنتجات",
-      "value": "latest_products",
-      "key": "latest_products"
-    }
-  ],
-  "options": [
-    {
-      "label": "منتجات من تصنيف",
-      "value": "category",
-      "key": "category"
-    },
-    {
-      "label": "الأكثر مبيعاً",
-      "value": "most_sales",
-      "key": "most_sales"
-    },
-    {
-      "label": "أحدث المنتجات",
-      "value": "latest_products",
-      "key": "latest_products"
-    },
-    {
-      "label": "منتجات مختارة",
-      "value": "chosen_products",
-      "key": "chosen_products"
-    },
-    {
-      "label": "منتجات عشوائية",
-      "value": "random_products",
-      "key": "random_products"
-    },
-    {
-      "label": "الأعلى تقييماً",
-      "value": "top_rated_products",
-      "key": "top_rated_products"
-    },
-    {
-      "label": "منتجات مع وسم",
-      "value": "tag",
-      "key": "tag"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": false,
-  "required": true
-},  
+  "source": "custom",
+  "sources": [
+    { "label": "منتجات من تصنيف", "key": "category", "value": "category" },
+    { "label": "الأكثر مبيعاً", "key": "most_sales", "value": "most_sales" },
+    { "label": "أحدث المنتجات", "key": "latest_products", "value": "latest_products" },
+    { "label": "منتجات مختارة", "key": "chosen_products", "value": "chosen_products" },
+    { "label": "منتجات عشوائية", "key": "random_products", "value": "random_products" },
+    { "label": "الأعلى تقييماً", "key": "top_rated_products", "value": "top_rated_products" },
+    { "label": "منتجات مع وسم", "key": "tag", "value": "tag" }
+  ]
+},
 {
   "id": "veloura_products_chosen",
   "type": "items",
