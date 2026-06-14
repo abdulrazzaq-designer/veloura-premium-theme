@@ -28991,6 +28991,24 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     --slides-per-view: var(--mob-products-cols, 2);
   }
 }
+.veloura-products__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.veloura-products__heading-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.veloura-products.is-centered .veloura-products__heading,
+.veloura-products.is-centered .veloura-products__heading-content {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
 salla-slider{
     display: block;
 }

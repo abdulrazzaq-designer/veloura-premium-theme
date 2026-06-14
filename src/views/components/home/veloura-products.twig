@@ -22,29 +22,29 @@
 
   {% if component.veloura_products_title or component.veloura_products_subtitle or component.veloura_products_show_button %}
     <div class="veloura-products__heading">
-      <div class="veloura-products__heading-content">
-        {% if component.veloura_products_title_icon %}
-          <img src="{{ component.veloura_products_title_icon }}" class="veloura-products__icon" alt="">
-        {% endif %}
+  <div class="veloura-products__heading-content">
+    {% if component.veloura_products_title_icon %}
+      <img src="{{ component.veloura_products_title_icon }}" class="veloura-products__icon" alt="">
+    {% endif %}
 
-        <div class="veloura-products__texts">
-          {% if component.veloura_products_title %}
-            <h2>{{ component.veloura_products_title }}</h2>
-          {% endif %}
+    <div class="veloura-products__texts">
+      {% if component.veloura_products_title %}
+        <h2>{{ component.veloura_products_title }}</h2>
+      {% endif %}
 
-          {% if component.veloura_products_subtitle %}
-            <p>{{ component.veloura_products_subtitle|raw }}</p>
-          {% endif %}
-
-          {% if component.veloura_products_show_button and component.veloura_products_button_link %}
-            <a href="{{ component.veloura_products_button_link }}" class="veloura-products__button">
-              {{ component.veloura_products_button_text ?: 'عرض الكل' }}
-              <i class="sicon-arrow-left"></i>
-            </a>
-          {% endif %}
-        </div>
-      </div>
+      {% if component.veloura_products_subtitle %}
+        <p>{{ component.veloura_products_subtitle|raw }}</p>
+      {% endif %}
     </div>
+  </div>
+
+  {% if component.veloura_products_show_button and component.veloura_products_button_link %}
+    <a href="{{ component.veloura_products_button_link }}" class="veloura-products__button">
+      {{ component.veloura_products_button_text ?: 'عرض الكل' }}
+      <i class="sicon-arrow-left"></i>
+    </a>
+  {% endif %}
+</div>
   {% endif %}
 
   {% if component.veloura_products_grid_mode %}
