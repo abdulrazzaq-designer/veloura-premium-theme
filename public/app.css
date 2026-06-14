@@ -29050,6 +29050,15 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   max-width: 100%;
   width: 100%;
 }
+.veloura-products.as-slider.no-partial {
+  overflow: hidden;
+}
+.veloura-products.as-slider.no-partial salla-products-slider,
+.veloura-products.as-slider.no-partial salla-slider,
+.veloura-products.as-slider.no-partial .swiper,
+.veloura-products.as-slider.no-partial .s-slider-container {
+  overflow: hidden !important;
+}
 .veloura-products.as-slider.has-partial {
   overflow: visible;
 }

@@ -1581,6 +1581,16 @@
   width: 100%;
 }
 
+.veloura-products.as-slider.no-partial {
+  overflow: hidden;
+
+  salla-products-slider,
+  salla-slider,
+  .swiper,
+  .s-slider-container {
+    overflow: hidden !important;
+  }
+}
 
 .veloura-products.as-slider.has-partial {
   overflow: visible;
