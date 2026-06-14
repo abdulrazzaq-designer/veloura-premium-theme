@@ -77,28 +77,28 @@
     --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
   "
   slider-config='{
-  "observer": true,
-  "observeParents": true,
-  "slidesPerView": {{ component.veloura_products_show_excerpt ? (component.veloura_products_mobile_cols ?: 2) + 0.25 : (component.veloura_products_mobile_cols ?: 2) }},
-  "speed": 600,
-  "breakpoints": {
-    "0": {
-      "slidesPerView": {{ component.veloura_products_show_excerpt ? (component.veloura_products_mobile_cols ?: 2) + 0.25 : (component.veloura_products_mobile_cols ?: 2) }}
-    },
-    "640": {
-      "slidesPerView": {{ component.veloura_products_show_excerpt ? (component.veloura_products_mobile_cols ?: 2) + 0.25 : (component.veloura_products_mobile_cols ?: 2) }}
-    },
-    "768": {
-      "slidesPerView": {{ component.veloura_products_show_excerpt ? (component.veloura_products_desktop_cols ?: 4) + 0.25 : (component.veloura_products_desktop_cols ?: 4) }}
-    },
-    "1024": {
-      "slidesPerView": {{ component.veloura_products_show_excerpt ? (component.veloura_products_desktop_cols ?: 4) + 0.25 : (component.veloura_products_desktop_cols ?: 4) }}
-    },
-    "1280": {
-      "slidesPerView": {{ component.veloura_products_show_excerpt ? (component.veloura_products_desktop_cols ?: 4) + 0.25 : (component.veloura_products_desktop_cols ?: 4) }}
+    "observer": true,
+    "observeParents": true,
+    "slidesPerView": {{ component.veloura_products_show_excerpt ? 1.35 : component.veloura_products_mobile_cols ?: 2 }},
+    "speed": 600,
+    "breakpoints": {
+      "0": {
+        "slidesPerView": {{ component.veloura_products_show_excerpt ? 1.35 : component.veloura_products_mobile_cols ?: 2 }}
+      },
+      "640": {
+        "slidesPerView": {{ component.veloura_products_show_excerpt ? 1.35 : component.veloura_products_mobile_cols ?: 2 }}
+      },
+      "768": {
+        "slidesPerView": {{ component.veloura_products_show_excerpt ? component.veloura_products_desktop_cols|default(4) + 0.35 : component.veloura_products_desktop_cols|default(4) }}
+      },
+      "1024": {
+        "slidesPerView": {{ component.veloura_products_show_excerpt ? component.veloura_products_desktop_cols|default(4) + 0.35 : component.veloura_products_desktop_cols|default(4) }}
+      },
+      "1280": {
+        "slidesPerView": {{ component.veloura_products_show_excerpt ? component.veloura_products_desktop_cols|default(4) + 0.35 : component.veloura_products_desktop_cols|default(4) }}
+      }
     }
-  }
-}'
+  }'
 ></salla-products-slider>
   {% endif %}
 

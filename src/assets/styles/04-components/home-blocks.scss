@@ -1580,25 +1580,23 @@
   max-width: 100%;
   width: 100%;
 }
-
-.veloura-products.as-slider.no-partial {
+.veloura-products.as-slider {
   overflow: hidden;
 
   salla-products-slider,
   salla-slider,
-  .swiper,
-  .s-slider-container {
+  .s-slider-container,
+  .swiper {
     overflow: hidden !important;
+    max-width: 100%;
   }
-}
 
-.veloura-products.as-slider.has-partial {
-  overflow: visible;
+  .swiper-wrapper {
+    align-items: stretch;
+    box-sizing: border-box;
+  }
 
-  salla-products-slider,
-  salla-slider,
-  .swiper,
-  .s-slider-container {
-    overflow: visible !important;
+  .swiper-slide {
+    max-width: 100%;
   }
 }

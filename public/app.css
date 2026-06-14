@@ -29050,23 +29050,27 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   max-width: 100%;
   width: 100%;
 }
-.veloura-products.as-slider.no-partial {
+.veloura-products.as-slider {
   overflow: hidden;
 }
-.veloura-products.as-slider.no-partial salla-products-slider,
-.veloura-products.as-slider.no-partial salla-slider,
-.veloura-products.as-slider.no-partial .swiper,
-.veloura-products.as-slider.no-partial .s-slider-container {
+.veloura-products.as-slider salla-products-slider,
+.veloura-products.as-slider salla-slider,
+.veloura-products.as-slider .s-slider-container,
+.veloura-products.as-slider .swiper {
   overflow: hidden !important;
 }
-.veloura-products.as-slider.has-partial {
-  overflow: visible;
+.veloura-products.as-slider salla-products-slider,
+.veloura-products.as-slider salla-slider,
+.veloura-products.as-slider .s-slider-container,
+.veloura-products.as-slider .swiper {
+  max-width: 100%;
 }
-.veloura-products.as-slider.has-partial salla-products-slider,
-.veloura-products.as-slider.has-partial salla-slider,
-.veloura-products.as-slider.has-partial .swiper,
-.veloura-products.as-slider.has-partial .s-slider-container {
-  overflow: visible !important;
+.veloura-products.as-slider .swiper-wrapper {
+  align-items: stretch;
+  box-sizing: border-box;
+}
+.veloura-products.as-slider .swiper-slide {
+  max-width: 100%;
 }
 salla-slider{
     display: block;
