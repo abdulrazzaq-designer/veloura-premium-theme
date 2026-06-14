@@ -10,13 +10,13 @@
 
 <section class="s-block container veloura-products {{ component.veloura_products_center_titles ? 'is-title-centered' : '' }}">
   <salla-products-slider
-    source="{{ component.veloura_products_source ?: 'latest_products' }}"
-    limit="{{ component.veloura_products_limit ?: 10 }}"
-    {% if component.veloura_products_slider_autoplay %}autoplay{% endif %}
-    source-value="{{ source_value|json_encode }}"
-    display-all-url="{{ component.veloura_products_show_button ? component.veloura_products_button_link : '' }}"
-    block-title="{{ component.veloura_products_title }}"
-    block-subTitle="{{ component.veloura_products_subtitle|raw }}"
-    slider-id="veloura-products-{{ position }}"
-  ></salla-products-slider>
+  source="{{ component.veloura_products_source ?: 'latest_products' }}"
+  limit="{{ component.veloura_products_limit ?: 10 }}"
+  source-value="{{ source_value|json_encode }}"
+  display-all-url="{{ component.veloura_products_show_button ? component.veloura_products_button_link : '' }}"
+  block-title="{{ component.veloura_products_title }}"
+  block-subTitle="{{ component.veloura_products_subtitle|raw }}"
+  slider-id="veloura-products-{{ position }}"
+  {% if component.grid %}grid{% endif %}
+></salla-products-slider>
 </section>

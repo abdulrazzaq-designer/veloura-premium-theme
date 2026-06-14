@@ -3939,17 +3939,17 @@
       "value": null,
       "required": false
     },
-    {
-      "id": "veloura_products_grid_mode",
-      "type": "boolean",
-      "format": "switch",
-      "label": "عرض المنتجات على شكل شبكة بدلاً من سلايدر",
-      "description": "عند تفعيل هذا الخيار سيتم عرض المنتجات على شكل أعمدة وصفوف بدلاً من صف واحد منزلق",
-      "icon": "sicon-toggle-off",
-      "value": false,
-      "selected": false,
-      "required": false
-    },
+     {
+  "id": "grid",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض المنتجات على شكل شبكة بدلاً من سلايدر",
+  "description": "* عند تفعيل هذا الخيار يتم عرض المنتجات على شكل أعمدة وصفوف بدلاً من صف واحد منزلق (سلايدر)",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
     {
   "id": "veloura_products_desktop_cols",
   "type": "number",
