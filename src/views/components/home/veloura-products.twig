@@ -11,7 +11,9 @@
 {% endif %}
 
 <section
-  class="s-block container veloura-products {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}"
+  class="s-block container veloura-products
+  {{ component.veloura_products_grid_mode ? 'as-grid' : 'as-slider' }}
+  {{ component.veloura_products_center_titles ? 'is-centered' : '' }}"
   style="
     --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
     --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
@@ -19,27 +21,29 @@
 >
 
   {% if component.veloura_products_title or component.veloura_products_subtitle or component.veloura_products_show_button %}
-    <div class="s-block__title veloura-products__title">
-      <div class="right-side">
+    <div class="veloura-products__heading">
+      <div class="veloura-products__heading-content">
         {% if component.veloura_products_title_icon %}
           <img src="{{ component.veloura_products_title_icon }}" class="veloura-products__icon" alt="">
         {% endif %}
 
-        {% if component.veloura_products_title %}
-          <h2>{{ component.veloura_products_title }}</h2>
-        {% endif %}
+        <div class="veloura-products__texts">
+          {% if component.veloura_products_title %}
+            <h2>{{ component.veloura_products_title }}</h2>
+          {% endif %}
 
-        {% if component.veloura_products_subtitle %}
-          <p>{{ component.veloura_products_subtitle|raw }}</p>
-        {% endif %}
+          {% if component.veloura_products_subtitle %}
+            <p>{{ component.veloura_products_subtitle|raw }}</p>
+          {% endif %}
+
+          {% if component.veloura_products_show_button and component.veloura_products_button_link %}
+            <a href="{{ component.veloura_products_button_link }}" class="veloura-products__button">
+              {{ component.veloura_products_button_text ?: 'عرض الكل' }}
+              <i class="sicon-arrow-left"></i>
+            </a>
+          {% endif %}
+        </div>
       </div>
-
-      {% if component.veloura_products_show_button and component.veloura_products_button_link %}
-        <a href="{{ component.veloura_products_button_link }}" class="s-block__display-all">
-          {{ component.veloura_products_button_text ?: 'عرض الكل' }}
-          <i class="sicon-arrow-left"></i>
-        </a>
-      {% endif %}
     </div>
   {% endif %}
 
@@ -47,22 +51,37 @@
     <salla-products-list
       source="{{ list_source }}"
       limit="{{ component.veloura_products_limit ?: 10 }}"
-      {% if source_value %}
-        source-value="{{ source_value|json_encode }}"
-      {% endif %}
+      source-value="{{ source_value|json_encode }}"
       includes="[]"
+      style="
+        --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
+        --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
+      "
     ></salla-products-list>
   {% else %}
-  <salla-products-slider
-    source="{{ product_source }}"
-    limit="{{ component.veloura_products_limit ?: 10 }}"
-    autoplay
-    source-value="{{ source_value|json_encode }}"
-    display-all-url=""
-    block-title=""
-    block-subTitle=""
-    slider-id="veloura-products-{{ position }}"
-  ></salla-products-slider>
-{% endif %}
+    <salla-products-slider
+      source="{{ product_source }}"
+      limit="{{ component.veloura_products_limit ?: 10 }}"
+      autoplay
+      source-value="{{ source_value|json_encode }}"
+      display-all-url=""
+      block-title=""
+      block-subTitle=""
+      slider-id="veloura-products-{{ position }}"
+      style="
+        --mob-products-cols: {{ component.veloura_products_mobile_cols ?: 2 }};
+        --products-cols: {{ component.veloura_products_desktop_cols ?: 4 }};
+      "
+    ></salla-products-slider>
+  {% endif %}
 
 </section>
+
+<pre style="direction:ltr;text-align:left;background:#fff;padding:15px">
+source: {{ product_source }}
+list_source: {{ list_source }}
+source_value: {{ source_value|json_encode }}
+chosen: {{ component.veloura_products_chosen|json_encode }}
+category: {{ component.veloura_products_category|json_encode }}
+tag: {{ component.veloura_products_tag|json_encode }}
+</pre>

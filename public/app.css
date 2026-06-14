@@ -28922,13 +28922,48 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-top: 40px;
   padding-bottom: 40px;
 }
+.veloura-products__heading {
+  margin-bottom: 28px;
+}
+.veloura-products__heading-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 .veloura-products__icon {
   width: 54px;
   height: 54px;
   -o-object-fit: contain;
      object-fit: contain;
-  margin-bottom: 10px;
+  flex: 0 0 auto;
 }
+.veloura-products__texts h2 {
+  margin: 0 0 6px;
+  font-size: 32px;
+  font-weight: 800;
+}
+.veloura-products__texts p {
+  margin: 0;
+  opacity: 0.75;
+}
+.veloura-products__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.veloura-products.is-centered .veloura-products__heading-content {
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.veloura-products.is-centered .veloura-products__icon {
+  margin: 0 auto;
+}
+.veloura-products.is-centered .veloura-products__button {
+  justify-content: center;
+}
+/* Grid columns */
 .veloura-products.as-grid .s-products-list-wrapper {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
@@ -28936,11 +28971,24 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   grid-gap: 24px !important;
   gap: 24px !important;
 }
+/* Slider columns */
+.veloura-products.as-slider salla-products-slider {
+  --slides-per-view: var(--products-cols, 4);
+}
+.veloura-products.as-slider .swiper-button-next,
+.veloura-products.as-slider .swiper-button-prev,
+.veloura-products.as-slider salla-slider .swiper-button-next,
+.veloura-products.as-slider salla-slider .swiper-button-prev {
+  display: none !important;
+}
 @media (max-width: 767px) {
   .veloura-products.as-grid .s-products-list-wrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     grid-template-columns: repeat(var(--mob-products-cols, 2), minmax(0, 1fr)) !important;
     gap: 14px !important;
+  }
+  .veloura-products.as-slider salla-products-slider {
+    --slides-per-view: var(--mob-products-cols, 2);
   }
 }
 salla-slider{
