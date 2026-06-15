@@ -7,25 +7,25 @@
     'soft': '8px',
     'medium': '16px',
     'large': '24px',
-    'round': '999px'
+    'round': '28px'
   } %}
 
   {% set article_radius = radius_map[radius_value]|default('16px') %}
-  {% set spacing = component.veloura_articles_spacing|default(0) %}
 
   {% set section_classes = [
-  's-block',
-  'veloura-animated-articles',
-  component.veloura_articles_mobile_only ? 'veloura-animated-articles--mobile-only' : '',
-  component.veloura_articles_desktop_only ? 'veloura-animated-articles--desktop-only' : '',
-  component.veloura_articles_custom_classes ?: ''
-]|join(' ') %}
+    's-block',
+    'veloura-animated-articles',
+    component.veloura_articles_mobile_only ? 'veloura-animated-articles--mobile-only' : '',
+    component.veloura_articles_desktop_only ? 'veloura-animated-articles--desktop-only' : '',
+    component.veloura_articles_custom_classes ?: ''
+  ]|join(' ') %}
+
   <section
     class="{{ section_classes }}"
     style="
-    --veloura-articles-spacing: {{ component.veloura_articles_custom_spacing ? component.veloura_articles_spacing|default(0) : 0 }}px;
-    --article-radius: {{ article_radius }};
-  "
+      --article-radius: {{ article_radius }};
+      --veloura-articles-spacing: {{ component.veloura_articles_custom_spacing ? component.veloura_articles_spacing|default(0) : 0 }}px;
+    "
   >
     <div class="container veloura-animated-articles__container">
 
@@ -43,34 +43,35 @@
 
       {% if component.veloura_articles_collection|length %}
         <salla-slider
-  id="veloura-animated-articles-{{ position }}"
-  class="veloura-animated-articles__slider"
-  type="carousel"
-  pagination
-  {% if component.veloura_articles_autoplay %}auto-play{% endif %}
-  {% if component.veloura_articles_hide_arrows %}show-controls="false"{% endif %}
-  slider-config='{
-    "slidesPerView": 1.12,
-    "spaceBetween": 16,
-    "speed": 700,
-    "loop": false,
-    "watchOverflow": false,
-    "autoplay": {
-      "delay": 2600,
-      "disableOnInteraction": false
-    },
-    "breakpoints": {
-      "768": {
-        "slidesPerView": 2,
-        "spaceBetween": 20
-      },
-      "1024": {
-        "slidesPerView": 3,
-        "spaceBetween": 24
-      }
-    }
-  }'
->
+          id="veloura-animated-articles-{{ position }}"
+          class="veloura-animated-articles__slider"
+          type="carousel"
+          pagination
+          {% if component.veloura_articles_autoplay %}auto-play{% endif %}
+          {% if component.veloura_articles_hide_arrows %}show-controls="false"{% endif %}
+          slider-config='{
+            "slidesPerView": 1.12,
+            "spaceBetween": 16,
+            "speed": 700,
+            "loop": false,
+            "watchOverflow": false,
+            "allowTouchMove": true,
+            "autoplay": {
+              "delay": 2600,
+              "disableOnInteraction": false
+            },
+            "breakpoints": {
+              "768": {
+                "slidesPerView": 2,
+                "spaceBetween": 20
+              },
+              "1024": {
+                "slidesPerView": 3,
+                "spaceBetween": 24
+              }
+            }
+          }'
+        >
           <div slot="items">
             {% for article in component.veloura_articles_collection %}
               {% set article_url = article.url.url|default('#') %}

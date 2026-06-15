@@ -29458,50 +29458,233 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 13px;
   }
 }
+.veloura-animated-articles {
+  padding: 45px 0;
+  overflow: hidden;
+}
+.veloura-animated-articles__container {
+  position: relative;
+  padding-left: calc(15px + 0px);
+  padding-right: calc(15px + 0px);
+  padding-left: calc(15px + var(--veloura-articles-spacing, 0px));
+  padding-right: calc(15px + var(--veloura-articles-spacing, 0px));
+}
+.veloura-animated-articles__heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+.veloura-animated-articles__heading h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #414042;
+  color: var(--color-primary);
+}
+.veloura-animated-articles__heading p {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.8;
+}
 .veloura-animated-articles__slider {
-  padding-bottom: 55px !important;
+  overflow: hidden !important;
+  padding-bottom: 78px !important;
 }
 .veloura-animated-articles__slider {
   position: relative;
+  display: block;
+  padding-top: 20px;
 }
-.veloura-animated-articles salla-slider,
-.veloura-animated-articles .s-slider-container,
-.veloura-animated-articles .swiper,
-.veloura-animated-articles .swiper-wrapper {
+.veloura-animated-articles__slider .swiper {
   overflow: visible;
+}
+.veloura-animated-articles__slider .swiper-wrapper {
+  align-items: stretch;
+}
+.veloura-animated-articles__slider .swiper-slide {
+  height: auto;
+}
+.veloura-animated-articles__card {
+  border-radius: var(--article-radius) !important;
+}
+.veloura-animated-articles__card {
+  height: 100%;
+  padding: 0 14px 16px;
+  background: #f4f4f4;
+  overflow: visible;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.veloura-animated-articles__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.11);
+}
+.veloura-animated-articles__image {
+  border-radius: var(--article-radius) !important;
+}
+.veloura-animated-articles__image {
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin-top: -18px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  background: #fff;
+}
+.veloura-animated-articles__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.6s ease;
+}
+.veloura-animated-articles__card:hover .veloura-animated-articles__image img {
+  transform: scale(1.05);
+}
+.veloura-animated-articles__content {
+  padding: 18px 0 0;
+  text-align: center;
+}
+.veloura-animated-articles h3 {
+  margin: 0 0 10px;
+}
+.veloura-animated-articles h3 a {
+  display: block;
+  color: #222;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.6;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+.veloura-animated-articles p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.veloura-animated-articles__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin-top: 16px;
+  border-radius: calc(var(--article-radius) / 1.7);
+  background: #414042;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 .veloura-animated-articles .swiper-pagination,
 .veloura-animated-articles .s-slider-pagination {
   position: absolute !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 8px !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 24px !important;
   top: auto !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
   display: flex !important;
-  transform: none !important;
 }
 .veloura-animated-articles .swiper-pagination,
 .veloura-animated-articles .s-slider-pagination {
-  z-index: 5;
+  z-index: 20;
   justify-content: center;
   align-items: center;
-  gap: 6px;
-  width: 100%;
+  gap: 7px;
 }
 .veloura-animated-articles .swiper-pagination-bullet,
 .veloura-animated-articles .s-slider-pagination button {
   width: 20px !important;
   height: 7px !important;
+  min-width: 20px !important;
   border-radius: 999px !important;
   background: #414042 !important;
   background: var(--color-primary) !important;
   opacity: 0.35 !important;
   margin: 0 !important;
 }
+.veloura-animated-articles .swiper-pagination-bullet,
+.veloura-animated-articles .s-slider-pagination button {
+  transition: 0.3s ease;
+}
 .veloura-animated-articles .swiper-pagination-bullet-active,
 .veloura-animated-articles .s-slider-pagination button.active {
   width: 30px !important;
+  min-width: 30px !important;
   opacity: 1 !important;
+}
+.veloura-animated-articles .swiper-button-next,
+.veloura-animated-articles .swiper-button-prev {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  color: #414042;
+  color: var(--color-primary);
+}
+@media (min-width: 992px) {
+  .veloura-animated-articles--mobile-only {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .veloura-animated-articles--desktop-only {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .veloura-animated-articles {
+    padding: 35px 0;
+  }
+  .veloura-animated-articles__container {
+    padding-left: calc(10px + 0px);
+    padding-right: calc(10px + 0px);
+    padding-left: calc(10px + var(--veloura-articles-spacing, 0px));
+    padding-right: calc(10px + var(--veloura-articles-spacing, 0px));
+  }
+  .veloura-animated-articles__heading {
+    margin-bottom: 34px;
+  }
+  .veloura-animated-articles__heading h2 {
+    font-size: 22px;
+  }
+  .veloura-animated-articles__heading p {
+    font-size: 13px;
+  }
+  .veloura-animated-articles__slider {
+    padding-bottom: 72px !important;
+  }
+  .veloura-animated-articles__slider {
+    padding-top: 16px;
+  }
+  .veloura-animated-articles__card {
+    padding: 0 12px 14px;
+  }
+  .veloura-animated-articles__image {
+    margin-top: -14px;
+  }
+  .veloura-animated-articles h3 a {
+    font-size: 16px;
+  }
+  .veloura-animated-articles p {
+    font-size: 13px;
+  }
+  .veloura-animated-articles__more {
+    min-height: 40px;
+    font-size: 13px;
+  }
+  .veloura-animated-articles .swiper-pagination,
+  .veloura-animated-articles .s-slider-pagination {
+    bottom: 22px !important;
+  }
 }
 salla-slider{
     display: block;
