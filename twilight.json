@@ -4685,6 +4685,26 @@
       "required": false
     },
     {
+  "id": "veloura_articles_autoplay",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل التحريك التلقائي",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+{
+  "id": "veloura_articles_hide_arrows",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء أسهم التنقل",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+    {
       "id": "veloura_articles_collection",
       "type": "collection",
       "format": "collection",
@@ -4763,26 +4783,7 @@
       "icon": "sicon-settings"
     },
     
-    {
-  "id": "veloura_articles_autoplay",
-  "type": "boolean",
-  "format": "switch",
-  "label": "تفعيل التحريك التلقائي",
-  "icon": "sicon-toggle-off",
-  "value": true,
-  "selected": true,
-  "required": false
-},
-{
-  "id": "veloura_articles_hide_arrows",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إخفاء أسهم التنقل",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false,
-  "required": false
-},
+    
 {
   "id": "veloura_articles_custom_spacing",
   "type": "boolean",
@@ -4833,16 +4834,7 @@
   "selected": false,
   "required": false
 },
-{
-  "id": "veloura_articles_custom_classes",
-  "type": "string",
-  "format": "text",
-  "label": "Classes",
-  "placeholder": "ex: container dark p-5 custom",
-  "icon": "sicon-code",
-  "value": "",
-  "required": false
-},
+
     {
       "id": "veloura_articles_hide",
       "type": "boolean",
@@ -4852,7 +4844,17 @@
       "value": false,
       "selected": false,
       "required": false
-    }
+    },
+{
+  "id": "veloura_articles_custom_classes",
+  "type": "string",
+  "format": "text",
+  "label": "Classes",
+  "placeholder": "ex: container dark p-5 custom",
+  "icon": "sicon-code",
+  "value": "",
+  "required": false
+}
   ]
 }
     ],

@@ -29458,6 +29458,51 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 13px;
   }
 }
+.veloura-animated-articles__slider {
+  padding-bottom: 55px !important;
+}
+.veloura-animated-articles__slider {
+  position: relative;
+}
+.veloura-animated-articles salla-slider,
+.veloura-animated-articles .s-slider-container,
+.veloura-animated-articles .swiper,
+.veloura-animated-articles .swiper-wrapper {
+  overflow: visible;
+}
+.veloura-animated-articles .swiper-pagination,
+.veloura-animated-articles .s-slider-pagination {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 8px !important;
+  top: auto !important;
+  display: flex !important;
+  transform: none !important;
+}
+.veloura-animated-articles .swiper-pagination,
+.veloura-animated-articles .s-slider-pagination {
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+.veloura-animated-articles .swiper-pagination-bullet,
+.veloura-animated-articles .s-slider-pagination button {
+  width: 20px !important;
+  height: 7px !important;
+  border-radius: 999px !important;
+  background: #414042 !important;
+  background: var(--color-primary) !important;
+  opacity: 0.35 !important;
+  margin: 0 !important;
+}
+.veloura-animated-articles .swiper-pagination-bullet-active,
+.veloura-animated-articles .s-slider-pagination button.active {
+  width: 30px !important;
+  opacity: 1 !important;
+}
 salla-slider{
     display: block;
 }
