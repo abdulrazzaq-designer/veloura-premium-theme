@@ -2260,7 +2260,7 @@
   padding: 50px 0;
 
   &__container {
-    padding-inline: calc(15px + var(--veloura-branches-spacing, 0px));
+    padding-inline: var(--veloura-branches-spacing, 0px);
   }
 
   &__heading {

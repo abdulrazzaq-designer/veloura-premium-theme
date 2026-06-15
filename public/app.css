@@ -29690,10 +29690,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding: 50px 0;
 }
 .veloura-branches__container {
-  padding-left: calc(15px + 0px);
-  padding-right: calc(15px + 0px);
-  padding-left: calc(15px + var(--veloura-branches-spacing, 0px));
-  padding-right: calc(15px + var(--veloura-branches-spacing, 0px));
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-left: var(--veloura-branches-spacing, 0px);
+  padding-right: var(--veloura-branches-spacing, 0px);
 }
 .veloura-branches__heading {
   text-align: center;
