@@ -47,17 +47,22 @@
   class="veloura-animated-articles__slider"
   type="carousel"
   pagination
-  centered
-  {% if component.veloura_articles_autoplay %}auto-play{% endif %}
+  auto-play
   {% if component.veloura_articles_hide_arrows %}show-controls="false"{% endif %}
   slider-config='{
     "slidesPerView": 1.15,
     "spaceBetween": 16,
-    "loop": true,
-    "speed": 700,
+    "speed": 650,
+    "watchOverflow": false,
+    "allowTouchMove": true,
+    "autoplay": {
+      "delay": 2500,
+      "disableOnInteraction": false,
+      "pauseOnMouseEnter": true
+    },
     "breakpoints": {
       "768": {
-        "slidesPerView": 2,
+        "slidesPerView": 2.15,
         "spaceBetween": 20
       },
       "1024": {
