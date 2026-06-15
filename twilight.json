@@ -4381,49 +4381,73 @@
   "type": "collection",
   "format": "collection",
   "label": "الروابط",
-  "description": "يجب إضافة 3 روابط على الأقل",
+  "description": "يجب أن يحتوي العنصر على 3 روابط على الأقل",
   "minLength": 3,
   "maxLength": 20,
-  "value": [],
+  "value": [
+    {
+      "title": "منتج جاهز",
+      "icon": "sicon-box",
+      "image_url": "",
+      "image": null,
+      "url": "#"
+    },
+    {
+      "title": "خدمة حسب الطلب",
+      "icon": "sicon-medal",
+      "image_url": "",
+      "image": null,
+      "url": "#"
+    },
+    {
+      "title": "حجوزات",
+      "icon": "sicon-calendar",
+      "image_url": "",
+      "image": null,
+      "url": "#"
+    }
+  ],
   "fields": [
     {
-  "id": "title",
-  "type": "string",
-  "format": "text",
-  "label": "عنوان الرابط",
-  "icon": "sicon-format-text",
-  "value": "",
-  "required": true
-},
-{
-  "id": "icon",
-  "type": "string",
-  "format": "icon",
-  "label": "أيقونة الرابط",
-  "icon": "sicon-star",
-  "value": "",
-  "required": false
-},
-{
-  "id": "image_url",
-  "type": "string",
-  "format": "text",
-  "label": "أضف رابط الصورة",
-  "description": "* يمكنك إضافة رابط أيقونة بصيغة gif",
-  "icon": "sicon-link",
-  "value": "",
-  "required": false
-},
-{
-  "id": "image",
-  "type": "string",
-  "format": "image",
-  "label": "الصورة",
-  "description": "* المقاس المناسب هو 500 × 500 بكسل",
-  "icon": "sicon-image",
-  "value": null,
-  "required": false
-},
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان الرابط",
+      "icon": "sicon-format-text",
+      "value": "",
+      "required": true
+    },
+    {
+      "id": "icon",
+      "type": "string",
+      "format": "icon",
+      "label": "أيقونة الرابط",
+      "description": "اختر أيقونة تظهر إذا لم يتم رفع صورة",
+      "icon": "sicon-star",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "image_url",
+      "type": "string",
+      "format": "text",
+      "label": "أضف رابط الصورة",
+      "description": "* يمكنك إضافة رابط أيقونة بصيغة gif",
+      "icon": "sicon-link",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "image",
+      "type": "string",
+      "format": "image",
+      "label": "الصورة",
+      "description": "* المقاس المناسب هو 500 × 500 بكسل",
+      "icon": "sicon-image",
+      "value": null,
+      "required": false
+    }
+,
 {
   "id": "url",
   "type": "items",
