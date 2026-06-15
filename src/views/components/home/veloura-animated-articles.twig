@@ -1,0 +1,116 @@
+{% if not component.veloura_articles_hide %}
+
+  {% set radius_value = component.veloura_articles_radius[0].value|default(component.veloura_articles_radius.value|default('medium')) %}
+
+  {% set radius_map = {
+    'sharp': '0px',
+    'soft': '8px',
+    'medium': '16px',
+    'large': '24px',
+    'round': '999px'
+  } %}
+
+  {% set article_radius = radius_map[radius_value]|default('16px') %}
+  {% set spacing = component.veloura_articles_spacing|default(0) %}
+
+  {% set section_classes = [
+    's-block',
+    'veloura-animated-articles',
+    component.veloura_articles_mobile_only ? 'veloura-animated-articles--mobile-only' : '',
+    component.veloura_articles_desktop_only ? 'veloura-animated-articles--desktop-only' : '',
+    component.veloura_articles_custom_classes ?: ''
+  ]|join(' ') %}
+
+  <section
+    class="{{ section_classes }}"
+    style="
+      --article-radius: {{ article_radius }};
+      {% if component.veloura_articles_custom_spacing %}
+        --veloura-articles-spacing: {{ spacing }}px;
+      {% else %}
+        --veloura-articles-spacing: 0px;
+      {% endif %}
+    "
+  >
+    <div class="container veloura-animated-articles__container">
+
+      {% if component.veloura_articles_title or component.veloura_articles_subtitle %}
+        <div class="veloura-animated-articles__heading">
+          {% if component.veloura_articles_title %}
+            <h2>{{ component.veloura_articles_title }}</h2>
+          {% endif %}
+
+          {% if component.veloura_articles_subtitle %}
+            <p>{{ component.veloura_articles_subtitle }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if component.veloura_articles_collection|length %}
+        <salla-slider
+          id="veloura-animated-articles-{{ position }}"
+          class="veloura-animated-articles__slider"
+          type="carousel"
+          auto-play
+          pagination
+          slides-per-view="1"
+          breakpoints='{
+            "640": {
+              "slidesPerView": 1.2
+            },
+            "768": {
+              "slidesPerView": 2
+            },
+            "1024": {
+              "slidesPerView": 3
+            }
+          }'
+        >
+          <div slot="items">
+            {% for article in component.veloura_articles_collection %}
+              {% set article_url = article.url.url|default('#') %}
+
+              <div class="swiper-slide">
+                <article class="veloura-animated-articles__card">
+
+                  <a href="{{ article_url }}" class="veloura-animated-articles__image">
+                    {% if article.image %}
+                      <img
+                        src="{{ article.image.url|default(article.image) }}"
+                        alt="{{ article.title|default(store.name) }}"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </a>
+
+                  <div class="veloura-animated-articles__content">
+                    {% if article.title %}
+                      <h3>
+                        <a href="{{ article_url }}">
+                          {{ article.title }}
+                        </a>
+                      </h3>
+                    {% endif %}
+
+                    {% if article.excerpt %}
+                      <p>{{ article.excerpt }}</p>
+                    {% endif %}
+
+                    {% if article.button_text %}
+                      <a href="{{ article_url }}" class="veloura-animated-articles__more">
+                        {{ article.button_text }}
+                      </a>
+                    {% endif %}
+                  </div>
+
+                </article>
+              </div>
+            {% endfor %}
+          </div>
+        </salla-slider>
+      {% endif %}
+
+    </div>
+  </section>
+
+{% endif %}
