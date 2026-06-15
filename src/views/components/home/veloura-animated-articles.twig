@@ -1,16 +1,14 @@
 {% if not component.veloura_articles_hide %}
 
-  {% set radius_value = component.veloura_articles_radius[0].value|default(component.veloura_articles_radius.value|default('medium')) %}
-
   {% set radius_map = {
     'sharp': '0px',
     'soft': '8px',
     'medium': '16px',
-    'large': '24px',
+    'large': '28px',
     'round': '999px'
   } %}
 
-  {% set article_radius = radius_map[radius_value]|default('16px') %}
+  {% set article_radius = radius_map[component.veloura_articles_radius|default('medium')]|default('16px') %}
 
   {% set section_classes = [
     's-block',
@@ -21,9 +19,6 @@
   ]|join(' ') %}
 
   <section
-  <div style="background:red;color:#fff;padding:5px">
-  {{ radius_value }} | {{ article_radius }}
-</div>
     class="{{ section_classes }}"
     style="
       --article-radius: {{ article_radius }};
@@ -81,7 +76,6 @@
 
               <div class="swiper-slide">
                 <article class="veloura-animated-articles__card">
-
                   <a href="{{ article_url }}" class="veloura-animated-articles__image">
                     {% if article.image %}
                       <img
@@ -111,7 +105,6 @@
                       </a>
                     {% endif %}
                   </div>
-
                 </article>
               </div>
             {% endfor %}
