@@ -41,24 +41,25 @@
     {% endif %}
 
     <salla-slider
-      id="veloura-quick-links-{{ position }}"
-      type="carousel"
-      controls-outer
-      show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
-      static-when-single
-      slider-config='{
-        "slidesPerView": {{ quick_mobile_cols }},
-        "spaceBetween": 14,
-        "observer": true,
-        "observeParents": true,
-        "breakpoints": {
-          "768": {
-            "slidesPerView": {{ quick_desktop_cols }},
-            "spaceBetween": 20
-          }
-        }
-      }'
-    >
+  id="veloura-quick-links-{{ position }}"
+  type="carousel"
+  controls-outer
+  show-controls="false"
+  {% if component.veloura_quick_show_scrollbar %}scrollbar{% endif %}
+  static-when-single
+  slider-config='{
+    "slidesPerView": {{ quick_mobile_cols }},
+    "spaceBetween": 14,
+    "observer": true,
+    "observeParents": true,
+    "breakpoints": {
+      "768": {
+        "slidesPerView": {{ quick_desktop_cols }},
+        "spaceBetween": 20
+      }
+    }
+  }'
+>
       <div slot="items">
         {% for link in component.veloura_quick_links %}
           {% set image_src = link.image_url ?: link.image.url ?: link.image %}

@@ -1742,3 +1742,17 @@
     }
   }
 }
+
+.veloura-quick-links {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+
+  .swiper-scrollbar,
+  .s-slider-scrollbar {
+    display: block !important;
+    position: relative !important;
+    margin-top: 18px;
+  }
+}
