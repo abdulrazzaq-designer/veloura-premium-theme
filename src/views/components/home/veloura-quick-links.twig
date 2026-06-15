@@ -52,16 +52,19 @@
           {% for item in component.veloura_quick_links %}
             {% set image_src = item.image_url ?: item.image %}
 
-            <div class="swiper-slide">
-              <a href="{{ item.url ?: '#' }}" class="veloura-quick-links__card">
-                {% if image_src %}
-                  <img src="{{ image_src }}" alt="{{ item.title ?: 'quick link' }}" loading="lazy">
-                {% endif %}
+<a href="{{ item.url ?: '#' }}" class="veloura-quick-links__card">
 
-                {% if item.title %}
-                  <span>{{ item.title }}</span>
-                {% endif %}
-              </a>
+  {% if image_src %}
+    <img src="{{ image_src.url ?: image_src }}" alt="{{ item.title ?: 'quick link' }}" loading="lazy">
+  {% elseif item.icon %}
+    <i class="{{ item.icon }} veloura-quick-links__item-icon"></i>
+  {% endif %}
+
+  {% if item.title %}
+    <span>{{ item.title }}</span>
+  {% endif %}
+
+</a>
             </div>
           {% endfor %}
         </div>

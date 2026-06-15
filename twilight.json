@@ -4381,9 +4381,22 @@
   "type": "collection",
   "format": "collection",
   "label": "الروابط",
-  "description": "أضف روابط سريعة حسب الحاجة",
+  "description": "يجب إضافة 3 روابط على الأقل",
+  "minLength": 3,
+  "maxLength": 20,
   "value": [],
   "fields": [
+    {
+                            "id": "icon",
+                            "type": "string",
+                            "format": "icon",
+                            "label": "اختر الأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-user-circle",
+                            "value": "sicon-store",
+                            "required": false
+                        },
     {
       "id": "title",
       "type": "string",
