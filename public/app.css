@@ -29488,7 +29488,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-animated-articles__slider {
   overflow: hidden !important;
-  padding-bottom: 78px !important;
+  padding-bottom: 105px !important;
 }
 .veloura-animated-articles__slider {
   position: relative;
@@ -29586,7 +29586,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   position: absolute !important;
   left: 50% !important;
   right: auto !important;
-  bottom: 24px !important;
+  bottom: -22px !important;
   top: auto !important;
   transform: translateX(-50%) !important;
   width: auto !important;
@@ -29660,7 +29660,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 13px;
   }
   .veloura-animated-articles__slider {
-    padding-bottom: 72px !important;
+    padding-bottom: 95px !important;
   }
   .veloura-animated-articles__slider {
     padding-top: 16px;
@@ -29683,7 +29683,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   }
   .veloura-animated-articles .swiper-pagination,
   .veloura-animated-articles .s-slider-pagination {
-    bottom: 22px !important;
+    bottom: -22px !important;
   }
 }
 salla-slider{

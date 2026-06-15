@@ -2045,7 +2045,7 @@
     display: block;
     overflow: hidden !important;
     padding-top: 20px;
-    padding-bottom: 78px !important;
+    padding-bottom: 105px !important;
 
     .swiper {
       overflow: visible;
@@ -2144,7 +2144,7 @@
     position: absolute !important;
     left: 50% !important;
     right: auto !important;
-    bottom: 24px !important;
+    bottom: -22px !important;
     top: auto !important;
     transform: translateX(-50%) !important;
     z-index: 20;
@@ -2219,7 +2219,7 @@
 
     &__slider {
       padding-top: 16px;
-      padding-bottom: 72px !important;
+      padding-bottom: 95px !important;
     }
 
     &__card {
@@ -2245,7 +2245,7 @@
 
     .swiper-pagination,
     .s-slider-pagination {
-      bottom: 22px !important;
+      bottom: -22px !important;
     }
   }
 }
