@@ -1,6 +1,6 @@
 {% if not component.veloura_articles_hide %}
 
-  {% set radius_value = component.veloura_articles_radius.value|default('medium') %}
+  {% set radius_value = component.veloura_articles_radius[0].value|default(component.veloura_articles_radius.value|default('medium')) %}
 
   {% set radius_map = {
     'sharp': '0px',
