@@ -29284,19 +29284,26 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   line-height: 1.8;
 }
 .veloura-animated-articles__slider {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+.veloura-animated-articles__slider .swiper {
   overflow: visible;
 }
-.veloura-animated-articles .swiper-slide {
+.veloura-animated-articles__slider .swiper-wrapper {
+  align-items: stretch;
+}
+.veloura-animated-articles__slider .swiper-slide {
   height: auto;
-  padding-bottom: 10px;
 }
 .veloura-animated-articles__card {
   height: 100%;
   background: #fff;
   border-radius: var(--article-radius);
   overflow: hidden;
-  transition: all 0.35s ease;
   border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
 }
 .veloura-animated-articles__card:hover {
   transform: translateY(-8px);
@@ -29377,16 +29384,19 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-animated-articles .swiper-pagination-bullet-active {
   transform: scale(1.2);
 }
-/* جوال فقط */
+.veloura-animated-articles .swiper-button-next,
+.veloura-animated-articles .swiper-button-prev {
+  color: #414042;
+  color: var(--color-primary);
+}
 @media (min-width: 992px) {
   .veloura-animated-articles--mobile-only {
-    display: none;
+    display: none !important;
   }
 }
-/* كمبيوتر فقط */
 @media (max-width: 991px) {
   .veloura-animated-articles--desktop-only {
-    display: none;
+    display: none !important;
   }
   .veloura-animated-articles {
     padding: 30px 0;
@@ -29419,26 +29429,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   }
   .veloura-animated-articles p {
     font-size: 13px;
-  }
-}
-.veloura-animated-articles__container {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-left: var(--veloura-articles-spacing, 0px);
-  padding-right: var(--veloura-articles-spacing, 0px);
-}
-.veloura-animated-articles .swiper-pagination {
-  position: relative;
-  margin-top: 24px;
-}
-@media (min-width: 992px) {
-  .veloura-animated-articles--mobile-only {
-    display: none !important;
-  }
-}
-@media (max-width: 991px) {
-  .veloura-animated-articles--desktop-only {
-    display: none !important;
   }
 }
 salla-slider{

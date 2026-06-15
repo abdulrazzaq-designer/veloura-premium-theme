@@ -1819,12 +1819,21 @@
   }
 
   &__slider {
-    overflow: visible;
-  }
+    display: block;
+    overflow: hidden;
+    padding-bottom: 40px;
 
-  .swiper-slide {
-    height: auto;
-    padding-bottom: 10px;
+    .swiper {
+      overflow: visible;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
   }
 
   &__card {
@@ -1832,8 +1841,8 @@
     background: #fff;
     border-radius: var(--article-radius);
     overflow: hidden;
-    transition: all .35s ease;
     border: 1px solid rgba(0, 0, 0, .06);
+    transition: all .35s ease;
 
     &:hover {
       transform: translateY(-8px);
@@ -1924,19 +1933,22 @@
   .swiper-pagination-bullet-active {
     transform: scale(1.2);
   }
-}
 
-/* جوال فقط */
-.veloura-animated-articles--mobile-only {
-  @media (min-width: 992px) {
-    display: none;
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--color-primary);
   }
 }
 
-/* كمبيوتر فقط */
+.veloura-animated-articles--mobile-only {
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
 .veloura-animated-articles--desktop-only {
   @media (max-width: 991px) {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -1985,29 +1997,5 @@
     p {
       font-size: 13px;
     }
-  }
-}
-
-
-.veloura-animated-articles {
-  &__container {
-    padding-inline: var(--veloura-articles-spacing, 0px);
-  }
-
-  .swiper-pagination {
-    position: relative;
-    margin-top: 24px;
-  }
-}
-
-.veloura-animated-articles--mobile-only {
-  @media (min-width: 992px) {
-    display: none !important;
-  }
-}
-
-.veloura-animated-articles--desktop-only {
-  @media (max-width: 991px) {
-    display: none !important;
   }
 }
