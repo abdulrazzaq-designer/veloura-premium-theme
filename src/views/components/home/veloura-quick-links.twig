@@ -28,17 +28,17 @@
 >
   <div class="veloura-quick-links__container">
 
-    {% if component.veloura_quick_title or component.veloura_quick_subtitle %}
-      <div class="veloura-quick-links__heading">
-        {% if component.veloura_quick_title %}
-          <h2>{{ component.veloura_quick_title }}</h2>
-        {% endif %}
-
-        {% if component.veloura_quick_subtitle %}
-          <p>{{ component.veloura_quick_subtitle }}</p>
-        {% endif %}
-      </div>
+    {% if not component.veloura_quick_merge_previous and (component.veloura_quick_title or component.veloura_quick_subtitle) %}
+  <div class="veloura-quick-links__heading">
+    {% if component.veloura_quick_title %}
+      <h2>{{ component.veloura_quick_title }}</h2>
     {% endif %}
+
+    {% if component.veloura_quick_subtitle %}
+      <p>{{ component.veloura_quick_subtitle }}</p>
+    {% endif %}
+  </div>
+{% endif %}
 
     <salla-slider
   <salla-slider

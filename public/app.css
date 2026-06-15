@@ -29147,7 +29147,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 42px;
   line-height: 1;
   color: #a8d8e2;
-  margin-bottom: 10px;
 }
 .veloura-quick-links__card h2,
 .veloura-quick-links__card span {
@@ -29155,6 +29154,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
+  margin-top: 10px;
 }
 .veloura-quick-links.is-slider salla-slider,
 .veloura-quick-links.is-slider .s-slider-container,
@@ -29178,7 +29178,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-quick-links.is-slider .carousel-slider .swiper {
   padding-left: 3rem !important;
-  padding-right: 0 !important;
+  padding-right: 5px !important;
 }
 @media (min-width: 768px) {
   .veloura-mobile-only {
@@ -29246,6 +29246,22 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-quick-links .swiper-slide {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+.veloura-quick-links.is-merged {
+  padding-top: 0 !important;
+}
+.veloura-quick-links.is-merged {
+  margin-top: -90px;
+  position: relative;
+  z-index: 5;
+}
+.veloura-quick-links.is-merged .veloura-quick-links__heading {
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .veloura-quick-links.is-merged {
+    margin-top: -55px;
+  }
 }
 salla-slider{
     display: block;
