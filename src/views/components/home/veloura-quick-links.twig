@@ -44,8 +44,8 @@
   id="veloura-quick-links-{{ position }}"
   type="carousel"
   controls-outer
-  show-controls="false"
-  {% if component.veloura_quick_show_scrollbar %}scrollbar{% endif %}
+  show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
+  {% if component.veloura_quick_show_scrollbar %}show-scrollbar{% endif %}
   static-when-single
   slider-config='{
     "slidesPerView": {{ quick_mobile_cols }},

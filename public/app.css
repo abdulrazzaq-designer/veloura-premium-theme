@@ -29209,6 +29209,19 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     padding-left: 2rem !important;
   }
 }
+.veloura-quick-links .swiper-button-next,
+.veloura-quick-links .swiper-button-prev {
+  display: none !important;
+}
+.veloura-quick-links .swiper-scrollbar,
+.veloura-quick-links .s-slider-scrollbar {
+  display: block !important;
+  position: relative !important;
+}
+.veloura-quick-links .swiper-scrollbar,
+.veloura-quick-links .s-slider-scrollbar {
+  margin-top: 18px;
+}
 salla-slider{
     display: block;
 }
