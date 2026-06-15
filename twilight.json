@@ -4622,8 +4622,11 @@
   ]
 },
 {
-  "key": "f84b4d92-6e4d-4a4f-92f3-3729a4d1c501",
-  "title": "مقالات متحركة (فيلورا)",
+  "key": "9b7f3d62-4e21-4a35-9f43-7c6e8a2d1b10",
+  "title": {
+    "ar": "مقالات متحركة (فيلورا)",
+    "en": "Animated Articles - Veloura"
+  },
   "icon": "sicon-newspaper",
   "path": "home.veloura-animated-articles",
   "fields": [
