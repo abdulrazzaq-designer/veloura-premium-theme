@@ -49,24 +49,22 @@
         }'
       >
         <div slot="items">
-          {% for item in component.veloura_quick_links %}
-            {% set image_src = item.image_url ?: item.image %}
+          {% for link in component.veloura_quick_links %}
+  {% set image_src = link.image_url ?: link.image.url ?: link.image %}
+  {% set link_url = link.url ?: '#' %}
 
-<a href="{{ item.url ?: '#' }}" class="veloura-quick-links__card">
+  {% if link.title %}
+    <a href="{{ link_url }}" class="veloura-quick-links__card">
+      {% if image_src %}
+        <img src="{{ image_src }}" alt="{{ link.title }}" loading="lazy">
+      {% elseif link.icon %}
+        <i class="{{ link.icon }}"></i>
+      {% endif %}
 
-  {% if image_src %}
-    <img src="{{ image_src.url ?: image_src }}" alt="{{ item.title ?: 'quick link' }}" loading="lazy">
-  {% elseif item.icon %}
-    <i class="{{ item.icon }} veloura-quick-links__item-icon"></i>
+      <h2>{{ link.title }}</h2>
+    </a>
   {% endif %}
-
-  {% if item.title %}
-    <span>{{ item.title }}</span>
-  {% endif %}
-
-</a>
-            </div>
-          {% endfor %}
+{% endfor %}
         </div>
       </salla-slider>
     {% else %}

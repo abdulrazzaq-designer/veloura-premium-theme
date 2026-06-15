@@ -29193,6 +29193,15 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 12px;
   }
 }
+.veloura-quick-links__card i {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+.veloura-quick-links__card h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
 salla-slider{
     display: block;
 }
