@@ -4392,6 +4392,28 @@
   "required": false
 },
 {
+  "id": "veloura_quick_desktop_cols",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "عدد الروابط في الكمبيوتر والتابلت",
+  "value": "5",
+  "step": "1",
+  "minimum": "1",
+  "maximum": "8"
+},
+{
+  "id": "veloura_quick_mobile_cols",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "عدد الروابط في الجوال",
+  "value": "3",
+  "step": "1",
+  "minimum": "1",
+  "maximum": "4"
+},
+{
   "id": "veloura_quick_merge_previous",
   "type": "boolean",
   "format": "switch",

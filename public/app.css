@@ -29135,10 +29135,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   justify-content: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.veloura-quick-links__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
 .veloura-quick-links__card img {
   width: 58px;
   height: 58px;
@@ -29243,6 +29239,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     padding-left: 7px;
     padding-right: 7px;
   }
+}
+.veloura-quick-links.is-slider .carousel-slider .swiper {
+  padding-left: 3rem !important;
+  padding-right: 0 !important;
 }
 salla-slider{
     display: block;

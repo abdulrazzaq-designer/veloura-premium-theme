@@ -1654,11 +1654,6 @@
 
   transition: transform .25s ease, box-shadow .25s ease;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
-  }
-
   img {
     width: 58px;
     height: 58px;
@@ -1775,5 +1770,12 @@
     .swiper-slide {
       padding-inline: 7px;
     }
+  }
+}
+
+.veloura-quick-links.is-slider {
+  .carousel-slider .swiper {
+    padding-left: 3rem !important;
+    padding-right: 0 !important;
   }
 }
