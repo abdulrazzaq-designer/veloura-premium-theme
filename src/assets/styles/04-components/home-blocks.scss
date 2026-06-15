@@ -1987,3 +1987,27 @@
     }
   }
 }
+
+
+.veloura-animated-articles {
+  &__container {
+    padding-inline: var(--veloura-articles-spacing, 0px);
+  }
+
+  .swiper-pagination {
+    position: relative;
+    margin-top: 24px;
+  }
+}
+
+.veloura-animated-articles--mobile-only {
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
+.veloura-animated-articles--desktop-only {
+  @media (max-width: 991px) {
+    display: none !important;
+  }
+}

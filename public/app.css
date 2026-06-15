@@ -29421,6 +29421,26 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 13px;
   }
 }
+.veloura-animated-articles__container {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-left: var(--veloura-articles-spacing, 0px);
+  padding-right: var(--veloura-articles-spacing, 0px);
+}
+.veloura-animated-articles .swiper-pagination {
+  position: relative;
+  margin-top: 24px;
+}
+@media (min-width: 992px) {
+  .veloura-animated-articles--mobile-only {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .veloura-animated-articles--desktop-only {
+    display: none !important;
+  }
+}
 salla-slider{
     display: block;
 }
