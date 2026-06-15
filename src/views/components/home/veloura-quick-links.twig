@@ -1,7 +1,37 @@
-<section style="background:red;color:white;padding:40px;text-align:center">
-  مكون روابط سريعة يعمل
+{% if not component.veloura_quick_hide_section %}
+<section
+  class="s-block veloura-quick-links {{ component.veloura_quick_slider_mode ? 'is-slider' : 'is-grid' }}"
+>
+  <div class="veloura-quick-links__container">
 
-  <pre style="direction:ltr;text-align:left;background:white;color:black;padding:20px;margin-top:20px">
-{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}
-  </pre>
+    {% if component.veloura_quick_title %}
+      <div class="veloura-quick-links__heading">
+        <h2>{{ component.veloura_quick_title }}</h2>
+        {% if component.veloura_quick_subtitle %}
+          <p>{{ component.veloura_quick_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="veloura-quick-links__grid">
+      {% for link in component.veloura_quick_links %}
+        {% set image_src = link.image_url ?: link.image.url ?: link.image %}
+        {% set icon_class = link.icon.value ?: link.icon %}
+
+        <a href="{{ link.url ?: '#' }}" class="veloura-quick-links__card">
+          {% if image_src %}
+            <img src="{{ image_src }}" alt="{{ link.title ?: 'quick link' }}" loading="lazy">
+          {% elseif icon_class %}
+            <i class="{{ icon_class }} veloura-quick-links__icon"></i>
+          {% endif %}
+
+          {% if link.title %}
+            <h2>{{ link.title }}</h2>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+
+  </div>
 </section>
+{% endif %}
