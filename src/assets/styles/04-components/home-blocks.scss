@@ -1756,7 +1756,7 @@
     margin-top: 18px;
   }
 }
-
+/*
 .veloura-quick-links.is-slider {
   .swiper-pagination,
   .s-slider-pagination,
@@ -1772,4 +1772,22 @@
     visibility: visible !important;
     z-index: 10;
   }
+}
+*/
+.veloura-quick-links__scrollbar {
+  width: 160px;
+  height: 4px;
+  margin: 18px auto 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .12);
+  overflow: hidden;
+}
+
+.veloura-quick-links__scrollbar::before {
+  content: "";
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-primary);
 }

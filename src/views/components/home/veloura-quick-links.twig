@@ -45,7 +45,6 @@
   type="carousel"
   controls-outer
   show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
-  {% if component.veloura_quick_show_scrollbar %}pagination{% endif %}
   static-when-single
   slider-config='{
     "slidesPerView": {{ quick_mobile_cols }},
@@ -60,6 +59,9 @@
     }
   }'
 >
+{% if component.veloura_quick_show_scrollbar %}
+  <div class="veloura-quick-links__scrollbar"></div>
+{% endif %}
       <div slot="items">
         {% for link in component.veloura_quick_links %}
           {% set image_src = link.image_url ?: link.image.url ?: link.image %}
