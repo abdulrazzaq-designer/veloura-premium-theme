@@ -4306,6 +4306,209 @@
   "required": false
 }
   ]
+},
+{
+  "key": "c93a6c8e-8e2f-4d85-9f74-7s2b6f4b7a14",
+  "title": {
+    "ar": "روابط سريعة (فيلورا)",
+    "en": "Quick Links - Veloura"
+  },
+  "icon": "sicon-link",
+  "path": "home.veloura-quick-links",
+  "fields": [
+    {
+  "id": "veloura_quick_options_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">يمكنك إضافة عناوين والتحكم في شكل وترتيب الصور</div>   </div> </div>",
+  "variant": "h1",
+  "icon": "sicon-format-text"
+},
+{
+  "id": "veloura_quick_title",
+  "type": "string",
+  "format": "text",
+  "label": "العنوان",
+  "icon": "sicon-format-text",
+  "value": "روابط سريعة",
+  "required": false,
+  "maxLength": 150
+},
+{
+  "id": "veloura_quick_subtitle",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان فرعي",
+  "icon": "sicon-format-text-alt",
+  "placeholder": "ادخل العنوان الفرعي هنا...",
+  "value": "",
+  "required": false,
+  "maxLength": 200
+},
+{
+  "id": "veloura_quick_merge_previous",
+  "type": "boolean",
+  "format": "switch",
+  "label": "دمج مع العنصر السابق",
+  "description": "*إتاحة كامل العنصر ومحتوياته مع العنصر السابق، وجعلهما يظهران كعنصر واحد متناسق.",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_quick_hide_arrows",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء أسهم التنقل",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_quick_items_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إضافة الروابط</strong>     <div class=\"text-sm opacity-75 mt-1\">أضف روابط سريعة مع صورة أو أيقونة</div>   </div> </div>",
+  "variant": "h1",
+  "icon": "sicon-link"
+},
+{
+  "id": "veloura_quick_links",
+  "type": "collection",
+  "format": "collection",
+  "label": "الروابط",
+  "description": "أضف روابط سريعة حسب الحاجة",
+  "value": [],
+  "fields": [
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان الرابط",
+      "icon": "sicon-format-text",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "image_url",
+      "type": "string",
+      "format": "text",
+      "label": "أضف رابط الصورة",
+      "description": "*يمكنك إضافة رابط أيقونة بصيغة gif",
+      "icon": "sicon-link",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "image",
+      "type": "string",
+      "format": "image",
+      "label": "الصورة",
+      "description": "*المقاس المناسب هو 500 × 500 بكسل",
+      "icon": "sicon-image",
+      "value": null,
+      "required": false
+    },
+    {
+      "id": "url",
+      "type": "items",
+      "icon": "sicon-link",
+      "label": "الرابط",
+      "value": [],
+      "required": false,
+      "format": "variable-list",
+      "searchable": true,
+      "source": "custom",
+      "sources": [
+        { "label": "منتج", "key": "products", "value": "products" },
+        { "label": "تصنيف", "key": "categories", "value": "categories" },
+        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+      ]
+    }
+  ]
+}
+,
+{
+  "id": "veloura_quick_general_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+  "variant": "h1",
+  "icon": "sicon-settings"
+},
+{
+  "id": "veloura_quick_custom_spacing",
+  "type": "boolean",
+  "format": "switch",
+  "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false
+},
+{
+  "id": "veloura_quick_spacing_amount",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "مقدار المسافة",
+  "value": "0",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "100",
+  "conditions": [
+    {
+      "id": "veloura_quick_custom_spacing",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_mobile_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الجوال فقط",
+  "value": false,
+  "selected": false
+},
+{
+  "id": "veloura_quick_desktop_only",
+  "type": "boolean",
+  "format": "switch",
+  "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+  "value": false,
+  "selected": false
+},
+{
+  "id": "veloura_quick_hide_section",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء هذا العنصر أو القسم بالكامل",
+  "value": false,
+  "selected": false
+},
+{
+  "id": "veloura_quick_custom_classes",
+  "type": "string",
+  "format": "text",
+  "label": "Classes",
+  "placeholder": "ex: container dark p-5 custom",
+  "value": "",
+  "required": false
+}
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",

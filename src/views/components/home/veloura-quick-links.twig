@@ -1,0 +1,89 @@
+{% if not component.veloura_quick_hide_section %}
+<section
+  class="
+    s-block
+    veloura-quick-links
+    {{ component.veloura_quick_slider_mode ? 'is-slider' : 'is-grid' }}
+    {{ component.veloura_quick_merge_previous ? 'is-merged' : '' }}
+    {{ component.veloura_quick_mobile_only ? 'veloura-mobile-only' : '' }}
+    {{ component.veloura_quick_desktop_only ? 'veloura-desktop-only' : '' }}
+    {{ component.veloura_quick_custom_classes }}
+  "
+  style="
+    --quick-desktop-cols: {{ component.veloura_quick_desktop_cols|default(5) }};
+    --quick-mobile-cols: {{ component.veloura_quick_mobile_cols|default(3) }};
+    --quick-spacing: {{ component.veloura_quick_custom_spacing ? component.veloura_quick_spacing_amount|default(0) : 0 }}px;
+  "
+>
+  <div class="veloura-quick-links__container">
+
+    {% if component.veloura_quick_title or component.veloura_quick_subtitle %}
+      <div class="veloura-quick-links__heading">
+        {% if component.veloura_quick_title %}
+          <h2>{{ component.veloura_quick_title }}</h2>
+        {% endif %}
+
+        {% if component.veloura_quick_subtitle %}
+          <p>{{ component.veloura_quick_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if component.veloura_quick_slider_mode %}
+      <salla-slider
+        id="veloura-quick-links-{{ position }}"
+        {% if not component.veloura_quick_hide_arrows %}show-controls{% else %}show-controls="false"{% endif %}
+        pagination
+        static-when-single
+        slider-config='{
+          "slidesPerView": {{ component.veloura_quick_mobile_cols|default(3) }},
+          "spaceBetween": 14,
+          "observer": true,
+          "observeParents": true,
+          "breakpoints": {
+            "768": {
+              "slidesPerView": {{ component.veloura_quick_desktop_cols|default(5) }},
+              "spaceBetween": 20
+            }
+          }
+        }'
+      >
+        <div slot="items">
+          {% for item in component.veloura_quick_links %}
+            {% set image_src = item.image_url ?: item.image %}
+
+            <div class="swiper-slide">
+              <a href="{{ item.url ?: '#' }}" class="veloura-quick-links__card">
+                {% if image_src %}
+                  <img src="{{ image_src }}" alt="{{ item.title ?: 'quick link' }}" loading="lazy">
+                {% endif %}
+
+                {% if item.title %}
+                  <span>{{ item.title }}</span>
+                {% endif %}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </salla-slider>
+    {% else %}
+      <div class="veloura-quick-links__grid">
+        {% for item in component.veloura_quick_links %}
+          {% set image_src = item.image_url ?: item.image %}
+
+          <a href="{{ item.url ?: '#' }}" class="veloura-quick-links__card">
+            {% if image_src %}
+              <img src="{{ image_src }}" alt="{{ item.title ?: 'quick link' }}" loading="lazy">
+            {% endif %}
+
+            {% if item.title %}
+              <span>{{ item.title }}</span>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endif %}
