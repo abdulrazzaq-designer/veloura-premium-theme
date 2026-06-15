@@ -4857,6 +4857,172 @@
 }
   ]
 }
+,
+{
+  "key": "7d9f8e62-2b41-4c0d-88c6-4e35e1b91a10",
+  "title": {
+    "ar": "فروع فيلورا",
+    "en": "Veloura Branches"
+  },
+  "icon": "sicon-location",
+  "path": "home.veloura-branches",
+  "fields": [
+    {
+      "id": "veloura_branches_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في عناوين وخريطة الفروع</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_branches_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان رئيسي",
+      "icon": "sicon-format-text-alt",
+      "value": "زورونا في فروعنا",
+      "required": false
+    },
+    {
+      "id": "veloura_branches_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان فرعي",
+      "icon": "sicon-format-text-alt",
+      "value": "الأحد إلى الخميس من الساعة 11 ص حتى 6 م",
+      "required": false
+    },
+    {
+      "id": "veloura_branches_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حواف الخريطة",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "5f655ebd-604c-4558-88b8-f469c6091e92"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "199d683b-ad5f-4033-8a00-8bcd4e77830d" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "fa110924-8f73-4169-aac8-c51421d8c0ad" },
+        { "label": "ناعم", "value": "medium", "key": "5f655ebd-604c-4558-88b8-f469c6091e92" },
+        { "label": "ناعم جداً", "value": "large", "key": "dfb6c9cc-6660-4510-86b8-8fb8fe9d3cfb" },
+        { "label": "دائري", "value": "round", "key": "e7d0faf3-75bb-485c-9fcb-3889820da5f6" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_branches_items",
+      "type": "collection",
+      "format": "collection",
+      "label": "الفروع",
+      "minLength": 1,
+      "maxLength": 10,
+      "fields": [
+        {
+          "id": "name",
+          "type": "string",
+          "format": "text",
+          "label": "اسم الفرع",
+          "icon": "sicon-format-text-alt",
+          "value": "فرع الرياض",
+          "required": true
+        },
+        {
+          "id": "map_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط خريطة جوجل",
+          "icon": "sicon-link",
+          "value": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_branches_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_branches_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_branches_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_branches_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_branches_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_branches_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_branches_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_branches_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: container dark p-5 custom",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    }
+  ]
+}
     ],
     "support_url": "https://velourapremium.com",
     "description": {
