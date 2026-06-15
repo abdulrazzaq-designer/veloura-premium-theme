@@ -4348,32 +4348,48 @@
 },
 {
   "id": "veloura_quick_radius",
-  "type": "select",
-  "label": "حواف الصور",
-  "required": false,
-  "value": "medium",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف الروابط",
+  "icon": "sicon-keyboard_arrow_down",
+  "selected": [
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "5f655ebd-604c-4558-88b8-f469c6091e92"
+    }
+  ],
   "options": [
     {
       "label": "حاد",
-      "value": "sharp"
+      "value": "sharp",
+      "key": "199d683b-ad5f-4033-8a00-8bcd4e77830d"
     },
     {
       "label": "ناعم قليلاً",
-      "value": "soft"
+      "value": "soft",
+      "key": "fa110924-8f73-4169-aac8-c51421d8c0ad"
     },
     {
       "label": "ناعم",
-      "value": "medium"
+      "value": "medium",
+      "key": "5f655ebd-604c-4558-88b8-f469c6091e92"
     },
     {
       "label": "ناعم جداً",
-      "value": "large"
+      "value": "large",
+      "key": "dfb6c9cc-6660-4510-86b8-8fb8fe9d3cfb"
     },
     {
       "label": "دائري",
-      "value": "round"
+      "value": "round",
+      "key": "e7d0faf3-75bb-485c-9fcb-3889820da5f6"
     }
-  ]
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": false
 },
 {
   "id": "veloura_quick_merge_previous",

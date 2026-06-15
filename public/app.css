@@ -29207,6 +29207,14 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 12px;
   }
 }
+.veloura-quick-links__card {
+  border-radius: 16px;
+  border-radius: var(--quick-radius, 16px);
+}
+.veloura-quick-links__card img {
+  border-radius: 16px;
+  border-radius: var(--quick-radius, 16px);
+}
 salla-slider{
     display: block;
 }

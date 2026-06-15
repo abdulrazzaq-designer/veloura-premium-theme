@@ -1739,3 +1739,11 @@
     }
   }
 }
+
+.veloura-quick-links__card {
+  border-radius: var(--quick-radius, 16px);
+}
+
+.veloura-quick-links__card img {
+  border-radius: var(--quick-radius, 16px);
+}
