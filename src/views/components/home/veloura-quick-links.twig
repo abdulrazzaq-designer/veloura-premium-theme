@@ -41,24 +41,26 @@
     {% endif %}
 
     <salla-slider
+  <salla-slider
   id="veloura-quick-links-{{ position }}"
   type="carousel"
-  pagination
   controls-outer
+  {% if component.veloura_quick_autoplay %}auto-play{% endif %}
   show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
   static-when-single
   slider-config='{
-    "slidesPerView": {{ quick_mobile_cols }},
-    "spaceBetween": 14,
-    "observer": true,
-    "observeParents": true,
-    "breakpoints": {
-      "768": {
-        "slidesPerView": {{ quick_desktop_cols }},
-        "spaceBetween": 20
-      }
+  "slidesPerView": {{ quick_mobile_cols }},
+  "spaceBetween": 14,
+  "autoplay": {{ component.veloura_quick_autoplay ? "{\"delay\": 2500, \"disableOnInteraction\": false}" : "false" }},
+  "observer": true,
+  "observeParents": true,
+  "breakpoints": {
+    "768": {
+      "slidesPerView": {{ quick_desktop_cols }},
+      "spaceBetween": 20
     }
-  }'
+  }
+}'
 >
 
       <div slot="items">

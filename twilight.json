@@ -4435,13 +4435,13 @@
   "required": false
 },
 {
-  "id": "veloura_quick_show_scrollbar",
+  "id": "veloura_quick_autoplay",
   "type": "boolean",
-  "format": "switch",
-  "label": "تفعيل شريط السكرول أسفل السلايدر",
-  "icon": "sicon-toggle-off",
-  "value": false,
-  "selected": false
+  "format": "on-off",
+  "label": "تفعيل التحريك التلقائي",
+  "description": "تحريك الروابط تلقائياً",
+  "required": false,
+  "value": false
 },
 {
   "id": "veloura_quick_items_title",
