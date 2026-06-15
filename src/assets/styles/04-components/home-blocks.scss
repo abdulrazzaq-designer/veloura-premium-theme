@@ -1774,20 +1774,20 @@
   }
 }
 */
-.veloura-quick-links__scrollbar {
+.veloura-quick-links__fake-scrollbar {
+  display: block !important;
   width: 160px;
-  height: 4px;
+  height: 5px;
   margin: 18px auto 0;
+  background: rgba(0, 0, 0, .15);
   border-radius: 999px;
-  background: rgba(0, 0, 0, .12);
   overflow: hidden;
 }
 
-.veloura-quick-links__scrollbar::before {
-  content: "";
+.veloura-quick-links__fake-scrollbar span {
   display: block;
   width: 45%;
   height: 100%;
-  border-radius: inherit;
-  background: var(--color-primary);
+  background: var(--color-primary, #00a6a6);
+  border-radius: 999px;
 }

@@ -59,9 +59,7 @@
     }
   }'
 >
-{% if component.veloura_quick_show_scrollbar %}
-  <div class="veloura-quick-links__scrollbar"></div>
-{% endif %}
+
       <div slot="items">
         {% for link in component.veloura_quick_links %}
           {% set image_src = link.image_url ?: link.image.url ?: link.image %}
@@ -83,7 +81,11 @@
         {% endfor %}
       </div>
     </salla-slider>
-
+{% if component.veloura_quick_show_scrollbar %}
+  <div class="veloura-quick-links__fake-scrollbar">
+    <span></span>
+  </div>
+{% endif %}
   </div>
 </section>
 {% endif %}
