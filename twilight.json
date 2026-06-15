@@ -4633,54 +4633,75 @@
     {
       "id": "veloura_articles_options_title",
       "type": "static",
-      "format": "html",
-      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"> <div class=\"ml-1 mr-2 text-center\"> <strong class=\"text-lg\">خيارات العنصر</strong> <div class=\"text-sm opacity-75 mt-1\">تحكم في خيارات عرض المقالات</div> </div> </div>"
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في خيارات عرض المقالات</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
     },
     {
       "id": "veloura_articles_title",
       "type": "string",
-      "icon": "sicon-format-text-alt",
+      "format": "text",
       "label": "العنوان",
-      "value": "مقالات متحركة"
+      "icon": "sicon-format-text-alt",
+      "value": "مقالات متحركة",
+      "required": false,
+      "maxLength": "150"
     },
     {
       "id": "veloura_articles_subtitle",
       "type": "string",
-      "icon": "sicon-format-text-alt",
+      "format": "text",
       "label": "عنوان فرعي",
-      "value": "اطلع على أحدث الأخبار"
+      "icon": "sicon-format-text-alt",
+      "value": "اطلع على أحدث الأخبار",
+      "required": false,
+      "maxLength": "200"
     },
     {
       "id": "veloura_articles_collection",
       "type": "collection",
+      "format": "collection",
       "label": "المقالات",
+      "minLength": 1,
+      "maxLength": 20,
       "fields": [
         {
           "id": "image",
-          "type": "image",
-          "label": "صور المقال",
-          "icon": "sicon-image"
+          "type": "string",
+          "format": "image",
+          "label": "صورة المقال",
+          "icon": "sicon-image",
+          "value": null,
+          "required": false
         },
         {
           "id": "title",
           "type": "string",
-          "icon": "sicon-format-text-alt",
+          "format": "text",
           "label": "عنوان المقال",
-          "value": "عنوان رئيسي للمقالة 1"
+          "icon": "sicon-format-text-alt",
+          "value": "عنوان رئيسي للمقالة",
+          "required": false
         },
         {
           "id": "excerpt",
-          "type": "text",
-          "icon": "sicon-format-text-alt",
+          "type": "string",
+          "format": "textarea",
           "label": "ملخص المقال",
-          "value": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+          "icon": "sicon-format-text-alt",
+          "value": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
+          "required": false
         },
         {
           "id": "button_text",
           "type": "string",
-          "icon": "sicon-format-text-alt",
+          "format": "text",
           "label": "نص الزر",
-          "value": "قراءة المزيد"
+          "icon": "sicon-format-text",
+          "value": "قراءة المزيد",
+          "required": false
         },
         {
           "id": "url",
@@ -4710,40 +4731,11 @@
     {
       "id": "veloura_articles_general_title",
       "type": "static",
-      "format": "html",
-      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"> <div class=\"ml-1 mr-2 text-center\"> <strong class=\"text-lg\">إعدادات عامة للعنصر</strong> </div> </div>"
-    },
-    {
-      "id": "veloura_articles_custom_spacing",
-      "type": "boolean",
-      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
-      "value": false
-    },
-    {
-      "id": "veloura_articles_spacing",
-      "type": "number",
-      "label": "مقدار المسافة",
-      "value": 45,
-      "min": 0,
-      "max": 100
-    },
-    {
-      "id": "veloura_articles_mobile_only",
-      "type": "boolean",
-      "label": "عرض العنصر في الجوال فقط",
-      "value": false
-    },
-    {
-      "id": "veloura_articles_desktop_only",
-      "type": "boolean",
-      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
-      "value": false
-    },
-    {
-      "id": "veloura_articles_hide",
-      "type": "boolean",
-      "label": "إخفاء هذا العنصر أو القسم بالكامل",
-      "value": false
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
     },
     {
       "id": "veloura_articles_radius",
@@ -4759,31 +4751,11 @@
         }
       ],
       "options": [
-        {
-          "label": "حاد",
-          "value": "sharp",
-          "key": "199d683b-ad5f-4033-8a00-8bcd4e77830d"
-        },
-        {
-          "label": "ناعم قليلاً",
-          "value": "soft",
-          "key": "fa110924-8f73-4169-aac8-c51421d8c0ad"
-        },
-        {
-          "label": "ناعم",
-          "value": "medium",
-          "key": "5f655ebd-604c-4558-88b8-f469c6091e92"
-        },
-        {
-          "label": "ناعم جداً",
-          "value": "large",
-          "key": "dfb6c9cc-6660-4510-86b8-8fb8fe9d3cfb"
-        },
-        {
-          "label": "دائري",
-          "value": "round",
-          "key": "e7d0faf3-75bb-485c-9fcb-3889820da5f6"
-        }
+        { "label": "حاد", "value": "sharp", "key": "199d683b-ad5f-4033-8a00-8bcd4e77830d" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "fa110924-8f73-4169-aac8-c51421d8c0ad" },
+        { "label": "ناعم", "value": "medium", "key": "5f655ebd-604c-4558-88b8-f469c6091e92" },
+        { "label": "ناعم جداً", "value": "large", "key": "dfb6c9cc-6660-4510-86b8-8fb8fe9d3cfb" },
+        { "label": "دائري", "value": "round", "key": "e7d0faf3-75bb-485c-9fcb-3889820da5f6" }
       ],
       "source": "Manual",
       "multichoice": false,
@@ -4791,11 +4763,14 @@
       "required": false
     },
     {
-      "id": "veloura_articles_custom_classes",
-      "type": "string",
-      "label": "Classes",
-      "value": "",
-      "placeholder": "ex: container dark p-5 custom"
+      "id": "veloura_articles_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false,
+      "required": false
     }
   ]
 }
