@@ -42,17 +42,17 @@
       show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
       static-when-single
       slider-config='{
-        "slidesPerView": {{ component.veloura_quick_mobile_cols|default(3) }},
-        "spaceBetween": 14,
-        "observer": true,
-        "observeParents": true,
-        "breakpoints": {
-          "768": {
-            "slidesPerView": {{ component.veloura_quick_desktop_cols|default(5) }},
-            "spaceBetween": 20
-          }
-        }
-      }'
+  "slidesPerView": {{ component.veloura_quick_mobile_cols|default(3) }},
+  "spaceBetween": 0,
+  "observer": true,
+  "observeParents": true,
+  "breakpoints": {
+    "768": {
+      "slidesPerView": {{ component.veloura_quick_desktop_cols|default(5) }},
+      "spaceBetween": 0
+    }
+  }
+}'
     >
       <div slot="items">
         {% for link in component.veloura_quick_links %}
