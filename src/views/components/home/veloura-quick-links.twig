@@ -35,6 +35,12 @@
       </div>
     {% endif %}
 
+    {% set quick_mobile_cols = component.veloura_quick_mobile_cols|default(3, true) %}
+{% set quick_desktop_cols = component.veloura_quick_desktop_cols|default(5, true) %}
+
+{% set quick_mobile_slides = quick_mobile_cols + 0.25 %}
+{% set quick_desktop_slides = quick_desktop_cols + 0.25 %}
+
     <salla-slider
   id="veloura-quick-links-{{ position }}"
   type="carousel"
@@ -42,13 +48,13 @@
   show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
   static-when-single
   slider-config='{
-    "slidesPerView": {{ component.veloura_quick_mobile_cols|default(3) }},
+    "slidesPerView": {{ quick_mobile_slides }},
     "spaceBetween": 20,
     "observer": true,
     "observeParents": true,
     "breakpoints": {
       "768": {
-        "slidesPerView": {{ component.veloura_quick_desktop_cols|default(5) }},
+        "slidesPerView": {{ quick_desktop_slides }},
         "spaceBetween": 20
       }
     }
