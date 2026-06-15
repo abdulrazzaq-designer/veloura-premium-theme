@@ -29258,35 +29258,39 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   }
 }
 .veloura-animated-articles {
-  padding: 40px 0;
+  padding: 45px 0;
+  overflow: hidden;
 }
 .veloura-animated-articles__container {
-  padding-left: 0;
-  padding-right: 0;
-  padding-left: var(--veloura-articles-spacing, 0);
-  padding-right: var(--veloura-articles-spacing, 0);
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(16px + 0px);
+  padding-right: calc(16px + 0px);
+  padding-left: calc(16px + var(--veloura-articles-spacing, 0px));
+  padding-right: calc(16px + var(--veloura-articles-spacing, 0px));
 }
 .veloura-animated-articles__heading {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 .veloura-animated-articles__heading h2 {
-  margin: 0 0 10px;
-  font-size: 32px;
+  margin: 0 0 8px;
+  font-size: 30px;
   font-weight: 800;
   color: #414042;
   color: var(--color-primary);
 }
 .veloura-animated-articles__heading p {
   margin: 0;
+  font-size: 14px;
   color: #777;
-  font-size: 15px;
   line-height: 1.8;
 }
 .veloura-animated-articles__slider {
   display: block;
-  overflow: hidden;
-  padding-bottom: 40px;
+  overflow: visible;
+  padding-bottom: 42px;
 }
 .veloura-animated-articles__slider .swiper {
   overflow: visible;
@@ -29303,20 +29307,18 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   border-radius: var(--article-radius);
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.35s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .veloura-animated-articles__card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-}
-.veloura-animated-articles__card:hover .veloura-animated-articles__image img {
-  transform: scale(1.08);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.12);
 }
 .veloura-animated-articles__image {
   display: block;
-  position: relative;
-  overflow: hidden;
+  width: 100%;
   aspect-ratio: 16/10;
+  overflow: hidden;
   background: #f5f5f5;
 }
 .veloura-animated-articles__image img {
@@ -29324,68 +29326,81 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  transition: transform 0.7s ease;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.veloura-animated-articles__card:hover .veloura-animated-articles__image img {
+  transform: scale(1.06);
 }
 .veloura-animated-articles__content {
   padding: 20px;
+  text-align: center;
 }
 .veloura-animated-articles h3 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 .veloura-animated-articles h3 a {
   display: block;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.6;
   color: #222;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.6;
-  transition: 0.3s;
-}
-.veloura-animated-articles h3 a:hover {
-  color: #414042;
-  color: var(--color-primary);
 }
 .veloura-animated-articles p {
   margin: 0;
-  color: #777;
   font-size: 14px;
-  line-height: 1.9;
+  color: #666;
+  line-height: 1.8;
 }
 .veloura-animated-articles__more {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   margin-top: 18px;
-  color: #414042;
-  color: var(--color-primary);
+  min-height: 44px;
+  border-radius: 10px;
+  background: #414042;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  transition: 0.3s;
-}
-.veloura-animated-articles__more::after {
-  content: "←";
-  transition: 0.3s;
-}
-.veloura-animated-articles__more:hover::after {
-  transform: translateX(-5px);
 }
 .veloura-animated-articles .swiper-pagination {
   position: relative;
-  margin-top: 25px;
+  margin-top: 24px;
+  bottom: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 .veloura-animated-articles .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  transition: 0.3s;
+  margin: 0 !important;
+}
+.veloura-animated-articles .swiper-pagination-bullet {
+  width: 18px;
+  height: 7px;
+  border-radius: 999px;
+  opacity: 0.35;
+  background: #414042;
+  background: var(--color-primary);
+  transition: 0.3s ease;
 }
 .veloura-animated-articles .swiper-pagination-bullet-active {
-  transform: scale(1.2);
+  width: 28px;
+  opacity: 1;
 }
 .veloura-animated-articles .swiper-button-next,
 .veloura-animated-articles .swiper-button-prev {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   color: #414042;
   color: var(--color-primary);
 }
@@ -29398,36 +29413,37 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-animated-articles--desktop-only {
     display: none !important;
   }
-  .veloura-animated-articles {
-    padding: 30px 0;
-  }
-  .veloura-animated-articles__heading {
-    margin-bottom: 20px;
-  }
-  .veloura-animated-articles__heading h2 {
-    font-size: 26px;
-  }
-  .veloura-animated-articles__heading p {
-    font-size: 14px;
-  }
-  .veloura-animated-articles__content {
-    padding: 16px;
-  }
-  .veloura-animated-articles h3 a {
-    font-size: 18px;
-  }
 }
 @media (max-width: 767px) {
+  .veloura-animated-articles {
+    padding: 32px 0;
+  }
+  .veloura-animated-articles__container {
+    padding-left: calc(12px + 0px);
+    padding-right: calc(12px + 0px);
+    padding-left: calc(12px + var(--veloura-articles-spacing, 0px));
+    padding-right: calc(12px + var(--veloura-articles-spacing, 0px));
+  }
+  .veloura-animated-articles__heading {
+    margin-bottom: 22px;
+  }
   .veloura-animated-articles__heading h2 {
     font-size: 22px;
   }
   .veloura-animated-articles__heading p {
     font-size: 13px;
   }
+  .veloura-animated-articles__content {
+    padding: 16px;
+  }
   .veloura-animated-articles h3 a {
     font-size: 16px;
   }
   .veloura-animated-articles p {
+    font-size: 13px;
+  }
+  .veloura-animated-articles__more {
+    min-height: 40px;
     font-size: 13px;
   }
 }

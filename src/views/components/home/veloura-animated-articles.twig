@@ -27,7 +27,7 @@
     --article-radius: {{ article_radius }};
   "
   >
-    <div class="container veloura-animated-articles__container">
+    <div class="veloura-animated-articles__container">
 
       {% if component.veloura_articles_title or component.veloura_articles_subtitle %}
         <div class="veloura-animated-articles__heading">
@@ -47,27 +47,27 @@
   class="veloura-animated-articles__slider"
   type="carousel"
   pagination
-  auto-play
+  {% if component.veloura_articles_autoplay %}auto-play{% endif %}
   {% if component.veloura_articles_hide_arrows %}show-controls="false"{% endif %}
   slider-config='{
     "slidesPerView": 1.15,
     "spaceBetween": 16,
-    "speed": 650,
+    "speed": 700,
+    "loop": false,
     "watchOverflow": false,
     "allowTouchMove": true,
     "autoplay": {
       "delay": 2500,
-      "disableOnInteraction": false,
-      "pauseOnMouseEnter": true
+      "disableOnInteraction": false
     },
     "breakpoints": {
       "768": {
         "slidesPerView": 2.15,
-        "spaceBetween": 20
+        "spaceBetween": 22
       },
       "1024": {
         "slidesPerView": 3,
-        "spaceBetween": 24
+        "spaceBetween": 28
       }
     }
   }'
