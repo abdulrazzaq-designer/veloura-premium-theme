@@ -1425,13 +1425,15 @@
   overflow: hidden;
 }
 
-.veloura-products__container {
+.veloura-products__inner {
   width: 100%;
-  max-width: 1280px;
-  margin-inline: auto;
-  padding-inline: var(--veloura-products-spacing, 0px) !important;
-  box-sizing: border-box;
   overflow: hidden;
+}
+
+.veloura-products.has-custom-spacing {
+  .container {
+    padding-inline: var(--veloura-products-spacing, 16px) !important;
+  }
 }
 
 .veloura-products__heading {
@@ -1470,28 +1472,25 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
+  margin-top: 0;
+  flex-shrink: 0;
 }
 
 .veloura-products.is-centered {
-  .veloura-products__heading {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-
+  .veloura-products__heading,
   .veloura-products__heading-content {
     flex-direction: column;
     justify-content: center;
     text-align: center;
   }
 
-  .veloura-products__icon {
-    margin: 0 auto;
+  .veloura-products__button {
+    margin-top: 10px;
+    justify-content: center;
   }
 
-  .veloura-products__button {
-    justify-content: center;
+  .veloura-products__icon {
+    margin: 0 auto;
   }
 }
 
@@ -1504,8 +1503,6 @@
 }
 
 .veloura-products.as-slider {
-  overflow: hidden;
-
   salla-products-slider,
   salla-slider,
   .s-slider-container,
@@ -1546,6 +1543,21 @@
   }
 }
 
+.veloura-products.as-slider.is-products-wide {
+  .container {
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .veloura-products.as-slider.is-products-centered {
+    .swiper-wrapper.s-slider-swiper-wrapper {
+      justify-content: center !important;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .veloura-products.as-grid {
     .s-products-list-wrapper {
@@ -1562,30 +1574,6 @@
   .veloura-products.is-centered {
     .veloura-products__heading {
       align-items: center;
-    }
-  }
-}
-
-.veloura-products.as-slider.is-products-wide {
-  .veloura-products__container {
-    max-width: none;
-    width: 100%;
-  }
-}
-
-.veloura-products.as-slider.is-products-centered {
-  salla-products-slider,
-  salla-slider,
-  .s-slider-container,
-  .swiper {
-    margin-inline: auto !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .veloura-products.as-slider.is-products-centered {
-    .swiper-wrapper.s-slider-swiper-wrapper {
-      justify-content: center !important;
     }
   }
 }
@@ -1784,7 +1772,7 @@
 
 .veloura-quick-links.is-merged {
   padding-top: 0 !important;
-  margin-top: -90px;
+  margin-top: -35px;
   position: relative;
   z-index: 5;
 }
