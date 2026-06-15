@@ -1,24 +1,16 @@
-{% set radius_value = 'medium' %}
+{% if not component.veloura_articles_hide %}
 
-{% if component.veloura_articles_radius %}
-  {% if component.veloura_articles_radius.value %}
-    {% set radius_value = component.veloura_articles_radius.value %}
-  {% elseif component.veloura_articles_radius.selected and component.veloura_articles_radius.selected[0].value %}
-    {% set radius_value = component.veloura_articles_radius.selected[0].value %}
-  {% elseif component.veloura_articles_radius[0] and component.veloura_articles_radius[0].value %}
-    {% set radius_value = component.veloura_articles_radius[0].value %}
-  {% endif %}
-{% endif %}
+  {% set radius_value = component.veloura_articles_radius.value|default('medium') %}
 
-{% set radius_map = {
-  'sharp': '0px',
-  'soft': '8px',
-  'medium': '16px',
-  'large': '24px',
-  'round': '999px'
-} %}
+  {% set radius_map = {
+    'sharp': '0px',
+    'soft': '8px',
+    'medium': '16px',
+    'large': '24px',
+    'round': '999px'
+  } %}
 
-{% set article_radius = radius_map[radius_value]|default('16px') %}
+  {% set article_radius = radius_map[radius_value]|default('16px') %}
 
   {% set section_classes = [
     's-block',
@@ -85,9 +77,9 @@
               {% set article_url = article.url.url|default('#') %}
 
               <div class="swiper-slide">
-                <article class="veloura-animated-articles__card" style="border-radius: {{ article_radius }} !important;">
+                <article class="veloura-animated-articles__card">
 
-                  <a href="{{ article_url }}" class="veloura-animated-articles__image" style="border-radius: {{ article_radius }} !important;">
+                  <a href="{{ article_url }}" class="veloura-animated-articles__image">
                     {% if article.image %}
                       <img
                         src="{{ article.image.url|default(article.image) }}"
