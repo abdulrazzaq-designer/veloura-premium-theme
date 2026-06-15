@@ -43,9 +43,9 @@
     <salla-slider
   id="veloura-quick-links-{{ position }}"
   type="carousel"
+  pagination
   controls-outer
   show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
-  {% if component.veloura_quick_show_scrollbar %}pagination{% endif %}
   static-when-single
   slider-config='{
     "slidesPerView": {{ quick_mobile_cols }},
