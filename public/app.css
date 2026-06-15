@@ -29087,14 +29087,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-top: 0;
 }
 .veloura-quick-links__container {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-.veloura-quick-links__container {
   width: 100%;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
   box-sizing: border-box;
   overflow: hidden;
 }

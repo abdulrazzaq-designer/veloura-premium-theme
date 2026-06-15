@@ -1,3 +1,11 @@
+{% set radius_map = {
+  'sharp': '0px',
+  'soft': '8px',
+  'medium': '16px',
+  'large': '28px',
+  'round': '999px'
+} %}
+
 {% if not component.veloura_quick_hide_section %}
 <section
   class="
@@ -12,6 +20,7 @@
   "
   style="
     --quick-spacing: {{ component.veloura_quick_custom_spacing ? component.veloura_quick_spacing_amount|default(0) : 0 }}px;
+    --quick-radius: {{ radius_map[component.veloura_quick_radius|default('medium')] }};
   "
 >
   <div class="veloura-quick-links__container">

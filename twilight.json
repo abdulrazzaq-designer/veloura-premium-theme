@@ -4347,6 +4347,35 @@
   "maxLength": 200
 },
 {
+  "id": "veloura_quick_radius",
+  "type": "select",
+  "label": "حواف الصور",
+  "required": false,
+  "value": "medium",
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp"
+    },
+    {
+      "label": "ناعم قليلاً",
+      "value": "soft"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium"
+    },
+    {
+      "label": "ناعم جداً",
+      "value": "large"
+    },
+    {
+      "label": "دائري",
+      "value": "round"
+    }
+  ]
+},
+{
   "id": "veloura_quick_merge_previous",
   "type": "boolean",
   "format": "switch",
