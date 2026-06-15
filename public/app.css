@@ -29102,9 +29102,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding-left: var(--quick-spacing, 16px) !important;
   padding-right: var(--quick-spacing, 16px) !important;
 }
-.veloura-quick-links.has-custom-spacing .veloura-quick-links__container {
-  max-width: 1280px;
-}
 .veloura-quick-links__heading {
   text-align: center;
   margin-bottom: 24px;
@@ -29123,7 +29120,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   min-height: 120px;
   padding: 18px 12px;
   background: #fff;
-  border-radius: 18px;
+  border-radius: 16px;
+  border-radius: var(--quick-radius, 16px);
   border: 1px solid rgba(0, 0, 0, 0.06);
   text-align: center;
   -webkit-text-decoration: none;
@@ -29133,7 +29131,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .veloura-quick-links__card img {
   width: 58px;
@@ -29141,6 +29138,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   -o-object-fit: contain;
      object-fit: contain;
   margin-bottom: 10px;
+  border-radius: 16px;
+  border-radius: var(--quick-radius, 16px);
 }
 .veloura-quick-links__card i,
 .veloura-quick-links__card .veloura-quick-links__icon {
@@ -29172,9 +29171,14 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-quick-links.is-slider .swiper-slide {
   height: auto;
+  box-sizing: border-box;
 }
 .veloura-quick-links.is-slider .veloura-quick-links__card {
   height: 100%;
+}
+.veloura-quick-links.is-slider .carousel-slider .swiper {
+  padding-left: 3rem !important;
+  padding-right: 0 !important;
 }
 @media (min-width: 768px) {
   .veloura-mobile-only {
@@ -29188,7 +29192,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-quick-links__card {
     min-height: 105px;
     padding: 14px 8px;
-    border-radius: 14px;
   }
   .veloura-quick-links__card img {
     width: 46px;
@@ -29202,47 +29205,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-quick-links__card span {
     font-size: 12px;
   }
-}
-.veloura-quick-links__card {
-  border-radius: 16px;
-  border-radius: var(--quick-radius, 16px);
-}
-.veloura-quick-links__card img {
-  border-radius: 16px;
-  border-radius: var(--quick-radius, 16px);
-}
-.veloura-quick-links.is-slider .swiper {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-.veloura-quick-links.is-slider .swiper-wrapper {
-  margin-left: -10px;
-  margin-right: -10px;
-}
-.veloura-quick-links.is-slider .swiper-slide {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-.veloura-quick-links.is-slider .swiper-slide {
-  padding-left: 10px;
-  padding-right: 10px;
-  box-sizing: border-box;
-}
-@media (max-width: 767px) {
-  .veloura-quick-links.is-slider .swiper-wrapper {
-    margin-left: -7px;
-    margin-right: -7px;
+  .veloura-quick-links.is-slider .carousel-slider .swiper {
+    padding-left: 2rem !important;
   }
-  .veloura-quick-links.is-slider .swiper-slide {
-    padding-left: 7px;
-    padding-right: 7px;
-  }
-}
-.veloura-quick-links.is-slider .carousel-slider .swiper {
-  padding-left: 3rem !important;
-  padding-right: 0 !important;
 }
 salla-slider{
     display: block;

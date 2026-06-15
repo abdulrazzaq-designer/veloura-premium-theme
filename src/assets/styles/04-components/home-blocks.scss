@@ -1593,7 +1593,6 @@
 
 
 
-
 .veloura-quick-links {
   padding-top: 32px;
   padding-bottom: 32px;
@@ -1615,7 +1614,6 @@
 
 .veloura-quick-links.has-custom-spacing {
   .veloura-quick-links__container {
-    max-width: 1280px;
     padding-inline: var(--quick-spacing, 16px) !important;
   }
 }
@@ -1641,7 +1639,7 @@
   min-height: 120px;
   padding: 18px 12px;
   background: #fff;
-  border-radius: 18px;
+  border-radius: var(--quick-radius, 16px);
   border: 1px solid rgba(0, 0, 0, .06);
   text-align: center;
   text-decoration: none;
@@ -1652,13 +1650,12 @@
   align-items: center;
   justify-content: center;
 
-  transition: transform .25s ease, box-shadow .25s ease;
-
   img {
     width: 58px;
     height: 58px;
     object-fit: contain;
     margin-bottom: 10px;
+    border-radius: var(--quick-radius, 16px);
   }
 
   i,
@@ -1683,8 +1680,8 @@
   salla-slider,
   .s-slider-container,
   .swiper {
-    overflow: hidden !important;
     max-width: 100%;
+    overflow: hidden !important;
   }
 
   .swiper-wrapper {
@@ -1693,10 +1690,16 @@
 
   .swiper-slide {
     height: auto;
+    box-sizing: border-box;
   }
 
   .veloura-quick-links__card {
     height: 100%;
+  }
+
+  .carousel-slider .swiper {
+    padding-left: 3rem !important;
+    padding-right: 0 !important;
   }
 }
 
@@ -1716,7 +1719,6 @@
   .veloura-quick-links__card {
     min-height: 105px;
     padding: 14px 8px;
-    border-radius: 14px;
 
     img {
       width: 46px;
@@ -1733,49 +1735,10 @@
       font-size: 12px;
     }
   }
-}
 
-.veloura-quick-links__card {
-  border-radius: var(--quick-radius, 16px);
-}
-
-.veloura-quick-links__card img {
-  border-radius: var(--quick-radius, 16px);
-}
-
-.veloura-quick-links.is-slider {
-  .swiper {
-    margin-inline: 0 !important;
-    padding-inline: 0 !important;
-  }
-
-  .swiper-wrapper {
-    margin-inline: -10px;
-  }
-
-  .swiper-slide {
-    padding-inline: 10px;
-    box-sizing: border-box;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-}
-
-@media (max-width: 767px) {
   .veloura-quick-links.is-slider {
-    .swiper-wrapper {
-      margin-inline: -7px;
+    .carousel-slider .swiper {
+      padding-left: 2rem !important;
     }
-
-    .swiper-slide {
-      padding-inline: 7px;
-    }
-  }
-}
-
-.veloura-quick-links.is-slider {
-  .carousel-slider .swiper {
-    padding-left: 3rem !important;
-    padding-right: 0 !important;
   }
 }
