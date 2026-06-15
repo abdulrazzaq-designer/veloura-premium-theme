@@ -45,24 +45,20 @@
   type="carousel"
   controls-outer
   show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
-  {% if component.veloura_quick_show_scrollbar %}show-scrollbar{% endif %}
+  {% if component.veloura_quick_show_scrollbar %}pagination{% endif %}
   static-when-single
   slider-config='{
-  "slidesPerView": {{ quick_mobile_cols }},
-  "spaceBetween": 14,
-  "scrollbar": {
-    "enabled": {{ component.veloura_quick_show_scrollbar ? "true" : "false" }},
-    "draggable": true
-  },
-  "observer": true,
-  "observeParents": true,
-  "breakpoints": {
-    "768": {
-      "slidesPerView": {{ quick_desktop_cols }},
-      "spaceBetween": 20
+    "slidesPerView": {{ quick_mobile_cols }},
+    "spaceBetween": 14,
+    "observer": true,
+    "observeParents": true,
+    "breakpoints": {
+      "768": {
+        "slidesPerView": {{ quick_desktop_cols }},
+        "spaceBetween": 20
+      }
     }
-  }
-}'
+  }'
 >
       <div slot="items">
         {% for link in component.veloura_quick_links %}

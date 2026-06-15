@@ -29222,6 +29222,27 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-quick-links .s-slider-scrollbar {
   margin-top: 18px;
 }
+.veloura-quick-links.is-slider .swiper-pagination,
+.veloura-quick-links.is-slider .s-slider-pagination,
+.veloura-quick-links.is-slider .salla-slider-pagination {
+  display: flex !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin-top: 18px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.veloura-quick-links.is-slider .swiper-pagination,
+.veloura-quick-links.is-slider .s-slider-pagination,
+.veloura-quick-links.is-slider .salla-slider-pagination {
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
 salla-slider{
     display: block;
 }
