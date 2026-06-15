@@ -5069,17 +5069,17 @@
       "required": false
     },
     {
-      "id": "veloura_brands_items",
-      "type": "items",
-      "format": "variable-list",
-      "label": "الماركات التجارية",
-      "icon": "sicon-store",
-      "source": "brands",
-      "searchable": true,
-      "multichoice": true,
-      "value": [],
-      "required": true
-    },
+  "id": "veloura_brands_items",
+  "type": "items",
+  "format": "variable-list",
+  "label": "الماركات التجارية",
+  "icon": "sicon-store",
+  "source": "brands",
+  "searchable": true,
+  "multichoice": true,
+  "value": [],
+  "required": true
+},
     {
       "id": "veloura_brands_autoplay",
       "type": "boolean",

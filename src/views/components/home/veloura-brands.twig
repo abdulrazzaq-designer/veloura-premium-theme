@@ -10,6 +10,7 @@
 
   {% set brand_radius = radius_map[component.veloura_brands_radius|default('medium')]|default('16px') %}
   {% set image_fit = component.veloura_brands_fit|default('cover') %}
+  {% set brands_gap = component.veloura_brands_gap|default(6) %}
 
   {% set section_classes = [
     's-block',
@@ -24,7 +25,7 @@
     class="{{ section_classes }}"
     style="
       --veloura-brands-radius: {{ brand_radius }};
-      --veloura-brands-gap: {{ component.veloura_brands_gap|default(6) }}px;
+      --veloura-brands-gap: {{ brands_gap }}px;
       --veloura-brands-fit: {{ image_fit }};
       --veloura-brands-spacing: {{ component.veloura_brands_custom_spacing ? component.veloura_brands_spacing|default(0) : 0 }}px;
       --veloura-brands-title-color: {{ component.veloura_brands_title_color|default('#111111') }};
@@ -54,7 +55,7 @@
           {% if component.veloura_brands_autoplay %}auto-play{% endif %}
           slider-config='{
             "slidesPerView": 2.2,
-            "spaceBetween": {{ component.veloura_brands_gap|default(6) }},
+            "spaceBetween": {{ brands_gap }},
             "speed": {{ component.veloura_brands_continuous ? 4500 : 700 }},
             "loop": true,
             "watchOverflow": false,
@@ -67,31 +68,35 @@
             "breakpoints": {
               "640": {
                 "slidesPerView": 3,
-                "spaceBetween": {{ component.veloura_brands_gap|default(6) }}
+                "spaceBetween": {{ brands_gap }}
               },
               "768": {
                 "slidesPerView": 4,
-                "spaceBetween": {{ component.veloura_brands_gap|default(6) }}
+                "spaceBetween": {{ brands_gap }}
               },
               "1024": {
                 "slidesPerView": 5,
-                "spaceBetween": {{ component.veloura_brands_gap|default(6) }}
+                "spaceBetween": {{ brands_gap }}
               }
             }
           }'
         >
           <div slot="items">
             {% for brand in component.veloura_brands_items %}
+              {% set brand_name = brand.name|default(brand.title|default('brand')) %}
+              {% set brand_url = brand.url|default(link('brands')) %}
+              {% set brand_logo = brand.logo|default(brand.image|default(brand.avatar|default(null))) %}
+
               <div class="swiper-slide">
-                <a href="{{ brand.url ?: link('brands') }}" class="veloura-brands__item">
-                  {% if brand.logo or brand.image %}
+                <a href="{{ brand_url }}" class="veloura-brands__item" aria-label="{{ brand_name }}">
+                  {% if brand_logo %}
                     <img
-                      src="{{ brand.logo|default(brand.image) }}"
-                      alt="{{ brand.name|default('brand') }}"
+                      src="{{ brand_logo }}"
+                      alt="{{ brand_name }}"
                       loading="lazy"
                     >
                   {% else %}
-                    <span>{{ brand.name }}</span>
+                    <span>{{ brand_name }}</span>
                   {% endif %}
                 </a>
               </div>
