@@ -29689,11 +29689,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-branches {
   padding: 50px 0;
 }
-.veloura-branches__container {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-left: var(--veloura-branches-spacing, 0px);
-  padding-right: var(--veloura-branches-spacing, 0px);
+.veloura-branches .veloura-branches__container {
+  max-width: calc(1280px - 0px * 2);
+  max-width: calc(1280px - var(--veloura-branches-spacing, 0px) * 2);
+  margin-left: auto;
+  margin-right: auto;
 }
 .veloura-branches__heading {
   text-align: center;

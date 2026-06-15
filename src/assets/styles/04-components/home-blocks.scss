@@ -2259,9 +2259,12 @@
 .veloura-branches {
   padding: 50px 0;
 
-  &__container {
-    padding-inline: var(--veloura-branches-spacing, 0px);
-  }
+  .veloura-branches__container {
+  max-width: calc(
+    1280px - (var(--veloura-branches-spacing, 0px) * 2)
+  );
+  margin-inline: auto;
+}
 
   &__heading {
     text-align: center;
