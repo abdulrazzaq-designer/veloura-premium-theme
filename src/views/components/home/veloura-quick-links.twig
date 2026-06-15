@@ -45,6 +45,7 @@
   type="carousel"
   controls-outer
   show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
+  {% if component.veloura_quick_show_scrollbar %}pagination{% endif %}
   static-when-single
   slider-config='{
     "slidesPerView": {{ quick_mobile_cols }},
@@ -81,11 +82,7 @@
         {% endfor %}
       </div>
     </salla-slider>
-{% if component.veloura_quick_show_scrollbar %}
-  <div class="veloura-quick-links__fake-scrollbar">
-    <span></span>
-  </div>
-{% endif %}
+
   </div>
 </section>
 {% endif %}
