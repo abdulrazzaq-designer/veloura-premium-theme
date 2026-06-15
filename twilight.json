@@ -4437,10 +4437,10 @@
 {
   "id": "veloura_quick_autoplay",
   "type": "boolean",
-  "format": "on-off",
+  "format": "switch",
   "label": "تفعيل التحريك التلقائي",
-  "description": "تحريك الروابط تلقائياً",
   "required": false,
+  "selected": false,
   "value": false
 },
 {
