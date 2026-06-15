@@ -1,5 +1,19 @@
 {% if not component.veloura_quick_hide_section %}
-<section class="s-block veloura-quick-links is-slider">
+<section
+  class="
+    s-block
+    veloura-quick-links
+    is-slider
+    {{ component.veloura_quick_custom_spacing ? 'has-custom-spacing' : '' }}
+    {{ component.veloura_quick_merge_previous ? 'is-merged' : '' }}
+    {{ component.veloura_quick_mobile_only ? 'veloura-mobile-only' : '' }}
+    {{ component.veloura_quick_desktop_only ? 'veloura-desktop-only' : '' }}
+    {{ component.veloura_quick_custom_classes }}
+  "
+  style="
+    --quick-spacing: {{ component.veloura_quick_custom_spacing ? component.veloura_quick_spacing_amount|default(0) : 0 }}px;
+  "
+>
   <div class="veloura-quick-links__container">
 
     {% if component.veloura_quick_title %}
