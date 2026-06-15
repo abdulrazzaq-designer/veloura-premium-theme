@@ -29208,6 +29208,20 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 12px;
   }
 }
+.veloura-quick-links salla-slider,
+.veloura-quick-links .s-slider-container,
+.veloura-quick-links .swiper {
+  overflow: hidden !important;
+}
+.veloura-quick-links .swiper-wrapper {
+  align-items: stretch;
+}
+.veloura-quick-links .swiper-slide {
+  height: auto;
+}
+.veloura-quick-links .veloura-quick-links__card {
+  height: 100%;
+}
 salla-slider{
     display: block;
 }

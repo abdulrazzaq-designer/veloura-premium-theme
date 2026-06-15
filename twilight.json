@@ -4415,7 +4415,7 @@
       "label": "عنوان الرابط",
       "icon": "sicon-format-text",
       "value": "",
-      "required": true
+      "required": false
     },
     {
       "id": "icon",
@@ -4424,7 +4424,7 @@
       "label": "أيقونة الرابط",
       "description": "اختر أيقونة تظهر إذا لم يتم رفع صورة",
       "icon": "sicon-star",
-      "value": "",
+      "value": "sicon-link",
       "required": false
     },
     {

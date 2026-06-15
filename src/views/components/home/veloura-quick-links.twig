@@ -1,36 +1,63 @@
 {% if not component.veloura_quick_hide_section %}
-<section
-  class="s-block veloura-quick-links {{ component.veloura_quick_slider_mode ? 'is-slider' : 'is-grid' }}"
->
+<section class="s-block veloura-quick-links is-slider">
   <div class="veloura-quick-links__container">
 
     {% if component.veloura_quick_title %}
       <div class="veloura-quick-links__heading">
         <h2>{{ component.veloura_quick_title }}</h2>
+
         {% if component.veloura_quick_subtitle %}
           <p>{{ component.veloura_quick_subtitle }}</p>
         {% endif %}
       </div>
     {% endif %}
 
-    <div class="veloura-quick-links__grid">
-      {% for link in component.veloura_quick_links %}
-        {% set image_src = link.image_url ?: link.image.url ?: link.image %}
-        {% set icon_class = link.icon.value ?: link.icon %}
+    <salla-slider
+      id="veloura-quick-links-{{ position }}"
+      type="carousel"
+      controls-outer
+      show-controls="{{ component.veloura_quick_hide_arrows ? 'false' : 'true' }}"
+      static-when-single
+      slider-config='{
+        "slidesPerView": {{ component.veloura_quick_mobile_cols|default(3) }},
+        "spaceBetween": 14,
+        "observer": true,
+        "observeParents": true,
+        "breakpoints": {
+          "768": {
+            "slidesPerView": {{ component.veloura_quick_desktop_cols|default(5) }},
+            "spaceBetween": 20
+          }
+        }
+      }'
+    >
+      <div slot="items">
+        {% for link in component.veloura_quick_links %}
+          {% set image_src = link.image_url ?: link.image.url ?: link.image %}
+          {% set icon_class = link.icon.value ?: link.icon ?: 'sicon-box' %}
 
-        <a href="{{ link.url ?: '#' }}" class="veloura-quick-links__card">
-          {% if image_src %}
-            <img src="{{ image_src }}" alt="{{ link.title ?: 'quick link' }}" loading="lazy">
-          {% elseif icon_class %}
-            <i class="{{ icon_class }} veloura-quick-links__icon"></i>
-          {% endif %}
+          <div class="swiper-slide">
+            <a href="{{ link.url ?: '#' }}" class="veloura-quick-links__card">
 
-          {% if link.title %}
-            <h2>{{ link.title }}</h2>
-          {% endif %}
-        </a>
-      {% endfor %}
-    </div>
+              {% if image_src %}
+                <img
+                  src="{{ image_src }}"
+                  alt="{{ link.title ?: 'quick-link' }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <i class="{{ icon_class }} veloura-quick-links__icon"></i>
+              {% endif %}
+
+              {% if link.title %}
+                <h2>{{ link.title }}</h2>
+              {% endif %}
+
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </salla-slider>
 
   </div>
 </section>

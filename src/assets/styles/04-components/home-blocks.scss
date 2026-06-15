@@ -1741,3 +1741,24 @@
     }
   }
 }
+
+
+.veloura-quick-links {
+  salla-slider,
+  .s-slider-container,
+  .swiper {
+    overflow: hidden !important;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  .veloura-quick-links__card {
+    height: 100%;
+  }
+}
