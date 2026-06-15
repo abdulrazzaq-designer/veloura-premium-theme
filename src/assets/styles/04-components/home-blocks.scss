@@ -2373,3 +2373,164 @@
     }
   }
 }
+
+
+
+
+
+.veloura-brands {
+  padding: 45px 0;
+  overflow: hidden;
+
+  &__container {
+    max-width: calc(1280px - (var(--veloura-brands-spacing, 0px) * 2));
+    margin-inline: auto;
+  }
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 28px;
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--veloura-brands-title-color);
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #777;
+      line-height: 1.8;
+    }
+  }
+
+  &__slider {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 42px;
+
+    .swiper {
+      overflow: visible;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+      transition-timing-function: ease;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 115px;
+    padding: 14px;
+    background: #fff;
+    border-radius: var(--veloura-brands-radius);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, .06);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .05);
+    text-decoration: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: var(--veloura-brands-fit);
+      border-radius: calc(var(--veloura-brands-radius) / 1.4);
+      display: block;
+    }
+
+    span {
+      color: #222;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+
+  .swiper-pagination,
+  .s-slider-pagination {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 8px !important;
+    top: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 10;
+    width: auto !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .swiper-pagination-bullet,
+  .s-slider-pagination button {
+    width: 20px !important;
+    height: 7px !important;
+    min-width: 20px !important;
+    border-radius: 999px !important;
+    background: var(--color-primary) !important;
+    opacity: .35 !important;
+    margin: 0 !important;
+    transition: .3s ease;
+  }
+
+  .swiper-pagination-bullet-active,
+  .s-slider-pagination button.active {
+    width: 30px !important;
+    min-width: 30px !important;
+    opacity: 1 !important;
+  }
+}
+
+.veloura-brands--continuous {
+  .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+}
+
+.veloura-brands--mobile-only {
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
+.veloura-brands--desktop-only {
+  @media (max-width: 991px) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .veloura-brands {
+    padding: 35px 0;
+
+    &__container {
+      max-width: calc(100% - (var(--veloura-brands-spacing, 0px) * 2));
+    }
+
+    &__heading {
+      margin-bottom: 22px;
+
+      h2 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+
+    &__item {
+      height: 95px;
+      padding: 10px;
+    }
+  }
+}

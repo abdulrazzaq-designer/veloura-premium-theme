@@ -5022,6 +5022,222 @@
       "required": false
     }
   ]
+},
+{
+  "key": "2f4a6c8e-9d21-4f70-b82a-7d91c4e3a812",
+  "title": {
+    "ar": "الماركات التجارية (فيلورا)",
+    "en": "Brands - Veloura"
+  },
+  "icon": "sicon-store",
+  "path": "home.veloura-brands",
+  "fields": [
+    {
+      "id": "veloura_brands_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في عنوان وطريقة عرض الماركات التجارية</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_brands_title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان",
+      "icon": "sicon-format-text-alt",
+      "value": "تصفح من خلال العلامات التجارية",
+      "required": false
+    },
+    {
+      "id": "veloura_brands_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الفرعي",
+      "icon": "sicon-format-text-alt",
+      "value": "أدخل عنواناً هنا...",
+      "required": false
+    },
+    {
+      "id": "veloura_brands_title_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون العنوان",
+      "icon": "sicon-format-fill",
+      "value": "#111111",
+      "required": false
+    },
+    {
+      "id": "veloura_brands_items",
+      "type": "items",
+      "format": "variable-list",
+      "label": "الماركات التجارية",
+      "icon": "sicon-store",
+      "source": "brands",
+      "searchable": true,
+      "multichoice": true,
+      "value": [],
+      "required": true
+    },
+    {
+      "id": "veloura_brands_autoplay",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تحريك تلقائي للصور",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "veloura_brands_continuous",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تحريك مستمر بدون توقف للصور",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_brands_fit",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "طريقة عرض صور الماركات",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "تغطية الصورة كامل المساحة أي غلاف (Cover)",
+          "value": "cover",
+          "key": "cover-option"
+        }
+      ],
+      "options": [
+        {
+          "label": "تغطية الصورة كامل المساحة أي غلاف (Cover)",
+          "value": "cover",
+          "key": "cover-option"
+        },
+        {
+          "label": "إظهار الصورة كاملة (Contain)",
+          "value": "contain",
+          "key": "contain-option"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false
+    },
+    {
+      "id": "veloura_brands_gap",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "المسافة بين الماركات",
+      "icon": "sicon-arrows-horizontal",
+      "value": "6",
+      "step": "1",
+      "minimum": "0",
+      "maximum": "40"
+    },
+    {
+      "id": "veloura_brands_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حواف الماركات",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "radius-medium"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "radius-sharp" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "radius-soft" },
+        { "label": "ناعم", "value": "medium", "key": "radius-medium" },
+        { "label": "ناعم جداً", "value": "large", "key": "radius-large" },
+        { "label": "دائري", "value": "round", "key": "radius-round" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false
+    },
+    {
+      "id": "veloura_brands_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_brands_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_brands_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_brands_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_brands_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_brands_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_brands_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_brands_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: container dark p-5 custom",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",
