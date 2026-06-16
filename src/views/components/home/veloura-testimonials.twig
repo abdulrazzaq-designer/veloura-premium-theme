@@ -101,14 +101,14 @@
 
                   <div class="veloura-testimonials__customer">
                     {% if not item.hide_image %}
-                      <div class="veloura-testimonials__avatar">
-                        {% if item.image %}
-  <img src="{{ item.image.url|default(item.image) }}" alt="{{ item.name|default('customer') }}" loading="lazy">
-{% else %}
-  <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
+  <div class="veloura-testimonials__avatar">
+    {% if item.image %}
+      <img src="{{ item.image.url|default(item.image) }}" alt="{{ item.name|default('customer') }}" loading="lazy">
+    {% else %}
+      <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
+    {% endif %}
+  </div>
 {% endif %}
-                      </div>
-                    {% endif %}
 
                     <div class="veloura-testimonials__info">
                       {% if item.name %}
