@@ -2761,7 +2761,7 @@
 
   &__container {
   position: relative;
-  max-width: calc(1280px - (var(--veloura-testimonials-spacing, 0px) * 2));
+  max-width: 1280px;
   margin-inline: auto;
   padding-inline: var(--veloura-testimonials-spacing, 0px);
 }
