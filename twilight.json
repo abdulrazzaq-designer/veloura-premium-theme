@@ -5433,6 +5433,306 @@
       "required": false
     }
   ]
+},
+{
+  "key": "6d1a4f9b-9f41-4c36-a418-1f6b2f4c9175",
+  "title": {
+    "ar": "آراء العملاء (فيلورا)",
+    "en": "Testimonials - Veloura"
+  },
+  "icon": "sicon-chat",
+  "path": "home.veloura-testimonials",
+  "fields": [
+    {
+      "id": "veloura_testimonials_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في عناوين وشكل عرض تقييمات العملاء</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_testimonials_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم",
+      "icon": "sicon-format-text-alt",
+      "value": "قالوا عنا",
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان فرعي",
+      "icon": "sicon-format-text-alt",
+      "value": "اقرأ تقييمات عملائنا",
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_title_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون عناوين القسم",
+      "icon": "sicon-format-fill",
+      "value": "#383838",
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حواف التقييمات",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "radius-medium"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "radius-sharp" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "radius-soft" },
+        { "label": "ناعم", "value": "medium", "key": "radius-medium" },
+        { "label": "ناعم جداً", "value": "large", "key": "radius-large" },
+        { "label": "دائري", "value": "round", "key": "radius-round" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_hide_arrows",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار أسهم التحرك في اللابتوب والتابلت",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_testimonials_autoplay",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تحريك تلقائي مستمر للتقييمات",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "veloura_testimonials_two_rows",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عمل التقييمات صفين فوق بعض بدلاً من صف واحد",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "veloura_testimonials_infinite",
+      "type": "boolean",
+      "format": "switch",
+      "label": "جعل التقييمات لا نهائية",
+      "description": "قد يؤثر على الأداء قليلاً",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_testimonials_bg_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون خلفية التقييمات",
+      "icon": "sicon-format-fill",
+      "value": "#eeeeee",
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_text_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون النص للتقييمات",
+      "icon": "sicon-format-fill",
+      "value": "#323232",
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_items_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">قائمة التقييمات</strong>     <div class=\"text-sm opacity-75 mt-1\">أضف آراء العملاء والتقييمات</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-chat"
+    },
+    {
+      "id": "veloura_testimonials_items",
+      "type": "collection",
+      "format": "collection",
+      "label": "قائمة التقييمات",
+      "minLength": 1,
+      "maxLength": 30,
+      "fields": [
+        {
+          "id": "text",
+          "type": "string",
+          "format": "textarea",
+          "label": "نص التقييم",
+          "icon": "sicon-format-text-alt",
+          "value": "اكتب رأي العميل هنا",
+          "required": false
+        },
+        {
+          "id": "name",
+          "type": "string",
+          "format": "text",
+          "label": "اسم صاحب التقييم",
+          "icon": "sicon-user",
+          "value": "اكتب اسم صاحب التقييم هنا",
+          "required": false
+        },
+        {
+          "id": "image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة العميل",
+          "description": "في حال عدم رفع صورة سيتم وضع صورة افتراضية",
+          "icon": "sicon-image",
+          "value": null,
+          "required": false
+        },
+        {
+          "id": "hide_image",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إخفاء صورة العميل",
+          "icon": "sicon-toggle-off",
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "city",
+          "type": "string",
+          "format": "text",
+          "label": "مدينة العميل",
+          "description": "اتركه فارغاً في حال عدم الرغبة بإظهاره",
+          "icon": "sicon-location",
+          "value": "",
+          "required": false
+        },
+        {
+          "id": "stars",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "عدد النجوم",
+          "icon": "sicon-star",
+          "selected": [
+            {
+              "label": "5",
+              "value": "5",
+              "key": "stars-5"
+            }
+          ],
+          "options": [
+            { "label": "1", "value": "1", "key": "stars-1" },
+            { "label": "2", "value": "2", "key": "stars-2" },
+            { "label": "3", "value": "3", "key": "stars-3" },
+            { "label": "4", "value": "4", "key": "stars-4" },
+            { "label": "5", "value": "5", "key": "stars-5" }
+          ],
+          "source": "Manual",
+          "multichoice": false,
+          "searchable": false
+        }
+      ]
+    },
+    {
+      "id": "veloura_testimonials_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_testimonials_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_testimonials_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_testimonials_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_testimonials_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_testimonials_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_testimonials_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_testimonials_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: container dark p-5 custom",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "veloura_testimonials_show_scrollbar",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار شريط التمرير",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",
