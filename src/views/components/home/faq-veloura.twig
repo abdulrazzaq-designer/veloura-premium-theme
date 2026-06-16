@@ -25,11 +25,7 @@
 
 <section
   class="{{ faq_classes|join(' ') }}"
-  {% if component.veloura_faq_enable_custom_spacing %}
-  <div class="veloura-faq__container">
-{% else %}
-  <div class="container veloura-faq__container">
-{% endif %}
+  
   style="
     --faq-title-color: {{ component.veloura_faq_title_color|default('#383838') }};
     --faq-bg: {{ component.veloura_faq_background_color|default('#eeeeee') }};
@@ -39,6 +35,12 @@
     --faq-spacing: {{ component.veloura_faq_enable_custom_spacing ? component.veloura_faq_custom_spacing|default(0) : 0 }}px;
   "
 >
+
+{% if component.veloura_faq_enable_custom_spacing %}
+  <div class="veloura-faq__container">
+{% else %}
+  <div class="container veloura-faq__container">
+{% endif %}
   <div class="veloura-faq__inner">
 
     {% if component.veloura_faq_title or component.veloura_faq_subtitle %}
