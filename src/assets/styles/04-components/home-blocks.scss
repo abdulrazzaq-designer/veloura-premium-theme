@@ -2862,15 +2862,18 @@
 
   /* ✅ ONLY LAPTOP: swap order */
   @media (min-width: 768px) {
-    &__card {
+    /*&__card {
       flex-direction: row-reverse;
-    }
+    }*/
+    &__bottom {
+    flex-direction: row-reverse;
+}
   }
 
   /* MOBILE */
   @media (max-width: 767px) {
     &__card {
-      flex-direction: column;
+      flex-direction: column-reverse;
       text-align: center;
       padding: 80px 18px 24px;
     }

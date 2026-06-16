@@ -30234,7 +30234,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   /* ✅ ONLY LAPTOP: swap order */
 }
 @media (min-width: 768px) {
-  .veloura-testimonials__card {
+  .veloura-testimonials {
+    /*&__card {
+      flex-direction: row-reverse;
+    }*/
+  }
+  .veloura-testimonials__bottom {
     flex-direction: row-reverse;
   }
 }
@@ -30243,7 +30248,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 @media (max-width: 767px) {
   .veloura-testimonials__card {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
     padding: 80px 18px 24px;
   }
