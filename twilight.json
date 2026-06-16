@@ -6035,11 +6035,11 @@
 },
 {
   "id": "veloura_about_features",
-  "type": "items",
+  "type": "collection",
   "format": "collection",
   "label": "قائمة المميزات",
-  "icon": "sicon-list",
-  "value": [],
+  "minLength": 1,
+  "maxLength": 12,
   "fields": [
     {
       "id": "feature_icon",
@@ -6047,15 +6047,17 @@
       "format": "icon",
       "label": "الأيقونة",
       "icon": "sicon-star",
-      "value": "sicon-star"
+      "value": "sicon-star",
+      "required": false
     },
     {
       "id": "feature_title",
       "type": "string",
       "format": "text",
       "label": "عنوان الميزة",
-      "icon": "sicon-format-text",
-      "value": "جودة عالية"
+      "icon": "sicon-format-text-alt",
+      "value": "جودة عالية",
+      "required": false
     }
   ],
   "conditions": [
@@ -6102,11 +6104,11 @@
 },
 {
   "id": "veloura_about_stats",
-  "type": "items",
+  "type": "collection",
   "format": "collection",
   "label": "قائمة الإحصائيات",
-  "icon": "sicon-list",
-  "value": [],
+  "minLength": 1,
+  "maxLength": 8,
   "fields": [
     {
       "id": "stat_number",
@@ -6114,7 +6116,8 @@
       "format": "text",
       "label": "الرقم",
       "icon": "sicon-hashtag",
-      "value": 100
+      "value": 100,
+      "required": false
     },
     {
       "id": "stat_suffix",
@@ -6122,15 +6125,17 @@
       "format": "text",
       "label": "النص بعد الرقم",
       "icon": "sicon-format-text",
-      "value": "+"
+      "value": "+",
+      "required": false
     },
     {
       "id": "stat_title",
       "type": "string",
       "format": "text",
       "label": "وصف الإحصائية",
-      "icon": "sicon-format-text",
-      "value": "عميل سعيد"
+      "icon": "sicon-format-text-alt",
+      "value": "عميل سعيد",
+      "required": false
     }
   ],
   "conditions": [
