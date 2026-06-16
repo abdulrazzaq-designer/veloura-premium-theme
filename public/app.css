@@ -29982,8 +29982,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   width: 100%;
   height: auto;
   display: block;
-  -o-object-fit: initial;
-     object-fit: initial;
+  -o-object-fit: cover;
+     object-fit: cover;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -29991,6 +29991,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-before-after__img--before {
   position: relative;
+  height: auto;
   z-index: 1;
 }
 .veloura-before-after__after-wrap {
@@ -30011,6 +30012,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   left: 0;
   width: 100%;
   max-width: none;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .veloura-before-after__range {
   position: absolute;

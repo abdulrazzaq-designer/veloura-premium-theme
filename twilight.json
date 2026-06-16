@@ -5276,6 +5276,30 @@
       "required": false
     },
     {
+      "id": "veloura_before_after_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حواف الصور",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "radius-medium"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "radius-sharp" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "radius-soft" },
+        { "label": "ناعم", "value": "medium", "key": "radius-medium" },
+        { "label": "ناعم جداً", "value": "large", "key": "radius-large" },
+        { "label": "دائري", "value": "round", "key": "radius-round" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false
+    },
+    {
       "id": "veloura_before_after_before_image",
       "type": "string",
       "format": "image",
@@ -5333,30 +5357,6 @@
       "icon": "sicon-toggle-off",
       "value": false,
       "selected": false
-    },
-    {
-      "id": "veloura_before_after_radius",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "حواف الصور",
-      "icon": "sicon-keyboard_arrow_down",
-      "selected": [
-        {
-          "label": "ناعم",
-          "value": "medium",
-          "key": "radius-medium"
-        }
-      ],
-      "options": [
-        { "label": "حاد", "value": "sharp", "key": "radius-sharp" },
-        { "label": "ناعم قليلاً", "value": "soft", "key": "radius-soft" },
-        { "label": "ناعم", "value": "medium", "key": "radius-medium" },
-        { "label": "ناعم جداً", "value": "large", "key": "radius-large" },
-        { "label": "دائري", "value": "round", "key": "radius-round" }
-      ],
-      "source": "Manual",
-      "multichoice": false,
-      "searchable": false
     },
     {
       "id": "veloura_before_after_shadow",

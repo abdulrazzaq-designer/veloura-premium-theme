@@ -2603,13 +2603,14 @@
     width: 100%;
     height: auto;
     display: block;
-    object-fit: unset;
+    object-fit: cover;
     user-select: none;
     pointer-events: none;
   }
 
   &__img--before {
     position: relative;
+    height: auto;
     z-index: 1;
   }
 
@@ -2626,6 +2627,8 @@
     inset: 0;
     width: 100%;
     max-width: none;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__range {
