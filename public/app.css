@@ -30255,13 +30255,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     transform: translateX(-50%);
     width: 130px;
     height: 130px;
-    border-radius: 50%;
   }
   .veloura-testimonials__text {
     text-align: center;
   }
   .veloura-testimonials__bottom {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 8px;
     justify-content: center;
   }

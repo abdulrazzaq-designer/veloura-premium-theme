@@ -2881,7 +2881,6 @@
       transform: translateX(-50%);
       width: 130px;
       height: 130px;
-      border-radius: 50%;
     }
 
     &__text {
@@ -2889,7 +2888,7 @@
     }
 
     &__bottom {
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 8px;
       justify-content: center;
     }
