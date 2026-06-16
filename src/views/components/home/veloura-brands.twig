@@ -14,11 +14,12 @@
 
   {% set section_classes = [
     's-block',
-    'veloura-brands',
-    component.veloura_brands_mobile_only ? 'veloura-brands--mobile-only' : '',
-    component.veloura_brands_desktop_only ? 'veloura-brands--desktop-only' : '',
-    component.veloura_brands_continuous ? 'veloura-brands--continuous' : '',
-    component.veloura_brands_custom_classes ?: ''
+  'veloura-brands',
+  component.veloura_brands_mobile_only ? 'veloura-brands--mobile-only' : '',
+  component.veloura_brands_desktop_only ? 'veloura-brands--desktop-only' : '',
+  component.veloura_brands_continuous ? 'veloura-brands--continuous' : '',
+  component.veloura_brands_custom_spacing ? 'has-spacing' : '',
+  component.veloura_brands_custom_classes ?: ''
   ]|join(' ') %}
 
   <section
@@ -31,7 +32,11 @@
       --veloura-brands-title-color: {{ component.veloura_brands_title_color|default('#111111') }};
     "
   >
-    <div class="container veloura-brands__container">
+    {% if component.veloura_brands_custom_spacing %}
+  <div class="veloura-brands__container">
+{% else %}
+  <div class="container veloura-brands__container">
+{% endif %}
 
       {% if component.veloura_brands_title or component.veloura_brands_subtitle %}
         <div class="veloura-brands__heading">

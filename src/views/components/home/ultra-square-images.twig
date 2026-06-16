@@ -33,14 +33,12 @@
     --ultra-desktop-columns: {{ component.ultra_desktop_columns|default(4) }};
     --ultra-horizontal-spacing: {{ component.ultra_custom_horizontal_spacing ? component.ultra_horizontal_spacing|default(0) : 0 }}px;
   "
-  style="
-    --ultra-gap: {{ component.ultra_images_gap|default(16) }}px;
-    --ultra-radius: {{ radius_map[component.ultra_image_radius|default('medium')]|default('16px') }};
-    --ultra-mobile-columns: {{ component.ultra_mobile_columns|default(2) }};
-    --ultra-desktop-columns: {{ component.ultra_desktop_columns|default(4) }};
-  "
 >
+  {% if component.ultra_custom_horizontal_spacing %}
   <div class="ultra-square-images__container">
+{% else %}
+  <div class="container ultra-square-images__container">
+{% endif %}
     {% if component.ultra_section_title or component.ultra_section_subtitle %}
       <div class="ultra-square-images__heading">
         {% if component.ultra_section_title %}

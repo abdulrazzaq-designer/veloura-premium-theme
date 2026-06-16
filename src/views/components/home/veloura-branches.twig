@@ -12,10 +12,11 @@
 
   {% set section_classes = [
     's-block',
-    'veloura-branches',
-    component.veloura_branches_mobile_only ? 'veloura-branches--mobile-only' : '',
-    component.veloura_branches_desktop_only ? 'veloura-branches--desktop-only' : '',
-    component.veloura_branches_custom_classes ?: ''
+  'veloura-branches',
+  component.veloura_branches_mobile_only ? 'veloura-branches--mobile-only' : '',
+  component.veloura_branches_desktop_only ? 'veloura-branches--desktop-only' : '',
+  component.veloura_branches_custom_spacing ? 'has-spacing' : '',
+  component.veloura_branches_custom_classes ?: ''
   ]|join(' ') %}
 
   <section
@@ -25,7 +26,11 @@
       --veloura-branches-spacing: {{ component.veloura_branches_custom_spacing ? component.veloura_branches_spacing|default(0) : 0 }}px;
     "
   >
-    <div class="container veloura-branches__container">
+    {% if component.veloura_branches_custom_spacing %}
+  <div class="veloura-branches__container">
+{% else %}
+  <div class="container veloura-branches__container">
+{% endif %}
 
       {% if component.veloura_branches_title or component.veloura_branches_subtitle %}
         <div class="veloura-branches__heading">

@@ -12,10 +12,11 @@
 
   {% set section_classes = [
     's-block',
-    'veloura-animated-articles',
-    component.veloura_articles_mobile_only ? 'veloura-animated-articles--mobile-only' : '',
-    component.veloura_articles_desktop_only ? 'veloura-animated-articles--desktop-only' : '',
-    component.veloura_articles_custom_classes ?: ''
+  'veloura-animated-articles',
+  component.veloura_articles_mobile_only ? 'veloura-animated-articles--mobile-only' : '',
+  component.veloura_articles_desktop_only ? 'veloura-animated-articles--desktop-only' : '',
+  component.veloura_articles_custom_spacing ? 'has-spacing' : '',
+  component.veloura_articles_custom_classes ?: ''
   ]|join(' ') %}
 
   <section
@@ -25,7 +26,11 @@
       --veloura-articles-spacing: {{ component.veloura_articles_custom_spacing ? component.veloura_articles_spacing|default(0) : 0 }}px;
     "
   >
-    <div class="container veloura-animated-articles__container">
+    {% if component.veloura_articles_custom_spacing %}
+  <div class="veloura-animated-articles__container">
+{% else %}
+  <div class="container veloura-animated-articles__container">
+{% endif %}
 
       {% if component.veloura_articles_title or component.veloura_articles_subtitle %}
         <div class="veloura-animated-articles__heading">
