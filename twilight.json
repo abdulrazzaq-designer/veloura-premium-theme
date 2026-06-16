@@ -5350,15 +5350,6 @@
       "selected": false
     },
     {
-      "id": "veloura_before_after_full_width",
-      "type": "boolean",
-      "format": "switch",
-      "label": "عرض القسم بكامل الشاشة",
-      "icon": "sicon-toggle-off",
-      "value": false,
-      "selected": false
-    },
-    {
       "id": "veloura_before_after_shadow",
       "type": "boolean",
       "format": "switch",

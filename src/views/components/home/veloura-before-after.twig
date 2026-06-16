@@ -13,7 +13,6 @@
   {% set section_classes = [
     's-block',
     'veloura-before-after',
-    component.veloura_before_after_full_width ? 'veloura-before-after--full-width' : '',
     component.veloura_before_after_shadow ? 'veloura-before-after--shadow' : '',
     component.veloura_before_after_mobile_only ? 'veloura-before-after--mobile-only' : '',
     component.veloura_before_after_desktop_only ? 'veloura-before-after--desktop-only' : '',
@@ -27,7 +26,7 @@
       --veloura-before-after-spacing: {{ component.veloura_before_after_custom_spacing ? component.veloura_before_after_spacing|default(0) : 0 }}px;
     "
   >
-    <div class="{{ component.veloura_before_after_full_width ? 'veloura-before-after__container' : 'container veloura-before-after__container' }}">
+  <div class="container veloura-before-after__container">
 
       {% if component.veloura_before_after_title or component.veloura_before_after_subtitle %}
         <div class="veloura-before-after__heading">
@@ -141,22 +140,24 @@
               if (entry.isIntersecting && !played) {
                 played = true;
 
-                let value = 50;
-                let direction = 1;
+                let value = 100;
+let direction = -1;
 
-                const interval = setInterval(function () {
-                  value += direction * 2;
+const interval = setInterval(function () {
 
-                  if (value >= 78) direction = -1;
-                  if (value <= 22) direction = 1;
+  value += direction * 0.3;
 
-                  setPosition(value);
+  if (value >= 100) {
+    direction = -1;
+  }
 
-                  if (value === 50 && direction === 1) {
-                    clearInterval(interval);
-                  }
-                }, 24);
+  if (value <= 0) {
+    direction = 1;
+  }
 
+  setPosition(value);
+
+}, 30);
                 observer.disconnect();
               }
             });
