@@ -5238,6 +5238,233 @@
       "required": false
     }
   ]
+},
+{
+  "key": "8a41f6c2-3d77-4e2d-9b7f-25d3e98c0a14",
+  "title": {
+    "ar": "قبل وبعد (فيلورا)",
+    "en": "Before After - Veloura"
+  },
+  "icon": "sicon-image",
+  "path": "home.veloura-before-after",
+  "fields": [
+    {
+      "id": "veloura_before_after_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">خيارات العنصر</strong>     <div class=\"text-sm opacity-75 mt-1\">تحكم في صور المقارنة قبل وبعد</div>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_before_after_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان رئيسي",
+      "icon": "sicon-format-text-alt",
+      "value": "قبل وبعد",
+      "required": false
+    },
+    {
+      "id": "veloura_before_after_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان فرعي",
+      "icon": "sicon-format-text-alt",
+      "value": "اسحب للمقارنة بين الصورتين",
+      "required": false
+    },
+    {
+      "id": "veloura_before_after_before_image",
+      "type": "string",
+      "format": "image",
+      "label": "صورة قبل",
+      "description": "الصورة الرئيسية",
+      "icon": "sicon-image",
+      "value": null,
+      "required": true
+    },
+    {
+      "id": "veloura_before_after_after_image",
+      "type": "string",
+      "format": "image",
+      "label": "صورة بعد",
+      "description": "الصورة الثانية، يجب أن تكون الصورتين بنفس المقاس",
+      "icon": "sicon-image",
+      "value": null,
+      "required": true
+    },
+    {
+      "id": "veloura_before_after_before_label",
+      "type": "string",
+      "format": "text",
+      "label": "كلمة قبل",
+      "description": "بحسب نوع الصور يمكنك كتابة الكلمة، مثال: قبل، بعد، مع، وبدون، تفعيل، إخفاء...",
+      "icon": "sicon-format-text",
+      "value": "قبل",
+      "required": false
+    },
+    {
+      "id": "veloura_before_after_after_label",
+      "type": "string",
+      "format": "text",
+      "label": "كلمة بعد",
+      "description": "بحسب نوع الصور يمكنك كتابة الكلمة، مثال: قبل، بعد، مع، وبدون، تفعيل، إخفاء...",
+      "icon": "sicon-format-text",
+      "value": "بعد",
+      "required": false
+    },
+    {
+      "id": "veloura_before_after_auto_play",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل أو تبديل الصور تلقائياً عند الوصول للقسم (لأول مرة)",
+      "description": "يتم الضغط على الزر تلقائياً عندما ينزل العميل للقسم، ويمكن تبديل الصور بنفسك بعد ذلك",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_before_after_full_width",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض القسم بكامل الشاشة",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_before_after_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حواف الصور",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "radius-medium"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "radius-sharp" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "radius-soft" },
+        { "label": "ناعم", "value": "medium", "key": "radius-medium" },
+        { "label": "ناعم جداً", "value": "large", "key": "radius-large" },
+        { "label": "دائري", "value": "round", "key": "radius-round" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false
+    },
+    {
+      "id": "veloura_before_after_ratio",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "نسبة عرض الصور",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "16:9",
+          "value": "16-9",
+          "key": "ratio-16-9"
+        }
+      ],
+      "options": [
+        { "label": "مربع 1:1", "value": "1-1", "key": "ratio-1-1" },
+        { "label": "4:3", "value": "4-3", "key": "ratio-4-3" },
+        { "label": "16:9", "value": "16-9", "key": "ratio-16-9" },
+        { "label": "21:9", "value": "21-9", "key": "ratio-21-9" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false
+    },
+    {
+      "id": "veloura_before_after_shadow",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار ظل للصورة",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "veloura_before_after_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\">   <div class=\"ml-1 mr-2 text-center\">     <strong class=\"text-lg\">إعدادات عامة للعنصر</strong>   </div> </div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_before_after_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_before_after_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_before_after_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_before_after_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_before_after_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_before_after_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "veloura_before_after_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: container dark p-5 custom",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",

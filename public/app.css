@@ -29928,6 +29928,199 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     padding: 10px;
   }
 }
+.veloura-before-after {
+  padding: 45px 0;
+  overflow: hidden;
+}
+.veloura-before-after__container {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-left: var(--veloura-before-after-spacing, 0px);
+  padding-right: var(--veloura-before-after-spacing, 0px);
+}
+.veloura-before-after:not(.veloura-before-after--full-width) .veloura-before-after__container {
+  max-width: calc(1280px - 0px * 2);
+  max-width: calc(1280px - var(--veloura-before-after-spacing, 0px) * 2);
+  margin-left: auto;
+  margin-right: auto;
+}
+.veloura-before-after--full-width .veloura-before-after__container {
+  width: 100%;
+  max-width: none;
+}
+.veloura-before-after__heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.veloura-before-after__heading h2 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  font-weight: 800;
+  color: #222;
+}
+.veloura-before-after__heading p {
+  margin: 0;
+  font-size: 15px;
+  color: #777;
+  line-height: 1.8;
+}
+.veloura-before-after__compare {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--veloura-before-after-ratio);
+  border-radius: var(--veloura-before-after-radius);
+  overflow: hidden;
+  background: #f5f5f5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  touch-action: none;
+}
+.veloura-before-after--shadow .veloura-before-after__compare {
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+}
+.veloura-before-after__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.veloura-before-after__img--before {
+  z-index: 1;
+}
+.veloura-before-after__after-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  clip-path: inset(0 0 0 50%);
+}
+.veloura-before-after__img--after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.veloura-before-after__range {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+}
+.veloura-before-after__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 5;
+  width: 3px;
+  transform: translateX(-50%);
+  background: #fff;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
+.veloura-before-after__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+  width: 54px;
+  height: 54px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: #414042;
+  background: var(--color-primary);
+  color: #fff;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+.veloura-before-after__handle i {
+  font-size: 18px;
+  line-height: 1;
+}
+.veloura-before-after__label {
+  position: absolute;
+  top: 16px;
+  z-index: 7;
+  min-width: 58px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  backdrop-filter: blur(5px);
+}
+.veloura-before-after__label--before {
+  right: 16px;
+}
+.veloura-before-after__label--after {
+  left: 16px;
+}
+@media (min-width: 992px) {
+  .veloura-before-after--mobile-only {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .veloura-before-after--desktop-only {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .veloura-before-after {
+    padding: 35px 0;
+  }
+  .veloura-before-after__heading {
+    margin-bottom: 22px;
+  }
+  .veloura-before-after__heading h2 {
+    font-size: 23px;
+  }
+  .veloura-before-after__heading p {
+    font-size: 13px;
+  }
+  .veloura-before-after__handle {
+    width: 44px;
+    height: 44px;
+  }
+  .veloura-before-after__handle i {
+    font-size: 15px;
+  }
+  .veloura-before-after__label {
+    top: 10px;
+    padding: 6px 11px;
+    font-size: 12px;
+  }
+  .veloura-before-after__label--before {
+    right: 10px;
+  }
+  .veloura-before-after__label--after {
+    left: 10px;
+  }
+}
 salla-slider{
     display: block;
 }
