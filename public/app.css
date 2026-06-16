@@ -30150,35 +30150,32 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   color: var(--veloura-testimonials-title-color);
 }
 .veloura-testimonials {
-  /* ===== CARD ===== */
+  /* CARD */
 }
 .veloura-testimonials__card {
   position: relative;
-  height: 100%;
-  min-height: 220px;
-  padding: 28px;
+  padding: 24px;
   border-radius: var(--veloura-testimonials-radius);
   background: var(--veloura-testimonials-bg);
   border: 1px solid rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
-  gap: 18px;
-}
-.veloura-testimonials {
-  /* ===== DESKTOP LAYOUT (FIXED 100%) ===== */
+  gap: 12px;
+  min-height: 0;
+  min-height: initial;
 }
 .veloura-testimonials__main {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 .veloura-testimonials {
-  /* الصورة أكبر شوي مثل طلبك */
+  /* AVATAR */
 }
 .veloura-testimonials__avatar {
-  width: 96px;
-  height: 96px;
-  flex: 0 0 96px;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -30195,30 +30192,23 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-testimonials__text {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.8;
 }
 .veloura-testimonials {
-  /* ===== BOTTOM (NAME + STARS) ===== */
+  /* bottom */
 }
 .veloura-testimonials__bottom {
+  margin-top: 10px;
+}
+.veloura-testimonials__bottom-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 .veloura-testimonials {
-  /* الاسم يمين */
-}
-.veloura-testimonials__info {
-  text-align: right;
-}
-.veloura-testimonials__info h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 800;
-}
-.veloura-testimonials {
-  /* النجوم يسار */
+  /* stars left */
 }
 .veloura-testimonials__stars {
   display: flex;
@@ -30226,51 +30216,56 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   color: #f6b100;
 }
 .veloura-testimonials {
-  /* ===== MOBILE FIX (100% CLEAN) ===== */
+  /* name right */
+}
+.veloura-testimonials__info {
+  text-align: right;
+}
+.veloura-testimonials__info h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+.veloura-testimonials__info span {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.veloura-testimonials {
+  /* MOBILE FIX */
 }
 @media (max-width: 767px) {
   .veloura-testimonials__card {
-    position: relative;
+    padding: 26px 16px;
+    padding-top: 80px;
     text-align: center;
-    padding-top: 60px;
-    overflow: visible;
   }
-  .veloura-testimonials {
-    /* الصورة فوق + نصفها خارج الكرت */
+  .veloura-testimonials__main {
+    justify-content: center;
+    flex-direction: column;
   }
   .veloura-testimonials__avatar {
     position: absolute;
-    top: -40px;
+    top: -55px;
     left: 50%;
     transform: translateX(-50%);
-    width: 86px;
-    height: 86px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    z-index: 5;
-  }
-  .veloura-testimonials {
-    /* النص */
+    border: 5px solid #fff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   }
   .veloura-testimonials__text {
     font-size: 14px;
-    margin-top: 10px;
   }
-  .veloura-testimonials {
-    /* ترتيب الجوال: اسم فوق النجوم */
-  }
-  .veloura-testimonials__bottom {
+  .veloura-testimonials__bottom-row {
     flex-direction: column;
     gap: 6px;
   }
   .veloura-testimonials__info {
     text-align: center;
-    order: 1;
   }
   .veloura-testimonials__stars {
     justify-content: center;
-    order: 2;
   }
 }
 salla-slider{

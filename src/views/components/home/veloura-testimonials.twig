@@ -46,37 +46,31 @@
       {% endif %}
 
       {% if component.veloura_testimonials_items|length %}
+
         <salla-slider
           id="veloura-testimonials-{{ position }}"
           class="veloura-testimonials__slider"
           type="carousel"
-          {% if component.veloura_testimonials_show_scrollbar %}scrollbar{% else %}pagination{% endif %}
-          {% if not component.veloura_testimonials_hide_arrows %}show-controls="false"{% endif %}
+          pagination
           {% if component.veloura_testimonials_autoplay %}auto-play{% endif %}
           slider-config='{
             "slidesPerView": 1.15,
             "spaceBetween": 16,
             "speed": 700,
-            "loop": {{ component.veloura_testimonials_infinite ? 'true' : 'false' }},
-            "watchOverflow": false,
-            "allowTouchMove": true,
-            "autoplay": {
-              "delay": 2500,
-              "disableOnInteraction": false,
-              "pauseOnMouseEnter": true
-            },
+            "loop": {{ component.veloura_testimonials_infinite ? "true" : "false" }},
             "breakpoints": {
               "768": {
                 "slidesPerView": 2,
                 "spaceBetween": 20
               },
               "1024": {
-                "slidesPerView": 3,
+                "slidesPerView": 2,
                 "spaceBetween": 24
               }
             }
           }'
         >
+
           <div slot="items">
 
             {% for item in component.veloura_testimonials_items %}
@@ -95,7 +89,7 @@
 
                     {% if not item.hide_image and customer_image %}
                       <div class="veloura-testimonials__avatar">
-                        <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
+                        <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}">
                       </div>
                     {% endif %}
 
@@ -107,20 +101,24 @@
 
                       <div class="veloura-testimonials__bottom">
 
-                        <div class="veloura-testimonials__stars" aria-label="{{ stars_value }} stars">
-                          {% for i in 1..5 %}
-                            <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
-                          {% endfor %}
-                        </div>
+                        <div class="veloura-testimonials__bottom-row">
 
-                        <div class="veloura-testimonials__info">
-                          {% if item.name %}
-                            <h3>{{ item.name }}</h3>
-                          {% endif %}
+                          <div class="veloura-testimonials__stars">
+                            {% for i in 1..5 %}
+                              <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
+                            {% endfor %}
+                          </div>
 
-                          {% if item.city %}
-                            <span>{{ item.city }}</span>
-                          {% endif %}
+                          <div class="veloura-testimonials__info">
+                            {% if item.name %}
+                              <h3>{{ item.name }}</h3>
+                            {% endif %}
+
+                            {% if item.city %}
+                              <span>{{ item.city }}</span>
+                            {% endif %}
+                          </div>
+
                         </div>
 
                       </div>
@@ -136,6 +134,7 @@
 
           </div>
         </salla-slider>
+
       {% endif %}
 
     </div>

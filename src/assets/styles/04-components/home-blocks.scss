@@ -2788,33 +2788,30 @@
     }
   }
 
-  /* ===== CARD ===== */
+  /* CARD */
   &__card {
     position: relative;
-    height: 100%;
-    min-height: 220px;
-    padding: 28px;
+    padding: 24px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
     border: 1px solid rgba(0,0,0,.06);
-
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 12px;
+    min-height: unset;
   }
 
-  /* ===== DESKTOP LAYOUT (FIXED 100%) ===== */
   &__main {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
   }
 
-  /* الصورة أكبر شوي مثل طلبك */
+  /* AVATAR */
   &__avatar {
-    width: 96px;
-    height: 96px;
-    flex: 0 0 96px;
+    width: 88px;
+    height: 88px;
+    flex: 0 0 88px;
     border-radius: 16px;
     overflow: hidden;
   }
@@ -2833,81 +2830,86 @@
 
   &__text {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.8;
   }
 
-  /* ===== BOTTOM (NAME + STARS) ===== */
+  /* bottom */
   &__bottom {
+    margin-top: 10px;
+  }
+
+  &__bottom-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
-  /* الاسم يمين */
-  &__info {
-    text-align: right;
-  }
-
-  &__info h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 800;
-  }
-
-  /* النجوم يسار */
+  /* stars left */
   &__stars {
     display: flex;
     gap: 4px;
     color: #f6b100;
   }
 
-  /* ===== MOBILE FIX (100% CLEAN) ===== */
+  /* name right */
+  &__info {
+    text-align: right;
+  }
+
+  &__info h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  &__info span {
+    font-size: 13px;
+    opacity: .7;
+  }
+
+  /* MOBILE FIX */
   @media (max-width: 767px) {
 
     &__card {
-      position: relative;
+      padding: 26px 16px;
+      padding-top: 80px;
       text-align: center;
-      padding-top: 60px;
-      overflow: visible;
     }
 
-    /* الصورة فوق + نصفها خارج الكرت */
+    &__main {
+      justify-content: center;
+      flex-direction: column;
+    }
+
     &__avatar {
       position: absolute;
-      top: -40px;
+      top: -55px;
       left: 50%;
       transform: translateX(-50%);
-
-      width: 86px;
-      height: 86px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-
-      border: 4px solid #fff;
-      box-shadow: 0 10px 25px rgba(0,0,0,.12);
-      z-index: 5;
+      border: 5px solid #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,.15);
     }
 
-    /* النص */
     &__text {
       font-size: 14px;
-      margin-top: 10px;
     }
 
-    /* ترتيب الجوال: اسم فوق النجوم */
-    &__bottom {
+    &__bottom-row {
       flex-direction: column;
       gap: 6px;
     }
 
     &__info {
       text-align: center;
-      order: 1;
     }
 
     &__stars {
       justify-content: center;
-      order: 2;
     }
   }
 }
