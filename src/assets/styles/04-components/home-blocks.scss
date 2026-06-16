@@ -1207,6 +1207,8 @@
 
   &__container {
     position: relative;
+    max-width: 1280px;
+  margin-inline: auto;
   }
 
   &.has-spacing {
@@ -1214,6 +1216,13 @@
       padding-inline: var(--faq-spacing, 0px);
     }
   }
+  @media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-faq__container {
+      padding-inline: 0;
+    }
+  }
+}
 }
 
 .veloura-faq__heading {

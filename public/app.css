@@ -28751,12 +28751,21 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-faq__container {
   position: relative;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .veloura-faq.has-spacing .veloura-faq__container {
   padding-left: 0px;
   padding-right: 0px;
   padding-left: var(--faq-spacing, 0px);
   padding-right: var(--faq-spacing, 0px);
+}
+@media (min-width: 992px) {
+  .veloura-faq.has-spacing .veloura-faq__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 .veloura-faq__heading {
   text-align: center;
