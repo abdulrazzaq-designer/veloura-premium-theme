@@ -2760,11 +2760,12 @@
   overflow: hidden;
 
   &__container {
-  max-width: 1280px;
-  margin-inline: auto;
-}
+    position: relative;
+    max-width: 1280px;
+    margin-inline: auto;
+  }
 
-&.has-spacing {
+  &.has-spacing {
     .veloura-testimonials__container {
       padding-inline: var(--veloura-testimonials-spacing, 0px);
     }

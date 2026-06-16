@@ -20,28 +20,32 @@
     component.veloura_testimonials_desktop_only ? 'veloura-testimonials--desktop-only' : '',
     component.veloura_testimonials_hide_arrows_desktop ? 'veloura-testimonials--hide-arrows-desktop' : '',
     component.veloura_testimonials_custom_spacing ? 'has-spacing' : '',
-    component.veloura_testimonials_custom_classes ?: '',
-    component.veloura_testimonials_full_width ? 'is-full-width' : ''
+    component.veloura_testimonials_custom_classes ?: ''
   ]|join(' ') %}
 
   <section
     class="{{ section_classes }}"
     style="
       --veloura-testimonials-radius: {{ testimonial_radius }};
-      --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing|default(0) }}px;
+      --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing ? component.veloura_testimonials_spacing|default(0) : 0 }}px;
       --veloura-testimonials-title-color: {{ component.veloura_testimonials_title_color|default('#383838') }};
       --veloura-testimonials-bg: {{ component.veloura_testimonials_bg_color|default('#eeeeee') }};
       --veloura-testimonials-text: {{ component.veloura_testimonials_text_color|default('#323232') }};
     "
   >
 
-    <div class="container veloura-testimonials__container">
+    {% if component.veloura_testimonials_custom_spacing %}
+      <div class="veloura-testimonials__container">
+    {% else %}
+      <div class="container veloura-testimonials__container">
+    {% endif %}
 
       {% if component.veloura_testimonials_title or component.veloura_testimonials_subtitle %}
         <div class="veloura-testimonials__heading">
           {% if component.veloura_testimonials_title %}
             <h2>{{ component.veloura_testimonials_title }}</h2>
           {% endif %}
+
           {% if component.veloura_testimonials_subtitle %}
             <p>{{ component.veloura_testimonials_subtitle }}</p>
           {% endif %}
@@ -49,7 +53,6 @@
       {% endif %}
 
       {% if component.veloura_testimonials_items|length %}
-
         <salla-slider
           id="veloura-testimonials-{{ position }}"
           class="veloura-testimonials__slider"
@@ -118,6 +121,7 @@
                         {% if item.name %}
                           <h3>{{ item.name }}</h3>
                         {% endif %}
+
                         {% if item.city %}
                           <span>{{ item.city }}</span>
                         {% endif %}
@@ -129,7 +133,7 @@
 
                   {% if not item.hide_image and customer_image %}
                     <div class="veloura-testimonials__avatar">
-                      <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}">
+                      <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
                     </div>
                   {% endif %}
 
@@ -140,7 +144,6 @@
 
           </div>
         </salla-slider>
-
       {% endif %}
 
     </div>
