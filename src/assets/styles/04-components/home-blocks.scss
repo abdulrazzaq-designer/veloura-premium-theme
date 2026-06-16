@@ -796,11 +796,21 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  max-width: 1280px;
+  margin-inline: auto;
 }
 
 &.has-spacing {
   .ultra-square-images__container {
     padding-inline: var(--ultra-horizontal-spacing, 0px);
+  }
+}
+
+@media (min-width: 992px) {
+  &.has-spacing {
+    .ultra-square-images__container {
+      padding-inline: 10px;
+    }
   }
 }
 
@@ -973,7 +983,6 @@
 
 
 
-
 .animated-banners,
 .animated-banners *,
 .animated-banners *::before,
@@ -981,16 +990,21 @@
   box-sizing: border-box;
 }
 
+.animated-banners {
+  width: 100%;
+}
+
 .animated-banners__slider {
   display: block;
   width: 100%;
 }
 
+/* الوضع الطبيعي */
 .animated-banners__card {
   display: block;
-  width: calc(100% - (var(--banner-margin, 0px) * 2));
-  margin-inline: var(--banner-margin, 0px);
-  max-width: 100%;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
   overflow: hidden;
   border-radius: var(--animated-radius, 0px) !important;
 }
@@ -1004,14 +1018,30 @@
   border-radius: var(--animated-radius, 0px) !important;
 }
 
-/* لابتوب فقط */
+/* مسافة الجوال فقط */
+.animated-banners.has-mobile-spacing .animated-banners__card {
+  width: calc(100% - (var(--banner-margin, 0px) * 2));
+  margin-inline: var(--banner-margin, 0px);
+}
+
+/* اللابتوب يرجع للكونتينر */
 @media (min-width: 992px) {
-  .animated-banners.is-full-width-desktop {
+  .animated-banners.has-mobile-spacing .animated-banners__card {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+  }
+}
+
+/* Full Width */
+@media (min-width: 992px) {
+  .animated-banners.is-full-width-desktop .animated-banners__card {
     width: 100%;
     max-width: 100%;
   }
 }
 
+/* 3D Effects */
 .animated-banners.has-3d-effect {
   padding-block: 24px;
 }
@@ -1019,6 +1049,7 @@
 .animated-banners:not(.has-3d-effect) {
   overflow: hidden;
 }
+
 .animated-banners.has-3d-effect,
 .animated-banners.has-3d-effect .animated-banners__slider,
 .animated-banners.has-3d-effect .swiper,
@@ -1031,11 +1062,8 @@
 }
 
 .animated-banners.has-3d-effect .animated-banners__card {
-  border-radius: 0 !important;
-}
-
-.animated-banners.has-3d-effect .animated-banners__card {
   width: 100% !important;
+  max-width: 100% !important;
   margin-inline: 0 !important;
   overflow: visible !important;
   border-radius: 0 !important;
@@ -1046,16 +1074,6 @@
   border-radius: 0 !important;
 }
 
-.animated-banners.has-mobile-spacing {
-  padding-inline: var(--banner-margin);
-}
-
-@media (min-width: 1024px) {
-  .animated-banners.has-mobile-spacing {
-    padding-inline: 0;
-  }
-}
-
 
 
 .veloura-store-features {
@@ -1064,6 +1082,8 @@
 
   &__container {
     position: relative;
+    max-width: 1280px;
+  margin-inline: auto;
   }
 
   &.has-spacing {
@@ -1071,6 +1091,13 @@
       padding-inline: var(--veloura-custom-spacing, 0px);
     }
   }
+  @media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-store-features__container {
+      padding-inline: 10px;
+    }
+  }
+}
 
   &__heading {
     margin-bottom: 32px;
@@ -1307,22 +1334,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   margin-top: 14px;
   padding: 10px 18px;
-
   border-radius: 999px;
-
   background: rgba(255, 255, 255, .12);
-
   color: color-mix(in srgb, var(--faq-text) 75%, white);
-
   border: 1px solid rgba(255, 255, 255, .15);
-
   font-weight: 700;
-
   text-decoration: none;
-
   transition: .25s ease;
 }
 
@@ -1613,15 +1632,26 @@
 }
 
 .veloura-quick-links__container {
-  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
 }
 
+/* عند تفعيل المسافة */
 .veloura-quick-links.has-custom-spacing {
   .veloura-quick-links__container {
     padding-inline: var(--quick-spacing, 0px);
+  }
+}
+
+/* اللابتوب والديسكتوب */
+@media (min-width: 992px) {
+  .veloura-quick-links.has-custom-spacing {
+    .veloura-quick-links__container {
+      padding-inline: 10px !important;
+    }
   }
 }
 
@@ -1815,6 +1845,8 @@
 
   &__container {
     position: relative;
+     max-width: 1280px;
+  margin-inline: auto;
   }
 
   &.has-spacing {
@@ -1822,6 +1854,14 @@
       padding-inline: var(--veloura-articles-spacing, 0px);
     }
   }
+
+  @media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-animated-articles__container {
+      padding-inline: 10px;
+    }
+  }
+}
 
   &__heading {
     text-align: center;
@@ -2059,11 +2099,21 @@
 
   &__container {
   position: relative;
+  max-width: 1280px;
+  margin-inline: auto;
 }
 
 &.has-spacing {
   .veloura-branches__container {
     padding-inline: var(--veloura-branches-spacing, 0px);
+  }
+}
+
+@media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-branches__container {
+      padding-inline: 10px;
+    }
   }
 }
 
@@ -2185,11 +2235,21 @@
 
   &__container {
   position: relative;
+  max-width: 1280px;
+  margin-inline: auto;
 }
 
 &.has-spacing {
   .veloura-brands__container {
     padding-inline: var(--veloura-brands-spacing, 0px);
+  }
+}
+
+@media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-brands__container {
+      padding-inline: 10px;
+    }
   }
 }
 
@@ -2350,6 +2410,8 @@
 
   &__container {
   position: relative;
+  max-width: 1280px;
+  margin-inline: auto;
 }
 
 &.has-spacing {
@@ -2358,6 +2420,13 @@
   }
 }
 
+@media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-before-after__container {
+      padding-inline: 10px;
+    }
+  }
+}
 
   &__heading {
     text-align: center;
@@ -2571,6 +2640,14 @@
       padding-inline: var(--veloura-testimonials-spacing, 0px);
     }
   }
+
+  @media (min-width: 992px) {
+  &.has-spacing {
+    .veloura-testimonials__container {
+      padding-inline: 10px;
+    }
+  }
+}
 
   &__slider {
     position: relative;
