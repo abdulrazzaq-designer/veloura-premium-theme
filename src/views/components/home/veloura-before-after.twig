@@ -45,7 +45,6 @@
         <div
           class="veloura-before-after__compare"
           data-auto-play="{{ component.veloura_before_after_auto_play ? 'true' : 'false' }}"
-          data-start="50"
         >
           <img
             class="veloura-before-after__img veloura-before-after__img--before"
@@ -94,32 +93,47 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const sections = document.querySelectorAll('.veloura-before-after__compare');
-
-      sections.forEach(function (compare) {
+      document.querySelectorAll('.veloura-before-after__compare').forEach(function (compare) {
         const range = compare.querySelector('.veloura-before-after__range');
         const afterWrap = compare.querySelector('.veloura-before-after__after-wrap');
+        const afterImg = compare.querySelector('.veloura-before-after__img--after');
         const line = compare.querySelector('.veloura-before-after__line');
         const handle = compare.querySelector('.veloura-before-after__handle');
 
-        if (!range || !afterWrap || !line || !handle) return;
+        if (!range || !afterWrap || !afterImg || !line || !handle) return;
+
+        function syncHeight() {
+          const beforeImg = compare.querySelector('.veloura-before-after__img--before');
+          if (!beforeImg) return;
+
+          const height = beforeImg.offsetHeight;
+          if (height > 0) {
+            compare.style.height = height + 'px';
+            afterImg.style.height = height + 'px';
+          }
+        }
 
         function setPosition(value) {
-          afterWrap.style.clipPath = 'inset(0 0 0 ' + value + '%)';
+          afterWrap.style.clipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
           line.style.left = value + '%';
           handle.style.left = value + '%';
           range.value = value;
         }
 
-        setPosition(range.value || 50);
+        syncHeight();
+        setPosition(50);
+
+        window.addEventListener('resize', syncHeight);
+
+        compare.querySelectorAll('img').forEach(function (img) {
+          img.addEventListener('load', syncHeight);
+        });
 
         range.addEventListener('input', function () {
           setPosition(range.value);
         });
 
-        const autoPlay = compare.getAttribute('data-auto-play') === 'true';
-
-        if (autoPlay) {
+        if (compare.getAttribute('data-auto-play') === 'true') {
           let played = false;
 
           const observer = new IntersectionObserver(function (entries) {
@@ -133,13 +147,8 @@
                 const interval = setInterval(function () {
                   value += direction * 2;
 
-                  if (value >= 78) {
-                    direction = -1;
-                  }
-
-                  if (value <= 22) {
-                    direction = 1;
-                  }
+                  if (value >= 78) direction = -1;
+                  if (value <= 22) direction = 1;
 
                   setPosition(value);
 
@@ -151,9 +160,7 @@
                 observer.disconnect();
               }
             });
-          }, {
-            threshold: 0.35
-          });
+          }, { threshold: 0.35 });
 
           observer.observe(compare);
         }

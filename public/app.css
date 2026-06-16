@@ -29967,35 +29967,30 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-before-after__compare {
   position: relative;
   width: 100%;
-  aspect-ratio: var(--veloura-before-after-ratio);
   border-radius: var(--veloura-before-after-radius);
   overflow: hidden;
   background: #f5f5f5;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  touch-action: none;
   direction: ltr;
-}
-.veloura-before-after__compare.is-auto-ratio {
-  aspect-ratio: auto;
 }
 .veloura-before-after--shadow .veloura-before-after__compare {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
 }
 .veloura-before-after__img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: auto;
   display: block;
+  -o-object-fit: initial;
+     object-fit: initial;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 .veloura-before-after__img--before {
+  position: relative;
   z-index: 1;
 }
 .veloura-before-after__after-wrap {
@@ -30005,7 +30000,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   bottom: 0;
   left: 0;
   z-index: 2;
-  clip-path: inset(0 0 0 50%);
+  overflow: hidden;
+  clip-path: inset(0 50% 0 0);
 }
 .veloura-before-after__img--after {
   position: absolute;
@@ -30013,6 +30009,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   right: 0;
   bottom: 0;
   left: 0;
+  width: 100%;
+  max-width: none;
 }
 .veloura-before-after__range {
   position: absolute;
@@ -30054,7 +30052,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
   pointer-events: none;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
