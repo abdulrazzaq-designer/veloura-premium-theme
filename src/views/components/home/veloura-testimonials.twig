@@ -87,41 +87,41 @@
               <div class="swiper-slide">
                 <article class="veloura-testimonials__card">
 
-                  <div class="veloura-testimonials__stars" aria-label="{{ stars_value }} stars">
-                    {% for i in 1..5 %}
-                      <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
-                    {% endfor %}
-                  </div>
+  <div class="veloura-testimonials__customer">
+    {% if not item.hide_image %}
+      {% set customer_image = item.image.url|default(item.image) %}
 
-                  {% if item.text %}
-                    <p class="veloura-testimonials__text">
-                      {{ item.text }}
-                    </p>
-                  {% endif %}
-
-                  <div class="veloura-testimonials__customer">
-                    {% if not item.hide_image %}
-  <div class="veloura-testimonials__avatar">
-    {% if item.image %}
-      <img src="{{ item.image.url|default(item.image) }}" alt="{{ item.name|default('customer') }}" loading="lazy">
-    {% else %}
-      <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
+      <div class="veloura-testimonials__avatar">
+        {% if customer_image %}
+          <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
+        {% else %}
+          <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
+        {% endif %}
+      </div>
     {% endif %}
+
+    <div class="veloura-testimonials__body">
+      {% if item.text %}
+        <p class="veloura-testimonials__text">{{ item.text }}</p>
+      {% endif %}
+
+      {% if item.name %}
+        <h3 class="veloura-testimonials__name">{{ item.name }}</h3>
+      {% endif %}
+
+      {% if item.city %}
+        <span class="veloura-testimonials__city">{{ item.city }}</span>
+      {% endif %}
+    </div>
   </div>
-{% endif %}
 
-                    <div class="veloura-testimonials__info">
-                      {% if item.name %}
-                        <h3>{{ item.name }}</h3>
-                      {% endif %}
+  <div class="veloura-testimonials__stars" aria-label="{{ stars_value }} stars">
+    {% for i in 1..5 %}
+      <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
+    {% endfor %}
+  </div>
 
-                      {% if item.city %}
-                        <span>{{ item.city }}</span>
-                      {% endif %}
-                    </div>
-                  </div>
-
-                </article>
+</article>
               </div>
             {% endfor %}
           </div>

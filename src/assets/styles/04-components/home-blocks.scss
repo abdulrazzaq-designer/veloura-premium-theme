@@ -2808,10 +2808,9 @@
   }
 
   &__card {
-    position: relative;
     height: 100%;
-    min-height: 260px;
-    padding: 24px;
+    min-height: 210px;
+    padding: 26px 30px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
     color: var(--veloura-testimonials-text);
@@ -2820,42 +2819,23 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-  }
-
-  &__card::before {
-    content: "“";
-    position: absolute;
-    top: 16px;
-    inset-inline-end: 22px;
-    font-size: 64px;
-    line-height: 1;
-    font-weight: 800;
-    color: var(--color-primary);
-    opacity: .12;
-    pointer-events: none;
+    text-align: start;
   }
 
   &__customer {
-    position: relative;
-    z-index: 2;
     display: flex;
-    align-items: center;
-    gap: 14px;
+    align-items: flex-start;
+    gap: 22px;
+    width: 100%;
   }
 
   &__avatar {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    border-radius: 18px;
     overflow: hidden;
-    flex: 0 0 58px;
     background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-primary);
-    font-weight: 800;
-    border: 2px solid rgba(255, 255, 255, .9);
 
     img {
       width: 100%;
@@ -2865,48 +2845,54 @@
     }
 
     span {
-      font-size: 20px;
-    }
-  }
-
-  &__info {
-    text-align: start;
-    flex: 1;
-
-    h3 {
-      margin: 0 0 4px;
-      font-size: 16px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-size: 22px;
       font-weight: 800;
-      color: var(--veloura-testimonials-text);
-    }
-
-    span {
-      font-size: 13px;
-      color: var(--veloura-testimonials-text);
-      opacity: .65;
     }
   }
 
-  &__stars {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #f6b100;
-
-    i {
-      font-size: 16px;
-    }
+  &__body {
+    flex: 1;
   }
 
   &__text {
-    position: relative;
-    z-index: 2;
+    margin: 0 0 14px;
+    color: var(--veloura-testimonials-text);
+    font-size: 18px;
+    line-height: 1.9;
+  }
+
+  &__name {
     margin: 0;
     color: var(--veloura-testimonials-text);
-    font-size: 15px;
-    line-height: 1.9;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  &__city {
+    display: block;
+    margin-top: 4px;
+    color: var(--veloura-testimonials-text);
+    font-size: 13px;
+    opacity: .7;
+  }
+
+  &__stars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-top: auto;
+    color: #f6b100;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   .swiper-pagination,
@@ -2960,22 +2946,6 @@
     background: var(--color-primary);
     border-radius: 999px;
   }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
-    color: var(--color-primary);
-  }
-}
-
-.veloura-testimonials--infinite {
-  .swiper-wrapper {
-    transition-timing-function: linear !important;
-  }
 }
 
 .veloura-testimonials--mobile-only {
@@ -3011,18 +2981,31 @@
     }
 
     &__card {
-      min-height: 230px;
+      min-height: 190px;
       padding: 20px;
     }
 
+    &__customer {
+      gap: 14px;
+    }
+
     &__avatar {
-      width: 52px;
-      height: 52px;
-      flex-basis: 52px;
+      width: 56px;
+      height: 56px;
+      flex-basis: 56px;
+      border-radius: 14px;
     }
 
     &__text {
       font-size: 14px;
+    }
+
+    &__name {
+      font-size: 15px;
+    }
+
+    &__stars i {
+      font-size: 17px;
     }
   }
 }
