@@ -6024,15 +6024,6 @@
       "selected": true,
       "required": false
     },
-    {
-  "id": "veloura_about_enable_features",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إظهار المميزات",
-  "icon": "sicon-toggle-off",
-  "value": true,
-  "selected": true
-},
 {
   "id": "veloura_about_features",
   "type": "collection",
