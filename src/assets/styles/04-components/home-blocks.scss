@@ -2739,12 +2739,12 @@
 
   /* ✅ ONLY LAPTOP: swap order */
   @media (min-width: 768px) {
-    /*&__card {
+    &__card {
       flex-direction: row-reverse;
-    }*/
+    }
     &__bottom {
     flex-direction: row-reverse;
-}
+   }
 .veloura-testimonials.veloura-testimonials--hide-arrows-desktop {
     .swiper-button-next,
     .swiper-button-prev,

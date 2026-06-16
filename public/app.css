@@ -30111,10 +30111,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   /* ✅ ONLY LAPTOP: swap order */
 }
 @media (min-width: 768px) {
-  .veloura-testimonials {
-    /*&__card {
-      flex-direction: row-reverse;
-    }*/
+  .veloura-testimonials__card {
+    flex-direction: row-reverse;
   }
   .veloura-testimonials__bottom {
     flex-direction: row-reverse;
