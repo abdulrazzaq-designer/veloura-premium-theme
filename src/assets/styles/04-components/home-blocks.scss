@@ -2770,7 +2770,6 @@
   &__slider {
     position: relative;
     overflow: hidden !important;
-    padding-top: 75px;
     padding-bottom: 80px !important;
 
     .swiper {
@@ -2874,6 +2873,9 @@
       padding: 80px 18px 24px;
     }
 
+    &__slider {
+      padding-top: 75px;
+
     &__avatar {
       position: absolute;
       top: -60px;
@@ -2901,4 +2903,5 @@
       justify-content: center;
     }
   }
+}
 }
