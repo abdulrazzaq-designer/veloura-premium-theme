@@ -5523,15 +5523,6 @@
       "selected": true
     },
     {
-      "id": "veloura_testimonials_two_rows",
-      "type": "boolean",
-      "format": "switch",
-      "label": "عمل التقييمات صفين فوق بعض بدلاً من صف واحد",
-      "icon": "sicon-toggle-off",
-      "value": true,
-      "selected": true
-    },
-    {
       "id": "veloura_testimonials_infinite",
       "type": "boolean",
       "format": "switch",

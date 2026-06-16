@@ -54,48 +54,28 @@
           {% if not component.veloura_testimonials_hide_arrows %}show-controls="false"{% endif %}
           {% if component.veloura_testimonials_autoplay %}auto-play{% endif %}
           slider-config='{
-            "slidesPerView": 1.08,
-            "spaceBetween": 16,
-            "speed": {{ component.veloura_testimonials_infinite ? 4500 : 700 }},
-            "loop": {{ component.veloura_testimonials_infinite ? 'true' : 'false' }},
-            "watchOverflow": false,
-            "allowTouchMove": true,
-            "autoplay": {
-              "delay": {{ component.veloura_testimonials_infinite ? 0 : 2500 }},
-              "disableOnInteraction": false,
-              "pauseOnMouseEnter": false
-            },
-            "grid": {
-              "rows": {{ component.veloura_testimonials_two_rows ? 2 : 1 }},
-              "fill": "row"
-            },
-            "breakpoints": {
-              "640": {
-                "slidesPerView": 1.5,
-                "spaceBetween": 18,
-                "grid": {
-                  "rows": {{ component.veloura_testimonials_two_rows ? 2 : 1 }},
-                  "fill": "row"
-                }
-              },
-              "768": {
-                "slidesPerView": 2,
-                "spaceBetween": 20,
-                "grid": {
-                  "rows": {{ component.veloura_testimonials_two_rows ? 2 : 1 }},
-                  "fill": "row"
-                }
-              },
-              "1024": {
-                "slidesPerView": 3,
-                "spaceBetween": 24,
-                "grid": {
-                  "rows": {{ component.veloura_testimonials_two_rows ? 2 : 1 }},
-                  "fill": "row"
-                }
-              }
-            }
-          }'
+  "slidesPerView": 1.15,
+  "spaceBetween": 16,
+  "speed": 700,
+  "loop": {{ component.veloura_testimonials_infinite ? 'true' : 'false' }},
+  "watchOverflow": false,
+  "allowTouchMove": true,
+  "autoplay": {
+    "delay": 2500,
+    "disableOnInteraction": false,
+    "pauseOnMouseEnter": true
+  },
+  "breakpoints": {
+    "768": {
+      "slidesPerView": 2,
+      "spaceBetween": 20
+    },
+    "1024": {
+      "slidesPerView": 3,
+      "spaceBetween": 24
+    }
+  }
+}'
         >
           <div slot="items">
             {% for item in component.veloura_testimonials_items %}
@@ -123,10 +103,10 @@
                     {% if not item.hide_image %}
                       <div class="veloura-testimonials__avatar">
                         {% if item.image %}
-                          <img src="{{ item.image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
-                        {% else %}
-                          <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
-                        {% endif %}
+  <img src="{{ item.image.url|default(item.image) }}" alt="{{ item.name|default('customer') }}" loading="lazy">
+{% else %}
+  <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
+{% endif %}
                       </div>
                     {% endif %}
 

@@ -2760,7 +2760,6 @@
 
 
 
-
 .veloura-testimonials {
   padding: 45px 0;
   overflow: hidden;
@@ -2793,7 +2792,7 @@
   &__slider {
     display: block;
     overflow: hidden;
-    padding-bottom: 45px;
+    padding-bottom: 48px;
 
     .swiper {
       overflow: visible;
@@ -2810,32 +2809,35 @@
 
   &__card {
     height: 100%;
-    min-height: 230px;
-    padding: 24px;
+    min-height: 260px;
+    padding: 26px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
     color: var(--veloura-testimonials-text);
     border: 1px solid rgba(0, 0, 0, .06);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, .06);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
   }
 
   &__stars {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     color: #f6b100;
-    margin-bottom: 14px;
 
     i {
-      font-size: 16px;
+      font-size: 17px;
     }
   }
 
   &__text {
-    margin: 0 0 22px;
+    margin: 0;
     color: var(--veloura-testimonials-text);
     font-size: 15px;
     line-height: 1.9;
@@ -2844,22 +2846,25 @@
   &__customer {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     margin-top: auto;
   }
 
   &__avatar {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     overflow: hidden;
-    flex: 0 0 48px;
+    flex: 0 0 64px;
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-primary);
     font-weight: 800;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
 
     img {
       width: 100%;
@@ -2869,7 +2874,7 @@
     }
 
     span {
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 
@@ -2990,12 +2995,18 @@
     }
 
     &__card {
-      min-height: 210px;
+      min-height: 230px;
       padding: 20px;
     }
 
     &__text {
       font-size: 14px;
+    }
+
+    &__avatar {
+      width: 56px;
+      height: 56px;
+      flex-basis: 56px;
     }
   }
 }
