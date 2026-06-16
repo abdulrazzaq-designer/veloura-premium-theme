@@ -9,14 +9,15 @@
   } %}
 
   {% set ratio_map = {
-    '1-1': '1 / 1',
-    '4-3': '4 / 3',
-    '16-9': '16 / 9',
-    '21-9': '21 / 9'
-  } %}
+  'auto': 'auto',
+  '1-1': '1 / 1',
+  '4-3': '4 / 3',
+  '16-9': '16 / 9',
+  '21-9': '21 / 9'
+} %}
 
   {% set before_after_radius = radius_map[component.veloura_before_after_radius|default('medium')]|default('16px') %}
-  {% set before_after_ratio = ratio_map[component.veloura_before_after_ratio|default('16-9')]|default('16 / 9') %}
+  {% set before_after_ratio = ratio_map[component.veloura_before_after_ratio|default('auto')]|default('auto') %}
 
   {% set section_classes = [
     's-block',

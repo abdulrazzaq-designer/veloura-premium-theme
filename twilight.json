@@ -5359,28 +5359,49 @@
       "searchable": false
     },
     {
-      "id": "veloura_before_after_ratio",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "نسبة عرض الصور",
-      "icon": "sicon-keyboard_arrow_down",
-      "selected": [
-        {
-          "label": "16:9",
-          "value": "16-9",
-          "key": "ratio-16-9"
-        }
-      ],
-      "options": [
-        { "label": "مربع 1:1", "value": "1-1", "key": "ratio-1-1" },
-        { "label": "4:3", "value": "4-3", "key": "ratio-4-3" },
-        { "label": "16:9", "value": "16-9", "key": "ratio-16-9" },
-        { "label": "21:9", "value": "21-9", "key": "ratio-21-9" }
-      ],
-      "source": "Manual",
-      "multichoice": false,
-      "searchable": false
+  "id": "veloura_before_after_ratio",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "نسبة عرض الصور",
+  "icon": "sicon-keyboard_arrow_down",
+  "selected": [
+    {
+      "label": "تلقائي",
+      "value": "auto",
+      "key": "ratio-auto"
+    }
+  ],
+  "options": [
+    {
+      "label": "تلقائي",
+      "value": "auto",
+      "key": "ratio-auto"
     },
+    {
+      "label": "مربع 1:1",
+      "value": "1-1",
+      "key": "ratio-1-1"
+    },
+    {
+      "label": "4:3",
+      "value": "4-3",
+      "key": "ratio-4-3"
+    },
+    {
+      "label": "16:9",
+      "value": "16-9",
+      "key": "ratio-16-9"
+    },
+    {
+      "label": "21:9",
+      "value": "21-9",
+      "key": "ratio-21-9"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false
+},
     {
       "id": "veloura_before_after_shadow",
       "type": "boolean",

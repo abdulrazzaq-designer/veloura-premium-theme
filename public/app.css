@@ -29975,6 +29975,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
      -moz-user-select: none;
           user-select: none;
   touch-action: none;
+  direction: ltr;
+}
+.veloura-before-after__compare.is-auto-ratio {
+  aspect-ratio: auto;
 }
 .veloura-before-after--shadow .veloura-before-after__compare {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
