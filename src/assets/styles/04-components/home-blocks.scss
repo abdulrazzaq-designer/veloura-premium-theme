@@ -2754,17 +2754,23 @@
 
 
 
+.veloura-testimonials__container {
+  padding-inline: var(--veloura-testimonials-spacing, 0px);
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.veloura-testimonials--full-width {
+  .veloura-testimonials__container {
+    max-width: 100%;
+  }
+}
 
 .veloura-testimonials {
   padding: 45px 0;
   overflow: hidden;
 
-  &__container {
-  position: relative;
-  max-width: 1280px;
-  margin-inline: auto;
-  padding-inline: var(--veloura-testimonials-spacing, 0px);
-}
+ 
 
   &__slider {
     position: relative;

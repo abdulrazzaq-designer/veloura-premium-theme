@@ -5508,7 +5508,7 @@
       "id": "veloura_testimonials_hide_arrows",
       "type": "boolean",
       "format": "switch",
-      "label": "إظهار أسهم التحرك في اللابتوب والتابلت",
+      "label": "إخفاء أسهم التنقل في الكمبيوتر",
       "icon": "sicon-toggle-off",
       "value": false,
       "selected": false
