@@ -25,7 +25,7 @@
     class="{{ section_classes }}"
     style="
       --veloura-testimonials-radius: {{ testimonial_radius }};
-      --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing ? component.veloura_testimonials_spacing|default(0) : 0 }}px;
+      --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing|default(0) }}px;
       --veloura-testimonials-title-color: {{ component.veloura_testimonials_title_color|default('#383838') }};
       --veloura-testimonials-bg: {{ component.veloura_testimonials_bg_color|default('#eeeeee') }};
       --veloura-testimonials-text: {{ component.veloura_testimonials_text_color|default('#323232') }};
@@ -54,80 +54,86 @@
           {% if not component.veloura_testimonials_hide_arrows %}show-controls="false"{% endif %}
           {% if component.veloura_testimonials_autoplay %}auto-play{% endif %}
           slider-config='{
-  "slidesPerView": 1.15,
-  "spaceBetween": 16,
-  "speed": 700,
-  "loop": {{ component.veloura_testimonials_infinite ? 'true' : 'false' }},
-  "watchOverflow": false,
-  "allowTouchMove": true,
-  "autoplay": {
-    "delay": 2500,
-    "disableOnInteraction": false,
-    "pauseOnMouseEnter": true
-  },
-  "breakpoints": {
-    "768": {
-      "slidesPerView": 2,
-      "spaceBetween": 20
-    },
-    "1024": {
-      "slidesPerView": 3,
-      "spaceBetween": 24
-    }
-  }
-}'
+            "slidesPerView": 1.15,
+            "spaceBetween": 16,
+            "speed": 700,
+            "loop": {{ component.veloura_testimonials_infinite ? 'true' : 'false' }},
+            "watchOverflow": false,
+            "allowTouchMove": true,
+            "autoplay": {
+              "delay": 2500,
+              "disableOnInteraction": false,
+              "pauseOnMouseEnter": true
+            },
+            "breakpoints": {
+              "768": {
+                "slidesPerView": 2,
+                "spaceBetween": 20
+              },
+              "1024": {
+                "slidesPerView": 3,
+                "spaceBetween": 24
+              }
+            }
+          }'
         >
           <div slot="items">
+
             {% for item in component.veloura_testimonials_items %}
+
               {% set stars_value = item.stars|default(5) %}
-              {% if item.stars[0].value %}
+              {% if item.stars is iterable and item.stars[0].value is defined %}
                 {% set stars_value = item.stars[0].value %}
               {% endif %}
 
               <div class="swiper-slide">
                 <article class="veloura-testimonials__card">
 
-  <div class="veloura-testimonials__main">
-    {% if not item.hide_image %}
-      {% set customer_image = item.image.url|default(item.image) %}
+                  <div class="veloura-testimonials__main">
 
-      <div class="veloura-testimonials__avatar">
-        {% if customer_image %}
-          <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
-        {% else %}
-          <span>{{ item.name ? item.name|slice(0, 1) : 'ع' }}</span>
-        {% endif %}
-      </div>
-    {% endif %}
+                    {% set customer_image = item.image.url|default(item.image) %}
 
-    <div class="veloura-testimonials__content">
-      {% if item.text %}
-        <p class="veloura-testimonials__text">{{ item.text }}</p>
-      {% endif %}
+                    {% if not item.hide_image and customer_image %}
+                      <div class="veloura-testimonials__avatar">
+                        <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
+                      </div>
+                    {% endif %}
 
-      <div class="veloura-testimonials__bottom">
-        <div class="veloura-testimonials__stars" aria-label="{{ stars_value }} stars">
-          {% for i in 1..5 %}
-            <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
-          {% endfor %}
-        </div>
+                    <div class="veloura-testimonials__content">
 
-        <div class="veloura-testimonials__info">
-          {% if item.name %}
-            <h3>{{ item.name }}</h3>
-          {% endif %}
+                      {% if item.text %}
+                        <p class="veloura-testimonials__text">{{ item.text }}</p>
+                      {% endif %}
 
-          {% if item.city %}
-            <span>{{ item.city }}</span>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
+                      <div class="veloura-testimonials__bottom">
 
-</article>
+                        <div class="veloura-testimonials__stars" aria-label="{{ stars_value }} stars">
+                          {% for i in 1..5 %}
+                            <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
+                          {% endfor %}
+                        </div>
+
+                        <div class="veloura-testimonials__info">
+                          {% if item.name %}
+                            <h3>{{ item.name }}</h3>
+                          {% endif %}
+
+                          {% if item.city %}
+                            <span>{{ item.city }}</span>
+                          {% endif %}
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </article>
               </div>
+
             {% endfor %}
+
           </div>
         </salla-slider>
       {% endif %}
