@@ -8,16 +8,7 @@
     'round': '40px'
   } %}
 
-  {% set ratio_map = {
-  'auto': 'auto',
-  '1-1': '1 / 1',
-  '4-3': '4 / 3',
-  '16-9': '16 / 9',
-  '21-9': '21 / 9'
-} %}
-
   {% set before_after_radius = radius_map[component.veloura_before_after_radius|default('medium')]|default('16px') %}
-  {% set before_after_ratio = ratio_map[component.veloura_before_after_ratio|default('auto')]|default('auto') %}
 
   {% set section_classes = [
     's-block',
@@ -33,7 +24,6 @@
     class="{{ section_classes }}"
     style="
       --veloura-before-after-radius: {{ before_after_radius }};
-      --veloura-before-after-ratio: {{ before_after_ratio }};
       --veloura-before-after-spacing: {{ component.veloura_before_after_custom_spacing ? component.veloura_before_after_spacing|default(0) : 0 }}px;
     "
   >
