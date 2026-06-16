@@ -21,8 +21,7 @@
     component.veloura_testimonials_custom_classes ?: ''
   ]|join(' ') %}
 
-  <section
-    class="{{ section_classes }}"
+  <section class="{{ section_classes }}"
     style="
       --veloura-testimonials-radius: {{ testimonial_radius }};
       --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing|default(0) }}px;
@@ -31,6 +30,7 @@
       --veloura-testimonials-text: {{ component.veloura_testimonials_text_color|default('#323232') }};
     "
   >
+
     <div class="container veloura-testimonials__container">
 
       {% if component.veloura_testimonials_title or component.veloura_testimonials_subtitle %}
@@ -38,7 +38,6 @@
           {% if component.veloura_testimonials_title %}
             <h2>{{ component.veloura_testimonials_title }}</h2>
           {% endif %}
-
           {% if component.veloura_testimonials_subtitle %}
             <p>{{ component.veloura_testimonials_subtitle }}</p>
           {% endif %}
@@ -46,25 +45,17 @@
       {% endif %}
 
       {% if component.veloura_testimonials_items|length %}
+
         <salla-slider
           id="veloura-testimonials-{{ position }}"
           class="veloura-testimonials__slider"
           type="carousel"
-          {% if component.veloura_testimonials_show_scrollbar %}scrollbar{% else %}pagination{% endif %}
-          {% if component.veloura_testimonials_hide_arrows %}show-controls="false"{% endif %}
-          {% if component.veloura_testimonials_autoplay %}auto-play{% endif %}
+          pagination
           slider-config='{
             "slidesPerView": 1.05,
             "spaceBetween": 16,
             "speed": 700,
             "loop": {{ component.veloura_testimonials_infinite ? "true" : "false" }},
-            "watchOverflow": false,
-            "allowTouchMove": true,
-            "autoplay": {
-              "delay": 2500,
-              "disableOnInteraction": false,
-              "pauseOnMouseEnter": true
-            },
             "breakpoints": {
               "768": {
                 "slidesPerView": 2,
@@ -77,6 +68,7 @@
             }
           }'
         >
+
           <div slot="items">
 
             {% for item in component.veloura_testimonials_items %}
@@ -91,6 +83,12 @@
               <div class="swiper-slide">
                 <article class="veloura-testimonials__card">
 
+                  {% if not item.hide_image and customer_image %}
+                    <div class="veloura-testimonials__avatar">
+                      <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}">
+                    </div>
+                  {% endif %}
+
                   <div class="veloura-testimonials__content">
 
                     {% if item.text %}
@@ -99,7 +97,7 @@
 
                     <div class="veloura-testimonials__bottom">
 
-                      <div class="veloura-testimonials__stars" aria-label="{{ stars_value }} stars">
+                      <div class="veloura-testimonials__stars">
                         {% for i in 1..5 %}
                           <i class="{{ i <= stars_value ? 'sicon-star2' : 'sicon-star' }}"></i>
                         {% endfor %}
@@ -109,7 +107,6 @@
                         {% if item.name %}
                           <h3>{{ item.name }}</h3>
                         {% endif %}
-
                         {% if item.city %}
                           <span>{{ item.city }}</span>
                         {% endif %}
@@ -119,12 +116,6 @@
 
                   </div>
 
-                  {% if not item.hide_image and customer_image %}
-                    <div class="veloura-testimonials__avatar">
-                      <img src="{{ customer_image }}" alt="{{ item.name|default('customer') }}" loading="lazy">
-                    </div>
-                  {% endif %}
-
                 </article>
               </div>
 
@@ -132,6 +123,7 @@
 
           </div>
         </salla-slider>
+
       {% endif %}
 
     </div>
