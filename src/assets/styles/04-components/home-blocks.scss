@@ -2868,14 +2868,14 @@
   /* MOBILE */
   @media (max-width: 767px) {
     &__card {
-      flex-direction: column-reverse;
+      flex-direction: column;
       text-align: center;
-      padding: 80px 18px 24px;
+      /*padding: 80px 18px 24px;*/
     }
 
     &__slider {
       padding-top: 75px;
-
+    }
     &__avatar {
       position: absolute;
       top: -60px;
@@ -2903,5 +2903,4 @@
       justify-content: center;
     }
   }
-}
 }

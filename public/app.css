@@ -30243,14 +30243,14 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 @media (max-width: 767px) {
   .veloura-testimonials__card {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
-    padding: 80px 18px 24px;
+    /*padding: 80px 18px 24px;*/
   }
   .veloura-testimonials__slider {
     padding-top: 75px;
   }
-  .veloura-testimonials__slider__avatar {
+  .veloura-testimonials__avatar {
     position: absolute;
     top: -60px;
     left: 50%;
@@ -30258,18 +30258,18 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     width: 130px;
     height: 130px;
   }
-  .veloura-testimonials__slider__text {
+  .veloura-testimonials__text {
     text-align: center;
   }
-  .veloura-testimonials__slider__bottom {
+  .veloura-testimonials__bottom {
     flex-direction: column-reverse;
     gap: 8px;
     justify-content: center;
   }
-  .veloura-testimonials__slider__info {
+  .veloura-testimonials__info {
     text-align: center;
   }
-  .veloura-testimonials__slider__stars {
+  .veloura-testimonials__stars {
     justify-content: center;
   }
 }
