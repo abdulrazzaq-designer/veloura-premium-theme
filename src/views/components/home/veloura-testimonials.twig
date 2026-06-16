@@ -18,13 +18,14 @@
     component.veloura_testimonials_show_scrollbar ? 'veloura-testimonials--scrollbar' : '',
     component.veloura_testimonials_mobile_only ? 'veloura-testimonials--mobile-only' : '',
     component.veloura_testimonials_desktop_only ? 'veloura-testimonials--desktop-only' : '',
+    component.veloura_testimonials_hide_arrows_desktop ? 'veloura-testimonials--hide-arrows-desktop' : '',
     component.veloura_testimonials_custom_classes ?: ''
   ]|join(' ') %}
 
   <section class="{{ section_classes }}"
     style="
       --veloura-testimonials-radius: {{ testimonial_radius }};
-      --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing|default(0) }}px;
+      --veloura-testimonials-spacing: {{ component.veloura_testimonials_custom_spacing ? component.veloura_testimonials_spacing|default(0) : 0 }}px;
       --veloura-testimonials-title-color: {{ component.veloura_testimonials_title_color|default('#383838') }};
       --veloura-testimonials-bg: {{ component.veloura_testimonials_bg_color|default('#eeeeee') }};
       --veloura-testimonials-text: {{ component.veloura_testimonials_text_color|default('#323232') }};
@@ -47,27 +48,40 @@
       {% if component.veloura_testimonials_items|length %}
 
         <salla-slider
-          id="veloura-testimonials-{{ position }}"
-          class="veloura-testimonials__slider"
-          type="carousel"
-          pagination
-          slider-config='{
-            "slidesPerView": 1.05,
-            "spaceBetween": 16,
-            "speed": 700,
-            "loop": {{ component.veloura_testimonials_infinite ? "true" : "false" }},
-            "breakpoints": {
-              "768": {
-                "slidesPerView": 2,
-                "spaceBetween": 20
-              },
-              "1024": {
-                "slidesPerView": 2,
-                "spaceBetween": 24
-              }
-            }
-          }'
-        >
+  id="veloura-testimonials-{{ position }}"
+  class="veloura-testimonials__slider"
+  type="carousel"
+  {% if component.veloura_testimonials_show_scrollbar %}scrollbar{% else %}pagination{% endif %}
+  {% if component.veloura_testimonials_hide_arrows %}show-controls="false"{% endif %}
+  {% if component.veloura_testimonials_autoplay %}auto-play{% endif %}
+  slider-config='{
+    "slidesPerView": 1.05,
+    "spaceBetween": 16,
+    "speed": 700,
+    "loop": {{ component.veloura_testimonials_infinite ? "true" : "false" }},
+    "watchOverflow": false,
+    "allowTouchMove": true,
+    {% if component.veloura_testimonials_autoplay %}
+    "autoplay": {
+      "delay": 2500,
+      "disableOnInteraction": false,
+      "pauseOnMouseEnter": true
+    },
+    {% else %}
+    "autoplay": false,
+    {% endif %}
+    "breakpoints": {
+      "768": {
+        "slidesPerView": 2,
+        "spaceBetween": 20
+      },
+      "1024": {
+        "slidesPerView": 2,
+        "spaceBetween": 24
+      }
+    }
+  }'
+>
 
           <div slot="items">
 

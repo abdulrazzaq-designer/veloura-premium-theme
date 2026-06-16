@@ -2755,17 +2755,16 @@
 
 
 
-
-
 .veloura-testimonials {
   padding: 45px 0;
   overflow: hidden;
 
   &__container {
-    position: relative;
-    max-width: calc(1280px - (var(--veloura-testimonials-spacing, 0px) * 2));
-    margin-inline: auto;
-  }
+  position: relative;
+  max-width: calc(1280px - (var(--veloura-testimonials-spacing, 0px) * 2));
+  margin-inline: auto;
+  padding-inline: var(--veloura-testimonials-spacing, 0px);
+}
 
   &__slider {
     position: relative;
@@ -2863,6 +2862,14 @@
     &__bottom {
     flex-direction: row-reverse;
 }
+.veloura-testimonials.veloura-testimonials--hide-arrows-desktop {
+    .swiper-button-next,
+    .swiper-button-prev,
+    .s-slider-next,
+    .s-slider-prev {
+      display: none !important;
+    }
+  }
   }
 
   /* MOBILE */
@@ -2870,7 +2877,7 @@
     &__card {
       flex-direction: column;
       text-align: center;
-      /*padding: 80px 18px 24px;*/
+      padding: 80px 18px 24px;
     }
 
     &__slider {
