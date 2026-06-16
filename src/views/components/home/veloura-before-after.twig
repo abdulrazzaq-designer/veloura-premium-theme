@@ -140,24 +140,42 @@
               if (entry.isIntersecting && !played) {
                 played = true;
 
-                let value = 100;
+                let value = 50;
 let direction = -1;
+let phase = 1; // 1=يمين→يسار | 2=يسار→يمين | 3=رجوع للمنتصف
 
 const interval = setInterval(function () {
 
-  value += direction * 0.3;
+  if (phase === 1) {
+    value -= 1.2;
 
-  if (value >= 100) {
-    direction = -1;
+    if (value <= 0) {
+      value = 0;
+      phase = 2;
+    }
   }
 
-  if (value <= 0) {
-    direction = 1;
+  else if (phase === 2) {
+    value += 1.2;
+
+    if (value >= 100) {
+      value = 100;
+      phase = 3;
+    }
+  }
+
+  else if (phase === 3) {
+    value -= 1.2;
+
+    if (value <= 50) {
+      value = 50;
+      clearInterval(interval);
+    }
   }
 
   setPosition(value);
 
-}, 30);
+}, 16);
                 observer.disconnect();
               }
             });
