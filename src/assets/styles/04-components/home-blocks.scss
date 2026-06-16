@@ -2803,23 +2803,32 @@
     gap: 18px;
   }
 
-  /* ===== DESKTOP LAYOUT (المهم) ===== */
+  /* ===== DESKTOP LAYOUT (FIXED 100%) ===== */
   &__main {
     display: flex;
     align-items: center;
     gap: 18px;
   }
 
+  /* الصورة أكبر شوي مثل طلبك */
   &__avatar {
-    width: 80px;
-    height: 80px;
-    flex: 0 0 80px;
-    border-radius: 14px;
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+    border-radius: 16px;
     overflow: hidden;
+  }
+
+  &__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   &__content {
     flex: 1;
+    min-width: 0;
   }
 
   &__text {
@@ -2828,62 +2837,77 @@
     line-height: 1.8;
   }
 
-  /* ===== FOOTER ترتيب النجوم والاسم ===== */
+  /* ===== BOTTOM (NAME + STARS) ===== */
   &__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  /* الاسم يسار */
+  /* الاسم يمين */
   &__info {
-    text-align: left;
+    text-align: right;
   }
 
-  /* النجوم يمين */
+  &__info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  /* النجوم يسار */
   &__stars {
     display: flex;
     gap: 4px;
     color: #f6b100;
   }
 
-  /* ===== MOBILE FIX (مهم جداً) ===== */
+  /* ===== MOBILE FIX (100% CLEAN) ===== */
   @media (max-width: 767px) {
 
     &__card {
+      position: relative;
       text-align: center;
-      padding-top: 55px;
+      padding-top: 60px;
+      overflow: visible;
     }
 
-    /* الصورة فوق و طالعة نصها برا الكرت */
+    /* الصورة فوق + نصفها خارج الكرت */
     &__avatar {
       position: absolute;
-      top: -35px;
+      top: -40px;
       left: 50%;
       transform: translateX(-50%);
-      width: 74px;
-      height: 74px;
+
+      width: 86px;
+      height: 86px;
       border-radius: 50%;
-      border: 3px solid #fff;
+
+      border: 4px solid #fff;
       box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      z-index: 5;
     }
 
-    &__main {
-      flex-direction: column;
+    /* النص */
+    &__text {
+      font-size: 14px;
+      margin-top: 10px;
     }
 
+    /* ترتيب الجوال: اسم فوق النجوم */
     &__bottom {
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
     }
 
-    /* الاسم تحت التقييم */
     &__info {
       text-align: center;
+      order: 1;
     }
 
     &__stars {
       justify-content: center;
+      order: 2;
     }
   }
 }

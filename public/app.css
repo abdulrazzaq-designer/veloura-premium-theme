@@ -30165,22 +30165,33 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   gap: 18px;
 }
 .veloura-testimonials {
-  /* ===== DESKTOP LAYOUT (المهم) ===== */
+  /* ===== DESKTOP LAYOUT (FIXED 100%) ===== */
 }
 .veloura-testimonials__main {
   display: flex;
   align-items: center;
   gap: 18px;
 }
+.veloura-testimonials {
+  /* الصورة أكبر شوي مثل طلبك */
+}
 .veloura-testimonials__avatar {
-  width: 80px;
-  height: 80px;
-  flex: 0 0 80px;
-  border-radius: 14px;
+  width: 96px;
+  height: 96px;
+  flex: 0 0 96px;
+  border-radius: 16px;
   overflow: hidden;
+}
+.veloura-testimonials__avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 .veloura-testimonials__content {
   flex: 1;
+  min-width: 0;
 }
 .veloura-testimonials__text {
   margin: 0;
@@ -30188,7 +30199,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   line-height: 1.8;
 }
 .veloura-testimonials {
-  /* ===== FOOTER ترتيب النجوم والاسم ===== */
+  /* ===== BOTTOM (NAME + STARS) ===== */
 }
 .veloura-testimonials__bottom {
   display: flex;
@@ -30196,13 +30207,18 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   align-items: center;
 }
 .veloura-testimonials {
-  /* الاسم يسار */
+  /* الاسم يمين */
 }
 .veloura-testimonials__info {
-  text-align: left;
+  text-align: right;
+}
+.veloura-testimonials__info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
 }
 .veloura-testimonials {
-  /* النجوم يمين */
+  /* النجوم يسار */
 }
 .veloura-testimonials__stars {
   display: flex;
@@ -30210,42 +30226,51 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   color: #f6b100;
 }
 .veloura-testimonials {
-  /* ===== MOBILE FIX (مهم جداً) ===== */
+  /* ===== MOBILE FIX (100% CLEAN) ===== */
 }
 @media (max-width: 767px) {
   .veloura-testimonials__card {
+    position: relative;
     text-align: center;
-    padding-top: 55px;
+    padding-top: 60px;
+    overflow: visible;
   }
   .veloura-testimonials {
-    /* الصورة فوق و طالعة نصها برا الكرت */
+    /* الصورة فوق + نصفها خارج الكرت */
   }
   .veloura-testimonials__avatar {
     position: absolute;
-    top: -35px;
+    top: -40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 74px;
-    height: 74px;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 4px solid #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    z-index: 5;
   }
-  .veloura-testimonials__main {
-    flex-direction: column;
+  .veloura-testimonials {
+    /* النص */
+  }
+  .veloura-testimonials__text {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .veloura-testimonials {
+    /* ترتيب الجوال: اسم فوق النجوم */
   }
   .veloura-testimonials__bottom {
     flex-direction: column;
-    gap: 10px;
-  }
-  .veloura-testimonials {
-    /* الاسم تحت التقييم */
+    gap: 6px;
   }
   .veloura-testimonials__info {
     text-align: center;
+    order: 1;
   }
   .veloura-testimonials__stars {
     justify-content: center;
+    order: 2;
   }
 }
 salla-slider{
