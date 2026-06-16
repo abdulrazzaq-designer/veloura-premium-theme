@@ -30122,21 +30122,20 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     left: 10px;
   }
 }
+.veloura-testimonials {
+  padding: 45px 0;
+  overflow: hidden;
+}
 .veloura-testimonials__container {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-left: var(--veloura-testimonials-spacing, 0px);
-  padding-right: var(--veloura-testimonials-spacing, 0px);
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
 }
-.veloura-testimonials--full-width .veloura-testimonials__container {
-  max-width: 100%;
-}
-.veloura-testimonials {
-  padding: 45px 0;
-  overflow: hidden;
+.veloura-testimonials.has-spacing .veloura-testimonials__container {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-left: var(--veloura-testimonials-spacing, 0px);
+  padding-right: var(--veloura-testimonials-spacing, 0px);
 }
 .veloura-testimonials__slider {
   overflow: hidden !important;
