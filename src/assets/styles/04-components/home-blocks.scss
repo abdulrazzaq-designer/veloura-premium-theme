@@ -2547,15 +2547,14 @@
   overflow: hidden;
 
   &__container {
+  position: relative;
+}
+
+&.has-spacing {
+  .veloura-before-after__container {
     padding-inline: var(--veloura-before-after-spacing, 0px);
   }
-
-  &:not(.veloura-before-after--full-width) {
-    .veloura-before-after__container {
-      max-width: calc(1280px - (var(--veloura-before-after-spacing, 0px) * 2));
-      margin-inline: auto;
-    }
-  }
+}
 
 
   &__heading {

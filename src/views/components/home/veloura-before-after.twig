@@ -12,11 +12,12 @@
 
   {% set section_classes = [
     's-block',
-    'veloura-before-after',
-    component.veloura_before_after_shadow ? 'veloura-before-after--shadow' : '',
-    component.veloura_before_after_mobile_only ? 'veloura-before-after--mobile-only' : '',
-    component.veloura_before_after_desktop_only ? 'veloura-before-after--desktop-only' : '',
-    component.veloura_before_after_custom_classes ?: ''
+  'veloura-before-after',
+  component.veloura_before_after_shadow ? 'veloura-before-after--shadow' : '',
+  component.veloura_before_after_mobile_only ? 'veloura-before-after--mobile-only' : '',
+  component.veloura_before_after_desktop_only ? 'veloura-before-after--desktop-only' : '',
+  component.veloura_before_after_custom_spacing ? 'has-spacing' : '',
+  component.veloura_before_after_custom_classes ?: ''
   ]|join(' ') %}
 
   <section
@@ -26,7 +27,11 @@
       --veloura-before-after-spacing: {{ component.veloura_before_after_custom_spacing ? component.veloura_before_after_spacing|default(0) : 0 }}px;
     "
   >
+  {% if component.veloura_before_after_custom_spacing %}
+  <div class="veloura-before-after__container">
+{% else %}
   <div class="container veloura-before-after__container">
+{% endif %}
 
       {% if component.veloura_before_after_title or component.veloura_before_after_subtitle %}
         <div class="veloura-before-after__heading">

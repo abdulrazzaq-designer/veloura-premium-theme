@@ -29933,16 +29933,13 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   overflow: hidden;
 }
 .veloura-before-after__container {
+  position: relative;
+}
+.veloura-before-after.has-spacing .veloura-before-after__container {
   padding-left: 0px;
   padding-right: 0px;
   padding-left: var(--veloura-before-after-spacing, 0px);
   padding-right: var(--veloura-before-after-spacing, 0px);
-}
-.veloura-before-after:not(.veloura-before-after--full-width) .veloura-before-after__container {
-  max-width: calc(1280px - 0px * 2);
-  max-width: calc(1280px - var(--veloura-before-after-spacing, 0px) * 2);
-  margin-left: auto;
-  margin-right: auto;
 }
 .veloura-before-after__heading {
   text-align: center;
