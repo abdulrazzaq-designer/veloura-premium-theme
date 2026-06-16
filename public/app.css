@@ -30150,23 +30150,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   color: var(--veloura-testimonials-title-color);
 }
 .veloura-testimonials {
-  /* ===== SLIDER ===== */
-}
-.veloura-testimonials__slider {
-  position: relative;
-  padding-bottom: 70px; /* مهم جداً عشان يظهر الشريط */
-  overflow: visible;
-}
-.veloura-testimonials__slider .swiper {
-  overflow: visible;
-}
-.veloura-testimonials__slider .swiper-slide {
-  height: auto;
-}
-.veloura-testimonials {
   /* ===== CARD ===== */
 }
 .veloura-testimonials__card {
+  position: relative;
   height: 100%;
   min-height: 220px;
   padding: 28px;
@@ -30178,29 +30165,44 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   gap: 18px;
 }
 .veloura-testimonials {
-  /* ===== TEXT ===== */
+  /* ===== DESKTOP LAYOUT (المهم) ===== */
+}
+.veloura-testimonials__main {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.veloura-testimonials__avatar {
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.veloura-testimonials__content {
+  flex: 1;
 }
 .veloura-testimonials__text {
   margin: 0;
   font-size: 16px;
-  line-height: 1.9;
-  text-align: center;
+  line-height: 1.8;
 }
 .veloura-testimonials {
-  /* ===== FOOTER ===== */
+  /* ===== FOOTER ترتيب النجوم والاسم ===== */
 }
 .veloura-testimonials__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.veloura-testimonials__info {
-  text-align: right;
+.veloura-testimonials {
+  /* الاسم يسار */
 }
-.veloura-testimonials__info h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 800;
+.veloura-testimonials__info {
+  text-align: left;
+}
+.veloura-testimonials {
+  /* النجوم يمين */
 }
 .veloura-testimonials__stars {
   display: flex;
@@ -30208,77 +30210,39 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   color: #f6b100;
 }
 .veloura-testimonials {
-  /* ===== PAGINATION FIX (نفس المقالات) ===== */
-}
-.veloura-testimonials .swiper-pagination,
-.veloura-testimonials .s-slider-pagination {
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  bottom: 10px !important;
-  display: flex !important;
-}
-.veloura-testimonials .swiper-pagination,
-.veloura-testimonials .s-slider-pagination {
-  gap: 6px;
-  z-index: 10;
-}
-.veloura-testimonials .swiper-pagination-bullet,
-.veloura-testimonials .s-slider-pagination button {
-  width: 18px !important;
-  height: 6px !important;
-  border-radius: 999px !important;
-  background: #414042 !important;
-  background: var(--color-primary) !important;
-  opacity: 0.3 !important;
-}
-.veloura-testimonials .swiper-pagination-bullet-active,
-.veloura-testimonials .s-slider-pagination button.active {
-  width: 28px !important;
-  opacity: 1 !important;
+  /* ===== MOBILE FIX (مهم جداً) ===== */
 }
 @media (max-width: 767px) {
   .veloura-testimonials__card {
-    position: relative;
-    padding-top: 55px;
     text-align: center;
+    padding-top: 55px;
   }
   .veloura-testimonials {
-    /* الصورة فوق ونصها خارج */
+    /* الصورة فوق و طالعة نصها برا الكرت */
   }
   .veloura-testimonials__avatar {
     position: absolute;
     top: -35px;
     left: 50%;
     transform: translateX(-50%);
-    width: 72px;
-    height: 72px;
+    width: 74px;
+    height: 74px;
     border-radius: 50%;
     border: 3px solid #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
   }
-  .veloura-testimonials {
-    /* النص */
-  }
-  .veloura-testimonials__text {
-    font-size: 14px;
-    margin-top: 15px;
-  }
-  .veloura-testimonials {
-    /* الاسم */
-  }
-  .veloura-testimonials__info {
-    text-align: center;
-  }
-  .veloura-testimonials__info h3 {
-    font-size: 15px;
-  }
-  .veloura-testimonials {
-    /* النجوم تحت الاسم */
+  .veloura-testimonials__main {
+    flex-direction: column;
   }
   .veloura-testimonials__bottom {
     flex-direction: column;
     gap: 10px;
+  }
+  .veloura-testimonials {
+    /* الاسم تحت التقييم */
+  }
+  .veloura-testimonials__info {
+    text-align: center;
   }
   .veloura-testimonials__stars {
     justify-content: center;

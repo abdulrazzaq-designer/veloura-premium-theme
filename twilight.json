@@ -5514,6 +5514,15 @@
       "selected": false
     },
     {
+      "id": "veloura_testimonials_show_scrollbar",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار شريط التمرير",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true
+    },
+    {
       "id": "veloura_testimonials_autoplay",
       "type": "boolean",
       "format": "switch",
@@ -5713,15 +5722,6 @@
       "icon": "sicon-code",
       "value": "",
       "required": false
-    },
-    {
-      "id": "veloura_testimonials_show_scrollbar",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار شريط التمرير",
-      "icon": "sicon-toggle-off",
-      "value": true,
-      "selected": true
     }
   ]
 }

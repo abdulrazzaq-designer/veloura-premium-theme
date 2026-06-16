@@ -2788,138 +2788,98 @@
     }
   }
 
-  /* ===== SLIDER ===== */
-  &__slider {
-    position: relative;
-    padding-bottom: 70px; /* مهم جداً عشان يظهر الشريط */
-    overflow: visible;
-
-    .swiper {
-      overflow: visible;
-    }
-
-    .swiper-slide {
-      height: auto;
-    }
-  }
-
   /* ===== CARD ===== */
   &__card {
+    position: relative;
     height: 100%;
     min-height: 220px;
     padding: 28px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
     border: 1px solid rgba(0,0,0,.06);
+
     display: flex;
     flex-direction: column;
     gap: 18px;
   }
 
-  /* ===== TEXT ===== */
+  /* ===== DESKTOP LAYOUT (المهم) ===== */
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    flex: 0 0 80px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
   &__text {
     margin: 0;
     font-size: 16px;
-    line-height: 1.9;
-    text-align: center;
+    line-height: 1.8;
   }
 
-  /* ===== FOOTER ===== */
+  /* ===== FOOTER ترتيب النجوم والاسم ===== */
   &__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
+  /* الاسم يسار */
   &__info {
-    text-align: right;
-
-    h3 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 800;
-    }
+    text-align: left;
   }
 
+  /* النجوم يمين */
   &__stars {
     display: flex;
     gap: 4px;
     color: #f6b100;
   }
 
-  /* ===== PAGINATION FIX (نفس المقالات) ===== */
-  .swiper-pagination,
-  .s-slider-pagination {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    bottom: 10px !important;
-    display: flex !important;
-    gap: 6px;
-    z-index: 10;
-  }
-
-  .swiper-pagination-bullet,
-  .s-slider-pagination button {
-    width: 18px !important;
-    height: 6px !important;
-    border-radius: 999px !important;
-    background: var(--color-primary) !important;
-    opacity: .3 !important;
-  }
-
-  .swiper-pagination-bullet-active,
-  .s-slider-pagination button.active {
-    width: 28px !important;
-    opacity: 1 !important;
-  }
-}
-
-
-
-
-@media (max-width: 767px) {
-
-  .veloura-testimonials {
+  /* ===== MOBILE FIX (مهم جداً) ===== */
+  @media (max-width: 767px) {
 
     &__card {
-      position: relative;
-      padding-top: 55px;
       text-align: center;
+      padding-top: 55px;
     }
 
-    /* الصورة فوق ونصها خارج */
+    /* الصورة فوق و طالعة نصها برا الكرت */
     &__avatar {
       position: absolute;
       top: -35px;
       left: 50%;
       transform: translateX(-50%);
-      width: 72px;
-      height: 72px;
+      width: 74px;
+      height: 74px;
       border-radius: 50%;
       border: 3px solid #fff;
       box-shadow: 0 10px 25px rgba(0,0,0,.12);
     }
 
-    /* النص */
-    &__text {
-      font-size: 14px;
-      margin-top: 15px;
+    &__main {
+      flex-direction: column;
     }
 
-    /* الاسم */
-    &__info {
-      text-align: center;
-
-      h3 {
-        font-size: 15px;
-      }
-    }
-
-    /* النجوم تحت الاسم */
     &__bottom {
       flex-direction: column;
       gap: 10px;
+    }
+
+    /* الاسم تحت التقييم */
+    &__info {
+      text-align: center;
     }
 
     &__stars {
