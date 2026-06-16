@@ -2757,7 +2757,6 @@
 
 
 
-
 .veloura-testimonials {
   padding: 45px 0;
   overflow: hidden;
@@ -2778,54 +2777,30 @@
       overflow: visible !important;
     }
 
-    .swiper-wrapper {
-      align-items: stretch;
-    }
-
     .swiper-slide {
       height: auto;
       overflow: visible !important;
     }
   }
 
+  /* CARD */
   &__card {
-    position: relative;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 22px;
     min-height: 200px;
     padding: 28px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
-    border: 1px solid rgba(0, 0, 0, .06);
-    color: var(--veloura-testimonials-text);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 8px 22px rgba(0,0,0,.06);
     overflow: hidden;
-
-    display: flex;
-    align-items: center;
-    gap: 22px;
   }
 
+  /* CONTENT */
   &__content {
     flex: 1;
     min-width: 0;
-  }
-
-  &__avatar {
-    flex: 0 0 112px;
-    width: 112px;
-    height: 112px;
-    border-radius: 22px;
-    overflow: hidden;
-    border: 4px solid #fff;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, .15);
-    background: #fff;
-  }
-
-  &__avatar img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
   }
 
   &__text {
@@ -2835,31 +2810,25 @@
     text-align: right;
   }
 
+  /* BOTTOM */
   &__bottom {
     margin-top: 14px;
     display: flex;
-    width: 100%;
-  }
-
-  &__meta {
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 18px;
     width: 100%;
   }
 
+  /* STARS */
   &__stars {
     display: flex;
     gap: 4px;
     color: #f6b100;
     font-size: 20px;
-    line-height: 1;
-    justify-content: flex-start;
   }
 
+  /* INFO */
   &__info {
-    margin-inline-start: auto;
     text-align: right;
   }
 
@@ -2867,94 +2836,43 @@
     margin: 0;
     font-size: 15px;
     font-weight: 800;
-    line-height: 1.5;
   }
 
   &__info span {
-    display: block;
-    margin-top: 2px;
     font-size: 13px;
     opacity: .7;
-    line-height: 1.4;
   }
 
-  .swiper-pagination,
-  .s-slider-pagination {
-    position: absolute !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: 18px !important;
-    top: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 20;
-    width: auto !important;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
+  /* AVATAR */
+  &__avatar {
+    flex: 0 0 112px;
+    width: 112px;
+    height: 112px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,.15);
   }
 
-  .swiper-pagination-bullet,
-  .s-slider-pagination button {
-    width: 20px !important;
-    height: 7px !important;
-    min-width: 20px !important;
-    border-radius: 999px !important;
-    background: var(--color-primary) !important;
-    opacity: .35 !important;
-    margin: 0 !important;
-    transition: .3s ease;
+  &__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  .swiper-pagination-bullet-active,
-  .s-slider-pagination button.active {
-    width: 30px !important;
-    min-width: 30px !important;
-    opacity: 1 !important;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
-    color: var(--color-primary);
-  }
-
-  /* فقط اللابتوب والديسكتوب */
+  /* ✅ ONLY LAPTOP: swap order */
   @media (min-width: 768px) {
     &__card {
       flex-direction: row-reverse;
     }
-
-    &__bottom {
-      flex-direction: row-reverse;
-    }
   }
 
-  /* فقط الجوال */
+  /* MOBILE */
   @media (max-width: 767px) {
-    padding: 35px 0;
-
-    &__slider {
-      padding-top: 72px;
-      padding-bottom: 70px !important;
-      overflow: hidden !important;
-
-      .swiper,
-      .swiper-slide {
-        overflow: visible !important;
-      }
-    }
-
     &__card {
-      min-height: 230px;
-      padding: 80px 18px 24px;
+      flex-direction: column;
       text-align: center;
-      overflow: visible;
-      display: block;
+      padding: 80px 18px 24px;
     }
 
     &__avatar {
@@ -2965,40 +2883,24 @@
       width: 130px;
       height: 130px;
       border-radius: 50%;
-      border: 5px solid #fff;
-    }
-
-    &__content {
-      padding: 0;
     }
 
     &__text {
       text-align: center;
-      font-size: 15px;
     }
 
     &__bottom {
-      display: flex;
-      justify-content: center;
       flex-direction: column;
-    }
-
-    &__meta {
-      flex-direction: column;
-      justify-content: center;
       gap: 8px;
+      justify-content: center;
     }
 
     &__info {
-      order: 1;
-      margin-inline-start: 0;
       text-align: center;
     }
 
     &__stars {
-      order: 2;
       justify-content: center;
-      font-size: 21px;
     }
   }
 }
