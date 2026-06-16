@@ -2809,8 +2809,8 @@
 
   &__card {
     height: 100%;
-    min-height: 210px;
-    padding: 26px 30px;
+    min-height: 230px;
+    padding: 30px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
     color: var(--veloura-testimonials-text);
@@ -2818,22 +2818,39 @@
     box-shadow: none;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    text-align: start;
+    gap: 22px;
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__text {
+    margin: 0;
+    color: var(--veloura-testimonials-text);
+    font-size: 19px;
+    line-height: 1.9;
+  }
+
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
   }
 
   &__customer {
     display: flex;
-    align-items: flex-start;
-    gap: 22px;
-    width: 100%;
+    align-items: center;
+    gap: 14px;
   }
 
   &__avatar {
     width: 72px;
     height: 72px;
     flex: 0 0 72px;
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
     background: #fff;
 
@@ -2856,42 +2873,34 @@
     }
   }
 
-  &__body {
-    flex: 1;
-  }
+  &__info {
+    text-align: end;
 
-  &__text {
-    margin: 0 0 14px;
-    color: var(--veloura-testimonials-text);
-    font-size: 18px;
-    line-height: 1.9;
-  }
+    h3 {
+      margin: 0;
+      color: var(--veloura-testimonials-text);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
 
-  &__name {
-    margin: 0;
-    color: var(--veloura-testimonials-text);
-    font-size: 18px;
-    font-weight: 800;
-  }
-
-  &__city {
-    display: block;
-    margin-top: 4px;
-    color: var(--veloura-testimonials-text);
-    font-size: 13px;
-    opacity: .7;
+    span {
+      display: block;
+      margin-top: 4px;
+      color: var(--veloura-testimonials-text);
+      font-size: 13px;
+      opacity: .7;
+    }
   }
 
   &__stars {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     gap: 5px;
-    margin-top: auto;
     color: #f6b100;
 
     i {
-      font-size: 20px;
+      font-size: 24px;
     }
   }
 
@@ -2981,31 +2990,32 @@
     }
 
     &__card {
-      min-height: 190px;
+      min-height: 210px;
       padding: 20px;
-    }
-
-    &__customer {
-      gap: 14px;
-    }
-
-    &__avatar {
-      width: 56px;
-      height: 56px;
-      flex-basis: 56px;
-      border-radius: 14px;
+      gap: 18px;
     }
 
     &__text {
-      font-size: 14px;
-    }
-
-    &__name {
       font-size: 15px;
     }
 
+    &__footer {
+      gap: 12px;
+    }
+
+    &__avatar {
+      width: 54px;
+      height: 54px;
+      flex-basis: 54px;
+      border-radius: 13px;
+    }
+
+    &__info h3 {
+      font-size: 16px;
+    }
+
     &__stars i {
-      font-size: 17px;
+      font-size: 18px;
     }
   }
 }
