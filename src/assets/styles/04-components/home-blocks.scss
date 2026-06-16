@@ -2769,78 +2769,51 @@
     margin-inline: auto;
   }
 
-  &__heading {
-    text-align: center;
-    margin-bottom: 34px;
-
-    h2 {
-      margin: 0 0 8px;
-      font-size: 30px;
-      font-weight: 800;
-      color: var(--veloura-testimonials-title-color);
-    }
-
-    p {
-      margin: 0;
-      font-size: 15px;
-      opacity: .72;
-      line-height: 1.8;
-      color: var(--veloura-testimonials-title-color);
-    }
-  }
-
   &__slider {
     position: relative;
-    display: block;
     overflow: hidden !important;
-    padding-top: 58px;
-    padding-bottom: 70px !important;
+    padding-top: 60px;
+    padding-bottom: 80px !important;
 
     .swiper {
       overflow: visible !important;
     }
 
-    .swiper-wrapper {
-      align-items: stretch;
-    }
-
     .swiper-slide {
-      height: auto;
       overflow: visible !important;
+      height: auto;
     }
   }
 
+  /* ================= CARD ================= */
   &__card {
     position: relative;
-    height: 100%;
-    min-height: 190px;
+    min-height: 200px;
     padding: 44px 28px 24px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
-    border: 1px solid rgba(0, 0, 0, .06);
-    color: var(--veloura-testimonials-text);
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 8px 22px rgba(0,0,0,.06);
     overflow: visible;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
   }
 
+  /* ================= IMAGE (OUTSIDE STYLE) ================= */
   &__avatar {
     position: absolute;
-    top: -48px;
+    top: -50px;
     inset-inline-end: 28px;
-    width: 112px;
-    height: 112px;
+    width: 110px;
+    height: 110px;
     border-radius: 22px;
     overflow: hidden;
-    z-index: 5;
-    border: 4px solid rgba(255, 255, 255, .75);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, .14);
+    border: 4px solid #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,.15);
     background: #fff;
   }
 
   &__avatar img {
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
   }
 
@@ -2856,179 +2829,60 @@
     text-align: right;
   }
 
+  /* ================= BOTTOM (FIXED ORDER) ================= */
   &__bottom {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
+    margin-top: 14px;
   }
 
-  &__info {
+  /* ⭐ THIS IS THE FIX (NAME + STARS ORDER) */
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* STARS LEFT */
+  &__stars {
+    display: flex;
+    gap: 4px;
+    color: #f6b100;
     order: 1;
+  }
+
+  /* NAME RIGHT */
+  &__info {
     text-align: right;
-    align-self: flex-end;
+    order: 2;
   }
 
   &__info h3 {
     margin: 0;
     font-size: 15px;
     font-weight: 800;
-    line-height: 1.5;
   }
 
   &__info span {
-    display: block;
-    margin-top: 2px;
     font-size: 13px;
     opacity: .7;
-    line-height: 1.4;
   }
 
-  &__stars {
-    order: 2;
-    display: flex;
-    gap: 4px;
-    color: #f6b100;
-    font-size: 19px;
-    line-height: 1;
-    align-self: flex-start;
-  }
-
-  .swiper-pagination,
-  .s-slider-pagination {
-    position: absolute !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: 18px !important;
-    top: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 20;
-    width: auto !important;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .swiper-pagination-bullet,
-  .s-slider-pagination button {
-    width: 20px !important;
-    height: 7px !important;
-    min-width: 20px !important;
-    border-radius: 999px !important;
-    background: var(--color-primary) !important;
-    opacity: .35 !important;
-    margin: 0 !important;
-    transition: .3s ease;
-  }
-
-  .swiper-pagination-bullet-active,
-  .s-slider-pagination button.active {
-    width: 30px !important;
-    min-width: 30px !important;
-    opacity: 1 !important;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
-    color: var(--color-primary);
-  }
-}
-
-.veloura-testimonials--mobile-only {
-  @media (min-width: 992px) {
-    display: none !important;
-  }
-}
-
-.veloura-testimonials--desktop-only {
-  @media (max-width: 991px) {
-    display: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .veloura-testimonials {
-    &__bottom {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-    }
-
-    &__stars {
-      order: 1;
-      justify-self: start;
-      align-self: center;
-    }
-
-    &__info {
-      order: 2;
-      justify-self: end;
-      align-self: center;
-      text-align: right;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .veloura-testimonials {
-    padding: 35px 0;
-    overflow: hidden;
-
-    &__container {
-      max-width: none;
-    }
-
-    &__heading {
-      margin-bottom: 32px;
-
-      h2 {
-        font-size: 22px;
-      }
-
-      p {
-        font-size: 13px;
-      }
-    }
-
-    &__slider {
-      padding-top: 72px;
-      padding-bottom: 70px !important;
-      overflow: hidden !important;
-
-      .swiper {
-        overflow: visible !important;
-      }
-
-      .swiper-slide {
-        overflow: visible !important;
-      }
-    }
+  /* ================= MOBILE ================= */
+  @media (max-width: 767px) {
 
     &__card {
-      min-height: 230px;
-      padding: 78px 18px 24px;
+      padding: 80px 18px 24px;
       text-align: center;
-      overflow: visible;
     }
 
     &__avatar {
-      top: -64px;
+      top: -60px;
       left: 50%;
       inset-inline-end: auto;
       transform: translateX(-50%);
-      width: 132px;
-      height: 132px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      border: 5px solid rgba(255, 255, 255, .85);
     }
 
     &__content {
@@ -3037,34 +2891,21 @@
 
     &__text {
       text-align: center;
-      font-size: 15px;
-      line-height: 1.8;
     }
 
-    &__bottom {
-      margin-top: 14px;
-      display: flex;
+    /* mobile stacking */
+    &__meta {
       flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      gap: 8px;
+      justify-content: center;
     }
 
     &__info {
-      order: 1;
       text-align: center;
-      align-self: center;
     }
 
     &__stars {
-      order: 2;
-      align-self: center;
       justify-content: center;
-      font-size: 21px;
-    }
-
-    .swiper-pagination,
-    .s-slider-pagination {
-      bottom: 18px !important;
     }
   }
 }
