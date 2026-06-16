@@ -30171,10 +30171,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-testimonials__content {
   flex: 1;
   min-width: 0;
-  order: 1;
 }
 .veloura-testimonials__avatar {
-  order: 2;
   flex: 0 0 112px;
   width: 112px;
   height: 112px;
@@ -30199,6 +30197,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-testimonials__bottom {
   margin-top: 14px;
+  display: flex;
+  width: 100%;
 }
 .veloura-testimonials__meta {
   display: flex;
@@ -30207,11 +30207,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   gap: 18px;
   width: 100%;
 }
-.veloura-testimonials {
-  /* النجوم يسار */
-}
 .veloura-testimonials__stars {
-  order: 1;
   display: flex;
   gap: 4px;
   color: #f6b100;
@@ -30219,11 +30215,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   line-height: 1;
   justify-content: flex-start;
 }
-.veloura-testimonials {
-  /* الاسم يمين */
-}
 .veloura-testimonials__info {
-  order: 2;
   margin-left: auto;
   text-align: right;
 }
@@ -30289,6 +30281,20 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   color: #414042;
   color: var(--color-primary);
 }
+.veloura-testimonials {
+  /* فقط اللابتوب والديسكتوب */
+}
+@media (min-width: 768px) {
+  .veloura-testimonials__card {
+    flex-direction: row-reverse;
+  }
+  .veloura-testimonials__bottom {
+    flex-direction: row-reverse;
+  }
+}
+.veloura-testimonials {
+  /* فقط الجوال */
+}
 @media (max-width: 767px) {
   .veloura-testimonials {
     padding: 35px 0;
@@ -30327,6 +30333,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-testimonials__text {
     text-align: center;
     font-size: 15px;
+  }
+  .veloura-testimonials__bottom {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
   .veloura-testimonials__meta {
     flex-direction: column;
