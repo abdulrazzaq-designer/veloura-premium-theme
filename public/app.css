@@ -28763,8 +28763,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 @media (min-width: 992px) {
   .veloura-faq.has-spacing .veloura-faq__container {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 .veloura-faq__heading {
