@@ -5724,6 +5724,509 @@
       "required": false
     }
   ]
+},
+{
+  "key": "b9f4c2d8-6a71-4e33-92ad-1c5f8e7b4a90",
+  "title": {
+    "ar": "من نحن (فيلورا)",
+    "en": "About Us - Veloura"
+  },
+  "icon": "sicon-info",
+  "path": "home.about-us-veloura",
+  "fields": [
+    {
+      "id": "veloura_about_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">خيارات عنصر من نحن</strong><div class=\"text-sm opacity-75 mt-1\">تحكم في محتوى وتنسيق العنصر</div></div></div>",
+      "variant": "h1",
+      "icon": "sicon-format-text"
+    },
+    {
+      "id": "veloura_about_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم الرئيسي",
+      "placeholder": "مثال: من نحن",
+      "icon": "sicon-format-text-alt",
+      "value": "من نحن",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "150"
+    },
+    {
+      "id": "veloura_about_subtitle",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الفرعي",
+      "placeholder": "مثال: تعرف أكثر على متجرنا",
+      "icon": "sicon-format-text-alt",
+      "value": "تعرف أكثر على متجرنا",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "200"
+    },
+    {
+      "id": "veloura_about_description",
+      "type": "string",
+      "format": "textarea",
+      "label": "الوصف",
+      "placeholder": "اكتب وصفاً مختصراً عن المتجر...",
+      "icon": "sicon-align-right",
+      "value": "نحن متجر يهتم بتقديم منتجات مختارة بعناية، مع تجربة تسوق سهلة وخدمة عملاء موثوقة.",
+      "required": false
+    },
+    {
+      "id": "veloura_about_image",
+      "type": "string",
+      "format": "image",
+      "label": "الصورة الرئيسية",
+      "description": "يفضل استخدام صورة عرضية بجودة عالية",
+      "placeholder": "e.g. https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": null,
+      "required": false
+    },
+    {
+      "id": "veloura_about_image_position",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "مكان الصورة",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "يمين",
+          "value": "right",
+          "key": "about-image-right"
+        }
+      ],
+      "options": [
+        {
+          "label": "يمين",
+          "value": "right",
+          "key": "about-image-right"
+        },
+        {
+          "label": "يسار",
+          "value": "left",
+          "key": "about-image-left"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_about_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "استدارة الصورة والبطاقات",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "كبير",
+          "value": "large",
+          "key": "about-radius-large"
+        }
+      ],
+      "options": [
+        {
+          "label": "بدون استدارة",
+          "value": "sharp",
+          "key": "about-radius-sharp"
+        },
+        {
+          "label": "خفيفة",
+          "value": "soft",
+          "key": "about-radius-soft"
+        },
+        {
+          "label": "متوسطة",
+          "value": "medium",
+          "key": "about-radius-medium"
+        },
+        {
+          "label": "كبيرة",
+          "value": "large",
+          "key": "about-radius-large"
+        },
+        {
+          "label": "دائرية",
+          "value": "round",
+          "key": "about-radius-round"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_about_colors_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">الألوان والتنسيق</strong><div class=\"text-sm opacity-75 mt-1\">تحكم في ألوان الخلفية والنصوص</div></div></div>",
+      "variant": "h1",
+      "icon": "sicon-paint-bucket"
+    },
+    {
+      "id": "veloura_about_background",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية",
+      "icon": "sicon-paint-bucket",
+      "value": "#ffffff",
+      "required": false
+    },
+    {
+      "id": "veloura_about_text_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون النص",
+      "icon": "sicon-format-fill",
+      "value": "#222222",
+      "required": false
+    },
+    {
+      "id": "veloura_about_accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون التمييز",
+      "icon": "sicon-palette",
+      "value": "#004956",
+      "required": false
+    },
+    {
+      "id": "veloura_about_button_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">زر الإجراء</strong><div class=\"text-sm opacity-75 mt-1\">إضافة زر ورابط داخل العنصر</div></div></div>",
+      "variant": "h1",
+      "icon": "sicon-link"
+    },
+    {
+      "id": "veloura_about_show_button",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الزر",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_about_button_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص الزر",
+      "placeholder": "مثال: تسوق الآن",
+      "icon": "sicon-format-text",
+      "value": "تسوق الآن",
+      "required": false,
+      "conditions": [
+        {
+          "id": "veloura_about_show_button",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_about_button_url",
+      "type": "items",
+      "icon": "sicon-link",
+      "label": "رابط الزر",
+      "value": [],
+      "required": false,
+      "format": "variable-list",
+      "searchable": true,
+      "source": "custom",
+      "sources": [
+        {
+          "label": "منتج",
+          "key": "products",
+          "value": "products"
+        },
+        {
+          "label": "تصنيف",
+          "key": "categories",
+          "value": "categories"
+        },
+        {
+          "label": "ماركة تجارية",
+          "key": "brands",
+          "value": "brands"
+        },
+        {
+          "label": "صفحة تعريفية",
+          "key": "pages",
+          "value": "pages"
+        },
+        {
+          "label": "مقالة",
+          "key": "blog_articles",
+          "value": "blog_articles"
+        },
+        {
+          "label": "تصنيف ضمن المدونة",
+          "key": "blog_categories",
+          "value": "blog_categories"
+        },
+        {
+          "label": "التخفيضات",
+          "key": "offers_link",
+          "value": "offers_link"
+        },
+        {
+          "label": "الماركات التجارية",
+          "key": "brands_link",
+          "value": "brands_link"
+        },
+        {
+          "label": "المدونة",
+          "key": "blog_link",
+          "value": "blog_link"
+        },
+        {
+          "label": "رابط خارجي",
+          "key": "custom",
+          "value": "custom"
+        }
+      ],
+      "conditions": [
+        {
+          "id": "veloura_about_show_button",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_about_features_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">المميزات</strong><div class=\"text-sm opacity-75 mt-1\">أضف مميزات قصيرة للمتجر</div></div></div>",
+      "variant": "h1",
+      "icon": "sicon-star"
+    },
+    {
+      "id": "veloura_about_enable_features",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار المميزات",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_about_features",
+      "type": "items",
+      "format": "collection",
+      "label": "قائمة المميزات",
+      "icon": "sicon-list",
+      "value": [],
+      "required": false,
+      "fields": [
+        {
+          "id": "feature_icon",
+          "type": "string",
+          "format": "icon",
+          "label": "الأيقونة",
+          "icon": "sicon-star",
+          "value": "sicon-star",
+          "required": false
+        },
+        {
+          "id": "feature_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان الميزة",
+          "placeholder": "مثال: جودة عالية",
+          "icon": "sicon-format-text",
+          "value": "ميزة المتجر",
+          "required": false
+        }
+      ],
+      "conditions": [
+        {
+          "id": "veloura_about_enable_features",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_about_stats_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">الإحصائيات</strong><div class=\"text-sm opacity-75 mt-1\">أضف أرقاماً تعزز ثقة العميل</div></div></div>",
+      "variant": "h1",
+      "icon": "sicon-chart-bar"
+    },
+    {
+      "id": "veloura_about_enable_stats",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الإحصائيات",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_about_enable_counter",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل عداد متحرك",
+      "description": "عند تفعيل هذا الخيار تتحرك الأرقام عند ظهور العنصر",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false,
+      "conditions": [
+        {
+          "id": "veloura_about_enable_stats",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_about_stats",
+      "type": "items",
+      "format": "collection",
+      "label": "قائمة الإحصائيات",
+      "icon": "sicon-list",
+      "value": [],
+      "required": false,
+      "fields": [
+        {
+          "id": "stat_number",
+          "type": "number",
+          "format": "text",
+          "label": "الرقم",
+          "placeholder": "مثال: 5000",
+          "icon": "sicon-hashtag",
+          "value": 100,
+          "required": false
+        },
+        {
+          "id": "stat_suffix",
+          "type": "string",
+          "format": "text",
+          "label": "النص بعد الرقم",
+          "placeholder": "مثال: +",
+          "icon": "sicon-format-text",
+          "value": "+",
+          "required": false
+        },
+        {
+          "id": "stat_title",
+          "type": "string",
+          "format": "text",
+          "label": "وصف الإحصائية",
+          "placeholder": "مثال: عميل سعيد",
+          "icon": "sicon-format-text",
+          "value": "عميل سعيد",
+          "required": false
+        }
+      ],
+      "conditions": [
+        {
+          "id": "veloura_about_enable_stats",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_about_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong></div></div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_about_enable_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة للجوال",
+      "description": "تطبق المسافة على الجوال فقط، أما اللابتوب فيبقى داخل الكونتينر الطبيعي",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_about_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_about_enable_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_about_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_about_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_about_hide_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_about_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: dark p-5 custom",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",
