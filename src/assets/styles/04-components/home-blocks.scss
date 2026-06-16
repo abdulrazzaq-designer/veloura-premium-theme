@@ -2764,118 +2764,307 @@
   overflow: hidden;
 
   &__container {
+    position: relative;
     max-width: calc(1280px - (var(--veloura-testimonials-spacing, 0px) * 2));
     margin-inline: auto;
   }
 
   &__heading {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 34px;
 
     h2 {
       margin: 0 0 8px;
       font-size: 30px;
       font-weight: 800;
+      color: var(--veloura-testimonials-title-color);
     }
 
     p {
       margin: 0;
       font-size: 15px;
-      opacity: .7;
+      opacity: .72;
+      line-height: 1.8;
+      color: var(--veloura-testimonials-title-color);
+    }
+  }
+
+  &__slider {
+    position: relative;
+    display: block;
+    overflow: hidden !important;
+    padding-top: 58px;
+    padding-bottom: 70px !important;
+
+    .swiper {
+      overflow: visible !important;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+      overflow: visible !important;
     }
   }
 
   &__card {
-    padding: 24px;
+    position: relative;
+    height: 100%;
+    min-height: 190px;
+    padding: 44px 28px 24px;
     border-radius: var(--veloura-testimonials-radius);
     background: var(--veloura-testimonials-bg);
-    border: 1px solid rgba(0,0,0,.06);
-  }
-
-  &__main {
-    display: flex;
-    gap: 16px;
-    align-items: center;
+    border: 1px solid rgba(0, 0, 0, .06);
+    color: var(--veloura-testimonials-text);
+    overflow: visible;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
   }
 
   &__avatar {
-    width: 88px;
-    height: 88px;
-    flex: 0 0 88px;
-    border-radius: 16px;
+    position: absolute;
+    top: -48px;
+    inset-inline-end: 28px;
+    width: 112px;
+    height: 112px;
+    border-radius: 22px;
     overflow: hidden;
+    z-index: 5;
+    border: 4px solid rgba(255, 255, 255, .75);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, .14);
+    background: #fff;
   }
 
   &__avatar img {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
+  }
+
+  &__content {
+    min-width: 0;
+    padding-inline-end: 130px;
   }
 
   &__text {
     margin: 0;
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.8;
+    text-align: right;
   }
 
-  /* ⭐ أهم جزء */
-  &__meta {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  &__stars {
-    justify-self: start;
+  &__bottom {
+    margin-top: 12px;
     display: flex;
-    gap: 4px;
-    color: #f6b100;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
   }
 
-  &__name {
-    text-align: center;
+  &__info {
+    order: 1;
+    text-align: right;
+    align-self: flex-end;
   }
 
-  &__name h3 {
+  &__info h3 {
     margin: 0;
     font-size: 15px;
     font-weight: 800;
+    line-height: 1.5;
   }
 
-  &__name span {
+  &__info span {
+    display: block;
+    margin-top: 2px;
     font-size: 13px;
     opacity: .7;
+    line-height: 1.4;
   }
 
-  /* 📱 mobile fix */
-  @media (max-width: 767px) {
+  &__stars {
+    order: 2;
+    display: flex;
+    gap: 4px;
+    color: #f6b100;
+    font-size: 19px;
+    line-height: 1;
+    align-self: flex-start;
+  }
+
+  .swiper-pagination,
+  .s-slider-pagination {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 18px !important;
+    top: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 20;
+    width: auto !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .swiper-pagination-bullet,
+  .s-slider-pagination button {
+    width: 20px !important;
+    height: 7px !important;
+    min-width: 20px !important;
+    border-radius: 999px !important;
+    background: var(--color-primary) !important;
+    opacity: .35 !important;
+    margin: 0 !important;
+    transition: .3s ease;
+  }
+
+  .swiper-pagination-bullet-active,
+  .s-slider-pagination button.active {
+    width: 30px !important;
+    min-width: 30px !important;
+    opacity: 1 !important;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+    color: var(--color-primary);
+  }
+}
+
+.veloura-testimonials--mobile-only {
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
+.veloura-testimonials--desktop-only {
+  @media (max-width: 991px) {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .veloura-testimonials {
+    &__bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    &__stars {
+      order: 1;
+      justify-self: start;
+      align-self: center;
+    }
+
+    &__info {
+      order: 2;
+      justify-self: end;
+      align-self: center;
+      text-align: right;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .veloura-testimonials {
+    padding: 35px 0;
+    overflow: hidden;
+
+    &__container {
+      max-width: none;
+    }
+
+    &__heading {
+      margin-bottom: 32px;
+
+      h2 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+
+    &__slider {
+      padding-top: 72px;
+      padding-bottom: 70px !important;
+      overflow: hidden !important;
+
+      .swiper {
+        overflow: visible !important;
+      }
+
+      .swiper-slide {
+        overflow: visible !important;
+      }
+    }
 
     &__card {
-      padding-top: 90px;
+      min-height: 230px;
+      padding: 78px 18px 24px;
+      text-align: center;
       overflow: visible;
     }
 
     &__avatar {
-      position: absolute;
-      top: -55px;
+      top: -64px;
       left: 50%;
+      inset-inline-end: auto;
       transform: translateX(-50%);
-      width: 120px;
-      height: 120px;
+      width: 132px;
+      height: 132px;
       border-radius: 50%;
-      border: 5px solid #fff;
+      border: 5px solid rgba(255, 255, 255, .85);
     }
 
-    &__meta {
-      grid-template-columns: 1fr;
+    &__content {
+      padding-inline-end: 0;
+    }
+
+    &__text {
       text-align: center;
-      gap: 8px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    &__bottom {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__info {
+      order: 1;
+      text-align: center;
+      align-self: center;
     }
 
     &__stars {
-      justify-self: center;
+      order: 2;
+      align-self: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .swiper-pagination,
+    .s-slider-pagination {
+      bottom: 18px !important;
     }
   }
 }
