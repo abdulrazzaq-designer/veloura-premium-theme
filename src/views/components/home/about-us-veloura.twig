@@ -1,4 +1,4 @@
-{% if not component.veloura_about_hide_section %}
+{% if component.veloura_about_hide_section|default(false) != true %}
 
   {% set radius_map = {
     'sharp': '0px',
@@ -9,13 +9,15 @@
   } %}
 
   {% set about_radius = radius_map[component.veloura_about_radius|default('large')]|default('28px') %}
-  {% set image_position = component.veloura_about_image_position|default('right') %}
 
+  {% set image_position = component.veloura_about_image_position|default('right') %}
   {% if image_position is iterable and image_position[0].value is defined %}
     {% set image_position = image_position[0].value %}
   {% elseif image_position.value is defined %}
     {% set image_position = image_position.value %}
   {% endif %}
+
+  {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image) %}
 
   {% set button_url = '#' %}
   {% if component.veloura_about_button_url %}
@@ -74,7 +76,7 @@
             </div>
           {% endif %}
 
-          {% if component.veloura_about_enable_features and component.veloura_about_features|length %}
+          {% if component.veloura_about_enable_features and component.veloura_about_features is iterable and component.veloura_about_features|length %}
             <div class="veloura-about__features">
               {% for feature in component.veloura_about_features %}
                 <div class="veloura-about__feature">
@@ -98,10 +100,10 @@
 
         </div>
 
-        {% if component.veloura_about_image %}
+        {% if about_image %}
           <div class="veloura-about__image">
             <img
-              src="{{ component.veloura_about_image }}"
+              src="{{ about_image }}"
               alt="{{ component.veloura_about_title|default(store.name) }}"
               loading="lazy"
             >
@@ -110,7 +112,7 @@
 
       </div>
 
-      {% if component.veloura_about_enable_stats and component.veloura_about_stats|length %}
+      {% if component.veloura_about_enable_stats and component.veloura_about_stats is iterable and component.veloura_about_stats|length %}
         <div class="veloura-about__stats">
           {% for stat in component.veloura_about_stats %}
             <div class="veloura-about__stat">
