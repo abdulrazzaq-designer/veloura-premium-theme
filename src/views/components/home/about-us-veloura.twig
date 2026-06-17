@@ -6,12 +6,17 @@
     <div class="veloura-about__wrap">
 
       <div class="veloura-about__content">
+
         {% if component.veloura_about_subtitle %}
-          <span class="veloura-about__subtitle">{{ component.veloura_about_subtitle }}</span>
+          <span class="veloura-about__subtitle">
+            {{ component.veloura_about_subtitle }}
+          </span>
         {% endif %}
 
         {% if component.veloura_about_title %}
-          <h2 class="veloura-about__title">{{ component.veloura_about_title }}</h2>
+          <h2 class="veloura-about__title">
+            {{ component.veloura_about_title }}
+          </h2>
         {% endif %}
 
         {% if component.veloura_about_description %}
@@ -19,7 +24,44 @@
             {{ component.veloura_about_description|raw }}
           </div>
         {% endif %}
+
+        {% if component.veloura_about_features %}
+          <div class="veloura-about__features">
+            {% for feature in component.veloura_about_features %}
+              <div class="veloura-about__feature">
+
+                {% if feature.feature_icon %}
+                  <i class="{{ feature.feature_icon }}"></i>
+                {% endif %}
+
+                {% if feature.feature_title %}
+                  <span>{{ feature.feature_title }}</span>
+                {% endif %}
+
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if component.veloura_about_show_button and component.veloura_about_button_text %}
+          <a href="#" class="veloura-about__button">
+            {{ component.veloura_about_button_text }}
+          </a>
+        {% endif %}
+
       </div>
+
+      {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image) %}
+
+      {% if about_image %}
+        <div class="veloura-about__image">
+          <img
+            src="{{ about_image }}"
+            alt="{{ component.veloura_about_title|default(store.name) }}"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
 
     </div>
 
