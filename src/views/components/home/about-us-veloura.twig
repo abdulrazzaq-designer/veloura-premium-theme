@@ -70,6 +70,22 @@
             </a>
           {% endif %}
 
+          {% if component.veloura_about_enable_features and component.veloura_about_features %}
+  <div class="veloura-about__features">
+    {% for feature in component.veloura_about_features %}
+      <div class="veloura-about__feature">
+        {% if feature.feature_icon %}
+          <i class="{{ feature.feature_icon }}"></i>
+        {% endif %}
+
+        {% if feature.feature_title %}
+          <span>{{ feature.feature_title }}</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
         </div>
 
         {% if about_image %}
