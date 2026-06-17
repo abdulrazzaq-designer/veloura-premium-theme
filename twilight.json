@@ -5967,118 +5967,121 @@
       ]
     },
     {
-      "id": "veloura_about_features_title",
-      "type": "static",
-      "format": "title",
-      "label": "Title",
-      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">المميزات</strong><div class=\"text-sm opacity-75 mt-1\">أضف مميزات قصيرة للمتجر</div></div></div>",
-      "variant": "h1",
-      "icon": "sicon-star"
-    },
+  "id": "veloura_about_features_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">المميزات</strong><div class=\"text-sm opacity-75 mt-1\">أضف مميزات قصيرة للمتجر</div></div></div>",
+  "variant": "h1",
+  "icon": "sicon-star"
+},
+{
+  "id": "veloura_about_enable_features",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار المميزات",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+{
+  "id": "veloura_about_features",
+  "type": "collection",
+  "format": "collection",
+  "label": "قائمة المميزات",
+  "minLength": 1,
+  "maxLength": 12,
+  "value": [],
+  "fields": [
     {
-      "id": "veloura_about_enable_features",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار المميزات",
-      "icon": "sicon-toggle-off",
-      "value": true,
-      "selected": true,
+      "id": "feature_icon",
+      "type": "string",
+      "format": "text",
+      "label": "كلاس الأيقونة",
+      "placeholder": "مثال: sicon-star",
+      "icon": "sicon-star",
+      "value": "sicon-star",
       "required": false
     },
     {
-      "id": "veloura_about_features",
-      "type": "collection",
-      "format": "collection",
-      "label": "قائمة المميزات",
-      "minLength": 0,
-      "maxLength": 12,
-      "fields": [
-        {
-          "id": "feature_icon",
-          "type": "string",
-          "format": "icon",
-          "label": "الأيقونة",
-          "icon": "sicon-star",
-          "value": "sicon-star",
-          "required": false
-        },
-        {
-          "id": "feature_title",
-          "type": "string",
-          "format": "text",
-          "label": "عنوان الميزة",
-          "icon": "sicon-format-text-alt",
-          "value": "جودة عالية",
-          "required": false
-        }
-      ]
-    },
+      "id": "feature_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان الميزة",
+      "icon": "sicon-format-text-alt",
+      "value": "جودة عالية",
+      "required": false
+    }
+  ]
+},
+{
+  "id": "veloura_about_stats_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">الإحصائيات</strong><div class=\"text-sm opacity-75 mt-1\">أضف أرقاماً تعزز ثقة العميل</div></div></div>",
+  "variant": "h1",
+  "icon": "sicon-chart-bar"
+},
+{
+  "id": "veloura_about_enable_stats",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار الإحصائيات",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+{
+  "id": "veloura_about_enable_counter",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل عداد متحرك",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+{
+  "id": "veloura_about_stats",
+  "type": "collection",
+  "format": "collection",
+  "label": "قائمة الإحصائيات",
+  "minLength": 1,
+  "maxLength": 8,
+  "value": [],
+  "fields": [
     {
-      "id": "veloura_about_stats_title",
-      "type": "static",
-      "format": "title",
-      "label": "Title",
-      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">الإحصائيات</strong><div class=\"text-sm opacity-75 mt-1\">أضف أرقاماً تعزز ثقة العميل</div></div></div>",
-      "variant": "h1",
-      "icon": "sicon-chart-bar"
-    },
-    {
-      "id": "veloura_about_enable_stats",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار الإحصائيات",
-      "icon": "sicon-toggle-off",
-      "value": true,
-      "selected": true,
+      "id": "stat_number",
+      "type": "string",
+      "format": "text",
+      "label": "الرقم",
+      "icon": "sicon-hashtag",
+      "value": "100",
       "required": false
     },
     {
-      "id": "veloura_about_enable_counter",
-      "type": "boolean",
-      "format": "switch",
-      "label": "تفعيل عداد متحرك",
-      "icon": "sicon-toggle-off",
-      "value": true,
-      "selected": true,
+      "id": "stat_suffix",
+      "type": "string",
+      "format": "text",
+      "label": "النص بعد الرقم",
+      "icon": "sicon-format-text",
+      "value": "+",
       "required": false
     },
     {
-      "id": "veloura_about_stats",
-      "type": "collection",
-      "format": "collection",
-      "label": "قائمة الإحصائيات",
-      "minLength": 0,
-      "maxLength": 8,
-      "fields": [
-        {
-          "id": "stat_number",
-          "type": "string",
-          "format": "text",
-          "label": "الرقم",
-          "icon": "sicon-hashtag",
-          "value": "100",
-          "required": false
-        },
-        {
-          "id": "stat_suffix",
-          "type": "string",
-          "format": "text",
-          "label": "النص بعد الرقم",
-          "icon": "sicon-format-text",
-          "value": "+",
-          "required": false
-        },
-        {
-          "id": "stat_title",
-          "type": "string",
-          "format": "text",
-          "label": "وصف الإحصائية",
-          "icon": "sicon-format-text-alt",
-          "value": "عميل سعيد",
-          "required": false
-        }
-      ]
-    },
+      "id": "stat_title",
+      "type": "string",
+      "format": "text",
+      "label": "وصف الإحصائية",
+      "icon": "sicon-format-text-alt",
+      "value": "عميل سعيد",
+      "required": false
+    }
+  ]
+},
     {
       "id": "veloura_about_general_title",
       "type": "static",
