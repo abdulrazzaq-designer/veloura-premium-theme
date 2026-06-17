@@ -5768,6 +5768,16 @@
       "maxLength": "200"
     },
     {
+      "id": "veloura_about_center_titles",
+      "type": "boolean",
+      "format": "switch",
+      "label": "توسيط النصوص",
+      "icon": "sicon-align-center",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
       "id": "veloura_about_description",
       "type": "string",
       "format": "textarea",
@@ -5900,15 +5910,6 @@
       "required": false
     },
     {
-      "id": "veloura_about_button_title",
-      "type": "static",
-      "format": "title",
-      "label": "Title",
-      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">زر الإجراء</strong><div class=\"text-sm opacity-75 mt-1\">إضافة زر ورابط داخل العنصر</div></div></div>",
-      "variant": "h1",
-      "icon": "sicon-link"
-    },
-    {
       "id": "veloura_about_show_button",
       "type": "boolean",
       "format": "switch",
@@ -5946,56 +5947,16 @@
       "searchable": true,
       "source": "custom",
       "sources": [
-        {
-          "label": "منتج",
-          "key": "products",
-          "value": "products"
-        },
-        {
-          "label": "تصنيف",
-          "key": "categories",
-          "value": "categories"
-        },
-        {
-          "label": "ماركة تجارية",
-          "key": "brands",
-          "value": "brands"
-        },
-        {
-          "label": "صفحة تعريفية",
-          "key": "pages",
-          "value": "pages"
-        },
-        {
-          "label": "مقالة",
-          "key": "blog_articles",
-          "value": "blog_articles"
-        },
-        {
-          "label": "تصنيف ضمن المدونة",
-          "key": "blog_categories",
-          "value": "blog_categories"
-        },
-        {
-          "label": "التخفيضات",
-          "key": "offers_link",
-          "value": "offers_link"
-        },
-        {
-          "label": "الماركات التجارية",
-          "key": "brands_link",
-          "value": "brands_link"
-        },
-        {
-          "label": "المدونة",
-          "key": "blog_link",
-          "value": "blog_link"
-        },
-        {
-          "label": "رابط خارجي",
-          "key": "custom",
-          "value": "custom"
-        }
+        { "label": "منتج", "key": "products", "value": "products" },
+        { "label": "تصنيف", "key": "categories", "value": "categories" },
+        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
       ],
       "conditions": [
         {
@@ -6024,41 +5985,34 @@
       "selected": true,
       "required": false
     },
-{
-  "id": "veloura_about_features",
-  "type": "collection",
-  "format": "collection",
-  "label": "قائمة المميزات",
-  "minLength": 1,
-  "maxLength": 12,
-  "fields": [
     {
-      "id": "feature_icon",
-      "type": "string",
-      "format": "icon",
-      "label": "الأيقونة",
-      "icon": "sicon-star",
-      "value": "sicon-star",
-      "required": false
+      "id": "veloura_about_features",
+      "type": "collection",
+      "format": "collection",
+      "label": "قائمة المميزات",
+      "minLength": 0,
+      "maxLength": 12,
+      "fields": [
+        {
+          "id": "feature_icon",
+          "type": "string",
+          "format": "icon",
+          "label": "الأيقونة",
+          "icon": "sicon-star",
+          "value": "sicon-star",
+          "required": false
+        },
+        {
+          "id": "feature_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان الميزة",
+          "icon": "sicon-format-text-alt",
+          "value": "جودة عالية",
+          "required": false
+        }
+      ]
     },
-    {
-      "id": "feature_title",
-      "type": "string",
-      "format": "text",
-      "label": "عنوان الميزة",
-      "icon": "sicon-format-text-alt",
-      "value": "جودة عالية",
-      "required": false
-    }
-  ],
-  "conditions": [
-    {
-      "id": "veloura_about_enable_features",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
     {
       "id": "veloura_about_stats_title",
       "type": "static",
@@ -6069,74 +6023,62 @@
       "icon": "sicon-chart-bar"
     },
     {
-  "id": "veloura_about_enable_stats",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إظهار الإحصائيات",
-  "icon": "sicon-toggle-off",
-  "value": true,
-  "selected": true
-},
-{
-  "id": "veloura_about_enable_counter",
-  "type": "boolean",
-  "format": "switch",
-  "label": "تفعيل عداد متحرك",
-  "icon": "sicon-toggle-off",
-  "value": true,
-  "selected": true,
-  "conditions": [
-    {
       "id": "veloura_about_enable_stats",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_about_stats",
-  "type": "collection",
-  "format": "collection",
-  "label": "قائمة الإحصائيات",
-  "minLength": 1,
-  "maxLength": 8,
-  "fields": [
-    {
-      "id": "stat_number",
-      "type": "number",
-      "format": "text",
-      "label": "الرقم",
-      "icon": "sicon-hashtag",
-      "value": 100,
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الإحصائيات",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
       "required": false
     },
     {
-      "id": "stat_suffix",
-      "type": "string",
-      "format": "text",
-      "label": "النص بعد الرقم",
-      "icon": "sicon-format-text",
-      "value": "+",
+      "id": "veloura_about_enable_counter",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل عداد متحرك",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
       "required": false
     },
     {
-      "id": "stat_title",
-      "type": "string",
-      "format": "text",
-      "label": "وصف الإحصائية",
-      "icon": "sicon-format-text-alt",
-      "value": "عميل سعيد",
-      "required": false
-    }
-  ],
-  "conditions": [
-    {
-      "id": "veloura_about_enable_stats",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
+      "id": "veloura_about_stats",
+      "type": "collection",
+      "format": "collection",
+      "label": "قائمة الإحصائيات",
+      "minLength": 0,
+      "maxLength": 8,
+      "fields": [
+        {
+          "id": "stat_number",
+          "type": "string",
+          "format": "text",
+          "label": "الرقم",
+          "icon": "sicon-hashtag",
+          "value": "100",
+          "required": false
+        },
+        {
+          "id": "stat_suffix",
+          "type": "string",
+          "format": "text",
+          "label": "النص بعد الرقم",
+          "icon": "sicon-format-text",
+          "value": "+",
+          "required": false
+        },
+        {
+          "id": "stat_title",
+          "type": "string",
+          "format": "text",
+          "label": "وصف الإحصائية",
+          "icon": "sicon-format-text-alt",
+          "value": "عميل سعيد",
+          "required": false
+        }
+      ]
+    },
     {
       "id": "veloura_about_general_title",
       "type": "static",
@@ -6151,7 +6093,6 @@
       "type": "boolean",
       "format": "switch",
       "label": "مسافة أفقية مخصصة للجوال",
-      "description": "تطبق المسافة على الجوال فقط، أما اللابتوب فيبقى داخل الكونتينر الطبيعي",
       "icon": "sicon-toggle-off",
       "value": false,
       "selected": false,

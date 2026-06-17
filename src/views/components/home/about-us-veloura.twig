@@ -9,12 +9,29 @@
   } %}
 
   {% set about_radius = radius_map[component.veloura_about_radius|default('large')]|default('28px') %}
-  {% set button_url = component.veloura_about_button_url.url|default(component.veloura_about_button_url|default('#')) %}
+  {% set image_position = component.veloura_about_image_position|default('right') %}
+
+  {% if image_position is iterable and image_position[0].value is defined %}
+    {% set image_position = image_position[0].value %}
+  {% elseif image_position.value is defined %}
+    {% set image_position = image_position.value %}
+  {% endif %}
+
+  {% set button_url = '#' %}
+  {% if component.veloura_about_button_url %}
+    {% if component.veloura_about_button_url.url is defined %}
+      {% set button_url = component.veloura_about_button_url.url %}
+    {% elseif component.veloura_about_button_url[0].url is defined %}
+      {% set button_url = component.veloura_about_button_url[0].url %}
+    {% elseif component.veloura_about_button_url is string %}
+      {% set button_url = component.veloura_about_button_url %}
+    {% endif %}
+  {% endif %}
 
   {% set section_classes = [
     's-block',
     'veloura-about',
-    component.veloura_about_image_position == 'left' ? 'veloura-about--image-left' : 'veloura-about--image-right',
+    image_position == 'left' ? 'veloura-about--image-left' : 'veloura-about--image-right',
     component.veloura_about_mobile_only ? 'veloura-about--mobile-only' : '',
     component.veloura_about_desktop_only ? 'veloura-about--desktop-only' : '',
     component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
@@ -34,10 +51,10 @@
   >
 
     {% if component.veloura_about_enable_custom_spacing %}
-  <div class="veloura-about__container">
-{% else %}
-  <div class="container veloura-about__container">
-{% endif %}
+      <div class="veloura-about__container">
+    {% else %}
+      <div class="container veloura-about__container">
+    {% endif %}
 
       <div class="veloura-about__wrap">
 
