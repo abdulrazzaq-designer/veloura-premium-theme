@@ -5729,7 +5729,7 @@
   "key": "b9f4c2d8-6a71-4e33-92ad-1c5f8e7b4a90",
   "title": {
     "ar": "من نحن (فيلورا)",
-    "en": "About Us - Veloura ssssss"
+    "en": "About Us - Veloura"
   },
   "icon": "sicon-info",
   "path": "home.about-us-veloura",
@@ -6015,6 +6015,90 @@
       "required": false,
       "minLength": 0,
       "maxLength": "3000"
+    }
+  ]
+},
+{
+  "id": "veloura_about_stats_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><div class=\"ml-1 mr-2 text-center\"><strong class=\"text-lg\">الإحصائيات</strong><div class=\"text-sm opacity-75 mt-1\">أضف أرقاماً تعزز ثقة العميل</div></div></div>",
+  "variant": "h1",
+  "icon": "sicon-chart-bar"
+},
+{
+  "id": "veloura_about_enable_stats",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار الإحصائيات",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+{
+  "id": "veloura_about_enable_counter",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل عداد متحرك للإحصائيات",
+  "description": "اكتب الرقم مثل 5000+ أو 24/7 وسيتم تحريك الرقم الأول فقط",
+  "icon": "sicon-toggle-off",
+  "value": true,
+  "selected": true,
+  "required": false
+},
+{
+  "id": "veloura_about_stats",
+  "type": "collection",
+  "format": "collection",
+  "label": "الإحصائيات",
+  "description": null,
+  "labelHTML": null,
+  "item_label": "إحصائية",
+  "icon": "sicon-list-add",
+  "value": [],
+  "minLength": 1,
+  "maxLength": "12",
+  "fields": [
+    {
+      "id": "veloura_about_stats.stat_number",
+      "type": "string",
+      "format": "text",
+      "label": "الرقم",
+      "description": "مثال: 5000+ أو 98%",
+      "labelHTML": null,
+      "placeholder": "5000+",
+      "icon": "sicon-hashtag",
+      "value": "5000+",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "100"
+    },
+    {
+      "id": "veloura_about_stats.stat_title",
+      "type": "string",
+      "format": "text",
+      "label": "وصف الإحصائية",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "عميل سعيد",
+      "icon": "sicon-format-text-alt",
+      "value": "عميل سعيد",
+      "required": false,
+      "minLength": 0,
+      "maxLength": "3000"
+    },
+    {
+      "id": "veloura_about_stats.stat_icon",
+      "type": "string",
+      "format": "icon",
+      "label": "أيقونة الإحصائية",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-star",
+      "value": "sicon-star",
+      "required": false
     }
   ]
 },

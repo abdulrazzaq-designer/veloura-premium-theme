@@ -1,76 +1,130 @@
 {% if not component.veloura_about_hide_section %}
 
-<section class="s-block veloura-about">
-{% if component.veloura_about_enable_custom_spacing %}
-  <div class="veloura-about__container">
-{% else %}
-  <div class="container veloura-about__container">
-{% endif %}
-  <div class="container veloura-about__container">
+  {% set radius_map = {
+    'sharp': '0px',
+    'soft': '8px',
+    'medium': '16px',
+    'large': '28px',
+    'round': '999px'
+  } %}
 
-    <div class="veloura-about__wrap">
+  {% set about_radius = radius_map[component.veloura_about_radius|default('large')]|default('28px') %}
+  {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image) %}
 
-      <div class="veloura-about__content">
+  {% set section_classes = [
+    's-block',
+    'veloura-about',
+    component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
+    component.veloura_about_custom_classes ?: ''
+  ]|join(' ') %}
 
-        {% if component.veloura_about_subtitle %}
-          <span class="veloura-about__subtitle">
-            {{ component.veloura_about_subtitle }}
-          </span>
-        {% endif %}
+  <section
+    class="{{ section_classes }}"
+    style="
+      --veloura-about-radius: {{ about_radius }};
+      --veloura-about-bg: {{ component.veloura_about_background|default('#ffffff') }};
+      --veloura-about-text: {{ component.veloura_about_text_color|default('#222222') }};
+      --veloura-about-accent: {{ component.veloura_about_accent_color|default('#004956') }};
+      --veloura-about-spacing: {{ component.veloura_about_enable_custom_spacing ? component.veloura_about_spacing|default(0) : 0 }}px;
+    "
+  >
 
-        {% if component.veloura_about_title %}
-          <h2 class="veloura-about__title">
-            {{ component.veloura_about_title }}
-          </h2>
-        {% endif %}
+    {% if component.veloura_about_enable_custom_spacing %}
+      <div class="veloura-about__container">
+    {% else %}
+      <div class="container veloura-about__container">
+    {% endif %}
 
-        {% if component.veloura_about_description %}
-          <div class="veloura-about__description">
-            {{ component.veloura_about_description|raw }}
+      <div class="veloura-about__wrap">
+
+        <div class="veloura-about__content">
+
+          {% if component.veloura_about_subtitle %}
+            <span class="veloura-about__subtitle">
+              {{ component.veloura_about_subtitle }}
+            </span>
+          {% endif %}
+
+          {% if component.veloura_about_title %}
+            <h2 class="veloura-about__title">
+              {{ component.veloura_about_title }}
+            </h2>
+          {% endif %}
+
+          {% if component.veloura_about_description %}
+            <div class="veloura-about__description">
+              {{ component.veloura_about_description|raw }}
+            </div>
+          {% endif %}
+
+          {% if component.veloura_about_features %}
+            <div class="veloura-about__features">
+              {% for feature in component.veloura_about_features %}
+                <div class="veloura-about__feature">
+
+                  {% if feature.feature_icon %}
+                    <i class="{{ feature.feature_icon }}"></i>
+                  {% endif %}
+
+                  {% if feature.feature_title %}
+                    <span>{{ feature.feature_title }}</span>
+                  {% endif %}
+
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if component.veloura_about_show_button and component.veloura_about_button_text %}
+            <a href="#" class="veloura-about__button">
+              {{ component.veloura_about_button_text }}
+            </a>
+          {% endif %}
+
+        </div>
+
+        {% if about_image %}
+          <div class="veloura-about__image">
+            <img
+              src="{{ about_image }}"
+              alt="{{ component.veloura_about_title|default(store.name) }}"
+              loading="lazy"
+            >
           </div>
-        {% endif %}
-
-        {% if component.veloura_about_features %}
-          <div class="veloura-about__features">
-            {% for feature in component.veloura_about_features %}
-              <div class="veloura-about__feature">
-
-                {% if feature.feature_icon %}
-                  <i class="{{ feature.feature_icon }}"></i>
-                {% endif %}
-
-                {% if feature.feature_title %}
-                  <span>{{ feature.feature_title }}</span>
-                {% endif %}
-
-              </div>
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        {% if component.veloura_about_show_button and component.veloura_about_button_text %}
-          <a href="#" class="veloura-about__button">
-            {{ component.veloura_about_button_text }}
-          </a>
         {% endif %}
 
       </div>
 
-      {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image) %}
+      {% if component.veloura_about_enable_stats and component.veloura_about_stats %}
+        <div class="veloura-about__stats">
+          {% for stat in component.veloura_about_stats %}
+            <div class="veloura-about__stat">
 
-      {% if about_image %}
-        <div class="veloura-about__image">
-          <img
-            src="{{ about_image }}"
-            alt="{{ component.veloura_about_title|default(store.name) }}"
-            loading="lazy"
-          >
+              {% if stat.stat_icon %}
+                <div class="veloura-about__stat-icon">
+                  <i class="{{ stat.stat_icon }}"></i>
+                </div>
+              {% endif %}
+
+              {% if stat.stat_number %}
+                <strong
+                  class="{{ component.veloura_about_enable_counter ? 'veloura-counter' : '' }}"
+                  data-start-on-view="true"
+                >
+                  {{ stat.stat_number }}
+                </strong>
+              {% endif %}
+
+              {% if stat.stat_title %}
+                <span>{{ stat.stat_title }}</span>
+              {% endif %}
+
+            </div>
+          {% endfor %}
         </div>
       {% endif %}
 
     </div>
-
-  </div>
-</section>
+  </section>
 
 {% endif %}
