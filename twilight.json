@@ -6018,61 +6018,7 @@
     }
   ]
 },
-{
-  "id": "veloura_about_enable_stats",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إظهار الإحصائيات",
-  "icon": "sicon-toggle-off",
-  "value": true,
-  "selected": true,
-  "required": false
-},
-{
-  "id": "veloura_about_enable_counter",
-  "type": "boolean",
-  "format": "switch",
-  "label": "تفعيل عداد متحرك",
-  "icon": "sicon-toggle-off",
-  "value": true,
-  "selected": true,
-  "required": false
-},
-{
-  "id": "veloura_about_stats",
-  "type": "collection",
-  "format": "collection",
-  "label": "قائمة الإحصائيات",
-  "item_label": "إحصائية",
-  "icon": "sicon-list-add",
-  "value": [],
-  "minLength": 1,
-  "maxLength": "8",
-  "fields": [
-    {
-      "id": "veloura_about_stats.stat_number",
-      "type": "string",
-      "format": "text",
-      "label": "الرقم",
-      "icon": "sicon-hashtag",
-      "value": "5000+",
-      "required": false,
-      "minLength": 0,
-      "maxLength": "100"
-    },
-    {
-      "id": "veloura_about_stats.stat_title",
-      "type": "string",
-      "format": "text",
-      "label": "وصف الإحصائية",
-      "icon": "sicon-format-text-alt",
-      "value": "عميل سعيد",
-      "required": false,
-      "minLength": 0,
-      "maxLength": "3000"
-    }
-  ]
-},
+
     {
       "id": "veloura_about_general_title",
       "type": "static",
