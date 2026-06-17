@@ -113,28 +113,26 @@
 
       </div>
 
-      {% if component.veloura_about_enable_stats and component.veloura_about_stats %}
-        <div class="veloura-about__stats">
-          {% for stat in component.veloura_about_stats %}
-            <div class="veloura-about__stat">
+      {% if component.veloura_about_enable_stats and component.veloura_about_stats is defined and component.veloura_about_stats is iterable %}
+  <div class="veloura-about__stats">
+    {% for stat in component.veloura_about_stats %}
+      <div class="veloura-about__stat">
 
-              {% if stat.stat_number %}
-                <strong
-                  class="{{ component.veloura_about_enable_counter ? 'veloura-counter' : '' }}"
-                  data-start-on-view="true"
-                >
-                  {{ stat.stat_number }}
-                </strong>
-              {% endif %}
+        {% if stat.stat_number is defined and stat.stat_number %}
+          <strong class="{{ component.veloura_about_enable_counter ? 'veloura-counter' : '' }}"
+                  data-start-on-view="true">
+            {{ stat.stat_number }}
+          </strong>
+        {% endif %}
 
-              {% if stat.stat_title %}
-                <span>{{ stat.stat_title }}</span>
-              {% endif %}
+        {% if stat.stat_title is defined and stat.stat_title %}
+          <span>{{ stat.stat_title }}</span>
+        {% endif %}
 
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
 
     </div>
   </section>
