@@ -16,10 +16,23 @@
   {% set image_position = component.veloura_about_image_position.value|default(component.veloura_about_image_position|default('right')) %}
   {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image|default(null)) %}
 
+  {% set button_url = '#' %}
+  {% if component.veloura_about_button_url %}
+    {% if component.veloura_about_button_url.url is defined %}
+      {% set button_url = component.veloura_about_button_url.url %}
+    {% elseif component.veloura_about_button_url[0].url is defined %}
+      {% set button_url = component.veloura_about_button_url[0].url %}
+    {% elseif component.veloura_about_button_url is string %}
+      {% set button_url = component.veloura_about_button_url %}
+    {% endif %}
+  {% endif %}
+
   {% set section_classes = [
     's-block',
     'veloura-about',
     image_position == 'left' ? 'veloura-about--image-left' : 'veloura-about--image-right',
+    component.veloura_about_mobile_only ? 'veloura-about--mobile-only' : '',
+    component.veloura_about_desktop_only ? 'veloura-about--desktop-only' : '',
     component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
     component.veloura_about_center_titles ? 'is-title-centered' : '',
     component.veloura_about_custom_classes|default('')
@@ -81,7 +94,7 @@
           {% endif %}
 
           {% if component.veloura_about_show_button and component.veloura_about_button_text %}
-            <a href="#" class="veloura-about__button">
+            <a href="{{ button_url ?: '#' }}" class="veloura-about__button">
               {{ component.veloura_about_button_text }}
             </a>
           {% endif %}
@@ -99,6 +112,29 @@
         {% endif %}
 
       </div>
+
+      {% if component.veloura_about_enable_stats and component.veloura_about_stats %}
+        <div class="veloura-about__stats">
+          {% for stat in component.veloura_about_stats %}
+            <div class="veloura-about__stat">
+
+              {% if stat.stat_number %}
+                <strong
+                  class="{{ component.veloura_about_enable_counter ? 'veloura-counter' : '' }}"
+                  data-start-on-view="true"
+                >
+                  {{ stat.stat_number }}
+                </strong>
+              {% endif %}
+
+              {% if stat.stat_title %}
+                <span>{{ stat.stat_title }}</span>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
 
     </div>
   </section>
