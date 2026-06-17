@@ -1,3 +1,19 @@
+{% if not component.veloura_about_hide_section %}
+
+<section class="container">
+
+  <h2>{{ component.veloura_about_title }}</h2>
+
+  <p>{{ component.veloura_about_subtitle }}</p>
+
+  <div>
+    {{ component.veloura_about_description }}
+  </div>
+
+</section>
+
+{% endif %}
+
 <section class="container">
   <h2>About Veloura Works</h2>
 </section>
