@@ -1,4 +1,86 @@
-<section class="s-block container" style="padding:50px 0;background:#eee;text-align:center">
-  <h2>اختبار عنصر من نحن</h2>
-  <p>إذا ظهر هذا النص، المشكلة من كود Twig السابق.</p>
-</section>
+{% set hide_about = component.veloura_about_hide_section|default(false) %}
+
+{% if hide_about != true %}
+
+  {% set radius_map = {
+    'sharp': '0px',
+    'soft': '8px',
+    'medium': '16px',
+    'large': '28px',
+    'round': '999px'
+  } %}
+
+  {% set about_radius_key = component.veloura_about_radius.value|default(component.veloura_about_radius|default('large')) %}
+  {% set about_radius = radius_map[about_radius_key]|default('28px') %}
+
+  {% set image_position = component.veloura_about_image_position.value|default(component.veloura_about_image_position|default('right')) %}
+  {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image|default(null)) %}
+
+  {% set section_classes = [
+    's-block',
+    'veloura-about',
+    image_position == 'left' ? 'veloura-about--image-left' : 'veloura-about--image-right',
+    component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
+    component.veloura_about_center_titles ? 'is-title-centered' : '',
+    component.veloura_about_custom_classes|default('')
+  ]|join(' ') %}
+
+  <section
+    class="{{ section_classes }}"
+    style="
+      --veloura-about-radius: {{ about_radius }};
+      --veloura-about-bg: {{ component.veloura_about_background|default('#ffffff') }};
+      --veloura-about-text: {{ component.veloura_about_text_color|default('#222222') }};
+      --veloura-about-accent: {{ component.veloura_about_accent_color|default('#004956') }};
+      --veloura-about-spacing: {{ component.veloura_about_enable_custom_spacing ? component.veloura_about_spacing|default(0) : 0 }}px;
+    "
+  >
+
+    {% if component.veloura_about_enable_custom_spacing %}
+      <div class="veloura-about__container">
+    {% else %}
+      <div class="container veloura-about__container">
+    {% endif %}
+
+      <div class="veloura-about__wrap">
+
+        <div class="veloura-about__content">
+
+          {% if component.veloura_about_subtitle %}
+            <span class="veloura-about__subtitle">
+              {{ component.veloura_about_subtitle }}
+            </span>
+          {% endif %}
+
+          {% if component.veloura_about_title %}
+            <h2 class="veloura-about__title">
+              {{ component.veloura_about_title }}
+            </h2>
+          {% endif %}
+
+          {% if component.veloura_about_description %}
+            <div class="veloura-about__description">
+              {{ component.veloura_about_description|raw }}
+            </div>
+          {% endif %}
+
+          {% if component.veloura_about_show_button and component.veloura_about_button_text %}
+            <a href="#" class="veloura-about__button">
+              {{ component.veloura_about_button_text }}
+            </a>
+          {% endif %}
+
+        </div>
+
+        {% if about_image %}
+          <div class="veloura-about__image">
+            <img src="{{ about_image }}" alt="{{ component.veloura_about_title|default(store.name) }}" loading="lazy">
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </section>
+
+{% endif %}
