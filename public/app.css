@@ -30218,6 +30218,8 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 16px;
   line-height: 2;
   opacity: 0.82;
+  padding-right: 18px;
+  border-right: 4px solid var(--veloura-about-accent);
 }
 .veloura-about__description p {
   margin: 0 0 10px;
@@ -30256,21 +30258,22 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  margin-top: 28px;
+  min-height: 54px;
   padding: 0 34px;
-  border-radius: 14px;
-  background: var(--veloura-about-accent);
+  margin-top: 28px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--veloura-about-accent), color-mix(in srgb, var(--veloura-about-accent) 75%, white));
   color: #fff;
   font-size: 15px;
   font-weight: 800;
   -webkit-text-decoration: none;
   text-decoration: none;
-  transition: 0.25s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 .veloura-about__button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18), 0 8px 18px rgba(0, 0, 0, 0.1);
   color: #fff;
 }
 .veloura-about__image {
@@ -30278,7 +30281,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   overflow: hidden;
   border-radius: var(--veloura-about-radius);
   background: #f5f5f5;
+  transition: transform 0.4s ease;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+.veloura-about:hover .veloura-about__image {
+  transform: translateY(-6px);
 }
 .veloura-about__image img {
   display: block;
@@ -30339,7 +30346,19 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     line-height: 1.9;
   }
   .veloura-about__features {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .veloura-about__feature {
+    min-height: 72px;
+    padding: 10px 6px;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .veloura-about__feature i {
+    font-size: 18px;
   }
   .veloura-about__image img {
     min-height: 260px;
