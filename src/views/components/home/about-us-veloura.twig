@@ -1,19 +1,29 @@
 {% if not component.veloura_about_hide_section %}
 
-<section class="container">
+<section class="s-block veloura-about">
+  <div class="container veloura-about__container">
 
-  <h2>{{ component.veloura_about_title }}</h2>
+    <div class="veloura-about__wrap">
 
-  <p>{{ component.veloura_about_subtitle }}</p>
+      <div class="veloura-about__content">
+        {% if component.veloura_about_subtitle %}
+          <span class="veloura-about__subtitle">{{ component.veloura_about_subtitle }}</span>
+        {% endif %}
 
-  <div>
-    {{ component.veloura_about_description }}
+        {% if component.veloura_about_title %}
+          <h2 class="veloura-about__title">{{ component.veloura_about_title }}</h2>
+        {% endif %}
+
+        {% if component.veloura_about_description %}
+          <div class="veloura-about__description">
+            {{ component.veloura_about_description|raw }}
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
   </div>
-
 </section>
 
 {% endif %}
-
-<section class="container">
-  <h2>About Veloura Works</h2>
-</section>
