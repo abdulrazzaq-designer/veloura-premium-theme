@@ -24,7 +24,9 @@
       --veloura-about-radius: {{ about_radius }};
       --veloura-about-bg: {{ component.veloura_about_background|default('#ffffff') }};
       --veloura-about-text: {{ component.veloura_about_text_color|default('#222222') }};
-      --veloura-about-accent: {{ component.veloura_about_accent_color|default('#004956') }};
+      --veloura-about-accent: {{ component.veloura_about_accent_color|default('#005866') }};
+      --veloura-about-soft: color-mix(in srgb, var(--veloura-about-accent) 9%, white);
+      --veloura-about-border: color-mix(in srgb, var(--veloura-about-accent) 16%, #e5e7eb);
       --veloura-about-spacing: {{ component.veloura_about_enable_custom_spacing ? component.veloura_about_spacing|default(0) : 0 }}px;
     "
   >
@@ -81,6 +83,35 @@
             </a>
           {% endif %}
 
+          {% if component.veloura_about_enable_stats and component.veloura_about_stats %}
+            <div class="veloura-about__stats">
+              {% for stat in component.veloura_about_stats %}
+                <div class="veloura-about__stat">
+
+                  {% if stat.stat_icon %}
+                    <div class="veloura-about__stat-icon">
+                      <i class="{{ stat.stat_icon }}"></i>
+                    </div>
+                  {% endif %}
+
+                  {% if stat.stat_number %}
+                    <strong
+                      class="{{ component.veloura_about_enable_counter ? 'veloura-counter' : '' }}"
+                      data-start-on-view="true"
+                    >
+                      {{ stat.stat_number }}
+                    </strong>
+                  {% endif %}
+
+                  {% if stat.stat_title %}
+                    <span>{{ stat.stat_title }}</span>
+                  {% endif %}
+
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
 
         {% if about_image %}
@@ -94,35 +125,6 @@
         {% endif %}
 
       </div>
-
-      {% if component.veloura_about_enable_stats and component.veloura_about_stats %}
-        <div class="veloura-about__stats">
-          {% for stat in component.veloura_about_stats %}
-            <div class="veloura-about__stat">
-
-              {% if stat.stat_icon %}
-                <div class="veloura-about__stat-icon">
-                  <i class="{{ stat.stat_icon }}"></i>
-                </div>
-              {% endif %}
-
-              {% if stat.stat_number %}
-                <strong
-                  class="{{ component.veloura_about_enable_counter ? 'veloura-counter' : '' }}"
-                  data-start-on-view="true"
-                >
-                  {{ stat.stat_number }}
-                </strong>
-              {% endif %}
-
-              {% if stat.stat_title %}
-                <span>{{ stat.stat_title }}</span>
-              {% endif %}
-
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
 
     </div>
   </section>
