@@ -30605,19 +30605,25 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   }
 }
 .veloura-popup {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 999999;
-  display: block;
-  opacity: 1;
-  pointer-events: auto;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 999999 !important;
+  display: flex !important;
+}
+.veloura-popup {
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .veloura-popup.is-active {
-  display: block;
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 .veloura-popup__overlay {
@@ -30626,34 +30632,32 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   right: 0;
   bottom: 0;
   left: 0;
-  background: color-mix(in srgb, var(--veloura-popup-overlay) 55%, transparent);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
 }
 .veloura-popup__container {
   position: relative;
   z-index: 2;
   width: 100%;
-  min-height: 100%;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.veloura-popup.has-spacing .veloura-popup__container {
-  padding-left: 22px;
-  padding-right: 22px;
-  padding-left: var(--veloura-popup-spacing, 22px);
-  padding-right: var(--veloura-popup-spacing, 22px);
+  max-width: 560px;
+  padding: 20px;
 }
 .veloura-popup__box {
   position: relative;
-  width: min(92vw, 520px);
-  max-height: calc(100vh - 44px);
-  overflow: auto;
-  border-radius: var(--veloura-popup-radius);
+  width: 100%;
+  max-height: calc(100vh - 40px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow: hidden auto;
   background: var(--veloura-popup-bg);
   color: var(--veloura-popup-text);
-  animation: velouraPopupIn 0.35s ease both;
+  border-radius: var(--veloura-popup-radius);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
+  transform: translateY(18px) scale(0.96);
+  transition: transform 0.35s ease;
+}
+.veloura-popup.is-active .veloura-popup__box {
+  transform: translateY(0) scale(1);
 }
 .veloura-popup__close {
   position: absolute;
@@ -30662,17 +30666,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   z-index: 5;
   width: 38px;
   height: 38px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #222;
   border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.veloura-popup__close i {
-  font-size: 16px;
-  line-height: 1;
 }
 .veloura-popup__image {
   width: 100%;
@@ -30681,12 +30684,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-popup__image img {
   display: block;
   width: 100%;
-  max-height: 290px;
+  height: 260px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .veloura-popup__content {
-  padding: 26px;
+  padding: 28px 26px;
   text-align: center;
 }
 .veloura-popup__content h2 {
@@ -30700,7 +30703,13 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin: 0;
   font-size: 15px;
   line-height: 1.9;
-  opacity: 0.8;
+  opacity: 0.78;
+  color: inherit;
+}
+.veloura-popup__button {
+  color: #fff !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
 }
 .veloura-popup__button {
   display: flex;
@@ -30708,34 +30717,30 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   justify-content: center;
   min-height: 50px;
   margin-top: 22px;
-  padding: 0 28px;
-  border-radius: calc(var(--veloura-popup-radius) / 1.7);
+  padding: 0 26px;
+  border-radius: 14px;
   background: var(--veloura-popup-accent);
-  color: #fff;
   font-size: 15px;
   font-weight: 800;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   transition: 0.25s ease;
 }
 .veloura-popup__button:hover {
   background: color-mix(in srgb, var(--veloura-popup-accent) 88%, black);
-  color: #fff;
   transform: translateY(-2px);
 }
-.veloura-popup--bottom-right .veloura-popup__container {
+.veloura-popup--bottom-right {
   align-items: flex-end;
   justify-content: flex-end;
 }
-.veloura-popup--bottom-right .veloura-popup__box {
-  width: min(92vw, 420px);
+.veloura-popup--bottom-right .veloura-popup__container {
+  max-width: 430px;
 }
-.veloura-popup--bottom-left .veloura-popup__container {
+.veloura-popup--bottom-left {
   align-items: flex-end;
   justify-content: flex-start;
 }
-.veloura-popup--bottom-left .veloura-popup__box {
-  width: min(92vw, 420px);
+.veloura-popup--bottom-left .veloura-popup__container {
+  max-width: 430px;
 }
 .veloura-popup-open {
   overflow: hidden;
@@ -30750,23 +30755,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     display: none !important;
   }
 }
-@keyframes velouraPopupIn {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
 @media (max-width: 767px) {
   .veloura-popup__container {
+    max-width: 100%;
     padding: 14px;
-  }
-  .veloura-popup__box {
-    width: 100%;
-    max-height: calc(100vh - 28px);
   }
   .veloura-popup__content {
     padding: 22px;
@@ -30778,11 +30770,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 13px;
   }
   .veloura-popup__image img {
-    max-height: 230px;
-  }
-  .veloura-popup__button {
-    min-height: 46px;
-    font-size: 14px;
+    height: 220px;
   }
 }
 salla-slider{
