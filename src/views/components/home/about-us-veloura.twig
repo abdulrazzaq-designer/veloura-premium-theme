@@ -25,8 +25,8 @@
       --veloura-about-bg: {{ component.veloura_about_background|default('#ffffff') }};
       --veloura-about-text: {{ component.veloura_about_text_color|default('#222222') }};
       --veloura-about-accent: {{ component.veloura_about_accent_color|default('#005866') }};
-      --veloura-about-soft: color-mix(in srgb, var(--veloura-about-accent) 9%, white);
-      --veloura-about-border: color-mix(in srgb, var(--veloura-about-accent) 16%, #e5e7eb);
+      --veloura-about-soft: color-mix(in srgb, var(--veloura-about-accent) 8%, #ffffff);
+      --veloura-about-border: color-mix(in srgb, var(--veloura-about-accent) 18%, #e5e7eb);
       --veloura-about-spacing: {{ component.veloura_about_enable_custom_spacing ? component.veloura_about_spacing|default(0) : 0 }}px;
     "
   >
@@ -42,15 +42,11 @@
         <div class="veloura-about__content">
 
           {% if component.veloura_about_subtitle %}
-            <span class="veloura-about__subtitle">
-              {{ component.veloura_about_subtitle }}
-            </span>
+            <span class="veloura-about__subtitle">{{ component.veloura_about_subtitle }}</span>
           {% endif %}
 
           {% if component.veloura_about_title %}
-            <h2 class="veloura-about__title">
-              {{ component.veloura_about_title }}
-            </h2>
+            <h2 class="veloura-about__title">{{ component.veloura_about_title }}</h2>
           {% endif %}
 
           {% if component.veloura_about_description %}
@@ -63,6 +59,7 @@
             <div class="veloura-about__features">
               {% for feature in component.veloura_about_features %}
                 <div class="veloura-about__feature">
+                  <span class="veloura-about__feature-border"></span>
 
                   {% if feature.feature_icon %}
                     <i class="{{ feature.feature_icon }}"></i>
@@ -71,7 +68,6 @@
                   {% if feature.feature_title %}
                     <span>{{ feature.feature_title }}</span>
                   {% endif %}
-
                 </div>
               {% endfor %}
             </div>

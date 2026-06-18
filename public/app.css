@@ -30186,14 +30186,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-about__wrap {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 40px;
-  gap: 40px;
+  grid-gap: 44px;
+  gap: 44px;
   align-items: center;
-  padding: 36px;
-  border-radius: var(--veloura-about-radius);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 20px 60px rgba(0, 0, 0, 0.06);
 }
 .veloura-about__content {
   text-align: right;
@@ -30202,12 +30197,13 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   display: inline-flex;
   align-items: center;
   padding: 8px 14px;
+  margin-bottom: 14px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--veloura-about-accent) 10%, white);
+  background: var(--veloura-about-soft);
   color: var(--veloura-about-accent);
+  border: 1px solid var(--veloura-about-border);
   font-size: 13px;
   font-weight: 800;
-  margin-bottom: 14px;
 }
 .veloura-about__title {
   margin: 0 0 16px;
@@ -30233,29 +30229,69 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-about__features {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 14px;
-  gap: 14px;
+  grid-gap: 12px;
+  gap: 12px;
   margin-top: 28px;
 }
 .veloura-about__feature {
-  min-height: 78px;
+  position: relative;
+  isolation: isolate;
+  min-height: 74px;
+  padding: 12px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--veloura-about-border);
+  color: var(--veloura-about-text);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px;
-  text-align: center;
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
-  font-size: 14px;
-  font-weight: 800;
 }
 .veloura-about__feature i {
+  position: relative;
+  z-index: 2;
   font-size: 20px;
   color: var(--veloura-about-accent);
   line-height: 1;
+}
+.veloura-about__feature span:not(.veloura-about__feature-border) {
+  position: relative;
+  z-index: 2;
+}
+.veloura-about__feature-border {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+}
+.veloura-about__feature-border::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 220%;
+  top: -60%;
+  left: 15%;
+  background: linear-gradient(90deg, transparent, var(--veloura-about-accent), transparent);
+  animation: veloura-about-border-spin 3s linear infinite;
+}
+.veloura-about__feature-border::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: 14px;
+  background: #fff;
 }
 .veloura-about__button {
   display: inline-flex;
@@ -30265,27 +30301,74 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding: 0 34px;
   margin-top: 28px;
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--veloura-about-accent), color-mix(in srgb, var(--veloura-about-accent) 75%, white));
+  background: var(--veloura-about-accent);
   color: #fff;
   font-size: 15px;
   font-weight: 800;
   -webkit-text-decoration: none;
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  border: 1px solid color-mix(in srgb, var(--veloura-about-accent) 80%, black);
+  transition: 0.25s ease;
 }
 .veloura-about__button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18), 0 8px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--veloura-about-accent) 88%, black);
   color: #fff;
+}
+.veloura-about__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 12px;
+  gap: 12px;
+  margin-top: 24px;
+}
+.veloura-about__stat {
+  min-height: 104px;
+  padding: 16px 10px;
+  border-radius: 18px;
+  background: var(--veloura-about-soft);
+  border: 1px solid var(--veloura-about-border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.veloura-about__stat strong {
+  color: var(--veloura-about-accent);
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+.veloura-about__stat span {
+  font-size: 13px;
+  font-weight: 800;
+  opacity: 0.82;
+  line-height: 1.5;
+}
+.veloura-about__stat-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: var(--veloura-about-accent);
+  border: 1px solid var(--veloura-about-border);
+}
+.veloura-about__stat-icon i {
+  font-size: 18px;
+  line-height: 1;
 }
 .veloura-about__image {
   position: relative;
   overflow: hidden;
   border-radius: var(--veloura-about-radius);
-  background: #f5f5f5;
-  transition: transform 0.4s ease;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+  background: #f7f7f7;
+  border: 1px solid var(--veloura-about-border);
+  transition: transform 0.35s ease;
 }
 .veloura-about__image img {
   display: block;
@@ -30296,56 +30379,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
      object-fit: cover;
   border-radius: inherit;
 }
-.veloura-about:hover .veloura-about__image {
-  transform: translateY(-6px);
+.veloura-about__image:hover {
+  transform: translateY(-4px);
 }
-.veloura-about__stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 14px;
-  gap: 14px;
-  margin-top: 24px;
-}
-.veloura-about__stat {
-  position: relative;
-  min-height: 130px;
-  padding: 22px 16px;
-  border-radius: var(--veloura-about-radius);
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.veloura-about__stat strong {
-  color: var(--veloura-about-accent);
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 1;
-}
-.veloura-about__stat span {
-  font-size: 14px;
-  font-weight: 800;
-  opacity: 0.8;
-  line-height: 1.5;
-}
-.veloura-about__stat-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--veloura-about-accent) 12%, white);
-  color: var(--veloura-about-accent);
-}
-.veloura-about__stat-icon i {
-  font-size: 20px;
-  line-height: 1;
+@keyframes veloura-about-border-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @media (min-width: 992px) {
   .veloura-about__wrap {
@@ -30358,7 +30401,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     padding: 40px 0;
   }
   .veloura-about__wrap {
-    padding: 20px;
     gap: 24px;
   }
   .veloura-about__content {
@@ -30376,7 +30418,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     padding-right: 0;
     border-right: 0;
   }
-  .veloura-about__features {
+  .veloura-about__features, .veloura-about__stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
   }
@@ -30391,14 +30433,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-about__feature i {
     font-size: 18px;
   }
-  .veloura-about__stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    margin-top: 18px;
+  .veloura-about__feature-border::after {
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    border-radius: 14px;
   }
   .veloura-about__stat {
-    min-height: 105px;
-    padding: 12px 6px;
+    min-height: 94px;
+    padding: 10px 5px;
     border-radius: 14px;
   }
   .veloura-about__stat strong {
@@ -30408,11 +30452,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 11px;
   }
   .veloura-about__stat-icon {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
   }
   .veloura-about__stat-icon i {
-    font-size: 16px;
+    font-size: 15px;
   }
   .veloura-about__image img {
     min-height: 260px;
