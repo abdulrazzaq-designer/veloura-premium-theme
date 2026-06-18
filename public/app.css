@@ -30528,6 +30528,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin-left: auto;
   margin-right: auto;
 }
+@media (min-width: 992px) {
+  .veloura-about--mobile-only {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .veloura-about--desktop-only {
+    display: none !important;
+  }
+}
 salla-slider{
     display: block;
 }

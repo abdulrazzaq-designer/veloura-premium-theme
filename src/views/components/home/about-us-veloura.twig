@@ -30,9 +30,12 @@
     'veloura-about',
     image_position == 'right' ? 'veloura-about--image-left' : 'veloura-about--image-right',
     component.veloura_about_center_titles ? 'is-title-centered' : '',
+    component.veloura_about_mobile_only ? 'veloura-about--mobile-only' : '',
+    component.veloura_about_desktop_only ? 'veloura-about--desktop-only' : '',
     component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
     component.veloura_about_apply_radius_all ? 'has-radius-all' : '',
     component.veloura_about_custom_classes ?: ''
+    
   ]|join(' ') %}
 
   <section

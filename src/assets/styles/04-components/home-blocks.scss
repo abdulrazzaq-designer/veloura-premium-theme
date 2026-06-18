@@ -3232,3 +3232,15 @@
     margin-inline: auto;
   }
 }
+
+.veloura-about--mobile-only {
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
+.veloura-about--desktop-only {
+  @media (max-width: 991px) {
+    display: none !important;
+  }
+}
