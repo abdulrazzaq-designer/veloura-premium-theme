@@ -6533,7 +6533,7 @@
       "type": "string",
       "format": "text",
       "label": "Classes",
-      "placeholder": "ex: custom-popup dark",
+      "placeholder": "ex: custom-popup dark ccustom",
       "icon": "sicon-code",
       "value": "",
       "required": false
