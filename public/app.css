@@ -30208,7 +30208,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   background: var(--veloura-about-soft-solid);
   color: var(--veloura-about-accent);
   border: 1px solid var(--veloura-about-border);
-  border-radius: var(--veloura-about-radius);
   font-size: 13px;
   font-weight: 800;
 }
@@ -30391,6 +30390,21 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .veloura-about__image:hover {
   transform: translateY(-4px);
 }
+/* عند تفعيل زر تطبيق الحواف على كل العناصر */
+.veloura-about.has-radius-all .veloura-about__subtitle {
+  border-radius: var(--veloura-about-radius);
+}
+.veloura-about.has-radius-all .veloura-about__feature,
+.veloura-about.has-radius-all .veloura-about__button,
+.veloura-about.has-radius-all .veloura-about__stat {
+  border-radius: var(--veloura-about-radius-md);
+}
+.veloura-about.has-radius-all .veloura-about__feature-border::after {
+  border-radius: calc(var(--veloura-about-radius-md) - 2px);
+}
+.veloura-about.has-radius-all .veloura-about__stat-icon {
+  border-radius: var(--veloura-about-radius);
+}
 @keyframes veloura-about-border-spin {
   from {
     transform: rotate(0deg);
@@ -30403,6 +30417,18 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-about__wrap {
     grid-template-columns: 1.05fr 0.95fr;
     gap: 60px;
+  }
+  .veloura-about--image-right .veloura-about__image {
+    order: 1;
+  }
+  .veloura-about--image-right .veloura-about__content {
+    order: 2;
+  }
+  .veloura-about--image-left .veloura-about__content {
+    order: 1;
+  }
+  .veloura-about--image-left .veloura-about__image {
+    order: 2;
   }
 }
 @media (max-width: 767px) {
@@ -30473,34 +30499,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-about__image img {
     min-height: 260px;
   }
-}
-@media (min-width: 992px) {
-  .veloura-about--image-right .veloura-about__content {
-    order: 1;
-  }
-  .veloura-about--image-right .veloura-about__image {
-    order: 2;
-  }
-  .veloura-about--image-left .veloura-about__image {
-    order: 1;
-  }
-  .veloura-about--image-left .veloura-about__content {
-    order: 2;
-  }
-}
-.veloura-about__feature,
-.veloura-about__button,
-.veloura-about__stat {
-  border-radius: var(--veloura-about-radius-md);
-}
-.veloura-about__feature-border::after {
-  border-radius: calc(var(--veloura-about-radius-md) - 2px);
-}
-.veloura-about__stat-icon {
-  border-radius: var(--veloura-about-radius);
-}
-.veloura-about__image {
-  border-radius: var(--veloura-about-radius);
 }
 salla-slider{
     display: block;
