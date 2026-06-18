@@ -1461,7 +1461,7 @@
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "ex: container dark p-4 custom",
-                    "icon": "sicon-format-text-alt",
+                    "icon": "sicon-code",
                     "value": null,
                     "multilanguage": false,
                     "required": false,
@@ -2138,7 +2138,7 @@
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "ex: container dark p-4 custom",
-                    "icon": "sicon-format-text-alt",
+                    "icon": "sicon-code",
                     "value": null,
                     "multilanguage": false,
                     "required": false,
@@ -2751,7 +2751,7 @@
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "ex: container dark p-5 custom",
-                    "icon": "sicon-format-text-alt",
+                    "icon": "sicon-code",
                     "value": null,
                     "multilanguage": false,
                     "required": false,
@@ -3246,8 +3246,8 @@
                     "label": "Classes",
                     "description": null,
                     "labelHTML": null,
-                    "placeholder": null,
-                    "icon": "sicon-format-text-alt",
+                    "placeholder": "ex: dark p-5 custom",
+                    "icon": "sicon-code",
                     "value": null,
                     "multilanguage": false,
                     "required": false,
@@ -3557,7 +3557,8 @@
                     "type": "string",
                     "format": "text",
                     "label": "Classes",
-                    "icon": "sicon-format-text-alt",
+                    "placeholder": "ex: dark p-5 custom",
+                    "icon": "sicon-code",
                     "value": null,
                     "required": false,
                     "minLength": 0,
@@ -3799,7 +3800,8 @@
                     "type": "string",
                     "format": "text",
                     "label": "Classes",
-                    "icon": "sicon-format-text-alt",
+                    "placeholder": "ex: dark p-5 custom",
+                    "icon": "sicon-code",
                     "value": ""
                 }
             ]
@@ -3875,7 +3877,8 @@
                     "type": "string",
                     "format": "text",
                     "label": "Classes",
-                    "icon": "sicon-format-text-alt",
+                    "placeholder": "ex: dark p-5 custom",
+                    "icon": "sicon-code",
                     "value": "",
                     "required": false,
                     "minLength": 0,
@@ -4616,6 +4619,7 @@
   "format": "text",
   "label": "Classes",
   "placeholder": "ex: container dark p-5 custom",
+  "icon": "sicon-code",
   "value": "",
   "required": false
 }
@@ -6073,6 +6077,17 @@
   "maxLength": "12",
   "fields": [
     {
+      "id": "veloura_about_stats.stat_icon",
+      "type": "string",
+      "format": "icon",
+      "label": "أيقونة الإحصائية",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-star",
+      "value": "sicon-star",
+      "required": false
+    },
+    {
       "id": "veloura_about_stats.stat_number",
       "type": "string",
       "format": "text",
@@ -6099,17 +6114,6 @@
       "required": false,
       "minLength": 0,
       "maxLength": "3000"
-    },
-    {
-      "id": "veloura_about_stats.stat_icon",
-      "type": "string",
-      "format": "icon",
-      "label": "أيقونة الإحصائية",
-      "description": null,
-      "labelHTML": null,
-      "icon": "sicon-star",
-      "value": "sicon-star",
-      "required": false
     }
   ]
 },
