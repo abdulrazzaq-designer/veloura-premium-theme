@@ -30646,13 +30646,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   position: relative;
   width: 100%;
   max-height: calc(100vh - 40px);
-  overflow-x: hidden;
   overflow-y: auto;
-  overflow: hidden auto;
   background: var(--veloura-popup-bg);
   color: var(--veloura-popup-text);
   border-radius: var(--veloura-popup-radius);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
   transform: translateY(18px) scale(0.96);
   transition: transform 0.35s ease;
 }
@@ -30661,40 +30658,46 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-popup__close {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 5;
-  width: 38px;
-  height: 38px;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
   border: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
-  color: #222;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  color: #222;
+}
+.veloura-popup {
+  /* الصورة */
 }
 .veloura-popup__image {
-  width: 100%;
-  background: #f5f5f5;
+  padding: 16px 16px 0;
 }
 .veloura-popup__image img {
   display: block;
   width: 100%;
-  height: 260px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: auto;
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: calc(var(--veloura-popup-radius) - 8px);
+}
+.veloura-popup {
+  /* المحتوى */
 }
 .veloura-popup__content {
-  padding: 28px 26px;
+  padding: 24px;
   text-align: center;
 }
 .veloura-popup__content h2 {
   margin: 0 0 10px;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 900;
   line-height: 1.4;
   color: inherit;
@@ -30703,7 +30706,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   margin: 0;
   font-size: 15px;
   line-height: 1.9;
-  opacity: 0.78;
+  opacity: 0.8;
   color: inherit;
 }
 .veloura-popup__button {
@@ -30715,9 +30718,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
+  width: 100%;
+  min-height: 52px;
   margin-top: 22px;
-  padding: 0 26px;
+  padding: 0 24px;
   border-radius: 14px;
   background: var(--veloura-popup-accent);
   font-size: 15px;
@@ -30757,20 +30761,23 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 @media (max-width: 767px) {
   .veloura-popup__container {
-    max-width: 100%;
     padding: 14px;
+    max-width: 100%;
+  }
+  .veloura-popup__image {
+    padding: 12px 12px 0;
   }
   .veloura-popup__content {
-    padding: 22px;
+    padding: 20px;
   }
   .veloura-popup__content h2 {
-    font-size: 23px;
+    font-size: 24px;
   }
   .veloura-popup__content p {
     font-size: 13px;
   }
-  .veloura-popup__image img {
-    height: 220px;
+  .veloura-popup__button {
+    min-height: 48px;
   }
 }
 salla-slider{

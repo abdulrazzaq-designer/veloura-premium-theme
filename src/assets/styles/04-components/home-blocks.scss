@@ -3338,7 +3338,6 @@
 
 
 
-
 .veloura-popup {
   position: fixed !important;
   inset: 0 !important;
@@ -3379,13 +3378,12 @@
     position: relative;
     width: 100%;
     max-height: calc(100vh - 40px);
-    overflow: hidden auto;
+    overflow-y: auto;
 
     background: var(--veloura-popup-bg);
     color: var(--veloura-popup-text);
-    border-radius: var(--veloura-popup-radius);
 
-    box-shadow: 0 22px 70px rgba(0, 0, 0, .22);
+    border-radius: var(--veloura-popup-radius);
 
     transform: translateY(18px) scale(.96);
     transition: transform .35s ease;
@@ -3399,47 +3397,55 @@
 
   &__close {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 5;
+    top: 14px;
+    left: 14px;
+    z-index: 10;
 
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
     border: 0;
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, .95);
-    color: #222;
-
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
+    background: rgba(255,255,255,.95);
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 24px;
+    color: #222;
   }
+
+  /* الصورة */
 
   &__image {
-    width: 100%;
-    background: #f5f5f5;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-    }
+    padding: 16px 16px 0;
   }
 
+  &__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+
+    object-fit: contain;
+
+    border-radius: calc(var(--veloura-popup-radius) - 8px);
+  }
+
+  /* المحتوى */
+
   &__content {
-    padding: 28px 26px;
+    padding: 24px;
+
     text-align: center;
 
     h2 {
       margin: 0 0 10px;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 900;
       line-height: 1.4;
       color: inherit;
@@ -3449,7 +3455,7 @@
       margin: 0;
       font-size: 15px;
       line-height: 1.9;
-      opacity: .78;
+      opacity: .8;
       color: inherit;
     }
   }
@@ -3459,22 +3465,34 @@
     align-items: center;
     justify-content: center;
 
-    min-height: 50px;
+    width: 100%;
+
+    min-height: 52px;
+
     margin-top: 22px;
-    padding: 0 26px;
+
+    padding: 0 24px;
 
     border-radius: 14px;
+
     background: var(--veloura-popup-accent);
+
     color: #fff !important;
+
+    text-decoration: none !important;
 
     font-size: 15px;
     font-weight: 800;
-    text-decoration: none !important;
 
     transition: .25s ease;
 
     &:hover {
-      background: color-mix(in srgb, var(--veloura-popup-accent) 88%, black);
+      background: color-mix(
+        in srgb,
+        var(--veloura-popup-accent) 88%,
+        black
+      );
+
       transform: translateY(-2px);
     }
   }
@@ -3515,17 +3533,23 @@
 }
 
 @media (max-width: 767px) {
+
   .veloura-popup {
+
     &__container {
-      max-width: 100%;
       padding: 14px;
+      max-width: 100%;
+    }
+
+    &__image {
+      padding: 12px 12px 0;
     }
 
     &__content {
-      padding: 22px;
+      padding: 20px;
 
       h2 {
-        font-size: 23px;
+        font-size: 24px;
       }
 
       p {
@@ -3533,8 +3557,9 @@
       }
     }
 
-    &__image img {
-      height: 220px;
+    &__button {
+      min-height: 48px;
     }
   }
+
 }
