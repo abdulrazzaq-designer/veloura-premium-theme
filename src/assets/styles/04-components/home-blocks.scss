@@ -2798,7 +2798,6 @@
 
 
 
-
 .veloura-about {
   padding: 60px 0;
   background: transparent;
@@ -3054,6 +3053,23 @@
       font-size: 18px;
       line-height: 1;
     }
+  }
+}
+
+.veloura-about.is-title-centered {
+  .veloura-about__content {
+    text-align: center;
+  }
+
+  .veloura-about__description {
+    margin-inline: auto;
+    text-align: center;
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .veloura-about__subtitle {
+    margin-inline: auto;
   }
 }
 
