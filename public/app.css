@@ -30392,6 +30392,20 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 18px;
   line-height: 1;
 }
+.veloura-about.is-title-centered .veloura-about__content {
+  text-align: center;
+}
+.veloura-about.is-title-centered .veloura-about__description {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-right: 0;
+  padding-right: 0;
+}
+.veloura-about.is-title-centered .veloura-about__subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
 .veloura-about.has-radius-all .veloura-about__subtitle {
   border-radius: var(--veloura-about-radius);
 }
@@ -30442,13 +30456,13 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     gap: 24px;
   }
   .veloura-about__content {
-    text-align: center;
+    text-align: right;
   }
   .veloura-about__title {
     font-size: 30px;
   }
   .veloura-about__description {
-    text-align: center;
+    text-align: right;
     margin-left: auto;
     margin-right: auto;
     font-size: 14px;
@@ -30499,6 +30513,20 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   .veloura-about__image img {
     min-height: 260px;
   }
+}
+.veloura-about.is-title-centered .veloura-about__content {
+  text-align: center;
+}
+.veloura-about.is-title-centered .veloura-about__description {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-right: 0;
+  padding-right: 0;
+}
+.veloura-about.is-title-centered .veloura-about__subtitle {
+  margin-left: auto;
+  margin-right: auto;
 }
 salla-slider{
     display: block;

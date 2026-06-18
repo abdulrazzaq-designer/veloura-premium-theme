@@ -5843,27 +5843,27 @@
       ],
       "options": [
         {
-          "label": "بدون استدارة",
+          "label": "حاد",
           "value": "sharp",
           "key": "about-radius-sharp"
         },
         {
-          "label": "خفيفة",
+          "label": "ناعم قليلاً",
           "value": "soft",
           "key": "about-radius-soft"
         },
         {
-          "label": "متوسطة",
+          "label": "ناعم",
           "value": "medium",
           "key": "about-radius-medium"
         },
         {
-          "label": "كبيرة",
+          "label": "ناعم جداً",
           "value": "large",
           "key": "about-radius-large"
         },
         {
-          "label": "دائرية",
+          "label": "دائري",
           "value": "round",
           "key": "about-radius-round"
         }
