@@ -85,12 +85,8 @@
             {% set image_src = banner.image_url %}
           {% endif %}
 
-          {% set card_size = banner.card_size|default('normal') %}
-          {% if card_size is iterable and card_size[0].value is defined %}
-            {% set card_size = card_size[0].value %}
-          {% elseif card_size.value is defined %}
-            {% set card_size = card_size.value %}
-          {% endif %}
+          {% set sizes = ['tall', 'short', 'normal', 'tall', 'large', 'normal', 'wide', 'short'] %}
+{% set card_size = sizes[loop.index0 % sizes|length] %}
 
           {% if image_src %}
             <div class="ultra-square-images__item ultra-square-images__item--{{ card_size }}">

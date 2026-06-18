@@ -1921,51 +1921,6 @@
                             "required": true
                         },
                         {
-  "id": "ultra_banners.card_size",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "حجم البطاقة",
-  "icon": "sicon-grid",
-  "selected": [
-    {
-      "label": "عادي",
-      "value": "normal",
-      "key": "ultra-card-normal"
-    }
-  ],
-  "options": [
-    {
-      "label": "عادي",
-      "value": "normal",
-      "key": "ultra-card-normal"
-    },
-    {
-      "label": "طويل",
-      "value": "tall",
-      "key": "ultra-card-tall"
-    },
-    {
-      "label": "قصير",
-      "value": "short",
-      "key": "ultra-card-short"
-    },
-    {
-      "label": "كبير",
-      "value": "large",
-      "key": "ultra-card-large"
-    },
-    {
-      "label": "عريض",
-      "value": "wide",
-      "key": "ultra-card-wide"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": false,
-  "required": false
-},
-                        {
                             "id": "ultra_banners.use_image_url",
                             "type": "boolean",
                             "format": "switch",
