@@ -1561,6 +1561,24 @@
                     "required": false
                 },
                 {
+  "id": "ultra_masonry_layout",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل التخطيط المتداخل Masonry",
+  "description": "يعرض الصور بأحجام مختلفة ومتداخلة مثل Pinterest. يعمل فقط عند تفعيل عرض الشبكة",
+  "icon": "sicon-grid",
+  "value": false,
+  "selected": false,
+  "required": false,
+  "conditions": [
+    {
+      "id": "ultra_display_grid",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+                {
                     "id": "ultra_rows_center",
                     "type": "boolean",
                     "format": "switch",
@@ -1902,6 +1920,51 @@
                             "value": null,
                             "required": true
                         },
+                        {
+  "id": "ultra_banners.card_size",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حجم البطاقة",
+  "icon": "sicon-grid",
+  "selected": [
+    {
+      "label": "عادي",
+      "value": "normal",
+      "key": "ultra-card-normal"
+    }
+  ],
+  "options": [
+    {
+      "label": "عادي",
+      "value": "normal",
+      "key": "ultra-card-normal"
+    },
+    {
+      "label": "طويل",
+      "value": "tall",
+      "key": "ultra-card-tall"
+    },
+    {
+      "label": "قصير",
+      "value": "short",
+      "key": "ultra-card-short"
+    },
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "ultra-card-large"
+    },
+    {
+      "label": "عريض",
+      "value": "wide",
+      "key": "ultra-card-wide"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": false
+},
                         {
                             "id": "ultra_banners.use_image_url",
                             "type": "boolean",
