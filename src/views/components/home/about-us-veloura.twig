@@ -1,5 +1,19 @@
 {% if not component.veloura_about_hide_section %}
 
+  {% set radius_key = component.veloura_about_radius|default('large') %}
+  {% if radius_key is iterable and radius_key[0].value is defined %}
+    {% set radius_key = radius_key[0].value %}
+  {% elseif radius_key.value is defined %}
+    {% set radius_key = radius_key.value %}
+  {% endif %}
+
+  {% set image_position = component.veloura_about_image_position|default('right') %}
+  {% if image_position is iterable and image_position[0].value is defined %}
+    {% set image_position = image_position[0].value %}
+  {% elseif image_position.value is defined %}
+    {% set image_position = image_position.value %}
+  {% endif %}
+
   {% set radius_map = {
     'sharp': '0px',
     'soft': '8px',
@@ -8,12 +22,13 @@
     'round': '999px'
   } %}
 
-  {% set about_radius = radius_map[component.veloura_about_radius|default('large')]|default('28px') %}
+  {% set about_radius = radius_map[radius_key]|default('28px') %}
   {% set about_image = component.veloura_about_image.url|default(component.veloura_about_image) %}
 
   {% set section_classes = [
     's-block',
     'veloura-about',
+    image_position == 'left' ? 'veloura-about--image-left' : 'veloura-about--image-right',
     component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
     component.veloura_about_custom_classes ?: ''
   ]|join(' ') %}
@@ -22,6 +37,8 @@
     class="{{ section_classes }}"
     style="
       --veloura-about-radius: {{ about_radius }};
+      --veloura-about-radius-sm: {{ radius_key == 'sharp' ? '0px' : radius_key == 'soft' ? '6px' : radius_key == 'medium' ? '10px' : radius_key == 'large' ? '16px' : '999px' }};
+      --veloura-about-radius-md: {{ radius_key == 'sharp' ? '0px' : radius_key == 'soft' ? '8px' : radius_key == 'medium' ? '14px' : radius_key == 'large' ? '20px' : '999px' }};
       --veloura-about-bg: {{ component.veloura_about_background|default('#ffffff') }};
       --veloura-about-text: {{ component.veloura_about_text_color|default('#222222') }};
       --veloura-about-accent: {{ component.veloura_about_accent_color|default('#004956') }};
@@ -86,7 +103,6 @@
               <div class="veloura-about__stats">
                 {% for stat in component.veloura_about_stats %}
                   <div class="veloura-about__stat">
-
                     {% if stat.stat_icon %}
                       <div class="veloura-about__stat-icon">
                         <i class="{{ stat.stat_icon }}"></i>
@@ -105,7 +121,6 @@
                     {% if stat.stat_title %}
                       <span>{{ stat.stat_title }}</span>
                     {% endif %}
-
                   </div>
                 {% endfor %}
               </div>

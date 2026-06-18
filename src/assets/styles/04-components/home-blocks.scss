@@ -2854,6 +2854,7 @@
     background: var(--veloura-about-soft-solid);
     color: var(--veloura-about-accent);
     border: 1px solid var(--veloura-about-border);
+    border-radius: var(--veloura-about-radius);
     font-size: 13px;
     font-weight: 800;
   }
@@ -3156,4 +3157,44 @@
       min-height: 260px;
     }
   }
+}
+
+@media (min-width: 992px) {
+  .veloura-about--image-right {
+    .veloura-about__content {
+      order: 1;
+    }
+
+    .veloura-about__image {
+      order: 2;
+    }
+  }
+
+  .veloura-about--image-left {
+    .veloura-about__image {
+      order: 1;
+    }
+
+    .veloura-about__content {
+      order: 2;
+    }
+  }
+}
+
+.veloura-about__feature,
+.veloura-about__button,
+.veloura-about__stat {
+  border-radius: var(--veloura-about-radius-md);
+}
+
+.veloura-about__feature-border::after {
+  border-radius: calc(var(--veloura-about-radius-md) - 2px);
+}
+
+.veloura-about__stat-icon {
+  border-radius: var(--veloura-about-radius);
+}
+
+.veloura-about__image {
+  border-radius: var(--veloura-about-radius);
 }
