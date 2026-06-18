@@ -30161,7 +30161,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 }
 .veloura-about {
   padding: 60px 0;
-  background: var(--veloura-about-bg);
+  background: transparent;
   color: var(--veloura-about-text);
   overflow: hidden;
 }
@@ -30183,6 +30183,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     padding-right: 0;
   }
 }
+.veloura-about__box {
+  background: var(--veloura-about-bg);
+  border-radius: var(--veloura-about-radius);
+  padding: 34px;
+  overflow: hidden;
+}
 .veloura-about__wrap {
   display: grid;
   grid-template-columns: 1fr;
@@ -30199,7 +30205,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding: 8px 14px;
   margin-bottom: 14px;
   border-radius: 999px;
-  background: var(--veloura-about-soft);
+  background: var(--veloura-about-soft-solid);
   color: var(--veloura-about-accent);
   border: 1px solid var(--veloura-about-border);
   font-size: 13px;
@@ -30241,11 +30247,11 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   overflow: hidden;
   border-radius: 16px;
   background: #fff;
-  border: 1px solid var(--veloura-about-border);
   color: var(--veloura-about-text);
   text-align: center;
   font-size: 14px;
   font-weight: 800;
+  border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30294,9 +30300,10 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   background: #fff;
 }
 .veloura-about__button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 54px;
   padding: 0 34px;
   margin-top: 28px;
@@ -30307,7 +30314,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-weight: 800;
   -webkit-text-decoration: none;
   text-decoration: none;
-  border: 1px solid color-mix(in srgb, var(--veloura-about-accent) 80%, black);
+  border: 0;
   transition: 0.25s ease;
 }
 .veloura-about__button:hover {
@@ -30327,8 +30334,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   padding: 16px 10px;
   border-radius: 18px;
   background: var(--veloura-about-soft);
-  border: 1px solid var(--veloura-about-border);
+  border: 0;
   text-align: center;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30354,9 +30362,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: color-mix(in srgb, var(--veloura-about-accent) 10%, transparent);
   color: var(--veloura-about-accent);
-  border: 1px solid var(--veloura-about-border);
+  border: 0;
 }
 .veloura-about__stat-icon i {
   font-size: 18px;
@@ -30367,7 +30375,7 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   overflow: hidden;
   border-radius: var(--veloura-about-radius);
   background: #f7f7f7;
-  border: 1px solid var(--veloura-about-border);
+  border: 0;
   transition: transform 0.35s ease;
 }
 .veloura-about__image img {
@@ -30399,6 +30407,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 @media (max-width: 767px) {
   .veloura-about {
     padding: 40px 0;
+  }
+  .veloura-about__box {
+    padding: 20px;
   }
   .veloura-about__wrap {
     gap: 24px;
@@ -30460,9 +30471,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   }
   .veloura-about__image img {
     min-height: 260px;
-  }
-  .veloura-about__button {
-    width: 100%;
   }
 }
 salla-slider{
