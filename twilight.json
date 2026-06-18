@@ -6216,6 +6216,329 @@
       "required": false
     }
   ]
+},
+{
+  "key": "9f2d3b1a-6c84-4e57-9f26-ae8b7c41d902",
+  "title": {
+    "ar": "بوب أب إعلاني (فيلورا)",
+    "en": "Veloura Promo Popup"
+  },
+  "icon": "sicon-megaphone",
+  "path": "home.veloura-popup",
+  "fields": [
+    {
+      "id": "veloura_popup_content_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">محتوى البوب أب</strong><div class=\"text-sm opacity-75 mt-1\">أضف صورة وعنوان ووصف الإعلان</div></div>",
+      "variant": "h1",
+      "icon": "sicon-megaphone"
+    },
+    {
+      "id": "veloura_popup_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان الإعلان",
+      "icon": "sicon-format-text-alt",
+      "value": "عرض خاص لفترة محدودة",
+      "required": false
+    },
+    {
+      "id": "veloura_popup_subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "وصف الإعلان",
+      "icon": "sicon-align-right",
+      "value": "اكتشف أحدث العروض والمنتجات المختارة بعناية.",
+      "required": false
+    },
+    {
+      "id": "veloura_popup_image",
+      "type": "string",
+      "format": "image",
+      "label": "صورة الإعلان",
+      "description": "يفضل صورة عرضية أو مربعة بجودة عالية",
+      "icon": "sicon-image",
+      "value": null,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_show_button",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الزر",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_button_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص الزر",
+      "icon": "sicon-format-text",
+      "value": "تسوق الآن",
+      "required": false,
+      "conditions": [
+        {
+          "id": "veloura_popup_show_button",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_popup_button_link",
+      "type": "items",
+      "icon": "sicon-link",
+      "label": "رابط الزر",
+      "value": [],
+      "required": false,
+      "format": "variable-list",
+      "searchable": true,
+      "source": "custom",
+      "sources": [
+        { "label": "منتج", "key": "products", "value": "products" },
+        { "label": "تصنيف", "key": "categories", "value": "categories" },
+        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+      ],
+      "conditions": [
+        {
+          "id": "veloura_popup_show_button",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_popup_design_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">التصميم والألوان</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بشكل البوب أب وألوانه</div></div>",
+      "variant": "h1",
+      "icon": "sicon-paint-bucket"
+    },
+    {
+      "id": "veloura_popup_bg_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية البوب أب",
+      "icon": "sicon-format-fill",
+      "value": "#ffffff",
+      "required": false
+    },
+    {
+      "id": "veloura_popup_text_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون النص",
+      "icon": "sicon-format-fill",
+      "value": "#222222",
+      "required": false
+    },
+    {
+      "id": "veloura_popup_accent_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون التمييز والزر",
+      "icon": "sicon-palette",
+      "value": "#004956",
+      "required": false
+    },
+    {
+      "id": "veloura_popup_overlay_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون تعتيم الخلفية",
+      "icon": "sicon-paint-bucket",
+      "value": "#000000",
+      "required": false
+    },
+    {
+      "id": "veloura_popup_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "استدارة الحواف",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "كبيرة",
+          "value": "large",
+          "key": "popup-radius-large"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "popup-radius-sharp" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "popup-radius-soft" },
+        { "label": "ناعم", "value": "medium", "key": "popup-radius-medium" },
+        { "label": "كبير", "value": "large", "key": "popup-radius-large" },
+        { "label": "دائري", "value": "round", "key": "popup-radius-round" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_behavior_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">إعدادات الظهور</strong><div class=\"text-sm opacity-75 mt-1\">تحكم بوقت ومكان ظهور الإعلان</div></div>",
+      "variant": "h1",
+      "icon": "sicon-eye"
+    },
+    {
+      "id": "veloura_popup_position",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "مكان ظهور البوب أب",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "وسط الشاشة",
+          "value": "center",
+          "key": "popup-position-center"
+        }
+      ],
+      "options": [
+        { "label": "وسط الشاشة", "value": "center", "key": "popup-position-center" },
+        { "label": "أسفل يمين", "value": "bottom-right", "key": "popup-position-bottom-right" },
+        { "label": "أسفل يسار", "value": "bottom-left", "key": "popup-position-bottom-left" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_delay",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "تأخير الظهور بالثواني",
+      "icon": "sicon-timer",
+      "value": "2",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "20"
+    },
+    {
+      "id": "veloura_popup_once",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار البوب أب مرة واحدة فقط للزائر",
+      "description": "إذا تم التفعيل، لن يظهر الإعلان مرة ثانية لنفس الزائر بعد الإغلاق",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_show_close",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر الإغلاق",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong></div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_popup_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة (يمين ويسار القسم)",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_popup_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_popup_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_popup_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: custom-popup dark",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",
