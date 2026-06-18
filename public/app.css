@@ -30197,7 +30197,29 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   align-items: center;
 }
 .veloura-about__content {
+  grid-area: content;
   text-align: right;
+}
+.veloura-about__image {
+  grid-area: image;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--veloura-about-radius);
+  background: #f7f7f7;
+  border: 0;
+  transition: transform 0.35s ease;
+}
+.veloura-about__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: inherit;
+}
+.veloura-about__image:hover {
+  transform: translateY(-4px);
 }
 .veloura-about__subtitle {
   display: inline-flex;
@@ -30370,27 +30392,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   font-size: 18px;
   line-height: 1;
 }
-.veloura-about__image {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--veloura-about-radius);
-  background: #f7f7f7;
-  border: 0;
-  transition: transform 0.35s ease;
-}
-.veloura-about__image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 460px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: inherit;
-}
-.veloura-about__image:hover {
-  transform: translateY(-4px);
-}
-/* عند تفعيل زر تطبيق الحواف على كل العناصر */
 .veloura-about.has-radius-all .veloura-about__subtitle {
   border-radius: var(--veloura-about-radius);
 }
@@ -30418,17 +30419,16 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     grid-template-columns: 1.05fr 0.95fr;
     gap: 60px;
   }
-  .veloura-about--image-right .veloura-about__image {
-    order: 1;
+  .veloura-about--image-right .veloura-about__wrap {
+    grid-template-areas: "content image";
   }
-  .veloura-about--image-right .veloura-about__content {
-    order: 2;
+  .veloura-about--image-left .veloura-about__wrap {
+    grid-template-areas: "image content";
   }
-  .veloura-about--image-left .veloura-about__content {
-    order: 1;
-  }
-  .veloura-about--image-left .veloura-about__image {
-    order: 2;
+}
+@media (max-width: 991px) {
+  .veloura-about__wrap {
+    grid-template-areas: "content" "image";
   }
 }
 @media (max-width: 767px) {

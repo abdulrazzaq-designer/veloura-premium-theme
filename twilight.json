@@ -5874,6 +5874,17 @@
       "required": false
     },
     {
+  "id": "veloura_about_apply_radius_all",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تطبيق الحواف على جميع عناصر القسم",
+  "description": "عند التفعيل يتم تطبيق اختيار الحواف على الزر والمميزات والإحصائيات والعنوان الفرعي، وعند الإيقاف تبقى الحواف للصورة وخلفية القسم فقط",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+    {
       "id": "veloura_about_colors_title",
       "type": "static",
       "format": "title",

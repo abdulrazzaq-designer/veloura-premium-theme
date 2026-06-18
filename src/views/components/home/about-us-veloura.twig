@@ -28,9 +28,7 @@
   {% set section_classes = [
     's-block',
     'veloura-about',
-
-    image_position == 'right' ? 'veloura-about--image-left' : 'veloura-about--image-right',
-
+    image_position == 'right' ? 'veloura-about--image-right' : 'veloura-about--image-left',
     component.veloura_about_enable_custom_spacing ? 'has-spacing' : '',
     component.veloura_about_apply_radius_all ? 'has-radius-all' : '',
     component.veloura_about_custom_classes ?: ''
@@ -40,7 +38,6 @@
     class="{{ section_classes }}"
     style="
       --veloura-about-radius: {{ about_radius }};
-      --veloura-about-radius-sm: {{ radius_key == 'sharp' ? '0px' : radius_key == 'soft' ? '6px' : radius_key == 'medium' ? '10px' : radius_key == 'large' ? '16px' : '999px' }};
       --veloura-about-radius-md: {{ radius_key == 'sharp' ? '0px' : radius_key == 'soft' ? '8px' : radius_key == 'medium' ? '14px' : radius_key == 'large' ? '20px' : '999px' }};
       --veloura-about-bg: {{ component.veloura_about_background|default('#ffffff') }};
       --veloura-about-text: {{ component.veloura_about_text_color|default('#222222') }};
@@ -106,7 +103,6 @@
               <div class="veloura-about__stats">
                 {% for stat in component.veloura_about_stats %}
                   <div class="veloura-about__stat">
-
                     {% if stat.stat_icon %}
                       <div class="veloura-about__stat-icon">
                         <i class="{{ stat.stat_icon }}"></i>
@@ -125,7 +121,6 @@
                     {% if stat.stat_title %}
                       <span>{{ stat.stat_title }}</span>
                     {% endif %}
-
                   </div>
                 {% endfor %}
               </div>
