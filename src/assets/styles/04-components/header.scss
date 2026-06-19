@@ -296,7 +296,6 @@ salla-menu[topnav]:not(.hydrated) {
 
 
 
-
 .store-header.veloura-top-enabled {
   .top-navbar,
   .main-nav-container {
@@ -304,16 +303,9 @@ salla-menu[topnav]:not(.hydrated) {
     color: var(--veloura-top-text) !important;
   }
 
-  .top-navbar *,
-  .main-nav-container *,
-  .header-btn__icon {
-    color: var(--veloura-top-text) !important;
-  }
-
   .navbar-brand img {
     max-height: var(--veloura-top-logo-size) !important;
     width: auto !important;
-    max-width: none !important;
     object-fit: contain;
   }
 
@@ -339,162 +331,45 @@ salla-menu[topnav]:not(.hydrated) {
       }
     }
   }
-
-  &.veloura-top-border-sharp .main-nav-container {
-    border-radius: 0;
-  }
-
-  &.veloura-top-border-soft .main-nav-container {
-    border-radius: 0 0 12px 12px;
-  }
-
-  &.veloura-top-border-medium .main-nav-container {
-    border-radius: 0 0 24px 24px;
-  }
-
-  &.veloura-top-border-large .main-nav-container {
-    border-radius: 0 0 42px 42px;
-    overflow: hidden;
-  }
-
-  &.veloura-hide-top-on-scroll .top-navbar {
-    transition: transform .3s ease, opacity .3s ease, height .3s ease;
-  }
-
-  &.veloura-top-hidden .top-navbar {
-    transform: translateY(-100%);
-    opacity: 0;
-    height: 0;
-    min-height: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  &.veloura-top-icons-small {
-    .header-btn__icon,
-    .veloura-dark-toggle {
-      width: 38px;
-      height: 38px;
-      font-size: 17px;
-    }
-  }
-
-  &.veloura-top-icons-medium {
-    .header-btn__icon,
-    .veloura-dark-toggle {
-      width: 44px;
-      height: 44px;
-      font-size: 20px;
-    }
-  }
-
-  &.veloura-top-icons-large {
-    .header-btn__icon,
-    .veloura-dark-toggle {
-      width: 52px;
-      height: 52px;
-      font-size: 24px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    &.veloura-top-full-width {
-      .top-navbar > .container,
-      .main-nav-container .container {
-        max-width: none !important;
-        width: 100% !important;
-        padding-inline: 28px;
-      }
-    }
-
-    .veloura-hide-lang-desktop {
-      display: none !important;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .veloura-hide-lang-mobile {
-      display: none !important;
-    }
-
-    .veloura-cart-icon-only-mobile {
-      .s-cart-summary-total {
-        display: none !important;
-      }
-    }
-
-    &.veloura-mobile-search-icon_right .header-search,
-    &.veloura-mobile-search-icon_left .header-search {
-      flex: 0 0 42px !important;
-      width: 42px !important;
-      max-width: 42px !important;
-      overflow: hidden;
-    }
-
-    &.veloura-mobile-search-icon_left .header-search {
-      order: -1;
-    }
-
-    &.veloura-mobile-search-icon_right .header-search {
-      order: 20;
-    }
-
-    &.veloura-mobile-search-bar .header-search,
-    &.veloura-mobile-search-bar_sticky_icon .header-search {
-      flex: 1 1 auto !important;
-      max-width: none !important;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    &.veloura-desktop-search-icon_right .header-search,
-    &.veloura-desktop-search-icon_left .header-search {
-      flex: 0 0 44px !important;
-      width: 44px !important;
-      max-width: 44px !important;
-      overflow: hidden;
-    }
-
-    &.veloura-desktop-search-icon_left .header-search {
-      order: -1;
-    }
-
-    &.veloura-desktop-search-icon_right .header-search {
-      order: 20;
-    }
-
-    &.veloura-desktop-search-bar .header-search,
-    &.veloura-desktop-search-bar_sticky_icon .header-search {
-      flex: 1 1 auto !important;
-      max-width: 520px;
-    }
-  }
 }
 
-.veloura-dark-toggle {
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  color: var(--color-primary);
+/* أيقونات الهيدر بدون إطار */
+.header-actions {
+  @apply flex items-center gap-3;
+}
+
+.veloura-header-icon {
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--veloura-top-text) !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  font-size: 22px;
+  line-height: 1;
   cursor: pointer;
+
+  i {
+    font-size: inherit;
+    line-height: 1;
+  }
+}
+
+.veloura-cart-summary {
+  margin: 0 !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+.veloura-dark-toggle {
   position: static !important;
-  box-shadow: none;
-
-  &--right {
-    margin-inline-start: 12px;
-    margin-inline-end: 0;
-    order: 10;
-  }
-
-  &--left {
-    margin-inline-end: 12px;
-    margin-inline-start: 0;
-    order: -1;
-  }
 
   &__sun {
     display: none;
@@ -503,16 +378,20 @@ salla-menu[topnav]:not(.hydrated) {
 
 body.dark {
   .veloura-dark-toggle {
-    background: var(--veloura-dark-secondary-bg);
-    color: var(--veloura-dark-primary-text);
-    border-color: var(--veloura-dark-product-card-border);
-
     &__moon {
       display: none;
     }
 
     &__sun {
-      display: block;
+      display: inline-block;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .veloura-cart-icon-only-mobile {
+    .s-cart-summary-total {
+      display: none !important;
     }
   }
 }
