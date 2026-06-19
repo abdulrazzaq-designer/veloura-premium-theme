@@ -355,8 +355,10 @@
   "format": "switch",
   "label": "السماح للعميل بالتبديل بين الوضع الفاتح والداكن",
   "description": "إظهار زر التبديل داخل المتجر",
+  "icon": "sicon-toggle-off",
   "value": true,
   "selected": true,
+  "required": false,
   "conditions": [
     {
       "id": "veloura_dark_mode_enabled",
@@ -370,26 +372,38 @@
   "type": "items",
   "format": "dropdown-list",
   "label": "مكان أيقونة الوضع الداكن",
+  "icon": "sicon-keyboard_arrow_down",
   "selected": [
     {
       "label": "يمين",
-      "value": "right"
+      "value": "right",
+      "key": "veloura-dark-switch-position-right"
     }
   ],
   "options": [
     {
       "label": "يمين",
-      "value": "right"
+      "value": "right",
+      "key": "veloura-dark-switch-position-right"
     },
     {
       "label": "يسار",
-      "value": "left"
+      "value": "left",
+      "key": "veloura-dark-switch-position-left"
     }
   ],
   "source": "Manual",
+  "multichoice": false,
+  "searchable": false,
+  "required": false,
   "conditions": [
     {
       "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_dark_mode_switcher",
       "operation": "=",
       "value": true
     }
