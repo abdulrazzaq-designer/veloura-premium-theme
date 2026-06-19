@@ -293,3 +293,39 @@ salla-menu[topnav]:not(.hydrated) {
     );
   }
 }
+
+
+
+
+
+
+
+.veloura-dark-toggle {
+  @apply inline-flex items-center justify-center;
+
+  .header-btn__icon {
+    @apply m-0;
+  }
+
+  &__sun {
+    @apply hidden;
+  }
+}
+
+body.dark {
+  .veloura-dark-toggle {
+    &__moon {
+      @apply hidden;
+    }
+
+    &__sun {
+      @apply inline-block;
+    }
+
+    .header-btn__icon {
+      background: var(--veloura-dark-secondary-bg);
+      color: var(--veloura-dark-primary-text);
+      border-color: var(--veloura-dark-product-card-border);
+    }
+  }
+}
