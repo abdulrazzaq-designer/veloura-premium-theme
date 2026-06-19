@@ -101,7 +101,7 @@
     --veloura-top-bg: {{ theme.settings.get('veloura_top_bg_color_2026', '#ffffff') }};
     --veloura-top-text: {{ theme.settings.get('veloura_top_text_color_2026', '#004d65') }};
     --veloura-top-cart-bg: {{ theme.settings.get('veloura_top_cart_bg_2026', '#f87171') }};
-    --veloura-top-logo-size: {{ theme.settings.get('veloura_top_logo_size_2026', 20) }}px;
+    --veloura-top-logo-size: {{ 42 + theme.settings.get('veloura_top_logo_size_2026', 20) * 3 }}px;
   }
 
   {% if theme.settings.get('veloura_dark_store_bg_image_2026') %}
@@ -198,5 +198,26 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('.store-header.veloura-hide-top-on-scroll');
+  if (!header) return;
+
+  let lastScroll = window.scrollY;
+
+  window.addEventListener('scroll', function () {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > lastScroll && currentScroll > 120) {
+      header.classList.add('veloura-top-hidden');
+    } else {
+      header.classList.remove('veloura-top-hidden');
+    }
+
+    lastScroll = currentScroll;
+  });
+});
+</script>
 </body>
 </html>
