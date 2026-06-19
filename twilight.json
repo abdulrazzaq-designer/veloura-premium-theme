@@ -6651,30 +6651,34 @@
       "required": false
     },
     {
-  "id": "veloura_steps_desktop_columns",
-  "type": "number",
-  "format": "slider",
-  "inputType": "range",
-  "label": "عدد الخطوات في الكمبيوتر",
-  "icon": "sicon-grid",
-  "value": 4,
-  "required": false,
-  "step": 1,
-  "minimum": 2,
-  "maximum": 6
-},
-{
   "id": "veloura_steps_mobile_columns",
   "type": "number",
   "format": "slider",
   "inputType": "range",
   "label": "عدد الخطوات في الجوال",
-  "icon": "sicon-grid",
-  "value": 2,
+  "description": null,
+  "labelHTML": null,
+  "icon": "sicon-pin",
+  "value": "2",
   "required": false,
-  "step": 1,
-  "minimum": 1,
-  "maximum": 3
+  "step": "1",
+  "minimum": "1",
+  "maximum": "4"
+},
+{
+  "id": "veloura_steps_desktop_columns",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "عدد الخطوات في الكمبيوتر",
+  "description": null,
+  "labelHTML": null,
+  "icon": "sicon-pin",
+  "value": "3",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "7"
 },
     {
       "id": "veloura_steps_show_connectors",
