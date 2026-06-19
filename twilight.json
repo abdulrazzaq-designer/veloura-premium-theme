@@ -661,10 +661,14 @@
   "format": "slider",
   "label": "حجم شعار القسم العلوي",
   "description": "القيمة المضافة للشعار",
-  "min": 0,
-  "max": 80,
-  "step": 1,
-  "value": 20,
+  "inputType": "range",
+  "labelHTML": null,
+  "icon": "sicon-pin",
+  "value": "5",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "20",
   "conditions": [
     {
       "id": "veloura_top_enabled_2026",
@@ -863,6 +867,54 @@
   "format": "color",
   "label": "لون خلفية سلة المنتجات في القسم العلوي",
   "value": "#f87171",
+  "conditions": [
+    {
+      "id": "veloura_top_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_top_login_icon_2026",
+  "type": "string",
+  "format": "icon",
+  "label": "أيقونة تسجيل الدخول",
+  "description": "اختر أيقونة خاصة بزر تسجيل الدخول / حساب العميل",
+  "icon": "sicon-user-circle",
+  "value": "sicon-user-circle",
+  "conditions": [
+    {
+      "id": "veloura_top_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_top_cart_icon_2026",
+  "type": "string",
+  "format": "icon",
+  "label": "أيقونة السلة",
+  "description": "اختر أيقونة خاصة بسلة المنتجات في القسم العلوي",
+  "icon": "sicon-shopping-bag",
+  "value": "sicon-shopping-bag",
+  "conditions": [
+    {
+      "id": "veloura_top_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_top_menu_icon_2026",
+  "type": "string",
+  "format": "icon",
+  "label": "أيقونة القائمة",
+  "description": "اختر أيقونة خاصة بقائمة الجوال",
+  "icon": "sicon-menu",
+  "value": "sicon-menu",
   "conditions": [
     {
       "id": "veloura_top_enabled_2026",
