@@ -26,17 +26,6 @@
         "filters"
     ],
     "settings": [
-      {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "اختبار زر فيلورا",
-  "description": "زر اختبار فقط",
-  "id": "veloura_test_dark_switch_987",
-  "format": "switch",
-  "required": false,
-  "value": true,
-  "selected": true
-},
         {
             "id": "squar_photo_bg_image_size",
             "type": "items",
