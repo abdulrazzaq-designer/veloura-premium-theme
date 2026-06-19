@@ -3575,7 +3575,6 @@
 
 
 
-
 .veloura-purchase-steps {
   padding: 50px 0;
   overflow: hidden;
@@ -3660,8 +3659,8 @@
 
     width: 34px;
     height: 34px;
-
     border-radius: 999px;
+
     background: color-mix(in srgb, var(--step-color) 12%, transparent);
     color: var(--step-color);
 
@@ -3728,31 +3727,72 @@
     }
   }
 
+  /* الأسهم المتحركة بين الخطوات */
   &.has-connectors {
-    .veloura-purchase-steps__item:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      inset-inline-end: -18px;
-      width: 18px;
-      height: 2px;
-      background: color-mix(in srgb, var(--veloura-steps-accent) 35%, transparent);
-      transform: translateY(-50%);
-      z-index: 2;
+    .veloura-purchase-steps__item {
+      overflow: visible;
     }
 
-    .veloura-purchase-steps__item:not(:last-child)::before {
-      content: "";
+    .veloura-purchase-steps__item:not(:last-child)::after {
+      content: "‹  ‹  ‹";
       position: absolute;
       top: 50%;
-      inset-inline-end: -24px;
-      width: 10px;
-      height: 10px;
-      border-top: 2px solid color-mix(in srgb, var(--veloura-steps-accent) 45%, transparent);
-      border-left: 2px solid color-mix(in srgb, var(--veloura-steps-accent) 45%, transparent);
-      transform: translateY(-50%) rotate(-45deg);
-      z-index: 3;
+      left: -48px;
+      transform: translateY(-50%);
+      z-index: 20;
+
+      width: 58px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -9px;
+
+      color: transparent;
+
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--veloura-steps-accent) 18%, transparent),
+        var(--veloura-steps-accent),
+        color-mix(in srgb, var(--veloura-steps-accent) 18%, transparent)
+      );
+
+      background-size: 240% 100%;
+      background-position: 100% 0;
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      filter: drop-shadow(
+        0 0 8px color-mix(in srgb, var(--veloura-steps-accent) 35%, transparent)
+      );
+
+      opacity: .35;
+      animation: velouraStepsArrowFlow 1.25s linear infinite;
     }
+  }
+}
+
+@keyframes velouraStepsArrowFlow {
+  0% {
+    background-position: 100% 0;
+    opacity: .25;
+    transform: translateY(-50%) translateX(8px);
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: 0 0;
+    opacity: .25;
+    transform: translateY(-50%) translateX(-8px);
   }
 }
 
@@ -3772,7 +3812,7 @@
   .veloura-purchase-steps {
     &__grid {
       grid-template-columns: repeat(var(--veloura-steps-desktop-cols), minmax(0, 1fr));
-      gap: 22px;
+      gap: 34px;
     }
   }
 }
@@ -3780,9 +3820,8 @@
 @media (max-width: 991px) {
   .veloura-purchase-steps {
     &.has-connectors {
-      .veloura-purchase-steps__item::after,
-      .veloura-purchase-steps__item::before {
-        display: none;
+      .veloura-purchase-steps__item::after {
+        display: none !important;
       }
     }
   }
@@ -3837,57 +3876,5 @@
         font-size: 12px;
       }
     }
-  }
-}
-
-
-.veloura-steps__item {
-  position: relative;
-}
-
-.veloura-steps__arrow {
-  position: absolute;
-  top: 50%;
-  left: -22px;
-  transform: translateY(-50%);
-  z-index: 5;
-
-  width: 44px;
-  height: 44px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--veloura-steps-accent);
-
-  animation: veloura-arrow-move 1.8s ease-in-out infinite;
-
-  i {
-    font-size: 28px;
-    line-height: 1;
-  }
-}
-
-@keyframes veloura-arrow-move {
-  0% {
-    transform: translateY(-50%) translateX(0);
-    opacity: .4;
-  }
-
-  50% {
-    transform: translateY(-50%) translateX(-8px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(-50%) translateX(0);
-    opacity: .4;
-  }
-}
-
-@media (max-width: 991px) {
-  .veloura-steps__arrow {
-    display: none;
   }
 }
