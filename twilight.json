@@ -391,7 +391,7 @@
     {
       "id": "veloura_dark_mode_switcher",
       "operation": "=",
-      "value": "true"
+      "value": true
     }
   ]
 },
