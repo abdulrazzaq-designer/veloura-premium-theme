@@ -3574,7 +3574,6 @@
 
 
 
-
 .veloura-purchase-steps {
   padding: 50px 0;
   overflow: hidden;
@@ -3727,72 +3726,61 @@
     }
   }
 
-  /* الأسهم المتحركة بين الخطوات */
+  /* ===== أسهم متحركة بين الخطوات ===== */
   &.has-connectors {
     .veloura-purchase-steps__item {
       overflow: visible;
     }
 
     .veloura-purchase-steps__item:not(:last-child)::after {
-      content: "‹  ‹  ‹";
+      content: "‹ ‹ ‹";
       position: absolute;
       top: 50%;
-      left: -48px;
+      right: -61px;
       transform: translateY(-50%);
-      z-index: 20;
+      z-index: 30;
 
-      width: 58px;
-      height: 38px;
+      width: 122px;
+      height: 48px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      font-size: 36px;
+      direction: ltr;
+      unicode-bidi: isolate;
+
+      color: var(--veloura-steps-accent);
+      font-size: 34px;
       font-weight: 900;
+      letter-spacing: 9px;
       line-height: 1;
-      letter-spacing: -9px;
 
-      color: transparent;
+      text-shadow:
+        0 0 8px color-mix(in srgb, var(--veloura-steps-accent) 30%, transparent);
 
-      background: linear-gradient(
-        90deg,
-        color-mix(in srgb, var(--veloura-steps-accent) 18%, transparent),
-        var(--veloura-steps-accent),
-        color-mix(in srgb, var(--veloura-steps-accent) 18%, transparent)
-      );
-
-      background-size: 240% 100%;
-      background-position: 100% 0;
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      filter: drop-shadow(
-        0 0 8px color-mix(in srgb, var(--veloura-steps-accent) 35%, transparent)
-      );
-
-      opacity: .35;
-      animation: velouraStepsArrowFlow 1.25s linear infinite;
+      animation: velouraStepsArrowFlow 1.35s ease-in-out infinite;
     }
   }
 }
 
 @keyframes velouraStepsArrowFlow {
   0% {
-    background-position: 100% 0;
     opacity: .25;
-    transform: translateY(-50%) translateX(8px);
+    transform: translateY(-50%) translateX(12px);
   }
 
-  45% {
+  35% {
+    opacity: .55;
+  }
+
+  65% {
     opacity: 1;
   }
 
   100% {
-    background-position: 0 0;
     opacity: .25;
-    transform: translateY(-50%) translateX(-8px);
+    transform: translateY(-50%) translateX(-12px);
   }
 }
 
@@ -3812,7 +3800,7 @@
   .veloura-purchase-steps {
     &__grid {
       grid-template-columns: repeat(var(--veloura-steps-desktop-cols), minmax(0, 1fr));
-      gap: 34px;
+      gap: 46px;
     }
   }
 }
