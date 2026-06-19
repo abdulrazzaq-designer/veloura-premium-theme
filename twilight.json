@@ -389,7 +389,7 @@
   "source": "Manual",
   "conditions": [
     {
-      "id": "veloura_dark_mode_switcher",
+      "id": "veloura_dark_mode_enabled",
       "operation": "=",
       "value": true
     }
