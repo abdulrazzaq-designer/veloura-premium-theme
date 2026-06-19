@@ -1,0 +1,26 @@
+body.dark {
+  background-color: var(--veloura-dark-body-bg) !important;
+  color: var(--veloura-dark-primary-text) !important;
+}
+
+body.dark .app-inner,
+body.dark main {
+  background-color: transparent !important;
+  color: var(--veloura-dark-primary-text) !important;
+}
+
+body.dark header,
+body.dark .main-menu,
+body.dark footer {
+  background: var(--veloura-dark-secondary-bg) !important;
+  color: var(--veloura-dark-primary-text) !important;
+}
+
+body.dark .s-product-card-entry,
+body.dark .s-product-card-content,
+body.dark product-card,
+body.dark .product-entry {
+  background: var(--veloura-dark-product-card-bg) !important;
+  color: var(--veloura-dark-product-card-text) !important;
+  border-color: var(--veloura-dark-product-card-border) !important;
+}
