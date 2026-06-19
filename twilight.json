@@ -251,14 +251,7 @@
             "value": false,
             "selected": false
         },
-        {
-  "id": "veloura_dark_mode_header",
-  "type": "static",
-  "format": "title",
-  "value": "<div style=\"width:100%;padding:15px 18px;border-radius:14px;background:linear-gradient(135deg,#07111f,#172033,#263449);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 10px 25px rgba(7,17,31,.18)\"><div style=\"width:42px;height:42px;border-radius:999px;background:#fff;color:#172033;display:flex;align-items:center;justify-content:center;font-size:21px\">🌙</div><div style=\"flex:1;text-align:center\"><strong style=\"display:block;font-size:18px;font-weight:900\">الوضع الداكن - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.8\">تحكم كامل بألوان وخلفيات المتجر</span></div></div>",
-  "variant": "h1",
-  "icon": "sicon-moon"
-},
+        
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
