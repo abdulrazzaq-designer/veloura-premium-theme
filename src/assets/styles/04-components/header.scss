@@ -296,6 +296,9 @@ salla-menu[topnav]:not(.hydrated) {
 
 
 
+
+
+
 .store-header.veloura-top-enabled {
   .top-navbar,
   .main-nav-container {
@@ -303,9 +306,14 @@ salla-menu[topnav]:not(.hydrated) {
     color: var(--veloura-top-text) !important;
   }
 
+  .main-nav-container {
+    transition: border-radius .25s ease, transform .25s ease;
+  }
+
   .navbar-brand img {
     max-height: var(--veloura-top-logo-size) !important;
     width: auto !important;
+    max-width: none !important;
     object-fit: contain;
   }
 
@@ -323,36 +331,52 @@ salla-menu[topnav]:not(.hydrated) {
     }
   }
 
-  &.veloura-logo-center.veloura-logo-no-center-laptop {
-    @media (min-width: 1024px) {
-      .navbar-brand {
-        position: static;
-        transform: none;
-      }
-    }
+  &.veloura-top-border-sharp .main-nav-container {
+    border-radius: 0;
+  }
+
+  &.veloura-top-border-soft .main-nav-container {
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+  }
+
+  &.veloura-top-border-medium .main-nav-container {
+    border-radius: 0 0 24px 24px;
+    overflow: hidden;
+  }
+
+  &.veloura-top-border-large .main-nav-container {
+    border-radius: 0 0 42px 42px;
+    overflow: hidden;
   }
 }
 
-/* أيقونات الهيدر بدون إطار */
+/* الأيقونات */
 .header-actions {
-  @apply flex items-center gap-3;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.veloura-header-icon {
-  width: auto !important;
-  height: auto !important;
-  min-width: auto !important;
-  min-height: auto !important;
-  padding: 0 !important;
-  margin: 0 !important;
+.veloura-menu-side {
+  gap: 14px;
+
+  i {
+    color: var(--veloura-top-text) !important;
+  }
+}
+
+.veloura-header-icon,
+.veloura-mobile-lang-trigger {
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
   color: var(--veloura-top-text) !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
   line-height: 1;
   cursor: pointer;
 
@@ -366,32 +390,153 @@ salla-menu[topnav]:not(.hydrated) {
   margin: 0 !important;
   min-width: auto !important;
   min-height: auto !important;
+  display: inline-flex;
+  align-items: center;
 }
 
-.veloura-dark-toggle {
-  position: static !important;
-
-  &__sun {
-    display: none;
+.store-header.veloura-top-icons-small {
+  .veloura-header-icon,
+  .veloura-mobile-lang-trigger,
+  .veloura-menu-side i {
+    font-size: 20px !important;
   }
+}
+
+.store-header.veloura-top-icons-medium {
+  .veloura-header-icon,
+  .veloura-mobile-lang-trigger,
+  .veloura-menu-side i {
+    font-size: 25px !important;
+  }
+}
+
+.store-header.veloura-top-icons-large {
+  .veloura-header-icon,
+  .veloura-mobile-lang-trigger,
+  .veloura-menu-side i {
+    font-size: 31px !important;
+  }
+}
+
+/* زر الدارك */
+.veloura-dark-toggle__sun {
+  display: none;
 }
 
 body.dark {
-  .veloura-dark-toggle {
-    &__moon {
-      display: none;
-    }
+  .veloura-dark-toggle__moon {
+    display: none;
+  }
 
-    &__sun {
-      display: inline-block;
-    }
+  .veloura-dark-toggle__sun {
+    display: inline-block;
   }
 }
 
+/* البحث */
+.header-search {
+  flex: 1 1 auto;
+}
+
 @media (max-width: 767px) {
+  .top-navbar {
+    .veloura-top-lang-desktop {
+      display: none !important;
+    }
+  }
+
+  .store-header.veloura-mobile-search-bar {
+    .header-search {
+      display: block !important;
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      max-width: none !important;
+      margin-top: 12px;
+    }
+  }
+
+  .store-header.veloura-mobile-search-icon_right,
+  .store-header.veloura-mobile-search-icon_left {
+    .header-search {
+      flex: 0 0 auto !important;
+      width: auto !important;
+      max-width: none !important;
+      overflow: visible !important;
+
+      .s-search-input,
+      input {
+        display: none !important;
+      }
+    }
+  }
+
+  .store-header.veloura-mobile-search-icon_right .header-search {
+    order: 20;
+  }
+
+  .store-header.veloura-mobile-search-icon_left .header-search {
+    order: -1;
+  }
+
+  .store-header.veloura-mobile-search-bar_sticky_icon .header-search {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 12px;
+  }
+
   .veloura-cart-icon-only-mobile {
     .s-cart-summary-total {
       display: none !important;
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  .store-header.veloura-desktop-search-bar,
+  .store-header.veloura-desktop-search-bar_sticky_icon {
+    .header-search {
+      max-width: 520px;
+      width: 100%;
+    }
+  }
+
+  .store-header.veloura-desktop-search-icon_right,
+  .store-header.veloura-desktop-search-icon_left {
+    .header-search {
+      flex: 0 0 auto !important;
+      width: auto !important;
+      overflow: visible !important;
+
+      .s-search-input,
+      input {
+        display: none !important;
+      }
+    }
+  }
+
+  .store-header.veloura-desktop-search-icon_right .header-search {
+    order: 20;
+  }
+
+  .store-header.veloura-desktop-search-icon_left .header-search {
+    order: -1;
+  }
+}
+
+/* إخفاء القسم العلوي عند النزول */
+.store-header.veloura-hide-top-on-scroll {
+  .top-navbar {
+    transition: transform .25s ease, opacity .25s ease, height .25s ease, padding .25s ease;
+  }
+}
+
+.store-header.veloura-top-hidden {
+  .top-navbar {
+    transform: translateY(-100%);
+    opacity: 0;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
   }
 }
