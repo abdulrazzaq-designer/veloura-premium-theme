@@ -245,29 +245,6 @@
             "selected": false
         },
         {
-            "id": "title",
-            "type": "static",
-            "format": "title",
-            "label": "Title",
-            "value": null,
-            "variant": "h1",
-            "icon": "sicon-format-text"
-        },
-        {
-            "id": "collection",
-            "type": "collection",
-            "format": "collection",
-            "label": "Collection",
-            "description": null,
-            "labelHTML": null,
-            "item_label": null,
-            "icon": "sicon-list-add",
-            "fields": [],
-            "value": [],
-            "minLength": 1,
-            "maxLength": 5
-        },
-        {
   "id": "veloura_dark_mode_header",
   "type": "static",
   "format": "title",
