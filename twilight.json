@@ -1,8 +1,8 @@
 {
     "name": {
-        "ar": "veloura-premium-theme",
-        "en": "veloura-premium-theme"
-    },
+  "ar": "veloura-premium-theme TEST",
+  "en": "veloura-premium-theme TEST"
+},
     "repository": "https://github.com/abdulrazzaq-designer/veloura-premium-theme",
     "author_email": "abdulrazzaq.alsheib@gmail.com",
     "features": [
