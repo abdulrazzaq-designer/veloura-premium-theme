@@ -26225,15 +26225,9 @@ salla-menu[topnav]:not(.hydrated)::after {
   background-color: rgba(255, 255, 255, 0.08);
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0) 100%);
 }
-.store-header.veloura-top-enabled .top-navbar,
 .store-header.veloura-top-enabled .main-nav-container {
   background: var(--veloura-top-bg) !important;
   color: var(--veloura-top-text) !important;
-}
-@media (max-width: 1023px) {
-  .store-header.veloura-top-enabled .top-navbar {
-    display: none !important;
-  }
 }
 .store-header.veloura-top-enabled .main-nav-container {
   overflow: hidden;
@@ -26262,23 +26256,19 @@ salla-menu[topnav]:not(.hydrated)::after {
 .store-header.veloura-top-enabled .s-cart-summary-count {
   background: var(--veloura-top-cart-bg) !important;
 }
-.veloura-topbar-row,
 .veloura-mainbar {
+  position: relative;
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.veloura-topbar-start,
-.veloura-topbar-end,
 .veloura-mainbar-right,
 .veloura-mainbar-left {
   display: flex;
   align-items: center;
-  gap: 18px;
-}
-.veloura-mainbar {
-  position: relative;
-  min-height: 84px;
+  gap: 14px;
+  min-width: 0;
 }
 .veloura-main-logo {
   margin: 0 !important;
@@ -26289,10 +26279,7 @@ salla-menu[topnav]:not(.hydrated)::after {
   transform: translateX(-50%);
   z-index: 2;
 }
-.veloura-header-icon,
-.veloura-lang-mobile,
-.veloura-dark-toggle,
-.veloura-cart-summary i[slot=icon] {
+.veloura-header-icon {
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -26301,32 +26288,11 @@ salla-menu[topnav]:not(.hydrated)::after {
   color: var(--veloura-top-text) !important;
   display: inline-flex !important;
 }
-.veloura-header-icon,
-.veloura-lang-mobile,
-.veloura-dark-toggle,
-.veloura-cart-summary i[slot=icon] {
+.veloura-header-icon {
   align-items: center;
   justify-content: center;
   line-height: 1;
   cursor: pointer;
-}
-.veloura-login-button {
-  background: transparent;
-  border: 0;
-  color: var(--veloura-top-text);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-}
-.veloura-login-button i {
-  line-height: 1;
-}
-.veloura-login-button .veloura-login-text {
-  font-weight: 700;
-  white-space: nowrap;
 }
 .veloura-cart-summary {
   display: inline-flex !important;
@@ -26335,27 +26301,16 @@ salla-menu[topnav]:not(.hydrated)::after {
   min-width: auto !important;
   min-height: auto !important;
 }
-.store-header.veloura-top-icons-small .veloura-header-icon,
-.store-header.veloura-top-icons-small .veloura-lang-mobile,
-.store-header.veloura-top-icons-small .veloura-dark-toggle,
-.store-header.veloura-top-icons-small .veloura-login-button i,
-.store-header.veloura-top-icons-small .veloura-cart-summary i[slot=icon] {
+.store-header.veloura-top-icons-small .veloura-header-icon {
   font-size: 22px !important;
 }
-.store-header.veloura-top-icons-medium .veloura-header-icon,
-.store-header.veloura-top-icons-medium .veloura-lang-mobile,
-.store-header.veloura-top-icons-medium .veloura-dark-toggle,
-.store-header.veloura-top-icons-medium .veloura-login-button i,
-.store-header.veloura-top-icons-medium .veloura-cart-summary i[slot=icon] {
+.store-header.veloura-top-icons-medium .veloura-header-icon {
   font-size: 28px !important;
 }
-.store-header.veloura-top-icons-large .veloura-header-icon,
-.store-header.veloura-top-icons-large .veloura-lang-mobile,
-.store-header.veloura-top-icons-large .veloura-dark-toggle,
-.store-header.veloura-top-icons-large .veloura-login-button i,
-.store-header.veloura-top-icons-large .veloura-cart-summary i[slot=icon] {
+.store-header.veloura-top-icons-large .veloura-header-icon {
   font-size: 34px !important;
 }
+/* Dark toggle */
 .veloura-dark-toggle__sun {
   display: none;
 }
@@ -26365,76 +26320,31 @@ body.dark .veloura-dark-toggle__moon {
 body.dark .veloura-dark-toggle__sun {
   display: inline-block;
 }
-.veloura-lang-desktop {
-  display: none;
-}
-@media (min-width: 1024px) {
-  .veloura-lang-mobile {
-    display: none !important;
-  }
-  .veloura-menu-trigger {
-    display: inline-flex !important;
-  }
-  .veloura-mainbar-right {
-    order: 3;
-  }
-  .veloura-mainbar-left {
-    order: 1;
-  }
-  .veloura-main-logo {
-    order: 2;
-  }
-  .veloura-search {
-    min-width: 44px;
-  }
-  .store-header.veloura-desktop-search-bar .veloura-search,
-  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search {
-    width: 280px;
-    max-width: 280px;
-  }
-  .store-header.veloura-desktop-search-icon_right .veloura-search,
-  .store-header.veloura-desktop-search-icon_left .veloura-search {
-    width: 42px;
-    max-width: 42px;
-    overflow: hidden;
-  }
-  .store-header.veloura-desktop-search-icon_right .veloura-search .s-search-input,
-  .store-header.veloura-desktop-search-icon_right .veloura-search input,
-  .store-header.veloura-desktop-search-icon_left .veloura-search .s-search-input,
-  .store-header.veloura-desktop-search-icon_left .veloura-search input {
-    display: none !important;
-  }
-}
+/* Mobile */
 @media (max-width: 1023px) {
   .veloura-mainbar {
     min-height: 72px;
   }
   .veloura-mainbar-right {
-    gap: 14px;
+    order: 3;
+  }
+  .veloura-main-logo {
+    order: 2;
   }
   .veloura-mainbar-left {
-    gap: 14px;
+    order: 1;
   }
-  .veloura-login-text,
-  .veloura-lang-desktop-main,
-  custom-main-menu {
+  custom-main-menu,
+  .veloura-lang-desktop {
     display: none !important;
   }
-  .store-header.veloura-mobile-search-bar .veloura-mainbar,
-  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-mainbar {
-    flex-wrap: wrap;
-  }
-  .store-header.veloura-mobile-search-bar .veloura-search,
-  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search {
-    order: 5;
-    flex: 0 0 100%;
-    width: 100%;
-    margin-top: 10px;
+  .veloura-cart-icon-only-mobile .s-cart-summary-total {
+    display: none !important;
   }
   .store-header.veloura-mobile-search-icon_right .veloura-search,
   .store-header.veloura-mobile-search-icon_left .veloura-search {
-    width: 32px;
-    overflow: hidden;
+    width: auto;
+    overflow: visible;
   }
   .store-header.veloura-mobile-search-icon_right .veloura-search .s-search-input,
   .store-header.veloura-mobile-search-icon_right .veloura-search input,
@@ -26445,22 +26355,71 @@ body.dark .veloura-dark-toggle__sun {
   .store-header.veloura-mobile-search-icon_left .veloura-search {
     order: -1;
   }
-  .veloura-cart-icon-only-mobile .s-cart-summary-total {
+  .store-header.veloura-mobile-search-bar .veloura-mainbar,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-mainbar {
+    flex-wrap: wrap;
+  }
+  .store-header.veloura-mobile-search-bar .veloura-search,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search {
+    order: 10;
+    flex: 0 0 100%;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search {
+    order: initial;
+    flex: initial;
+    width: auto;
+    margin-top: 0;
+  }
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search .s-search-input,
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search input {
     display: none !important;
   }
 }
-.store-header.veloura-hide-top-on-scroll .top-navbar {
-  transition: transform 0.25s ease, opacity 0.25s ease, height 0.25s ease, padding 0.25s ease;
-}
-.store-header.veloura-top-hidden .top-navbar {
-  height: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-}
-.store-header.veloura-top-hidden .top-navbar {
-  transform: translateY(-100%);
-  opacity: 0;
-  overflow: hidden;
+/* Desktop */
+@media (min-width: 1024px) {
+  .veloura-lang-mobile {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-menu-links .veloura-menu-trigger {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-menu-links custom-main-menu {
+    display: block !important;
+  }
+  .store-header.veloura-desktop-menu-hamburger .veloura-menu-trigger {
+    display: inline-flex !important;
+  }
+  .store-header.veloura-desktop-menu-hamburger custom-main-menu {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-search-bar .veloura-search,
+  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search {
+    width: 320px;
+    max-width: 320px;
+  }
+  .store-header.veloura-desktop-search-icon_right .veloura-search,
+  .store-header.veloura-desktop-search-icon_left .veloura-search {
+    width: auto;
+    overflow: visible;
+  }
+  .store-header.veloura-desktop-search-icon_right .veloura-search .s-search-input,
+  .store-header.veloura-desktop-search-icon_right .veloura-search input,
+  .store-header.veloura-desktop-search-icon_left .veloura-search .s-search-input,
+  .store-header.veloura-desktop-search-icon_left .veloura-search input {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-search-icon_left .veloura-search {
+    order: -1;
+  }
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search {
+    width: auto;
+  }
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search .s-search-input,
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search input {
+    display: none !important;
+  }
 }
 .store-footer{
     position: relative;

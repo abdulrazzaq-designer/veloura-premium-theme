@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const header = document.querySelector('.store-header.veloura-hide-top-on-scroll');
+  const header = document.querySelector('.store-header');
   if (!header) return;
 
   let lastScroll = window.scrollY;
@@ -209,10 +209,18 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     const currentScroll = window.scrollY;
 
-    if (currentScroll > lastScroll && currentScroll > 120) {
-      header.classList.add('veloura-top-hidden');
+    if (currentScroll > 120) {
+      header.classList.add('veloura-top-scrolled');
     } else {
-      header.classList.remove('veloura-top-hidden');
+      header.classList.remove('veloura-top-scrolled');
+    }
+
+    if (header.classList.contains('veloura-hide-top-on-scroll')) {
+      if (currentScroll > lastScroll && currentScroll > 120) {
+        header.classList.add('veloura-top-hidden');
+      } else {
+        header.classList.remove('veloura-top-hidden');
+      }
     }
 
     lastScroll = currentScroll;

@@ -749,6 +749,41 @@
   ]
 },
 {
+  "id": "veloura_top_desktop_menu_mode_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض التصنيفات في اللابتوب",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "عرض التصنيفات كروابط",
+      "value": "links",
+      "key": "veloura-desktop-menu-links"
+    }
+  ],
+  "options": [
+    {
+      "label": "عرض التصنيفات كروابط",
+      "value": "links",
+      "key": "veloura-desktop-menu-links"
+    },
+    {
+      "label": "عرضها كقائمة مثل الجوال",
+      "value": "hamburger",
+      "key": "veloura-desktop-menu-hamburger"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_top_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_top_border_style_2026",
   "type": "items",
   "format": "dropdown-list",
