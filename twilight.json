@@ -26,6 +26,13 @@
         "filters"
     ],
     "settings": [
+      {
+  "type": "boolean",
+  "id": "veloura_test_999",
+  "label": "اختبار فيلورا",
+  "format": "switch",
+  "value": true
+},
         {
             "id": "squar_photo_bg_image_size",
             "type": "items",
