@@ -550,6 +550,296 @@
       "value": true
     }
   ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_top_header_settings_title",
+  "value": "<div style=\"width:100%;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;text-align:center\"><strong style=\"display:block;font-size:17px;font-weight:900\">خيارات القسم العلوي - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.85;margin-top:4px\">تحكم بالشعار، الألوان، البحث، الأيقونات وسلوك الهيدر</span></div>",
+  "variant": "h1",
+  "icon": "sicon-layout-header"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "توسيط الشعار في القسم العلوي",
+  "description": "يتم عرض الشعار في الوسط",
+  "id": "veloura_top_logo_center",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إلغاء التوسيط للشعار في أجهزة اللابتوب",
+  "description": "يتم وضع الشعار في مكانه العادي في اللابتوب",
+  "id": "veloura_top_logo_no_center_laptop",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء قسم أعلى الصفحة عند النزول",
+  "description": "يفضل وضع أيقونات القسم العلوي في قائمة الجوال عند تفعيل هذا الزر",
+  "id": "veloura_top_hide_on_scroll",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "id": "veloura_top_logo_size",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم شعار القسم العلوي",
+  "description": "القيمة المضافة للشعار",
+  "min": 0,
+  "max": 80,
+  "step": 1,
+  "value": 20
+},
+{
+  "id": "veloura_top_logo_image",
+  "type": "string",
+  "format": "image",
+  "label": "شعار القسم العلوي (الهيدر)",
+  "description": "ارفع شعار خاص بالقسم العلوي، عند تركه فارغاً سيتم وضع شعار المتجر الأساسي"
+},
+{
+  "id": "veloura_top_logo_url",
+  "type": "string",
+  "format": "url",
+  "label": "أو شعار متحرك",
+  "description": "في حال وضع رابط للشعار سيتم تجاهل الصورة السابقة. الصيغ المقبولة svg, jpeg, jpg, webp, gif, png, webm",
+  "placeholder": "e.g. jhmi.me/3.gif"
+},
+{
+  "id": "veloura_top_bg_color",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية القسم العلوي في الوضع الفاتح فقط",
+  "value": "#ffffff"
+},
+{
+  "id": "veloura_top_text_color",
+  "type": "string",
+  "format": "color",
+  "label": "لون النص والأيقونات للقسم العلوي في الوضع الفاتح فقط",
+  "value": "#004d65"
+},
+{
+  "id": "veloura_top_border_style",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "الحواف السفلية للقسم العلوي",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "veloura-top-border-sharp"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "veloura-top-border-sharp"
+    },
+    {
+      "label": "ناعم قليلاً",
+      "value": "soft",
+      "key": "veloura-top-border-soft"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-top-border-medium"
+    },
+    {
+      "label": "ناعم جداً",
+      "value": "large",
+      "key": "veloura-top-border-large"
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء زر العملة واللغة في القسم العلوي للابتوب",
+  "description": "عند التفعيل يتم عرض العملة واللغة في القسم السفلي فقط",
+  "id": "veloura_top_hide_currency_lang_desktop",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "أيقونة اللغة والعملة في الهيدر للجوال",
+  "description": "عند إلغاء تفعيله ستظهر الأيقونة في القائمة الجانبية",
+  "id": "veloura_top_mobile_currency_lang_icon",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء سعر/مجموع السلة من القسم العلوي (الهيدر)",
+  "description": "إخفاء السعر من أيقونة السلة وإظهار الأيقونة فقط في الجوال",
+  "id": "veloura_top_hide_cart_total_mobile",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "id": "veloura_top_mobile_search_display",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض البحث عن المنتجات في الجوال",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "أيقونة على اليمين فقط",
+      "value": "icon_right",
+      "key": "veloura-mobile-search-icon-right"
+    }
+  ],
+  "options": [
+    {
+      "label": "أيقونة على اليمين فقط",
+      "value": "icon_right",
+      "key": "veloura-mobile-search-icon-right"
+    },
+    {
+      "label": "أيقونة على اليسار فقط",
+      "value": "icon_left",
+      "key": "veloura-mobile-search-icon-left"
+    },
+    {
+      "label": "شريط بحث مستطيل",
+      "value": "bar",
+      "key": "veloura-mobile-search-bar"
+    },
+    {
+      "label": "شريط بالأعلى وأيقونة عند النزول",
+      "value": "bar_sticky_icon",
+      "key": "veloura-mobile-search-bar-sticky-icon"
+    }
+  ]
+},
+{
+  "id": "veloura_top_desktop_search_display",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض البحث عن المنتجات في اللابتوب",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "شريط بالأعلى وأيقونة عند النزول",
+      "value": "bar_sticky_icon",
+      "key": "veloura-desktop-search-bar-sticky-icon"
+    }
+  ],
+  "options": [
+    {
+      "label": "أيقونة على اليمين فقط",
+      "value": "icon_right",
+      "key": "veloura-desktop-search-icon-right"
+    },
+    {
+      "label": "أيقونة على اليسار فقط",
+      "value": "icon_left",
+      "key": "veloura-desktop-search-icon-left"
+    },
+    {
+      "label": "شريط بحث مستطيل",
+      "value": "bar",
+      "key": "veloura-desktop-search-bar"
+    },
+    {
+      "label": "شريط بالأعلى وأيقونة عند النزول",
+      "value": "bar_sticky_icon",
+      "key": "veloura-desktop-search-bar-sticky-icon"
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "جعل القسم العلوي وشريط البحث ملء الشاشة في اللابتوب",
+  "description": "عند عدم تفعيله سيكون القسم العلوي في اللابتوب بنفس عرض العناصر العادية container",
+  "id": "veloura_top_full_width_desktop",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار قائمة المفضلة في القسم العلوي (الهيدر)",
+  "description": "تظهر في اللابتوب فقط ولا تظهر في الجوال لعدم توفر مساحة",
+  "id": "veloura_top_show_wishlist",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false
+},
+{
+  "id": "veloura_top_cart_bg",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية سلة المنتجات في القسم العلوي",
+  "value": "#f87171"
+},
+{
+  "id": "veloura_top_icons_size",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حجم أيقونات القسم العلوي",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "صغير",
+      "value": "small",
+      "key": "veloura-top-icons-small"
+    }
+  ],
+  "options": [
+    {
+      "label": "صغير",
+      "value": "small",
+      "key": "veloura-top-icons-small"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "veloura-top-icons-medium"
+    },
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "veloura-top-icons-large"
+    }
+  ]
 }
     ],
     "components": [
