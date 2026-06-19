@@ -5,17 +5,64 @@ body.dark {
 
 body.dark .app-inner,
 body.dark main {
-  background-color: transparent !important;
+  background: transparent !important;
   color: var(--veloura-dark-primary-text) !important;
 }
 
+/* الخلفية الثانوية للأقسام والبطاقات */
+body.dark .s-block,
+body.dark .s-block__title,
+body.dark .section,
+body.dark .card,
+body.dark .box,
+body.dark .feature,
+body.dark .features,
+body.dark .accordion,
+body.dark .faq,
+body.dark .testimonial,
+body.dark .veloura-store-features__item,
+body.dark .veloura-testimonials__card,
+body.dark .veloura-animated-articles__card,
+body.dark .veloura-before-after__box {
+  background-color: var(--veloura-dark-secondary-bg) !important;
+  color: var(--veloura-dark-primary-text) !important;
+  border-color: var(--veloura-dark-product-card-border) !important;
+}
+
+/* الهيدر والفوتر */
 body.dark header,
 body.dark .main-menu,
-body.dark footer {
+body.dark footer,
+body.dark .store-footer {
   background: var(--veloura-dark-secondary-bg) !important;
   color: var(--veloura-dark-primary-text) !important;
 }
 
+/* النصوص */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p,
+body.dark span,
+body.dark a,
+body.dark li {
+  color: var(--veloura-dark-primary-text);
+}
+
+/* النصوص الثانوية */
+body.dark small,
+body.dark .text-gray-400,
+body.dark .text-gray-500,
+body.dark .text-gray-600,
+body.dark .opacity-70,
+body.dark .opacity-75 {
+  color: var(--veloura-dark-secondary-text) !important;
+}
+
+/* كروت المنتجات */
 body.dark .s-product-card-entry,
 body.dark .s-product-card-content,
 body.dark product-card,
@@ -23,4 +70,49 @@ body.dark .product-entry {
   background: var(--veloura-dark-product-card-bg) !important;
   color: var(--veloura-dark-product-card-text) !important;
   border-color: var(--veloura-dark-product-card-border) !important;
+}
+
+body.dark .s-product-card-content-title a,
+body.dark .s-product-card-price,
+body.dark .s-product-card-sale-price {
+  color: var(--veloura-dark-product-card-text) !important;
+}
+
+/* زر التبديل */
+.veloura-dark-toggle {
+  position: fixed;
+  top: 95px;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: var(--veloura-dark-secondary-bg);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+  cursor: pointer;
+}
+
+.veloura-dark-toggle--right {
+  right: 16px;
+}
+
+.veloura-dark-toggle--left {
+  left: 16px;
+}
+
+.veloura-dark-toggle__icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+body.dark .veloura-dark-toggle__icon--moon {
+  display: none;
+}
+
+body:not(.dark) .veloura-dark-toggle__icon--sun {
+  display: none;
 }
