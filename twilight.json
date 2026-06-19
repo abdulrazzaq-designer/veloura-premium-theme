@@ -268,95 +268,171 @@
             "maxLength": 5
         },
         {
-            "id": "switch",
-            "type": "boolean",
-            "format": "switch",
-            "label": "Switch",
-            "description": "الوضع الداكن",
-            "labelHTML": null,
-            "icon": "sicon-toggle-off",
-            "value": true,
-            "selected": true,
-            "required": false,
-            "public": true
-        },
-        {
-            "id": "image",
-            "type": "string",
-            "format": "image",
-            "label": "Image",
-            "description": "شعار الوضع الداكن",
-            "labelHTML": "ارفع شعار خاص بالوضع الداكن للقسم العلوي والسفلي",
-            "placeholder": "e.g. https://hostname.com/image.png",
-            "icon": "sicon-image",
-            "value": null,
-            "required": false,
-            "public": false
-        },
-        {
-            "id": "color_copy",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "Color copy",
-            "description": "لون الخلفية الأساسي في الوضع الداكن",
-            "labelHTML": "<div><img  class=\"my-2\" src=\"https://jhmi.me/14.png\"></div>",
-            "icon": "sicon-format-fill",
-            "value": "#000000",
-            "required": false,
-            "public": true
-        },
-        {
-            "id": "color_copy_1",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "Color copy 1",
-            "description": "لون الخلفية الثانوي في الوضع الداكن",
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#1a1a1a",
-            "required": false,
-            "public": true
-        },
-        {
-            "id": "color_copy_2",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "Color copy 2",
-            "description": "لون النص الأساسي في الوضع الداكن",
-            "labelHTML": "يجب اختيار لون فاتح مثل الأبيض",
-            "icon": "sicon-format-fill",
-            "value": "#ffffff",
-            "required": false,
-            "public": true
-        },
-        {
-            "id": "color",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "Color",
-            "description": "لون النصوص الثانوي ( الفرعي ) في الوضع الداكن",
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#cfcfcf",
-            "required": false,
-            "public": true
-        },
-        {
-            "id": "color_1",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "Color 1",
-            "description": "لون خلفية بطاقة المنتج في الوضع الداكن",
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#1a1a1a",
-            "required": false
-        }
+  "id": "veloura_dark_mode_title",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"padding:16px;border-radius:16px;background:linear-gradient(135deg,#111827,#334155);color:#fff;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,.18)\"><strong style=\"font-size:18px;display:block\">الوضع الداكن - Veloura</strong><span style=\"font-size:13px;opacity:.8\">تحكم كامل بألوان المتجر في الوضع الداكن</span></div>",
+  "variant": "h1",
+  "icon": "sicon-moon"
+},
+{
+  "id": "veloura_dark_mode_enabled",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل إعدادات الوضع الداكن المخصصة",
+  "description": "عند إغلاق هذا الزر تختفي جميع إعدادات الوضع الداكن ولا يتم تطبيقها على الواجهة",
+  "icon": "sicon-toggle-off",
+  "value": false,
+  "selected": false,
+  "required": false,
+  "public": true
+},
+{
+  "id": "veloura_dark_logo",
+  "type": "string",
+  "format": "image",
+  "label": "شعار الوضع الداكن",
+  "description": "ارفع شعاراً مناسباً للخلفيات الداكنة",
+  "placeholder": "e.g. https://hostname.com/image.png",
+  "icon": "sicon-image",
+  "value": null,
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_body_bg",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون خلفية الموقع",
+  "icon": "sicon-format-fill",
+  "value": "#0b0f14",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_section_bg",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون خلفية الأقسام",
+  "icon": "sicon-format-fill",
+  "value": "#111827",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_card_bg",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون خلفية البطاقات",
+  "icon": "sicon-format-fill",
+  "value": "#161f2c",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_text_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون النص الأساسي",
+  "icon": "sicon-format-fill",
+  "value": "#ffffff",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_muted_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون النص الفرعي",
+  "icon": "sicon-format-fill",
+  "value": "#b6c2d1",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_border_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون الحدود",
+  "icon": "sicon-format-fill",
+  "value": "#263244",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_primary_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون التمييز في الوضع الداكن",
+  "icon": "sicon-palette",
+  "value": "#38bdf8",
+  "required": false,
+  "public": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+}
     ],
     "components": [
         {
