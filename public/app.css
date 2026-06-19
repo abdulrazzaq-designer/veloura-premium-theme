@@ -34063,20 +34063,14 @@ body.dark main {
   color: var(--veloura-dark-primary-text) !important;
 }
 /* الخلفية الثانوية للأقسام والبطاقات */
-body.dark .s-block,
-body.dark .s-block__title,
-body.dark .section,
-body.dark .card,
-body.dark .box,
-body.dark .feature,
-body.dark .features,
-body.dark .accordion,
-body.dark .faq,
-body.dark .testimonial,
-body.dark .veloura-store-features__item,
 body.dark .veloura-testimonials__card,
+body.dark .veloura-store-features__item,
 body.dark .veloura-animated-articles__card,
-body.dark .veloura-before-after__box {
+body.dark .veloura-before-after__card,
+body.dark .veloura-quick-links__card,
+body.dark .veloura-about__box,
+body.dark .veloura-purchase-steps__item,
+body.dark .veloura-faq__item {
   background-color: var(--veloura-dark-secondary-bg) !important;
   color: var(--veloura-dark-primary-text) !important;
   border-color: var(--veloura-dark-product-card-border) !important;
@@ -34126,22 +34120,6 @@ body.dark .s-product-card-sale-price {
   color: var(--veloura-dark-product-card-text) !important;
 }
 /* زر التبديل */
-.veloura-dark-toggle {
-  position: fixed;
-  top: 95px;
-  z-index: 9999;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: var(--veloura-dark-secondary-bg);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-}
 .veloura-dark-toggle--right {
   right: 16px;
 }
