@@ -299,33 +299,42 @@ salla-menu[topnav]:not(.hydrated) {
 
 
 
-
 .veloura-dark-toggle {
-  @apply inline-flex items-center justify-center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-end: 12px;
+  cursor: pointer;
 
-  .header-btn__icon {
-    @apply m-0;
+  i {
+    font-size: 18px;
+    line-height: 1;
   }
 
   &__sun {
-    @apply hidden;
+    display: none;
   }
 }
 
 body.dark {
   .veloura-dark-toggle {
+    background: var(--veloura-dark-secondary-bg);
+    color: var(--veloura-dark-primary-text);
+    border-color: var(--veloura-dark-product-card-border);
+
     &__moon {
-      @apply hidden;
+      display: none;
     }
 
     &__sun {
-      @apply inline-block;
-    }
-
-    .header-btn__icon {
-      background: var(--veloura-dark-secondary-bg);
-      color: var(--veloura-dark-primary-text);
-      border-color: var(--veloura-dark-product-card-border);
+      display: block;
     }
   }
 }

@@ -62,13 +62,14 @@
                   </div>
                   <div class="flex items-center justify-end my-2.5">
                   {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') %}
-      <button type="button" class="header-btn veloura-dark-toggle" aria-label="تبديل الوضع الداكن">
-        <span class="header-btn__icon">
-          <i class="sicon-moon veloura-dark-toggle__moon"></i>
-          <i class="sicon-sun veloura-dark-toggle__sun"></i>
-        </span>
-      </button>
-    {% endif %}
+<button
+  type="button"
+  class="veloura-dark-toggle"
+  aria-label="تبديل الوضع الداكن">
+    <i class="sicon-moon veloura-dark-toggle__moon"></i>
+    <i class="sicon-sun veloura-dark-toggle__sun"></i>
+</button>
+{% endif %}
                       <salla-user-menu avatar-only show-header show-trigger></salla-user-menu>
                       <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
                         <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
