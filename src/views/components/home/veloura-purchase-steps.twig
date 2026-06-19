@@ -86,14 +86,20 @@
               </div>
 
               <div class="veloura-purchase-steps__content">
-                {% if step.step_title %}
-                  <h3>{{ step.step_title }}</h3>
-                {% endif %}
+  {% if step.step_title %}
+    <h3>{{ step.step_title }}</h3>
+  {% endif %}
 
-                {% if step.step_description %}
-                  <p>{{ step.step_description }}</p>
-                {% endif %}
-              </div>
+  {% if step.step_description %}
+    <p>{{ step.step_description }}</p>
+  {% endif %}
+</div>
+
+{% if component.veloura_steps_show_connectors and not loop.last %}
+  <span class="veloura-purchase-steps__arrow">
+    <i class="sicon-keyboard_arrow_left"></i>
+  </span>
+{% endif %}
 
             </div>
 
