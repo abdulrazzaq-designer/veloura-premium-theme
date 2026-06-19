@@ -6,7 +6,13 @@
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
 {% set important_links = theme.settings.get('important_links') %}
-<header class="store-header">
+
+{% set veloura_top_enabled = theme.settings.get('veloura_top_enabled_2026', false) %}
+{% set veloura_top_logo = theme.settings.get('veloura_top_logo_url_2026') ?: theme.settings.get('veloura_top_logo_image_2026') ?: store.logo|cdn(175) %}
+{% set veloura_top_border = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
+{% set veloura_icons_size = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
+
+<header class="store-header {{ veloura_top_enabled ? 'veloura-top-enabled' : '' }} veloura-top-border-{{ veloura_top_border }} veloura-top-icons-{{ veloura_icons_size }}">
   {# Top Nav #}
   <div class="top-navbar">
     <div class="container flex justify-between">
@@ -48,7 +54,7 @@
               <div class="flex items-stretch justify-between relative">
                   <div class="flex items-center">
                       <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
-                        <i class="sicon-menu text-primary text-2xl"></i>
+                        <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }} text-primary text-2xl"></i>
                       </a>
                       <a class="navbar-brand" href="{{ store.url }}">
                           {% set dark_logo = theme.settings.get('veloura_dark_logo_2026') %}
@@ -58,7 +64,7 @@
   width="100%"
   height="100%"
   loading="eager"
-  src="{{ store.logo|cdn(175) }}"
+  src="{{ veloura_top_logo }}"
   data-light-logo="{{ store.logo|cdn(175) }}"
   data-dark-logo="{{ theme.settings.get('veloura_dark_logo_2026') }}"
   class="veloura-store-logo"
@@ -73,18 +79,26 @@
                   </div>
                   <div class="flex items-center justify-end my-2.5">
                   {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') %}
+  <button
+    type="button"
+    class="veloura-dark-toggle veloura-dark-toggle--{{ theme.settings.get('veloura_dark_toggle_position_2026', 'right') }}"
+    aria-label="تبديل الوضع الداكن">
+      <i class="sicon-moon veloura-dark-toggle__moon"></i>
+      <i class="sicon-sun veloura-dark-toggle__sun"></i>
+  </button>
+{% endif %}
+
 <button
   type="button"
-  class="veloura-dark-toggle veloura-dark-toggle--{{ theme.settings.get('veloura_dark_toggle_position_2026', 'right') }}"
-  aria-label="تبديل الوضع الداكن">
-    <i class="sicon-moon veloura-dark-toggle__moon"></i>
-    <i class="sicon-sun veloura-dark-toggle__sun"></i>
+  class="header-btn veloura-login-btn"
+  onclick="salla.event.dispatch('login::open')"
+  aria-label="تسجيل الدخول">
+  <i class="header-btn__icon icon {{ theme.settings.get('veloura_top_login_icon_2026', 'sicon-user-circle') }}"></i>
 </button>
-{% endif %}
-                      <salla-user-menu avatar-only show-header show-trigger></salla-user-menu>
-                      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-                      </salla-cart-summary>
+
+<salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4 {{ theme.settings.get('veloura_top_hide_cart_total_mobile_2026') ? 'veloura-cart-icon-only-mobile' : '' }}">
+  <i slot="icon" class="header-btn__icon icon {{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
+</salla-cart-summary>
                   </div>
               </div>
           </div>
