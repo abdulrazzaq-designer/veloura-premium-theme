@@ -34,27 +34,49 @@ body.dark .store-footer {
 }
 
 /* النصوص */
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark h4,
-body.dark h5,
-body.dark h6,
-body.dark p,
-body.dark span,
-body.dark a,
-body.dark li {
-  color: var(--veloura-dark-primary-text);
-}
+body.dark {
+  color: var(--veloura-dark-primary-text) !important;
 
-/* النصوص الثانوية */
-body.dark small,
-body.dark .text-gray-400,
-body.dark .text-gray-500,
-body.dark .text-gray-600,
-body.dark .opacity-70,
-body.dark .opacity-75 {
-  color: var(--veloura-dark-secondary-text) !important;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .title,
+  .section-title,
+  .s-block__title,
+  .s-product-card-content-title,
+  .s-product-card-content-title a {
+    color: var(--veloura-dark-primary-text) !important;
+  }
+
+  p,
+  small,
+  .subtitle,
+  .description,
+  .section-subtitle,
+  .s-block__description,
+  .text-gray-400,
+  .text-gray-500,
+  .text-gray-600,
+  .opacity-60,
+  .opacity-70,
+  .opacity-75,
+  .veloura-store-features__subtitle,
+  .veloura-testimonials__text,
+  .veloura-animated-articles__description,
+  .s-product-card-content-sub,
+  .s-product-card-content-footer,
+  .s-product-card-content-rating {
+    color: var(--veloura-dark-secondary-text) !important;
+  }
+
+  .s-product-card-price,
+  .s-product-card-sale-price,
+  .s-product-card-regular-price {
+    color: var(--veloura-dark-product-card-text) !important;
+  }
 }
 
 /* كروت المنتجات */

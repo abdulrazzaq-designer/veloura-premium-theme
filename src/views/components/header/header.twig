@@ -58,9 +58,9 @@
   width="100%"
   height="100%"
   loading="eager"
-  src="{{ dark_logo ? dark_logo : store.logo|cdn(175) }}"
+  src="{{ store.logo|cdn(175) }}"
   data-light-logo="{{ store.logo|cdn(175) }}"
-  data-dark-logo="{{ dark_logo }}"
+  data-dark-logo="{{ theme.settings.get('veloura_dark_logo_2026') }}"
   class="veloura-store-logo"
   alt="{{ store.name }} logo">
                           {% if is_page('index') %}

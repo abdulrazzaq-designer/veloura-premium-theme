@@ -4266,6 +4266,10 @@ body.dark .s-bullet-delivery-saved-addresses-empty-desc {
     cursor: not-allowed;
     opacity: 0.6;
 }
+
+body.dark .s-bullet-delivery-address-item--disabled {
+  color: var(--veloura-dark-secondary-text);
+}
 .s-bullet-delivery-address-item--skeleton{
     display: flex;
     cursor: default;
@@ -20905,6 +20909,10 @@ input[type=radio].sr-only:checked ~ div.s-reviews-quote-icon svg {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
+
+body.dark .s-reviews-testimonial {
+  color: var(--veloura-dark-secondary-text);
+}
 @media (min-width: 1024px){
     .s-reviews-testimonial{
         padding: 2.5rem;
@@ -22447,6 +22455,10 @@ input[type=radio].sr-only:checked ~ div.s-searchable-dropdown-panel {
     font-size: 0.875rem;
     line-height: 1.25rem;
     opacity: 0.6;
+}
+
+body.dark .s-slider-block__title p {
+  color: var(--veloura-dark-secondary-text);
 }
 @media (min-width: 768px){
     .s-slider-block__title p:where([dir="ltr"], [dir="ltr"] *){
@@ -27761,6 +27773,10 @@ body.dark .profile-header .breadcrumbs .arrow {
     line-height: 1.25rem;
     opacity: 0.6;
 }
+
+body.dark .s-block__title p {
+  color: var(--veloura-dark-secondary-text);
+}
 @media (min-width: 640px){
     .s-block__title p{
         overflow: hidden;
@@ -28326,6 +28342,10 @@ input[type=radio].sr-only div.s-block--slider-with-bg .slider-bg:before {
 }
 input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:before {
   border-color: var(--color-main);
+}
+
+body.dark .s-block--slider-with-bg .slider-bg:before {
+  color: var(--veloura-dark-secondary-text);
 }
 .s-block--slider-with-bg .s-slider-block__title-right{
     display: none;
@@ -34084,26 +34104,46 @@ body.dark .store-footer {
   color: var(--veloura-dark-primary-text) !important;
 }
 /* النصوص */
+body.dark {
+  color: var(--veloura-dark-primary-text) !important;
+}
 body.dark h1,
 body.dark h2,
 body.dark h3,
 body.dark h4,
 body.dark h5,
 body.dark h6,
-body.dark p,
-body.dark span,
-body.dark a,
-body.dark li {
-  color: var(--veloura-dark-primary-text);
+body.dark .title,
+body.dark .section-title,
+body.dark .s-block__title,
+body.dark .s-product-card-content-title,
+body.dark .s-product-card-content-title a {
+  color: var(--veloura-dark-primary-text) !important;
 }
-/* النصوص الثانوية */
+body.dark p,
 body.dark small,
+body.dark .subtitle,
+body.dark .description,
+body.dark .section-subtitle,
+body.dark .s-block__description,
 body.dark .text-gray-400,
 body.dark .text-gray-500,
 body.dark .text-gray-600,
+body.dark .opacity-60,
 body.dark .opacity-70,
-body.dark .opacity-75 {
+body.dark .opacity-75,
+body.dark .veloura-store-features__subtitle,
+body.dark .veloura-testimonials__text,
+body.dark .veloura-animated-articles__description,
+body.dark .s-product-card-content-sub,
+body.dark .s-product-card-content-footer,
+body.dark .s-product-card-content-rating {
   color: var(--veloura-dark-secondary-text) !important;
+}
+body.dark .s-product-card-price,
+body.dark .s-product-card-sale-price,
+body.dark .s-product-card-regular-price {
+  color: var(--veloura-dark-product-card-text) !important;
 }
 /* كروت المنتجات */
 body.dark .s-product-card-entry,
