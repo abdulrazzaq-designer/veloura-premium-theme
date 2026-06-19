@@ -26230,8 +26230,25 @@ salla-menu[topnav]:not(.hydrated)::after {
   background: var(--veloura-top-bg) !important;
   color: var(--veloura-top-text) !important;
 }
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled .top-navbar {
+    display: none !important;
+  }
+}
 .store-header.veloura-top-enabled .main-nav-container {
-  transition: border-radius 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+.store-header.veloura-top-enabled.veloura-top-border-sharp .main-nav-container {
+  border-radius: 0;
+}
+.store-header.veloura-top-enabled.veloura-top-border-soft .main-nav-container {
+  border-radius: 0 0 12px 12px;
+}
+.store-header.veloura-top-enabled.veloura-top-border-medium .main-nav-container {
+  border-radius: 0 0 24px 24px;
+}
+.store-header.veloura-top-enabled.veloura-top-border-large .main-nav-container {
+  border-radius: 0 0 42px 42px;
 }
 .store-header.veloura-top-enabled .navbar-brand img {
   max-height: var(--veloura-top-logo-size) !important;
@@ -26245,87 +26262,100 @@ salla-menu[topnav]:not(.hydrated)::after {
 .store-header.veloura-top-enabled .s-cart-summary-count {
   background: var(--veloura-top-cart-bg) !important;
 }
-.store-header.veloura-top-enabled.veloura-logo-center .navbar-brand {
+.veloura-topbar-row,
+.veloura-mainbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.veloura-topbar-start,
+.veloura-topbar-end,
+.veloura-mainbar-right,
+.veloura-mainbar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.veloura-mainbar {
+  position: relative;
+  min-height: 84px;
+}
+.veloura-main-logo {
+  margin: 0 !important;
+}
+.veloura-main-logo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin: 0;
   z-index: 2;
 }
-.store-header.veloura-top-enabled.veloura-top-border-sharp .main-nav-container {
-  border-radius: 0;
-}
-.store-header.veloura-top-enabled.veloura-top-border-soft .main-nav-container {
-  border-radius: 0 0 12px 12px;
-  overflow: hidden;
-}
-.store-header.veloura-top-enabled.veloura-top-border-medium .main-nav-container {
-  border-radius: 0 0 24px 24px;
-  overflow: hidden;
-}
-.store-header.veloura-top-enabled.veloura-top-border-large .main-nav-container {
-  border-radius: 0 0 42px 42px;
-  overflow: hidden;
-}
-/* الأيقونات */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.veloura-menu-side {
-  gap: 14px;
-}
-.veloura-menu-side i {
-  color: var(--veloura-top-text) !important;
-}
 .veloura-header-icon,
-.veloura-mobile-lang-trigger {
+.veloura-lang-mobile,
+.veloura-dark-toggle,
+.veloura-cart-summary i[slot=icon] {
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
   color: var(--veloura-top-text) !important;
+  display: inline-flex !important;
 }
 .veloura-header-icon,
-.veloura-mobile-lang-trigger {
-  display: inline-flex;
+.veloura-lang-mobile,
+.veloura-dark-toggle,
+.veloura-cart-summary i[slot=icon] {
   align-items: center;
   justify-content: center;
   line-height: 1;
   cursor: pointer;
 }
-.veloura-header-icon i,
-.veloura-mobile-lang-trigger i {
-  font-size: inherit;
+.veloura-login-button {
+  background: transparent;
+  border: 0;
+  color: var(--veloura-top-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.veloura-login-button i {
   line-height: 1;
 }
+.veloura-login-button .veloura-login-text {
+  font-weight: 700;
+  white-space: nowrap;
+}
 .veloura-cart-summary {
+  display: inline-flex !important;
+  align-items: center !important;
   margin: 0 !important;
   min-width: auto !important;
   min-height: auto !important;
 }
-.veloura-cart-summary {
-  display: inline-flex;
-  align-items: center;
-}
 .store-header.veloura-top-icons-small .veloura-header-icon,
-.store-header.veloura-top-icons-small .veloura-mobile-lang-trigger,
-.store-header.veloura-top-icons-small .veloura-menu-side i {
-  font-size: 20px !important;
+.store-header.veloura-top-icons-small .veloura-lang-mobile,
+.store-header.veloura-top-icons-small .veloura-dark-toggle,
+.store-header.veloura-top-icons-small .veloura-login-button i,
+.store-header.veloura-top-icons-small .veloura-cart-summary i[slot=icon] {
+  font-size: 22px !important;
 }
 .store-header.veloura-top-icons-medium .veloura-header-icon,
-.store-header.veloura-top-icons-medium .veloura-mobile-lang-trigger,
-.store-header.veloura-top-icons-medium .veloura-menu-side i {
-  font-size: 25px !important;
+.store-header.veloura-top-icons-medium .veloura-lang-mobile,
+.store-header.veloura-top-icons-medium .veloura-dark-toggle,
+.store-header.veloura-top-icons-medium .veloura-login-button i,
+.store-header.veloura-top-icons-medium .veloura-cart-summary i[slot=icon] {
+  font-size: 28px !important;
 }
 .store-header.veloura-top-icons-large .veloura-header-icon,
-.store-header.veloura-top-icons-large .veloura-mobile-lang-trigger,
-.store-header.veloura-top-icons-large .veloura-menu-side i {
-  font-size: 31px !important;
+.store-header.veloura-top-icons-large .veloura-lang-mobile,
+.store-header.veloura-top-icons-large .veloura-dark-toggle,
+.store-header.veloura-top-icons-large .veloura-login-button i,
+.store-header.veloura-top-icons-large .veloura-cart-summary i[slot=icon] {
+  font-size: 34px !important;
 }
-/* زر الدارك */
 .veloura-dark-toggle__sun {
   display: none;
 }
@@ -26335,79 +26365,90 @@ body.dark .veloura-dark-toggle__moon {
 body.dark .veloura-dark-toggle__sun {
   display: inline-block;
 }
-/* البحث */
-.header-search {
-  flex: 1 1 auto;
+.veloura-lang-desktop {
+  display: none;
 }
-@media (max-width: 767px) {
-  .top-navbar .veloura-top-lang-desktop {
+@media (min-width: 1024px) {
+  .veloura-lang-mobile {
     display: none !important;
   }
-  .store-header.veloura-mobile-search-bar .header-search {
-    display: block !important;
-    flex: 1 1 auto !important;
-    width: 100% !important;
-    max-width: none !important;
+  .veloura-menu-trigger {
+    display: inline-flex !important;
   }
-  .store-header.veloura-mobile-search-bar .header-search {
-    margin-top: 12px;
+  .veloura-mainbar-right {
+    order: 3;
   }
-  .store-header.veloura-mobile-search-icon_right .header-search,
-  .store-header.veloura-mobile-search-icon_left .header-search {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    max-width: none !important;
-    overflow: visible !important;
+  .veloura-mainbar-left {
+    order: 1;
   }
-  .store-header.veloura-mobile-search-icon_right .header-search .s-search-input,
-  .store-header.veloura-mobile-search-icon_right .header-search input,
-  .store-header.veloura-mobile-search-icon_left .header-search .s-search-input,
-  .store-header.veloura-mobile-search-icon_left .header-search input {
+  .veloura-main-logo {
+    order: 2;
+  }
+  .veloura-search {
+    min-width: 44px;
+  }
+  .store-header.veloura-desktop-search-bar .veloura-search,
+  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search {
+    width: 280px;
+    max-width: 280px;
+  }
+  .store-header.veloura-desktop-search-icon_right .veloura-search,
+  .store-header.veloura-desktop-search-icon_left .veloura-search {
+    width: 42px;
+    max-width: 42px;
+    overflow: hidden;
+  }
+  .store-header.veloura-desktop-search-icon_right .veloura-search .s-search-input,
+  .store-header.veloura-desktop-search-icon_right .veloura-search input,
+  .store-header.veloura-desktop-search-icon_left .veloura-search .s-search-input,
+  .store-header.veloura-desktop-search-icon_left .veloura-search input {
     display: none !important;
   }
-  .store-header.veloura-mobile-search-icon_right .header-search {
-    order: 20;
+}
+@media (max-width: 1023px) {
+  .veloura-mainbar {
+    min-height: 72px;
   }
-  .store-header.veloura-mobile-search-icon_left .header-search {
+  .veloura-mainbar-right {
+    gap: 14px;
+  }
+  .veloura-mainbar-left {
+    gap: 14px;
+  }
+  .veloura-login-text,
+  .veloura-lang-desktop-main,
+  custom-main-menu {
+    display: none !important;
+  }
+  .store-header.veloura-mobile-search-bar .veloura-mainbar,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-mainbar {
+    flex-wrap: wrap;
+  }
+  .store-header.veloura-mobile-search-bar .veloura-search,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search {
+    order: 5;
+    flex: 0 0 100%;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .store-header.veloura-mobile-search-icon_right .veloura-search,
+  .store-header.veloura-mobile-search-icon_left .veloura-search {
+    width: 32px;
+    overflow: hidden;
+  }
+  .store-header.veloura-mobile-search-icon_right .veloura-search .s-search-input,
+  .store-header.veloura-mobile-search-icon_right .veloura-search input,
+  .store-header.veloura-mobile-search-icon_left .veloura-search .s-search-input,
+  .store-header.veloura-mobile-search-icon_left .veloura-search input {
+    display: none !important;
+  }
+  .store-header.veloura-mobile-search-icon_left .veloura-search {
     order: -1;
-  }
-  .store-header.veloura-mobile-search-bar_sticky_icon .header-search {
-    display: block !important;
-    width: 100% !important;
-  }
-  .store-header.veloura-mobile-search-bar_sticky_icon .header-search {
-    margin-top: 12px;
   }
   .veloura-cart-icon-only-mobile .s-cart-summary-total {
     display: none !important;
   }
 }
-@media (min-width: 1024px) {
-  .store-header.veloura-desktop-search-bar .header-search,
-  .store-header.veloura-desktop-search-bar_sticky_icon .header-search {
-    max-width: 520px;
-    width: 100%;
-  }
-  .store-header.veloura-desktop-search-icon_right .header-search,
-  .store-header.veloura-desktop-search-icon_left .header-search {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    overflow: visible !important;
-  }
-  .store-header.veloura-desktop-search-icon_right .header-search .s-search-input,
-  .store-header.veloura-desktop-search-icon_right .header-search input,
-  .store-header.veloura-desktop-search-icon_left .header-search .s-search-input,
-  .store-header.veloura-desktop-search-icon_left .header-search input {
-    display: none !important;
-  }
-  .store-header.veloura-desktop-search-icon_right .header-search {
-    order: 20;
-  }
-  .store-header.veloura-desktop-search-icon_left .header-search {
-    order: -1;
-  }
-}
-/* إخفاء القسم العلوي عند النزول */
 .store-header.veloura-hide-top-on-scroll .top-navbar {
   transition: transform 0.25s ease, opacity 0.25s ease, height 0.25s ease, padding 0.25s ease;
 }
@@ -34149,9 +34190,6 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .ltr\:mr-3:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 0.75rem;
 }
-.ltr\:mr-4:where([dir="ltr"], [dir="ltr"] *){
-    margin-right: 1rem;
-}
 .ltr\:mr-8:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 2rem;
 }
@@ -34266,9 +34304,6 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 }
 .rtl\:ml-3:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0.75rem;
-}
-.rtl\:ml-4:where([dir="rtl"], [dir="rtl"] *){
-    margin-left: 1rem;
 }
 .rtl\:ml-8:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 2rem;
