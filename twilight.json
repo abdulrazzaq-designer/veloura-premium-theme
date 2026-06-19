@@ -273,7 +273,7 @@
   "type": "boolean",
   "format": "switch",
   "label": "Veloura - تفعيل الوضع الداكن",
-  "description": "عند الإغلاق تختفي جميع إعدادات الوضع الداكن ولا يتم تطبيقها",
+  "description": "",
   "icon": "sicon-moon",
   "value": false,
   "selected": false,
