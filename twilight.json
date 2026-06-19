@@ -267,25 +267,18 @@
             "minLength": 1,
             "maxLength": 5
         },
-        {
-  "id": "veloura_dark_mode_header",
-  "type": "static",
-  "format": "title",
-  "label": "Title",
-  "value": "<div style='padding:22px;border-radius:20px;background:linear-gradient(135deg,#0f172a,#1e293b,#334155);color:#fff;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.18)'><div style='font-size:24px;font-weight:800;margin-bottom:6px'>🌙 الوضع الداكن - Veloura</div><div style='font-size:13px;opacity:.8'>تحكم كامل بألوان وشعار وخلفيات المتجر في الوضع الداكن</div></div>",
-  "variant": "h1",
-  "icon": "sicon-moon"
-},
+        
 {
   "id": "veloura_dark_mode_enabled",
   "type": "boolean",
   "format": "switch",
-  "label": "تفعيل إعدادات الوضع الداكن المخصصة",
-  "description": "عند الإغلاق يتم إخفاء جميع إعدادات الوضع الداكن أدناه",
+  "label": "Veloura - تفعيل الوضع الداكن",
+  "description": "عند الإغلاق تختفي جميع إعدادات الوضع الداكن ولا يتم تطبيقها",
   "icon": "sicon-moon",
-  "value": true,
+  "value": false,
   "selected": false,
-  "required": false
+  "required": false,
+  "public": true
 },
 {
   "id": "veloura_dark_mode_line",

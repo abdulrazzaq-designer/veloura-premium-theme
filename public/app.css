@@ -33848,6 +33848,26 @@ body.veloura-dark-mode .btn--primary {
   border-color: var(--veloura-dark-primary) !important;
   color: #fff !important;
 }
+.s-toggle[name=veloura_dark_mode_enabled] {
+  background: linear-gradient(135deg, #2b2724, #3b3530) !important;
+  padding: 0.75rem 1.4rem 0.75rem 0.75rem !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+}
+.s-toggle[name=veloura_dark_mode_enabled] {
+  --primary: 37.04deg 87.5% 56.08%;
+}
+.s-toggle[name=veloura_dark_mode_enabled] label,
+.s-toggle[name=veloura_dark_mode_enabled] .s-toggle-label {
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+}
+.s-toggle[name=veloura_dark_mode_enabled] small,
+.s-toggle[name=veloura_dark_mode_enabled] .s-toggle-description {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 12px !important;
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {
