@@ -6539,6 +6539,312 @@
       "required": false
     }
   ]
+},
+{
+  "key": "3e7a9f42-9b16-4c8e-a52d-6f4b1c9d8a73",
+  "title": {
+    "ar": "خطوات الشراء (فيلورا)",
+    "en": "Purchase Steps - Veloura"
+  },
+  "icon": "sicon-list",
+  "path": "home.veloura-purchase-steps",
+  "fields": [
+    {
+      "id": "veloura_steps_options_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">خيارات عنصر خطوات الشراء</strong><div class=\"text-sm opacity-75 mt-1\">تحكم في العنوان والشكل والخطوات</div></div>",
+      "variant": "h1",
+      "icon": "sicon-list"
+    },
+    {
+      "id": "veloura_steps_title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم الرئيسي",
+      "icon": "sicon-format-text-alt",
+      "value": "طريقة الشراء",
+      "required": false
+    },
+    {
+      "id": "veloura_steps_subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "وصف القسم",
+      "icon": "sicon-align-right",
+      "value": "خطوات بسيطة وسريعة لإتمام طلبك بكل سهولة.",
+      "required": false
+    },
+    {
+      "id": "veloura_steps_design_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">التصميم والألوان</strong></div>",
+      "variant": "h1",
+      "icon": "sicon-paint-bucket"
+    },
+    {
+      "id": "veloura_steps_title_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون العنوان",
+      "icon": "sicon-format-fill",
+      "value": "#222222",
+      "required": false
+    },
+    {
+      "id": "veloura_steps_text_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون النص",
+      "icon": "sicon-format-fill",
+      "value": "#333333",
+      "required": false
+    },
+    {
+      "id": "veloura_steps_accent_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون التمييز",
+      "icon": "sicon-palette",
+      "value": "#004956",
+      "required": false
+    },
+    {
+      "id": "veloura_steps_card_bg",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية البطاقات",
+      "icon": "sicon-paint-bucket",
+      "value": "#ffffff",
+      "required": false
+    },
+    {
+      "id": "veloura_steps_radius",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "استدارة الحواف",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
+        {
+          "label": "ناعم",
+          "value": "medium",
+          "key": "steps-radius-medium"
+        }
+      ],
+      "options": [
+        { "label": "حاد", "value": "sharp", "key": "steps-radius-sharp" },
+        { "label": "ناعم قليلاً", "value": "soft", "key": "steps-radius-soft" },
+        { "label": "ناعم", "value": "medium", "key": "steps-radius-medium" },
+        { "label": "ناعم جداً", "value": "large", "key": "steps-radius-large" },
+        { "label": "دائري", "value": "round", "key": "steps-radius-round" }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": false,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_desktop_columns",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "عدد الخطوات في الكمبيوتر",
+      "icon": "sicon-grid",
+      "value": "4",
+      "required": false,
+      "step": "1",
+      "minimum": "2",
+      "maximum": "6"
+    },
+    {
+      "id": "veloura_steps_mobile_columns",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "عدد الخطوات في الجوال",
+      "icon": "sicon-grid",
+      "value": "2",
+      "required": false,
+      "step": "1",
+      "minimum": "1",
+      "maximum": "3"
+    },
+    {
+      "id": "veloura_steps_show_connectors",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار خطوط الربط بين الخطوات",
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_center_text",
+      "type": "boolean",
+      "format": "switch",
+      "label": "توسيط النصوص",
+      "icon": "sicon-align-center",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_items_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">إضافة الخطوات</strong><div class=\"text-sm opacity-75 mt-1\">أضف خطوات الشراء أو تنفيذ الطلب</div></div>",
+      "variant": "h1",
+      "icon": "sicon-list-add"
+    },
+    {
+      "id": "veloura_steps_collection",
+      "type": "collection",
+      "format": "collection",
+      "label": "خطوات الشراء",
+      "item_label": "خطوة",
+      "icon": "sicon-list-add",
+      "minLength": 1,
+      "maxLength": 12,
+      "value": [],
+      "fields": [
+        {
+          "id": "veloura_steps_collection.step_icon",
+          "type": "string",
+          "format": "icon",
+          "label": "أيقونة الخطوة",
+          "icon": "sicon-star",
+          "value": "sicon-shopping-bag",
+          "required": false
+        },
+        {
+          "id": "veloura_steps_collection.step_image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة بديلة للأيقونة",
+          "icon": "sicon-image",
+          "value": null,
+          "required": false
+        },
+        {
+          "id": "veloura_steps_collection.step_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان الخطوة",
+          "icon": "sicon-format-text-alt",
+          "value": "اختر المنتج",
+          "required": false
+        },
+        {
+          "id": "veloura_steps_collection.step_description",
+          "type": "string",
+          "format": "textarea",
+          "label": "وصف الخطوة",
+          "icon": "sicon-align-right",
+          "value": "اختر المنتج أو الخدمة المناسبة لك.",
+          "required": false
+        },
+        {
+          "id": "veloura_steps_collection.step_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خاص للخطوة",
+          "icon": "sicon-palette",
+          "value": "#004956",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "veloura_steps_general_title",
+      "type": "static",
+      "format": "title",
+      "label": "Title",
+      "value": "<div class=\"text-center p-2 bg-primary text-white rounded\"><strong class=\"text-lg\">إعدادات عامة للعنصر</strong></div>",
+      "variant": "h1",
+      "icon": "sicon-settings"
+    },
+    {
+      "id": "veloura_steps_custom_spacing",
+      "type": "boolean",
+      "format": "switch",
+      "label": "مسافة أفقية مخصصة للجوال",
+      "description": "على الكمبيوتر يبقى داخل الكونتينر الطبيعي",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_spacing",
+      "type": "number",
+      "format": "slider",
+      "inputType": "range",
+      "label": "مقدار المسافة",
+      "icon": "sicon-arrows-horizontal",
+      "value": "0",
+      "required": false,
+      "step": "1",
+      "minimum": "0",
+      "maximum": "100",
+      "conditions": [
+        {
+          "id": "veloura_steps_custom_spacing",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "veloura_steps_mobile_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الجوال فقط",
+      "icon": "sicon-mobile",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_desktop_only",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض العنصر في الكمبيوتر والتابلت فقط",
+      "icon": "sicon-display",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_hide",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إخفاء هذا العنصر أو القسم بالكامل",
+      "icon": "sicon-eye-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_steps_custom_classes",
+      "type": "string",
+      "format": "text",
+      "label": "Classes",
+      "placeholder": "ex: custom dark p-5",
+      "icon": "sicon-code",
+      "value": "",
+      "required": false
+    }
+  ]
 }
     ],
     "support_url": "https://velourapremium.com",
