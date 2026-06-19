@@ -5,7 +5,7 @@
 {% set mobile_search = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
 {% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar') %}
 {% set desktop_menu_mode = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
-{% set mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
+{% set show_mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
 {% set dark_pos = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
 
 <header class="store-header
@@ -17,19 +17,17 @@
   veloura-desktop-menu-{{ desktop_menu_mode }}
   {{ theme.settings.get('veloura_top_hide_on_scroll_2026') ? 'veloura-hide-top-on-scroll' : '' }}
 ">
-
   <div id="mainnav" class="main-nav-container shadow-default bg-white">
     <div class="inner bg-inherit w-full">
       <div class="container">
+        <div class="veloura-header-grid">
 
-        <div class="veloura-mainbar">
-
-          <div class="veloura-mainbar-right">
+          <div class="veloura-header-side veloura-header-right">
             <a class="veloura-header-icon veloura-menu-trigger mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
               <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
             </a>
 
-            {% if mobile_lang %}
+            {% if show_mobile_lang %}
               <button type="button" class="veloura-header-icon veloura-lang-mobile" onclick="document.querySelector('salla-localization-modal')?.click()" aria-label="اللغة والعملة">
                 <i class="sicon-earth"></i>
               </button>
@@ -42,14 +40,14 @@
               </button>
             {% endif %}
 
-            <div class="header-search veloura-search">
+            <div class="veloura-search">
               <salla-search inline oval height="36"></salla-search>
             </div>
 
             <custom-main-menu></custom-main-menu>
           </div>
 
-          <a class="navbar-brand veloura-main-logo" href="{{ store.url }}">
+          <a class="navbar-brand veloura-header-logo" href="{{ store.url }}">
             <img
               fetchpriority="high"
               width="100%"
@@ -68,7 +66,7 @@
             {% endif %}
           </a>
 
-          <div class="veloura-mainbar-left">
+          <div class="veloura-header-side veloura-header-left">
             {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'left' %}
               <button type="button" class="veloura-header-icon veloura-dark-toggle" aria-label="تبديل الوضع الداكن">
                 <i class="sicon-moon veloura-dark-toggle__moon"></i>
@@ -92,7 +90,6 @@
           </div>
 
         </div>
-
       </div>
     </div>
   </div>
