@@ -3573,9 +3573,8 @@
 
 
 
-
 .veloura-purchase-steps {
-  padding: 50px 0;
+  padding: 60px 0;
   overflow: hidden;
 
   &__container {
@@ -3600,12 +3599,12 @@
 
   &__heading {
     text-align: center;
-    margin-bottom: 34px;
+    margin-bottom: 46px;
     color: var(--veloura-steps-title-color);
 
     h2 {
       margin: 0 0 8px;
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 900;
       line-height: 1.4;
       color: inherit;
@@ -3629,39 +3628,45 @@
 
   &__item {
     position: relative;
-    min-height: 210px;
-    padding: 28px 18px 22px;
+    isolation: isolate;
+    min-height: 220px;
+    padding: 36px 20px 26px;
     border-radius: var(--veloura-steps-radius);
-    background: var(--veloura-steps-card-bg);
+    background:
+      radial-gradient(circle at top, color-mix(in srgb, var(--step-color) 8%, transparent), transparent 42%),
+      var(--veloura-steps-card-bg);
     color: var(--veloura-steps-text-color);
     border: 1px solid color-mix(in srgb, var(--step-color) 18%, #e5e7eb);
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 14px;
 
-    overflow: hidden;
+    text-align: center;
+    overflow: visible;
     transition: transform .3s ease, border-color .3s ease;
   }
 
   &__item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
     border-color: color-mix(in srgb, var(--step-color) 45%, #e5e7eb);
   }
 
   &__number {
     position: absolute;
-    top: 14px;
-    inset-inline-end: 14px;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
 
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
     border-radius: 999px;
 
-    background: color-mix(in srgb, var(--step-color) 12%, transparent);
+    background: var(--veloura-steps-card-bg);
     color: var(--step-color);
+    border: 2px solid color-mix(in srgb, var(--step-color) 35%, transparent);
 
     display: flex;
     align-items: center;
@@ -3669,11 +3674,12 @@
 
     font-size: 14px;
     font-weight: 900;
+    z-index: 4;
   }
 
   &__icon {
-    width: 62px;
-    height: 62px;
+    width: 76px;
+    height: 76px;
     border-radius: 999px;
     background: color-mix(in srgb, var(--step-color) 12%, transparent);
     color: var(--step-color);
@@ -3682,10 +3688,10 @@
     align-items: center;
     justify-content: center;
 
-    margin-top: 18px;
+    position: relative;
 
     i {
-      font-size: 30px;
+      font-size: 34px;
       line-height: 1;
     }
 
@@ -3694,6 +3700,15 @@
       height: 62%;
       object-fit: contain;
       display: block;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: inherit;
+      border: 1px solid color-mix(in srgb, var(--step-color) 24%, transparent);
+      animation: velouraStepPulse 2s ease-in-out infinite;
     }
   }
 
@@ -3715,72 +3730,64 @@
     }
   }
 
-  &.is-centered {
-    .veloura-purchase-steps__item {
-      align-items: center;
-      text-align: center;
-    }
-
-    .veloura-purchase-steps__icon {
-      margin-inline: auto;
-    }
-  }
-
-  /* ===== أسهم متحركة بين الخطوات ===== */
   &.has-connectors {
-    .veloura-purchase-steps__item {
-      overflow: visible;
-    }
-
-    .veloura-purchase-steps__item:not(:last-child)::after {
-      content: "‹ ‹ ‹";
+    .veloura-purchase-steps__grid::before {
+      content: "";
       position: absolute;
       top: 50%;
-      right: -61px;
-      transform: translateY(-50%);
-      z-index: 30;
+      left: 8%;
+      right: 8%;
+      height: 3px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--veloura-steps-accent) 16%, transparent);
+      z-index: 0;
+    }
 
-      width: 122px;
-      height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      direction: ltr;
-      unicode-bidi: isolate;
-
-      color: var(--veloura-steps-accent);
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: 9px;
-      line-height: 1;
-
-      text-shadow:
-        0 0 8px color-mix(in srgb, var(--veloura-steps-accent) 30%, transparent);
-
-      animation: velouraStepsArrowFlow 1.35s ease-in-out infinite;
+    .veloura-purchase-steps__grid::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 8%;
+      width: 22%;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--veloura-steps-accent),
+        transparent
+      );
+      z-index: 1;
+      animation: velouraStepsFlow 2.4s linear infinite;
     }
   }
 }
 
-@keyframes velouraStepsArrowFlow {
+@keyframes velouraStepsFlow {
   0% {
-    opacity: .25;
-    transform: translateY(-50%) translateX(12px);
+    right: 8%;
+    opacity: 0;
   }
 
-  35% {
-    opacity: .55;
-  }
-
-  65% {
+  15% {
     opacity: 1;
   }
 
   100% {
+    right: 70%;
+    opacity: 0;
+  }
+}
+
+@keyframes velouraStepPulse {
+  0%, 100% {
+    transform: scale(.9);
     opacity: .25;
-    transform: translateY(-50%) translateX(-12px);
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: .8;
   }
 }
 
@@ -3800,7 +3807,7 @@
   .veloura-purchase-steps {
     &__grid {
       grid-template-columns: repeat(var(--veloura-steps-desktop-cols), minmax(0, 1fr));
-      gap: 46px;
+      gap: 42px;
     }
   }
 }
@@ -3808,8 +3815,9 @@
 @media (max-width: 991px) {
   .veloura-purchase-steps {
     &.has-connectors {
-      .veloura-purchase-steps__item::after {
-        display: none !important;
+      .veloura-purchase-steps__grid::before,
+      .veloura-purchase-steps__grid::after {
+        display: none;
       }
     }
   }
@@ -3817,10 +3825,10 @@
 
 @media (max-width: 767px) {
   .veloura-purchase-steps {
-    padding: 38px 0;
+    padding: 42px 0;
 
     &__heading {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
 
       h2 {
         font-size: 24px;
@@ -3832,26 +3840,27 @@
     }
 
     &__grid {
-      gap: 12px;
+      gap: 14px;
     }
 
     &__item {
-      min-height: 185px;
-      padding: 24px 12px 18px;
+      min-height: 190px;
+      padding: 30px 12px 20px;
     }
 
     &__number {
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
+      top: -14px;
       font-size: 12px;
     }
 
     &__icon {
-      width: 52px;
-      height: 52px;
+      width: 58px;
+      height: 58px;
 
       i {
-        font-size: 25px;
+        font-size: 26px;
       }
     }
 
