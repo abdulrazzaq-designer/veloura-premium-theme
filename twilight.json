@@ -28,10 +28,14 @@
     "settings": [
       {
   "type": "boolean",
-  "id": "veloura_test_999",
-  "label": "اختبار فيلورا",
+  "icon": "sicon-toggle-off",
+  "label": "اختبار زر فيلورا",
+  "description": "زر اختبار فقط",
+  "id": "veloura_test_dark_switch_987",
   "format": "switch",
-  "value": true
+  "required": false,
+  "value": true,
+  "selected": true
 },
         {
             "id": "squar_photo_bg_image_size",
@@ -250,37 +254,7 @@
             "required": false,
             "value": false,
             "selected": false
-        },
-        
-{
-  "id": "veloura_dark_mode_enabled",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "تفعيل الوضع الداكن المتقدم",
-  "description": "اختر تفعيل لإظهار وتشغيل إعدادات الوضع الداكن",
-  "icon": "sicon-list",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "غير مفعل",
-      "value": "no",
-      "key": "veloura-dark-disabled"
-    }
-  ],
-  "options": [
-    {
-      "label": "غير مفعل",
-      "value": "no",
-      "key": "veloura-dark-disabled"
-    },
-    {
-      "label": "مفعل",
-      "value": "yes",
-      "key": "veloura-dark-enabled"
-    }
-  ]
-}
+        }
     ],
     "components": [
         {
