@@ -83,22 +83,32 @@
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
     
     <style>
-        :root {
-            --font-main: '{{theme.font.name}}';
-            --color-primary: {{ theme.color.primary }};
-            --color-primary-dark: {{ theme.color.darker(0.15) }};
-            --color-primary-light: {{ theme.color.lighter(0.15) }};
-            --color-primary-reverse: {{ theme.color.reverse_text }};
+  :root {
+    --font-main: '{{ theme.font.name }}';
+    --color-primary: {{ theme.color.primary }};
+    --color-primary-dark: {{ theme.color.darker(0.15) }};
+    --color-primary-light: {{ theme.color.lighter(0.15) }};
+    --color-primary-reverse: {{ theme.color.reverse_text }};
 
-            --veloura-dark-body-bg: {{ theme.settings.get('veloura_dark_body_bg_2026', '#010202') }};
-            --veloura-dark-secondary-bg: {{ theme.settings.get('veloura_dark_secondary_bg_2026', '#010612') }};
-            --veloura-dark-primary-text: {{ theme.settings.get('veloura_dark_primary_text_2026', '#ffffff') }};
-            --veloura-dark-secondary-text: {{ theme.settings.get('veloura_dark_secondary_text_2026', '#ededed') }};
-            --veloura-dark-product-card-bg: {{ theme.settings.get('veloura_dark_product_card_bg_2026', '#111111') }};
-            --veloura-dark-product-card-text: {{ theme.settings.get('veloura_dark_product_card_text_2026', '#ffffff') }};
-            --veloura-dark-product-card-border: {{ theme.settings.get('veloura_dark_product_card_border_2026', '#111111') }};
-        }
-    </style>
+    --veloura-dark-body-bg: {{ theme.settings.get('veloura_dark_body_bg_2026', '#010202') }};
+    --veloura-dark-secondary-bg: {{ theme.settings.get('veloura_dark_secondary_bg_2026', '#010612') }};
+    --veloura-dark-primary-text: {{ theme.settings.get('veloura_dark_primary_text_2026', '#ffffff') }};
+    --veloura-dark-secondary-text: {{ theme.settings.get('veloura_dark_secondary_text_2026', '#ededed') }};
+    --veloura-dark-product-card-bg: {{ theme.settings.get('veloura_dark_product_card_bg_2026', '#111111') }};
+    --veloura-dark-product-card-text: {{ theme.settings.get('veloura_dark_product_card_text_2026', '#ffffff') }};
+    --veloura-dark-product-card-border: {{ theme.settings.get('veloura_dark_product_card_border_2026', '#111111') }};
+  }
+
+  {% if theme.settings.get('veloura_dark_store_bg_image_2026') %}
+    body.dark {
+      background-image: url('{{ theme.settings.get('veloura_dark_store_bg_image_2026') }}') !important;
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+  {% endif %}
+</style>
     {# tracking services, custom css feature. #}
     {% hook 'head:end' %}
 </head>
