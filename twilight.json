@@ -266,14 +266,325 @@
             "value": [],
             "minLength": 1,
             "maxLength": 5
-        }
-        
+        },
+        {
+  "id": "veloura_dark_mode_header",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"width:100%;padding:15px 18px;border-radius:14px;background:linear-gradient(135deg,#07111f,#172033,#263449);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 10px 25px rgba(7,17,31,.18)\"><div style=\"width:42px;height:42px;border-radius:999px;background:#fff;color:#172033;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0\">🌙</div><div style=\"flex:1;text-align:center\"><strong style=\"display:block;font-size:18px;font-weight:900;line-height:1.4\">الوضع الداكن - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.78;margin-top:2px\">تحكم كامل بألوان وخلفيات المتجر</span></div></div>",
+  "variant": "h1",
+  "icon": "sicon-moon"
+},
+{
+  "id": "veloura_dark_mode_enabled",
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل إعدادات الوضع الداكن",
+  "description": "عند التفعيل ستظهر جميع إعدادات الوضع الداكن الخاصة بثيم Veloura",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false
+},
+{
+  "type": "static",
+  "id": "veloura_dark_mode_line_1",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_theme_mode",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "تنسيق الوضع الداكن",
+  "icon": "sicon-list",
+  "required": true,
+  "source": "Manual",
+  "selected": [
+    {
+      "label": "الوضع الفاتح",
+      "value": "light",
+      "key": "veloura-light"
+    }
+  ],
+  "options": [
+    {
+      "label": "تلقائي حسب إعدادات الجهاز",
+      "value": "auto",
+      "key": "veloura-auto"
+    },
+    {
+      "label": "الوضع الفاتح",
+      "value": "light",
+      "key": "veloura-light"
+    },
+    {
+      "label": "الوضع الداكن",
+      "value": "dark",
+      "key": "veloura-dark"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_toggle_enabled",
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "السماح للعميل بالتبديل بين الوضع الداكن والفاتح",
+  "description": "تظهر أيقونة في القسم العلوي للتبديل بين الوضع الداكن والفاتح",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_toggle_position",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "مكان أيقونة الوضع الداكن",
+  "icon": "sicon-list",
+  "required": true,
+  "source": "Manual",
+  "selected": [
+    {
+      "label": "يمين",
+      "value": "right",
+      "key": "veloura-toggle-right"
+    }
+  ],
+  "options": [
+    {
+      "label": "يمين",
+      "value": "right",
+      "key": "veloura-toggle-right"
+    },
+    {
+      "label": "يسار",
+      "value": "left",
+      "key": "veloura-toggle-left"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_dark_toggle_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_logo",
+  "type": "string",
+  "format": "image",
+  "label": "شعار الوضع الداكن",
+  "description": "ارفع شعار خاص بالوضع الداكن للقسم العلوي والسفلي",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_store_bg_image",
+  "type": "string",
+  "format": "image",
+  "label": "خلفية المتجر صورة في الوضع الداكن فقط",
+  "description": "المقاس المفضل 1920 × 600 وتظهر في جميع الصفحات",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_body_bg",
+  "type": "string",
+  "format": "color",
+  "label": "لون الخلفية الأساسي في الوضع الداكن",
+  "value": "#010202",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_secondary_bg",
+  "type": "string",
+  "format": "color",
+  "label": "لون الخلفية الثانوي في الوضع الداكن",
+  "value": "#010612",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_primary_text",
+  "type": "string",
+  "format": "color",
+  "label": "لون النص الأساسي في الوضع الداكن",
+  "description": "يجب اختياره بلون فاتح مثل الأبيض",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_secondary_text",
+  "type": "string",
+  "format": "color",
+  "label": "لون النصوص الثانوية في الوضع الداكن",
+  "value": "#ededed",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_product_card_bg",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية بطاقة المنتج في الوضع الداكن",
+  "description": "يظهر خلف عنوان وسعر المنتج في الوضع الداكن فقط",
+  "value": "#111111",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_product_card_text",
+  "type": "string",
+  "format": "color",
+  "label": "لون النص في بطاقة المنتج في الوضع الداكن",
+  "description": "يظهر في العنوان الأساسي والفرعي والسعر",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_product_card_border",
+  "type": "string",
+  "format": "color",
+  "label": "لون إطار بطاقة المنتج في الوضع الداكن",
+  "value": "#111111",
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_force_product_desc_color",
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "فرض لون النص الثانوي على وصف المنتجات في صفحة المنتج في الوضع الداكن",
+  "description": "عند التفعيل سيظهر وصف المنتجات باللون الثانوي للنص للوضع الداكن",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_force_blog_desc_color",
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "فرض لون النص الثانوي على النص في مقالات المدونة في الوضع الداكن",
+  "description": "عند التفعيل ستظهر مقالات المتجر باللون الثانوي للنص للوضع الداكن",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_dark_product_sections",
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "الوضع الداكن لقسم ثنائي وتمارا في صفحة المنتج",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_dark_mode_enabled",
+      "operation": "=",
+      "value": true
+    }
+  ]
+}
     ],
     "components": [
         {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
             "title": {
-                "en": "Enhances Animated Images ثقصثقصثقصثقص",
+                "en": "Enhances Animated Images",
                 "ar": "صور متحركة (محسنة)"
             },
             "icon": "sicon-image-carousel",
