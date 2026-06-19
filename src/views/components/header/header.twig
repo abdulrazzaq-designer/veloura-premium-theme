@@ -75,7 +75,7 @@
                   {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') %}
 <button
   type="button"
-  class="veloura-dark-toggle"
+  class="veloura-dark-toggle veloura-dark-toggle--{{ theme.settings.get('veloura_dark_toggle_position_2026', 'right') }}"
   aria-label="تبديل الوضع الداكن">
     <i class="sicon-moon veloura-dark-toggle__moon"></i>
     <i class="sicon-sun veloura-dark-toggle__sun"></i>

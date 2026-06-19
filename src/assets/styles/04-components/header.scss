@@ -298,7 +298,6 @@ salla-menu[topnav]:not(.hydrated) {
 
 
 
-
 .veloura-dark-toggle {
   width: 40px;
   height: 40px;
@@ -306,12 +305,27 @@ salla-menu[topnav]:not(.hydrated) {
   border: 1px solid #e5e7eb;
   background: #fff;
   color: var(--color-primary);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-inline-end: 12px;
   cursor: pointer;
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  box-shadow: none;
+
+  &--right {
+    margin-inline-start: 12px;
+    margin-inline-end: 0;
+    order: 10;
+  }
+
+  &--left {
+    margin-inline-end: 12px;
+    margin-inline-start: 0;
+    order: -1;
+  }
 
   i {
     font-size: 18px;
