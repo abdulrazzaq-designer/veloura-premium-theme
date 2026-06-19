@@ -250,7 +250,19 @@
             "required": false,
             "value": false,
             "selected": false
-        }
+        },
+        
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل الوضع الداكن المتقدم",
+  "description": "عند التفعيل ستظهر جميع إعدادات الوضع الداكن",
+  "id": "veloura_dark_mode_enabled",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false
+}
     ],
     "components": [
         {
