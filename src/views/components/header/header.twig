@@ -1,9 +1,14 @@
 {% set top_enabled = theme.settings.get('veloura_top_enabled_2026', false) %}
 
 {# Logo #}
+{% set light_logo_url = theme.settings.get('veloura_light_logo_url_2026') %}
+{% set light_logo_image = theme.settings.get('veloura_light_logo_2026') %}
+{% set veloura_light_logo = light_logo_url ?: light_logo_image %}
+
 {% set top_logo_url = theme.settings.get('veloura_top_logo_url_2026') %}
 {% set top_logo_image = theme.settings.get('veloura_top_logo_image_2026') %}
-{% set top_logo = top_logo_url ?: top_logo_image ?: store.logo|cdn(175) %}
+{% set top_logo = top_logo_url ?: top_logo_image ?: veloura_light_logo ?: store.logo|cdn(175) %}
+
 {% set top_logo_lower = top_logo|lower %}
 {% set top_logo_is_video = top_logo_lower ends with '.webm' or top_logo_lower ends with '.mp4' %}
 

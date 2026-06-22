@@ -1,8 +1,13 @@
 {% set footer_enabled = theme.settings.get('veloura_footer_enabled_2026', false) %}
 
+{% set light_logo_url = theme.settings.get('veloura_light_logo_url_2026') %}
+{% set light_logo_image = theme.settings.get('veloura_light_logo_2026') %}
+{% set veloura_light_logo = light_logo_url ?: light_logo_image %}
+
 {% set footer_logo_url = theme.settings.get('veloura_footer_logo_url_2026') %}
 {% set footer_logo_image = theme.settings.get('veloura_footer_logo_image_2026') %}
-{% set footer_logo = footer_logo_url ?: footer_logo_image ?: store.logo|cdn(175) %}
+{% set footer_logo = footer_logo_url ?: footer_logo_image ?: veloura_light_logo ?: store.logo|cdn(175) %}
+
 {% set footer_logo_lower = footer_logo|lower %}
 {% set footer_logo_is_video = footer_logo_lower ends with '.webm' or footer_logo_lower ends with '.mp4' %}
 

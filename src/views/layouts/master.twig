@@ -81,6 +81,32 @@
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
+
+    {# ================================
+   Veloura General Settings 2026
+================================ #}
+
+{% set veloura_general_enabled = theme.settings.get('veloura_general_enabled_2026', false) %}
+
+{% set veloura_site_bg = theme.settings.get('veloura_site_bg_color_2026', '#ffffff') %}
+{% set veloura_site_second_bg = theme.settings.get('veloura_site_second_bg_color_2026', '#f8fafc') %}
+{% set veloura_site_bg_image = theme.settings.get('veloura_site_bg_image_2026') %}
+{% set veloura_site_bg_home_only = theme.settings.get('veloura_site_bg_image_home_only_2026', false) %}
+{% set veloura_site_bg_fixed = theme.settings.get('veloura_site_bg_fixed_2026', false) %}
+
+{% set veloura_site_spacing = theme.settings.get('veloura_site_horizontal_spacing_2026', 12) %}
+{% set veloura_container_value = theme.settings.get('veloura_site_container_width_2026', 180) %}
+{% set veloura_container_width = 1100 + veloura_container_value %}
+
+{% set veloura_body_classes = theme.settings.get('veloura_body_classes_2026') %}
+{% set veloura_index_body_classes = is_page('index') ? theme.settings.get('veloura_index_body_classes_2026') : '' %}
+{% set veloura_product_body_classes = is_page('product.single') ? theme.settings.get('veloura_product_body_classes_2026') : '' %}
+
+{% set veloura_full_width_sections = theme.settings.get('veloura_site_sections_full_width_2026', false) %}
+{% set veloura_glass_effect = theme.settings.get('veloura_general_glass_effect_2026', false) %}
+{% set veloura_clean_borders = theme.settings.get('veloura_general_clean_borders_2026', false) %}
+
+{% set veloura_should_show_bg_image = veloura_site_bg_image and (not veloura_site_bg_home_only or is_page('index')) %}
     
     <style>
   :root {
@@ -102,7 +128,74 @@
     --veloura-top-text: {{ theme.settings.get('veloura_top_text_color_2026', '#004d65') }};
     --veloura-top-cart-bg: {{ theme.settings.get('veloura_top_cart_bg_2026', '#f87171') }};
     --veloura-top-logo-size: {{ 42 + theme.settings.get('veloura_top_logo_size_2026', 20) * 3 }}px;
+
+    --veloura-site-bg: {{ veloura_site_bg }};
+    --veloura-site-second-bg: {{ veloura_site_second_bg }};
+    --veloura-site-spacing: {{ veloura_site_spacing }}px;
+    --veloura-site-container-width: {{ veloura_container_width }}px;
+
+    {% if veloura_should_show_bg_image %}
+      --veloura-site-bg-image: url('{{ veloura_site_bg_image }}');
+    {% endif %}
   }
+
+
+
+
+  body.veloura-general-enabled {
+    background-color: var(--veloura-site-bg) !important;
+  }
+
+  body.veloura-general-enabled .app-inner,
+  body.veloura-general-enabled main,
+  body.veloura-general-enabled .index,
+  body.veloura-general-enabled .store-page,
+  body.veloura-general-enabled .store-home {
+    background-color: transparent !important;
+  }
+
+  body.veloura-general-enabled.veloura-site-has-bg-image {
+    background-image: var(--veloura-site-bg-image) !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+
+  body.veloura-general-enabled.veloura-site-bg-fixed {
+    background-attachment: fixed !important;
+  }
+
+  @media (max-width: 1023px) {
+    body.veloura-general-enabled .container {
+      padding-inline: var(--veloura-site-spacing) !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    body.veloura-general-enabled .container {
+      max-width: var(--veloura-site-container-width) !important;
+    }
+  }
+
+  body.veloura-general-enabled.veloura-clean-borders .s-product-card,
+  body.veloura-general-enabled.veloura-clean-borders .s-block,
+  body.veloura-general-enabled.veloura-clean-borders .main-nav-container,
+  body.veloura-general-enabled.veloura-clean-borders .store-footer {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body.veloura-general-enabled.veloura-glass-effect .veloura-glass,
+  body.veloura-general-enabled.veloura-glass-effect .s-product-card,
+  body.veloura-general-enabled.veloura-glass-effect .main-nav-container {
+    background-color: rgba(255, 255, 255, .72) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+
+
+
 
   {% if theme.settings.get('veloura_dark_store_bg_image_2026') %}
     body.dark {
@@ -122,7 +215,18 @@
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
   {{ theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_theme_mode_2026') == 'dark' ? ' dark' : '' }}
-  ">
+
+  {{ veloura_general_enabled ? ' veloura-general-enabled' : '' }}
+  {{ veloura_should_show_bg_image ? ' veloura-site-has-bg-image' : '' }}
+  {{ veloura_site_bg_fixed ? ' veloura-site-bg-fixed' : '' }}
+  {{ veloura_full_width_sections ? ' veloura-sections-full-width' : '' }}
+  {{ veloura_glass_effect ? ' veloura-glass-effect' : '' }}
+  {{ veloura_clean_borders ? ' veloura-clean-borders' : '' }}
+  {{ is_page('index') ? ' veloura-page-index' : '' }}
+  {{ veloura_body_classes }}
+  {{ veloura_index_body_classes }}
+  {{ veloura_product_body_classes }}
+">
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how
     <a href="https://www.enable-javascript.com/" rel="noreferrer"
