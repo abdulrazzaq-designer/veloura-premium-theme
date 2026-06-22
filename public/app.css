@@ -24199,10 +24199,10 @@ input[type=radio].sr-only:checked ~ div.s-wallet-table-tbody-tr a {
   --font-main: "DINNextLTArabic";
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
-}
+}/*
 html, body {
   background: yellow !important;
-}
+}*/
 body {
   font-size: 15px;
   font-weight: 400;

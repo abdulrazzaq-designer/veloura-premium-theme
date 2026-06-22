@@ -245,6 +245,348 @@
             "selected": false
         },
         {
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_settings_title_2026",
+  "value": "<div style=\"width:100%;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,#312e81,#4338ca,#0ea5e9);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:42px;height:42px;border-radius:999px;background:#fff;color:#312e81;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0\">⚙</div><div style=\"flex:1\"><strong style=\"display:block;font-size:18px;font-weight:900;line-height:1.4\">الإعدادات العامة - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.85;margin-top:3px\">تحكم بخلفية الموقع، المسافات العامة، الشعار والكلاسات الخاصة بالصفحات</span></div></div>",
+  "variant": "h1",
+  "icon": "sicon-settings"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل الإعدادات العامة المتقدمة",
+  "description": "عند التفعيل ستظهر جميع خيارات التحكم العامة في الثيم",
+  "id": "veloura_general_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "static",
+  "id": "veloura_general_line_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_logo_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f1f5f9;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #334155;box-shadow:inset 0 0 0 1px rgba(15,23,42,.05)\">الشعار العام</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_light_logo_2026",
+  "type": "string",
+  "format": "image",
+  "label": "شعار الوضع الفاتح",
+  "description": "ارفع شعار خاص بالوضع الفاتح، وعند تركه فارغاً سيتم استخدام شعار المتجر الأساسي",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_light_logo_url_2026",
+  "type": "string",
+  "format": "url",
+  "label": "أو شعار متحرك للوضع الفاتح",
+  "description": "في حال وضع رابط سيتم تجاهل صورة الشعار السابقة. الصيغ المقبولة svg, jpeg, jpg, webp, gif, png, webm",
+  "placeholder": "e.g. jhmi.me/logo.gif",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_background_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c;box-shadow:inset 0 0 0 1px rgba(251,146,60,.07)\">خلفية الموقع</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية الموقع في الوضع الفاتح",
+  "description": "هذا اللون يظهر خلف كل الصفحات والأقسام",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_second_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون الخلفية الثانوي في الوضع الفاتح",
+  "description": "يستخدم للأقسام أو الكروت التي تحتاج خلفية مختلفة",
+  "value": "#f8fafc",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_bg_image_2026",
+  "type": "string",
+  "format": "image",
+  "label": "خلفية المتجر صورة في الوضع الفاتح",
+  "description": "المقاس المفضل 1600 × 900 وتظهر في جميع الصفحات",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل صورة الخلفية في الصفحة الرئيسية فقط",
+  "description": "عند التفعيل تظهر صورة الخلفية في الصفحة الرئيسية فقط ولا تظهر في باقي الصفحات",
+  "id": "veloura_site_bg_image_home_only_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تثبيت صورة الخلفية أثناء التمرير",
+  "description": "تعطي تأثيراً بصرياً أفضل عند النزول في الصفحة",
+  "id": "veloura_site_bg_fixed_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_site_bg_image_2026",
+      "operation": "!=",
+      "value": ""
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_spacing_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4;box-shadow:inset 0 0 0 1px rgba(6,182,212,.06)\">المسافات والحاويات</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_horizontal_spacing_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "المسافة الأفقية العامة (الهامش يمين ويسار) لكل الصفحات",
+  "description": "القيمة المفضلة 12، لا تعمل في اللابتوب",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "12",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "50",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_container_width_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "عرض حاوية الموقع في اللابتوب",
+  "description": "القيمة الفعلية = 1100 + قيمة السلايدر، والقيمة المفضلة 1280",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "180",
+  "required": false,
+  "step": "10",
+  "minimum": "0",
+  "maximum": "500",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل عرض كامل للأقسام الأساسية",
+  "description": "عند التفعيل يتم السماح لبعض الأقسام بالخروج من حاوية الموقع",
+  "id": "veloura_site_sections_full_width_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_classes_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.07)\">الكلاسات والأوضاع الخاصة</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_body_classes_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلاسات لكل الصفحات body classes",
+  "description": "تستخدم لتفعيل خواص معينة أو وضع كلاس عام لكل الصفحات. مثال: px-6 أو glass-mode أو home-dark",
+  "placeholder": "e.g. px-6 glass-mode",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_index_body_classes_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلاسات الصفحة الرئيسية فقط",
+  "description": "تضاف فقط لصفحة الرئيسية، مفيدة لتفعيل شكل خاص للواجهة",
+  "placeholder": "e.g. home-special hero-glass",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_body_classes_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلاسات صفحات المنتجات فقط",
+  "description": "تضاف فقط لصفحات المنتجات",
+  "placeholder": "e.g. product-clean product-wide",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل تأثير الزجاج العام",
+  "description": "يضيف تأثير زجاجي خفيف على بعض الكروت والأقسام",
+  "id": "veloura_general_glass_effect_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء الحدود الافتراضية لبعض الأقسام",
+  "description": "مفيد للحصول على شكل أنظف وأكثر بساطة",
+  "id": "veloura_general_clean_borders_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+        {
   "id": "veloura_dark_mode_header",
   "type": "static",
   "format": "title",
