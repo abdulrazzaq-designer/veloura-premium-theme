@@ -1142,7 +1142,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_footer_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,#0f172a,#1e293b,#334155);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(15,23,42,.20)\"><div style=\"width:42px;height:42px;border-radius:999px;background:#fff;color:#0f172a;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0\">▤</div><div style=\"flex:1\"><strong style=\"display:block;font-size:18px;font-weight:900;line-height:1.4\">خيارات القسم السفلي - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.85;margin-top:3px\">تحكم بالشعار، العناوين، الألوان، الخلفية وأسلوب الفوتر</span></div></div>",
+  "value": "<div style=\"width:100%;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,#111827,#1f2937,#334155);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(17,24,39,.20)\"><div style=\"width:42px;height:42px;border-radius:999px;background:#fff;color:#111827;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0\">▤</div><div style=\"flex:1\"><strong style=\"display:block;font-size:18px;font-weight:900;line-height:1.4\">خيارات القسم السفلي - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.85;margin-top:3px\">تحكم بالشعار، العناوين، الخلفية، الألوان والتنسيق الخاص بالفوتر</span></div></div>",
   "variant": "h1",
   "icon": "sicon-layout-footer"
 },
@@ -1173,8 +1173,113 @@
   "type": "static",
   "format": "title",
   "id": "veloura_footer_subtitle_logo_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f1f5f9;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #334155;box-shadow:inset 0 0 0 1px rgba(15,23,42,.04)\">الشعار والخلفية</div>",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f1f5f9;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #334155;box-shadow:inset 0 0 0 1px rgba(15,23,42,.05)\">الشعار والخلفية</div>",
   "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_logo_image_2026",
+  "type": "string",
+  "format": "image",
+  "label": "شعار القسم السفلي ( footer )",
+  "description": "ارفع شعار خاص بالقسم السفلي، عند تركه فارغاً سيتم وضع شعار المتجر الأساسي",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_logo_url_2026",
+  "type": "string",
+  "format": "url",
+  "label": "أو شعار متحرك للقسم السفلي",
+  "description": "في حال وضع رابط للشعار سيتم تجاهل الصورة السابقة. الصيغ المقبولة svg, jpeg, jpg, webp, gif, png, webm",
+  "placeholder": "e.g. jhmi.me/3.gif",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء شعار القسم السفلي",
+  "description": "عند التفعيل لن يظهر الشعار داخل الفوتر",
+  "id": "veloura_footer_hide_logo_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_logo_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم شعار القسم السفلي",
+  "description": "القيمة المفضلة 8",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "8",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "20",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_footer_hide_logo_2026",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_footer_bg_image_2026",
+  "type": "string",
+  "format": "image",
+  "label": "صورة خلفية القسم السفلي",
+  "description": "يمكن رفع صورة خلفية للفوتر",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "خلفية شفافة للقسم السفلي في الصفحة الرئيسية",
+  "description": "مناسب عند وضع صورة خلفية للمتجر",
+  "id": "veloura_footer_transparent_home_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -1198,11 +1303,209 @@
   ]
 },
 {
+  "id": "veloura_footer_store_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان قسم معلومات المتجر",
+  "value": "متجر تجريبي",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_store_description_2026",
+  "type": "string",
+  "format": "textarea",
+  "label": "وصف قسم معلومات المتجر",
+  "description": "اتركه فارغاً لاستخدام وصف المتجر الافتراضي",
+  "value": "",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_links_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان قسم الروابط",
+  "value": "روابط مهمة",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_contact_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان قسم التواصل",
+  "value": "تواصل معنا",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_apps_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان قسم تطبيق الجوال",
+  "value": "تحميل تطبيق الجوال",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_social_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان أيقونات التواصل",
+  "description": "يظهر قبل أيقونات التواصل في القسم السفلي",
+  "value": "تابعنا",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "type": "static",
   "format": "title",
   "id": "veloura_footer_subtitle_colors_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c;box-shadow:inset 0 0 0 1px rgba(251,146,60,.07)\">الألوان والخطوط</div>",
   "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية القسم السفلي في الوضع الفاتح فقط",
+  "value": "#f8fafc",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_text_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون النص والأيقونات للقسم السفلي في الوضع الفاتح فقط",
+  "value": "#0f172a",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_title_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون عناوين القسم السفلي",
+  "value": "#0f172a",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_link_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون روابط القسم السفلي",
+  "value": "#334155",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_icon_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية أيقونات القسم السفلي",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_title_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم عناوين القسم السفلي",
+  "description": "القيمة المفضلة 16",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "16",
+  "required": false,
+  "step": "1",
+  "minimum": "12",
+  "maximum": "28",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_text_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم نصوص القسم السفلي",
+  "description": "القيمة المفضلة 14",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "14",
+  "required": false,
+  "step": "1",
+  "minimum": "11",
+  "maximum": "22",
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -1226,6 +1529,140 @@
   ]
 },
 {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل الوضع المصغر للقسم السفلي (الفوتر)",
+  "description": "عند التفعيل يتم عرض القسم السفلي بحواف ناعمة وبشكل مضغوط",
+  "id": "veloura_footer_compact_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف القسم السفلي",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-footer-radius-medium-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "veloura-footer-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلاً",
+      "value": "soft",
+      "key": "veloura-footer-radius-soft-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-footer-radius-medium-2026"
+    },
+    {
+      "label": "ناعم جداً",
+      "value": "large",
+      "key": "veloura-footer-radius-large-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_columns_desktop_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "عدد أعمدة الفوتر في اللابتوب",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "4 أعمدة",
+      "value": "4",
+      "key": "veloura-footer-columns-4-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "3 أعمدة",
+      "value": "3",
+      "key": "veloura-footer-columns-3-2026"
+    },
+    {
+      "label": "4 أعمدة",
+      "value": "4",
+      "key": "veloura-footer-columns-4-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "توسيع عناصر الفوتر في الجوال",
+  "description": "عند التفعيل يتم توسيط الشعار والعناصر الأخرى في الفوتر",
+  "id": "veloura_footer_center_mobile_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء تحميل تطبيق الجوال",
+  "description": "عند التفعيل يتم إخفاء قسم روابط تطبيق الجوال",
+  "id": "veloura_footer_hide_apps_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "type": "static",
   "format": "title",
   "id": "veloura_footer_subtitle_contact_2026",
@@ -1240,11 +1677,143 @@
   ]
 },
 {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار عنوان أيقونات التواصل",
+  "description": "عند التفعيل يظهر عنوان قبل أيقونات التواصل",
+  "id": "veloura_footer_show_social_title_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار أيقونات التواصل في قسم معلومات المتجر",
+  "description": "عند التفعيل تظهر أيقونات التواصل أسفل معلومات المتجر",
+  "id": "veloura_footer_social_under_store_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار أيقونات التواصل في قسم التواصل",
+  "description": "عند التفعيل تظهر أيقونات التواصل أسفل بيانات التواصل",
+  "id": "veloura_footer_social_under_contact_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء روابط الفوتر المهمة",
+  "description": "عند التفعيل يتم إخفاء عمود الروابط المهمة",
+  "id": "veloura_footer_hide_links_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "type": "static",
   "format": "title",
   "id": "veloura_footer_subtitle_bottom_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899;box-shadow:inset 0 0 0 1px rgba(236,72,153,.07)\">الشريط السفلي وحقوق المتجر</div>",
   "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_bottom_text_2026",
+  "type": "string",
+  "format": "text",
+  "label": "نص الحقوق أسفل الفوتر",
+  "value": "صنع بإتقان على منصة سلة",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_bottom_bg_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية الشريط السفلي",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_bottom_text_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون نص الشريط السفلي",
+  "value": "#334155",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء شعارات وسائل الدفع",
+  "description": "عند التفعيل يتم إخفاء شعارات وسائل الدفع من الشريط السفلي",
+  "id": "veloura_footer_hide_payments_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
