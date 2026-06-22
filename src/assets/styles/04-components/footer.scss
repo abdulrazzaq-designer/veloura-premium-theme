@@ -47,3 +47,256 @@
 .copyright-text p{
   @apply text-gray-700;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   Veloura Footer 2026
+================================ */
+
+.store-footer.veloura-footer-enabled {
+  background: var(--veloura-footer-bg) !important;
+  color: var(--veloura-footer-text) !important;
+  font-size: var(--veloura-footer-text-size);
+  overflow: hidden;
+
+  .store-footer__inner,
+  .veloura-footer-main {
+    background: var(--veloura-footer-bg) !important;
+    color: var(--veloura-footer-text) !important;
+    background-image: var(--veloura-footer-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .veloura-footer-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+
+  .veloura-footer-grid {
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .veloura-footer-block {
+    min-width: 0;
+  }
+
+  .veloura-footer-title {
+    margin: 0 0 18px;
+    color: var(--veloura-footer-title) !important;
+    font-size: var(--veloura-footer-title-size);
+    font-weight: 800;
+    line-height: 1.6;
+  }
+
+  .veloura-footer-description {
+    max-width: 360px;
+    color: var(--veloura-footer-text) !important;
+    line-height: 1.9;
+    opacity: .86;
+
+    p {
+      margin: 0 0 10px;
+    }
+  }
+
+  .veloura-footer-logo {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .veloura-footer-logo__media {
+    max-height: var(--veloura-footer-logo-size);
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    display: block;
+  }
+
+  a,
+  salla-menu a,
+  salla-contacts a {
+    color: var(--veloura-footer-link) !important;
+  }
+
+  .veloura-footer-social {
+    margin-top: 22px;
+  }
+
+  .veloura-footer-social-title {
+    margin: 0 0 12px;
+    color: var(--veloura-footer-title) !important;
+    font-size: calc(var(--veloura-footer-title-size) - 2px);
+    font-weight: 700;
+  }
+
+  salla-social {
+    display: block;
+  }
+
+  salla-social a,
+  salla-social .s-social-link,
+  salla-contacts .s-contacts-item-icon,
+  .s-contacts-item-icon {
+    background: var(--veloura-footer-icon-bg) !important;
+    color: var(--veloura-footer-link) !important;
+  }
+
+  .veloura-footer-trust {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .veloura-footer-tax {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 40px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    p {
+      margin: 0 0 4px;
+      font-size: 12px;
+      opacity: .7;
+    }
+
+    b {
+      font-size: 13px;
+      color: var(--veloura-footer-text);
+    }
+  }
+
+  .veloura-footer-apps salla-apps-icons {
+    display: block;
+  }
+
+  .veloura-footer-bottom {
+    background: var(--veloura-footer-bottom-bg) !important;
+    color: var(--veloura-footer-bottom-text) !important;
+    border-top: 1px solid rgba(0, 0, 0, .06);
+  }
+
+  .veloura-footer-bottom__inner {
+    min-height: 58px;
+    padding-block: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .veloura-footer-copyright {
+    color: var(--veloura-footer-bottom-text) !important;
+    font-size: 13px;
+  }
+}
+
+/* عدد الأعمدة */
+@media (min-width: 1024px) {
+  .store-footer.veloura-footer-enabled.veloura-footer-cols-3 {
+    .veloura-footer-grid {
+      grid-template-columns: 1.4fr 1fr 1fr;
+    }
+
+    .veloura-footer-apps {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-cols-4 {
+    .veloura-footer-grid {
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    }
+  }
+}
+
+/* الجوال */
+@media (max-width: 1023px) {
+  .store-footer.veloura-footer-enabled {
+    .veloura-footer-grid {
+      padding: 42px 0;
+    }
+
+    .veloura-footer-bottom__inner {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &.veloura-footer-center-mobile {
+      text-align: center;
+
+      .veloura-footer-logo,
+      .veloura-footer-trust,
+      .veloura-footer-tax {
+        justify-content: center;
+      }
+
+      .veloura-footer-description {
+        margin-inline: auto;
+      }
+    }
+  }
+}
+
+/* الوضع المصغر */
+.store-footer.veloura-footer-enabled.veloura-footer-compact {
+  max-width: calc(100% - 32px);
+  margin: 24px auto;
+  border-radius: 28px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, .08);
+
+  .veloura-footer-grid {
+    padding: 42px 0;
+  }
+}
+
+/* الحواف */
+.store-footer.veloura-footer-enabled.veloura-footer-radius-sharp {
+  border-radius: 0;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-radius-soft {
+  border-radius: 0 0 14px 14px;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-radius-medium {
+  border-radius: 0 0 28px 28px;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-radius-large {
+  border-radius: 0 0 46px 46px;
+}
+
+/* خلفية شفافة في الرئيسية */
+.store-footer.veloura-footer-enabled.veloura-footer-transparent-home {
+  background: transparent !important;
+
+  .store-footer__inner,
+  .veloura-footer-main {
+    background-color: transparent !important;
+  }
+}

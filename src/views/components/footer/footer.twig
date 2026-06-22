@@ -1,72 +1,195 @@
-<footer class="store-footer">
-	<div aria-label="footer" class="store-footer__inner">
-		<div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6">
-			<div class="lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
-				<a href="{{ link('/') }}" class="flex items-center m-0">
-					<h3>{{store.name}}</h3>
-				</a>
-				{% if store.description %}
-					<div class="max-w-sm leading-6 mb-6">
-						{{ store.description|raw }}
-          </div>
-				{% endif %}
+{% set footer_enabled = theme.settings.get('veloura_footer_enabled_2026', false) %}
 
-				<div class="hidden lg:block">
-					<salla-social class="block mb-6"></salla-social>
-				</div>
+{% set footer_logo_url = theme.settings.get('veloura_footer_logo_url_2026') %}
+{% set footer_logo_image = theme.settings.get('veloura_footer_logo_image_2026') %}
+{% set footer_logo = footer_logo_url ?: footer_logo_image ?: store.logo|cdn(175) %}
+{% set footer_logo_lower = footer_logo|lower %}
+{% set footer_logo_is_video = footer_logo_lower ends with '.webm' or footer_logo_lower ends with '.mp4' %}
 
-		<div class="flex gap-4">
-		  {# trust badges #}
-		  <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
-          {# vat #}
-          {% if store.settings.tax.number %}
-            <div class="flex rtl:space-x-reverse space-x-2 items-end">
-              {% if store.settings.tax.certificate %}
-                <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
-                  <img width="40" height="50" src="{{'images/tax.png' | cdn(70,70)}}" loading="lazy" class="w-10 rounded-sm hover:opacity-80 transition-opacity" alt="value added tax">
-                </a>
+{% set footer_hide_logo = theme.settings.get('veloura_footer_hide_logo_2026', false) %}
+{% set footer_logo_size_value = theme.settings.get('veloura_footer_logo_size_2026', 8) %}
+{% set footer_logo_size_px = 44 + (footer_logo_size_value * 4) %}
+
+{% set footer_bg = theme.settings.get('veloura_footer_bg_color_2026', '#f8fafc') %}
+{% set footer_text = theme.settings.get('veloura_footer_text_color_2026', '#0f172a') %}
+{% set footer_title_color = theme.settings.get('veloura_footer_title_color_2026', '#0f172a') %}
+{% set footer_link_color = theme.settings.get('veloura_footer_link_color_2026', '#334155') %}
+{% set footer_icon_bg = theme.settings.get('veloura_footer_icon_bg_color_2026', '#ffffff') %}
+{% set footer_bottom_bg = theme.settings.get('veloura_footer_bottom_bg_2026', '#ffffff') %}
+{% set footer_bottom_text_color = theme.settings.get('veloura_footer_bottom_text_color_2026', '#334155') %}
+
+{% set footer_title_size = theme.settings.get('veloura_footer_title_size_2026', 16) %}
+{% set footer_text_size = theme.settings.get('veloura_footer_text_size_2026', 14) %}
+
+{% set footer_bg_image = theme.settings.get('veloura_footer_bg_image_2026') %}
+{% set footer_transparent_home = theme.settings.get('veloura_footer_transparent_home_2026', false) %}
+{% set footer_compact = theme.settings.get('veloura_footer_compact_2026', false) %}
+{% set footer_radius = theme.settings.get('veloura_footer_radius_2026', 'medium') %}
+{% set footer_center_mobile = theme.settings.get('veloura_footer_center_mobile_2026', true) %}
+{% set footer_columns = theme.settings.get('veloura_footer_columns_desktop_2026', '4') %}
+
+{% set footer_store_title = theme.settings.get('veloura_footer_store_title_2026') ?: store.name %}
+{% set footer_store_description = theme.settings.get('veloura_footer_store_description_2026') ?: store.description %}
+{% set footer_links_title = theme.settings.get('veloura_footer_links_title_2026') ?: trans('blocks.footer.pages_links') %}
+{% set footer_contact_title = theme.settings.get('veloura_footer_contact_title_2026') ?: 'تواصل معنا' %}
+{% set footer_apps_title = theme.settings.get('veloura_footer_apps_title_2026') ?: 'تحميل تطبيق الجوال' %}
+{% set footer_social_title = theme.settings.get('veloura_footer_social_title_2026') ?: 'تابعنا' %}
+{% set footer_bottom_text = theme.settings.get('veloura_footer_bottom_text_2026') %}
+
+{% set footer_hide_apps = theme.settings.get('veloura_footer_hide_apps_2026', false) %}
+{% set footer_hide_links = theme.settings.get('veloura_footer_hide_links_2026', false) %}
+{% set footer_hide_payments = theme.settings.get('veloura_footer_hide_payments_2026', false) %}
+{% set footer_show_social_title = theme.settings.get('veloura_footer_show_social_title_2026', true) %}
+{% set footer_social_under_store = theme.settings.get('veloura_footer_social_under_store_2026', true) %}
+{% set footer_social_under_contact = theme.settings.get('veloura_footer_social_under_contact_2026', false) %}
+
+<footer
+  class="store-footer
+  {{ footer_enabled ? 'veloura-footer-enabled' : '' }}
+  {{ footer_compact ? 'veloura-footer-compact' : '' }}
+  {{ footer_center_mobile ? 'veloura-footer-center-mobile' : '' }}
+  {{ footer_transparent_home and is_page('index') ? 'veloura-footer-transparent-home' : '' }}
+  veloura-footer-radius-{{ footer_radius }}
+  veloura-footer-cols-{{ footer_columns }}
+  "
+  style="
+    --veloura-footer-bg: {{ footer_bg }};
+    --veloura-footer-text: {{ footer_text }};
+    --veloura-footer-title: {{ footer_title_color }};
+    --veloura-footer-link: {{ footer_link_color }};
+    --veloura-footer-icon-bg: {{ footer_icon_bg }};
+    --veloura-footer-bottom-bg: {{ footer_bottom_bg }};
+    --veloura-footer-bottom-text: {{ footer_bottom_text_color }};
+    --veloura-footer-title-size: {{ footer_title_size }}px;
+    --veloura-footer-text-size: {{ footer_text_size }}px;
+    --veloura-footer-logo-size: {{ footer_logo_size_px }}px;
+    {% if footer_bg_image %}
+      --veloura-footer-bg-image: url('{{ footer_bg_image }}');
+    {% endif %}
+  "
+>
+  <div aria-label="footer" class="store-footer__inner veloura-footer-main">
+    <div class="veloura-footer-container">
+      <div class="veloura-footer-grid">
+
+        {# Store Info #}
+        <div class="veloura-footer-block veloura-footer-store">
+          {% if not footer_hide_logo %}
+            <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
+              {% if footer_logo_is_video %}
+                <video
+                  class="veloura-footer-logo__media"
+                  src="{{ footer_logo }}"
+                  autoplay
+                  muted
+                  loop
+                  playsinline>
+                </video>
+              {% else %}
+                <img
+                  class="veloura-footer-logo__media"
+                  src="{{ footer_logo }}"
+                  loading="lazy"
+                  alt="{{ store.name }}">
               {% endif %}
-              <div>
-                <p class="text-sm text-text-grey mb-1">{{ trans('common.elements.tax_number') }}</p>
-                <b class="text-sm">{{ store.settings.tax.number }}</b>
-              </div>
-            </div>
+            </a>
+          {% endif %}
 
-            {% if store.settings.tax.certificate %}
-              <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
-                <div class="flex justify-center max-w-full">
-                  <img class="w-full" loading="lazy"
-                  data-src="{{ store.settings.tax.certificate }}"
-                  alt="{{ store.settings.tax.number }}"/>
+          <h3 class="veloura-footer-title">{{ footer_store_title }}</h3>
+
+          {% if footer_store_description %}
+            <div class="veloura-footer-description">
+              {{ footer_store_description|raw }}
+            </div>
+          {% endif %}
+
+          {% if footer_social_under_store %}
+            <div class="veloura-footer-social veloura-footer-social-store">
+              {% if footer_show_social_title %}
+                <h4 class="veloura-footer-social-title">{{ footer_social_title }}</h4>
+              {% endif %}
+              <salla-social></salla-social>
+            </div>
+          {% endif %}
+
+          <div class="veloura-footer-trust">
+            <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
+
+            {% if store.settings.tax.number %}
+              <div class="veloura-footer-tax">
+                {% if store.settings.tax.certificate %}
+                  <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
+                    <img width="40" height="50" src="{{ 'images/tax.png' | cdn(70,70) }}" loading="lazy" alt="value added tax">
+                  </a>
+                {% endif %}
+
+                <div>
+                  <p>{{ trans('common.elements.tax_number') }}</p>
+                  <b>{{ store.settings.tax.number }}</b>
                 </div>
-              </salla-modal>
+              </div>
+
+              {% if store.settings.tax.certificate %}
+                <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
+                  <div class="flex justify-center max-w-full">
+                    <img class="w-full" loading="lazy" data-src="{{ store.settings.tax.certificate }}" alt="{{ store.settings.tax.number }}"/>
+                  </div>
+                </salla-modal>
+              {% endif %}
             {% endif %}
+          </div>
+        </div>
+
+        {# Footer Links #}
+        {% if not footer_hide_links %}
+          <div class="veloura-footer-block veloura-footer-links">
+            <h3 class="veloura-footer-title">{{ footer_links_title }}</h3>
+            <salla-menu source="footer" with-cookie-preferences></salla-menu>
+          </div>
+        {% endif %}
+
+        {# Contacts #}
+        <div class="veloura-footer-block veloura-footer-contact">
+          <h3 class="veloura-footer-title">{{ footer_contact_title }}</h3>
+          <salla-contacts></salla-contacts>
+
+          {% if footer_social_under_contact %}
+            <div class="veloura-footer-social veloura-footer-social-contact">
+              {% if footer_show_social_title %}
+                <h4 class="veloura-footer-social-title">{{ footer_social_title }}</h4>
+              {% endif %}
+              <salla-social></salla-social>
+            </div>
           {% endif %}
         </div>
-        </div>
 
-			<div>
-				<h3>{{ trans('blocks.footer.pages_links') }}</h3>
-				<salla-menu source="footer" with-cookie-preferences></salla-menu>
-			</div>
+        {# Apps #}
+        {% if not footer_hide_apps %}
+          <div class="veloura-footer-block veloura-footer-apps">
+            <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
+            <salla-apps-icons></salla-apps-icons>
+          </div>
+        {% endif %}
 
-			<div>
-				<salla-contacts></salla-contacts>
+      </div>
+    </div>
+  </div>
 
-				<div class="lg:hidden contact-social">
-					<salla-social></salla-social>
-				</div>
-			</div>
+  <div class="veloura-footer-bottom">
+    <div class="veloura-footer-container veloura-footer-bottom__inner">
+      <span class="veloura-footer-copyright">
+        {% if footer_bottom_text %}
+          {{ footer_bottom_text }}
+        {% else %}
+          {% hook copyright %}
+        {% endif %}
+      </span>
 
-			<salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>
+      {% if not footer_hide_payments %}
+        <salla-payments></salla-payments>
+      {% endif %}
+    </div>
+  </div>
 
-		</div>
-	</div>
-
-	<div class="md:flex items-center justify-between py-4 container text-center">
-		<span class="text-sm copyright-text">{% hook copyright %}</span>
-		<salla-payments></salla-payments>
-	</div>
-</div>
-
-<span class="hidden bottom-2 rtl:pl-24 ltr:pr-24 md:grid-cols-3 opacity-40"></span></footer>
+  <span class="hidden bottom-2 rtl:pl-24 ltr:pr-24 md:grid-cols-3 opacity-40"></span>
+</footer>
