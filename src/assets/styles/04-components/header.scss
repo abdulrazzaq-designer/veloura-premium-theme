@@ -939,3 +939,28 @@ body.dark {
     }
   }
 }
+
+
+
+/* Veloura header custom container */
+.store-header.veloura-top-enabled {
+  .veloura-header-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding-inline: 32px !important;
+  }
+
+  .veloura-header-grid {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled {
+    .veloura-header-container {
+      padding-inline: 16px !important;
+    }
+  }
+}
