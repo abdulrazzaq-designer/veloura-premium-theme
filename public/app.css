@@ -26760,6 +26760,55 @@ body.dark .veloura-dark-toggle__sun {
     padding-right: 16px !important;
   }
 }
+/* Veloura header custom container */
+.store-header.veloura-top-enabled .veloura-header-container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+.store-header.veloura-top-enabled .veloura-header-grid {
+  width: 100% !important;
+  max-width: none !important;
+}
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled .veloura-header-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+/* ================================
+   Veloura Force Grid Full Width
+   ضع هذا في آخر الملف تماماً
+================================ */
+.store-header.veloura-top-enabled .veloura-header-grid {
+  width: calc(100vw - 64px) !important;
+  max-width: none !important;
+  margin-left: calc(50% - 50vw + 32px) !important;
+  margin-right: calc(50% - 50vw + 32px) !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  grid-template-areas: "left logo right" !important;
+}
+.store-header.veloura-top-enabled .veloura-header-left {
+  grid-area: left !important;
+  justify-content: flex-start !important;
+}
+.store-header.veloura-top-enabled .veloura-header-logo {
+  grid-area: logo !important;
+  justify-self: center !important;
+}
+.store-header.veloura-top-enabled .veloura-header-right {
+  grid-area: right !important;
+  justify-content: flex-end !important;
+}
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled .veloura-header-grid {
+    width: calc(100vw - 32px) !important;
+    margin-left: calc(50% - 50vw + 16px) !important;
+    margin-right: calc(50% - 50vw + 16px) !important;
+  }
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;

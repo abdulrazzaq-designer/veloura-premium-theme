@@ -964,3 +964,50 @@ body.dark {
     }
   }
 }
+
+
+
+
+
+/* ================================
+   Veloura Force Grid Full Width
+   ضع هذا في آخر الملف تماماً
+================================ */
+
+.store-header.veloura-top-enabled {
+  .veloura-header-grid {
+    width: calc(100vw - 64px) !important;
+    max-width: none !important;
+
+    margin-left: calc(50% - 50vw + 32px) !important;
+    margin-right: calc(50% - 50vw + 32px) !important;
+
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+    grid-template-areas: "left logo right" !important;
+  }
+
+  .veloura-header-left {
+    grid-area: left !important;
+    justify-content: flex-start !important;
+  }
+
+  .veloura-header-logo {
+    grid-area: logo !important;
+    justify-self: center !important;
+  }
+
+  .veloura-header-right {
+    grid-area: right !important;
+    justify-content: flex-end !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled {
+    .veloura-header-grid {
+      width: calc(100vw - 32px) !important;
+      margin-left: calc(50% - 50vw + 16px) !important;
+      margin-right: calc(50% - 50vw + 16px) !important;
+    }
+  }
+}
