@@ -1137,6 +1137,121 @@
       "value": true
     }
   ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_settings_title_2026",
+  "value": "<div style=\"width:100%;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,#0f172a,#1e293b,#334155);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(15,23,42,.20)\"><div style=\"width:42px;height:42px;border-radius:999px;background:#fff;color:#0f172a;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0\">▤</div><div style=\"flex:1\"><strong style=\"display:block;font-size:18px;font-weight:900;line-height:1.4\">خيارات القسم السفلي - Veloura</strong><span style=\"display:block;font-size:12px;opacity:.85;margin-top:3px\">تحكم بالشعار، العناوين، الألوان، الخلفية وأسلوب الفوتر</span></div></div>",
+  "variant": "h1",
+  "icon": "sicon-layout-footer"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل إعدادات القسم السفلي المتقدمة",
+  "description": "عند التفعيل ستظهر جميع خيارات تخصيص القسم السفلي",
+  "id": "veloura_footer_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "static",
+  "id": "veloura_footer_line_general_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_subtitle_logo_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f1f5f9;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #334155;box-shadow:inset 0 0 0 1px rgba(15,23,42,.04)\">الشعار والخلفية</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_subtitle_titles_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4;box-shadow:inset 0 0 0 1px rgba(6,182,212,.06)\">عناوين أقسام الفوتر</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_subtitle_colors_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c;box-shadow:inset 0 0 0 1px rgba(251,146,60,.07)\">الألوان والخطوط</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_subtitle_layout_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.07)\">الشكل والتجاوب</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_subtitle_contact_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eef2ff;color:#3730a3;text-align:right;font-weight:800;border-right:4px solid #6366f1;box-shadow:inset 0 0 0 1px rgba(99,102,241,.07)\">التواصل والروابط</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_subtitle_bottom_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899;box-shadow:inset 0 0 0 1px rgba(236,72,153,.07)\">الشريط السفلي وحقوق المتجر</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
 }
     ],
     "components": [
