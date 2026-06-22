@@ -733,3 +733,167 @@ body.dark {
 .store-header.veloura-top-hidden {
   transform: translateY(-100%);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   Veloura Header Final Patch
+================================ */
+
+/* إجبار الهيدر أن يأخذ عرض الشاشة في اللابتوب عند تفعيل خيار ملء الشاشة */
+@media (min-width: 1024px) {
+  .store-header.veloura-top-enabled.veloura-top-full-width-desktop {
+    #mainnav > .inner > .container,
+    .main-nav-container > .inner > .container,
+    .inner > .container {
+      width: 100% !important;
+      max-width: none !important;
+      padding-inline: 32px !important;
+      margin-inline: 0 !important;
+    }
+
+    .veloura-header-grid {
+      width: 100% !important;
+      max-width: none !important;
+    }
+  }
+
+  /* تثبيت أماكن العناصر في اللابتوب */
+  .store-header.veloura-top-enabled {
+    .veloura-header-left {
+      justify-content: flex-start !important;
+    }
+
+    .veloura-header-right {
+      justify-content: flex-end !important;
+    }
+
+    .veloura-header-logo {
+      justify-self: center !important;
+    }
+  }
+
+  /* عند عرض التصنيفات كروابط */
+  .store-header.veloura-desktop-menu-links {
+    .veloura-menu-trigger {
+      display: none !important;
+    }
+
+    .veloura-menu-links-wrap,
+    custom-main-menu {
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+
+  /* عند عرض القائمة مثل الجوال */
+  .store-header.veloura-desktop-menu-hamburger {
+    .veloura-menu-trigger {
+      display: inline-flex !important;
+    }
+
+    .veloura-menu-links-wrap,
+    custom-main-menu {
+      display: none !important;
+    }
+  }
+
+  /* شريط البحث في اللابتوب يكون بسطر مستقل وما يتداخل مع التصنيفات */
+  .store-header.veloura-desktop-search-bar,
+  .store-header.veloura-desktop-search-bar_sticky_icon {
+    .veloura-header-grid {
+      grid-template-areas:
+        "left logo right"
+        "search search search" !important;
+    }
+
+    .veloura-desktop-search-bar {
+      grid-area: search !important;
+      display: block !important;
+      width: min(620px, 100%) !important;
+      max-width: 620px !important;
+      justify-self: center !important;
+      margin-top: 8px !important;
+    }
+  }
+}
+
+/* ترتيب الجوال */
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled {
+    .veloura-header-grid {
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+      grid-template-areas: "left logo right" !important;
+    }
+
+    .veloura-header-left {
+      justify-content: flex-start !important;
+    }
+
+    .veloura-header-right {
+      justify-content: flex-end !important;
+    }
+
+    .veloura-header-logo {
+      justify-self: center !important;
+    }
+  }
+
+  /* خيار: أيقونة على اليمين فقط */
+  .store-header.veloura-mobile-search-icon_right {
+    .veloura-search-toggle-left,
+    .veloura-mobile-search-bar {
+      display: none !important;
+    }
+
+    .veloura-search-toggle-right {
+      display: inline-flex !important;
+      order: 20 !important;
+    }
+  }
+
+  /* خيار: أيقونة على اليسار فقط */
+  .store-header.veloura-mobile-search-icon_left {
+    .veloura-search-toggle-right,
+    .veloura-mobile-search-bar {
+      display: none !important;
+    }
+
+    .veloura-search-toggle-left {
+      display: inline-flex !important;
+      order: 20 !important;
+    }
+  }
+
+  /* خيار: شريط بحث */
+  .store-header.veloura-mobile-search-bar,
+  .store-header.veloura-mobile-search-bar_sticky_icon {
+    .veloura-header-grid {
+      grid-template-areas:
+        "left logo right"
+        "search search search" !important;
+    }
+
+    .veloura-mobile-search-bar {
+      grid-area: search !important;
+      display: block !important;
+      width: 100% !important;
+      margin-top: 8px !important;
+    }
+
+    .veloura-search-toggle-left,
+    .veloura-search-toggle-right {
+      display: none !important;
+    }
+  }
+}
