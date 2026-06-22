@@ -406,3 +406,47 @@ document.addEventListener('theme::ready', initVelouraTitleNextSection);
 setTimeout(initVelouraTitleNextSection, 500);
 setTimeout(initVelouraTitleNextSection, 1500);
 
+
+
+
+/* ================================
+   Veloura Dark Icon Switch
+================================ */
+
+function velouraUpdateDarkIcon() {
+  const isDark =
+    document.documentElement.classList.contains('dark') ||
+    document.body.classList.contains('dark') ||
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    document.body.getAttribute('data-theme') === 'dark';
+
+  document.querySelectorAll('.veloura-dark-toggle__icon').forEach((icon) => {
+    icon.classList.remove('sicon-moon', 'sicon-sun');
+    icon.classList.add(isDark ? 'sicon-sun' : 'sicon-moon');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  velouraUpdateDarkIcon();
+
+  document.querySelectorAll('.veloura-dark-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      setTimeout(velouraUpdateDarkIcon, 80);
+      setTimeout(velouraUpdateDarkIcon, 250);
+    });
+  });
+
+  const observer = new MutationObserver(() => {
+    velouraUpdateDarkIcon();
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class', 'data-theme']
+  });
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class', 'data-theme']
+  });
+});
