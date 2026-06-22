@@ -467,21 +467,46 @@ salla-menu[topnav]:not(.hydrated) {
   }
 }
 
-/* الحواف */
-.store-header.veloura-top-enabled.veloura-top-border-sharp .main-nav-container {
-  border-radius: 0;
+/* ================================
+   Veloura Header Border Radius Fix
+================================ */
+.store-header.veloura-top-enabled {
+  .main-nav-container,
+  .main-nav-container > .inner {
+    overflow: hidden !important;
+  }
 }
 
-.store-header.veloura-top-enabled.veloura-top-border-soft .main-nav-container {
-  border-radius: 0 0 12px 12px;
+/* حاد */
+.store-header.veloura-top-enabled.veloura-top-border-sharp {
+  .main-nav-container,
+  .main-nav-container > .inner {
+    border-radius: 0 !important;
+  }
 }
 
-.store-header.veloura-top-enabled.veloura-top-border-medium .main-nav-container {
-  border-radius: 0 0 24px 24px;
+/* ناعم قليلاً */
+.store-header.veloura-top-enabled.veloura-top-border-soft {
+  .main-nav-container,
+  .main-nav-container > .inner {
+    border-radius: 0 0 12px 12px !important;
+  }
 }
 
-.store-header.veloura-top-enabled.veloura-top-border-large .main-nav-container {
-  border-radius: 0 0 42px 42px;
+/* ناعم */
+.store-header.veloura-top-enabled.veloura-top-border-medium {
+  .main-nav-container,
+  .main-nav-container > .inner {
+    border-radius: 0 0 24px 24px !important;
+  }
+}
+
+/* ناعم جداً */
+.store-header.veloura-top-enabled.veloura-top-border-large {
+  .main-nav-container,
+  .main-nav-container > .inner {
+    border-radius: 0 0 42px 42px !important;
+  }
 }
 
 /* حجم الأيقونات */
