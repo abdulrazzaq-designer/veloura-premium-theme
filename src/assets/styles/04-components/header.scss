@@ -487,49 +487,156 @@ body.dark {
   }
 
   /* بحث الجوال: أيقونة فقط */
-  .store-header.veloura-mobile-search-icon_right,
-  .store-header.veloura-mobile-search-icon_left {
-    .veloura-search-bar {
+  /* بحث الجوال: أيقونة فقط */
+.store-header.veloura-top-enabled {
+  .veloura-search-icon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--veloura-top-text) !important;
+
+    salla-search {
+      width: 1em !important;
+      height: 1em !important;
+      min-width: 1em !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      color: inherit !important;
+      font-size: inherit !important;
+    }
+
+    .s-search-input,
+    input {
       display: none !important;
     }
 
-    .veloura-search-icon {
-      display: inline-flex !important;
-      width: auto;
+    .s-search-icon,
+    .s-search-btn,
+    button,
+    i,
+    svg {
+      color: inherit !important;
+      font-size: inherit !important;
+      width: 1em !important;
+      height: 1em !important;
+      min-width: 1em !important;
+      line-height: 1 !important;
+    }
+  }
+}
 
-      .s-search-input,
-      input {
-        display: none !important;
-      }
+/* حجم أيقونة البحث مثل باقي أيقونات الهيدر */
+.store-header.veloura-top-icons-small .veloura-search-icon {
+  font-size: 22px !important;
+}
+
+.store-header.veloura-top-icons-medium .veloura-search-icon {
+  font-size: 28px !important;
+}
+
+.store-header.veloura-top-icons-large .veloura-search-icon {
+  font-size: 34px !important;
+}
+
+@media (max-width: 1023px) {
+  .store-header.veloura-mobile-search-icon_right {
+    .veloura-search-bar,
+    .veloura-search-icon-left {
+      display: none !important;
+    }
+
+    .veloura-search-icon-right {
+      display: inline-flex !important;
+      order: -99;
     }
   }
 
   .store-header.veloura-mobile-search-icon_left {
-    .veloura-search-icon {
-      order: -10;
+    .veloura-search-bar,
+    .veloura-search-icon-right {
+      display: none !important;
+    }
+
+    .veloura-search-icon-left {
+      display: inline-flex !important;
+      order: 99;
     }
   }
 
-  /* بحث الجوال: شريط */
   .store-header.veloura-mobile-search-bar,
   .store-header.veloura-mobile-search-bar_sticky_icon {
-    .veloura-header-grid {
-      grid-template-areas:
-        "right logo left"
-        "search search search";
+    .veloura-search-icon-right,
+    .veloura-search-icon-left {
+      display: none !important;
     }
+  }
 
-    .veloura-search-icon {
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled {
+    .veloura-search-bar {
       display: none !important;
     }
 
-    .veloura-search-bar {
-      grid-area: search;
-      display: block !important;
-      width: 100%;
-      margin-top: 8px;
+    .veloura-search-icon-right {
+      display: inline-flex !important;
+      order: -99;
+    }
+
+    .veloura-search-icon-left {
+      display: none !important;
     }
   }
+}
+
+  /* بحث الجوال: شريط */
+  @media (min-width: 1024px) {
+  .store-header.veloura-desktop-search-icon_right {
+    .veloura-search-bar,
+    .veloura-search-icon-left {
+      display: none !important;
+    }
+
+    .veloura-search-icon-right {
+      display: inline-flex !important;
+      order: -99;
+    }
+  }
+
+  .store-header.veloura-desktop-search-icon_left {
+    .veloura-search-bar,
+    .veloura-search-icon-right {
+      display: none !important;
+    }
+
+    .veloura-search-icon-left {
+      display: inline-flex !important;
+      order: 99;
+    }
+  }
+
+  .store-header.veloura-desktop-search-bar,
+  .store-header.veloura-desktop-search-bar_sticky_icon {
+    .veloura-search-icon-right,
+    .veloura-search-icon-left {
+      display: none !important;
+    }
+  }
+
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled {
+    .veloura-search-bar {
+      display: none !important;
+    }
+
+    .veloura-search-icon-right {
+      display: inline-flex !important;
+      order: -99;
+    }
+
+    .veloura-search-icon-left {
+      display: none !important;
+    }
+  }
+}
 
   /* عند النزول: يتحول البحث إلى أيقونة */
   .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled {
