@@ -61,20 +61,32 @@
       <div class="veloura-header-container">
         <div class="veloura-header-grid">
 
-          {# Right Side #}
-          <div class="veloura-header-side veloura-header-right">
+          {# Left Side #}
+          <div class="veloura-header-side veloura-header-left">
 
-            <a class="veloura-header-icon veloura-menu-trigger mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
-              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
-            </a>
-
-            {% if show_mobile_lang %}
-              <button type="button" class="veloura-header-icon veloura-lang-mobile" onclick="document.querySelector('salla-localization-modal')?.click()" aria-label="اللغة والعملة">
-                <i class="sicon-earth"></i>
-              </button>
+            {% if not hide_lang_desktop %}
+              <div class="veloura-lang-desktop">
+                {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+                  <salla-localization-modal show-trigger></salla-localization-modal>
+                {% endif %}
+              </div>
             {% endif %}
 
-            {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'right' %}
+            <salla-cart-summary class="veloura-cart-summary {{ hide_cart_total_mobile ? 'veloura-cart-icon-only-mobile' : '' }}">
+              <i slot="icon" class="veloura-header-icon {{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
+            </salla-cart-summary>
+
+            <button type="button" class="veloura-header-icon veloura-login-btn" onclick="salla.event.dispatch('login::open')" aria-label="تسجيل الدخول">
+              <i class="{{ theme.settings.get('veloura_top_login_icon_2026', 'sicon-user-circle') }}"></i>
+            </button>
+
+            {% if show_wishlist %}
+              <a class="veloura-header-icon veloura-wishlist-btn" href="{{ store.url }}/wishlist" aria-label="المفضلة">
+                <i class="sicon-heart"></i>
+              </a>
+            {% endif %}
+
+            {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'left' %}
               <button type="button" class="veloura-header-icon veloura-dark-toggle" aria-label="تبديل الوضع الداكن">
                 <i class="sicon-moon veloura-dark-toggle__moon"></i>
                 <i class="sicon-sun veloura-dark-toggle__sun"></i>
@@ -82,18 +94,12 @@
             {% endif %}
 
             <button
-  type="button"
-  class="veloura-search-toggle veloura-search-toggle-right"
-  onclick="salla.event.dispatch('search::open')"
-  aria-label="بحث">
-  <i class="sicon-search"></i>
-</button>
-
-
-
-            <div class="veloura-menu-links-wrap">
-  <custom-main-menu></custom-main-menu>
-</div>
+              type="button"
+              class="veloura-header-icon veloura-search-toggle veloura-search-toggle-left"
+              onclick="salla.event.dispatch('search::open')"
+              aria-label="بحث">
+              <i class="sicon-search"></i>
+            </button>
 
           </div>
 
@@ -131,53 +137,47 @@
             {% endif %}
           </a>
 
-
-          <div class="veloura-mobile-search-bar">
-  <salla-search inline oval height="40"></salla-search>
-</div>
-
-          
-
-          {# Left Side #}
-          <div class="veloura-header-side veloura-header-left">
+          {# Right Side #}
+          <div class="veloura-header-side veloura-header-right">
 
             <button
-  type="button"
-  class="veloura-search-toggle veloura-search-toggle-left"
-  onclick="salla.event.dispatch('search::open')"
-  aria-label="بحث">
-  <i class="sicon-search"></i>
-</button>
+              type="button"
+              class="veloura-header-icon veloura-search-toggle veloura-search-toggle-right"
+              onclick="salla.event.dispatch('search::open')"
+              aria-label="بحث">
+              <i class="sicon-search"></i>
+            </button>
 
-            {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'left' %}
+            {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'right' %}
               <button type="button" class="veloura-header-icon veloura-dark-toggle" aria-label="تبديل الوضع الداكن">
                 <i class="sicon-moon veloura-dark-toggle__moon"></i>
                 <i class="sicon-sun veloura-dark-toggle__sun"></i>
               </button>
             {% endif %}
 
-            {% if show_wishlist %}
-              <a class="veloura-header-icon veloura-wishlist-btn" href="{{ store.url }}/wishlist" aria-label="المفضلة">
-                <i class="sicon-heart"></i>
-              </a>
+            {% if show_mobile_lang %}
+              <button type="button" class="veloura-header-icon veloura-lang-mobile" onclick="document.querySelector('salla-localization-modal')?.click()" aria-label="اللغة والعملة">
+                <i class="sicon-earth"></i>
+              </button>
             {% endif %}
 
-            <button type="button" class="veloura-header-icon veloura-login-btn" onclick="salla.event.dispatch('login::open')" aria-label="تسجيل الدخول">
-              <i class="{{ theme.settings.get('veloura_top_login_icon_2026', 'sicon-user-circle') }}"></i>
-            </button>
+            <div class="veloura-menu-links-wrap">
+              <custom-main-menu></custom-main-menu>
+            </div>
 
-            <salla-cart-summary class="veloura-cart-summary {{ hide_cart_total_mobile ? 'veloura-cart-icon-only-mobile' : '' }}">
-              <i slot="icon" class="veloura-header-icon {{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
-            </salla-cart-summary>
+            <a class="veloura-header-icon veloura-menu-trigger mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
+              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+            </a>
 
-            {% if not hide_lang_desktop %}
-              <div class="veloura-lang-desktop">
-                {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                  <salla-localization-modal show-trigger></salla-localization-modal>
-                {% endif %}
-              </div>
-            {% endif %}
+          </div>
 
+          {# Search Bars #}
+          <div class="veloura-mobile-search-bar">
+            <salla-search inline oval height="40"></salla-search>
+          </div>
+
+          <div class="veloura-desktop-search-bar">
+            <salla-search inline oval height="40"></salla-search>
           </div>
 
         </div>
