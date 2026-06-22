@@ -450,3 +450,56 @@ document.addEventListener('DOMContentLoaded', () => {
     attributeFilter: ['class', 'data-theme']
   });
 });
+
+
+
+
+
+
+
+
+/* ================================
+   Veloura Desktop Drawer + Cart Total
+================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const openButtons = document.querySelectorAll('.veloura-menu-trigger-desktop');
+  const closeButtons = document.querySelectorAll('.veloura-desktop-menu-close, .veloura-desktop-menu-overlay');
+
+  openButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      document.documentElement.classList.add('veloura-desktop-drawer-open');
+    });
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      document.documentElement.classList.remove('veloura-desktop-drawer-open');
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      document.documentElement.classList.remove('veloura-desktop-drawer-open');
+    }
+  });
+
+  function velouraHideCartTotal() {
+    document.querySelectorAll('.veloura-cart-hide-total').forEach((cart) => {
+      cart.querySelectorAll('.s-cart-summary-total, .s-cart-summary-content').forEach((item) => {
+        item.style.setProperty('display', 'none', 'important');
+      });
+    });
+  }
+
+  velouraHideCartTotal();
+
+  const observer = new MutationObserver(() => {
+    velouraHideCartTotal();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});

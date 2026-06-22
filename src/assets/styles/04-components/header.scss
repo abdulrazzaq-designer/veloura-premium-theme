@@ -920,3 +920,212 @@ body.dark,
     inset-inline-start: -9px !important;
   }
 }
+
+
+
+
+
+/* ================================
+   Veloura Desktop Drawer + Cart Fix
+================================ */
+
+/* زر القائمة */
+.store-header.veloura-top-enabled {
+  .veloura-menu-trigger-desktop,
+  .veloura-menu-trigger-mobile {
+    color: var(--veloura-top-text) !important;
+  }
+}
+
+/* في الجوال: استخدم قائمة سلة الأصلية */
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled {
+    .veloura-menu-trigger-mobile {
+      display: inline-flex !important;
+    }
+
+    .veloura-menu-trigger-desktop {
+      display: none !important;
+    }
+  }
+
+  .veloura-desktop-menu-overlay,
+  .veloura-desktop-menu-drawer {
+    display: none !important;
+  }
+}
+
+/* في اللابتوب */
+@media (min-width: 1024px) {
+  .store-header.veloura-top-enabled {
+    .veloura-menu-trigger-mobile {
+      display: none !important;
+    }
+  }
+
+  .store-header.veloura-desktop-menu-links {
+    .veloura-menu-trigger-desktop {
+      display: none !important;
+    }
+  }
+
+  .store-header.veloura-desktop-menu-hamburger {
+    .veloura-menu-trigger-desktop {
+      display: inline-flex !important;
+    }
+
+    .veloura-menu-links-wrap {
+      display: none !important;
+    }
+  }
+
+  .veloura-desktop-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .42);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease;
+  }
+
+  .veloura-desktop-menu-drawer {
+    position: fixed;
+    top: 0;
+    inset-inline-end: 0;
+    width: 360px;
+    max-width: 88vw;
+    height: 100vh;
+    background: #fff;
+    color: #111;
+    z-index: 9999;
+    transform: translateX(110%);
+    transition: transform .28s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, .16);
+    overflow-y: auto;
+  }
+
+  html.veloura-desktop-drawer-open {
+    overflow: hidden;
+  }
+
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-drawer {
+    transform: translateX(0);
+  }
+
+  .veloura-desktop-menu-drawer__head {
+    height: 72px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  .veloura-desktop-menu-close {
+    border: 0;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .veloura-desktop-menu-drawer__body {
+    padding: 18px;
+  }
+
+  .veloura-desktop-menu-drawer custom-main-menu {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .veloura-desktop-menu-drawer .main-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 4px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .veloura-desktop-menu-drawer .main-menu > li,
+  .veloura-desktop-menu-drawer .main-menu > li > a {
+    width: 100% !important;
+  }
+
+  .veloura-desktop-menu-drawer .main-menu > li > a {
+    display: flex !important;
+    padding: 14px 12px !important;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+}
+
+/* إصلاح السلة */
+.store-header.veloura-top-enabled {
+  .veloura-cart-custom-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--veloura-top-text) !important;
+    line-height: 1 !important;
+  }
+
+  .veloura-cart-custom-icon i {
+    color: inherit !important;
+    font-size: inherit !important;
+    line-height: 1 !important;
+    width: 1em !important;
+    height: 1em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .veloura-cart-hide-total {
+    min-width: auto !important;
+  }
+
+  .veloura-cart-hide-total .s-cart-summary-total,
+  .veloura-cart-hide-total .s-cart-summary-content {
+    display: none !important;
+  }
+}
+
+/* إخفاء السعر في الجوال فقط حسب اسم الخيار */
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled {
+    .veloura-cart-icon-only-mobile .s-cart-summary-total,
+    .veloura-cart-icon-only-mobile .s-cart-summary-content {
+      display: none !important;
+    }
+  }
+}
+
+/* حجم أيقونة السلة من إعداد حجم الأيقونات */
+.store-header.veloura-top-icons-small {
+  .veloura-cart-summary,
+  .veloura-cart-custom-icon {
+    font-size: 22px !important;
+  }
+}
+
+.store-header.veloura-top-icons-medium {
+  .veloura-cart-summary,
+  .veloura-cart-custom-icon {
+    font-size: 28px !important;
+  }
+}
+
+.store-header.veloura-top-icons-large {
+  .veloura-cart-summary,
+  .veloura-cart-custom-icon {
+    font-size: 34px !important;
+  }
+}

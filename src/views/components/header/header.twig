@@ -72,7 +72,7 @@
               </div>
             {% endif %}
 
-            <salla-cart-summary class="veloura-cart-summary {{ hide_cart_total_mobile ? 'veloura-cart-icon-only-mobile' : '' }}">
+            <salla-cart-summary class="veloura-cart-summary {{ hide_cart_total_mobile ? 'veloura-cart-hide-total veloura-cart-icon-only-mobile' : '' }}">
   <span slot="icon" class="veloura-cart-custom-icon">
     <i class="{{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
   </span>
@@ -165,9 +165,13 @@
               <custom-main-menu></custom-main-menu>
             </div>
 
-            <a class="veloura-header-icon veloura-menu-trigger mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
-              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
-            </a>
+            <a class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
+  <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+</a>
+
+<button type="button" class="veloura-header-icon veloura-menu-trigger-desktop" aria-label="فتح القائمة">
+  <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+</button>
 
           </div>
 
@@ -184,4 +188,22 @@
       </div>
     </div>
   </div>
+
+
+  <div class="veloura-desktop-menu-overlay"></div>
+
+<div class="veloura-desktop-menu-drawer" aria-hidden="true">
+  <div class="veloura-desktop-menu-drawer__head">
+    <span>القائمة</span>
+
+    <button type="button" class="veloura-desktop-menu-close" aria-label="إغلاق القائمة">
+      <i class="sicon-cancel"></i>
+    </button>
+  </div>
+
+  <div class="veloura-desktop-menu-drawer__body">
+    <custom-main-menu></custom-main-menu>
+  </div>
+</div>
+
 </header>
