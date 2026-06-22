@@ -81,11 +81,19 @@
               </button>
             {% endif %}
 
-            <div class="veloura-search-icon veloura-search-icon-right">
-  <salla-search inline oval height="36"></salla-search>
-</div>
+            <button
+  type="button"
+  class="veloura-search-toggle veloura-search-toggle-right"
+  onclick="salla.event.dispatch('search::open')"
+  aria-label="بحث">
+  <i class="sicon-search"></i>
+</button>
 
-            <custom-main-menu></custom-main-menu>
+
+
+            <div class="veloura-menu-links-wrap">
+  <custom-main-menu></custom-main-menu>
+</div>
 
           </div>
 
@@ -123,12 +131,23 @@
             {% endif %}
           </a>
 
-          <div class="veloura-search-bar">
+
+          <div class="veloura-mobile-search-bar">
   <salla-search inline oval height="40"></salla-search>
 </div>
 
+          
+
           {# Left Side #}
           <div class="veloura-header-side veloura-header-left">
+
+            <button
+  type="button"
+  class="veloura-search-toggle veloura-search-toggle-left"
+  onclick="salla.event.dispatch('search::open')"
+  aria-label="بحث">
+  <i class="sicon-search"></i>
+</button>
 
             {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'left' %}
               <button type="button" class="veloura-header-icon veloura-dark-toggle" aria-label="تبديل الوضع الداكن">
@@ -142,10 +161,6 @@
                 <i class="sicon-heart"></i>
               </a>
             {% endif %}
-
-            <div class="veloura-search-icon veloura-search-icon-left">
-  <salla-search inline oval height="36"></salla-search>
-</div>
 
             <button type="button" class="veloura-header-icon veloura-login-btn" onclick="salla.event.dispatch('login::open')" aria-label="تسجيل الدخول">
               <i class="{{ theme.settings.get('veloura_top_login_icon_2026', 'sicon-user-circle') }}"></i>
