@@ -2992,6 +2992,14 @@ textarea.s-input{
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
 }
+@media (min-width: 1024px) {
+  .store-header.veloura-top-full-width-desktop .main-nav-container > .inner > .s-advertisement-content {
+    width: 100%;
+    max-width: none;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
 @media only screen and (min-width: 1024px) {
   .main-menu .sub-menu li.mega-menu .s-advertisement-content ul{
         margin: 0px;
@@ -26225,13 +26233,122 @@ salla-menu[topnav]:not(.hydrated)::after {
   background-color: rgba(255, 255, 255, 0.08);
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0) 100%);
 }
+/* ================================
+   Veloura Header 2026
+================================ */
+.store-header.veloura-top-enabled {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
 .store-header.veloura-top-enabled .main-nav-container {
   background: var(--veloura-top-bg) !important;
   color: var(--veloura-top-text) !important;
 }
 .store-header.veloura-top-enabled .main-nav-container {
-  overflow: hidden;
+  overflow: visible;
 }
+.store-header.veloura-top-enabled .inner {
+  background: var(--veloura-top-bg) !important;
+  color: var(--veloura-top-text) !important;
+}
+.store-header.veloura-top-enabled .veloura-header-grid {
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas: "right logo left";
+  align-items: center;
+  grid-gap: 16px;
+  gap: 16px;
+}
+.store-header.veloura-top-enabled .veloura-header-right {
+  grid-area: right;
+  justify-content: flex-start;
+}
+.store-header.veloura-top-enabled .veloura-header-logo {
+  margin: 0 !important;
+}
+.store-header.veloura-top-enabled .veloura-header-logo {
+  grid-area: logo;
+  justify-self: center;
+  z-index: 2;
+}
+.store-header.veloura-top-enabled .veloura-header-left {
+  grid-area: left;
+  justify-content: flex-end;
+}
+.store-header.veloura-top-enabled .veloura-search-bar {
+  display: none;
+}
+.store-header.veloura-top-enabled .veloura-search-icon {
+  display: inline-flex;
+  align-items: center;
+}
+.store-header.veloura-top-enabled .veloura-store-logo,
+.store-header.veloura-top-enabled .veloura-store-logo-video,
+.store-header.veloura-top-enabled .navbar-brand img {
+  max-height: var(--veloura-top-logo-size) !important;
+  width: auto !important;
+  max-width: none !important;
+}
+.store-header.veloura-top-enabled .veloura-store-logo,
+.store-header.veloura-top-enabled .veloura-store-logo-video,
+.store-header.veloura-top-enabled .navbar-brand img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+.store-header.veloura-top-enabled .veloura-store-logo-video {
+  height: var(--veloura-top-logo-size) !important;
+}
+.store-header.veloura-top-enabled .veloura-header-icon,
+.store-header.veloura-top-enabled .veloura-cart-summary i[slot=icon] {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--veloura-top-text) !important;
+  display: inline-flex !important;
+}
+.store-header.veloura-top-enabled .veloura-header-icon,
+.store-header.veloura-top-enabled .veloura-cart-summary i[slot=icon] {
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+}
+.store-header.veloura-top-enabled .veloura-header-side {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.store-header.veloura-top-enabled .veloura-cart-summary {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+.store-header.veloura-top-enabled .s-cart-summary-count {
+  background: var(--veloura-top-cart-bg) !important;
+}
+.store-header.veloura-top-enabled .s-cart-summary-total,
+.store-header.veloura-top-enabled .s-cart-summary-content,
+.store-header.veloura-top-enabled .s-cart-summary-wrapper {
+  color: var(--veloura-top-text) !important;
+}
+.store-header.veloura-top-enabled salla-search {
+  color: var(--veloura-top-text);
+}
+.store-header.veloura-top-enabled .s-search-input {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: var(--veloura-top-text) !important;
+}
+.store-header.veloura-top-enabled .veloura-dark-toggle__sun {
+  display: none;
+}
+/* الحواف */
 .store-header.veloura-top-enabled.veloura-top-border-sharp .main-nav-container {
   border-radius: 0;
 }
@@ -26244,69 +26361,7 @@ salla-menu[topnav]:not(.hydrated)::after {
 .store-header.veloura-top-enabled.veloura-top-border-large .main-nav-container {
   border-radius: 0 0 42px 42px;
 }
-.store-header.veloura-top-enabled .navbar-brand img {
-  max-height: var(--veloura-top-logo-size) !important;
-  width: auto !important;
-  max-width: none !important;
-}
-.store-header.veloura-top-enabled .navbar-brand img {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-.store-header.veloura-top-enabled .s-cart-summary-count {
-  background: var(--veloura-top-cart-bg) !important;
-}
-.veloura-header-grid {
-  min-height: 78px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  grid-gap: 16px;
-  gap: 16px;
-}
-.veloura-header-side {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-}
-.veloura-header-right {
-  justify-content: flex-start;
-}
-.veloura-header-left {
-  justify-content: flex-end;
-}
-.veloura-header-logo {
-  margin: 0 !important;
-}
-.veloura-header-logo {
-  justify-self: center;
-  z-index: 2;
-}
-.veloura-header-icon,
-.veloura-cart-summary i[slot=icon] {
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  color: var(--veloura-top-text) !important;
-  display: inline-flex !important;
-}
-.veloura-header-icon,
-.veloura-cart-summary i[slot=icon] {
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  cursor: pointer;
-}
-.veloura-cart-summary {
-  display: inline-flex !important;
-  align-items: center !important;
-  margin: 0 !important;
-  min-width: auto !important;
-  min-height: auto !important;
-}
+/* حجم الأيقونات */
 .store-header.veloura-top-icons-small .veloura-header-icon {
   font-size: 22px !important;
 }
@@ -26316,66 +26371,111 @@ salla-menu[topnav]:not(.hydrated)::after {
 .store-header.veloura-top-icons-large .veloura-header-icon {
   font-size: 34px !important;
 }
-.veloura-dark-toggle__sun {
-  display: none;
-}
+/* الوضع الداكن */
 body.dark .veloura-dark-toggle__moon {
-  display: none;
+  display: none !important;
 }
 body.dark .veloura-dark-toggle__sun {
-  display: inline-block;
+  display: inline-block !important;
 }
+/* ================================
+   Mobile
+================================ */
 @media (max-width: 1023px) {
-  .veloura-header-grid {
+  .store-header.veloura-top-enabled .veloura-header-grid {
     min-height: 72px;
+    gap: 10px;
   }
-  custom-main-menu,
-  .veloura-lang-desktop {
+  .store-header.veloura-top-enabled custom-main-menu,
+  .store-header.veloura-top-enabled .veloura-lang-desktop {
     display: none !important;
   }
-  .veloura-cart-icon-only-mobile .s-cart-summary-total {
+  .store-header.veloura-top-enabled .veloura-cart-icon-only-mobile .s-cart-summary-total,
+  .store-header.veloura-top-enabled .veloura-cart-icon-only-mobile .s-cart-summary-content {
     display: none !important;
   }
-  .store-header.veloura-mobile-search-icon_right .veloura-search,
-  .store-header.veloura-mobile-search-icon_left .veloura-search {
+  /* بحث الجوال: أيقونة فقط */
+  .store-header.veloura-mobile-search-icon_right .veloura-search-bar,
+  .store-header.veloura-mobile-search-icon_left .veloura-search-bar {
+    display: none !important;
+  }
+  .store-header.veloura-mobile-search-icon_right .veloura-search-icon,
+  .store-header.veloura-mobile-search-icon_left .veloura-search-icon {
+    display: inline-flex !important;
+  }
+  .store-header.veloura-mobile-search-icon_right .veloura-search-icon,
+  .store-header.veloura-mobile-search-icon_left .veloura-search-icon {
     width: auto;
-    overflow: visible;
   }
-  .store-header.veloura-mobile-search-icon_right .veloura-search .s-search-input,
-  .store-header.veloura-mobile-search-icon_right .veloura-search input,
-  .store-header.veloura-mobile-search-icon_left .veloura-search .s-search-input,
-  .store-header.veloura-mobile-search-icon_left .veloura-search input {
+  .store-header.veloura-mobile-search-icon_right .veloura-search-icon .s-search-input,
+  .store-header.veloura-mobile-search-icon_right .veloura-search-icon input,
+  .store-header.veloura-mobile-search-icon_left .veloura-search-icon .s-search-input,
+  .store-header.veloura-mobile-search-icon_left .veloura-search-icon input {
     display: none !important;
   }
-  .store-header.veloura-mobile-search-icon_left .veloura-search {
-    order: -1;
+  .store-header.veloura-mobile-search-icon_left .veloura-search-icon {
+    order: -10;
   }
+  /* بحث الجوال: شريط */
   .store-header.veloura-mobile-search-bar .veloura-header-grid,
   .store-header.veloura-mobile-search-bar_sticky_icon .veloura-header-grid {
-    grid-template-rows: auto auto;
+    grid-template-areas: "right logo left" "search search search";
   }
-  .store-header.veloura-mobile-search-bar .veloura-search,
-  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search {
-    grid-column: 1/-1;
-    order: 10;
+  .store-header.veloura-mobile-search-bar .veloura-search-icon,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search-icon {
+    display: none !important;
+  }
+  .store-header.veloura-mobile-search-bar .veloura-search-bar,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search-bar {
+    display: block !important;
+  }
+  .store-header.veloura-mobile-search-bar .veloura-search-bar,
+  .store-header.veloura-mobile-search-bar_sticky_icon .veloura-search-bar {
+    grid-area: search;
     width: 100%;
     margin-top: 8px;
   }
-  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search {
-    grid-column: auto;
-    order: initial;
-    width: auto;
-    margin-top: 0;
+  /* عند النزول: يتحول البحث إلى أيقونة */
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-header-grid {
+    grid-template-areas: "right logo left";
   }
-  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search .s-search-input,
-  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search input {
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-bar {
+    display: none !important;
+  }
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-icon {
+    display: inline-flex !important;
+  }
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-icon .s-search-input,
+  .store-header.veloura-mobile-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-icon input {
     display: none !important;
   }
 }
+/* ================================
+   Desktop / Laptop
+================================ */
 @media (min-width: 1024px) {
-  .veloura-lang-mobile {
+  .store-header.veloura-top-enabled .veloura-lang-mobile {
     display: none !important;
   }
+  /* ملء الشاشة في اللابتوب */
+  .store-header.veloura-top-full-width-desktop .main-nav-container > .inner > .container {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+  /* إلغاء توسيط الشعار في اللابتوب */
+  .store-header.veloura-top-logo-no-center-laptop .veloura-header-grid {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "logo right left";
+  }
+  .store-header.veloura-top-logo-no-center-laptop .veloura-header-logo {
+    justify-self: flex-start;
+  }
+  .store-header.veloura-top-logo-no-center-laptop .veloura-header-right {
+    justify-content: flex-start;
+  }
+  /* القائمة في اللابتوب */
   .store-header.veloura-desktop-menu-links .veloura-menu-trigger {
     display: none !important;
   }
@@ -26388,36 +26488,55 @@ body.dark .veloura-dark-toggle__sun {
   .store-header.veloura-desktop-menu-hamburger custom-main-menu {
     display: none !important;
   }
-  .store-header.veloura-desktop-search-bar .veloura-search,
-  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search {
-    width: 320px;
-    max-width: 320px;
-  }
-  .store-header.veloura-desktop-search-icon_right .veloura-search,
-  .store-header.veloura-desktop-search-icon_left .veloura-search {
-    width: auto;
-    overflow: visible;
-  }
-  .store-header.veloura-desktop-search-icon_right .veloura-search .s-search-input,
-  .store-header.veloura-desktop-search-icon_right .veloura-search input,
-  .store-header.veloura-desktop-search-icon_left .veloura-search .s-search-input,
-  .store-header.veloura-desktop-search-icon_left .veloura-search input {
+  /* بحث اللابتوب: شريط */
+  .store-header.veloura-desktop-search-bar .veloura-search-icon,
+  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search-icon {
     display: none !important;
   }
-  .store-header.veloura-desktop-search-icon_left .veloura-search {
-    order: -1;
+  .store-header.veloura-desktop-search-bar .veloura-search-bar,
+  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search-bar {
+    display: block !important;
   }
-  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search {
-    width: auto;
+  .store-header.veloura-desktop-search-bar .veloura-search-bar,
+  .store-header.veloura-desktop-search-bar_sticky_icon .veloura-search-bar {
+    grid-area: right;
+    width: 330px;
+    max-width: 330px;
+    justify-self: flex-start;
   }
-  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search .s-search-input,
-  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search input {
+  /* بحث اللابتوب: أيقونة */
+  .store-header.veloura-desktop-search-icon_right .veloura-search-bar,
+  .store-header.veloura-desktop-search-icon_left .veloura-search-bar {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-search-icon_right .veloura-search-icon,
+  .store-header.veloura-desktop-search-icon_left .veloura-search-icon {
+    display: inline-flex !important;
+  }
+  .store-header.veloura-desktop-search-icon_right .veloura-search-icon .s-search-input,
+  .store-header.veloura-desktop-search-icon_right .veloura-search-icon input,
+  .store-header.veloura-desktop-search-icon_left .veloura-search-icon .s-search-input,
+  .store-header.veloura-desktop-search-icon_left .veloura-search-icon input {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-search-icon_left .veloura-search-icon {
+    order: -10;
+  }
+  /* عند النزول: شريط اللابتوب يتحول إلى أيقونة */
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-bar {
+    display: none !important;
+  }
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-icon {
+    display: inline-flex !important;
+  }
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-icon .s-search-input,
+  .store-header.veloura-desktop-search-bar_sticky_icon.veloura-top-scrolled .veloura-search-icon input {
     display: none !important;
   }
 }
+/* إخفاء الهيدر عند النزول */
 .store-header.veloura-top-hidden {
   transform: translateY(-100%);
-  transition: transform 0.25s ease;
 }
 .store-footer{
     position: relative;
@@ -31624,6 +31743,14 @@ model-viewer[style*=width]:before{
     .s-comments-product .s-comments-container{
         max-width: 1280px;
     }
+}
+@media (min-width: 1024px) {
+  .store-header.veloura-top-full-width-desktop .main-nav-container > .inner > .s-comments-product .s-comments-container {
+    width: 100%;
+    max-width: none;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .main-menu .sub-menu li.mega-menu .s-comments-product .s-comments-container ul{
