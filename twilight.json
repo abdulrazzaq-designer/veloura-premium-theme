@@ -1731,6 +1731,144 @@
   ]
 },
 {
+  "id": "veloura_footer_contact_display_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض وسائل التواصل",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "شكل حديث - أيقونة مع النص",
+      "value": "modern",
+      "key": "veloura-footer-contact-modern-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "الشكل الافتراضي",
+      "value": "default",
+      "key": "veloura-footer-contact-default-2026"
+    },
+    {
+      "label": "شكل حديث - أيقونة مع النص",
+      "value": "modern",
+      "key": "veloura-footer-contact-modern-2026"
+    },
+    {
+      "label": "أيقونات فقط بدون نص",
+      "value": "icons_only",
+      "key": "veloura-footer-contact-icons-only-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "توسيط وسائل التواصل",
+  "description": "عند التفعيل يتم توسيط وسائل التواصل داخل العمود",
+  "id": "veloura_footer_contact_center_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "توسيط أيقونات السوشيال",
+  "description": "عند التفعيل يتم توسيط أيقونات إنستغرام، إكس، يوتيوب وغيرها",
+  "id": "veloura_footer_social_center_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "توسيط شعارات تطبيق الجوال",
+  "description": "عند التفعيل يتم توسيط شعارات Google Play و App Store",
+  "id": "veloura_footer_apps_center_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء عنوان تطبيق الجوال",
+  "description": "عند التفعيل يتم إخفاء عنوان تحميل تطبيق الجوال وتظهر الشعارات فقط",
+  "id": "veloura_footer_hide_apps_title_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_apps_badge_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم شعارات تطبيق الجوال",
+  "description": "القيمة المفضلة 4",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "4",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "12",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_footer_hide_apps_2026",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
   "type": "boolean",
   "icon": "sicon-toggle-off",
   "label": "إخفاء روابط الفوتر المهمة",
@@ -2939,7 +3077,7 @@
             "key": "a8c712fd-ef56-43e9-a2de-f1f005fe6f4d",
             "title": {
                 "en": "صور مربعة (فيلورا)",
-                "ar": "صور مربعة (فيلورا) ثقصثقصثقصث"
+                "ar": "صور مربعة (فيلورا)"
             },
             "icon": "sicon-store",
             "path": "home.ultra-square-images",

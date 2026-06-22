@@ -46,12 +46,25 @@
 {% set footer_social_under_store = theme.settings.get('veloura_footer_social_under_store_2026', true) %}
 {% set footer_social_under_contact = theme.settings.get('veloura_footer_social_under_contact_2026', false) %}
 
+{% set footer_contact_display = theme.settings.get('veloura_footer_contact_display_2026', 'modern') %}
+{% set footer_contact_center = theme.settings.get('veloura_footer_contact_center_2026', false) %}
+{% set footer_social_center = theme.settings.get('veloura_footer_social_center_2026', false) %}
+{% set footer_apps_center = theme.settings.get('veloura_footer_apps_center_2026', true) %}
+{% set footer_hide_apps_title = theme.settings.get('veloura_footer_hide_apps_title_2026', false) %}
+{% set footer_apps_badge_size_value = theme.settings.get('veloura_footer_apps_badge_size_2026', 4) %}
+{% set footer_apps_badge_height = 34 + (footer_apps_badge_size_value * 3) %}
+
 <footer
   class="store-footer
   {{ footer_enabled ? 'veloura-footer-enabled' : '' }}
   {{ footer_compact ? 'veloura-footer-compact' : '' }}
   {{ footer_center_mobile ? 'veloura-footer-center-mobile' : '' }}
   {{ footer_transparent_home and is_page('index') ? 'veloura-footer-transparent-home' : '' }}
+  veloura-footer-contact-display-{{ footer_contact_display }}
+{{ footer_contact_center ? 'veloura-footer-contact-center' : '' }}
+{{ footer_social_center ? 'veloura-footer-social-center' : '' }}
+{{ footer_apps_center ? 'veloura-footer-apps-center' : '' }}
+{{ footer_hide_apps_title ? 'veloura-footer-hide-apps-title' : '' }}
   veloura-footer-radius-{{ footer_radius }}
   veloura-footer-cols-{{ footer_columns }}
   "
@@ -66,6 +79,7 @@
     --veloura-footer-title-size: {{ footer_title_size }}px;
     --veloura-footer-text-size: {{ footer_text_size }}px;
     --veloura-footer-logo-size: {{ footer_logo_size_px }}px;
+	--veloura-footer-app-badge-height: {{ footer_apps_badge_height }}px;
     {% if footer_bg_image %}
       --veloura-footer-bg-image: url('{{ footer_bg_image }}');
     {% endif %}
@@ -168,11 +182,13 @@
 
         {# Apps #}
         {% if not footer_hide_apps %}
-          <div class="veloura-footer-block veloura-footer-apps">
-            <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
-            <salla-apps-icons></salla-apps-icons>
-          </div>
-        {% endif %}
+  <div class="veloura-footer-block veloura-footer-apps">
+    {% if not footer_hide_apps_title %}
+      <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
+    {% endif %}
+    <salla-apps-icons></salla-apps-icons>
+  </div>
+{% endif %}
 
       </div>
     </div>
