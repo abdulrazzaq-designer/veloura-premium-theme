@@ -18,8 +18,11 @@
 {% set footer_bottom_bg = theme.settings.get('veloura_footer_bottom_bg_2026', '#ffffff') %}
 {% set footer_bottom_text_color = theme.settings.get('veloura_footer_bottom_text_color_2026', '#334155') %}
 
-{% set footer_title_size = theme.settings.get('veloura_footer_title_size_2026', 16) %}
-{% set footer_text_size = theme.settings.get('veloura_footer_text_size_2026', 14) %}
+{% set footer_title_size_value = theme.settings.get('veloura_footer_title_size_2026', 4) %}
+{% set footer_text_size_value = theme.settings.get('veloura_footer_text_size_2026', 3) %}
+
+{% set footer_title_size = 12 + footer_title_size_value %}
+{% set footer_text_size = 11 + footer_text_size_value %}
 
 {% set footer_bg_image = theme.settings.get('veloura_footer_bg_image_2026') %}
 {% set footer_transparent_home = theme.settings.get('veloura_footer_transparent_home_2026', false) %}
