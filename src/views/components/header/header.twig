@@ -1,28 +1,69 @@
 {% set top_enabled = theme.settings.get('veloura_top_enabled_2026', false) %}
-{% set top_logo = theme.settings.get('veloura_top_logo_url_2026') ?: theme.settings.get('veloura_top_logo_image_2026') ?: store.logo|cdn(175) %}
+
+{# Logo #}
+{% set top_logo_url = theme.settings.get('veloura_top_logo_url_2026') %}
+{% set top_logo_image = theme.settings.get('veloura_top_logo_image_2026') %}
+{% set top_logo = top_logo_url ?: top_logo_image ?: store.logo|cdn(175) %}
+{% set top_logo_lower = top_logo|lower %}
+{% set top_logo_is_video = top_logo_lower ends with '.webm' or top_logo_lower ends with '.mp4' %}
+
+{# General Settings #}
+{% set top_logo_center = theme.settings.get('veloura_top_logo_center_2026', true) %}
+{% set top_logo_no_center_laptop = theme.settings.get('veloura_top_logo_no_center_laptop_2026', false) %}
+{% set top_logo_size_value = theme.settings.get('veloura_top_logo_size_2026', 5) %}
+{% set top_logo_size_px = 32 + (top_logo_size_value * 3) %}
+
+{% set top_bg = theme.settings.get('veloura_top_bg_color_2026', '#ffffff') %}
+{% set top_text = theme.settings.get('veloura_top_text_color_2026', '#004d65') %}
+{% set top_cart_bg = theme.settings.get('veloura_top_cart_bg_2026', '#f87171') %}
+
 {% set top_border = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
 {% set icons_size = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
+
 {% set mobile_search = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
-{% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar') %}
+{% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
 {% set desktop_menu_mode = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
+
 {% set show_mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
+{% set hide_lang_desktop = theme.settings.get('veloura_top_hide_currency_lang_desktop_2026', false) %}
+{% set hide_cart_total_mobile = theme.settings.get('veloura_top_hide_cart_total_mobile_2026', true) %}
+
+{% set full_width_desktop = theme.settings.get('veloura_top_full_width_desktop_2026', true) %}
+{% set show_wishlist = theme.settings.get('veloura_top_show_wishlist_2026', false) %}
+
 {% set dark_pos = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
 
-<header class="store-header
+<header
+  class="store-header
   {{ top_enabled ? 'veloura-top-enabled' : '' }}
+  {{ top_logo_center ? 'veloura-top-logo-centered' : '' }}
+  {{ top_logo_no_center_laptop ? 'veloura-top-logo-no-center-laptop' : '' }}
+  {{ full_width_desktop ? 'veloura-top-full-width-desktop' : '' }}
+  {{ hide_lang_desktop ? 'veloura-top-hide-lang-desktop' : '' }}
+  {{ theme.settings.get('veloura_top_hide_on_scroll_2026') ? 'veloura-hide-top-on-scroll' : '' }}
+
   veloura-top-border-{{ top_border }}
   veloura-top-icons-{{ icons_size }}
+
   veloura-mobile-search-{{ mobile_search }}
   veloura-desktop-search-{{ desktop_search }}
   veloura-desktop-menu-{{ desktop_menu_mode }}
-  {{ theme.settings.get('veloura_top_hide_on_scroll_2026') ? 'veloura-hide-top-on-scroll' : '' }}
-">
+  "
+  style="
+    --veloura-top-bg: {{ top_bg }};
+    --veloura-top-text: {{ top_text }};
+    --veloura-top-cart-bg: {{ top_cart_bg }};
+    --veloura-top-logo-size: {{ top_logo_size_px }}px;
+  "
+>
   <div id="mainnav" class="main-nav-container shadow-default bg-white">
     <div class="inner bg-inherit w-full">
       <div class="container">
         <div class="veloura-header-grid">
 
+          {# Right Side #}
           <div class="veloura-header-side veloura-header-right">
+
             <a class="veloura-header-icon veloura-menu-trigger mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
               <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
             </a>
@@ -40,24 +81,44 @@
               </button>
             {% endif %}
 
-            <div class="veloura-search">
+            <div class="veloura-search veloura-search-inline">
               <salla-search inline oval height="36"></salla-search>
             </div>
 
+            <div class="veloura-search-popup">
+              <salla-search></salla-search>
+            </div>
+
             <custom-main-menu></custom-main-menu>
+
           </div>
 
+          {# Logo #}
           <a class="navbar-brand veloura-header-logo" href="{{ store.url }}">
-            <img
-              fetchpriority="high"
-              width="100%"
-              height="100%"
-              loading="eager"
-              src="{{ top_logo }}"
-              data-light-logo="{{ top_logo }}"
-              data-dark-logo="{{ theme.settings.get('veloura_dark_logo_2026') }}"
-              class="veloura-store-logo"
-              alt="{{ store.name }} logo">
+            {% if top_logo_is_video %}
+              <video
+                class="veloura-store-logo veloura-store-logo-video"
+                src="{{ top_logo }}"
+                autoplay
+                muted
+                loop
+                playsinline
+                data-light-logo="{{ top_logo }}"
+                data-dark-logo="{{ theme.settings.get('veloura_dark_logo_2026') }}"
+                aria-label="{{ store.name }} logo">
+              </video>
+            {% else %}
+              <img
+                fetchpriority="high"
+                width="100%"
+                height="100%"
+                loading="eager"
+                src="{{ top_logo }}"
+                data-light-logo="{{ top_logo }}"
+                data-dark-logo="{{ theme.settings.get('veloura_dark_logo_2026') }}"
+                class="veloura-store-logo"
+                alt="{{ store.name }} logo">
+            {% endif %}
 
             {% if is_page('index') %}
               <h1 class="sr-only">{{ store.name }}</h1>
@@ -66,7 +127,9 @@
             {% endif %}
           </a>
 
+          {# Left Side #}
           <div class="veloura-header-side veloura-header-left">
+
             {% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') and dark_pos == 'left' %}
               <button type="button" class="veloura-header-icon veloura-dark-toggle" aria-label="تبديل الوضع الداكن">
                 <i class="sicon-moon veloura-dark-toggle__moon"></i>
@@ -74,19 +137,28 @@
               </button>
             {% endif %}
 
+            {% if show_wishlist %}
+              <a class="veloura-header-icon veloura-wishlist-btn" href="{{ store.url }}/wishlist" aria-label="المفضلة">
+                <i class="sicon-heart"></i>
+              </a>
+            {% endif %}
+
             <button type="button" class="veloura-header-icon veloura-login-btn" onclick="salla.event.dispatch('login::open')" aria-label="تسجيل الدخول">
               <i class="{{ theme.settings.get('veloura_top_login_icon_2026', 'sicon-user-circle') }}"></i>
             </button>
 
-            <salla-cart-summary class="veloura-cart-summary {{ theme.settings.get('veloura_top_hide_cart_total_mobile_2026') ? 'veloura-cart-icon-only-mobile' : '' }}">
+            <salla-cart-summary class="veloura-cart-summary {{ hide_cart_total_mobile ? 'veloura-cart-icon-only-mobile' : '' }}">
               <i slot="icon" class="veloura-header-icon {{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
             </salla-cart-summary>
 
-            <div class="veloura-lang-desktop">
-              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                <salla-localization-modal show-trigger></salla-localization-modal>
-              {% endif %}
-            </div>
+            {% if not hide_lang_desktop %}
+              <div class="veloura-lang-desktop">
+                {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+                  <salla-localization-modal show-trigger></salla-localization-modal>
+                {% endif %}
+              </div>
+            {% endif %}
+
           </div>
 
         </div>
