@@ -1238,11 +1238,11 @@
   "description": "القيمة المفضلة 8",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "8",
+  "value": 8,
   "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "20",
+  "step": 1,
+  "minimum": 0,
+  "maximum": 20,
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -1480,11 +1480,11 @@
   "description": "القيمة المفضلة 16",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "16",
+  "value": 16,
   "required": false,
-  "step": "1",
-  "minimum": "12",
-  "maximum": "28",
+  "step": 1,
+  "minimum": 12,
+  "maximum": 28,
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -1501,11 +1501,11 @@
   "description": "القيمة المفضلة 14",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "14",
+  "value": 14,
   "required": false,
-  "step": "1",
-  "minimum": "11",
-  "maximum": "22",
+  "step": 1,
+  "minimum": 11,
+  "maximum": 22,
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
