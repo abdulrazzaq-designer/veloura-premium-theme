@@ -26592,6 +26592,115 @@ body.dark .veloura-dark-toggle__sun {
 .store-header.veloura-top-hidden {
   transform: translateY(-100%);
 }
+/* ================================
+   Veloura Dark Toggle + Cart Fix
+================================ */
+/* إصلاح ظهور أيقونتي الدارك واللايت مع بعض */
+.store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__moon {
+  display: inline-flex !important;
+}
+.store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__sun {
+  display: none !important;
+}
+/* عند تفعيل الوضع الداكن */
+html.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__moon,
+body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__moon,
+.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__moon {
+  display: none !important;
+}
+html.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__sun,
+body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__sun,
+.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-toggle__sun {
+  display: inline-flex !important;
+}
+/* إصلاح حجم أيقونة السلة */
+.store-header.veloura-top-enabled .veloura-cart-summary {
+  font-size: inherit !important;
+}
+.store-header.veloura-top-enabled .veloura-cart-summary i[slot=icon],
+.store-header.veloura-top-enabled salla-cart-summary i[slot=icon] {
+  font-size: inherit !important;
+  width: 1em !important;
+  height: 1em !important;
+  min-width: 1em !important;
+  min-height: 1em !important;
+  line-height: 1 !important;
+  color: var(--veloura-top-text) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* ربط حجم السلة مع خيار حجم أيقونات الهيدر */
+.store-header.veloura-top-icons-small .veloura-cart-summary,
+.store-header.veloura-top-icons-small .veloura-cart-summary i[slot=icon],
+.store-header.veloura-top-icons-small salla-cart-summary i[slot=icon] {
+  font-size: 22px !important;
+}
+.store-header.veloura-top-icons-medium .veloura-cart-summary,
+.store-header.veloura-top-icons-medium .veloura-cart-summary i[slot=icon],
+.store-header.veloura-top-icons-medium salla-cart-summary i[slot=icon] {
+  font-size: 28px !important;
+}
+.store-header.veloura-top-icons-large .veloura-cart-summary,
+.store-header.veloura-top-icons-large .veloura-cart-summary i[slot=icon],
+.store-header.veloura-top-icons-large salla-cart-summary i[slot=icon] {
+  font-size: 34px !important;
+}
+/* ترتيب عداد السلة فوق الأيقونة بعد تكبيرها */
+.store-header.veloura-top-enabled .s-cart-summary-count {
+  top: -6px !important;
+  left: -8px !important;
+}
+/* ================================
+   Veloura Dark + Cart Hard Fix
+================================ */
+/* زر الدارك: أيقونة واحدة فقط */
+.store-header.veloura-top-enabled .veloura-dark-toggle__moon,
+.store-header.veloura-top-enabled .veloura-dark-toggle__sun {
+  display: none !important;
+}
+.store-header.veloura-top-enabled .veloura-dark-toggle__icon {
+  display: inline-flex !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+}
+/* أيقونة السلة المخصصة */
+.store-header.veloura-top-enabled .veloura-cart-custom-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--veloura-top-text) !important;
+  line-height: 1 !important;
+}
+.store-header.veloura-top-enabled .veloura-cart-custom-icon i {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+  width: 1em !important;
+  height: 1em !important;
+}
+/* ربط حجم السلة بحجم أيقونات الهيدر */
+.store-header.veloura-top-icons-small .veloura-cart-summary,
+.store-header.veloura-top-icons-small .veloura-cart-custom-icon {
+  font-size: 22px !important;
+}
+.store-header.veloura-top-icons-medium .veloura-cart-summary,
+.store-header.veloura-top-icons-medium .veloura-cart-custom-icon {
+  font-size: 28px !important;
+}
+.store-header.veloura-top-icons-large .veloura-cart-summary,
+.store-header.veloura-top-icons-large .veloura-cart-custom-icon {
+  font-size: 34px !important;
+}
+/* تحسين مكان عداد السلة */
+.store-header.veloura-top-enabled .s-cart-summary-count {
+  top: -7px !important;
+  left: -9px !important;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
