@@ -2520,7 +2520,7 @@
   "type": "collection",
   "format": "collection",
   "required": false,
-  "minLength": 1,
+  "minLength": 0,
   "maxLength": 25,
   "label": "صور التصنيفات المخصصة",
   "item_label": "صورة تصنيف",
@@ -2534,7 +2534,7 @@
       "label": "صورة التصنيف",
       "id": "veloura_category_images.image",
       "format": "image",
-      "required": true,
+      "required": false,
       "placeholder": null,
       "description": "ارفع صورة التصنيف. المقاس المقترح 600×600 بكسل",
       "settings": {
@@ -2563,7 +2563,7 @@
       "icon": "sicon-format-text-alt",
       "value": null,
       "required": false,
-      "minLength": 6,
+      "minLength": 0,
       "maxLength": 300,
       "condition": {
         "field": "veloura_category_images.use_image_url",
@@ -2582,7 +2582,7 @@
       "id": "veloura_category_images.category",
       "value": null,
       "description": "اختر التصنيف الذي ستنتقل إليه الصورة عند الضغط عليها",
-      "required": true,
+      "required": false,
       "format": "variable-list",
       "searchable": true,
       "source": "custom",
@@ -2614,7 +2614,8 @@
       "format": "color",
       "label": "لون خلفية صورة التصنيف",
       "description": "مفيد مع صور PNG المفرغة",
-      "value": "#f7f7f7"
+      "value": "#f7f7f7",
+      "required": false
     }
   ],
   "conditions": [

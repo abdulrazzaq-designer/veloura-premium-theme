@@ -20,7 +20,7 @@
 
   {# ================================
      Veloura Category Settings
-     ملاحظة: زر veloura_category_enabled_2026 فقط لإظهار/إخفاء الإعدادات في لوحة التحكم
+     زر veloura_category_enabled_2026 فقط لإظهار/إخفاء الإعدادات في لوحة التحكم
      ولا يتم استخدامه لتعطيل التأثير على الموقع
   ================================ #}
 
@@ -39,7 +39,7 @@
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
 
-  {# الصور المخصصة للتصنيفات #}
+  {# صور التصنيفات المخصصة من الإعدادات #}
   {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
   {% set veloura_custom_images = theme.settings.get('veloura_category_images_2026') ?: [] %}
   {% set veloura_has_custom_images = veloura_use_custom_images and veloura_custom_images|length %}
@@ -121,24 +121,26 @@
                       {% set item_bg = attribute(item, 'veloura_category_images.bg') ?: item.bg ?: '#f7f7f7' %}
 
                       {% set item_img = item_use_image_url and item_image_url ? item_image_url : (item_uploaded_image.url ?: item_uploaded_image) %}
-                      {% set item_link = item_category.url ?: item_category.link ?: item_category.value ?: '#' %}
+                      {% set item_link = item_category.url ?: item_category.link ?: item_category.value ?: item_category ?: '#' %}
                       {% set item_title = item_custom_title ?: item_category.label ?: item_category.name ?: 'تصنيف' %}
 
-                      <a href="{{ item_link }}" class="veloura-category-side-item" style="--veloura-category-item-bg: {{ item_bg }};">
-                        {% if sidebar_icons_only %}
-                          <span class="veloura-category-side-icon">
-                            <i class="sicon-folder"></i>
-                          </span>
-                        {% else %}
-                          <span class="veloura-category-side-image">
-                            <img src="{{ item_img ?: ('images/placeholder.png' | asset) }}" loading="lazy" alt="{{ item_title }}">
-                          </span>
-                        {% endif %}
+                      {% if item_img and item_link != '#' %}
+                        <a href="{{ item_link }}" class="veloura-category-side-item" style="--veloura-category-item-bg: {{ item_bg }};">
+                          {% if sidebar_icons_only %}
+                            <span class="veloura-category-side-icon">
+                              <i class="sicon-folder"></i>
+                            </span>
+                          {% else %}
+                            <span class="veloura-category-side-image">
+                              <img src="{{ item_img }}" loading="lazy" alt="{{ item_title }}">
+                            </span>
+                          {% endif %}
 
-                        <span class="veloura-category-side-name">
-                          {{ item_title }}
-                        </span>
-                      </a>
+                          <span class="veloura-category-side-name">
+                            {{ item_title }}
+                          </span>
+                        </a>
+                      {% endif %}
 
                     {% endfor %}
                   {% else %}
@@ -222,18 +224,20 @@
                     {% set item_bg = attribute(item, 'veloura_category_images.bg') ?: item.bg ?: '#f7f7f7' %}
 
                     {% set item_img = item_use_image_url and item_image_url ? item_image_url : (item_uploaded_image.url ?: item_uploaded_image) %}
-                    {% set item_link = item_category.url ?: item_category.link ?: item_category.value ?: '#' %}
+                    {% set item_link = item_category.url ?: item_category.link ?: item_category.value ?: item_category ?: '#' %}
                     {% set item_title = item_custom_title ?: item_category.label ?: item_category.name ?: 'تصنيف' %}
 
-                    <a href="{{ item_link }}" class="veloura-category-card" style="--veloura-category-item-bg: {{ item_bg }};">
-                      <span class="veloura-category-card__image">
-                        <img src="{{ item_img ?: ('images/placeholder.png' | asset) }}" loading="lazy" alt="{{ item_title }}">
-                      </span>
+                    {% if item_img and item_link != '#' %}
+                      <a href="{{ item_link }}" class="veloura-category-card" style="--veloura-category-item-bg: {{ item_bg }};">
+                        <span class="veloura-category-card__image">
+                          <img src="{{ item_img }}" loading="lazy" alt="{{ item_title }}">
+                        </span>
 
-                      <span class="veloura-category-card__title">
-                        {{ item_title }}
-                      </span>
-                    </a>
+                        <span class="veloura-category-card__title">
+                          {{ item_title }}
+                        </span>
+                      </a>
+                    {% endif %}
 
                   {% endfor %}
                 {% else %}
