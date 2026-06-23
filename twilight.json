@@ -2516,29 +2516,11 @@
   ]
 },
 {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "استخدام صور مخصصة للتصنيفات",
-  "description": "عند التفعيل سيتم استخدام الصور المرفوعة هنا بدلاً من صور التصنيفات الافتراضية",
-  "id": "veloura_category_use_custom_images_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_category_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_category_custom_images_items_2026",
+  "id": "veloura_category_custom_images_collection_2026",
   "type": "items",
   "format": "collection",
   "label": "صور التصنيفات المخصصة",
-  "description": "ارفع صور التصنيفات واختر التصنيف المرتبط بكل صورة",
+  "description": "ارفع صورة لكل تصنيف واختر التصنيف المرتبط بها",
   "button_label": "إضافة صورة تصنيف",
   "value": [],
   "settings": [
@@ -2546,15 +2528,15 @@
       "id": "veloura_category_custom_image",
       "type": "string",
       "format": "image",
-      "label": "أضف صورة التصنيف",
-      "description": "ارفع الصورة التي ستظهر في صفحة التصنيف والقائمة الجانبية"
+      "label": "صورة التصنيف",
+      "description": "ارفع الصورة التي ستظهر لهذا التصنيف"
     },
     {
       "id": "veloura_category_custom_link",
       "type": "items",
       "format": "variable-list",
-      "label": "اختر التصنيف المرتبط بالصورة",
-      "description": "اختر التصنيف الذي ستنتقل له الصورة عند الضغط عليها",
+      "label": "التصنيف المرتبط بالصورة",
+      "description": "اختر التصنيف الذي تفتح الصورة عند الضغط عليه",
       "source": "custom",
       "sources": [
         {
@@ -2568,7 +2550,7 @@
       "id": "veloura_category_custom_title",
       "type": "string",
       "format": "text",
-      "label": "عنوان ترويجي للتصنيف",
+      "label": "عنوان التصنيف",
       "description": "اتركه فارغاً لاستخدام اسم التصنيف المختار",
       "placeholder": "مثال: كراسي مكتبية"
     },
@@ -2577,7 +2559,7 @@
       "type": "string",
       "format": "color",
       "label": "لون خلفية صورة التصنيف",
-      "description": "يظهر خلف صورة التصنيف، ويفضل استخدامه مع صور png",
+      "description": "يفيد مع الصور المفرغة png",
       "value": "#f7f7f7"
     }
   ],
