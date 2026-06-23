@@ -1,4 +1,4 @@
-{% set footer_enabled = theme.settings.get('veloura_footer_enabled_2026', false) %}
+{% set footer_enabled = true %}
 
 {% set light_logo_url = theme.settings.get('veloura_light_logo_url_2026') %}
 {% set light_logo_image = theme.settings.get('veloura_light_logo_2026') %}
@@ -61,7 +61,7 @@
 
 <footer
   class="store-footer
-  {{ footer_enabled ? 'veloura-footer-enabled' : '' }}
+  veloura-footer-enabled
   {{ footer_compact ? 'veloura-footer-compact' : '' }}
   {{ footer_center_mobile ? 'veloura-footer-center-mobile' : '' }}
   {{ footer_transparent_home and is_page('index') ? 'veloura-footer-transparent-home' : '' }}

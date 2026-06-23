@@ -1,4 +1,4 @@
-{% set top_enabled = theme.settings.get('veloura_top_enabled_2026', false) %}
+{% set top_enabled = true %}
 
 {# Logo #}
 {% set light_logo_url = theme.settings.get('veloura_light_logo_url_2026') %}
@@ -40,7 +40,7 @@
 
 <header
   class="store-header
-  {{ top_enabled ? 'veloura-top-enabled' : '' }}
+  veloura-top-enabled
   {{ top_logo_center ? 'veloura-top-logo-centered' : '' }}
   {{ top_logo_no_center_laptop ? 'veloura-top-logo-no-center-laptop' : '' }}
   {{ full_width_desktop ? 'veloura-top-full-width-desktop' : '' }}

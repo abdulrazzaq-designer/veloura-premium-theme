@@ -86,7 +86,7 @@
    Veloura General Settings 2026
 ================================ #}
 
-{% set veloura_general_enabled = theme.settings.get('veloura_general_enabled_2026', false) %}
+{% set veloura_general_enabled = true %}
 
 {% set veloura_site_bg = theme.settings.get('veloura_site_bg_color_2026', '#ffffff') %}
 {% set veloura_site_second_bg = theme.settings.get('veloura_site_second_bg_color_2026', '#f8fafc') %}
@@ -216,7 +216,7 @@
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
   {{ theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_theme_mode_2026') == 'dark' ? ' dark' : '' }}
 
-  {{ veloura_general_enabled ? ' veloura-general-enabled' : '' }}
+  veloura-general-enabled
   {{ veloura_should_show_bg_image ? ' veloura-site-has-bg-image' : '' }}
   {{ veloura_site_bg_fixed ? ' veloura-site-bg-fixed' : '' }}
   {{ veloura_full_width_sections ? ' veloura-sections-full-width' : '' }}
@@ -256,23 +256,39 @@
 {% block scripts %}{% endblock %}
 
 
-{% if theme.settings.get('veloura_dark_enabled_2026') and theme.settings.get('veloura_dark_toggle_enabled_2026') %}
+{% if theme.settings.get('veloura_dark_toggle_enabled_2026') %}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const btn = document.querySelector('.veloura-dark-toggle');
-  const logo = document.querySelector('.veloura-store-logo');
+  const buttons = document.querySelectorAll('.veloura-dark-toggle');
+  const logos = document.querySelectorAll('.veloura-store-logo');
+
+  function isDarkMode() {
+    return document.body.classList.contains('dark');
+  }
 
   function updateLogo() {
-    if (!logo) return;
+    logos.forEach((logo) => {
+      const lightLogo = logo.dataset.lightLogo;
+      const darkLogo = logo.dataset.darkLogo;
 
-    const lightLogo = logo.dataset.lightLogo;
-    const darkLogo = logo.dataset.darkLogo;
+      if (isDarkMode() && darkLogo) {
+        logo.src = darkLogo;
+      } else if (lightLogo) {
+        logo.src = lightLogo;
+      }
+    });
+  }
 
-    if (document.body.classList.contains('dark') && darkLogo) {
-      logo.src = darkLogo;
-    } else {
-      logo.src = lightLogo;
-    }
+  function updateDarkIcons() {
+    document.querySelectorAll('.veloura-dark-toggle__icon').forEach((icon) => {
+      icon.classList.remove('sicon-moon', 'sicon-sun');
+      icon.classList.add(isDarkMode() ? 'sicon-sun' : 'sicon-moon');
+    });
+  }
+
+  function updateDarkModeUI() {
+    updateLogo();
+    updateDarkIcons();
   }
 
   const savedMode = localStorage.getItem('veloura_dark_mode');
@@ -285,9 +301,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.remove('dark');
   }
 
-  updateLogo();
+  updateDarkModeUI();
 
-  if (btn) {
+  buttons.forEach((btn) => {
     btn.addEventListener('click', function () {
       document.body.classList.toggle('dark');
 
@@ -296,9 +312,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.contains('dark') ? 'dark' : 'light'
       );
 
-      updateLogo();
+      updateDarkModeUI();
     });
-  }
+  });
 });
 </script>
 {% endif %}
