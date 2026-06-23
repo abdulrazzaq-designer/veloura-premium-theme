@@ -34766,6 +34766,19 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-load-sentinel {
   height: 1px;
 }
+/* صور التصنيفات المخصصة */
+.veloura-category-card,
+.veloura-category-side-item {
+  --veloura-category-item-bg: #ffffff;
+}
+.veloura-category-card__image {
+  background: var(--veloura-category-item-bg, var(--veloura-category-card-bg)) !important;
+}
+.veloura-category-side-image,
+.veloura-category-side-icon {
+  background: #f8fafc !important;
+  background: var(--veloura-category-item-bg, #f8fafc) !important;
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;
