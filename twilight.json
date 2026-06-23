@@ -2516,27 +2516,75 @@
   ]
 },
 {
-  "id": "veloura_category_custom_images_collection_2026",
-  "type": "items",
+  "id": "veloura_category_images_2026",
+  "type": "collection",
   "format": "collection",
+  "required": false,
+  "minLength": 1,
+  "maxLength": 25,
   "label": "صور التصنيفات المخصصة",
+  "item_label": "صورة تصنيف",
   "description": "ارفع صورة لكل تصنيف واختر التصنيف المرتبط بها",
-  "button_label": "إضافة صورة تصنيف",
   "value": [],
-  "settings": [
+  "fields": [
     {
-      "id": "veloura_category_custom_image",
       "type": "string",
-      "format": "image",
+      "icon": "sicon-image",
+      "value": null,
       "label": "صورة التصنيف",
-      "description": "ارفع الصورة التي ستظهر لهذا التصنيف"
+      "id": "veloura_category_images.image",
+      "format": "image",
+      "required": true,
+      "placeholder": null,
+      "description": "ارفع صورة التصنيف. المقاس المقترح 600×600 بكسل",
+      "settings": {
+        "height": 600,
+        "width": 600
+      }
     },
     {
-      "id": "veloura_category_custom_link",
+      "id": "veloura_category_images.use_image_url",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إضافة صورة عن طريق رابط",
+      "description": "عند التفعيل يمكنك وضع رابط صورة بدل رفع صورة",
+      "icon": "sicon-toggle-off",
+      "value": false,
+      "selected": false,
+      "required": false
+    },
+    {
+      "id": "veloura_category_images.image_url",
+      "type": "string",
+      "format": "text",
+      "label": "رابط الصورة",
+      "description": "في حال وضع رابط صورة هنا سيتم تجاهل الصورة السابقة. الصيغ المقبولة webm, png, gif, webp, jpg, jpeg, svg",
+      "placeholder": "https://example.com/image.webp",
+      "icon": "sicon-format-text-alt",
+      "value": null,
+      "required": false,
+      "minLength": 6,
+      "maxLength": 300,
+      "condition": {
+        "field": "veloura_category_images.use_image_url",
+        "operator": "==",
+        "value": true
+      },
+      "visibility": {
+        "field": "veloura_category_images.use_image_url",
+        "value": true
+      }
+    },
+    {
       "type": "items",
+      "icon": "sicon-link",
+      "label": "اختر التصنيف المرتبط بالصورة",
+      "id": "veloura_category_images.category",
+      "value": null,
+      "description": "اختر التصنيف الذي ستنتقل إليه الصورة عند الضغط عليها",
+      "required": true,
       "format": "variable-list",
-      "label": "التصنيف المرتبط بالصورة",
-      "description": "اختر التصنيف الذي تفتح الصورة عند الضغط عليه",
+      "searchable": true,
       "source": "custom",
       "sources": [
         {
@@ -2547,19 +2595,25 @@
       ]
     },
     {
-      "id": "veloura_category_custom_title",
       "type": "string",
-      "format": "text",
+      "icon": "sicon-format-text-alt",
       "label": "عنوان التصنيف",
+      "multilanguage": true,
+      "id": "veloura_category_images.title",
+      "value": null,
+      "required": false,
+      "format": "text",
       "description": "اتركه فارغاً لاستخدام اسم التصنيف المختار",
-      "placeholder": "مثال: كراسي مكتبية"
+      "placeholder": "مثال: كراسي مكتبية",
+      "minLength": 0,
+      "maxLength": 100
     },
     {
-      "id": "veloura_category_custom_bg",
+      "id": "veloura_category_images.bg",
       "type": "string",
       "format": "color",
       "label": "لون خلفية صورة التصنيف",
-      "description": "يفيد مع الصور المفرغة png",
+      "description": "مفيد مع صور PNG المفرغة",
       "value": "#f7f7f7"
     }
   ],
