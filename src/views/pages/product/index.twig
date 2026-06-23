@@ -39,7 +39,7 @@
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
   {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
-{% set veloura_custom_images = theme.settings.get('veloura_category_custom_images_2026') ?: [] %}
+{% set veloura_custom_images = theme.settings.get('veloura_category_custom_images_items_2026') ?: [] %}
 {% set veloura_has_custom_images = veloura_use_custom_images and veloura_custom_images|length %}
 
   {% set title_size_map = {

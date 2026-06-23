@@ -2516,9 +2516,27 @@
   ]
 },
 {
-  "id": "veloura_category_custom_images_2026",
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "استخدام صور مخصصة للتصنيفات",
+  "description": "عند التفعيل سيتم استخدام الصور المرفوعة هنا بدلاً من صور التصنيفات الافتراضية",
+  "id": "veloura_category_use_custom_images_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_category_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_category_custom_images_items_2026",
   "type": "items",
-  "format": "variable-list",
+  "format": "collection",
   "label": "صور التصنيفات المخصصة",
   "description": "ارفع صور التصنيفات واختر التصنيف المرتبط بكل صورة",
   "button_label": "إضافة صورة تصنيف",
@@ -2536,7 +2554,7 @@
       "type": "items",
       "format": "variable-list",
       "label": "اختر التصنيف المرتبط بالصورة",
-      "description": "ستظهر الصورة في التصنيف الرئيسي للتصنيف المختار هنا",
+      "description": "اختر التصنيف الذي ستنتقل له الصورة عند الضغط عليها",
       "source": "custom",
       "sources": [
         {
@@ -2552,7 +2570,7 @@
       "format": "text",
       "label": "عنوان ترويجي للتصنيف",
       "description": "اتركه فارغاً لاستخدام اسم التصنيف المختار",
-      "placeholder": "اكتب عنوان التصنيف"
+      "placeholder": "مثال: كراسي مكتبية"
     },
     {
       "id": "veloura_category_custom_bg",
