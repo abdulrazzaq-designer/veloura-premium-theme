@@ -248,7 +248,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_general_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0\"><i class='sicon-settings'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">الإعدادات العامة</strong></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-settings'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">الإعدادات العامة</strong></div></div>",
   "variant": "h1",
   "icon": "sicon-settings"
 },
@@ -591,7 +591,7 @@
   "type": "static",
   "format": "title",
   "label": "Title",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0\"><i class='sicon-moon'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">الوضع الداكن</strong></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-moon'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">الوضع الداكن</strong></div></div>",
   "variant": "h1",
   "icon": "sicon-moon"
 },
@@ -897,7 +897,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_top_header_settings_title",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0\"><i class='sicon-archive-upload'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات القسم العلوي</strong></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-archive-upload'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات القسم العلوي</strong></div></div>",
   "variant": "h1",
   "icon": "sicon-layout-header"
 },
@@ -1484,7 +1484,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_footer_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0\"><i class='sicon-archive-upload'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات القسم السفلي</strong></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-archive-download'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات القسم السفلي</strong></div></div>",
   "variant": "h1",
   "icon": "sicon-layout-footer"
 },
@@ -2306,7 +2306,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_category_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0\"><i class='sicon-layout-grid'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات صفحة التصنيف</strong></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background: linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-layout-grid'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات صفحة التصنيف</strong></div></div>",
   "variant": "h1",
   "icon": "sicon-grid"
 },
@@ -2516,6 +2516,24 @@
   ]
 },
 {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "استخدام صور مخصصة للتصنيفات",
+  "description": "عند التفعيل سيتم استخدام الصور المرفوعة هنا بدلاً من صور التصنيفات الافتراضية",
+  "id": "veloura_category_use_custom_images_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_category_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_category_images_2026",
   "type": "collection",
   "format": "collection",
@@ -2530,7 +2548,7 @@
     {
       "type": "string",
       "icon": "sicon-image",
-      "value": null,
+      "value": "",
       "label": "صورة التصنيف",
       "id": "veloura_category_images.image",
       "format": "image",
@@ -2558,10 +2576,10 @@
       "type": "string",
       "format": "text",
       "label": "رابط الصورة",
-      "description": "في حال وضع رابط صورة هنا سيتم تجاهل الصورة السابقة. الصيغ المقبولة webm, png, gif, webp, jpg, jpeg, svg",
+      "description": "اتركه فارغاً إذا رفعت الصورة من الجهاز",
       "placeholder": "https://example.com/image.webp",
       "icon": "sicon-format-text-alt",
-      "value": null,
+      "value": "",
       "required": false,
       "minLength": 0,
       "maxLength": 300,
@@ -2598,9 +2616,9 @@
       "type": "string",
       "icon": "sicon-format-text-alt",
       "label": "عنوان التصنيف",
-      "multilanguage": true,
+      "multilanguage": false,
       "id": "veloura_category_images.title",
-      "value": null,
+      "value": "",
       "required": false,
       "format": "text",
       "description": "اتركه فارغاً لاستخدام اسم التصنيف المختار",
