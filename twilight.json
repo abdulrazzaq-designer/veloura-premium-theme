@@ -2516,15 +2516,15 @@
   ]
 },
 {
-  "id": "veloura_category_order_images_2026",
+  "id": "veloura_category_linked_images_2026",
   "type": "collection",
   "format": "collection",
   "required": false,
   "minLength": 0,
   "maxLength": 30,
-  "label": "صور التصنيفات حسب الترتيب",
-  "item_label": "صورة",
-  "description": "ارفع الصور بنفس ترتيب التصنيفات الظاهرة في الصفحة. الصورة الأولى للتصنيف الأول، الثانية للتصنيف الثاني، وهكذا.",
+  "label": "صور التصنيفات المرتبطة",
+  "item_label": "صورة تصنيف",
+  "description": "ارفع صورة واختر التصنيف المرتبط بها. ستظهر الصورة حسب التصنيف المختار وليس حسب الترتيب.",
   "value": [],
   "fields": [
     {
@@ -2541,6 +2541,25 @@
         "height": 600,
         "width": 600
       }
+    },
+    {
+      "type": "items",
+      "icon": "sicon-link",
+      "label": "اختر التصنيف المرتبط بالصورة",
+      "id": "category",
+      "value": null,
+      "description": "اختر التصنيف الذي تخصه هذه الصورة",
+      "required": false,
+      "format": "variable-list",
+      "searchable": true,
+      "source": "custom",
+      "sources": [
+        {
+          "label": "تصنيف",
+          "key": "categories",
+          "value": "categories"
+        }
+      ]
     }
   ],
   "conditions": [

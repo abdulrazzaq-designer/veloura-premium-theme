@@ -38,8 +38,7 @@
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
-  {% set veloura_order_images = theme.settings.get('veloura_category_order_images_2026') ?: [] %}
-
+{% set veloura_linked_images = theme.settings.get('veloura_category_linked_images_2026') ?: [] %}
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
   <div
