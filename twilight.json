@@ -2552,45 +2552,12 @@
       "label": "صورة التصنيف",
       "id": "veloura_category_images.image",
       "format": "image",
-      "required": false,
+      "required": true,
       "placeholder": null,
       "description": "ارفع صورة التصنيف. المقاس المقترح 600×600 بكسل",
       "settings": {
         "height": 600,
         "width": 600
-      }
-    },
-    {
-      "id": "veloura_category_images.use_image_url",
-      "type": "boolean",
-      "format": "switch",
-      "label": "إضافة صورة عن طريق رابط",
-      "description": "عند التفعيل يمكنك وضع رابط صورة بدل رفع صورة",
-      "icon": "sicon-toggle-off",
-      "value": false,
-      "selected": false,
-      "required": false
-    },
-    {
-      "id": "veloura_category_images.image_url",
-      "type": "string",
-      "format": "text",
-      "label": "رابط الصورة",
-      "description": "اتركه فارغاً إذا رفعت الصورة من الجهاز",
-      "placeholder": "https://example.com/image.webp",
-      "icon": "sicon-format-text-alt",
-      "value": "",
-      "required": false,
-      "minLength": 0,
-      "maxLength": 300,
-      "condition": {
-        "field": "veloura_category_images.use_image_url",
-        "operator": "==",
-        "value": true
-      },
-      "visibility": {
-        "field": "veloura_category_images.use_image_url",
-        "value": true
       }
     },
     {
@@ -2600,7 +2567,7 @@
       "id": "veloura_category_images.category",
       "value": null,
       "description": "اختر التصنيف الذي ستنتقل إليه الصورة عند الضغط عليها",
-      "required": false,
+      "required": true,
       "format": "variable-list",
       "searchable": true,
       "source": "custom",
@@ -2611,29 +2578,6 @@
           "value": "categories"
         }
       ]
-    },
-    {
-      "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "عنوان التصنيف",
-      "multilanguage": false,
-      "id": "veloura_category_images.title",
-      "value": "",
-      "required": false,
-      "format": "text",
-      "description": "اتركه فارغاً لاستخدام اسم التصنيف المختار",
-      "placeholder": "مثال: كراسي مكتبية",
-      "minLength": 0,
-      "maxLength": 100
-    },
-    {
-      "id": "veloura_category_images.bg",
-      "type": "string",
-      "format": "color",
-      "label": "لون خلفية صورة التصنيف",
-      "description": "مفيد مع صور PNG المفرغة",
-      "value": "#f7f7f7",
-      "required": false
     }
   ],
   "conditions": [
