@@ -2516,15 +2516,15 @@
   ]
 },
 {
-  "id": "veloura_category_images_list_2026",
+  "id": "veloura_category_order_images_2026",
   "type": "collection",
   "format": "collection",
   "required": false,
   "minLength": 0,
-  "maxLength": 25,
-  "label": "صور التصنيفات المخصصة",
-  "item_label": "صورة تصنيف",
-  "description": "ارفع صورة لكل تصنيف واختر التصنيف المرتبط بها",
+  "maxLength": 30,
+  "label": "صور التصنيفات حسب الترتيب",
+  "item_label": "صورة",
+  "description": "ارفع الصور بنفس ترتيب التصنيفات الظاهرة في الصفحة. الصورة الأولى للتصنيف الأول، الثانية للتصنيف الثاني، وهكذا.",
   "value": [],
   "fields": [
     {
@@ -2536,40 +2536,16 @@
       "format": "image",
       "required": false,
       "placeholder": null,
-      "description": "ارفع صورة التصنيف. المقاس المقترح 600×600 بكسل",
+      "description": "ارفع صورة التصنيف",
       "settings": {
         "height": 600,
         "width": 600
       }
-    },
-    {
-      "type": "items",
-      "icon": "sicon-link",
-      "label": "اختر التصنيف المرتبط بالصورة",
-      "id": "category",
-      "value": null,
-      "description": "اختر التصنيف الذي ستنتقل إليه الصورة عند الضغط عليها",
-      "required": false,
-      "format": "variable-list",
-      "searchable": true,
-      "source": "custom",
-      "sources": [
-        {
-          "label": "تصنيف",
-          "key": "categories",
-          "value": "categories"
-        }
-      ]
     }
   ],
   "conditions": [
     {
       "id": "veloura_category_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_category_use_custom_images_2026",
       "operation": "=",
       "value": true
     }

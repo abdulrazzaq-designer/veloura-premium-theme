@@ -38,6 +38,7 @@
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
+  {% set veloura_order_images = theme.settings.get('veloura_category_order_images_2026') ?: [] %}
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
@@ -108,34 +109,46 @@
               <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
                 {% for child in category.sub_categories %}
-                  {% set child_img = null %}
 
-{% if child.image %}
-  {% set child_img = child.image.url ?: child.image.src ?: child.image %}
-{% endif %}
+  {% set order_item = attribute(veloura_order_images, loop.index0) %}
+  {% set order_image = order_item ? order_item.image : null %}
 
-{% if not child_img and child.thumbnail %}
-  {% set child_img = child.thumbnail.url ?: child.thumbnail.src ?: child.thumbnail %}
-{% endif %}
+  {% set child_img = null %}
 
-{% if not child_img and child.cover %}
-  {% set child_img = child.cover.url ?: child.cover.src ?: child.cover %}
-{% endif %}
+  {# أولاً: صورة فيلورا حسب الترتيب #}
+  {% if order_image %}
+    {% set child_img = order_image.url ?: order_image.src ?: order_image %}
+  {% endif %}
 
-{% if not child_img %}
-  {% set child_img = 'images/placeholder.png' | asset %}
-{% endif %}
+  {# ثانياً: صورة التصنيف من سلة إذا كانت موجودة #}
+  {% if not child_img and child.image %}
+    {% set child_img = child.image.url ?: child.image.src ?: child.image %}
+  {% endif %}
 
-                  <a href="{{ child.url }}" class="veloura-category-card">
-  <span class="veloura-category-card__image">
-    <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
-  </span>
+  {% if not child_img and child.thumbnail %}
+    {% set child_img = child.thumbnail.url ?: child.thumbnail.src ?: child.thumbnail %}
+  {% endif %}
 
-  <span class="veloura-category-card__title">
-    {{ child.name }}
-  </span>
-</a>
-                {% endfor %}
+  {% if not child_img and child.cover %}
+    {% set child_img = child.cover.url ?: child.cover.src ?: child.cover %}
+  {% endif %}
+
+  {# أخيراً: placeholder #}
+  {% if not child_img %}
+    {% set child_img = 'images/placeholder.png' | asset %}
+  {% endif %}
+
+  <a href="{{ child.url }}" class="veloura-category-card">
+    <span class="veloura-category-card__image">
+      <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
+    </span>
+
+    <span class="veloura-category-card__title">
+      {{ child.name }}
+    </span>
+  </a>
+
+{% endfor %}
 
               </div>
             </section>
