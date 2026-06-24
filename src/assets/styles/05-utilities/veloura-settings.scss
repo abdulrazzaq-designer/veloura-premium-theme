@@ -473,3 +473,10 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-side-icon {
   background: var(--veloura-category-item-bg, #f8fafc) !important;
 }
+
+
+.veloura-category-card.is-disabled,
+.veloura-category-side-item.is-disabled {
+  pointer-events: none;
+  cursor: default;
+}

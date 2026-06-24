@@ -34779,6 +34779,11 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   background: #f8fafc !important;
   background: var(--veloura-category-item-bg, #f8fafc) !important;
 }
+.veloura-category-card.is-disabled,
+.veloura-category-side-item.is-disabled {
+  pointer-events: none;
+  cursor: default;
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;
