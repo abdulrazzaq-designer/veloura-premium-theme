@@ -20,66 +20,125 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-  <div class="container px-2.5 ms:px-5 mb-10">
 
-    <nav class="breadcrumbs w-full py-5">
-      <salla-breadcrumb></salla-breadcrumb>
-    </nav>
+  {# ================================
+     Veloura Category Safe Settings
+     ملاحظة: veloura_category_enabled_2026 لا نستخدمه هنا
+     لأنه فقط لإظهار/إخفاء الخيارات في لوحة التحكم
+  ================================ #}
 
-    <div class="flex items-start flex-col md:flex-row">
+  {% set veloura_show_breadcrumb = theme.settings.get('veloura_category_show_breadcrumb_2026', true) %}
+  {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
 
-      {% if filters %}
-        <button class="btn--close-sm close-filters sicon-cancel hidden"></button>
-        <salla-filters class="md:w-72 lg:sticky lg:top-20 flex-none" id="filters-menu"></salla-filters>
+  {% set veloura_images_slider = theme.settings.get('veloura_category_images_slider_2026', true) %}
+  {% set veloura_images_transparent = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
+  {% set veloura_mobile_cols = theme.settings.get('veloura_category_mobile_cols_2026', '3') %}
+  {% set veloura_desktop_cols = theme.settings.get('veloura_category_desktop_cols_2026', '6') %}
+  {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
+  {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
+  {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
+  {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
+
+  {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
+
+  <div
+    class="
+      veloura-category-page
+      {{ veloura_hide_product_count ? 'veloura-category-hide-count' : '' }}
+      {{ veloura_images_transparent ? 'veloura-category-images-transparent' : '' }}
+      veloura-category-mobile-cols-{{ veloura_mobile_cols }}
+      veloura-category-desktop-cols-{{ veloura_desktop_cols }}
+      veloura-category-title-{{ veloura_title_size }}
+      veloura-category-radius-{{ veloura_image_radius }}
+      veloura-category-shape-{{ veloura_image_shape }}
+      veloura-category-fit-{{ veloura_image_fit }}
+    "
+  >
+    <div class="container px-2.5 ms:px-5 mb-10">
+
+      {% if veloura_show_breadcrumb %}
+        <nav class="breadcrumbs w-full py-5 veloura-category-breadcrumb">
+          <salla-breadcrumb></salla-breadcrumb>
+        </nav>
       {% endif %}
 
-      <div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
+      <div class="flex items-start flex-col md:flex-row">
 
-        <div class="mb-4 sm:mb-6 flex justify-between items-center">
-          <h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3" id="page-main-title">
-            {{ page.title|raw }}
-          </h1>
+        {% if filters %}
+          <button class="btn--close-sm close-filters sicon-cancel hidden"></button>
+          <salla-filters class="md:w-72 lg:sticky lg:top-20 flex-none" id="filters-menu"></salla-filters>
+        {% endif %}
 
-          <div class="flex items-center space-x-2 rtl:space-x-reverse">
+        <div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
 
-            {% if filters %}
-              <a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2">
-                <i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
-              </a>
-            {% endif %}
+          <div class="mb-4 sm:mb-6 flex justify-between items-center veloura-category-head">
+            <h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title" id="page-main-title">
+              {{ page.title|raw }}
+            </h1>
 
-            {% if sort_options|length %}
-              <div class="flex items-center">
-                <label class="hidden sm:block rtl:ml-3 ltr:mr-3 whitespace-nowrap" for="product-filter">
-                  {{ trans('pages.categories.sorting') }}
-                </label>
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
 
-                <select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10">
-                  {% for sort in sort_options %}
-                    <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>
-                      {{ sort.name }}
-                    </option>
-                  {% endfor %}
-                </select>
-              </div>
-            {% endif %}
+              {% if filters %}
+                <a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2">
+                  <i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
+                </a>
+              {% endif %}
 
+              {% if sort_options|length %}
+                <div class="flex items-center veloura-category-sort">
+                  <label class="hidden sm:block rtl:ml-3 ltr:mr-3 whitespace-nowrap" for="product-filter">
+                    {{ trans('pages.categories.sorting') }}
+                  </label>
+
+                  <select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10">
+                    {% for sort in sort_options %}
+                      <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>
+                        {{ sort.name }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endif %}
+
+            </div>
           </div>
+
+          {% if has_sub_categories %}
+            <section class="veloura-category-children">
+              <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
+
+                {% for child in category.sub_categories %}
+                  {% set child_img = child.image ?: ('images/placeholder.png' | asset) %}
+
+                  <a href="{{ child.url }}" class="veloura-category-card">
+                    <span class="veloura-category-card__image">
+                      <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
+                    </span>
+
+                    <span class="veloura-category-card__title">
+                      {{ child.name }}
+                    </span>
+                  </a>
+                {% endfor %}
+
+              </div>
+            </section>
+          {% endif %}
+
+          {% hook 'product:index.items.start' %}
+
+          <div class="flex min-h-screen veloura-category-products-wrap">
+            <salla-products-list
+              class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
+              source="{{ page.slug }}"
+              source-value="{{ page.id }}"
+              {{ filters ? 'filters-Results' : '' }}>
+            </salla-products-list>
+          </div>
+
+          {% hook 'product:index.items.end' %}
+
         </div>
-
-        {% hook 'product:index.items.start' %}
-
-        <div class="flex min-h-screen">
-          <salla-products-list
-            class="flex-1 min-w-0 overflow-auto"
-            source="{{ page.slug }}"
-            source-value="{{ page.id }}"
-            {{ filters ? 'filters-Results' : '' }}>
-          </salla-products-list>
-        </div>
-
-        {% hook 'product:index.items.end' %}
-
       </div>
     </div>
   </div>
@@ -87,8 +146,29 @@
   {% if store.settings.category.testimonial_enabled %}
     {% component 'home.testimonials' %}
   {% endif %}
+
 {% endblock %}
 
 {% block scripts %}
   <script defer src="{{ 'product.js' | asset }}"></script>
+
+  {% if veloura_hide_product_count %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const title = document.getElementById('page-main-title');
+
+        if (!title) return;
+
+        title.querySelectorAll('span, small, em').forEach((item) => {
+          if (/\d+/.test(item.textContent || '')) {
+            item.remove();
+          }
+        });
+
+        title.innerHTML = title.innerHTML
+          .replace(/\s*[\(\[]\s*\d+\s*[\)\]]\s*$/g, '')
+          .replace(/\s*[-–]\s*\d+\s*$/g, '');
+      });
+    </script>
+  {% endif %}
 {% endblock %}
