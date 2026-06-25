@@ -2437,7 +2437,7 @@
   "type": "boolean",
   "icon": "sicon-toggle-off",
   "label": "إظهار صور التصنيفات",
-  "description": "عند الإيقاف ستظهر التصنيفات كنصوص فقط بدون صور",
+  "description": "عند الإيقاف تظهر أسماء التصنيفات فقط بدون صور أو أيقونة الكل",
   "id": "veloura_category_show_images_2026",
   "format": "switch",
   "required": false,
@@ -2455,19 +2455,19 @@
   "type": "items",
   "icon": "sicon-image",
   "label": "مكان صورة التصنيف",
-  "description": "اختر هل تظهر الصورة يمين العنوان أو فوق العنوان",
+  "description": "اختر مكان ظهور الصورة بالنسبة لعنوان التصنيف",
   "id": "veloura_category_image_position_2026",
-  "value": "right",
+  "value": "top",
   "required": false,
   "format": "dropdown-list",
   "items": [
     {
-      "label": "يمين العنوان",
-      "value": "right"
-    },
-    {
       "label": "فوق العنوان",
       "value": "top"
+    },
+    {
+      "label": "يمين العنوان",
+      "value": "right"
     }
   ],
   "conditions": [
