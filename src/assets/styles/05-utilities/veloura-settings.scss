@@ -579,3 +579,115 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
     flex: 0 0 150px !important;
   }
 }
+
+
+/* ================================
+   Veloura Category - Stage 2
+   تثبيت التصنيفات جنب بعض
+================================ */
+
+/* الحاوية */
+.veloura-category-cards {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  padding-bottom: 10px !important;
+}
+
+/* إلغاء أي Grid قديم */
+.veloura-category-cards.is-grid,
+.veloura-category-cards.is-slider {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
+/* كرت التصنيف */
+.veloura-category-card {
+  flex: 0 0 150px !important;
+  width: 150px !important;
+  max-width: 150px !important;
+  min-width: 150px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  text-align: center !important;
+  gap: 10px !important;
+  scroll-snap-align: start !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  text-decoration: none !important;
+}
+
+/* إذا التصنيف ما فيه صورة يبقى الاسم فقط بس بنفس مساحة الكرت */
+.veloura-category-card.has-no-image .veloura-category-card__image {
+  display: none !important;
+}
+
+/* صورة التصنيف */
+.veloura-category-card__image {
+  width: 150px !important;
+  height: 150px !important;
+  min-width: 150px !important;
+  min-height: 150px !important;
+  max-width: 150px !important;
+  max-height: 150px !important;
+
+  border-radius: 18px !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: #f5f7f8 !important;
+  border: 1px solid rgba(0, 0, 0, .06) !important;
+}
+
+/* الصورة نفسها */
+.veloura-category-card__image img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+/* اسم التصنيف */
+.veloura-category-card__title {
+  display: block !important;
+  width: 100% !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  color: inherit !important;
+}
+
+/* الموبايل */
+@media (max-width: 767px) {
+  .veloura-category-card {
+    flex-basis: 120px !important;
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+  }
+
+  .veloura-category-card__image {
+    width: 120px !important;
+    height: 120px !important;
+    min-width: 120px !important;
+    min-height: 120px !important;
+    max-width: 120px !important;
+    max-height: 120px !important;
+  }
+}
