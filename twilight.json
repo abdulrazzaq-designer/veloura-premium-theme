@@ -2434,6 +2434,56 @@
   ]
 },
 {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار صور التصنيفات",
+  "description": "عند الإيقاف ستظهر التصنيفات كنصوص فقط بدون صور",
+  "id": "veloura_category_show_images_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_category_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "items",
+  "icon": "sicon-image",
+  "label": "مكان صورة التصنيف",
+  "description": "اختر هل تظهر الصورة فوق العنوان أو يمين العنوان",
+  "id": "veloura_category_image_position_2026",
+  "value": "right",
+  "required": false,
+  "format": "dropdown-list",
+  "items": [
+    {
+      "label": "يمين العنوان",
+      "value": "right"
+    },
+    {
+      "label": "فوق العنوان",
+      "value": "top"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_category_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_category_show_images_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "type": "static",
   "format": "title",
   "id": "veloura_category_subtitle_products_2026",
