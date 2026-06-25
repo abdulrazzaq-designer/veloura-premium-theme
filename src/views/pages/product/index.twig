@@ -25,27 +25,32 @@
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
 
   {% set veloura_images_slider = theme.settings.get('veloura_category_images_slider_2026', true) %}
+  {% set veloura_images_transparent = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
   {% set veloura_mobile_cols = theme.settings.get('veloura_category_mobile_cols_2026', '3') %}
   {% set veloura_desktop_cols = theme.settings.get('veloura_category_desktop_cols_2026', '6') %}
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
-  {% set veloura_images_transparent = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
 
   {% set veloura_show_category_images = theme.settings.get('veloura_category_show_images_2026', true) %}
   {% set veloura_category_image_position = theme.settings.get('veloura_category_image_position_2026', 'right') %}
 
-  {% set veloura_nav_category = category %}
-  {% if category and category.parent %}
-    {% set veloura_nav_category = category.parent %}
+  {# مصدر التبويبات:
+     أولاً نحاول نعرض أبناء التصنيف الحالي.
+     إذا ما فيه أبناء، وما عنده أب فيه أبناء، نعرض أبناء الأب.
+  #}
+  {% set veloura_tabs_category = category %}
+  {% set veloura_tabs_children = [] %}
+
+  {% if category and category.sub_categories and category.sub_categories|length > 0 %}
+    {% set veloura_tabs_category = category %}
+    {% set veloura_tabs_children = category.sub_categories %}
+  {% elseif category and category.parent and category.parent.sub_categories and category.parent.sub_categories|length > 0 %}
+    {% set veloura_tabs_category = category.parent %}
+    {% set veloura_tabs_children = category.parent.sub_categories %}
   {% endif %}
 
-  {% set veloura_nav_children = [] %}
-  {% if veloura_nav_category and veloura_nav_category.sub_categories %}
-    {% set veloura_nav_children = veloura_nav_category.sub_categories %}
-  {% endif %}
-
-  {% set has_sub_categories = veloura_nav_children and veloura_nav_children|length > 0 %}
+  {% set has_tabs = veloura_tabs_children and veloura_tabs_children|length > 0 %}
 
   <div
     class="
@@ -110,13 +115,13 @@
             </div>
           </div>
 
-          {% if has_sub_categories %}
+          {% if has_tabs %}
             <section class="veloura-category-children veloura-category-tabs-wrap">
               <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
                 <a
-                  href="{{ veloura_nav_category.url|default(category.url|default('#')) }}"
-                  class="veloura-category-card veloura-category-tab veloura-category-tab-all {{ category and veloura_nav_category and category.id == veloura_nav_category.id ? 'is-active' : '' }}"
+                  href="{{ veloura_tabs_category.url|default(category.url|default('#')) }}"
+                  class="veloura-category-card veloura-category-tab veloura-category-tab-all {{ category and veloura_tabs_category and category.id == veloura_tabs_category.id ? 'is-active' : '' }}"
                   aria-label="عرض الكل"
                 >
                   {% if veloura_show_category_images %}
@@ -130,7 +135,7 @@
                   </span>
                 </a>
 
-                {% for child in veloura_nav_children %}
+                {% for child in veloura_tabs_children %}
 
                   {% set child_img = '' %}
 
