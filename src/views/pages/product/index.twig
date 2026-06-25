@@ -33,9 +33,6 @@
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
 
-  {% set veloura_show_category_images = theme.settings.get('veloura_category_show_images_2026', true) %}
-  {% set veloura_category_image_position = theme.settings.get('veloura_category_image_position_2026', 'top') %}
-
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
   <div
@@ -43,8 +40,6 @@
       veloura-category-page
       {{ veloura_hide_product_count ? 'veloura-category-hide-count' : '' }}
       {{ veloura_images_transparent ? 'veloura-category-images-transparent' : '' }}
-      {{ veloura_show_category_images ? 'veloura-category-show-images' : 'veloura-category-hide-images' }}
-      veloura-category-image-position-{{ veloura_category_image_position }}
       veloura-category-mobile-cols-{{ veloura_mobile_cols }}
       veloura-category-desktop-cols-{{ veloura_desktop_cols }}
       veloura-category-title-{{ veloura_title_size }}
@@ -106,18 +101,6 @@
             <section class="veloura-category-children">
               <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
-                <a href="{{ category.url }}" class="veloura-category-card veloura-category-card-all is-active">
-                  {% if veloura_show_category_images %}
-                    <span class="veloura-category-card__image veloura-category-card__image--all">
-                      <i class="sicon-grid"></i>
-                    </span>
-                  {% endif %}
-
-                  <span class="veloura-category-card__title">
-                    الكل
-                  </span>
-                </a>
-
                 {% for child in category.sub_categories %}
                   {% set child_img = 'images/placeholder.png' | asset %}
 
@@ -134,11 +117,9 @@
                   {% endif %}
 
                   <a href="{{ child.url }}" class="veloura-category-card">
-                    {% if veloura_show_category_images %}
-                      <span class="veloura-category-card__image">
-                        <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
-                      </span>
-                    {% endif %}
+                    <span class="veloura-category-card__image">
+                      <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
+                    </span>
 
                     <span class="veloura-category-card__title">
                       {{ child.name }}
