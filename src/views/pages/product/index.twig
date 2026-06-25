@@ -102,24 +102,26 @@
               <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
                 {% for child in category.sub_categories %}
-                  {% set child_img = 'images/placeholder.png' | asset %}
+                  {% set child_img = '' %}
 
                   {% if child.image %}
                     {% set child_img = child.image.url|default(child.image) %}
                   {% endif %}
 
-                  {% if child.thumbnail %}
+                  {% if not child_img and child.thumbnail %}
                     {% set child_img = child.thumbnail.url|default(child.thumbnail) %}
                   {% endif %}
 
-                  {% if child.cover %}
+                  {% if not child_img and child.cover %}
                     {% set child_img = child.cover.url|default(child.cover) %}
                   {% endif %}
 
-                  <a href="{{ child.url }}" class="veloura-category-card">
-                    <span class="veloura-category-card__image">
-                      <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
-                    </span>
+                  <a href="{{ child.url }}" class="veloura-category-card {{ child_img ? 'has-image' : 'has-no-image' }}">
+                    {% if child_img %}
+                      <span class="veloura-category-card__image">
+                        <img src="{{ child_img }}" loading="lazy" alt="{{ child.name }}">
+                      </span>
+                    {% endif %}
 
                     <span class="veloura-category-card__title">
                       {{ child.name }}
