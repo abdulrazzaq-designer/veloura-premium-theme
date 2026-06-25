@@ -1336,9 +1336,8 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 
 
 
-
 /* ================================
-   Veloura Category Tabs - Stable Reload
+   Veloura Category Links - Stable
 ================================ */
 
 .veloura-category-children {
@@ -1374,7 +1373,7 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 
 .veloura-category-card {
   min-width: 0;
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
   scroll-snap-align: start;
   text-align: center;
@@ -1384,7 +1383,6 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   gap: 10px;
 }
 
-/* إخفاء الصور بالكامل */
 .veloura-category-hide-images .veloura-category-card__image {
   display: none !important;
 }
@@ -1452,6 +1450,11 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.veloura-category-images-transparent .veloura-category-card__image {
+  background: transparent !important;
+  border-color: transparent !important;
 }
 
 /* fit */

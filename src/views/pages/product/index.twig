@@ -30,16 +30,28 @@
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
+  {% set veloura_images_transparent = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
 
   {% set veloura_show_category_images = theme.settings.get('veloura_category_show_images_2026', true) %}
   {% set veloura_category_image_position = theme.settings.get('veloura_category_image_position_2026', 'right') %}
 
-  {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length > 0 %}
+  {% set veloura_nav_category = category %}
+  {% if category and category.parent %}
+    {% set veloura_nav_category = category.parent %}
+  {% endif %}
+
+  {% set veloura_nav_children = [] %}
+  {% if veloura_nav_category and veloura_nav_category.sub_categories %}
+    {% set veloura_nav_children = veloura_nav_category.sub_categories %}
+  {% endif %}
+
+  {% set has_sub_categories = veloura_nav_children and veloura_nav_children|length > 0 %}
 
   <div
     class="
       veloura-category-page
       {{ veloura_hide_product_count ? 'veloura-category-hide-count' : '' }}
+      {{ veloura_images_transparent ? 'veloura-category-images-transparent' : '' }}
       {{ veloura_show_category_images ? 'veloura-category-show-images' : 'veloura-category-hide-images' }}
       veloura-category-image-position-{{ veloura_category_image_position }}
       veloura-category-mobile-cols-{{ veloura_mobile_cols }}
@@ -102,11 +114,9 @@
             <section class="veloura-category-children veloura-category-tabs-wrap">
               <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
-                <button
-                  type="button"
-                  class="veloura-category-card veloura-category-tab veloura-category-tab-all is-active"
-                  data-category-source="categories"
-                  data-category-value="[{{ page.id }}]"
+                <a
+                  href="{{ veloura_nav_category.url|default(category.url|default('#')) }}"
+                  class="veloura-category-card veloura-category-tab veloura-category-tab-all {{ category and veloura_nav_category and category.id == veloura_nav_category.id ? 'is-active' : '' }}"
                   aria-label="عرض الكل"
                 >
                   {% if veloura_show_category_images %}
@@ -118,29 +128,27 @@
                   <span class="veloura-category-card__title">
                     الكل
                   </span>
-                </button>
+                </a>
 
-                {% for child in category.sub_categories %}
+                {% for child in veloura_nav_children %}
 
                   {% set child_img = '' %}
 
                   {% if child.image %}
-                    {% set child_img = child.image.url ?: child.image %}
+                    {% set child_img = child.image.url|default(child.image.src|default(child.image)) %}
                   {% endif %}
 
                   {% if not child_img and child.thumbnail %}
-                    {% set child_img = child.thumbnail.url ?: child.thumbnail %}
+                    {% set child_img = child.thumbnail.url|default(child.thumbnail.src|default(child.thumbnail)) %}
                   {% endif %}
 
                   {% if not child_img and child.cover %}
-                    {% set child_img = child.cover.url ?: child.cover %}
+                    {% set child_img = child.cover.url|default(child.cover.src|default(child.cover)) %}
                   {% endif %}
 
-                  <button
-                    type="button"
-                    class="veloura-category-card veloura-category-tab {{ child_img ? 'has-image' : 'has-no-image' }}"
-                    data-category-source="categories"
-                    data-category-value="[{{ child.id }}]"
+                  <a
+                    href="{{ child.url }}"
+                    class="veloura-category-card veloura-category-tab {{ child_img ? 'has-image' : 'has-no-image' }} {{ category and child.id == category.id ? 'is-active' : '' }}"
                     aria-label="{{ child.name }}"
                   >
                     {% if veloura_show_category_images and child_img %}
@@ -157,7 +165,7 @@
                     <span class="veloura-category-card__title">
                       {{ child.name }}
                     </span>
-                  </button>
+                  </a>
 
                 {% endfor %}
 
@@ -169,11 +177,10 @@
 
           <div class="flex min-h-screen veloura-category-products-wrap">
             <salla-products-list
-              id="veloura-products-list"
               class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
-              source="categories"
-              source-value="[{{ page.id }}]"
-              {{ filters ? 'filters-results' : '' }}>
+              source="{{ page.slug }}"
+              source-value="{{ page.id }}"
+              {{ filters ? 'filters-Results' : '' }}>
             </salla-products-list>
           </div>
 
@@ -193,50 +200,6 @@
 {% block scripts %}
   <script defer src="{{ 'product.js' | asset }}"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('.veloura-category-tab[data-category-value]');
-      const productsList = document.getElementById('veloura-products-list');
-
-      if (!tabs.length || !productsList) return;
-
-      function loadCategory(tab) {
-        const source = tab.getAttribute('data-category-source') || 'categories';
-        const value = tab.getAttribute('data-category-value');
-
-        if (!value) return;
-
-        tabs.forEach(function (item) {
-          item.classList.remove('is-active');
-        });
-
-        tab.classList.add('is-active');
-
-        productsList.setAttribute('source', source);
-        productsList.setAttribute('source-value', value);
-
-        if (typeof productsList.reload === 'function') {
-          productsList.reload();
-          return;
-        }
-
-        if (window.customElements && customElements.whenDefined) {
-          customElements.whenDefined('salla-products-list').then(function () {
-            if (typeof productsList.reload === 'function') {
-              productsList.reload();
-            }
-          });
-        }
-      }
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          loadCategory(tab);
-        });
-      });
-    });
-  </script>
-
   {% if veloura_hide_product_count %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -251,6 +214,7 @@
         });
 
         title.innerHTML = title.innerHTML
+          .replace(/\s*[\(\[]\s*\d+\s*\)$/g, '')
           .replace(/\s*[\(\[]\s*\d+\s*[\)\]]\s*$/g, '')
           .replace(/\s*[-–]\s*\d+\s*$/g, '');
       });

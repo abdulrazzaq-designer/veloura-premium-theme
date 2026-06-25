@@ -2437,7 +2437,7 @@
   "type": "boolean",
   "icon": "sicon-toggle-off",
   "label": "إظهار صور التصنيفات",
-  "description": "عند الإيقاف ستظهر التصنيفات كنصوص فقط بدون صور أو أيقونات",
+  "description": "عند الإيقاف ستظهر التصنيفات كنصوص فقط بدون صور",
   "id": "veloura_category_show_images_2026",
   "format": "switch",
   "required": false,

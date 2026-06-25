@@ -35472,7 +35472,7 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   }
 }
 /* ================================
-   Veloura Category Tabs - Stable Reload
+   Veloura Category Links - Stable
 ================================ */
 .veloura-category-children {
   margin-bottom: 28px;
@@ -35501,9 +35501,11 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   color: inherit;
 }
 .veloura-category-card {
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+}
+.veloura-category-card {
   min-width: 0;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   color: inherit;
   scroll-snap-align: start;
   text-align: center;
@@ -35512,7 +35514,6 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   justify-content: center;
   gap: 10px;
 }
-/* إخفاء الصور بالكامل */
 .veloura-category-hide-images .veloura-category-card__image {
   display: none !important;
 }
@@ -35573,6 +35574,10 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.veloura-category-images-transparent .veloura-category-card__image {
+  background: transparent !important;
+  border-color: transparent !important;
 }
 /* fit */
 .veloura-category-fit-cover .veloura-category-card__image img {
