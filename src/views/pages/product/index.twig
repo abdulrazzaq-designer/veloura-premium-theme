@@ -34,7 +34,7 @@
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
 
   {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
-{% set veloura_linked_images = theme.settings.get('veloura_category_linked_images_v3_2026') ?: [] %}
+  {% set veloura_linked_images = theme.settings.get('veloura_category_images_map_2026') ?: [] %}
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
   <div
@@ -227,47 +227,47 @@
     }
 
     function getImageUrl(item) {
-  if (!item) return '';
+      if (!item) return '';
 
-  const image =
-    item.image ||
-    item['image'] ||
-    item['veloura_category_linked_images_v4_2026.image'] ||
-    null;
+      const image =
+        item.map_image ||
+        item['map_image'] ||
+        item.image ||
+        item['image'] ||
+        null;
 
-  if (!image) return '';
+      if (!image) return '';
 
-  if (typeof image === 'string') {
-    return image;
-  }
+      if (typeof image === 'string') {
+        return image;
+      }
 
-  return image.url ||
-    image.src ||
-    image.original ||
-    image.large ||
-    image.medium ||
-    image.thumbnail ||
-    image.path ||
-    '';
-}
+      return image.url ||
+        image.src ||
+        image.original ||
+        image.large ||
+        image.medium ||
+        image.thumbnail ||
+        image.path ||
+        '';
+    }
 
     function getCategoryTokens(item) {
-  const tokens = [];
+      const tokens = [];
 
-  if (!item) return tokens;
+      if (!item) return tokens;
 
-  const categories =
-    item.linked_categories ||
-    item['linked_categories'] ||
-    item['veloura_category_linked_images_v3_2026.linked_categories'] ||
-    item.category ||
-    item.categories ||
-    null;
+      const categories =
+        item.map_categories ||
+        item['map_categories'] ||
+        item.category ||
+        item.categories ||
+        null;
 
-  collectValues(categories, tokens);
+      collectValues(categories, tokens);
 
-  return tokens.map(normalize).filter(Boolean);
-}
+      return tokens.map(normalize).filter(Boolean);
+    }
 
     let items = [];
 
