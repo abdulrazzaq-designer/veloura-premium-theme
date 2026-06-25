@@ -2566,7 +2566,7 @@
   ]
 },
 {
-  "type": "items",
+  "type": "collection",
   "icon": "sicon-image",
   "label": "صور التصنيفات المرتبطة",
   "description": "ارفع صورة واختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
