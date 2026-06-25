@@ -227,29 +227,29 @@
     }
 
     function getImageUrl(item) {
-      if (!item) return '';
+  if (!item) return '';
 
-      const image =
-        item.image ||
-        item['image'] ||
-        item['veloura_category_linked_images_2026.image'] ||
-        null;
+  const image =
+    item.image ||
+    item['image'] ||
+    item['veloura_category_linked_images_v4_2026.image'] ||
+    null;
 
-      if (!image) return '';
+  if (!image) return '';
 
-      if (typeof image === 'string') {
-        return image;
-      }
+  if (typeof image === 'string') {
+    return image;
+  }
 
-      return image.url ||
-        image.src ||
-        image.original ||
-        image.large ||
-        image.medium ||
-        image.thumbnail ||
-        image.path ||
-        '';
-    }
+  return image.url ||
+    image.src ||
+    image.original ||
+    image.large ||
+    image.medium ||
+    image.thumbnail ||
+    image.path ||
+    '';
+}
 
     function getCategoryTokens(item) {
   const tokens = [];
