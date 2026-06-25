@@ -34784,6 +34784,46 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   pointer-events: none;
   cursor: default;
 }
+/* ================================
+   Veloura Category Tabs
+================================ */
+.veloura-category-tab {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+.veloura-category-tab .veloura-category-card__image {
+  transition: 0.2s ease;
+}
+.veloura-category-tab.is-active .veloura-category-card__image {
+  border-color: #414042;
+  border-color: var(--color-primary, #004956);
+  box-shadow: 0 0 0 3px rgba(0, 73, 86, 0.12);
+}
+.veloura-category-tab.is-active .veloura-category-card__title {
+  color: #414042;
+  color: var(--color-primary, #004956);
+  font-weight: 900;
+}
+.veloura-category-card__image--all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.veloura-category-card__image--all i {
+  font-size: 34px;
+  color: #414042;
+  color: var(--color-primary, #004956);
+}
+.veloura-category-panel {
+  display: none;
+}
+.veloura-category-panel.is-active {
+  display: block;
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;
