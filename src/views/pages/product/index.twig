@@ -77,6 +77,19 @@
               {{ page.title|raw }}
             </h1>
 
+            <div style="background:#111;color:#00ff88;padding:14px;margin:15px 0;border-radius:10px;direction:ltr;text-align:left;font-size:12px;white-space:pre-wrap;overflow:auto;max-height:300px;position:relative;z-index:9999">
+CHILDREN:
+{% for child in category.sub_categories %}
+child id: {{ child.id }}
+child name: {{ child.name }}
+child url: {{ child.url }}
+
+{% endfor %}
+
+LINKED IMAGES RAW:
+{{ veloura_linked_images|json_encode|raw }}
+</div>
+
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
 
               {% if filters %}
