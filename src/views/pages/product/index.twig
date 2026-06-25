@@ -109,39 +109,61 @@
           ================================ #}
 
           {% if veloura_linked_images|length %}
-            <div class="veloura-category-linked-data" hidden>
-              {% for item in veloura_linked_images %}
+  <div class="veloura-category-linked-data" hidden>
+    {% for item in veloura_linked_images %}
 
-                {% set linked_img = item.image.url|default(item.image|default('')) %}
+      {# قراءة الصورة بأكثر من احتمال #}
+      {% set linked_image_obj = item.image|default(null) %}
 
-                {% set linked_cat_id = item.category.value|default('') %}
-                {% if not linked_cat_id %}
-                  {% set linked_cat_id = item.category.id|default('') %}
-                {% endif %}
-                {% if not linked_cat_id %}
-                  {% set linked_cat_id = item.category.key|default('') %}
-                {% endif %}
+      {% if not linked_image_obj %}
+        {% set linked_image_obj = attribute(item, 'veloura_category_linked_images.image')|default(null) %}
+      {% endif %}
 
-                {% set linked_cat_name = item.category.label|default('') %}
-                {% if not linked_cat_name %}
-                  {% set linked_cat_name = item.category.name|default('') %}
-                {% endif %}
-                {% if not linked_cat_name %}
-                  {% set linked_cat_name = item.category.title|default('') %}
-                {% endif %}
+      {% if not linked_image_obj %}
+        {% set linked_image_obj = attribute(item, 'veloura_category_images.image')|default(null) %}
+      {% endif %}
 
-                {% if linked_img %}
-                  <span
-                    class="veloura-linked-image-item"
-                    data-cat-id="{{ linked_cat_id }}"
-                    data-cat-name="{{ linked_cat_name }}"
-                    data-img="{{ linked_img }}"
-                  ></span>
-                {% endif %}
+      {% set linked_img = '' %}
 
-              {% endfor %}
-            </div>
-          {% endif %}
+      {% if linked_image_obj %}
+        {% set linked_img = linked_image_obj.url|default(linked_image_obj.src|default(linked_image_obj)) %}
+      {% endif %}
+
+
+      {# قراءة التصنيف بأكثر من احتمال #}
+      {% set linked_cat_obj = item.category|default(null) %}
+
+      {% if not linked_cat_obj %}
+        {% set linked_cat_obj = attribute(item, 'veloura_category_linked_images.category')|default(null) %}
+      {% endif %}
+
+      {% if not linked_cat_obj %}
+        {% set linked_cat_obj = attribute(item, 'veloura_category_images.category')|default(null) %}
+      {% endif %}
+
+      {# لو رجع التصنيف كمصفوفة نأخذ أول قيمة #}
+      {% set linked_cat_first = linked_cat_obj[0]|default(linked_cat_obj) %}
+
+      {% set linked_cat_id = '' %}
+      {% set linked_cat_name = '' %}
+
+      {% if linked_cat_first %}
+        {% set linked_cat_id = linked_cat_first.value|default(linked_cat_first.id|default(linked_cat_first.key|default(''))) %}
+        {% set linked_cat_name = linked_cat_first.label|default(linked_cat_first.name|default(linked_cat_first.title|default(''))) %}
+      {% endif %}
+
+      {% if linked_img %}
+        <span
+          class="veloura-linked-image-item"
+          data-cat-id="{{ linked_cat_id }}"
+          data-cat-name="{{ linked_cat_name }}"
+          data-img="{{ linked_img }}"
+        ></span>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+{% endif %}
 
           {# ================================
              التصنيفات كتبويبات ثابتة
