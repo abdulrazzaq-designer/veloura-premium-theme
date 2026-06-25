@@ -105,9 +105,8 @@
                 <button
                   type="button"
                   class="veloura-category-card veloura-category-tab veloura-category-tab-all is-active"
-                  data-veloura-category-tab
-                  data-source="{{ page.slug }}"
-                  data-source-value="{{ page.id }}"
+                  data-category-source="categories"
+                  data-category-value="[{{ page.id }}]"
                   aria-label="عرض الكل"
                 >
                   {% if veloura_show_category_images %}
@@ -126,23 +125,22 @@
                   {% set child_img = '' %}
 
                   {% if child.image %}
-                    {% set child_img = child.image.url|default(child.image.src|default(child.image)) %}
+                    {% set child_img = child.image.url ?: child.image %}
                   {% endif %}
 
                   {% if not child_img and child.thumbnail %}
-                    {% set child_img = child.thumbnail.url|default(child.thumbnail.src|default(child.thumbnail)) %}
+                    {% set child_img = child.thumbnail.url ?: child.thumbnail %}
                   {% endif %}
 
                   {% if not child_img and child.cover %}
-                    {% set child_img = child.cover.url|default(child.cover.src|default(child.cover)) %}
+                    {% set child_img = child.cover.url ?: child.cover %}
                   {% endif %}
 
                   <button
                     type="button"
                     class="veloura-category-card veloura-category-tab {{ child_img ? 'has-image' : 'has-no-image' }}"
-                    data-veloura-category-tab
-                    data-source="{{ page.slug }}"
-                    data-source-value="{{ child.id }}"
+                    data-category-source="categories"
+                    data-category-value="[{{ child.id }}]"
                     aria-label="{{ child.name }}"
                   >
                     {% if veloura_show_category_images and child_img %}
@@ -169,18 +167,13 @@
 
           {% hook 'product:index.items.start' %}
 
-          <div
-            id="veloura-products-mount"
-            class="flex min-h-screen veloura-category-products-wrap"
-            data-default-source="{{ page.slug }}"
-            data-default-source-value="{{ page.id }}"
-            data-has-filters="{{ filters ? '1' : '0' }}"
-          >
+          <div class="flex min-h-screen veloura-category-products-wrap">
             <salla-products-list
+              id="veloura-products-list"
               class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
-              source="{{ page.slug }}"
-              source-value="{{ page.id }}"
-              {{ filters ? 'filters-Results' : '' }}>
+              source="categories"
+              source-value="[{{ page.id }}]"
+              {{ filters ? 'filters-results' : '' }}>
             </salla-products-list>
           </div>
 
@@ -202,40 +195,43 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('[data-veloura-category-tab]');
-      const mount = document.getElementById('veloura-products-mount');
+      const tabs = document.querySelectorAll('.veloura-category-tab[data-category-value]');
+      const productsList = document.getElementById('veloura-products-list');
 
-      if (!tabs.length || !mount) return;
+      if (!tabs.length || !productsList) return;
 
-      function renderProducts(source, sourceValue) {
-        if (!source || !sourceValue) return;
+      function loadCategory(tab) {
+        const source = tab.getAttribute('data-category-source') || 'categories';
+        const value = tab.getAttribute('data-category-value');
 
-        mount.innerHTML = '';
+        if (!value) return;
 
-        const list = document.createElement('salla-products-list');
-        list.className = 'flex-1 min-w-0 overflow-auto veloura-category-products-list';
-        list.setAttribute('source', source);
-        list.setAttribute('source-value', sourceValue);
+        tabs.forEach(function (item) {
+          item.classList.remove('is-active');
+        });
 
-        if (mount.getAttribute('data-has-filters') === '1') {
-          list.setAttribute('filters-Results', '');
+        tab.classList.add('is-active');
+
+        productsList.setAttribute('source', source);
+        productsList.setAttribute('source-value', value);
+
+        if (typeof productsList.reload === 'function') {
+          productsList.reload();
+          return;
         }
 
-        mount.appendChild(list);
+        if (window.customElements && customElements.whenDefined) {
+          customElements.whenDefined('salla-products-list').then(function () {
+            if (typeof productsList.reload === 'function') {
+              productsList.reload();
+            }
+          });
+        }
       }
 
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
-          const source = tab.getAttribute('data-source');
-          const sourceValue = tab.getAttribute('data-source-value');
-
-          tabs.forEach(function (item) {
-            item.classList.remove('is-active');
-          });
-
-          tab.classList.add('is-active');
-
-          renderProducts(source, sourceValue);
+          loadCategory(tab);
         });
       });
     });
