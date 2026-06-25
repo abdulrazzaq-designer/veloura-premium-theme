@@ -34824,6 +34824,210 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-panel.is-active {
   display: block;
 }
+/* ================================
+   Veloura Category Tabs / Store Categories
+================================ */
+.veloura-category-children {
+  margin-bottom: 28px;
+}
+.veloura-category-cards {
+  gap: 16px;
+}
+.veloura-category-cards.is-grid {
+  display: grid;
+}
+.veloura-category-cards.is-slider {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-bottom: 8px;
+}
+.veloura-category-card {
+  min-width: 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  scroll-snap-align: start;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.veloura-category-tab {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+.veloura-category-card__image {
+  width: 100%;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  transition: 0.2s ease;
+}
+.veloura-category-card__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.veloura-category-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.veloura-category-tab.is-active .veloura-category-card__image {
+  border-color: #414042;
+  border-color: var(--color-primary, #004956);
+  box-shadow: 0 0 0 3px rgba(0, 73, 86, 0.12);
+}
+.veloura-category-tab.is-active .veloura-category-card__title {
+  color: #414042;
+  color: var(--color-primary, #004956);
+  font-weight: 900;
+}
+.veloura-category-card__image--all i {
+  font-size: 34px;
+  color: #414042;
+  color: var(--color-primary, #004956);
+}
+.veloura-category-panel {
+  display: none;
+}
+.veloura-category-panel.is-active {
+  display: block;
+}
+/* خلفية شفافة */
+.veloura-category-images-transparent .veloura-category-card__image {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+/* شكل الصورة */
+.veloura-category-shape-square .veloura-category-card__image {
+  aspect-ratio: 1/1;
+}
+.veloura-category-shape-auto .veloura-category-card__image {
+  aspect-ratio: auto;
+}
+.veloura-category-shape-auto .veloura-category-card__image img {
+  height: auto;
+}
+/* الحواف */
+.veloura-category-radius-sharp .veloura-category-card__image {
+  border-radius: 0;
+}
+.veloura-category-radius-soft .veloura-category-card__image {
+  border-radius: 8px;
+}
+.veloura-category-radius-medium .veloura-category-card__image {
+  border-radius: 16px;
+}
+.veloura-category-radius-large .veloura-category-card__image {
+  border-radius: 26px;
+}
+.veloura-category-radius-round .veloura-category-card__image {
+  border-radius: 999px;
+}
+/* طريقة عرض الصورة */
+.veloura-category-fit-cover .veloura-category-card__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.veloura-category-fit-contain .veloura-category-card__image img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 8px;
+}
+/* أحجام العنوان */
+.veloura-category-title-xs .veloura-category-card__title {
+  font-size: 11px;
+}
+.veloura-category-title-small .veloura-category-card__title {
+  font-size: 12px;
+}
+.veloura-category-title-medium .veloura-category-card__title {
+  font-size: 14px;
+}
+.veloura-category-title-large .veloura-category-card__title {
+  font-size: 16px;
+}
+.veloura-category-title-xl .veloura-category-card__title {
+  font-size: 18px;
+}
+.veloura-category-title-xxl .veloura-category-card__title {
+  font-size: 22px;
+}
+/* Mobile Columns */
+@media (max-width: 767px) {
+  .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .veloura-category-mobile-cols-2 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .veloura-category-mobile-cols-3 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .veloura-category-mobile-cols-4 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .veloura-category-cards.is-slider .veloura-category-card {
+    flex: 0 0 calc(33.3333333333% - 12px);
+  }
+  .veloura-category-mobile-cols-2 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(50% - 12px);
+  }
+  .veloura-category-mobile-cols-3 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(33.3333333333% - 12px);
+  }
+  .veloura-category-mobile-cols-4 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(25% - 12px);
+  }
+}
+/* Desktop Columns */
+@media (min-width: 768px) {
+  .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .veloura-category-desktop-cols-4 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .veloura-category-desktop-cols-5 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .veloura-category-desktop-cols-6 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .veloura-category-desktop-cols-7 .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+  .veloura-category-cards.is-slider .veloura-category-card {
+    flex: 0 0 calc(16.6666666667% - 14px);
+  }
+  .veloura-category-desktop-cols-4 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(25% - 14px);
+  }
+  .veloura-category-desktop-cols-5 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(20% - 14px);
+  }
+  .veloura-category-desktop-cols-6 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(16.6666666667% - 14px);
+  }
+  .veloura-category-desktop-cols-7 .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(14.2857142857% - 14px);
+  }
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;
