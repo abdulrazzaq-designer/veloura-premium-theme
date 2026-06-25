@@ -133,18 +133,17 @@
                 </button>
 
                 {% for child in category.sub_categories %}
-
                   {% set child_img = '' %}
 
                   {% if child.image %}
                     {% set child_img = child.image.url|default(child.image.src|default(child.image)) %}
                   {% endif %}
 
-                  {% if child.thumbnail %}
+                  {% if not child_img and child.thumbnail %}
                     {% set child_img = child.thumbnail.url|default(child.thumbnail.src|default(child.thumbnail)) %}
                   {% endif %}
 
-                  {% if child.cover %}
+                  {% if not child_img and child.cover %}
                     {% set child_img = child.cover.url|default(child.cover.src|default(child.cover)) %}
                   {% endif %}
 
@@ -161,10 +160,9 @@
                       <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
                         <img
                           class="veloura-category-card__img"
-                          src="{{ child_img }}"
+                          src="{{ child_img ?: ('images/placeholder.png' | asset) }}"
                           loading="lazy"
                           alt="{{ child.name }}"
-                          {{ child_img ? '' : 'hidden' }}
                         >
                       </span>
                     {% endif %}
@@ -173,7 +171,6 @@
                       {{ child.name }}
                     </span>
                   </button>
-
                 {% endfor %}
 
               </div>
@@ -344,7 +341,7 @@
 
           if (match && match.image) {
             img.setAttribute('src', match.image);
-            img.removeAttribute('hidden');
+
             card.classList.remove('has-no-image');
             card.classList.add('has-image');
 
