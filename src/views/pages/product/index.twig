@@ -124,39 +124,24 @@
       {% for child in category.sub_categories %}
 
         {% set child_img = null %}
-        {% set child_id = child.id ? child.id ~ '' : '' %}
+        {% set child_id = child.id ~ '' %}
 
-        {# نبحث عن الصورة المرتبطة بنفس ID التصنيف #}
+        {# نطابق صورة فيلورا مع ID التصنيف المختار #}
         {% for item in veloura_linked_images %}
 
-          {% set item_image = item.image ?: attribute(item, 'image') ?: attribute(item, 'veloura_category_linked_images.image') %}
-          {% set item_category = item.category ?: attribute(item, 'category') ?: attribute(item, 'veloura_category_linked_images.category') %}
+          {% set item_image = item.image %}
+          {% set item_category = item.category %}
 
-          {# أحياناً حقل التصنيف يرجع كمصفوفة، نأخذ أول عنصر #}
-          {% if item_category is iterable and item_category[0] is defined %}
-            {% set item_category = item_category[0] %}
-          {% endif %}
-
+          {# غالباً سلة ترجع ID التصنيف هنا داخل value #}
           {% set item_cat_id = '' %}
 
-          {# الحالة الأولى: يرجع object فيه id #}
-          {% if item_category.id is defined and item_category.id %}
-            {% set item_cat_id = item_category.id ~ '' %}
-
-          {# الحالة الثانية: يرجع object فيه value مثل الصورة التي أرسلتها #}
-          {% elseif item_category.value is defined and item_category.value %}
+          {% if item_category.value %}
             {% set item_cat_id = item_category.value ~ '' %}
-
-          {# الحالة الثالثة: يرجع key #}
-          {% elseif item_category.key is defined and item_category.key %}
-            {% set item_cat_id = item_category.key ~ '' %}
-
-          {# الحالة الرابعة: يرجع الرقم مباشرة بدون object #}
-          {% elseif item_category %}
-            {% set item_cat_id = item_category ~ '' %}
+          {% elseif item_category.id %}
+            {% set item_cat_id = item_category.id ~ '' %}
           {% endif %}
 
-          {% if not child_img and item_image and child_id and item_cat_id and child_id == item_cat_id %}
+          {% if not child_img and item_image and item_cat_id and item_cat_id == child_id %}
             {% set child_img = item_image.url ?: item_image.src ?: item_image %}
           {% endif %}
 
@@ -201,14 +186,35 @@
 
           {% hook 'product:index.items.start' %}
 
-          <div class="flex min-h-screen veloura-category-products-wrap">
-            <salla-products-list
-              class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
-              source="{{ page.slug }}"
-              source-value="{{ page.id }}"
-              {{ filters ? 'filters-Results' : '' }}>
-            </salla-products-list>
-          </div>
+          <div class="veloura-category-tab-panels">
+
+  <div class="veloura-category-panel is-active" data-veloura-category-panel="parent">
+    <div class="flex min-h-screen veloura-category-products-wrap">
+      <salla-products-list
+        class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
+        source="{{ page.slug }}"
+        source-value="{{ page.id }}"
+        {{ filters ? 'filters-Results' : '' }}>
+      </salla-products-list>
+    </div>
+  </div>
+
+  {% if has_sub_categories %}
+    {% for child in category.sub_categories %}
+      <div class="veloura-category-panel" data-veloura-category-panel="child-{{ child.id }}">
+        <div class="flex min-h-screen veloura-category-products-wrap">
+          <salla-products-list
+            class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
+            source="{{ page.slug }}"
+            source-value="{{ child.id }}"
+            {{ filters ? 'filters-Results' : '' }}>
+          </salla-products-list>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+</div>
 
           {% hook 'product:index.items.end' %}
 
