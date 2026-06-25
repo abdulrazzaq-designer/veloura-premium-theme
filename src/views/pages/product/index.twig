@@ -216,48 +216,50 @@
     }
 
     function getImageUrl(item) {
-      if (!item) return '';
+  if (!item) return '';
 
-      const image =
-        item.image ||
-        item.category_image ||
-        item.veloura_category_image ||
-        item['veloura_category_linked_images.image'] ||
-        null;
+  const image =
+    item.image ||
+    item.category_image ||
+    item.veloura_category_image ||
+    item['veloura_category_linked_images.image'] ||
+    null;
 
-      if (!image) return '';
+  if (!image) return '';
 
-      if (typeof image === 'string') {
-        return image;
-      }
+  if (typeof image === 'string') {
+    return image;
+  }
 
-      return image.url ||
-        image.src ||
-        image.original ||
-        image.large ||
-        image.medium ||
-        image.thumbnail ||
-        image.path ||
-        '';
-    }
+  return image.url ||
+    image.src ||
+    image.original ||
+    image.large ||
+    image.medium ||
+    image.thumbnail ||
+    image.path ||
+    '';
+}
 
     function getCategoryTokens(item) {
-      const tokens = [];
+  const tokens = [];
 
-      if (!item) return tokens;
+  if (!item) return tokens;
 
-      const category =
-        item.category ||
-        item.linked_category ||
-        item.selected_category ||
-        item.veloura_category ||
-        item['veloura_category_linked_images.category'] ||
-        null;
+  const categories =
+    item.categories ||
+    item.category ||
+    item.linked_category ||
+    item.selected_category ||
+    item.veloura_category ||
+    item['veloura_category_linked_images.categories'] ||
+    item['veloura_category_linked_images.category'] ||
+    null;
 
-      collectValues(category, tokens);
+  collectValues(categories, tokens);
 
-      return tokens.map(normalize).filter(Boolean);
-    }
+  return tokens.map(normalize).filter(Boolean);
+}
 
     let items = [];
 

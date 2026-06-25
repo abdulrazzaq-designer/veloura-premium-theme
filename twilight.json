@@ -2593,24 +2593,18 @@
       }
     },
     {
-      "type": "items",
-      "icon": "sicon-link",
-      "label": "اختر التصنيف المرتبط بالصورة",
-      "id": "category",
-      "value": null,
-      "description": "اختر التصنيف الذي تخصه هذه الصورة",
-      "required": false,
-      "format": "variable-list",
-      "searchable": true,
-      "source": "custom",
-      "sources": [
-        {
-          "label": "تصنيف",
-          "key": "categories",
-          "value": "categories"
-        }
-      ]
-    }
+  "type": "items",
+  "icon": "sicon-folder",
+  "label": "التصنيفات المرتبطة بالصورة",
+  "description": "اختر تصنيف أو أكثر لتظهر هذه الصورة داخلهم",
+  "id": "categories",
+  "value": [],
+  "required": false,
+  "format": "variable-list",
+  "searchable": true,
+  "source": "categories",
+  "multiple": true
+}
   ],
   "conditions": [
     {
