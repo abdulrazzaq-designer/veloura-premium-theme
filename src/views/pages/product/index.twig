@@ -34,7 +34,7 @@
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
 
   {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
-  {% set veloura_linked_images = theme.settings.get('veloura_category_images_map_v5_2026') ?: [] %}
+{% set veloura_linked_images = theme.settings.get('veloura_category_images_map_v6_2026') ?: [] %}
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
   <div
@@ -259,7 +259,7 @@
 
   const categories =
     item.map_categories ||
-    item['map_categories'] ||
+    item.map_category ||
     item.category ||
     item.categories ||
     null;

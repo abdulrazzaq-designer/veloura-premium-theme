@@ -2571,7 +2571,7 @@
   "icon": "sicon-image",
   "label": "صور التصنيفات المرتبطة",
   "description": "ارفع صورة واختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
-  "id": "veloura_category_images_map_v5_2026",
+  "id": "veloura_category_images_map_v6_2026",
   "value": [],
   "required": false,
   "minLength": 0,
@@ -2588,16 +2588,16 @@
     },
     {
       "type": "items",
-      "format": "variable-list",
       "icon": "sicon-folder",
       "label": "التصنيفات المرتبطة بالصورة",
       "description": "اختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
       "id": "map_categories",
       "value": [],
       "required": false,
+      "format": "categories",
+      "source": "categories",
       "searchable": true,
-      "multiple": true,
-      "source": "categories"
+      "multiple": true
     }
   ]
 },
