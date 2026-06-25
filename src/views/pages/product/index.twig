@@ -379,13 +379,11 @@
   if (!item) return tokens;
 
   const categories =
-    item.categories ||
+    item.linked_categories_v4 ||
+    item['linked_categories_v4'] ||
+    item['veloura_category_linked_images_v4_2026.linked_categories_v4'] ||
     item.category ||
-    item.linked_category ||
-    item.selected_category ||
-    item.veloura_category ||
-    item['veloura_category_linked_images.categories'] ||
-    item['veloura_category_linked_images.category'] ||
+    item.categories ||
     null;
 
   collectValues(categories, tokens);

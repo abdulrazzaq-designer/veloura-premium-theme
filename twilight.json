@@ -2566,17 +2566,19 @@
   ]
 },
 {
-  "type": "items",
+  "type": "collection",
+  "format": "collection",
   "icon": "sicon-image",
   "label": "صور التصنيفات المرتبطة",
   "description": "ارفع صورة واختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
-  "id": "veloura_category_linked_images_v3_2026",
+  "id": "veloura_category_linked_images_v4_2026",
   "value": [],
   "required": false,
-  "format": "collection",
-  "settings": [
+  "minLength": 0,
+  "fields": [
     {
-      "type": "image",
+      "type": "string",
+      "format": "image",
       "icon": "sicon-image",
       "label": "صورة التصنيف",
       "description": "ارفع الصورة المخصصة للتصنيف",
@@ -2589,7 +2591,7 @@
       "icon": "sicon-folder",
       "label": "التصنيفات المرتبطة بالصورة",
       "description": "اختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
-      "id": "linked_categories",
+      "id": "linked_categories_v4",
       "value": [],
       "required": false,
       "format": "variable-list",
