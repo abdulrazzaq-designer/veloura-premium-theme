@@ -30,10 +30,11 @@
   {% set veloura_desktop_cols = theme.settings.get('veloura_category_desktop_cols_2026', '6') %}
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
+  {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
 
-  {% set veloura_show_images = theme.settings.get('veloura_category_show_images_2026', true) %}
-  {% set veloura_image_position = theme.settings.get('veloura_category_image_position_2026', 'right') %}
+  {% set veloura_show_category_images = theme.settings.get('veloura_category_show_images_2026', true) %}
+  {% set veloura_category_image_position = theme.settings.get('veloura_category_image_position_2026', 'right') %}
 
   {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
   {% set veloura_linked_images = theme.settings.get('veloura_category_linked_images_2026') ?: [] %}
@@ -45,12 +46,13 @@
       veloura-category-page
       {{ veloura_hide_product_count ? 'veloura-category-hide-count' : '' }}
       {{ veloura_images_transparent ? 'veloura-category-images-transparent' : '' }}
-      {{ veloura_show_images ? 'veloura-category-show-images' : 'veloura-category-no-images' }}
-      veloura-category-image-position-{{ veloura_image_position }}
+      {{ veloura_show_category_images ? 'veloura-category-show-images' : 'veloura-category-hide-images' }}
+      veloura-category-image-position-{{ veloura_category_image_position }}
       veloura-category-mobile-cols-{{ veloura_mobile_cols }}
       veloura-category-desktop-cols-{{ veloura_desktop_cols }}
       veloura-category-title-{{ veloura_title_size }}
       veloura-category-radius-{{ veloura_image_radius }}
+      veloura-category-shape-{{ veloura_image_shape }}
       veloura-category-fit-{{ veloura_image_fit }}
     "
   >
@@ -115,28 +117,34 @@
 
                 <button
                   type="button"
-                  class="veloura-category-tab veloura-category-tab-all is-active"
+                  class="veloura-category-card veloura-category-tab veloura-category-tab-all is-active"
                   data-veloura-category-tab="parent"
                   aria-label="عرض الكل"
                 >
-                  <span class="veloura-category-inline">
-                    <i class="sicon-grid"></i>
-                    <span>الكل</span>
+                  {% if veloura_show_category_images %}
+                    <span class="veloura-category-card__image veloura-category-card__image--all">
+                      <i class="sicon-grid"></i>
+                    </span>
+                  {% endif %}
+
+                  <span class="veloura-category-card__title">
+                    الكل
                   </span>
                 </button>
 
                 {% for child in category.sub_categories %}
+
                   {% set child_img = '' %}
 
                   {% if child.image %}
                     {% set child_img = child.image.url|default(child.image.src|default(child.image)) %}
                   {% endif %}
 
-                  {% if not child_img and child.thumbnail %}
+                  {% if child.thumbnail %}
                     {% set child_img = child.thumbnail.url|default(child.thumbnail.src|default(child.thumbnail)) %}
                   {% endif %}
 
-                  {% if not child_img and child.cover %}
+                  {% if child.cover %}
                     {% set child_img = child.cover.url|default(child.cover.src|default(child.cover)) %}
                   {% endif %}
 
@@ -149,7 +157,7 @@
                     data-veloura-child-url="{{ child.url }}"
                     aria-label="{{ child.name }}"
                   >
-                    {% if veloura_show_images %}
+                    {% if veloura_show_category_images %}
                       <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
                         <img
                           class="veloura-category-card__img"
@@ -165,6 +173,7 @@
                       {{ child.name }}
                     </span>
                   </button>
+
                 {% endfor %}
 
               </div>
