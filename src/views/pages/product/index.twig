@@ -40,6 +40,7 @@
   {% set veloura_linked_images = theme.settings.get('veloura_category_linked_images_2026') ?: [] %}
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length > 0 %}
+  {% set veloura_placeholder_img = 'images/placeholder.png' | asset %}
 
   <div
     class="
@@ -133,6 +134,7 @@
                 </button>
 
                 {% for child in category.sub_categories %}
+
                   {% set child_img = '' %}
 
                   {% if child.image %}
@@ -147,6 +149,16 @@
                     {% set child_img = child.cover.url|default(child.cover.src|default(child.cover)) %}
                   {% endif %}
 
+                  {% set render_img = child_img %}
+                  {% if not render_img %}
+                    {% set render_img = veloura_placeholder_img %}
+                  {% endif %}
+
+                  {% set image_empty_class = '' %}
+                  {% if not child_img %}
+                    {% set image_empty_class = ' is-empty' %}
+                  {% endif %}
+
                   <button
                     type="button"
                     class="veloura-category-card veloura-category-tab {{ child_img ? 'has-image' : 'has-no-image' }}"
@@ -157,12 +169,13 @@
                     aria-label="{{ child.name }}"
                   >
                     {% if veloura_show_category_images %}
-                      <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
+                      <span class="veloura-category-card__image{{ image_empty_class }}">
                         <img
                           class="veloura-category-card__img"
-                          src="{{ child_img ?: ('images/placeholder.png' | asset) }}"
+                          src="{{ render_img }}"
                           loading="lazy"
                           alt="{{ child.name }}"
+                          {% if not child_img %}hidden{% endif %}
                         >
                       </span>
                     {% endif %}
@@ -171,6 +184,7 @@
                       {{ child.name }}
                     </span>
                   </button>
+
                 {% endfor %}
 
               </div>
@@ -341,6 +355,7 @@
 
           if (match && match.image) {
             img.setAttribute('src', match.image);
+            img.removeAttribute('hidden');
 
             card.classList.remove('has-no-image');
             card.classList.add('has-image');

@@ -798,7 +798,6 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 
 
 
-
 /* ================================
    Veloura Category Tabs - Full
 ================================ */
@@ -857,10 +856,7 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   display: none !important;
 }
 
-/* ================================
-   الصورة يمين العنوان
-================================ */
-
+/* يمين العنوان */
 .veloura-category-image-position-right .veloura-category-cards.is-grid {
   display: flex;
   align-items: center;
@@ -890,10 +886,7 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   font-size: 30px;
 }
 
-/* ================================
-   الصورة فوق العنوان
-================================ */
-
+/* فوق العنوان */
 .veloura-category-image-position-top .veloura-category-card {
   flex-direction: column;
   width: 150px;
@@ -909,10 +902,7 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   font-size: 46px;
 }
 
-/* ================================
-   شكل الصورة
-================================ */
-
+/* شكل الصورة */
 .veloura-category-card__image {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, .06);
