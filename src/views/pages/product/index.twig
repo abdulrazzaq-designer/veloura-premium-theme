@@ -21,13 +21,6 @@
 
 {% block content %}
 
-  {# ================================
-     Veloura Category Settings
-     ملاحظة مهمة:
-     veloura_category_enabled_2026 لا نستخدمه هنا أبداً
-     لأنه فقط لإظهار/إخفاء الإعدادات داخل لوحة سلة
-  ================================ #}
-
   {% set veloura_show_breadcrumb = theme.settings.get('veloura_category_show_breadcrumb_2026', true) %}
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
 
@@ -39,6 +32,9 @@
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
   {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
+
+  {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
+  {% set veloura_linked_images = theme.settings.get('veloura_category_linked_images_2026') ?: [] %}
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length > 0 %}
 
@@ -104,10 +100,11 @@
             </div>
           </div>
 
-          {# ================================
-             تصنيفات المتجر كتبويبات ثابتة
-             المصدر الحقيقي: category.sub_categories
-          ================================ #}
+          {% if veloura_use_custom_images and veloura_linked_images|length %}
+            <script type="application/json" id="veloura-category-images-json">
+              {{ veloura_linked_images|json_encode|raw }}
+            </script>
+          {% endif %}
 
           {% if has_sub_categories %}
             <section class="veloura-category-children veloura-category-tabs-wrap">
@@ -129,19 +126,17 @@
                 </button>
 
                 {% for child in category.sub_categories %}
-
                   {% set child_img = 'images/placeholder.png' | asset %}
 
-                  {# صورة التصنيف من سلة مباشرة #}
                   {% if child.image %}
                     {% set child_img = child.image.url|default(child.image.src|default(child.image)) %}
                   {% endif %}
 
-                  {% if not child_img and child.thumbnail %}
+                  {% if child.thumbnail %}
                     {% set child_img = child.thumbnail.url|default(child.thumbnail.src|default(child.thumbnail)) %}
                   {% endif %}
 
-                  {% if not child_img and child.cover %}
+                  {% if child.cover %}
                     {% set child_img = child.cover.url|default(child.cover.src|default(child.cover)) %}
                   {% endif %}
 
@@ -150,6 +145,7 @@
                     class="veloura-category-card veloura-category-tab"
                     data-veloura-category-tab="child-{{ child.id }}"
                     data-veloura-child-id="{{ child.id }}"
+                    data-veloura-child-name="{{ child.name }}"
                     data-veloura-child-url="{{ child.url }}"
                     aria-label="{{ child.name }}"
                   >
@@ -166,7 +162,6 @@
                       {{ child.name }}
                     </span>
                   </button>
-
                 {% endfor %}
 
               </div>
@@ -174,12 +169,6 @@
           {% endif %}
 
           {% hook 'product:index.items.start' %}
-
-          {# ================================
-             المنتجات
-             الكل = page.id
-             كل تصنيف فرعي = child.id
-          ================================ #}
 
           <div class="veloura-category-tab-panels">
 
@@ -239,32 +228,138 @@
     document.addEventListener('DOMContentLoaded', function () {
       const tabs = document.querySelectorAll('[data-veloura-category-tab]');
       const panels = document.querySelectorAll('[data-veloura-category-panel]');
+      const jsonEl = document.getElementById('veloura-category-images-json');
 
-      if (!tabs.length || !panels.length) return;
+      function normalize(value) {
+        return String(value || '').trim().toLowerCase();
+      }
 
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          const target = tab.getAttribute('data-veloura-category-tab');
+      function collectValues(value, result) {
+        if (value === null || value === undefined) return;
 
-          tabs.forEach(function (item) {
-            item.classList.remove('is-active');
+        if (typeof value === 'string' || typeof value === 'number') {
+          result.push(String(value));
+          return;
+        }
+
+        if (Array.isArray(value)) {
+          value.forEach(function (item) {
+            collectValues(item, result);
+          });
+          return;
+        }
+
+        if (typeof value === 'object') {
+          Object.keys(value).forEach(function (key) {
+            collectValues(value[key], result);
+          });
+        }
+      }
+
+      function getImageUrl(item) {
+        if (!item) return '';
+
+        const image = item.image || item['veloura_category_linked_images.image'] || null;
+
+        if (!image) return '';
+
+        if (typeof image === 'string') {
+          return image;
+        }
+
+        return image.url ||
+          image.src ||
+          image.original ||
+          image.large ||
+          image.medium ||
+          image.thumbnail ||
+          image.path ||
+          '';
+      }
+
+      function getCategoryTokens(item) {
+        const tokens = [];
+
+        if (!item) return tokens;
+
+        if (item.category_id) {
+          tokens.push(String(item.category_id));
+        }
+
+        if (item['veloura_category_linked_images.category_id']) {
+          tokens.push(String(item['veloura_category_linked_images.category_id']));
+        }
+
+        const category = item.category || item['veloura_category_linked_images.category'] || null;
+
+        collectValues(category, tokens);
+
+        return tokens.map(normalize).filter(Boolean);
+      }
+
+      if (jsonEl) {
+        let items = [];
+
+        try {
+          items = JSON.parse(jsonEl.textContent || '[]');
+        } catch (error) {
+          items = [];
+        }
+
+        const prepared = items.map(function (item) {
+          return {
+            image: getImageUrl(item),
+            tokens: getCategoryTokens(item)
+          };
+        }).filter(function (item) {
+          return item.image && item.tokens.length;
+        });
+
+        document.querySelectorAll('.veloura-category-tab[data-veloura-child-id]').forEach(function (card) {
+          const childId = normalize(card.getAttribute('data-veloura-child-id'));
+          const childName = normalize(card.getAttribute('data-veloura-child-name'));
+          const childUrl = normalize(card.getAttribute('data-veloura-child-url'));
+          const img = card.querySelector('.veloura-category-card__img');
+
+          if (!img) return;
+
+          const match = prepared.find(function (item) {
+            return item.tokens.includes(childId) ||
+              item.tokens.includes(childName) ||
+              item.tokens.includes(childUrl);
           });
 
-          panels.forEach(function (panel) {
-            panel.classList.remove('is-active');
-            panel.style.display = 'none';
-          });
-
-          tab.classList.add('is-active');
-
-          const activePanel = document.querySelector('[data-veloura-category-panel="' + target + '"]');
-
-          if (activePanel) {
-            activePanel.classList.add('is-active');
-            activePanel.style.display = 'block';
+          if (match && match.image) {
+            img.setAttribute('src', match.image);
           }
         });
-      });
+      }
+
+      if (tabs.length && panels.length) {
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            const target = tab.getAttribute('data-veloura-category-tab');
+
+            tabs.forEach(function (item) {
+              item.classList.remove('is-active');
+            });
+
+            panels.forEach(function (panel) {
+              panel.classList.remove('is-active');
+              panel.style.display = 'none';
+            });
+
+            tab.classList.add('is-active');
+
+            const activePanel = document.querySelector('[data-veloura-category-panel="' + target + '"]');
+
+            if (activePanel) {
+              activePanel.classList.add('is-active');
+              activePanel.style.display = 'block';
+            }
+          });
+        });
+      }
     });
   </script>
 

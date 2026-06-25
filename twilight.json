@@ -2560,18 +2560,7 @@
           "value": "categories"
         }
       ]
-    },
-    {
-  "type": "string",
-  "icon": "sicon-hashtag",
-  "label": "ID التصنيف",
-  "id": "category_id",
-  "value": "",
-  "required": false,
-  "format": "text",
-  "description": "اكتب رقم التصنيف كما يظهر في الرابط أو من الكود. مثال: 2084756343",
-  "placeholder": "2084756343"
-}
+    }
   ],
   "conditions": [
     {
