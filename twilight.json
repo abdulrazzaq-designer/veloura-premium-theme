@@ -2566,49 +2566,41 @@
   ]
 },
 {
-  "id": "veloura_category_linked_images_2026",
-  "type": "collection",
-  "format": "collection",
-  "required": false,
-  "minLength": 0,
-  "maxLength": 30,
+  "type": "items",
+  "icon": "sicon-image",
   "label": "صور التصنيفات المرتبطة",
-  "item_label": "صورة تصنيف",
-  "description": "ارفع صورة واختر التصنيف المرتبط بها. ستظهر الصورة حسب التصنيف المختار وليس حسب الترتيب.",
+  "description": "ارفع صورة واختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
+  "id": "veloura_category_linked_images_2026",
   "value": [],
-  "fields": [
+  "required": false,
+  "format": "collection",
+  "settings": [
     {
-      "type": "string",
+      "type": "image",
       "icon": "sicon-image",
-      "value": "",
       "label": "صورة التصنيف",
+      "description": "ارفع الصورة المخصصة للتصنيف",
       "id": "image",
-      "format": "image",
-      "required": false,
-      "placeholder": null,
-      "description": "ارفع صورة التصنيف",
-      "settings": {
-        "height": 600,
-        "width": 600
-      }
+      "value": "",
+      "required": false
     },
     {
-  "type": "items",
-  "icon": "sicon-folder",
-  "label": "التصنيفات المرتبطة بالصورة",
-  "description": "اختر تصنيف أو أكثر لتظهر هذه الصورة داخلهم",
-  "id": "categories",
-  "value": [],
-  "required": false,
-  "format": "variable-list",
-  "searchable": true,
-  "source": "categories",
-  "multiple": true
-}
+      "type": "items",
+      "icon": "sicon-folder",
+      "label": "التصنيفات المرتبطة بالصورة",
+      "description": "اختر تصنيف أو أكثر لتظهر هذه الصورة عليهم",
+      "id": "linked_categories_v2",
+      "value": [],
+      "required": false,
+      "format": "variable-list",
+      "searchable": true,
+      "multiple": true,
+      "source": "categories"
+    }
   ],
   "conditions": [
     {
-      "id": "veloura_category_enabled_2026",
+      "id": "veloura_category_use_custom_images_2026",
       "operation": "=",
       "value": true
     }
