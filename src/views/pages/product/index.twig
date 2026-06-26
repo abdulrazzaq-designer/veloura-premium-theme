@@ -237,7 +237,13 @@
           {% if has_sub_categories %}
             <section class="veloura-category-children">
               <div class="veloura-category-sticky-wrap">
-                <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
+                <div
+  class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}"
+  style="
+    --veloura-category-mobile-cols: {{ veloura_mobile_cols }};
+    --veloura-category-desktop-cols: {{ veloura_desktop_cols }};
+  "
+>
 
                   <a
                     href="{{ category.url }}"
