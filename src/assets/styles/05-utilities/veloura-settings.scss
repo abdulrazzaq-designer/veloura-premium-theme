@@ -1220,11 +1220,7 @@ body.veloura-category-is-dragging * {
 
 
 
-/* عند إخفاء صور التصنيفات */
-.veloura-category-hide-images .veloura-category-card__image {
-  display: none !important;
-}
-
+/* حالة إخفاء الصور: ترتيب الكرت بدون صورة */
 .veloura-category-hide-images .veloura-category-card {
   min-height: auto !important;
   padding: 12px 18px !important;
@@ -1237,6 +1233,11 @@ body.veloura-category-is-dragging * {
   margin: 0 !important;
   padding: 0 !important;
   text-align: center !important;
+}
+
+/* احتياطي لإخفاء المنتجات لو ظهر wrapper */
+.veloura-category-products-hidden .veloura-category-products-wrap {
+  display: none !important;
 }
 
 /* إذا الصور مخفية، خلي الكروت أنظف */

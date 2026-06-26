@@ -35421,6 +35421,31 @@ body.veloura-category-is-dragging * {
     flex-basis: calc((100% - var(--veloura-category-gap, 12px) * (var(--veloura-category-mobile-slides) - 1)) / var(--veloura-category-mobile-slides)) !important;
   }
 }
+/* حالة إخفاء الصور: ترتيب الكرت بدون صورة */
+.veloura-category-hide-images .veloura-category-card {
+  min-height: auto !important;
+  padding: 12px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.veloura-category-hide-images .veloura-category-card__title {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+/* احتياطي لإخفاء المنتجات لو ظهر wrapper */
+.veloura-category-products-hidden .veloura-category-products-wrap {
+  display: none !important;
+}
+/* إذا الصور مخفية، خلي الكروت أنظف */
+.veloura-category-hide-images.veloura-category-image-position-right .veloura-category-card {
+  flex-direction: row !important;
+}
+/* إخفاء المنتجات احتياطيًا لو ظهر شيء من CSS أو JS */
+.veloura-category-products-hidden .veloura-category-products-wrap {
+  display: none !important;
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;

@@ -156,7 +156,7 @@
                     data-veloura-category-url="{{ category.url|e('html_attr') }}"
                     data-veloura-category-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
                   >
-                    {% if veloura_show_images %}
+  {% if veloura_show_images %}
   <span class="veloura-category-card__image veloura-category-card__image--all">
     <i class="sicon-grid"></i>
   </span>
@@ -250,8 +250,38 @@
 {% block scripts %}
 
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
-  {% set veloura_hide_products_when_children_raw = theme.settings.get('veloura_category_hide_products_when_children_2026', false) %}
-{% set veloura_hide_products_when_children = veloura_hide_products_when_children_raw == true or veloura_hide_products_when_children_raw == 'true' or veloura_hide_products_when_children_raw == 1 or veloura_hide_products_when_children_raw == '1' %}
+  {# إخفاء المنتجات عند وجود تصنيفات فرعية #}
+{% set veloura_hide_products_when_children_raw = theme.settings.get('veloura_category_hide_products_when_children_2026', false) %}
+
+{% if veloura_hide_products_when_children_raw.value is defined %}
+  {% set veloura_hide_products_when_children_raw = veloura_hide_products_when_children_raw.value %}
+{% endif %}
+
+{% set veloura_hide_products_when_children =
+  veloura_hide_products_when_children_raw == true
+  or veloura_hide_products_when_children_raw == 'true'
+  or veloura_hide_products_when_children_raw == 1
+  or veloura_hide_products_when_children_raw == '1'
+  or veloura_hide_products_when_children_raw == 'on'
+%}
+
+
+{# إظهار / إخفاء صور التصنيفات #}
+{% set veloura_show_images_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
+
+{% if veloura_show_images_raw.value is defined %}
+  {% set veloura_show_images_raw = veloura_show_images_raw.value %}
+{% endif %}
+
+{% set veloura_show_images = not (
+  veloura_show_images_raw == false
+  or veloura_show_images_raw == 'false'
+  or veloura_show_images_raw == 0
+  or veloura_show_images_raw == '0'
+  or veloura_show_images_raw == 'off'
+) %}
+  {% set veloura_hide_products_if_children_raw = theme.settings.get('veloura_category_hide_products_if_children_2026', false) %}
+{% set veloura_hide_products_if_children = veloura_hide_products_if_children_raw == true or veloura_hide_products_if_children_raw == 'true' or veloura_hide_products_if_children_raw == 1 or veloura_hide_products_if_children_raw == '1' %}
 
 {% set veloura_show_images_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
 {% set veloura_show_images = veloura_show_images_raw == true or veloura_show_images_raw == 'true' or veloura_show_images_raw == 1 or veloura_show_images_raw == '1' %}
