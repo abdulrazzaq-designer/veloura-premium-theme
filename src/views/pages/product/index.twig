@@ -24,15 +24,12 @@
   {% set veloura_show_breadcrumb = theme.settings.get('veloura_category_show_breadcrumb_2026', true) %}
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
 
-  {# Slider switch safe boolean #}
   {% set veloura_images_slider_raw = theme.settings.get('veloura_category_images_slider_2026', false) %}
   {% set veloura_images_slider = veloura_images_slider_raw == true or veloura_images_slider_raw == 'true' or veloura_images_slider_raw == 1 or veloura_images_slider_raw == '1' %}
 
-  {# Transparent switch safe boolean #}
   {% set veloura_images_transparent_raw = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
   {% set veloura_images_transparent = veloura_images_transparent_raw == true or veloura_images_transparent_raw == 'true' or veloura_images_transparent_raw == 1 or veloura_images_transparent_raw == '1' %}
 
-  {# Columns: keep admin slider safe, clamp values in Twig #}
   {% set veloura_mobile_cols_raw = theme.settings.get('veloura_category_mobile_cols_2026', '4') %}
   {% set veloura_desktop_cols_raw = theme.settings.get('veloura_category_desktop_cols_2026', '8') %}
 
@@ -157,7 +154,7 @@
                     </span>
 
                     <span class="veloura-category-card__title">
-                      عرض الكل
+                      الكل
                     </span>
                   </a>
 
@@ -204,7 +201,6 @@
                       </span>
                     </a>
                   {% endfor %}
-                  
 
                 </div>
               </div>
@@ -421,16 +417,6 @@
         });
 
         activeCard.classList.add('is-active');
-
-        if (activeCard.scrollIntoView) {
-          setTimeout(function () {
-            activeCard.scrollIntoView({
-              behavior: 'smooth',
-              inline: 'center',
-              block: 'nearest'
-            });
-          }, 150);
-        }
       }
 
       function rebuildProductsList(sourceValue) {
@@ -492,133 +478,105 @@
   </script>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const sliders = document.querySelectorAll('[data-veloura-category-scroll]');
+    document.addEventListener('DOMContentLoaded', function () {
+      const sliders = document.querySelectorAll('.veloura-category-cards.is-slider');
 
-    sliders.forEach(function (slider) {
-      const wrap = slider.closest('.veloura-category-sticky-wrap');
-      if (!wrap) return;
+      sliders.forEach(function (slider) {
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+        let hasMoved = false;
+        let lastPointerId = null;
+        let frame = null;
+        let nextScrollLeft = 0;
 
-      const thumb = wrap.querySelector('.veloura-category-scrollbar__thumb');
-      if (!thumb) return;
-
-      function updateScrollbar() {
-        const scrollWidth = slider.scrollWidth;
-        const clientWidth = slider.clientWidth;
-        const scrollLeft = Math.abs(slider.scrollLeft);
-
-        if (scrollWidth <= clientWidth) {
-          thumb.style.width = '100%';
-          thumb.style.transform = 'translateX(0)';
-          return;
+        function applyScroll() {
+          slider.scrollLeft = nextScrollLeft;
+          frame = null;
         }
 
-        const thumbWidth = Math.max((clientWidth / scrollWidth) * 100, 18);
-        const maxMove = 100 - thumbWidth;
-        const progress = scrollLeft / (scrollWidth - clientWidth);
-        const move = maxMove * progress;
+        function requestScroll(value) {
+          nextScrollLeft = value;
 
-        thumb.style.width = thumbWidth + '%';
-        thumb.style.transform = 'translateX(' + move + '%)';
-      }
+          if (frame) return;
 
-      slider.addEventListener('scroll', updateScrollbar, { passive: true });
-      window.addEventListener('resize', updateScrollbar);
-
-      setTimeout(updateScrollbar, 100);
-      setTimeout(updateScrollbar, 600);
-      setTimeout(updateScrollbar, 1200);
-    });
-  });
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const sliders = document.querySelectorAll('.veloura-category-cards.is-slider');
-
-    sliders.forEach(function (slider) {
-      let isDragging = false;
-      let startX = 0;
-      let startScrollLeft = 0;
-      let hasMoved = false;
-      let lastPointerId = null;
-
-      function getClientX(event) {
-        return event.clientX || 0;
-      }
-
-      slider.addEventListener('pointerdown', function (event) {
-        if (event.button !== undefined && event.button !== 0) return;
-
-        isDragging = true;
-        hasMoved = false;
-        lastPointerId = event.pointerId;
-
-        startX = getClientX(event);
-        startScrollLeft = slider.scrollLeft;
-
-        slider.classList.add('is-dragging');
-        document.body.classList.add('veloura-category-is-dragging');
-
-        if (slider.setPointerCapture) {
-          try {
-            slider.setPointerCapture(event.pointerId);
-          } catch (e) {}
-        }
-      });
-
-      slider.addEventListener('pointermove', function (event) {
-        if (!isDragging) return;
-
-        const currentX = getClientX(event);
-        const diff = currentX - startX;
-
-        if (Math.abs(diff) > 5) {
-          hasMoved = true;
+          frame = requestAnimationFrame(applyScroll);
         }
 
-        /*
-          حركة نظامية:
-          تسحب يسار = المحتوى يروح يسار
-          تسحب يمين = المحتوى يروح يمين
-        */
-        slider.scrollLeft = startScrollLeft - diff;
-      });
+        slider.addEventListener('pointerdown', function (event) {
+          if (event.pointerType === 'mouse' && event.button !== 0) return;
 
-      function stopDragging(event) {
-        if (!isDragging) return;
+          isDragging = true;
+          hasMoved = false;
+          lastPointerId = event.pointerId;
 
-        isDragging = false;
+          startX = event.clientX;
+          startScrollLeft = slider.scrollLeft;
 
-        slider.classList.remove('is-dragging');
-        document.body.classList.remove('veloura-category-is-dragging');
+          slider.style.scrollBehavior = 'auto';
+          slider.classList.add('is-dragging');
+          document.body.classList.add('veloura-category-is-dragging');
 
-        if (slider.releasePointerCapture && lastPointerId !== null) {
-          try {
-            slider.releasePointerCapture(lastPointerId);
-          } catch (e) {}
-        }
+          if (slider.setPointerCapture) {
+            try {
+              slider.setPointerCapture(event.pointerId);
+            } catch (e) {}
+          }
+        });
 
-        lastPointerId = null;
-      }
+        slider.addEventListener('pointermove', function (event) {
+          if (!isDragging) return;
 
-      slider.addEventListener('pointerup', stopDragging);
-      slider.addEventListener('pointercancel', stopDragging);
-      document.addEventListener('pointerup', stopDragging);
-
-      slider.addEventListener('click', function (event) {
-        if (hasMoved) {
           event.preventDefault();
-          event.stopPropagation();
+
+          const diff = event.clientX - startX;
+
+          if (Math.abs(diff) > 3) {
+            hasMoved = true;
+          }
+
+          requestScroll(startScrollLeft - diff);
+        }, { passive: false });
+
+        function stopDragging() {
+          if (!isDragging) return;
+
+          isDragging = false;
+
+          slider.classList.remove('is-dragging');
+          document.body.classList.remove('veloura-category-is-dragging');
+
+          if (slider.releasePointerCapture && lastPointerId !== null) {
+            try {
+              slider.releasePointerCapture(lastPointerId);
+            } catch (e) {}
+          }
+
+          lastPointerId = null;
+
+          if (frame) {
+            cancelAnimationFrame(frame);
+            frame = null;
+          }
 
           setTimeout(function () {
             hasMoved = false;
-          }, 50);
+          }, 120);
         }
-      }, true);
+
+        slider.addEventListener('pointerup', stopDragging);
+        slider.addEventListener('pointercancel', stopDragging);
+        document.addEventListener('pointerup', stopDragging);
+
+        slider.addEventListener('click', function (event) {
+          if (hasMoved) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        }, true);
+      });
     });
-  });
-</script>
+  </script>
 
   {% if veloura_hide_product_count %}
     <script>
