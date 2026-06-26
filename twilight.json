@@ -2626,7 +2626,7 @@
   "type": "number",
   "format": "slider",
   "inputType": "range",
-  "label": "عدد الصور للصف الواحد في الجوال",
+  "label": "عدد الصور للصف الواحد في الجوال2",
   "description": null,
   "labelHTML": null,
   "icon": "sicon-list",
