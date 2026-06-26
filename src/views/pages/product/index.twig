@@ -532,6 +532,82 @@
   });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sliders = document.querySelectorAll('.veloura-category-cards.is-slider');
+
+    sliders.forEach(function (slider) {
+      let isDown = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let moved = false;
+
+      function getX(event) {
+        return event.clientX || 0;
+      }
+
+      slider.addEventListener('pointerdown', function (event) {
+        if (event.button !== undefined && event.button !== 0) return;
+
+        isDown = true;
+        moved = false;
+        startX = getX(event);
+        startScrollLeft = slider.scrollLeft;
+
+        slider.classList.add('is-dragging');
+
+        if (slider.setPointerCapture) {
+          slider.setPointerCapture(event.pointerId);
+        }
+      });
+
+      slider.addEventListener('pointermove', function (event) {
+        if (!isDown) return;
+
+        const x = getX(event);
+        const diff = x - startX;
+
+        if (Math.abs(diff) > 4) {
+          moved = true;
+        }
+
+        const isRTL = getComputedStyle(slider).direction === 'rtl';
+
+        if (isRTL) {
+          slider.scrollLeft = startScrollLeft + diff;
+        } else {
+          slider.scrollLeft = startScrollLeft - diff;
+        }
+      });
+
+      function stopDrag(event) {
+        if (!isDown) return;
+
+        isDown = false;
+        slider.classList.remove('is-dragging');
+
+        if (slider.releasePointerCapture && event && event.pointerId) {
+          try {
+            slider.releasePointerCapture(event.pointerId);
+          } catch (e) {}
+        }
+      }
+
+      slider.addEventListener('pointerup', stopDrag);
+      slider.addEventListener('pointercancel', stopDrag);
+      slider.addEventListener('pointerleave', stopDrag);
+
+      slider.addEventListener('click', function (event) {
+        if (moved) {
+          event.preventDefault();
+          event.stopPropagation();
+          moved = false;
+        }
+      }, true);
+    });
+  });
+</script>
+
   {% if veloura_hide_product_count %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {

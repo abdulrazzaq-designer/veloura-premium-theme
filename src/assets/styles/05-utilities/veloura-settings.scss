@@ -1006,3 +1006,20 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
     height: 44px !important;
   }
 }
+
+
+/* Drag behavior for category slider */
+.veloura-category-cards.is-slider {
+  cursor: grab !important;
+  user-select: none !important;
+  touch-action: pan-x !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.veloura-category-cards.is-slider.is-dragging {
+  cursor: grabbing !important;
+}
+
+.veloura-category-cards.is-slider.is-dragging a {
+  pointer-events: none !important;
+}
