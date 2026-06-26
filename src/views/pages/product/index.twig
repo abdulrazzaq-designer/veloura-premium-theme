@@ -38,6 +38,140 @@
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
+  <style>
+    .veloura-category-page .veloura-category-children {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: #fff;
+      padding: 10px 0 12px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .veloura-category-page .veloura-category-sticky-wrap {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .veloura-category-page .veloura-category-cards {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 6px 2px 12px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .veloura-category-page .veloura-category-cards::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .veloura-category-page .veloura-category-cards::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 999px;
+    }
+
+    .veloura-category-page .veloura-category-card {
+      position: relative;
+      flex: 0 0 auto;
+      width: 110px;
+      min-height: 126px;
+      padding: 8px;
+      border-radius: 18px;
+      background: #fff;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      transition: 0.25s ease;
+    }
+
+    .veloura-category-page .veloura-category-card__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 76px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    .veloura-category-page .veloura-category-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .veloura-category-page .veloura-category-card__title {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #222;
+    }
+
+    .veloura-category-page .veloura-category-card:hover,
+    .veloura-category-page .veloura-category-card.is-active {
+      border-color: var(--color-primary, #006b7a);
+      box-shadow: 0 10px 26px rgba(0, 107, 122, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .veloura-category-page .veloura-category-card.is-active::after {
+      content: "✓";
+      position: absolute;
+      top: 7px;
+      inset-inline-end: 7px;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--color-primary, #006b7a);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .veloura-category-page .veloura-category-card--all .veloura-category-card__image--all {
+      background: linear-gradient(135deg, #004d65, #00a6a6);
+      color: #fff;
+      font-size: 34px;
+    }
+
+    .veloura-category-page .veloura-category-products-wrap.is-loading {
+      opacity: 0.45;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    @media (max-width: 768px) {
+      .veloura-category-page .veloura-category-children {
+        top: 0;
+        padding-top: 8px;
+      }
+
+      .veloura-category-page .veloura-category-card {
+        width: 96px;
+        min-height: 118px;
+        border-radius: 16px;
+      }
+
+      .veloura-category-page .veloura-category-card__image {
+        height: 68px;
+      }
+
+      .veloura-category-page .veloura-category-card__title {
+        font-size: 12px;
+      }
+    }
+  </style>
+
   <div
     class="
       veloura-category-page
@@ -101,78 +235,81 @@
           </div>
 
           {% if has_sub_categories %}
-  <section class="veloura-category-children">
-    <div class="veloura-category-sticky-wrap">
-      <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
+            <section class="veloura-category-children">
+              <div class="veloura-category-sticky-wrap">
+                <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
-        <a
-          href="{{ category.url }}"
-          class="veloura-category-card veloura-category-card--all is-active"
-          data-veloura-category-filter="all"
-          data-veloura-category-id="{{ category.id }}"
-          data-veloura-category-url="{{ category.url|e('html_attr') }}"
-        >
-          <span class="veloura-category-card__image veloura-category-card__image--all">
-            <i class="sicon-grid"></i>
-          </span>
+                  <a
+                    href="{{ category.url }}"
+                    class="veloura-category-card veloura-category-card--all is-active"
+                    data-veloura-category-filter="all"
+                    data-veloura-category-id="{{ page.id|default(category.id) }}"
+                    data-veloura-category-url="{{ category.url|e('html_attr') }}"
+                    data-veloura-category-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
+                  >
+                    <span class="veloura-category-card__image veloura-category-card__image--all">
+                      <i class="sicon-grid"></i>
+                    </span>
 
-          <span class="veloura-category-card__title">
-            عرض الكل
-          </span>
-        </a>
+                    <span class="veloura-category-card__title">
+                      عرض الكل
+                    </span>
+                  </a>
 
-        {% for child in category.sub_categories %}
-          {% set child_img = '' %}
+                  {% for child in category.sub_categories %}
+                    {% set child_img = '' %}
 
-          {% if child.image %}
-            {% set child_img = child.image.url|default(child.image) %}
+                    {% if child.image %}
+                      {% set child_img = child.image.url|default(child.image) %}
+                    {% endif %}
+
+                    {% if not child_img and child.thumbnail %}
+                      {% set child_img = child.thumbnail.url|default(child.thumbnail) %}
+                    {% endif %}
+
+                    {% if not child_img and child.cover %}
+                      {% set child_img = child.cover.url|default(child.cover) %}
+                    {% endif %}
+
+                    {% set render_img = child_img ?: ('images/placeholder.png' | asset) %}
+
+                    <a
+                      href="{{ child.url }}"
+                      class="veloura-category-card {{ child_img ? 'has-image' : 'has-no-image' }}"
+                      data-veloura-category-filter="child"
+                      data-veloura-category-id="{{ child.id }}"
+                      data-veloura-category-url="{{ child.url|e('html_attr') }}"
+                      data-veloura-category-title="{{ child.name|e('html_attr') }}"
+                      data-veloura-child-id="{{ child.id }}"
+                      data-veloura-child-name="{{ child.name|e('html_attr') }}"
+                      data-veloura-child-url="{{ child.url|e('html_attr') }}"
+                      data-veloura-child-slug="{{ child.slug|default('')|e('html_attr') }}"
+                    >
+                      <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
+                        <img
+                          class="veloura-category-card__img"
+                          src="{{ render_img }}"
+                          loading="lazy"
+                          alt="{{ child.name|e('html_attr') }}"
+                        >
+                      </span>
+
+                      <span class="veloura-category-card__title">
+                        {{ child.name }}
+                      </span>
+                    </a>
+                  {% endfor %}
+
+                </div>
+              </div>
+            </section>
           {% endif %}
-
-          {% if not child_img and child.thumbnail %}
-            {% set child_img = child.thumbnail.url|default(child.thumbnail) %}
-          {% endif %}
-
-          {% if not child_img and child.cover %}
-            {% set child_img = child.cover.url|default(child.cover) %}
-          {% endif %}
-
-          {% set render_img = child_img ?: ('images/placeholder.png' | asset) %}
-
-          <a
-            href="{{ child.url }}"
-            class="veloura-category-card {{ child_img ? 'has-image' : 'has-no-image' }}"
-            data-veloura-category-filter="child"
-            data-veloura-category-id="{{ child.id }}"
-            data-veloura-category-url="{{ child.url|e('html_attr') }}"
-            data-veloura-child-id="{{ child.id }}"
-            data-veloura-child-name="{{ child.name|e('html_attr') }}"
-            data-veloura-child-url="{{ child.url|e('html_attr') }}"
-            data-veloura-child-slug="{{ child.slug|default('')|e('html_attr') }}"
-          >
-            <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
-              <img
-                class="veloura-category-card__img"
-                src="{{ render_img }}"
-                loading="lazy"
-                alt="{{ child.name|e('html_attr') }}"
-              >
-            </span>
-
-            <span class="veloura-category-card__title">
-              {{ child.name }}
-            </span>
-          </a>
-        {% endfor %}
-
-      </div>
-    </div>
-  </section>
-{% endif %}
 
           {% hook 'product:index.items.start' %}
 
-          <div class="flex min-h-screen veloura-category-products-wrap">
+          <div class="flex min-h-screen veloura-category-products-wrap" id="veloura-category-products-wrap">
             <salla-products-list
+              id="veloura-category-products-list"
               class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
               source="{{ page.slug }}"
               source-value="{{ page.id }}"
@@ -202,162 +339,251 @@
   <script defer src="{{ 'product.js' | asset }}"></script>
 
   {% if veloura_use_custom_images and veloura_linked_images|length %}
-  <script type="application/json" id="veloura-category-images-json">
-    {{ veloura_linked_images|json_encode|raw }}
-  </script>
+    <script type="application/json" id="veloura-category-images-json">
+      {{ veloura_linked_images|json_encode|raw }}
+    </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const jsonEl = document.getElementById('veloura-category-images-json');
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const jsonEl = document.getElementById('veloura-category-images-json');
 
-      if (!jsonEl) return;
+        if (!jsonEl) return;
 
-      function normalize(value) {
-        return String(value || '').trim().toLowerCase();
-      }
-
-      function collectAllValues(value, result) {
-        if (value === null || value === undefined) return;
-
-        if (typeof value === 'string' || typeof value === 'number') {
-          result.push(String(value));
-          return;
+        function normalize(value) {
+          return String(value || '').trim().toLowerCase();
         }
 
-        if (Array.isArray(value)) {
-          value.forEach(function (item) {
-            collectAllValues(item, result);
-          });
-          return;
-        }
+        function collectAllValues(value, result) {
+          if (value === null || value === undefined) return;
 
-        if (typeof value === 'object') {
-          Object.keys(value).forEach(function (key) {
-            collectAllValues(value[key], result);
-          });
-        }
-      }
+          if (typeof value === 'string' || typeof value === 'number') {
+            result.push(String(value));
+            return;
+          }
 
-      function getImageUrl(item) {
-        if (!item) return '';
+          if (Array.isArray(value)) {
+            value.forEach(function (item) {
+              collectAllValues(item, result);
+            });
+            return;
+          }
 
-        const image =
-          item.veloura_map_image ||
-          item['veloura_map_image'] ||
-          item.image ||
-          item['image'] ||
-          item.url ||
-          '';
-
-        if (!image) return '';
-
-        if (typeof image === 'string') {
-          return image;
-        }
-
-        if (Array.isArray(image)) {
-          for (let i = 0; i < image.length; i++) {
-            const url = getImageUrl({ veloura_map_image: image[i] });
-            if (url) return url;
+          if (typeof value === 'object') {
+            Object.keys(value).forEach(function (key) {
+              collectAllValues(value[key], result);
+            });
           }
         }
 
-        return image.url ||
-          image.src ||
-          image.original ||
-          image.large ||
-          image.medium ||
-          image.thumbnail ||
-          image.path ||
-          '';
-      }
+        function getImageUrl(item) {
+          if (!item) return '';
 
-      function getCategoryTokens(item) {
-        const tokens = [];
+          const image =
+            item.veloura_map_image ||
+            item['veloura_map_image'] ||
+            item.image ||
+            item['image'] ||
+            item.url ||
+            '';
 
-        if (!item) return tokens;
+          if (!image) return '';
 
-        const categories =
-          item.veloura_map_categories ||
-          item['veloura_map_categories'] ||
-          item.category ||
-          item.categories ||
-          item.value ||
-          [];
+          if (typeof image === 'string') {
+            return image;
+          }
 
-        collectAllValues(categories, tokens);
+          if (Array.isArray(image)) {
+            for (let i = 0; i < image.length; i++) {
+              const url = getImageUrl({ veloura_map_image: image[i] });
+              if (url) return url;
+            }
+          }
 
-        return tokens.map(normalize).filter(Boolean);
-      }
+          return image.url ||
+            image.src ||
+            image.original ||
+            image.large ||
+            image.medium ||
+            image.thumbnail ||
+            image.path ||
+            '';
+        }
 
-      let items = [];
+        function getCategoryTokens(item) {
+          const tokens = [];
 
-      try {
-        items = JSON.parse(jsonEl.textContent || '[]');
-      } catch (error) {
-        items = [];
-      }
+          if (!item) return tokens;
 
-      const prepared = items
-        .map(function (item) {
-          return {
-            image: getImageUrl(item),
-            tokens: getCategoryTokens(item),
-            raw: item
-          };
-        })
-        .filter(function (item) {
-          return item.image && item.tokens.length;
-        });
+          const categories =
+            item.veloura_map_categories ||
+            item['veloura_map_categories'] ||
+            item.category ||
+            item.categories ||
+            item.value ||
+            [];
 
-      function applyCustomCategoryImages() {
-        document.querySelectorAll('.veloura-category-card').forEach(function (card) {
-          const childTokens = [];
+          collectAllValues(categories, tokens);
 
-          [
-            card.getAttribute('data-veloura-child-id'),
-            card.getAttribute('data-veloura-child-name'),
-            card.getAttribute('data-veloura-child-url'),
-            card.getAttribute('data-veloura-child-slug')
-          ].forEach(function (value) {
-            if (value) childTokens.push(normalize(value));
+          return tokens.map(normalize).filter(Boolean);
+        }
+
+        let items = [];
+
+        try {
+          items = JSON.parse(jsonEl.textContent || '[]');
+        } catch (error) {
+          items = [];
+        }
+
+        const prepared = items
+          .map(function (item) {
+            return {
+              image: getImageUrl(item),
+              tokens: getCategoryTokens(item),
+              raw: item
+            };
+          })
+          .filter(function (item) {
+            return item.image && item.tokens.length;
           });
 
-          const match = prepared.find(function (item) {
-            return childTokens.some(function (childToken) {
-              return item.tokens.some(function (token) {
-                return token === childToken ||
-                  token.includes(childToken) ||
-                  childToken.includes(token);
+        function applyCustomCategoryImages() {
+          document.querySelectorAll('.veloura-category-card[data-veloura-child-id]').forEach(function (card) {
+            const childTokens = [];
+
+            [
+              card.getAttribute('data-veloura-child-id'),
+              card.getAttribute('data-veloura-child-name'),
+              card.getAttribute('data-veloura-child-url'),
+              card.getAttribute('data-veloura-child-slug')
+            ].forEach(function (value) {
+              if (value) childTokens.push(normalize(value));
+            });
+
+            const match = prepared.find(function (item) {
+              return childTokens.some(function (childToken) {
+                return item.tokens.some(function (token) {
+                  return token === childToken ||
+                    token.includes(childToken) ||
+                    childToken.includes(token);
+                });
               });
             });
+
+            if (!match || !match.image) return;
+
+            const img = card.querySelector('.veloura-category-card__img');
+            const imageWrap = card.querySelector('.veloura-category-card__image');
+
+            if (!img || !imageWrap) return;
+
+            img.src = match.image;
+            img.removeAttribute('hidden');
+
+            imageWrap.classList.remove('is-empty');
+
+            card.classList.remove('has-no-image');
+            card.classList.add('has-image', 'has-custom-image');
           });
+        }
 
-          if (!match || !match.image) return;
+        applyCustomCategoryImages();
 
-          const img = card.querySelector('.veloura-category-card__img');
-          const imageWrap = card.querySelector('.veloura-category-card__image');
+        setTimeout(applyCustomCategoryImages, 500);
+        setTimeout(applyCustomCategoryImages, 1200);
+        setTimeout(applyCustomCategoryImages, 2500);
+      });
+    </script>
+  {% endif %}
 
-          if (!img || !imageWrap) return;
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.veloura-category-card[data-veloura-category-id]');
+      const productsWrap = document.getElementById('veloura-category-products-wrap');
+      const pageTitle = document.getElementById('page-main-title');
 
-          img.src = match.image;
-          img.removeAttribute('hidden');
+      if (!cards.length || !productsWrap) return;
 
-          imageWrap.classList.remove('is-empty');
+      const originalTitle = pageTitle ? pageTitle.innerHTML : '';
+      const originalSource = '{{ page.slug }}';
+      const originalSourceValue = '{{ page.id }}';
+      const hasFilters = {{ filters ? 'true' : 'false' }};
 
-          card.classList.remove('has-no-image');
-          card.classList.add('has-image', 'has-custom-image');
+      function setActiveCard(activeCard) {
+        cards.forEach(function (card) {
+          card.classList.remove('is-active');
         });
+
+        activeCard.classList.add('is-active');
+
+        if (activeCard.scrollIntoView) {
+          setTimeout(function () {
+            activeCard.scrollIntoView({
+              behavior: 'smooth',
+              inline: 'center',
+              block: 'nearest'
+            });
+          }, 150);
+        }
       }
 
-      applyCustomCategoryImages();
+      function rebuildProductsList(sourceValue) {
+        const oldList = document.getElementById('veloura-category-products-list');
 
-      setTimeout(applyCustomCategoryImages, 500);
-      setTimeout(applyCustomCategoryImages, 1200);
-      setTimeout(applyCustomCategoryImages, 2500);
+        if (!oldList) return;
+
+        productsWrap.classList.add('is-loading');
+
+        const newList = document.createElement('salla-products-list');
+
+        newList.id = 'veloura-category-products-list';
+        newList.className = oldList.className || 'flex-1 min-w-0 overflow-auto veloura-category-products-list';
+
+        newList.setAttribute('source', originalSource);
+        newList.setAttribute('source-value', sourceValue);
+
+        if (hasFilters) {
+          newList.setAttribute('filters-Results', '');
+        }
+
+        oldList.replaceWith(newList);
+
+        setTimeout(function () {
+          productsWrap.classList.remove('is-loading');
+        }, 700);
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (event) {
+          event.preventDefault();
+
+          const type = card.getAttribute('data-veloura-category-filter');
+          const categoryId = card.getAttribute('data-veloura-category-id');
+          const categoryTitle = card.getAttribute('data-veloura-category-title');
+
+          if (!categoryId) return;
+
+          setActiveCard(card);
+
+          if (type === 'all') {
+            rebuildProductsList(originalSourceValue);
+
+            if (pageTitle) {
+              pageTitle.innerHTML = originalTitle;
+            }
+
+            return;
+          }
+
+          rebuildProductsList(categoryId);
+
+          if (pageTitle && categoryTitle) {
+            pageTitle.textContent = categoryTitle;
+          }
+        });
+      });
     });
   </script>
-{% endif %}
 
   {% if veloura_hide_product_count %}
     <script>
