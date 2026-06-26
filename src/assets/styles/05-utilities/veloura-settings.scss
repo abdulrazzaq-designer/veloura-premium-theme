@@ -1123,3 +1123,95 @@ body.veloura-category-is-dragging * {
 .veloura-category-cards.is-slider.is-dragging a {
   pointer-events: none !important;
 }
+
+/* ==================================================
+   Veloura Category Slider - Slides Per View 4.2 Style
+   بدون padding وبدون فراغ يمين
+================================================== */
+
+.veloura-category-cards.is-slider {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: var(--veloura-category-gap, 12px) !important;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+
+  padding-inline-start: 0 !important;
+  padding-inline-end: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 8px !important;
+
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+  scroll-padding: 0 !important;
+
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+
+  cursor: grab !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  touch-action: pan-x !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.veloura-category-cards.is-slider::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* مثل slidesPerView: 4.2 */
+.veloura-category-cards.is-slider .veloura-category-card {
+  flex: 0 0 calc(
+    (100% - (var(--veloura-category-gap, 12px) * (var(--veloura-category-desktop-slides) - 1)))
+    / var(--veloura-category-desktop-slides)
+  ) !important;
+
+  scroll-snap-align: unset !important;
+  scroll-snap-stop: normal !important;
+
+  cursor: grab !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+.veloura-category-cards.is-slider .veloura-category-card *,
+.veloura-category-cards.is-slider a,
+.veloura-category-cards.is-slider img {
+  cursor: grab !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+.veloura-category-cards.is-slider.is-dragging,
+.veloura-category-cards.is-slider.is-dragging *,
+body.veloura-category-is-dragging,
+body.veloura-category-is-dragging * {
+  cursor: grabbing !important;
+}
+
+.veloura-category-cards.is-slider.is-dragging a {
+  pointer-events: none !important;
+}
+
+/* Mobile: مثل slidesPerView: 3.2 أو حسب الرقم المختار + 0.2 */
+@media (max-width: 767px) {
+  .veloura-category-cards.is-slider {
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .veloura-category-cards.is-slider .veloura-category-card {
+    flex-basis: calc(
+      (100% - (var(--veloura-category-gap, 12px) * (var(--veloura-category-mobile-slides) - 1)))
+      / var(--veloura-category-mobile-slides)
+    ) !important;
+  }
+}

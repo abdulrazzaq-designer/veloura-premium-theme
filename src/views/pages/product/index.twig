@@ -52,6 +52,9 @@
     {% set veloura_desktop_cols = 8 %}
   {% endif %}
 
+  {% set veloura_mobile_slides = veloura_mobile_cols + 0.2 %}
+  {% set veloura_desktop_slides = veloura_desktop_cols + 0.2 %}
+
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
@@ -138,6 +141,8 @@
                   style="
                     --veloura-category-mobile-cols: {{ veloura_mobile_cols }};
                     --veloura-category-desktop-cols: {{ veloura_desktop_cols }};
+                    --veloura-category-mobile-slides: {{ veloura_mobile_slides }};
+                    --veloura-category-desktop-slides: {{ veloura_desktop_slides }};
                   "
                 >
 
