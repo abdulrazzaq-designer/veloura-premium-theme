@@ -35261,6 +35261,39 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-cards.is-slider.is-dragging a {
   pointer-events: none !important;
 }
+/* ================================
+   Veloura Category Drag Cursor Fix
+================================ */
+.veloura-category-cards.is-slider {
+  cursor: grab !important;
+  -moz-user-select: none !important;
+       user-select: none !important;
+  -webkit-user-select: none !important;
+  touch-action: pan-x !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+/* حتى داخل الرابط والصورة ما تظهر يد الإصبع */
+.veloura-category-cards.is-slider .veloura-category-card,
+.veloura-category-cards.is-slider .veloura-category-card *,
+.veloura-category-cards.is-slider a,
+.veloura-category-cards.is-slider img {
+  cursor: grab !important;
+  -moz-user-select: none !important;
+       user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+/* أثناء السحب */
+.veloura-category-cards.is-slider.is-dragging,
+.veloura-category-cards.is-slider.is-dragging *,
+body.veloura-category-is-dragging,
+body.veloura-category-is-dragging * {
+  cursor: grabbing !important;
+}
+/* أثناء السحب لا تضغط الروابط بالغلط */
+.veloura-category-cards.is-slider.is-dragging a {
+  pointer-events: none !important;
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;

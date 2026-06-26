@@ -537,71 +537,83 @@
     const sliders = document.querySelectorAll('.veloura-category-cards.is-slider');
 
     sliders.forEach(function (slider) {
-      let isDown = false;
+      let isDragging = false;
       let startX = 0;
       let startScrollLeft = 0;
-      let moved = false;
+      let hasMoved = false;
+      let lastPointerId = null;
 
-      function getX(event) {
+      function getClientX(event) {
         return event.clientX || 0;
       }
 
       slider.addEventListener('pointerdown', function (event) {
         if (event.button !== undefined && event.button !== 0) return;
 
-        isDown = true;
-        moved = false;
-        startX = getX(event);
+        isDragging = true;
+        hasMoved = false;
+        lastPointerId = event.pointerId;
+
+        startX = getClientX(event);
         startScrollLeft = slider.scrollLeft;
 
         slider.classList.add('is-dragging');
+        document.body.classList.add('veloura-category-is-dragging');
 
         if (slider.setPointerCapture) {
-          slider.setPointerCapture(event.pointerId);
+          try {
+            slider.setPointerCapture(event.pointerId);
+          } catch (e) {}
         }
       });
 
       slider.addEventListener('pointermove', function (event) {
-        if (!isDown) return;
+        if (!isDragging) return;
 
-        const x = getX(event);
-        const diff = x - startX;
+        const currentX = getClientX(event);
+        const diff = currentX - startX;
 
-        if (Math.abs(diff) > 4) {
-          moved = true;
+        if (Math.abs(diff) > 5) {
+          hasMoved = true;
         }
 
-        const isRTL = getComputedStyle(slider).direction === 'rtl';
-
-        if (isRTL) {
-          slider.scrollLeft = startScrollLeft + diff;
-        } else {
-          slider.scrollLeft = startScrollLeft - diff;
-        }
+        /*
+          حركة نظامية:
+          تسحب يسار = المحتوى يروح يسار
+          تسحب يمين = المحتوى يروح يمين
+        */
+        slider.scrollLeft = startScrollLeft - diff;
       });
 
-      function stopDrag(event) {
-        if (!isDown) return;
+      function stopDragging(event) {
+        if (!isDragging) return;
 
-        isDown = false;
+        isDragging = false;
+
         slider.classList.remove('is-dragging');
+        document.body.classList.remove('veloura-category-is-dragging');
 
-        if (slider.releasePointerCapture && event && event.pointerId) {
+        if (slider.releasePointerCapture && lastPointerId !== null) {
           try {
-            slider.releasePointerCapture(event.pointerId);
+            slider.releasePointerCapture(lastPointerId);
           } catch (e) {}
         }
+
+        lastPointerId = null;
       }
 
-      slider.addEventListener('pointerup', stopDrag);
-      slider.addEventListener('pointercancel', stopDrag);
-      slider.addEventListener('pointerleave', stopDrag);
+      slider.addEventListener('pointerup', stopDragging);
+      slider.addEventListener('pointercancel', stopDragging);
+      document.addEventListener('pointerup', stopDragging);
 
       slider.addEventListener('click', function (event) {
-        if (moved) {
+        if (hasMoved) {
           event.preventDefault();
           event.stopPropagation();
-          moved = false;
+
+          setTimeout(function () {
+            hasMoved = false;
+          }, 50);
         }
       }, true);
     });
