@@ -2727,7 +2727,7 @@
   "icon": "sicon-image",
   "label": "مكان صورة التصنيف",
   "description": "اختر مكان ظهور صورة أو أيقونة التصنيف",
-  "value": "top",
+  "source": "Manual",
   "required": false,
   "selected": [
     {
