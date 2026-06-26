@@ -34502,8 +34502,8 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   display: none;
 }
 /* ================================
-   Veloura Category Cards - Final Stable
-   Position Top / Right + Cover / Contain
+   Veloura Category Cards - Clean Fixed
+   switches + free drag + slides 4.35
 ================================ */
 .veloura-category-page {
   --veloura-category-primary: var(--color-primary, #004956);
@@ -34526,15 +34526,16 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 }
 /* Wrapper */
 .veloura-category-cards {
-  gap: var(--veloura-category-gap);
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+  gap: 12px !important;
+  gap: var(--veloura-category-gap, 12px) !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 /* Grid */
 .veloura-category-cards.is-grid {
   display: grid !important;
   grid-template-columns: repeat(var(--veloura-category-desktop-cols), minmax(0, 1fr)) !important;
   align-items: start !important;
+  overflow: visible !important;
 }
 /* Slider */
 .veloura-category-cards.is-slider {
@@ -34544,21 +34545,29 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   align-items: flex-start !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
-  scroll-snap-type: x mandatory !important;
-  padding: 4px 2px 10px !important;
-}
-.veloura-category-cards.is-slider {
-  scrollbar-width: thin;
+  padding: 4px 0 10px !important;
+  margin: 0 !important;
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+  scroll-padding: 0 !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  cursor: grab !important;
+  -moz-user-select: none !important;
+       user-select: none !important;
+  -webkit-user-select: none !important;
+  touch-action: pan-x !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 .veloura-category-cards.is-slider::-webkit-scrollbar {
-  height: 4px;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
-.veloura-category-cards.is-slider::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 999px;
-}
+/* مثل slidesPerView: 4.35 */
 .veloura-category-cards.is-slider .veloura-category-card {
-  flex: 0 0 calc((100% - var(--veloura-category-gap) * (var(--veloura-category-desktop-cols) - 1)) / var(--veloura-category-desktop-cols)) !important;
+  flex: 0 0 calc((100% - 12px * (var(--veloura-category-desktop-slides) - 1)) / var(--veloura-category-desktop-slides)) !important;
+  flex: 0 0 calc((100% - var(--veloura-category-gap, 12px) * (var(--veloura-category-desktop-slides) - 1)) / var(--veloura-category-desktop-slides)) !important;
 }
 /* Card base */
 .veloura-category-card {
@@ -34567,20 +34576,54 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   width: auto !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   gap: 8px !important;
-  padding: 0 !important;
+  padding: 8px !important;
   margin: 0 !important;
-  background: transparent !important;
+  background: #f5f7f8 !important;
+  background: var(--veloura-category-image-bg, #f5f7f8) !important;
   border: 0 !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
   outline: none !important;
   transform: none !important;
+  overflow: hidden !important;
   -webkit-text-decoration: none !important;
   text-decoration: none !important;
   color: inherit !important;
-  scroll-snap-align: start !important;
+  scroll-snap-align: unset !important;
+  scroll-snap-stop: normal !important;
+  cursor: grab !important;
+  -moz-user-select: none !important;
+       user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+/* Transparent background switch */
+.veloura-category-images-transparent .veloura-category-card {
+  background: transparent !important;
+}
+.veloura-category-card *,
+.veloura-category-cards.is-slider a,
+.veloura-category-cards.is-slider img {
+  -webkit-user-drag: none !important;
+}
+.veloura-category-cards.is-slider .veloura-category-card,
+.veloura-category-cards.is-slider .veloura-category-card *,
+.veloura-category-cards.is-slider a,
+.veloura-category-cards.is-slider img {
+  cursor: grab !important;
+  -moz-user-select: none !important;
+       user-select: none !important;
+  -webkit-user-select: none !important;
+}
+.veloura-category-cards.is-slider.is-dragging,
+.veloura-category-cards.is-slider.is-dragging *,
+body.veloura-category-is-dragging,
+body.veloura-category-is-dragging * {
+  cursor: grabbing !important;
+}
+.veloura-category-cards.is-slider.is-dragging a {
+  pointer-events: none !important;
 }
 /* ================================
    Position: Top
@@ -34592,15 +34635,39 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-image-position-top .veloura-category-card__image {
   width: 100% !important;
   height: auto !important;
+}
+/* ================================
+   Position: Right
+================================ */
+.veloura-category-image-position-right .veloura-category-card {
+  flex-direction: row !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+.veloura-category-image-position-right .veloura-category-card__title {
+  width: auto !important;
+  text-align: right !important;
+  white-space: normal !important;
+}
+/* ================================
+   Image base
+================================ */
+.veloura-category-card__image {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
-  background: var(--veloura-category-image-bg) !important;
+  background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
 }
-/* Top + Auto */
+.veloura-category-card__img,
+.veloura-category-card__image img {
+  display: block !important;
+}
+/* ================================
+   Top shapes
+================================ */
 .veloura-category-image-position-top.veloura-category-shape-auto .veloura-category-card__image {
   aspect-ratio: auto !important;
   height: auto !important;
@@ -34612,78 +34679,49 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   -o-object-fit: contain !important;
      object-fit: contain !important;
 }
-/* Top + Square */
 .veloura-category-image-position-top.veloura-category-shape-square .veloura-category-card__image {
   aspect-ratio: 1/1 !important;
   height: auto !important;
 }
-.veloura-category-image-position-top.veloura-category-shape-square .veloura-category-card__img,
-.veloura-category-image-position-top.veloura-category-shape-square .veloura-category-card__image img {
-  width: 100% !important;
-  height: 100% !important;
-}
-/* Top + Landscape */
 .veloura-category-image-position-top.veloura-category-shape-landscape .veloura-category-card__image {
   aspect-ratio: 4/3 !important;
   height: auto !important;
 }
-.veloura-category-image-position-top.veloura-category-shape-landscape .veloura-category-card__img,
-.veloura-category-image-position-top.veloura-category-shape-landscape .veloura-category-card__image img {
-  width: 100% !important;
-  height: 100% !important;
-}
-/* Top + Wide */
 .veloura-category-image-position-top.veloura-category-shape-wide .veloura-category-card__image {
   aspect-ratio: 16/9 !important;
   height: auto !important;
 }
+.veloura-category-image-position-top.veloura-category-shape-square .veloura-category-card__img,
+.veloura-category-image-position-top.veloura-category-shape-square .veloura-category-card__image img,
+.veloura-category-image-position-top.veloura-category-shape-landscape .veloura-category-card__img,
+.veloura-category-image-position-top.veloura-category-shape-landscape .veloura-category-card__image img,
 .veloura-category-image-position-top.veloura-category-shape-wide .veloura-category-card__img,
 .veloura-category-image-position-top.veloura-category-shape-wide .veloura-category-card__image img {
   width: 100% !important;
   height: 100% !important;
 }
-/* Top + Cover */
-.veloura-category-image-position-top.veloura-category-fit-cover .veloura-category-card__image img {
+/* ================================
+   Fit
+================================ */
+.veloura-category-fit-cover .veloura-category-card__image img {
   -o-object-fit: cover !important;
      object-fit: cover !important;
   padding: 0 !important;
 }
-/* Top + Contain */
-.veloura-category-image-position-top.veloura-category-fit-contain .veloura-category-card__image img {
+.veloura-category-fit-contain .veloura-category-card__image img {
   -o-object-fit: contain !important;
      object-fit: contain !important;
   padding: 6px !important;
 }
 /* ================================
-   Position: Right
+   Right image base
 ================================ */
-.veloura-category-image-position-right .veloura-category-card {
-  flex-direction: row !important;
-  direction: rtl !important;
-  text-align: right !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-.veloura-category-image-position-right .veloura-category-card__title {
-  width: auto !important;
-  text-align: right !important;
-  white-space: normal !important;
-}
-/* Right base */
 .veloura-category-image-position-right .veloura-category-card__image {
   flex: 0 0 auto !important;
   height: 54px !important;
   width: auto !important;
   max-width: 130px !important;
   aspect-ratio: auto !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  background: var(--veloura-category-image-bg) !important;
-  border: 0 !important;
-  box-shadow: none !important;
 }
 /* Right + Auto */
 .veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image {
@@ -34702,277 +34740,8 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
      object-fit: contain !important;
   padding: 0 !important;
 }
-/* Right + Contain */
-.veloura-category-image-position-right.veloura-category-fit-contain .veloura-category-card__image {
-  width: auto !important;
-  max-width: 130px !important;
-}
-.veloura-category-image-position-right.veloura-category-fit-contain .veloura-category-card__img,
-.veloura-category-image-position-right.veloura-category-fit-contain .veloura-category-card__image img {
-  width: auto !important;
-  max-width: 130px !important;
-  height: 100% !important;
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
-  padding: 0 !important;
-}
-/* Right + Cover */
-.veloura-category-image-position-right.veloura-category-fit-cover .veloura-category-card__image {
-  width: 54px !important;
-  height: 54px !important;
-  max-width: 54px !important;
-  aspect-ratio: 1/1 !important;
-}
-.veloura-category-image-position-right.veloura-category-fit-cover .veloura-category-card__img,
-.veloura-category-image-position-right.veloura-category-fit-cover .veloura-category-card__image img {
-  width: 100% !important;
-  height: 100% !important;
-  -o-object-fit: cover !important;
-     object-fit: cover !important;
-  padding: 0 !important;
-}
-/* Right + Auto + Cover
-   التلقائي يبقى ارتفاع ثابت وعرض تلقائي، ولا يتحول لمربع */
-.veloura-category-image-position-right.veloura-category-shape-auto.veloura-category-fit-cover .veloura-category-card__image {
-  width: auto !important;
-  max-width: 130px !important;
-  height: 54px !important;
-  aspect-ratio: auto !important;
-}
-.veloura-category-image-position-right.veloura-category-shape-auto.veloura-category-fit-cover .veloura-category-card__img,
-.veloura-category-image-position-right.veloura-category-shape-auto.veloura-category-fit-cover .veloura-category-card__image img {
-  width: auto !important;
-  max-width: 130px !important;
-  height: 100% !important;
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
-  padding: 0 !important;
-}
-/* ================================
-   All icon / عرض الكل
-================================ */
-.veloura-category-card__image--all {
-  background: var(--veloura-category-image-bg) !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  overflow: hidden !important;
-}
-/* عرض الكل فوق العنوان */
-.veloura-category-image-position-top .veloura-category-card__image--all {
-  width: 100% !important;
-  background: var(--veloura-category-image-bg) !important;
-}
-.veloura-category-image-position-top.veloura-category-shape-auto .veloura-category-card__image--all {
-  height: 54px !important;
-  aspect-ratio: auto !important;
-}
-.veloura-category-image-position-top.veloura-category-shape-square .veloura-category-card__image--all {
-  aspect-ratio: 1/1 !important;
-  height: auto !important;
-}
-.veloura-category-image-position-top.veloura-category-shape-landscape .veloura-category-card__image--all {
-  aspect-ratio: 4/3 !important;
-  height: auto !important;
-}
-.veloura-category-image-position-top.veloura-category-shape-wide .veloura-category-card__image--all {
-  aspect-ratio: 16/9 !important;
-  height: auto !important;
-}
-/* عرض الكل يمين العنوان */
-.veloura-category-image-position-right .veloura-category-card__image--all {
-  width: 130px !important;
-  min-width: 130px !important;
-  max-width: 130px !important;
-  height: 54px !important;
-  min-height: 54px !important;
-  max-height: 54px !important;
-  aspect-ratio: auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: var(--veloura-category-image-bg) !important;
-}
-/* عرض الكل مع Cover يصير مربع مثل باقي الصور */
-/* عرض الكل إذا الحجم مربع */
-.veloura-category-image-position-right.veloura-category-shape-square .veloura-category-card__image--all {
-  width: 54px !important;
-  min-width: 54px !important;
-  max-width: 54px !important;
-  height: 54px !important;
-  min-height: 54px !important;
-  max-height: 54px !important;
-  aspect-ratio: 1/1 !important;
-}
-/* عرض الكل إذا الحجم تلقائي */
-.veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image--all {
-  width: 130px !important;
-  min-width: 130px !important;
-  max-width: 130px !important;
-  height: 54px !important;
-  min-height: 54px !important;
-  max-height: 54px !important;
-  aspect-ratio: auto !important;
-}
-.veloura-category-card__image--all i {
-  color: var(--veloura-category-primary) !important;
-  font-size: 28px !important;
-}
-.veloura-category-image-position-right .veloura-category-card__image--all i {
-  font-size: 26px !important;
-}
-/* ================================
-   Title
-================================ */
-.veloura-category-card__title {
-  display: block !important;
-  width: 100% !important;
-  margin: 0 !important;
-  font-size: 14px !important;
-  font-weight: 800 !important;
-  line-height: 1.5 !important;
-  color: #222 !important;
-  transition: color 0.2s ease !important;
-}
-.veloura-category-image-position-top .veloura-category-card__title {
-  text-align: center !important;
-}
-.veloura-category-image-position-right .veloura-category-card__title {
-  width: auto !important;
-  text-align: right !important;
-}
-/* Active / Hover: text color only */
-.veloura-category-card.is-active,
-.veloura-category-card:hover {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  outline: none !important;
-  transform: none !important;
-}
-.veloura-category-card.is-active::after,
-.veloura-category-card:hover::after {
-  display: none !important;
-  content: none !important;
-}
-.veloura-category-card.is-active .veloura-category-card__image,
-.veloura-category-card:hover .veloura-category-card__image {
-  border: 0 !important;
-  box-shadow: none !important;
-  outline: none !important;
-  transform: none !important;
-}
-.veloura-category-card.is-active .veloura-category-card__title,
-.veloura-category-card:hover .veloura-category-card__title {
-  color: #414042 !important;
-  color: var(--color-primary, #004956) !important;
-}
-/* Transparent image option */
-.veloura-category-images-transparent .veloura-category-card__image {
-  background: transparent !important;
-}
-/* Hide empty image */
-.veloura-category-card__image.is-empty,
-.veloura-category-card__img[hidden],
-.veloura-category-card.has-no-image .veloura-category-card__image {
-  display: none !important;
-}
-.veloura-category-card.has-image .veloura-category-card__image {
-  display: flex !important;
-}
-/* Radius */
-.veloura-category-radius-sharp .veloura-category-card__image {
-  border-radius: 0 !important;
-}
-.veloura-category-radius-soft .veloura-category-card__image {
-  border-radius: 8px !important;
-}
-.veloura-category-radius-medium .veloura-category-card__image {
-  border-radius: 16px !important;
-}
-.veloura-category-radius-large .veloura-category-card__image {
-  border-radius: 26px !important;
-}
-.veloura-category-radius-round .veloura-category-card__image {
-  border-radius: 999px !important;
-}
-/* Title size */
-.veloura-category-title-xs .veloura-category-card__title {
-  font-size: 11px !important;
-}
-.veloura-category-title-small .veloura-category-card__title {
-  font-size: 12px !important;
-}
-.veloura-category-title-medium .veloura-category-card__title {
-  font-size: 14px !important;
-}
-.veloura-category-title-large .veloura-category-card__title {
-  font-size: 16px !important;
-}
-.veloura-category-title-xl .veloura-category-card__title {
-  font-size: 18px !important;
-}
-.veloura-category-title-xxl .veloura-category-card__title {
-  font-size: 22px !important;
-}
-/* Products wrapper */
-.veloura-category-products-wrap {
-  width: 100%;
-}
-.veloura-category-products-wrap.is-loading {
-  opacity: 0.45;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-/* Mobile */
-@media (max-width: 767px) {
-  .veloura-category-cards.is-grid {
-    grid-template-columns: repeat(var(--veloura-category-mobile-cols), minmax(0, 1fr)) !important;
-  }
-  .veloura-category-cards.is-slider .veloura-category-card {
-    flex-basis: calc((100% - var(--veloura-category-gap) * (var(--veloura-category-mobile-cols) - 1)) / var(--veloura-category-mobile-cols)) !important;
-  }
-  .veloura-category-card__title {
-    font-size: 12px !important;
-  }
-  .veloura-category-image-position-right .veloura-category-card__image {
-    height: 44px !important;
-    max-width: 90px !important;
-  }
-  .veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__img,
-  .veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image img,
-  .veloura-category-image-position-right.veloura-category-fit-contain .veloura-category-card__img,
-  .veloura-category-image-position-right.veloura-category-fit-contain .veloura-category-card__image img {
-    max-width: 90px !important;
-    height: 100% !important;
-  }
-  .veloura-category-image-position-right.veloura-category-fit-cover .veloura-category-card__image {
-    width: 44px !important;
-    height: 44px !important;
-    max-width: 44px !important;
-  }
-  .veloura-category-image-position-right .veloura-category-card__image--all {
-    width: 90px !important;
-    min-width: 90px !important;
-    max-width: 90px !important;
-    height: 44px !important;
-    max-height: 44px !important;
-  }
-  .veloura-category-image-position-right.veloura-category-fit-cover .veloura-category-card__image--all {
-    width: 44px !important;
-    min-width: 44px !important;
-    max-width: 44px !important;
-    height: 44px !important;
-    max-height: 44px !important;
-  }
-  .veloura-category-image-position-right .veloura-category-card__image--all i {
-    font-size: 24px !important;
-  }
-}
-/* ================================
-   FIX: Right + Square + Contain
-   المربع يبقى مربع حتى لو العرض Contain
-================================ */
-.veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-contain .veloura-category-card__image {
+/* Right + Square */
+.veloura-category-image-position-right.veloura-category-shape-square .veloura-category-card__image {
   flex: 0 0 54px !important;
   width: 54px !important;
   min-width: 54px !important;
@@ -34991,20 +34760,6 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
      object-fit: contain !important;
   padding: 4px !important;
 }
-/* ================================
-   FIX: Right + Square + Cover
-   المربع مع Cover يملأ الصورة ويقص الزوائد
-================================ */
-.veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-cover .veloura-category-card__image {
-  flex: 0 0 54px !important;
-  width: 54px !important;
-  min-width: 54px !important;
-  max-width: 54px !important;
-  height: 54px !important;
-  min-height: 54px !important;
-  max-height: 54px !important;
-  aspect-ratio: 1/1 !important;
-}
 .veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-cover .veloura-category-card__img,
 .veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-cover .veloura-category-card__image img {
   width: 100% !important;
@@ -35014,67 +34769,63 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
      object-fit: cover !important;
   padding: 0 !important;
 }
-/* ==================================================
-   Veloura Category Slider - Hide Scrollbar + Peek Next
-   خلفية كاملة للكرت + احترام الشفافية + الحواف
-================================================== */
-/* إخفاء شريط التمرير مع بقاء السحب شغال */
-.veloura-category-cards.is-slider {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  padding-right: 45px !important;
-  padding-bottom: 8px !important;
-}
-.veloura-category-cards.is-slider::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-/* إظهار جزء من العنصر التالي */
-.veloura-category-cards.is-slider .veloura-category-card {
-  flex: 0 0 calc((100% - 45px - var(--veloura-category-gap) * (var(--veloura-category-desktop-cols) - 1)) / var(--veloura-category-desktop-cols)) !important;
-}
-/* خلفية كاملة للكرت: الصورة + العنوان */
-.veloura-category-card {
-  box-sizing: border-box !important;
-  padding: 8px !important;
-  background: #f5f7f8 !important;
-  background: var(--veloura-category-image-bg, #f5f7f8) !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  overflow: hidden !important;
-}
-/* الصورة داخل الكرت بدون خلفية منفصلة مزعجة */
-.veloura-category-card__image {
+/* ================================
+   All icon / الكل
+================================ */
+.veloura-category-card__image--all {
   background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
 }
-/* العنوان داخل الخلفية نفسها */
+.veloura-category-card__image--all i {
+  color: var(--veloura-category-primary) !important;
+  font-size: 28px !important;
+}
+.veloura-category-image-position-right .veloura-category-card__image--all i {
+  font-size: 26px !important;
+}
+.veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card--all .veloura-category-card__image {
+  width: 54px !important;
+  min-width: 54px !important;
+  max-width: 54px !important;
+  height: 54px !important;
+}
+.veloura-category-image-position-right.veloura-category-shape-square .veloura-category-card--all .veloura-category-card__image {
+  width: 54px !important;
+  min-width: 54px !important;
+  max-width: 54px !important;
+  height: 54px !important;
+  aspect-ratio: 1/1 !important;
+}
+/* ================================
+   Title
+================================ */
 .veloura-category-card__title {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
   padding: 0 4px 2px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  color: #222 !important;
+  transition: color 0.2s ease !important;
 }
-/* زر خلفية شفافة يخفي خلفية الكرت والصورة */
-.veloura-category-images-transparent .veloura-category-card {
-  background: transparent !important;
+.veloura-category-image-position-top .veloura-category-card__title {
+  text-align: center !important;
 }
-.veloura-category-images-transparent .veloura-category-card__image {
-  background: transparent !important;
+.veloura-category-image-position-right .veloura-category-card__title {
+  width: auto !important;
+  text-align: right !important;
+  padding: 0 !important;
 }
-/* لا ظل ولا إطار عند التحديد */
+/* ================================
+   Active / Hover
+================================ */
 .veloura-category-card.is-active,
 .veloura-category-card:hover {
-  background: #f5f7f8 !important;
-  background: var(--veloura-category-image-bg, #f5f7f8) !important;
   border: 0 !important;
   box-shadow: none !important;
+  outline: none !important;
   transform: none !important;
-}
-.veloura-category-images-transparent .veloura-category-card.is-active,
-.veloura-category-images-transparent .veloura-category-card:hover {
-  background: transparent !important;
 }
 .veloura-category-card.is-active::after,
 .veloura-category-card:hover::after {
@@ -35086,9 +34837,43 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   color: #414042 !important;
   color: var(--color-primary, #004956) !important;
 }
-/* ==================================================
-   Radius: الحواف تطبق على الخلفية والصورة معًا
-================================================== */
+/* ================================
+   Hide empty real images only
+================================ */
+.veloura-category-card__image.is-empty,
+.veloura-category-card__img[hidden],
+.veloura-category-card.has-no-image .veloura-category-card__image {
+  display: none !important;
+}
+.veloura-category-card.has-image .veloura-category-card__image,
+.veloura-category-card--all .veloura-category-card__image {
+  display: flex !important;
+}
+/* ================================
+   Hide images switch
+   ملاحظة: الإخفاء الحقيقي من Twig
+================================ */
+.veloura-category-hide-images .veloura-category-card {
+  min-height: auto !important;
+  padding: 12px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.veloura-category-hide-images .veloura-category-card__title {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+/* ================================
+   Products hide switch fallback
+================================ */
+.veloura-category-products-hidden .veloura-category-products-wrap {
+  display: none !important;
+}
+/* ================================
+   Radius on card + image
+================================ */
 .veloura-category-radius-sharp .veloura-category-card,
 .veloura-category-radius-sharp .veloura-category-card__image {
   border-radius: 0 !important;
@@ -35111,340 +34896,98 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-radius-large .veloura-category-card__image {
   border-radius: 22px !important;
 }
-.veloura-category-radius-round .veloura-category-card {
-  border-radius: 999px !important;
-}
+.veloura-category-radius-round .veloura-category-card,
 .veloura-category-radius-round .veloura-category-card__image {
   border-radius: 999px !important;
 }
-/* ==================================================
-   وضع الصورة فوق العنوان
-================================================== */
-.veloura-category-image-position-top .veloura-category-card {
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
+/* ================================
+   Title size
+================================ */
+.veloura-category-title-xs .veloura-category-card__title {
+  font-size: 11px !important;
 }
-.veloura-category-image-position-top .veloura-category-card__title {
-  width: 100% !important;
-  text-align: center !important;
+.veloura-category-title-small .veloura-category-card__title {
+  font-size: 12px !important;
 }
-/* ==================================================
-   وضع الصورة يمين العنوان
-================================================== */
-.veloura-category-image-position-right .veloura-category-card {
-  flex-direction: row !important;
-  direction: rtl !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
+.veloura-category-title-medium .veloura-category-card__title {
+  font-size: 14px !important;
 }
-.veloura-category-image-position-right .veloura-category-card__title {
-  width: auto !important;
-  text-align: right !important;
-  padding: 0 !important;
+.veloura-category-title-large .veloura-category-card__title {
+  font-size: 16px !important;
 }
-/* تلقائي يمين العنوان: ارتفاع ثابت + عرض تلقائي */
-.veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image {
-  height: 54px !important;
-  width: auto !important;
-  max-width: 130px !important;
-  aspect-ratio: auto !important;
-  flex: 0 0 auto !important;
+.veloura-category-title-xl .veloura-category-card__title {
+  font-size: 18px !important;
 }
-.veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__img,
-.veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image img {
-  width: auto !important;
-  max-width: 130px !important;
-  height: 100% !important;
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
-  padding: 0 !important;
+.veloura-category-title-xxl .veloura-category-card__title {
+  font-size: 22px !important;
 }
-/* مربع يمين العنوان */
-.veloura-category-image-position-right.veloura-category-shape-square .veloura-category-card__image {
-  width: 54px !important;
-  min-width: 54px !important;
-  max-width: 54px !important;
-  height: 54px !important;
-  aspect-ratio: 1/1 !important;
+/* ================================
+   Products wrapper
+================================ */
+.veloura-category-products-wrap {
+  width: 100%;
 }
-/* مربع + contain */
-.veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-contain .veloura-category-card__img,
-.veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-contain .veloura-category-card__image img {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100% !important;
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
-  padding: 4px !important;
+.veloura-category-products-wrap.is-loading {
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
-/* مربع + cover */
-.veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-cover .veloura-category-card__img,
-.veloura-category-image-position-right.veloura-category-shape-square.veloura-category-fit-cover .veloura-category-card__image img {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100% !important;
-  -o-object-fit: cover !important;
-     object-fit: cover !important;
-  padding: 0 !important;
-}
-/* ==================================================
-   عرض الكل يأخذ نفس شكل الكرت
-================================================== */
-.veloura-category-card--all .veloura-category-card__image {
-  background: transparent !important;
-}
-.veloura-category-card--all .veloura-category-card__image i {
-  color: #414042 !important;
-  color: var(--color-primary, #004956) !important;
-}
-/* عرض الكل في وضع يمين + تلقائي */
-.veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card--all .veloura-category-card__image {
-  width: 54px !important;
-  min-width: 54px !important;
-  max-width: 54px !important;
-  height: 54px !important;
-}
-/* عرض الكل في وضع مربع */
-.veloura-category-image-position-right.veloura-category-shape-square .veloura-category-card--all .veloura-category-card__image {
-  width: 54px !important;
-  min-width: 54px !important;
-  max-width: 54px !important;
-  height: 54px !important;
-  aspect-ratio: 1/1 !important;
-}
-.veloura-category-image-position-right .veloura-category-card--all .veloura-category-card__image i {
-  font-size: 26px !important;
-}
-/* ==================================================
+/* ================================
    Mobile
-================================================== */
+================================ */
 @media (max-width: 767px) {
-  .veloura-category-cards.is-slider {
-    padding-right: 34px !important;
+  .veloura-category-cards.is-grid {
+    grid-template-columns: repeat(var(--veloura-category-mobile-cols), minmax(0, 1fr)) !important;
   }
   .veloura-category-cards.is-slider .veloura-category-card {
-    flex-basis: calc((100% - 34px - var(--veloura-category-gap) * (var(--veloura-category-mobile-cols) - 1)) / var(--veloura-category-mobile-cols)) !important;
+    flex-basis: calc((100% - 12px * (var(--veloura-category-mobile-slides) - 1)) / var(--veloura-category-mobile-slides)) !important;
+    flex-basis: calc((100% - var(--veloura-category-gap, 12px) * (var(--veloura-category-mobile-slides) - 1)) / var(--veloura-category-mobile-slides)) !important;
   }
-  .veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image {
+  .veloura-category-card__title {
+    font-size: 12px !important;
+  }
+  .veloura-category-image-position-right .veloura-category-card__image {
     height: 44px !important;
     max-width: 90px !important;
   }
   .veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__img,
   .veloura-category-image-position-right.veloura-category-shape-auto .veloura-category-card__image img {
     max-width: 90px !important;
+    height: 100% !important;
   }
   .veloura-category-image-position-right.veloura-category-shape-square .veloura-category-card__image,
   .veloura-category-image-position-right.veloura-category-card--all .veloura-category-card__image {
+    flex-basis: 44px !important;
     width: 44px !important;
     min-width: 44px !important;
     max-width: 44px !important;
     height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
   }
-}
-/* Drag behavior for category slider */
-.veloura-category-cards.is-slider {
-  cursor: grab !important;
-  -webkit-user-select: none !important;
-     -moz-user-select: none !important;
-          user-select: none !important;
-  touch-action: pan-x !important;
-  -webkit-overflow-scrolling: touch !important;
-}
-.veloura-category-cards.is-slider.is-dragging {
-  cursor: grabbing !important;
-}
-.veloura-category-cards.is-slider.is-dragging a {
-  pointer-events: none !important;
+  .veloura-category-image-position-right .veloura-category-card__image--all i {
+    font-size: 24px !important;
+  }
 }
 /* ================================
-   Veloura Category Drag Cursor Fix
+   Dark mode support
 ================================ */
-.veloura-category-cards.is-slider {
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  touch-action: pan-x !important;
-  -webkit-overflow-scrolling: touch !important;
+body.dark .veloura-category-children {
+  background: #111827 !important;
+  background: var(--veloura-dark-body-bg, #111827) !important;
 }
-/* حتى داخل الرابط والصورة ما تظهر يد الإصبع */
-.veloura-category-cards.is-slider .veloura-category-card,
-.veloura-category-cards.is-slider .veloura-category-card *,
-.veloura-category-cards.is-slider a,
-.veloura-category-cards.is-slider img {
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  -webkit-user-drag: none !important;
+body.dark .veloura-category-card {
+  background: #1f2937 !important;
+  background: var(--veloura-dark-secondary-bg, #1f2937) !important;
+  color: #fff !important;
+  color: var(--veloura-dark-primary-text, #fff) !important;
 }
-/* أثناء السحب */
-.veloura-category-cards.is-slider.is-dragging,
-.veloura-category-cards.is-slider.is-dragging *,
-body.veloura-category-is-dragging,
-body.veloura-category-is-dragging * {
-  cursor: grabbing !important;
+body.dark .veloura-category-images-transparent .veloura-category-card {
+  background: transparent !important;
 }
-/* أثناء السحب لا تضغط الروابط بالغلط */
-.veloura-category-cards.is-slider.is-dragging a {
-  pointer-events: none !important;
-}
-/* ================================
-   Veloura Free Drag Scroll Fix
-   حركة حرة بدون تقطيع وبدون رجوع للعناصر
-================================ */
-.veloura-category-cards.is-slider {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scroll-snap-type: none !important;
-  scroll-behavior: auto !important;
-  scroll-padding: 0 !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  touch-action: pan-x !important;
-  -webkit-overflow-scrolling: touch !important;
-}
-.veloura-category-cards.is-slider {
-  /* مهم: إلغاء الرجوع التلقائي للعناصر */
-  /* إخفاء الشريط مع بقاء السحب */
-}
-.veloura-category-cards.is-slider::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-/* إلغاء أي snap على الكروت نفسها */
-.veloura-category-cards.is-slider .veloura-category-card {
-  scroll-snap-align: unset !important;
-  scroll-snap-stop: normal !important;
-}
-/* المؤشر داخل الكرت كله */
-.veloura-category-cards.is-slider .veloura-category-card,
-.veloura-category-cards.is-slider .veloura-category-card *,
-.veloura-category-cards.is-slider a,
-.veloura-category-cards.is-slider img {
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  -webkit-user-drag: none !important;
-}
-/* أثناء السحب */
-.veloura-category-cards.is-slider.is-dragging,
-.veloura-category-cards.is-slider.is-dragging *,
-body.veloura-category-is-dragging,
-body.veloura-category-is-dragging * {
-  cursor: grabbing !important;
-}
-.veloura-category-cards.is-slider.is-dragging a {
-  pointer-events: none !important;
-}
-/* ==================================================
-   Veloura Category Slider - Slides Per View 4.2 Style
-   بدون padding وبدون فراغ يمين
-================================================== */
-.veloura-category-cards.is-slider {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  gap: 12px !important;
-  gap: var(--veloura-category-gap, 12px) !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  padding-inline-start: 0 !important;
-  padding-inline-end: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-bottom: 8px !important;
-  scroll-snap-type: none !important;
-  scroll-behavior: auto !important;
-  scroll-padding: 0 !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  touch-action: pan-x !important;
-  -webkit-overflow-scrolling: touch !important;
-}
-.veloura-category-cards.is-slider::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-/* مثل slidesPerView: 4.2 */
-.veloura-category-cards.is-slider .veloura-category-card {
-  flex: 0 0 calc((100% - 12px * (var(--veloura-category-desktop-slides) - 1)) / var(--veloura-category-desktop-slides)) !important;
-  flex: 0 0 calc((100% - var(--veloura-category-gap, 12px) * (var(--veloura-category-desktop-slides) - 1)) / var(--veloura-category-desktop-slides)) !important;
-  scroll-snap-align: unset !important;
-  scroll-snap-stop: normal !important;
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  -webkit-user-drag: none !important;
-}
-.veloura-category-cards.is-slider .veloura-category-card *,
-.veloura-category-cards.is-slider a,
-.veloura-category-cards.is-slider img {
-  cursor: grab !important;
-  -moz-user-select: none !important;
-       user-select: none !important;
-  -webkit-user-select: none !important;
-  -webkit-user-drag: none !important;
-}
-.veloura-category-cards.is-slider.is-dragging,
-.veloura-category-cards.is-slider.is-dragging *,
-body.veloura-category-is-dragging,
-body.veloura-category-is-dragging * {
-  cursor: grabbing !important;
-}
-.veloura-category-cards.is-slider.is-dragging a {
-  pointer-events: none !important;
-}
-/* Mobile: مثل slidesPerView: 3.2 أو حسب الرقم المختار + 0.2 */
-@media (max-width: 767px) {
-  .veloura-category-cards.is-slider {
-    padding-inline-start: 0 !important;
-    padding-inline-end: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-  .veloura-category-cards.is-slider .veloura-category-card {
-    flex-basis: calc((100% - 12px * (var(--veloura-category-mobile-slides) - 1)) / var(--veloura-category-mobile-slides)) !important;
-    flex-basis: calc((100% - var(--veloura-category-gap, 12px) * (var(--veloura-category-mobile-slides) - 1)) / var(--veloura-category-mobile-slides)) !important;
-  }
-}
-/* حالة إخفاء الصور: ترتيب الكرت بدون صورة */
-.veloura-category-hide-images .veloura-category-card {
-  min-height: auto !important;
-  padding: 12px 18px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.veloura-category-hide-images .veloura-category-card__title {
-  margin: 0 !important;
-  padding: 0 !important;
-  text-align: center !important;
-}
-/* احتياطي لإخفاء المنتجات لو ظهر wrapper */
-.veloura-category-products-hidden .veloura-category-products-wrap {
-  display: none !important;
-}
-/* إذا الصور مخفية، خلي الكروت أنظف */
-.veloura-category-hide-images.veloura-category-image-position-right .veloura-category-card {
-  flex-direction: row !important;
-}
-/* إخفاء المنتجات احتياطيًا لو ظهر شيء من CSS أو JS */
-.veloura-category-products-hidden .veloura-category-products-wrap {
-  display: none !important;
+body.dark .veloura-category-card__title {
+  color: #fff !important;
+  color: var(--veloura-dark-primary-text, #fff) !important;
 }
 .before\:text-orange-300::before{
     content: var(--tw-content);
