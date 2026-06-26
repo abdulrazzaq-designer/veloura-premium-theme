@@ -2761,7 +2761,7 @@
   "id": "veloura_category_title_size_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "حجم النص العنوان للتصنيفات 2222",
+  "label": "حجم النص العنوان للتصنيفات ",
   "icon": "sicon-list",
   "source": "Manual",
   "required": true,
