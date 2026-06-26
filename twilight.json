@@ -2729,14 +2729,31 @@
   "description": "اختر مكان ظهور صورة أو أيقونة التصنيف",
   "value": "top",
   "required": false,
+  "selected": [
+    {
+      "label": "فوق العنوان",
+      "value": "top",
+      "key": "veloura-category-image-position-top"
+    }
+  ],
   "options": [
     {
       "label": "فوق العنوان",
-      "value": "top"
+      "value": "top",
+      "key": "veloura-category-image-position-top"
+
     },
     {
       "label": "يمين العنوان",
-      "value": "right"
+      "value": "right",
+      "key": "veloura-category-image-position-right"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_category_enabled_2026",
+      "operation": "=",
+      "value": true
     }
   ]
 },
