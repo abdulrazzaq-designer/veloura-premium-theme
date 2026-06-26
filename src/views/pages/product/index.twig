@@ -40,6 +40,7 @@
   {% set veloura_linked_images = theme.settings.get('veloura_category_images_map_v7_2026') ?: [] %}
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
+  {% set veloura_image_position = theme.settings.get('veloura_category_image_position_2026', 'top') ?: 'top' %}
 
   <style>
     .veloura-category-page .veloura-category-children {
@@ -186,6 +187,7 @@
       veloura-category-radius-{{ veloura_image_radius }}
       veloura-category-shape-{{ veloura_image_shape }}
       veloura-category-fit-{{ veloura_image_fit }}
+      veloura-category-image-position-{{ veloura_image_position }}
     "
   >
     <div class="container px-2.5 ms:px-5 mb-10">

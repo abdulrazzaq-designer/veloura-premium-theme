@@ -2753,6 +2753,26 @@
   ]
 },
 {
+  "type": "string",
+  "format": "dropdown-list",
+  "icon": "sicon-image",
+  "label": "مكان صورة التصنيف",
+  "description": "اختر مكان ظهور صورة أو أيقونة التصنيف",
+  "id": "veloura_category_image_position_2026",
+  "value": "top",
+  "required": false,
+  "options": [
+    {
+      "label": "فوق العنوان",
+      "value": "top"
+    },
+    {
+      "label": "يمين العنوان",
+      "value": "right"
+    }
+  ]
+},
+{
   "id": "veloura_category_title_size_2026",
   "type": "items",
   "format": "dropdown-list",
