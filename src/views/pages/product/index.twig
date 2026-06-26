@@ -101,52 +101,73 @@
           </div>
 
           {% if has_sub_categories %}
-            <section class="veloura-category-children">
-              <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
+  <section class="veloura-category-children">
+    <div class="veloura-category-sticky-wrap">
+      <div class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}">
 
-                {% for child in category.sub_categories %}
-                  {% set child_img = '' %}
+        <a
+          href="{{ category.url }}"
+          class="veloura-category-card veloura-category-card--all is-active"
+          data-veloura-category-filter="all"
+          data-veloura-category-id="{{ category.id }}"
+          data-veloura-category-url="{{ category.url|e('html_attr') }}"
+        >
+          <span class="veloura-category-card__image veloura-category-card__image--all">
+            <i class="sicon-grid"></i>
+          </span>
 
-                  {% if child.image %}
-                    {% set child_img = child.image.url|default(child.image) %}
-                  {% endif %}
+          <span class="veloura-category-card__title">
+            عرض الكل
+          </span>
+        </a>
 
-                  {% if not child_img and child.thumbnail %}
-                    {% set child_img = child.thumbnail.url|default(child.thumbnail) %}
-                  {% endif %}
+        {% for child in category.sub_categories %}
+          {% set child_img = '' %}
 
-                  {% if not child_img and child.cover %}
-                    {% set child_img = child.cover.url|default(child.cover) %}
-                  {% endif %}
-
-                  {% set render_img = child_img ?: ('images/placeholder.png' | asset) %}
-
-                  <a
-                    href="{{ child.url }}"
-                    class="veloura-category-card {{ child_img ? 'has-image' : 'has-no-image' }}"
-                    data-veloura-child-id="{{ child.id }}"
-                    data-veloura-child-name="{{ child.name|e('html_attr') }}"
-                    data-veloura-child-url="{{ child.url|e('html_attr') }}"
-                    data-veloura-child-slug="{{ child.slug|default('')|e('html_attr') }}"
-                  >
-                    <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
-                      <img
-                        class="veloura-category-card__img"
-                        src="{{ render_img }}"
-                        loading="lazy"
-                        alt="{{ child.name|e('html_attr') }}"
-                      >
-                    </span>
-
-                    <span class="veloura-category-card__title">
-                      {{ child.name }}
-                    </span>
-                  </a>
-                {% endfor %}
-
-              </div>
-            </section>
+          {% if child.image %}
+            {% set child_img = child.image.url|default(child.image) %}
           {% endif %}
+
+          {% if not child_img and child.thumbnail %}
+            {% set child_img = child.thumbnail.url|default(child.thumbnail) %}
+          {% endif %}
+
+          {% if not child_img and child.cover %}
+            {% set child_img = child.cover.url|default(child.cover) %}
+          {% endif %}
+
+          {% set render_img = child_img ?: ('images/placeholder.png' | asset) %}
+
+          <a
+            href="{{ child.url }}"
+            class="veloura-category-card {{ child_img ? 'has-image' : 'has-no-image' }}"
+            data-veloura-category-filter="child"
+            data-veloura-category-id="{{ child.id }}"
+            data-veloura-category-url="{{ child.url|e('html_attr') }}"
+            data-veloura-child-id="{{ child.id }}"
+            data-veloura-child-name="{{ child.name|e('html_attr') }}"
+            data-veloura-child-url="{{ child.url|e('html_attr') }}"
+            data-veloura-child-slug="{{ child.slug|default('')|e('html_attr') }}"
+          >
+            <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
+              <img
+                class="veloura-category-card__img"
+                src="{{ render_img }}"
+                loading="lazy"
+                alt="{{ child.name|e('html_attr') }}"
+              >
+            </span>
+
+            <span class="veloura-category-card__title">
+              {{ child.name }}
+            </span>
+          </a>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+{% endif %}
 
           {% hook 'product:index.items.start' %}
 

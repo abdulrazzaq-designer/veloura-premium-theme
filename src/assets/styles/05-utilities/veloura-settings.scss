@@ -722,3 +722,134 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
 .veloura-category-card.has-image .veloura-category-card__image {
   display: flex !important;
 }
+
+
+
+
+
+
+
+
+.veloura-category-children {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--color-main-bg, #fff);
+  padding: 10px 0 12px;
+  margin-bottom: 18px;
+}
+
+.veloura-category-sticky-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.veloura-category-cards {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 2px 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.veloura-category-cards::-webkit-scrollbar {
+  height: 4px;
+}
+
+.veloura-category-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+
+.veloura-category-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 110px;
+  min-height: 128px;
+  padding: 8px;
+  border-radius: 18px;
+  background: #fff;
+  border: 2px solid transparent;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.veloura-category-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 78px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f6f6f6;
+}
+
+.veloura-category-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.veloura-category-card__title {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #222;
+}
+
+.veloura-category-card:hover,
+.veloura-category-card.is-active {
+  border-color: var(--color-primary, #006b7a);
+  box-shadow: 0 10px 26px rgba(0, 107, 122, 0.20);
+  transform: translateY(-2px);
+}
+
+.veloura-category-card.is-active::after {
+  content: "✓";
+  position: absolute;
+  top: 7px;
+  inset-inline-end: 7px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--color-primary, #006b7a);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.veloura-category-card--all .veloura-category-card__image--all {
+  background: linear-gradient(135deg, #004d65, #00a6a6);
+  color: #fff;
+  font-size: 34px;
+}
+
+@media (max-width: 768px) {
+  .veloura-category-children {
+    top: 0;
+    padding-top: 8px;
+  }
+
+  .veloura-category-card {
+    width: 96px;
+    min-height: 118px;
+    border-radius: 16px;
+  }
+
+  .veloura-category-card__image {
+    height: 68px;
+  }
+
+  .veloura-category-card__title {
+    font-size: 12px;
+  }
+}
