@@ -22,15 +22,21 @@
 {% block content %}
 
   {% set veloura_show_breadcrumb = theme.settings.get('veloura_category_show_breadcrumb_2026', true) %}
-  {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
+  {% if veloura_show_breadcrumb.value is defined %}
+    {% set veloura_show_breadcrumb = veloura_show_breadcrumb.value %}
+  {% endif %}
 
-  {# إخفاء المنتجات عند وجود تصنيفات فرعية - ID الصحيح من JSON #}
+  {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
+  {% if veloura_hide_product_count.value is defined %}
+    {% set veloura_hide_product_count = veloura_hide_product_count.value %}
+  {% endif %}
+
+  {# إخفاء المنتجات عند وجود تصنيفات فرعية #}
   {% set veloura_hide_products_if_children_raw = theme.settings.get('veloura_category_hide_products_if_children_2026', false) %}
   {% if veloura_hide_products_if_children_raw.value is defined %}
     {% set veloura_hide_products_if_children_raw = veloura_hide_products_if_children_raw.value %}
-  {% elseif veloura_hide_products_if_children_raw.selected is defined %}
-    {% set veloura_hide_products_if_children_raw = veloura_hide_products_if_children_raw.selected %}
   {% endif %}
+
   {% set veloura_hide_products_if_children =
     veloura_hide_products_if_children_raw == true
     or veloura_hide_products_if_children_raw == 'true'
@@ -43,9 +49,8 @@
   {% set veloura_show_images_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
   {% if veloura_show_images_raw.value is defined %}
     {% set veloura_show_images_raw = veloura_show_images_raw.value %}
-  {% elseif veloura_show_images_raw.selected is defined %}
-    {% set veloura_show_images_raw = veloura_show_images_raw.selected %}
   {% endif %}
+
   {% set veloura_show_images = not (
     veloura_show_images_raw == false
     or veloura_show_images_raw == 'false'
@@ -54,12 +59,12 @@
     or veloura_show_images_raw == 'off'
   ) %}
 
+  {# سلايدر / شبكة #}
   {% set veloura_images_slider_raw = theme.settings.get('veloura_category_images_slider_2026', false) %}
   {% if veloura_images_slider_raw.value is defined %}
     {% set veloura_images_slider_raw = veloura_images_slider_raw.value %}
-  {% elseif veloura_images_slider_raw.selected is defined %}
-    {% set veloura_images_slider_raw = veloura_images_slider_raw.selected %}
   {% endif %}
+
   {% set veloura_images_slider =
     veloura_images_slider_raw == true
     or veloura_images_slider_raw == 'true'
@@ -68,12 +73,12 @@
     or veloura_images_slider_raw == 'on'
   %}
 
+  {# خلفية الصور شفافة #}
   {% set veloura_images_transparent_raw = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
   {% if veloura_images_transparent_raw.value is defined %}
     {% set veloura_images_transparent_raw = veloura_images_transparent_raw.value %}
-  {% elseif veloura_images_transparent_raw.selected is defined %}
-    {% set veloura_images_transparent_raw = veloura_images_transparent_raw.selected %}
   {% endif %}
+
   {% set veloura_images_transparent =
     veloura_images_transparent_raw == true
     or veloura_images_transparent_raw == 'true'
@@ -82,6 +87,7 @@
     or veloura_images_transparent_raw == 'on'
   %}
 
+  {# الأعمدة #}
   {% set veloura_mobile_cols_raw = theme.settings.get('veloura_category_mobile_cols_2026', '4') %}
   {% set veloura_desktop_cols_raw = theme.settings.get('veloura_category_desktop_cols_2026', '8') %}
 
@@ -116,18 +122,38 @@
   {% set veloura_mobile_slides = veloura_mobile_cols + 0.35 %}
   {% set veloura_desktop_slides = veloura_desktop_cols + 0.35 %}
 
+  {# خيارات الشكل #}
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
-  {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
-  {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
-  {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
-  {% set veloura_image_position = theme.settings.get('veloura_category_image_position_2026', 'top') %}
+  {% if veloura_title_size.value is defined %}
+    {% set veloura_title_size = veloura_title_size.value %}
+  {% endif %}
 
+  {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
+  {% if veloura_image_radius.value is defined %}
+    {% set veloura_image_radius = veloura_image_radius.value %}
+  {% endif %}
+
+  {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
+  {% if veloura_image_shape.value is defined %}
+    {% set veloura_image_shape = veloura_image_shape.value %}
+  {% endif %}
+
+  {% set veloura_image_fit = theme.settings.get('veloura_category_image_fit_2026', 'cover') %}
+  {% if veloura_image_fit.value is defined %}
+    {% set veloura_image_fit = veloura_image_fit.value %}
+  {% endif %}
+
+  {% set veloura_image_position = theme.settings.get('veloura_category_image_position_2026', 'top') %}
+  {% if veloura_image_position.value is defined %}
+    {% set veloura_image_position = veloura_image_position.value %}
+  {% endif %}
+
+  {# الصور المخصصة #}
   {% set veloura_use_custom_images_raw = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
   {% if veloura_use_custom_images_raw.value is defined %}
     {% set veloura_use_custom_images_raw = veloura_use_custom_images_raw.value %}
-  {% elseif veloura_use_custom_images_raw.selected is defined %}
-    {% set veloura_use_custom_images_raw = veloura_use_custom_images_raw.selected %}
   {% endif %}
+
   {% set veloura_use_custom_images =
     veloura_use_custom_images_raw == true
     or veloura_use_custom_images_raw == 'true'
@@ -137,6 +163,7 @@
   %}
 
   {% set veloura_linked_images = theme.settings.get('veloura_category_images_map_v7_2026') ?: [] %}
+
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
   <div
@@ -482,7 +509,7 @@
       const productsWrap = document.getElementById('veloura-category-products-wrap');
       const pageTitle = document.getElementById('page-main-title');
 
-      if (!cards.length || !productsWrap) return;
+      if (!cards.length) return;
 
       const originalTitle = pageTitle ? pageTitle.innerHTML : '';
       const originalSource = '{{ page.slug }}';
@@ -500,7 +527,7 @@
       function rebuildProductsList(sourceValue) {
         const oldList = document.getElementById('veloura-category-products-list');
 
-        if (!oldList) return;
+        if (!oldList || !productsWrap) return;
 
         productsWrap.classList.add('is-loading');
 
@@ -525,6 +552,12 @@
 
       cards.forEach(function (card) {
         card.addEventListener('click', function (event) {
+          const hasProductsList = document.getElementById('veloura-category-products-list');
+
+          if (!hasProductsList) {
+            return;
+          }
+
           event.preventDefault();
 
           const type = card.getAttribute('data-veloura-category-filter');
