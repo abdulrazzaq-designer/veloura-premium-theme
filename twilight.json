@@ -2629,10 +2629,10 @@
   "inputType": "range",
   "description": null,
   "labelHTML": null,
-  "value": "2",
+  "value": "3",
   "required": false,
   "step": "1",
-  "minimum": "1",
+  "minimum": "2",
   "maximum": "6",
   "icon": "sicon-list",
   "conditions": [
@@ -2651,11 +2651,11 @@
   "inputType": "range",
   "description": null,
   "labelHTML": null,
-  "value": "2",
+  "value": "4",
   "required": false,
   "step": "1",
-  "minimum": "1",
-  "maximum": "6",
+  "minimum": "3",
+  "maximum": "8",
   "icon": "sicon-list",
   "conditions": [
     {
