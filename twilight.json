@@ -2454,38 +2454,6 @@
   ]
 },
 {
-  "type": "items",
-  "icon": "sicon-image",
-  "label": "مكان صورة التصنيف",
-  "description": "اختر مكان ظهور الصورة بالنسبة لعنوان التصنيف",
-  "id": "veloura_category_image_position_2026",
-  "value": "top",
-  "required": false,
-  "format": "dropdown-list",
-  "items": [
-    {
-      "label": "فوق العنوان",
-      "value": "top"
-    },
-    {
-      "label": "يمينثقثقثقثقثق العنوان",
-      "value": "right"
-    }
-  ],
-  "conditions": [
-    {
-      "id": "veloura_category_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_category_show_images_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "type": "static",
   "format": "title",
   "id": "veloura_category_subtitle_products_2026",
@@ -2753,21 +2721,21 @@
   ]
 },
 {
+  "id": "veloura_category_image_position_2026",
   "type": "string",
   "format": "dropdown-list",
   "icon": "sicon-image",
   "label": "مكان صورة التصنيف",
   "description": "اختر مكان ظهور صورة أو أيقونة التصنيف",
-  "id": "veloura_category_image_position_2026",
   "value": "top",
   "required": false,
   "options": [
     {
-      "label": "فوق العنوان",
+      "name": "فوق العنوان",
       "value": "top"
     },
     {
-      "label": "يمين العنوان",
+      "name": "يمين العنوان",
       "value": "right"
     }
   ]
