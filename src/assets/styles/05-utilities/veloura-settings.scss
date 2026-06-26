@@ -1215,3 +1215,36 @@ body.veloura-category-is-dragging * {
     ) !important;
   }
 }
+
+
+
+
+
+/* عند إخفاء صور التصنيفات */
+.veloura-category-hide-images .veloura-category-card__image {
+  display: none !important;
+}
+
+.veloura-category-hide-images .veloura-category-card {
+  min-height: auto !important;
+  padding: 12px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.veloura-category-hide-images .veloura-category-card__title {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+/* إذا الصور مخفية، خلي الكروت أنظف */
+.veloura-category-hide-images.veloura-category-image-position-right .veloura-category-card {
+  flex-direction: row !important;
+}
+
+/* إخفاء المنتجات احتياطيًا لو ظهر شيء من CSS أو JS */
+.veloura-category-products-hidden .veloura-category-products-wrap {
+  display: none !important;
+}

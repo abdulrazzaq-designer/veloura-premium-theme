@@ -71,6 +71,8 @@
       veloura-category-page
       {{ veloura_hide_product_count ? 'veloura-category-hide-count' : '' }}
       {{ veloura_images_transparent ? 'veloura-category-images-transparent' : '' }}
+      {{ veloura_show_images ? 'veloura-category-show-images' : 'veloura-category-hide-images' }}
+      {{ veloura_hide_products_when_children and has_sub_categories ? 'veloura-category-products-hidden' : '' }}
       veloura-category-mobile-cols-{{ veloura_mobile_cols }}
       veloura-category-desktop-cols-{{ veloura_desktop_cols }}
       veloura-category-title-{{ veloura_title_size }}
@@ -154,9 +156,11 @@
                     data-veloura-category-url="{{ category.url|e('html_attr') }}"
                     data-veloura-category-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
                   >
-                    <span class="veloura-category-card__image veloura-category-card__image--all">
-                      <i class="sicon-grid"></i>
-                    </span>
+                    {% if veloura_show_images %}
+  <span class="veloura-category-card__image veloura-category-card__image--all">
+    <i class="sicon-grid"></i>
+  </span>
+{% endif %}
 
                     <span class="veloura-category-card__title">
                       الكل
@@ -192,14 +196,16 @@
                       data-veloura-child-url="{{ child.url|e('html_attr') }}"
                       data-veloura-child-slug="{{ child.slug|default('')|e('html_attr') }}"
                     >
-                      <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
-                        <img
-                          class="veloura-category-card__img"
-                          src="{{ render_img }}"
-                          loading="lazy"
-                          alt="{{ child.name|e('html_attr') }}"
-                        >
-                      </span>
+                      {% if veloura_show_images %}
+  <span class="veloura-category-card__image {{ child_img ? '' : 'is-empty' }}">
+    <img
+      class="veloura-category-card__img"
+      src="{{ render_img }}"
+      loading="lazy"
+      alt="{{ child.name|e('html_attr') }}"
+    >
+  </span>
+{% endif %}
 
                       <span class="veloura-category-card__title">
                         {{ child.name }}
@@ -212,19 +218,23 @@
             </section>
           {% endif %}
 
-          {% hook 'product:index.items.start' %}
+          {% if not (veloura_hide_products_when_children and has_sub_categories) %}
 
-          <div class="flex min-h-screen veloura-category-products-wrap" id="veloura-category-products-wrap">
-            <salla-products-list
-              id="veloura-category-products-list"
-              class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
-              source="{{ page.slug }}"
-              source-value="{{ page.id }}"
-              {{ filters ? 'filters-Results' : '' }}>
-            </salla-products-list>
-          </div>
+  {% hook 'product:index.items.start' %}
 
-          {% hook 'product:index.items.end' %}
+  <div class="flex min-h-screen veloura-category-products-wrap" id="veloura-category-products-wrap">
+    <salla-products-list
+      id="veloura-category-products-list"
+      class="flex-1 min-w-0 overflow-auto veloura-category-products-list"
+      source="{{ page.slug }}"
+      source-value="{{ page.id }}"
+      {{ filters ? 'filters-Results' : '' }}>
+    </salla-products-list>
+  </div>
+
+  {% hook 'product:index.items.end' %}
+
+{% endif %}
 
         </div>
       </div>
@@ -240,6 +250,11 @@
 {% block scripts %}
 
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
+  {% set veloura_hide_products_when_children_raw = theme.settings.get('veloura_category_hide_products_when_children_2026', false) %}
+{% set veloura_hide_products_when_children = veloura_hide_products_when_children_raw == true or veloura_hide_products_when_children_raw == 'true' or veloura_hide_products_when_children_raw == 1 or veloura_hide_products_when_children_raw == '1' %}
+
+{% set veloura_show_images_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
+{% set veloura_show_images = veloura_show_images_raw == true or veloura_show_images_raw == 'true' or veloura_show_images_raw == 1 or veloura_show_images_raw == '1' %}
   {% set veloura_use_custom_images = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
   {% set veloura_linked_images = theme.settings.get('veloura_category_images_map_v7_2026') ?: [] %}
 
