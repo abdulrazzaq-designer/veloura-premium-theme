@@ -257,7 +257,7 @@
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "تفعيل الإعدادات العامة المتقدمة",
-            "description": "عند التفعيل ستظهر جميع خيارات التحكم العامة في الثيم",
+            "description": "عند التفعيل ستظهر جميع خيارات التحكم العامة",
             "id": "veloura_general_enabled_2026",
             "format": "switch",
             "required": false,
