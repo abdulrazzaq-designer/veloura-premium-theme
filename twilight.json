@@ -2606,12 +2606,13 @@
       "description": "اختر تصنيف أو أكثر لتظهر عليهم هذه الصورة",
       "id": "veloura_map_categories",
       "value": [],
-      "required": true,
+      "required": false,
       "source": "categories",
       "searchable": true,
       "multiselect": true,
       "multiple": true,
-      "autocomplete": true
+      "autocomplete": true,
+      "multichoice": true
     }
   ]
 },
