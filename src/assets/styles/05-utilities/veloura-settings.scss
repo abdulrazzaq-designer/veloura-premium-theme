@@ -734,69 +734,42 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
   padding: 0 !important;
 }
 
-
-
-
 /* ================================
-   Veloura Category Custom Scrollbar
+   Veloura Category Native Scrollbar - Safe
 ================================ */
 
-/* إخفاء شريط المتصفح العادي */
 .veloura-category-cards.is-slider {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--color-primary, #004956) rgba(0, 0, 0, 0.08) !important;
+  padding-bottom: 12px !important;
 }
 
+/* Chrome / Edge / Safari */
 .veloura-category-cards.is-slider::-webkit-scrollbar {
-  display: none !important;
+  height: 6px !important;
+  display: block !important;
 }
 
-/* حاوية الشريط الجديد */
-.veloura-category-scrollbar {
-  position: relative;
-  width: 100%;
-  height: 4px;
-  margin-top: 8px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-  display: none;
+.veloura-category-cards.is-slider::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-radius: 999px !important;
 }
 
-/* يظهر فقط إذا التصنيفات سلايدر */
-.veloura-category-cards.is-slider + .veloura-category-scrollbar {
-  display: block;
+.veloura-category-cards.is-slider::-webkit-scrollbar-thumb {
+  background: var(--color-primary, #004956) !important;
+  border-radius: 999px !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
 }
 
-/* المؤشر المتحرك */
-.veloura-category-scrollbar__thumb {
-  position: absolute;
-  inset-inline-start: 0;
-  top: 0;
-  height: 100%;
-  width: 30%;
-  border-radius: 999px;
-  background: var(--color-primary, #004956);
-  opacity: 0.85;
-  transform: translateX(0);
-  transition: width 0.2s ease, opacity 0.2s ease;
+.veloura-category-cards.is-slider::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary, #004956) !important;
 }
 
-/* تأثير ناعم عند المرور */
-.veloura-category-sticky-wrap:hover .veloura-category-scrollbar__thumb {
-  opacity: 1;
+/* لا يظهر scrollbar في وضع Grid */
+.veloura-category-cards.is-grid {
+  overflow: visible !important;
 }
 
-/* إخفاء الشريط إذا كان Grid */
-.veloura-category-cards.is-grid + .veloura-category-scrollbar {
-  display: none !important;
-}
-
-/* موبايل: أخف وأنظف */
-@media (max-width: 767px) {
-  .veloura-category-scrollbar {
-    height: 3px;
-    margin-top: 6px;
-    background: rgba(0, 0, 0, 0.045);
-  }
-}

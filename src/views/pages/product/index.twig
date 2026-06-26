@@ -138,7 +138,6 @@
               <div class="veloura-category-sticky-wrap">
                 <div
                   class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}"
-                  data-veloura-category-scroll
                   style="
                     --veloura-category-mobile-cols: {{ veloura_mobile_cols }};
                     --veloura-category-desktop-cols: {{ veloura_desktop_cols }};
@@ -205,9 +204,7 @@
                       </span>
                     </a>
                   {% endfor %}
-                  <div class="veloura-category-scrollbar" aria-hidden="true">
-  <span class="veloura-category-scrollbar__thumb"></span>
-</div>
+                  
 
                 </div>
               </div>
