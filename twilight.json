@@ -2731,11 +2731,11 @@
   "required": false,
   "options": [
     {
-      "name": "فوق العنوان",
+      "label": "فوق العنوان",
       "value": "top"
     },
     {
-      "name": "يمين العنوان",
+      "label": "يمين العنوان",
       "value": "right"
     }
   ]
