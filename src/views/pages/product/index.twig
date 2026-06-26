@@ -24,8 +24,11 @@
   {% set veloura_show_breadcrumb = theme.settings.get('veloura_category_show_breadcrumb_2026', true) %}
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
 
-  {% set veloura_images_slider = theme.settings.get('veloura_category_images_slider_2026', true) %}
-  {% set veloura_images_transparent = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
+  {% set veloura_images_slider_raw = theme.settings.get('veloura_category_images_slider_2026', false) %}
+{% set veloura_images_slider = veloura_images_slider_raw == true or veloura_images_slider_raw == 'true' or veloura_images_slider_raw == 1 or veloura_images_slider_raw == '1' %}
+
+{% set veloura_images_transparent_raw = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
+{% set veloura_images_transparent = veloura_images_transparent_raw == true or veloura_images_transparent_raw == 'true' or veloura_images_transparent_raw == 1 or veloura_images_transparent_raw == '1' %}
   {% set veloura_mobile_cols = theme.settings.get('veloura_category_mobile_cols_2026', '3') %}
   {% set veloura_desktop_cols = theme.settings.get('veloura_category_desktop_cols_2026', '6') %}
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
