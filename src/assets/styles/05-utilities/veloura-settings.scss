@@ -367,3 +367,55 @@ body:not(.dark) .veloura-dark-toggle__icon--sun {
     font-size: 12px !important;
   }
 }
+
+
+
+
+
+
+
+/* Force category image above title */
+.veloura-category-page .veloura-category-cards .veloura-category-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: center !important;
+  direction: inherit !important;
+  gap: 8px !important;
+}
+
+.veloura-category-page .veloura-category-cards .veloura-category-card__image {
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+}
+
+.veloura-category-page.veloura-category-shape-square .veloura-category-cards .veloura-category-card__image {
+  aspect-ratio: 1 / 1 !important;
+}
+
+.veloura-category-page.veloura-category-shape-auto .veloura-category-cards .veloura-category-card__image {
+  aspect-ratio: auto !important;
+}
+
+.veloura-category-page .veloura-category-cards .veloura-category-card__img,
+.veloura-category-page .veloura-category-cards .veloura-category-card__image img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.veloura-category-page.veloura-category-shape-square .veloura-category-cards .veloura-category-card__img,
+.veloura-category-page.veloura-category-shape-square .veloura-category-cards .veloura-category-card__image img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.veloura-category-page .veloura-category-cards .veloura-category-card__title {
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
