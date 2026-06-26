@@ -2722,7 +2722,7 @@
 },
 {
   "id": "veloura_category_image_position_2026",
-  "type": "string",
+  "type": "items",
   "format": "dropdown-list",
   "icon": "sicon-image",
   "label": "مكان صورة التصنيف",
