@@ -138,6 +138,7 @@
               <div class="veloura-category-sticky-wrap">
                 <div
                   class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}"
+                  data-veloura-category-scroll
                   style="
                     --veloura-category-mobile-cols: {{ veloura_mobile_cols }};
                     --veloura-category-desktop-cols: {{ veloura_desktop_cols }};
@@ -204,6 +205,9 @@
                       </span>
                     </a>
                   {% endfor %}
+                  <div class="veloura-category-scrollbar" aria-hidden="true">
+  <span class="veloura-category-scrollbar__thumb"></span>
+</div>
 
                 </div>
               </div>
@@ -489,6 +493,47 @@
       });
     });
   </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sliders = document.querySelectorAll('[data-veloura-category-scroll]');
+
+    sliders.forEach(function (slider) {
+      const wrap = slider.closest('.veloura-category-sticky-wrap');
+      if (!wrap) return;
+
+      const thumb = wrap.querySelector('.veloura-category-scrollbar__thumb');
+      if (!thumb) return;
+
+      function updateScrollbar() {
+        const scrollWidth = slider.scrollWidth;
+        const clientWidth = slider.clientWidth;
+        const scrollLeft = Math.abs(slider.scrollLeft);
+
+        if (scrollWidth <= clientWidth) {
+          thumb.style.width = '100%';
+          thumb.style.transform = 'translateX(0)';
+          return;
+        }
+
+        const thumbWidth = Math.max((clientWidth / scrollWidth) * 100, 18);
+        const maxMove = 100 - thumbWidth;
+        const progress = scrollLeft / (scrollWidth - clientWidth);
+        const move = maxMove * progress;
+
+        thumb.style.width = thumbWidth + '%';
+        thumb.style.transform = 'translateX(' + move + '%)';
+      }
+
+      slider.addEventListener('scroll', updateScrollbar, { passive: true });
+      window.addEventListener('resize', updateScrollbar);
+
+      setTimeout(updateScrollbar, 100);
+      setTimeout(updateScrollbar, 600);
+      setTimeout(updateScrollbar, 1200);
+    });
+  });
+</script>
 
   {% if veloura_hide_product_count %}
     <script>
