@@ -24,13 +24,37 @@
   {% set veloura_show_breadcrumb = theme.settings.get('veloura_category_show_breadcrumb_2026', true) %}
   {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
 
+  {# Slider switch safe boolean #}
   {% set veloura_images_slider_raw = theme.settings.get('veloura_category_images_slider_2026', false) %}
-{% set veloura_images_slider = veloura_images_slider_raw == true or veloura_images_slider_raw == 'true' or veloura_images_slider_raw == 1 or veloura_images_slider_raw == '1' %}
+  {% set veloura_images_slider = veloura_images_slider_raw == true or veloura_images_slider_raw == 'true' or veloura_images_slider_raw == 1 or veloura_images_slider_raw == '1' %}
 
-{% set veloura_images_transparent_raw = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
-{% set veloura_images_transparent = veloura_images_transparent_raw == true or veloura_images_transparent_raw == 'true' or veloura_images_transparent_raw == 1 or veloura_images_transparent_raw == '1' %}
-  {% set veloura_mobile_cols = theme.settings.get('veloura_category_mobile_cols_2026', '3') %}
-  {% set veloura_desktop_cols = theme.settings.get('veloura_category_desktop_cols_2026', '6') %}
+  {# Transparent switch safe boolean #}
+  {% set veloura_images_transparent_raw = theme.settings.get('veloura_category_images_transparent_bg_2026', false) %}
+  {% set veloura_images_transparent = veloura_images_transparent_raw == true or veloura_images_transparent_raw == 'true' or veloura_images_transparent_raw == 1 or veloura_images_transparent_raw == '1' %}
+
+  {# Columns: keep admin slider safe, clamp values in Twig #}
+  {% set veloura_mobile_cols_raw = theme.settings.get('veloura_category_mobile_cols_2026', '4') %}
+  {% set veloura_desktop_cols_raw = theme.settings.get('veloura_category_desktop_cols_2026', '8') %}
+
+  {% set veloura_mobile_cols = veloura_mobile_cols_raw + 0 %}
+  {% set veloura_desktop_cols = veloura_desktop_cols_raw + 0 %}
+
+  {% if veloura_mobile_cols < 2 %}
+    {% set veloura_mobile_cols = 2 %}
+  {% endif %}
+
+  {% if veloura_mobile_cols > 6 %}
+    {% set veloura_mobile_cols = 6 %}
+  {% endif %}
+
+  {% if veloura_desktop_cols < 3 %}
+    {% set veloura_desktop_cols = 3 %}
+  {% endif %}
+
+  {% if veloura_desktop_cols > 8 %}
+    {% set veloura_desktop_cols = 8 %}
+  {% endif %}
+
   {% set veloura_title_size = theme.settings.get('veloura_category_title_size_2026', 'medium') %}
   {% set veloura_image_radius = theme.settings.get('veloura_category_image_radius_2026', 'round') %}
   {% set veloura_image_shape = theme.settings.get('veloura_category_image_shape_2026', 'square') %}
@@ -41,140 +65,6 @@
   {% set veloura_linked_images = theme.settings.get('veloura_category_images_map_v7_2026') ?: [] %}
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
-
-  <style>
-    .veloura-category-page .veloura-category-children {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: #fff;
-      padding: 10px 0 12px;
-      margin-bottom: 18px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .veloura-category-page .veloura-category-sticky-wrap {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .veloura-category-page .veloura-category-cards {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding: 6px 2px 12px;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .veloura-category-page .veloura-category-cards::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    .veloura-category-page .veloura-category-cards::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.18);
-      border-radius: 999px;
-    }
-
-    .veloura-category-page .veloura-category-card {
-      position: relative;
-      flex: 0 0 auto;
-      width: 110px;
-      min-height: 126px;
-      padding: 8px;
-      border-radius: 18px;
-      background: #fff;
-      border: 2px solid transparent;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-      text-align: center;
-      transition: 0.25s ease;
-    }
-
-    .veloura-category-page .veloura-category-card__image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 76px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #f5f5f5;
-    }
-
-    .veloura-category-page .veloura-category-card__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .veloura-category-page .veloura-category-card__title {
-      display: block;
-      margin-top: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.5;
-      color: #222;
-    }
-
-    .veloura-category-page .veloura-category-card:hover,
-    .veloura-category-page .veloura-category-card.is-active {
-      border-color: var(--color-primary, #006b7a);
-      box-shadow: 0 10px 26px rgba(0, 107, 122, 0.22);
-      transform: translateY(-2px);
-    }
-
-    .veloura-category-page .veloura-category-card.is-active::after {
-      content: "✓";
-      position: absolute;
-      top: 7px;
-      inset-inline-end: 7px;
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: var(--color-primary, #006b7a);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-    }
-
-    .veloura-category-page .veloura-category-card--all .veloura-category-card__image--all {
-      background: linear-gradient(135deg, #004d65, #00a6a6);
-      color: #fff;
-      font-size: 34px;
-    }
-
-    .veloura-category-page .veloura-category-products-wrap.is-loading {
-      opacity: 0.45;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-    }
-
-    @media (max-width: 768px) {
-      .veloura-category-page .veloura-category-children {
-        top: 0;
-        padding-top: 8px;
-      }
-
-      .veloura-category-page .veloura-category-card {
-        width: 96px;
-        min-height: 118px;
-        border-radius: 16px;
-      }
-
-      .veloura-category-page .veloura-category-card__image {
-        height: 68px;
-      }
-
-      .veloura-category-page .veloura-category-card__title {
-        font-size: 12px;
-      }
-    }
-  </style>
 
   <div
     class="
@@ -188,11 +78,11 @@
       veloura-category-shape-{{ veloura_image_shape }}
       veloura-category-fit-{{ veloura_image_fit }}
       {% if veloura_image_position == 'right' %}
-  veloura-category-image-position-right
-{% else %}
-  veloura-category-image-position-top
-{% endif %}
-"
+        veloura-category-image-position-right
+      {% else %}
+        veloura-category-image-position-top
+      {% endif %}
+    "
   >
     <div class="container px-2.5 ms:px-5 mb-10">
 
@@ -247,12 +137,12 @@
             <section class="veloura-category-children">
               <div class="veloura-category-sticky-wrap">
                 <div
-  class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}"
-  style="
-    --veloura-category-mobile-cols: {{ veloura_mobile_cols }};
-    --veloura-category-desktop-cols: {{ veloura_desktop_cols }};
-  "
->
+                  class="veloura-category-cards {{ veloura_images_slider ? 'is-slider' : 'is-grid' }}"
+                  style="
+                    --veloura-category-mobile-cols: {{ veloura_mobile_cols }};
+                    --veloura-category-desktop-cols: {{ veloura_desktop_cols }};
+                  "
+                >
 
                   <a
                     href="{{ category.url }}"
