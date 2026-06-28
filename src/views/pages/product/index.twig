@@ -46,18 +46,21 @@
   %}
 
   {# إظهار / إخفاء صور التصنيفات #}
-  {% set veloura_show_images_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
-  {% if veloura_show_images_raw.value is defined %}
-    {% set veloura_show_images_raw = veloura_show_images_raw.value %}
-  {% endif %}
+{% set veloura_show_images_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
 
-  {% set veloura_show_images = not (
-    veloura_show_images_raw == false
-    or veloura_show_images_raw == 'false'
-    or veloura_show_images_raw == 0
-    or veloura_show_images_raw == '0'
-    or veloura_show_images_raw == 'off'
-  ) %}
+{% if veloura_show_images_raw.selected is defined %}
+  {% set veloura_show_images_raw = veloura_show_images_raw.selected %}
+{% elseif veloura_show_images_raw.value is defined %}
+  {% set veloura_show_images_raw = veloura_show_images_raw.value %}
+{% endif %}
+
+{% set veloura_show_images =
+  veloura_show_images_raw == true
+  or veloura_show_images_raw == 'true'
+  or veloura_show_images_raw == 1
+  or veloura_show_images_raw == '1'
+  or veloura_show_images_raw == 'on'
+%}
 
   {# سلايدر / شبكة #}
   {% set veloura_images_slider_raw = theme.settings.get('veloura_category_images_slider_2026', false) %}
@@ -284,7 +287,7 @@
 
                     <a
                       href="{{ child.url }}"
-                      class="veloura-category-card {{ child_img ? 'has-image' : 'has-no-image' }}"
+                      class="veloura-category-card {{ child_img ? 'has-image' : 'has-placeholder' }}"
                       data-veloura-category-filter="child"
                       data-veloura-category-id="{{ child.id }}"
                       data-veloura-category-url="{{ child.url|e('html_attr') }}"
@@ -490,7 +493,7 @@
 
             imageWrap.classList.remove('is-empty');
 
-            card.classList.remove('has-no-image');
+            card.classList.remove('has-no-image', 'has-placeholder');
             card.classList.add('has-image', 'has-custom-image');
           });
         }

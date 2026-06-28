@@ -512,18 +512,27 @@ body.veloura-category-is-dragging * {
 }
 
 /* ================================
-   Hide empty real images only
+   Images visibility
 ================================ */
 
-.veloura-category-card__image.is-empty,
-.veloura-category-card__img[hidden],
-.veloura-category-card.has-no-image .veloura-category-card__image {
+/* الصورة تظهر طالما خيار إظهار الصور مفعّل */
+.veloura-category-show-images .veloura-category-card__image {
+  display: flex !important;
+}
+
+/* إذا الصورة مفقودة، لا نخفي البلوك حتى تظهر placeholder أو الصورة المخصصة */
+.veloura-category-show-images .veloura-category-card.has-placeholder .veloura-category-card__image {
+  display: flex !important;
+}
+
+/* إخفاء الصور فقط عند إيقاف خيار إظهار صور التصنيفات */
+.veloura-category-hide-images .veloura-category-card__image {
   display: none !important;
 }
 
-.veloura-category-card.has-image .veloura-category-card__image,
-.veloura-category-card--all .veloura-category-card__image {
-  display: flex !important;
+/* إذا الصورة نفسها hidden فقط */
+.veloura-category-card__img[hidden] {
+  display: none !important;
 }
 
 /* ================================
