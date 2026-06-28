@@ -2890,7 +2890,443 @@
       "value": true
     }
   ]
-}    ],
+},
+{
+  "id": "veloura_product_card_header_2026",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(0,77,101,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-products'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات بطاقة المنتج</strong></div></div>",
+  "required": false
+},
+{
+  "id": "veloura_product_card_enable_2026",
+  "type": "boolean",
+  "format": "switch",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل تخصيص بطاقة المنتج",
+  "description": "عند التفعيل يتم تطبيق إعدادات الشكل والمسافات والحواف على بطاقة المنتج",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+{
+  "id": "veloura_product_card_shape_subtitle_2026",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eef2ff;color:#3730a3;text-align:right;font-weight:800;border-right:4px solid #6366f1;box-shadow:inset 0 0 0 1px rgba(99,102,241,.07)\">شكل بطاقة المنتج</div>",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "icon": "sicon-format-fill",
+  "label": "لون خلفية بطاقة المنتج",
+  "description": "اختر لون خلفية مخصص لبطاقة المنتج",
+  "value": "#ffffff",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_radius_2026",
+  "type": "string",
+  "format": "dropdown-list",
+  "icon": "sicon-crop",
+  "label": "حواف بطاقة المنتج",
+  "description": "حدد درجة تدوير حواف بطاقة المنتج كاملة",
+  "value": "medium",
+  "required": false,
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp"
+    },
+    {
+      "label": "ناعم",
+      "value": "soft"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large"
+    },
+    {
+      "label": "دائري",
+      "value": "round"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_center_text_2026",
+  "type": "boolean",
+  "format": "switch",
+  "icon": "sicon-align-center",
+  "label": "توسيط النصوص في بطاقة المنتج",
+  "description": "عند التفعيل يتم توسيط اسم المنتج والسعر والنصوص داخل بطاقة المنتج",
+  "value": false,
+  "selected": false,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_subtitle_2026",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4;box-shadow:inset 0 0 0 1px rgba(6,182,212,.08)\">صورة المنتج</div>",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_radius_2026",
+  "type": "string",
+  "format": "dropdown-list",
+  "icon": "sicon-image",
+  "label": "حواف صورة المنتج",
+  "description": "حدد درجة تدوير حواف صورة المنتج",
+  "value": "medium",
+  "required": false,
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp"
+    },
+    {
+      "label": "ناعم",
+      "value": "soft"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large"
+    },
+    {
+      "label": "دائري",
+      "value": "round"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_ratio_2026",
+  "type": "string",
+  "format": "dropdown-list",
+  "icon": "sicon-resize",
+  "label": "مقاس صورة المنتج",
+  "description": "حدد شكل صورة المنتج داخل البطاقة",
+  "value": "square",
+  "required": false,
+  "options": [
+    {
+      "label": "تلقائي",
+      "value": "auto"
+    },
+    {
+      "label": "مربع",
+      "value": "square"
+    },
+    {
+      "label": "مستطيل طولي 3:4",
+      "value": "portrait_3_4"
+    },
+    {
+      "label": "مستطيل عريض 5:4",
+      "value": "landscape_5_4"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_padding_top_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrow-up",
+  "label": "المسافة أعلى صورة المنتج",
+  "description": "تحكم بالمسافة العلوية لصورة المنتج داخل البطاقة",
+  "value": "0",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_padding_x_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrows-h",
+  "label": "المسافة يمين ويسار صورة المنتج",
+  "description": "تحكم بالمسافة الجانبية لصورة المنتج داخل البطاقة",
+  "value": "0",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_padding_bottom_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrow-down",
+  "label": "المسافة أسفل صورة المنتج",
+  "description": "تحكم بالمسافة أسفل صورة المنتج قبل النصوص",
+  "value": "0",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_content_subtitle_2026",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">مسافات النصوص داخل البطاقة</div>",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_content_padding_x_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrows-h",
+  "label": "المسافة يمين ويسار محتوى البطاقة",
+  "description": "تحكم بالمسافة الجانبية للنصوص والسعر داخل البطاقة",
+  "value": "10",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_content_padding_bottom_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrow-down",
+  "label": "المسافة أسفل محتوى البطاقة",
+  "description": "تحكم بالمسافة السفلية داخل بطاقة المنتج",
+  "value": "12",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_subtitle_2026",
+  "type": "static",
+  "format": "title",
+  "label": "Title",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #f97316;box-shadow:inset 0 0 0 1px rgba(249,115,22,.08)\">زر أضف للسلة</div>",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_radius_2026",
+  "type": "string",
+  "format": "dropdown-list",
+  "icon": "sicon-shopping-bag",
+  "label": "حواف زر أضف للسلة",
+  "description": "حدد درجة تدوير حواف زر أضف للسلة داخل بطاقة المنتج",
+  "value": "medium",
+  "required": false,
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp"
+    },
+    {
+      "label": "ناعم",
+      "value": "soft"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large"
+    },
+    {
+      "label": "دائري",
+      "value": "round"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_margin_top_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrow-up",
+  "label": "المسافة أعلى زر أضف للسلة",
+  "description": "تحكم بالمسافة بين النصوص وزر أضف للسلة",
+  "value": "8",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_padding_y_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "label": "ارتفاع زر أضف للسلة",
+  "description": "تحكم بالمسافة الداخلية العمودية للزر",
+  "value": "8",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "40",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_padding_x_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "icon": "sicon-arrows-h",
+  "label": "عرض زر أضف للسلة",
+  "description": "تحكم بالمسافة الداخلية الأفقية للزر",
+  "value": "10",
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+}
+    ],
     "components": [
         {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
