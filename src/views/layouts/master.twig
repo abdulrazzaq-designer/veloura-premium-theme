@@ -630,31 +630,39 @@
 
         {% if vpc_image_outside %}
           /* ================================
-             Product image outside card - compact
-             الصورة تبرز للأعلى والبطاقة تقصر بنفس قيمة البروز
+             Product image outside card - best stable
+             الصورة تبرز للأعلى + البطاقة تقصر بصريًا
           ================================ */
+
+          body.veloura-product-card-enabled.veloura-product-card-image-outside product-card {
+            /* نحجز مساحة فوق حتى الصورة لا تدخل على الصف السابق */
+            padding-top: var(--veloura-product-image-outside-offset) !important;
+
+            /* مسافة بسيطة بين الصفوف بدون ما نزيد ارتفاع البطاقة نفسها */
+            margin-bottom: 12px !important;
+          }
 
           body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry,
           body.veloura-product-card-enabled.veloura-product-card-image-outside product-card .s-product-card-entry {
             overflow: visible !important;
-
-            /* نحجز مساحة فوق حتى الصورة لا تدخل على الصف السابق */
-            margin-top: var(--veloura-product-image-outside-offset) !important;
-
-            /* لا نعوض من الأسفل، حتى تقصر البطاقة بنفس قيمة البروز */
+            margin-top: 0 !important;
             padding-bottom: 0 !important;
+            height: auto !important;
+            min-height: 0 !important;
           }
 
           body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry .s-product-card-image {
             position: relative !important;
             z-index: 3 !important;
+
             margin-top: 0 !important;
             margin-inline: auto !important;
 
-            /* هذا يقلص ارتفاع البطاقة من الداخل بنفس مقدار البروز */
+            /* هذا يسحب النص والزر للأعلى ويقصر البطاقة بصريًا */
             margin-bottom: calc(var(--veloura-product-image-outside-offset) * -1) !important;
 
             transform: translateY(calc(var(--veloura-product-image-outside-offset) * -1)) !important;
+
             box-shadow: none !important;
           }
 
@@ -664,7 +672,9 @@
             box-shadow: none !important;
           }
 
-          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry .s-product-card-content {
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry .s-product-card-content,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry .s-product-card-content-footer,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry salla-add-product-button {
             position: relative !important;
             z-index: 2 !important;
           }
