@@ -325,11 +325,6 @@
       {% set vpc_button_radius_key = vpc_button_radius_raw %}
     {% endif %}
 
-    {% set vpc_button_margin_top = theme.settings.get('veloura_product_card_button_margin_top_2026', '8') %}
-    {% if vpc_button_margin_top.value is defined %}
-      {% set vpc_button_margin_top = vpc_button_margin_top.value %}
-    {% endif %}
-
     {% set vpc_button_margin_x = theme.settings.get('veloura_product_card_button_margin_x_2026', '0') %}
     {% if vpc_button_margin_x.value is defined %}
       {% set vpc_button_margin_x = vpc_button_margin_x.value %}
@@ -406,7 +401,6 @@
           --veloura-product-price-size: {{ vpc_price_size_map[vpc_price_size_key]|default('15px') }};
 
           --veloura-product-button-radius: {{ vpc_radius_map[vpc_button_radius_key]|default('16px') }};
-          --veloura-product-button-margin-top: {{ vpc_button_margin_top }}px;
           --veloura-product-button-margin-x: {{ vpc_button_margin_x }}px;
           --veloura-product-button-margin-bottom: {{ vpc_button_margin_bottom }}px;
           --veloura-product-button-height: {{ vpc_button_height }}px;
@@ -630,39 +624,63 @@
 
         {% if vpc_image_outside %}
           /* ================================
-             Product image outside card - best stable
-             الصورة تبرز للأعلى + البطاقة تقصر بصريًا
+             Product image outside card - visual protrusion
+             حل ثابت: نخلي خلفية البطاقة تبدأ بعد قيمة البروز
+             والصورة تبقى فوق الخلفية بدون قص أو ظل
           ================================ */
 
-          body.veloura-product-card-enabled.veloura-product-card-image-outside product-card {
-            /* نحجز مساحة فوق حتى الصورة لا تدخل على الصف السابق */
-            padding-top: var(--veloura-product-image-outside-offset) !important;
-
-            /* مسافة بسيطة بين الصفوف بدون ما نزيد ارتفاع البطاقة نفسها */
-            margin-bottom: 12px !important;
+          /* نسمح بالبروز داخل السلايدر/القوائم */
+          body.veloura-product-card-enabled.veloura-product-card-image-outside product-card,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .swiper-slide,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside salla-slider,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-slider-block__items,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-products-list-wrapper {
+            overflow: visible !important;
           }
 
+          /* البطاقة نفسها شفافة، والخلفية نرسمها بـ before حتى تبدأ تحت الصورة */
           body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry,
           body.veloura-product-card-enabled.veloura-product-card-image-outside product-card .s-product-card-entry {
+            position: relative !important;
             overflow: visible !important;
+            background: transparent !important;
+            border-radius: 0 !important;
             margin-top: 0 !important;
+            padding-top: 0 !important;
             padding-bottom: 0 !important;
-            height: auto !important;
-            min-height: 0 !important;
+            box-shadow: none !important;
           }
 
+          /* هذه هي خلفية البطاقة الفعلية، تبدأ تحت الصورة بمقدار البروز */
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry::before,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside product-card .s-product-card-entry::before {
+            content: "" !important;
+            position: absolute !important;
+            left: 0 !important;
+            right: 0 !important;
+            top: var(--veloura-product-image-outside-offset) !important;
+            bottom: 0 !important;
+            z-index: 0 !important;
+            background: var(--veloura-product-card-bg) !important;
+            border-radius: var(--veloura-product-card-radius) !important;
+            pointer-events: none !important;
+          }
+
+          /* كل محتوى البطاقة فوق الخلفية */
+          body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry > *,
+          body.veloura-product-card-enabled.veloura-product-card-image-outside product-card .s-product-card-entry > * {
+            position: relative !important;
+            z-index: 1 !important;
+          }
+
+          /* الصورة فوق البطاقة، والجزء العلوي منها خارج خلفية البطاقة */
           body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry .s-product-card-image {
             position: relative !important;
             z-index: 3 !important;
-
             margin-top: 0 !important;
             margin-inline: auto !important;
-
-            /* هذا يسحب النص والزر للأعلى ويقصر البطاقة بصريًا */
-            margin-bottom: calc(var(--veloura-product-image-outside-offset) * -1) !important;
-
-            transform: translateY(calc(var(--veloura-product-image-outside-offset) * -1)) !important;
-
+            margin-bottom: 0 !important;
+            transform: none !important;
             box-shadow: none !important;
           }
 
@@ -680,13 +698,12 @@
           }
         {% endif %}
 
-        /* زر أضف للسلة: مسافات خارجية فقط + لون + ارتفاع */
+        /* زر أضف للسلة: مسافة يمين/يسار + مسافة أسفل + لون + ارتفاع */
         body.veloura-product-card-enabled .s-product-card-entry salla-add-product-button,
         body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-footer {
           width: calc(100% - (var(--veloura-product-button-margin-x) * 2)) !important;
           max-width: calc(100% - (var(--veloura-product-button-margin-x) * 2)) !important;
           margin-inline: auto !important;
-          margin-top: var(--veloura-product-button-margin-top) !important;
           margin-bottom: var(--veloura-product-button-margin-bottom) !important;
         }
 
