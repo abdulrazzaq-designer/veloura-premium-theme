@@ -630,15 +630,19 @@
 
         {% if vpc_image_outside %}
           /* ================================
-             Product image outside card - fixed
-             الصورة تبرز للأعلى بدون أن تنقص البطاقة من الأسفل
+             Product image outside card - compact
+             الصورة تبرز للأعلى والبطاقة تقصر بنفس قيمة البروز
           ================================ */
 
           body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry,
           body.veloura-product-card-enabled.veloura-product-card-image-outside product-card .s-product-card-entry {
             overflow: visible !important;
+
+            /* نحجز مساحة فوق حتى الصورة لا تدخل على الصف السابق */
             margin-top: var(--veloura-product-image-outside-offset) !important;
-            padding-bottom: var(--veloura-product-image-outside-offset) !important;
+
+            /* لا نعوض من الأسفل، حتى تقصر البطاقة بنفس قيمة البروز */
+            padding-bottom: 0 !important;
           }
 
           body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-card-entry .s-product-card-image {
@@ -646,7 +650,10 @@
             z-index: 3 !important;
             margin-top: 0 !important;
             margin-inline: auto !important;
+
+            /* هذا يقلص ارتفاع البطاقة من الداخل بنفس مقدار البروز */
             margin-bottom: calc(var(--veloura-product-image-outside-offset) * -1) !important;
+
             transform: translateY(calc(var(--veloura-product-image-outside-offset) * -1)) !important;
             box-shadow: none !important;
           }
@@ -763,7 +770,7 @@
   {{ vpc_enabled ? ' veloura-product-card-enabled' : '' }}
   {{ vpc_enabled and vpc_title_one_line ? ' veloura-product-title-one-line' : '' }}
   {{ vpc_enabled and (not vpc_title_one_line and vpc_title_two_lines) ? ' veloura-product-title-two-lines' : '' }}
-  {{ vpc_image_outside ? ' veloura-product-card-image-outside' : '' }}
+  {{ vpc_enabled and vpc_image_outside ? ' veloura-product-card-image-outside' : '' }}
   {{ veloura_should_show_bg_image ? ' veloura-site-has-bg-image' : '' }}
   {{ veloura_site_bg_fixed ? ' veloura-site-bg-fixed' : '' }}
   {{ veloura_full_width_sections ? ' veloura-sections-full-width' : '' }}
