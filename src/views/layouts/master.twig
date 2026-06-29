@@ -557,24 +557,75 @@
           align-items: center !important;
         }
 
-        body.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title,
-        body.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title a {
+        /* ================================
+           Product title clamp - strong fix
+           يمسك عنوان بطاقة المنتج حتى لو تغيّر اسم الكلاس
+        ================================ */
+
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-main,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-title {
+          min-width: 0 !important;
+          max-width: 100% !important;
+        }
+
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-title,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-title a,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-title span,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content h3,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content h3 a,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content [class*="title"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content [class*="title"] a,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content [class*="Title"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content [class*="Title"] a,
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content a[href*="/products/"] {
+          font-size: var(--veloura-product-title-size) !important;
+          line-height: 1.55 !important;
+          max-width: 100% !important;
+          overflow-wrap: normal !important;
+          word-break: normal !important;
+        }
+
+        /* قص العنوان بسطر واحد */
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title a,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title span,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content h3,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content h3 a,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content [class*="title"],
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content [class*="title"] a,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content [class*="Title"],
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content [class*="Title"] a,
+        body.veloura-product-card-enabled.veloura-product-title-one-line .s-product-card-entry .s-product-card-content a[href*="/products/"] {
           display: block !important;
           width: 100% !important;
           max-width: 100% !important;
           white-space: nowrap !important;
           overflow: hidden !important;
           text-overflow: ellipsis !important;
+          line-height: 1.55 !important;
         }
 
-        body.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title,
-        body.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title a {
+        /* قص العنوان بسطرين */
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title a,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title span,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content h3,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content h3 a,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content [class*="title"],
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content [class*="title"] a,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content [class*="Title"],
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content [class*="Title"] a,
+        body.veloura-product-card-enabled.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content a[href*="/products/"] {
           display: -webkit-box !important;
+          width: 100% !important;
+          max-width: 100% !important;
           -webkit-line-clamp: 2 !important;
           -webkit-box-orient: vertical !important;
-          overflow: hidden !important;
           white-space: normal !important;
+          overflow: hidden !important;
           text-overflow: ellipsis !important;
+          line-height: 1.55 !important;
         }
 
         {% if vpc_image_outside %}
@@ -710,8 +761,8 @@
 
   veloura-general-enabled
   {{ vpc_enabled ? ' veloura-product-card-enabled' : '' }}
-  {{ vpc_title_one_line ? ' veloura-product-title-one-line' : '' }}
-  {{ (not vpc_title_one_line and vpc_title_two_lines) ? ' veloura-product-title-two-lines' : '' }}
+  {{ vpc_enabled and vpc_title_one_line ? ' veloura-product-title-one-line' : '' }}
+  {{ vpc_enabled and (not vpc_title_one_line and vpc_title_two_lines) ? ' veloura-product-title-two-lines' : '' }}
   {{ vpc_image_outside ? ' veloura-product-card-image-outside' : '' }}
   {{ veloura_should_show_bg_image ? ' veloura-site-has-bg-image' : '' }}
   {{ veloura_site_bg_fixed ? ' veloura-site-bg-fixed' : '' }}
