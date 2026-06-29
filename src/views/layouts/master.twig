@@ -208,6 +208,71 @@
       or vpc_center_text_raw == 'on'
     %}
 
+    {# Text sizes #}
+{% set vpc_title_size_map = {
+  'xs': '12px',
+  'small': '13px',
+  'medium': '15px',
+  'large': '17px',
+  'xl': '19px'
+} %}
+
+{% set vpc_price_size_map = {
+  'small': '13px',
+  'normal': '15px',
+  'medium': '17px',
+  'large': '19px',
+  'xl': '22px'
+} %}
+
+{% set vpc_title_size_raw = theme.settings.get('veloura_product_card_title_size_2026', 'medium') %}
+{% if vpc_title_size_raw is iterable and vpc_title_size_raw[0].value is defined %}
+  {% set vpc_title_size_key = vpc_title_size_raw[0].value %}
+{% elseif vpc_title_size_raw.value is defined %}
+  {% set vpc_title_size_key = vpc_title_size_raw.value %}
+{% else %}
+  {% set vpc_title_size_key = vpc_title_size_raw %}
+{% endif %}
+
+{% set vpc_price_size_raw = theme.settings.get('veloura_product_card_price_size_2026', 'normal') %}
+{% if vpc_price_size_raw is iterable and vpc_price_size_raw[0].value is defined %}
+  {% set vpc_price_size_key = vpc_price_size_raw[0].value %}
+{% elseif vpc_price_size_raw.value is defined %}
+  {% set vpc_price_size_key = vpc_price_size_raw.value %}
+{% else %}
+  {% set vpc_price_size_key = vpc_price_size_raw %}
+{% endif %}
+
+{% set vpc_title_one_line_raw = theme.settings.get('veloura_product_card_title_one_line_2026', false) %}
+{% if vpc_title_one_line_raw.value is defined %}
+  {% set vpc_title_one_line_raw = vpc_title_one_line_raw.value %}
+{% elseif vpc_title_one_line_raw.selected is defined %}
+  {% set vpc_title_one_line_raw = vpc_title_one_line_raw.selected %}
+{% endif %}
+
+{% set vpc_title_one_line =
+  vpc_title_one_line_raw == true
+  or vpc_title_one_line_raw == 'true'
+  or vpc_title_one_line_raw == 1
+  or vpc_title_one_line_raw == '1'
+  or vpc_title_one_line_raw == 'on'
+%}
+
+{% set vpc_title_two_lines_raw = theme.settings.get('veloura_product_card_title_two_lines_2026', true) %}
+{% if vpc_title_two_lines_raw.value is defined %}
+  {% set vpc_title_two_lines_raw = vpc_title_two_lines_raw.value %}
+{% elseif vpc_title_two_lines_raw.selected is defined %}
+  {% set vpc_title_two_lines_raw = vpc_title_two_lines_raw.selected %}
+{% endif %}
+
+{% set vpc_title_two_lines =
+  vpc_title_two_lines_raw == true
+  or vpc_title_two_lines_raw == 'true'
+  or vpc_title_two_lines_raw == 1
+  or vpc_title_two_lines_raw == '1'
+  or vpc_title_two_lines_raw == 'on'
+%}
+
     {% set vpc_image_padding_top = theme.settings.get('veloura_product_card_image_padding_top_2026', '0') %}
     {% if vpc_image_padding_top.value is defined %}
       {% set vpc_image_padding_top = vpc_image_padding_top.value %}
@@ -351,6 +416,8 @@
           --veloura-product-button-text: {{ vpc_button_text_color }};
 
           --veloura-product-image-outside-offset: {{ vpc_image_outside_offset }}px;
+          --veloura-product-title-size: {{ vpc_title_size_map[vpc_title_size_key]|default('15px') }};
+          --veloura-product-price-size: {{ vpc_price_size_map[vpc_price_size_key]|default('15px') }};
 
         {% endif %}
       }
@@ -407,6 +474,45 @@
       }
 
       {% if vpc_enabled %}
+      /* ================================
+   Product card text sizes
+================================ */
+
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-title,
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-title a {
+  font-size: var(--veloura-product-title-size) !important;
+  line-height: 1.55 !important;
+}
+
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-price,
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-sale-price,
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-regular-price,
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-content-sub {
+  font-size: var(--veloura-product-price-size) !important;
+  line-height: 1.5 !important;
+}
+
+/* عنوان المنتج بسطر واحد */
+body.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title,
+body.veloura-product-title-one-line .s-product-card-entry .s-product-card-content-title a {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* عنوان المنتج بسطرين فقط */
+body.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title,
+body.veloura-product-title-two-lines .s-product-card-entry .s-product-card-content-title a {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  text-overflow: ellipsis !important;
+}
         /* ================================
            Veloura Product Card Dynamic Style
         ================================ */
@@ -607,6 +713,8 @@ body.veloura-product-card-enabled.veloura-product-card-image-outside .s-product-
 
   veloura-general-enabled
   {{ vpc_enabled ? ' veloura-product-card-enabled' : '' }}
+  {{ vpc_title_one_line ? ' veloura-product-title-one-line' : '' }}
+  {{ (not vpc_title_one_line and vpc_title_two_lines) ? ' veloura-product-title-two-lines' : '' }}
   {{ vpc_image_outside ? ' veloura-product-card-image-outside' : '' }}
   {{ veloura_should_show_bg_image ? ' veloura-site-has-bg-image' : '' }}
   {{ veloura_site_bg_fixed ? ' veloura-site-bg-fixed' : '' }}

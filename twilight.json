@@ -3231,6 +3231,161 @@
 {
   "type": "static",
   "format": "title",
+  "id": "veloura_product_card_subtitle_texts_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">النصوص والمسافات</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_title_size_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حجم النص لعنوان المنتج",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "veloura-product-title-size-medium-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "صغير جدًا",
+      "value": "xs",
+      "key": "veloura-product-title-size-xs-2026"
+    },
+    {
+      "label": "صغير",
+      "value": "small",
+      "key": "veloura-product-title-size-small-2026"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "veloura-product-title-size-medium-2026"
+    },
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "veloura-product-title-size-large-2026"
+    },
+    {
+      "label": "كبير جدًا",
+      "value": "xl",
+      "key": "veloura-product-title-size-xl-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_price_size_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حجم النص لسعر المنتج",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "عادي",
+      "value": "normal",
+      "key": "veloura-product-price-size-normal-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "صغير",
+      "value": "small",
+      "key": "veloura-product-price-size-small-2026"
+    },
+    {
+      "label": "عادي",
+      "value": "normal",
+      "key": "veloura-product-price-size-normal-2026"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "veloura-product-price-size-medium-2026"
+    },
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "veloura-product-price-size-large-2026"
+    },
+    {
+      "label": "كبير جدًا",
+      "value": "xl",
+      "key": "veloura-product-price-size-xl-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "عرض عناوين المنتجات بسطر واحد بغض النظر عن طولها",
+  "description": "إذا كان العنوان طويلًا، يتم قص الكلمات الزائدة، لا يحدث تأثير على العنوان إذا كان قصير ومختصر",
+  "id": "veloura_product_card_title_one_line_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "عرض عناوين المنتجات بسطرين فقط، سيتم قص باقي الأسطر",
+  "description": "لا يحدث أي تأثير إذا كان العنوان قصيرًا، قم بتفعيل هذا الزر إذا كانت عناوين منتجاتك طويلة، يتم تجاهل الزر السابق",
+  "id": "veloura_product_card_title_two_lines_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_card_title_one_line_2026",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
   "id": "veloura_product_card_subtitle_button_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c;box-shadow:inset 0 0 0 1px rgba(251,146,60,.08)\">زر أضف للسلة</div>",
   "variant": "h6",
