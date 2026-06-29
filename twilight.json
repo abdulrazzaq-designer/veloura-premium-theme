@@ -3277,27 +3277,6 @@
   ]
 },
 {
-  "id": "veloura_product_card_button_margin_top_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "المسافة أعلى زر أضف للسلة",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "8",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "60",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "id": "veloura_product_card_button_margin_x_2026",
   "type": "number",
   "format": "slider",
@@ -3344,14 +3323,14 @@
   "type": "number",
   "format": "slider",
   "label": "ارتفاع زر أضف للسلة",
-  "description": "القيمة بالبكسل",
+  "description": "القيمة الفعلية = 32 + قيمة السلايدر",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "42",
+  "value": "10",
   "required": false,
   "step": "1",
-  "minimum": "32",
-  "maximum": "70",
+  "minimum": "0",
+  "maximum": "38",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
