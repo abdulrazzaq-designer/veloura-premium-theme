@@ -3128,6 +3128,50 @@
   ]
 },
 {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار صورة المنتج خارج حواف البطاقة",
+  "description": "عند التفعيل تظهر صورة المنتج بارزة للأعلى خارج حدود بطاقة المنتج بشكل احترافي",
+  "id": "veloura_product_card_image_outside_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_image_outside_offset_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "مقدار بروز صورة المنتج للأعلى",
+  "description": "القيمة بالبكسل، كلما زادت القيمة ارتفعت الصورة أكثر خارج البطاقة",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "24",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_card_image_outside_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_product_card_image_padding_top_2026",
   "type": "number",
   "format": "slider",
