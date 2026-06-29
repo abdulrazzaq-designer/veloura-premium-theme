@@ -3213,21 +3213,6 @@
     }
   ]
 },
-
-{
-  "type": "static",
-  "format": "title",
-  "id": "veloura_product_card_subtitle_content_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">النصوص والمسافات</div>",
-  "variant": "h6",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
 {
   "type": "static",
   "format": "title",
