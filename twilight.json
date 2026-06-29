@@ -3169,75 +3169,13 @@
     }
   ]
 },
-{
-  "id": "veloura_product_card_image_padding_bottom_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "المسافة أسفل صورة المنتج",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "0",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "60",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
+
 {
   "type": "static",
   "format": "title",
   "id": "veloura_product_card_subtitle_content_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">النصوص والمسافات</div>",
   "variant": "h6",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_product_card_content_padding_x_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "المسافة يمين ويسار النصوص",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "10",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "60",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_product_card_content_padding_bottom_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "المسافة أسفل النصوص",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "12",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "60",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
@@ -3311,6 +3249,34 @@
   ]
 },
 {
+  "id": "veloura_product_card_button_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون زر أضف للسلة",
+  "value": "#004d65",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_text_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون نص زر أضف للسلة",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_product_card_button_margin_top_2026",
   "type": "number",
   "format": "slider",
@@ -3332,18 +3298,18 @@
   ]
 },
 {
-  "id": "veloura_product_card_button_padding_y_2026",
+  "id": "veloura_product_card_button_margin_x_2026",
   "type": "number",
   "format": "slider",
-  "label": "ارتفاع زر أضف للسلة",
-  "description": "القيمة بالبكسل",
+  "label": "المسافة يمين ويسار زر أضف للسلة",
+  "description": "تضيف فراغًا يمين ويسار الزر بدون التحكم بعرضه الداخلي",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "8",
+  "value": "0",
   "required": false,
   "step": "1",
   "minimum": "0",
-  "maximum": "40",
+  "maximum": "60",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
@@ -3353,18 +3319,39 @@
   ]
 },
 {
-  "id": "veloura_product_card_button_padding_x_2026",
+  "id": "veloura_product_card_button_margin_bottom_2026",
   "type": "number",
   "format": "slider",
-  "label": "عرض زر أضف للسلة",
+  "label": "المسافة أسفل زر أضف للسلة",
   "description": "القيمة بالبكسل",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "10",
+  "value": "0",
   "required": false,
   "step": "1",
   "minimum": "0",
   "maximum": "60",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_card_button_height_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "ارتفاع زر أضف للسلة",
+  "description": "القيمة بالبكسل",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "42",
+  "required": false,
+  "step": "1",
+  "minimum": "32",
+  "maximum": "70",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
