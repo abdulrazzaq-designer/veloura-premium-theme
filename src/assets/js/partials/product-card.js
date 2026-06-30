@@ -342,12 +342,7 @@ customElements.define('custom-salla-product-card', ProductCard);
 
 
 
-/* Veloura Quick View - Phase 2
-   - أيقونة بجانب المفضلة
-   - أو زر تحت أضف للسلة
-   - يحاول جلب تفاصيل المنتج عبر Salla SDK
-   - يعتمد على بيانات الكارد كـ fallback
-*/
+/* Veloura Quick View - Stable Version */
 
 (function () {
   'use strict';
@@ -367,11 +362,36 @@ customElements.define('custom-salla-product-card', ProductCard);
       return;
     }
 
-    const position = document.body.classList.contains('veloura-quick-view-position-below_add_to_cart')
-  ? 'below_add_to_cart'
-  : document.body.classList.contains('veloura-quick-view-position-wishlist_icon')
-    ? 'wishlist_icon'
-    : config.buttonPosition || 'wishlist_icon';
+    function getQuickViewPosition() {
+      if (
+        document.body.classList.contains('veloura-quick-view-position-below_add_to_cart') ||
+        document.body.classList.contains('veloura-quick-view-position-below-add-to-cart') ||
+        document.body.classList.contains('veloura-quick-view-position-inside_card')
+      ) {
+        return 'below_add_to_cart';
+      }
+
+      if (
+        document.body.classList.contains('veloura-quick-view-position-wishlist_icon') ||
+        document.body.classList.contains('veloura-quick-view-position-wishlist-icon')
+      ) {
+        return 'wishlist_icon';
+      }
+
+      const raw = String(config.buttonPosition || 'wishlist_icon');
+
+      if (
+        raw === 'below_add_to_cart' ||
+        raw === 'below-add-to-cart' ||
+        raw === 'inside_card'
+      ) {
+        return 'below_add_to_cart';
+      }
+
+      return 'wishlist_icon';
+    }
+
+    const position = getQuickViewPosition();
 
     function cleanText(value) {
       return (value || '').replace(/\s+/g, ' ').trim();
@@ -538,90 +558,88 @@ customElements.define('custom-salla-product-card', ProductCard);
           if (normalized) {
             return normalized;
           }
-        } catch (error) {
-          // نكمل تجربة صيغة ثانية
-        }
+        } catch (error) {}
       }
 
       return null;
     }
 
     async function fetchProductFromPage(url) {
-  if (!url || url === '#') {
-    return null;
-  }
+      if (!url || url === '#') {
+        return null;
+      }
 
-  try {
-    const response = await fetch(url, {
-      credentials: 'same-origin'
-    });
-
-    const html = await response.text();
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-
-    let jsonProduct = null;
-
-    doc.querySelectorAll('script[type="application/ld+json"]').forEach(function (script) {
       try {
-        const parsed = JSON.parse(script.textContent || '{}');
+        const response = await fetch(url, {
+          credentials: 'same-origin'
+        });
 
-        if (parsed['@type'] === 'Product') {
-          jsonProduct = parsed;
-        }
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        if (Array.isArray(parsed['@graph'])) {
-          const productNode = parsed['@graph'].find(function (item) {
-            return item['@type'] === 'Product';
-          });
+        let jsonProduct = null;
 
-          if (productNode) {
-            jsonProduct = productNode;
-          }
-        }
-      } catch (error) {}
-    });
+        doc.querySelectorAll('script[type="application/ld+json"]').forEach(function (script) {
+          try {
+            const parsed = JSON.parse(script.textContent || '{}');
 
-    const metaDescription =
-      doc.querySelector('meta[property="og:description"]') ||
-      doc.querySelector('meta[name="description"]');
+            if (parsed['@type'] === 'Product') {
+              jsonProduct = parsed;
+            }
 
-    const metaImage =
-      doc.querySelector('meta[property="og:image"]') ||
-      doc.querySelector('meta[name="twitter:image"]');
+            if (Array.isArray(parsed['@graph'])) {
+              const productNode = parsed['@graph'].find(function (item) {
+                return item['@type'] === 'Product';
+              });
 
-    const title =
-      (jsonProduct && jsonProduct.name) ||
-      cleanText(doc.querySelector('h1') && doc.querySelector('h1').textContent) ||
-      '';
+              if (productNode) {
+                jsonProduct = productNode;
+              }
+            }
+          } catch (error) {}
+        });
 
-    const description =
-      (jsonProduct && jsonProduct.description) ||
-      (metaDescription && metaDescription.getAttribute('content')) ||
-      '';
+        const metaDescription =
+          doc.querySelector('meta[property="og:description"]') ||
+          doc.querySelector('meta[name="description"]');
 
-    const image =
-      (jsonProduct && jsonProduct.image && Array.isArray(jsonProduct.image)
-        ? jsonProduct.image[0]
-        : jsonProduct && jsonProduct.image) ||
-      (metaImage && metaImage.getAttribute('content')) ||
-      '';
+        const metaImage =
+          doc.querySelector('meta[property="og:image"]') ||
+          doc.querySelector('meta[name="twitter:image"]');
 
-    const price =
-      jsonProduct &&
-      jsonProduct.offers &&
-      (jsonProduct.offers.price || jsonProduct.offers.lowPrice);
+        const title =
+          (jsonProduct && jsonProduct.name) ||
+          cleanText(doc.querySelector('h1') && doc.querySelector('h1').textContent) ||
+          '';
 
-    return {
-      name: cleanText(title),
-      url: url,
-      image: image || '',
-      price: price ? cleanText(String(price)) : '',
-      description: cleanText(description)
-    };
-  } catch (error) {
-    return null;
-  }
-}
+        const description =
+          (jsonProduct && jsonProduct.description) ||
+          (metaDescription && metaDescription.getAttribute('content')) ||
+          '';
+
+        const image =
+          (jsonProduct && jsonProduct.image && Array.isArray(jsonProduct.image)
+            ? jsonProduct.image[0]
+            : jsonProduct && jsonProduct.image) ||
+          (metaImage && metaImage.getAttribute('content')) ||
+          '';
+
+        const price =
+          jsonProduct &&
+          jsonProduct.offers &&
+          (jsonProduct.offers.price || jsonProduct.offers.lowPrice);
+
+        return {
+          name: cleanText(title),
+          url: url,
+          image: image || '',
+          price: price ? cleanText(String(price)) : '',
+          description: cleanText(description)
+        };
+      } catch (error) {
+        return null;
+      }
+    }
 
     function ensureModal() {
       let modal = document.querySelector('.veloura-quick-view-modal');
@@ -725,14 +743,9 @@ customElements.define('custom-salla-product-card', ProductCard);
       modal.setAttribute('aria-hidden', 'false');
       document.documentElement.classList.add('veloura-quick-view-lock');
 
-      if (!cardData.id) {
-        renderModal(cardData, false);
-        return;
-      }
-
-const details =
-  (await fetchProductDetails(cardData.id)) ||
-  (await fetchProductFromPage(cardData.url));
+      const details =
+        (await fetchProductDetails(cardData.id)) ||
+        (await fetchProductFromPage(cardData.url));
 
       if (details) {
         renderModal(
@@ -764,88 +777,74 @@ const details =
     }
 
     function createButton(card) {
-  const button = document.createElement('button');
+      const button = document.createElement('button');
 
-  button.type = 'button';
-  button.className = 'veloura-quick-view-btn';
-  button.setAttribute('aria-label', config.buttonText || 'عرض سريع');
+      button.type = 'button';
+      button.className = 'veloura-quick-view-btn';
+      button.setAttribute('aria-label', config.buttonText || 'عرض سريع');
 
-  const showIcon = config.showIcon !== false && config.showIcon !== 'false';
-  const iconClass = config.icon || 'sicon-eye';
+      const showIcon = config.showIcon !== false && config.showIcon !== 'false';
+      const iconClass = config.icon || 'sicon-eye';
 
-  if (position === 'below_add_to_cart') {
-    button.classList.add('is-under-cart');
-    button.innerHTML = `
-      ${showIcon ? `<i class="${iconClass}" aria-hidden="true"></i>` : ''}
-      <span>${config.buttonText || 'عرض سريع'}</span>
-    `;
-  } else {
-    button.classList.add('is-icon-only');
-    button.innerHTML = `<i class="${iconClass}" aria-hidden="true"></i>`;
-  }
+      if (position === 'below_add_to_cart') {
+        button.classList.add('is-under-cart');
+        button.innerHTML = `
+          ${showIcon ? `<i class="${iconClass}" aria-hidden="true"></i>` : ''}
+          <span>${config.buttonText || 'عرض سريع'}</span>
+        `;
+      } else {
+        button.classList.add('is-icon-only');
+        button.innerHTML = `<i class="${iconClass}" aria-hidden="true"></i>`;
+      }
 
-  button.addEventListener('click', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-    openModal(getProductData(card));
-  });
+        openModal(getProductData(card));
+      });
 
-  return button;
-}
-
-    function findWishlistArea(root) {
-      return (
-        root.querySelector('.s-product-card-wishlist-btn') ||
-        root.querySelector('[class*="wishlist"]') ||
-        root.querySelector('[class*="Wishlist"]') ||
-        root.querySelector('button[aria-label*="المفضلة"]') ||
-        root.querySelector('button[aria-label*="مفضلة"]') ||
-        root.querySelector('salla-button[aria-label*="المفضلة"]') ||
-        null
-      );
+      return button;
     }
 
     function injectButton(card) {
-  const root = getCardRoot(card);
+      const root = getCardRoot(card);
 
-  if (!root || root.querySelector('.veloura-quick-view-btn')) {
-    return;
-  }
+      if (!root || root.querySelector('.veloura-quick-view-btn')) {
+        return;
+      }
 
-  const button = createButton(root);
+      const button = createButton(root);
 
-  /**
-   * زر تحت أضف للسلة
-   */
-  if (position === 'below_add_to_cart') {
-    const footer = root.querySelector('.s-product-card-content-footer');
-    const addToCart = root.querySelector('salla-add-product-button');
-    const content = root.querySelector('.s-product-card-content') || root;
+      if (position === 'below_add_to_cart') {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'veloura-quick-view-under-cart-wrap';
+        wrapper.appendChild(button);
 
-    if (footer && footer.parentNode) {
-      footer.parentNode.insertBefore(button, footer.nextSibling);
-    } else if (addToCart && addToCart.parentNode) {
-      addToCart.parentNode.insertBefore(button, addToCart.nextSibling);
-    } else {
-      content.appendChild(button);
+        const footer = root.querySelector('.s-product-card-content-footer');
+        const addToCart = root.querySelector('salla-add-product-button');
+        const content = root.querySelector('.s-product-card-content') || root;
+
+        if (footer && footer.parentNode) {
+          footer.parentNode.insertBefore(wrapper, footer.nextSibling);
+        } else if (addToCart && addToCart.parentNode) {
+          addToCart.parentNode.insertBefore(wrapper, addToCart.nextSibling);
+        } else {
+          content.appendChild(wrapper);
+        }
+
+        return;
+      }
+
+      const imageBox = root.querySelector('.s-product-card-image');
+
+      if (imageBox) {
+        imageBox.classList.add('veloura-quick-view-image-host');
+        imageBox.appendChild(button);
+      } else {
+        root.appendChild(button);
+      }
     }
-
-    return;
-  }
-
-  /**
-   * أيقونة بجانب المفضلة
-   */
-  const imageBox = root.querySelector('.s-product-card-image');
-
-  if (imageBox) {
-    imageBox.classList.add('veloura-quick-view-image-host');
-    imageBox.appendChild(button);
-  } else {
-    root.appendChild(button);
-  }
-}
 
     function scanCards() {
       document

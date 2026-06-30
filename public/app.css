@@ -34251,12 +34251,13 @@ body.veloura-quick-view-enabled .veloura-quick-view-btn span {
 }
 /* ================================
    Option 1: Icon beside wishlist
-   أيقونة بجانب المفضلة
 ================================ */
-body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-image-host {
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-image-host,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-image-host {
   position: relative !important;
 }
-body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only {
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
   position: absolute !important;
   top: 18px !important;
   left: 72px !important;
@@ -34274,20 +34275,39 @@ body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-o
   background: rgba(255, 255, 255, 0.92) !important;
   color: #0f172a !important;
   border-color: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14) !important;
 }
-body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only {
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only:hover {
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only:hover,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only:hover {
   transform: translateY(-1px) scale(1.03) !important;
 }
 /* ================================
    Option 2: Button below Add to Cart
-   زر تحت أضف للسلة
 ================================ */
-body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn {
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-under-cart-wrap,
+body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-under-cart-wrap,
+body.veloura-quick-view-position-inside_card .veloura-quick-view-under-cart-wrap {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  flex-basis: 100% !important;
+  order: 99 !important;
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+  clear: both !important;
+}
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-under-cart-wrap .veloura-quick-view-btn,
+body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-under-cart-wrap .veloura-quick-view-btn,
+body.veloura-quick-view-position-inside_card .veloura-quick-view-under-cart-wrap .veloura-quick-view-btn,
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn.is-under-cart,
+body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-btn.is-under-cart,
+body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-under-cart {
   position: static !important;
   top: auto !important;
   right: auto !important;
@@ -34301,69 +34321,59 @@ body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn {
   min-height: 42px !important;
   min-height: var(--veloura-quick-view-button-height, 42px) !important;
   padding: 0 14px !important;
-  margin: 12px auto 0 !important;
+  margin: 0 auto !important;
   display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   flex: 0 0 calc(100% - 24px) !important;
   flex-basis: calc(100% - 24px) !important;
-  clear: both !important;
   border-radius: 999px !important;
   border-radius: var(--veloura-quick-view-button-radius, 999px) !important;
   background: #004d65 !important;
   background: var(--veloura-quick-view-button-bg, #004d65) !important;
   color: #ffffff !important;
   color: var(--veloura-quick-view-button-text, #ffffff) !important;
+  border-color: #004d65 !important;
+  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
-body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn:hover {
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn.is-under-cart:hover,
+body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-btn.is-under-cart:hover,
+body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-under-cart:hover {
   transform: translateY(-1px) !important;
 }
-body.veloura-quick-view-position-below_add_to_cart .s-product-card-content,
-body.veloura-quick-view-position-below_add_to_cart .s-product-card-content-footer {
-  flex-wrap: wrap !important;
-}
-body.veloura-quick-view-position-below_add_to_cart salla-add-product-button + .veloura-quick-view-btn,
-body.veloura-quick-view-position-below_add_to_cart .s-product-card-content-footer + .veloura-quick-view-btn {
-  display: flex !important;
-  width: calc(100% - 24px) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+/* لو صار الزر يتولد كأيقونة بالغلط في وضع تحت السلة */
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-icon-only {
+  display: none !important;
 }
 /* ================================
    Button Styles from Settings
-   لا تطبق على أيقونة المفضلة
 ================================ */
-body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only) {
+body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
   background: rgba(255, 255, 255, 0.72) !important;
   color: #111827 !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
 }
-body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only) {
+body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-body.veloura-quick-view-style-outline .veloura-quick-view-btn:not(.is-icon-only) {
+body.veloura-quick-view-style-outline .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
   background: transparent !important;
   color: #004d65 !important;
   color: var(--veloura-quick-view-button-bg, #004d65) !important;
   border-color: #004d65 !important;
   border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
 }
-body.veloura-quick-view-style-soft .veloura-quick-view-btn:not(.is-icon-only) {
+body.veloura-quick-view-style-soft .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
   background: rgba(0, 77, 101, 0.12) !important;
   color: #004d65 !important;
   color: var(--veloura-quick-view-button-bg, #004d65) !important;
   border-color: transparent !important;
-}
-/* زر تحت السلة لازم يأخذ ألوان الإعدادات حتى لو الشكل Glass */
-body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn {
-  background: #004d65 !important;
-  background: var(--veloura-quick-view-button-bg, #004d65) !important;
-  color: #ffffff !important;
-  color: var(--veloura-quick-view-button-text, #ffffff) !important;
-  border-color: #004d65 !important;
-  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
 }
 /* ================================
    Modal
@@ -34503,7 +34513,8 @@ body.veloura-quick-view-animation-slide_up .veloura-quick-view-modal__dialog {
   .veloura-quick-view-modal__title {
     font-size: 19px;
   }
-  body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only {
+  body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+  body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
     top: 14px !important;
     left: 64px !important;
     width: 42px !important;

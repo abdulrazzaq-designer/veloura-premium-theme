@@ -3280,7 +3280,7 @@
   "id": "veloura_quick_view_button_position_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "مكان زر العرض السريع2222",
+  "label": "مكان زر العرض السريع",
   "icon": "sicon-list",
   "source": "Manual",
   "required": true,
