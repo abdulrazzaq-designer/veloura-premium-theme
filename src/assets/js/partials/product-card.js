@@ -342,7 +342,7 @@ customElements.define('custom-salla-product-card', ProductCard);
 
 
 
-/* Veloura Quick View - Stable Version */
+/* Veloura Quick View - Stable Direct Replace */
 
 (function () {
   'use strict';
@@ -362,7 +362,60 @@ customElements.define('custom-salla-product-card', ProductCard);
       return;
     }
 
+    function cleanText(value) {
+      return (value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function normalizeSettingValue(value, fallback) {
+      if (Array.isArray(value) && value[0]) {
+        return value[0].value || value[0].selected || fallback;
+      }
+
+      if (value && typeof value === 'object') {
+        if (Array.isArray(value.selected) && value.selected[0]) {
+          return value.selected[0].value || fallback;
+        }
+
+        return value.value || value.selected || fallback;
+      }
+
+      return value || fallback;
+    }
+
+    function toBool(value, fallback) {
+      if (value === true || value === 'true' || value === 1 || value === '1' || value === 'on') {
+        return true;
+      }
+
+      if (value === false || value === 'false' || value === 0 || value === '0' || value === 'off') {
+        return false;
+      }
+
+      return fallback;
+    }
+
+    function replaceBodyClass(prefix, value) {
+      Array.from(document.body.classList).forEach(function (className) {
+        if (className.indexOf(prefix) === 0) {
+          document.body.classList.remove(className);
+        }
+      });
+
+      document.body.classList.add(prefix + value);
+    }
+
     function getQuickViewPosition() {
+      const raw = String(normalizeSettingValue(config.buttonPosition, 'wishlist_icon'));
+
+      if (
+        raw === 'below_add_to_cart' ||
+        raw === 'below-add-to-cart' ||
+        raw === 'inside_card' ||
+        raw === 'inside-card'
+      ) {
+        return 'below_add_to_cart';
+      }
+
       if (
         document.body.classList.contains('veloura-quick-view-position-below_add_to_cart') ||
         document.body.classList.contains('veloura-quick-view-position-below-add-to-cart') ||
@@ -371,36 +424,115 @@ customElements.define('custom-salla-product-card', ProductCard);
         return 'below_add_to_cart';
       }
 
-      if (
-        document.body.classList.contains('veloura-quick-view-position-wishlist_icon') ||
-        document.body.classList.contains('veloura-quick-view-position-wishlist-icon')
-      ) {
-        return 'wishlist_icon';
-      }
-
-      const raw = String(config.buttonPosition || 'wishlist_icon');
-
-      if (
-        raw === 'below_add_to_cart' ||
-        raw === 'below-add-to-cart' ||
-        raw === 'inside_card'
-      ) {
-        return 'below_add_to_cart';
-      }
-
       return 'wishlist_icon';
     }
 
-    const position = getQuickViewPosition();
+    function getQuickViewStyle() {
+      const bodyClass = Array.from(document.body.classList).find(function (className) {
+        return className.indexOf('veloura-quick-view-style-') === 0;
+      });
 
-    function cleanText(value) {
-      return (value || '').replace(/\s+/g, ' ').trim();
+      if (bodyClass) {
+        return bodyClass.replace('veloura-quick-view-style-', '');
+      }
+
+      const raw = String(normalizeSettingValue(config.buttonStyle, 'glass'));
+
+      if (['glass', 'solid', 'outline', 'soft'].indexOf(raw) !== -1) {
+        return raw;
+      }
+
+      return 'glass';
     }
+
+    const position = getQuickViewPosition();
+    const buttonStyle = getQuickViewStyle();
+
+    replaceBodyClass('veloura-quick-view-position-', position);
+    replaceBodyClass('veloura-quick-view-style-', buttonStyle);
 
     function stripHtml(value) {
       const div = document.createElement('div');
       div.innerHTML = value || '';
       return cleanText(div.textContent || div.innerText || '');
+    }
+
+    function formatMoneyValue(value) {
+      if (value === 0 || value === '0') {
+        return '0';
+      }
+
+      if (!value) {
+        return '';
+      }
+
+      if (typeof value === 'string' || typeof value === 'number') {
+        return cleanText(String(value));
+      }
+
+      if (typeof value === 'object') {
+        return cleanText(
+          value.formatted ||
+            value.format ||
+            value.text ||
+            value.display ||
+            value.amount_with_currency ||
+            value.price_format ||
+            value.price ||
+            value.sale_price ||
+            value.amount ||
+            value.value ||
+            ''
+        );
+      }
+
+      return '';
+    }
+
+    function extractPriceFromText(text) {
+      const value = cleanText(text);
+
+      if (!value) {
+        return '';
+      }
+
+      const matches = value.match(
+        /(?:ر\.?س|SAR|﷼|ريال)?\s*[0-9٠-٩]+(?:[.,٬][0-9٠-٩]+)?\s*(?:ر\.?س|SAR|﷼|ريال)?/gi
+      );
+
+      if (matches && matches.length) {
+        return cleanText(matches.join(' '));
+      }
+
+      return '';
+    }
+
+    function getBestPriceText(root) {
+      const selectors = [
+        '.s-product-card-content-sub',
+        '.s-product-card-content-price',
+        '.s-product-card-price',
+        '.s-product-card-sale-price',
+        '.s-product-card-regular-price',
+        '[class*="price"]',
+        '[class*="Price"]',
+        'ins',
+        'del'
+      ];
+
+      for (const selector of selectors) {
+        const elements = root.querySelectorAll(selector);
+
+        for (const element of elements) {
+          const text = extractPriceFromText(element.innerText || element.textContent);
+
+          if (text) {
+            return text;
+          }
+        }
+      }
+
+      return '';
     }
 
     function getCardRoot(node) {
@@ -473,13 +605,6 @@ customElements.define('custom-salla-product-card', ProductCard);
         root.querySelector('.s-product-card-image img') ||
         root.querySelector('img');
 
-      const price =
-        root.querySelector('.s-product-card-sale-price') ||
-        root.querySelector('.s-product-card-price') ||
-        root.querySelector('.s-product-card-content-price') ||
-        root.querySelector('[class*="price"]') ||
-        root.querySelector('[class*="Price"]');
-
       const url = titleLink && titleLink.href ? titleLink.href : '#';
 
       return {
@@ -487,7 +612,7 @@ customElements.define('custom-salla-product-card', ProductCard);
         name: cleanText(titleLink && titleLink.textContent) || 'المنتج',
         url: url,
         image: image && (image.currentSrc || image.src) ? image.currentSrc || image.src : '',
-        price: cleanText(price && price.textContent) || '',
+        price: getBestPriceText(root),
         description: ''
       };
     }
@@ -509,11 +634,12 @@ customElements.define('custom-salla-product-card', ProductCard);
         '';
 
       const price =
-        product.price ||
-        product.sale_price ||
-        product.regular_price ||
-        product.formatted_price ||
-        product.price_format ||
+        formatMoneyValue(product.price) ||
+        formatMoneyValue(product.sale_price) ||
+        formatMoneyValue(product.regular_price) ||
+        formatMoneyValue(product.final_price) ||
+        formatMoneyValue(product.formatted_price) ||
+        formatMoneyValue(product.price_format) ||
         '';
 
       const url = product.url || product.html_url || product.link || '';
@@ -523,7 +649,7 @@ customElements.define('custom-salla-product-card', ProductCard);
         name: product.name || product.title || '',
         url: typeof url === 'string' ? url : '',
         image: typeof image === 'string' ? image : image && image.url ? image.url : '',
-        price: typeof price === 'string' ? price : price && price.amount ? price.amount : '',
+        price: price,
         description: stripHtml(
           product.description ||
             product.short_description ||
@@ -624,16 +750,24 @@ customElements.define('custom-salla-product-card', ProductCard);
           (metaImage && metaImage.getAttribute('content')) ||
           '';
 
-        const price =
-          jsonProduct &&
-          jsonProduct.offers &&
-          (jsonProduct.offers.price || jsonProduct.offers.lowPrice);
+        let price = '';
+
+        if (jsonProduct && jsonProduct.offers) {
+          const offers = Array.isArray(jsonProduct.offers)
+            ? jsonProduct.offers[0]
+            : jsonProduct.offers;
+
+          price =
+            formatMoneyValue(offers.price) ||
+            formatMoneyValue(offers.lowPrice) ||
+            formatMoneyValue(offers.highPrice);
+        }
 
         return {
           name: cleanText(title),
           url: url,
           image: image || '',
-          price: price ? cleanText(String(price)) : '',
+          price: price || '',
           description: cleanText(description)
         };
       } catch (error) {
@@ -709,7 +843,9 @@ customElements.define('custom-salla-product-card', ProductCard);
       loadingEl.style.display = loading ? '' : 'none';
 
       title.textContent = data.name || 'المنتج';
+
       price.textContent = data.price || '';
+      price.style.display = data.price ? '' : 'none';
 
       description.textContent = data.description || '';
       description.style.display = data.description ? '' : 'none';
@@ -783,11 +919,12 @@ customElements.define('custom-salla-product-card', ProductCard);
       button.className = 'veloura-quick-view-btn';
       button.setAttribute('aria-label', config.buttonText || 'عرض سريع');
 
-      const showIcon = config.showIcon !== false && config.showIcon !== 'false';
-      const iconClass = config.icon || 'sicon-eye';
+      const showIcon = toBool(config.showIcon, true);
+      const iconClass = String(normalizeSettingValue(config.icon, 'sicon-eye') || 'sicon-eye');
 
       if (position === 'below_add_to_cart') {
         button.classList.add('is-under-cart');
+
         button.innerHTML = `
           ${showIcon ? `<i class="${iconClass}" aria-hidden="true"></i>` : ''}
           <span>${config.buttonText || 'عرض سريع'}</span>
