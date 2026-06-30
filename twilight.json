@@ -3286,26 +3286,21 @@
   "required": true,
   "selected": [
     {
-      "label": "وسط صورة المنتج",
-      "value": "image_center",
-      "key": "veloura-quick-view-position-image-center-2026"
+      "label": "أيقونة بجانب زر المفضلة",
+      "value": "wishlist_icon",
+      "key": "veloura-quick-view-position-wishlist-icon-2026"
     }
   ],
   "options": [
     {
-      "label": "وسط صورة المنتج",
-      "value": "image_center",
-      "key": "veloura-quick-view-position-image-center-2026"
+      "label": "أيقونة بجانب زر المفضلة",
+      "value": "wishlist_icon",
+      "key": "veloura-quick-view-position-wishlist-icon-2026"
     },
     {
-      "label": "أسفل صورة المنتج",
-      "value": "image_bottom",
-      "key": "veloura-quick-view-position-image-bottom-2026"
-    },
-    {
-      "label": "داخل البطاقة",
-      "value": "inside_card",
-      "key": "veloura-quick-view-position-inside-card-2026"
+      "label": "زر تحت أضف للسلة",
+      "value": "below_add_to_cart",
+      "key": "veloura-quick-view-position-below-add-to-cart-2026"
     }
   ],
   "conditions": [

@@ -383,7 +383,7 @@
   {% set vqv_button_text = vqv_button_text.value %}
 {% endif %}
 
-{% set vqv_button_position_raw = theme.settings.get('veloura_quick_view_button_position_2026', 'image_center') %}
+{% set vqv_button_position_raw = theme.settings.get('veloura_quick_view_button_position_2026', 'wishlist_icon') %}
 {% if vqv_button_position_raw is iterable and vqv_button_position_raw[0].value is defined %}
   {% set vqv_button_position = vqv_button_position_raw[0].value %}
 {% elseif vqv_button_position_raw.value is defined %}
