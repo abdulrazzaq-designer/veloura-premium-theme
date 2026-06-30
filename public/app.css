@@ -34215,6 +34215,14 @@ body.veloura-quick-view-enabled .veloura-quick-view-image-host {
   position: relative !important;
 }
 body.veloura-quick-view-enabled .veloura-quick-view-btn {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+}
+body.veloura-quick-view-enabled .veloura-quick-view-btn {
   border: 1px solid transparent;
   border-radius: 999px;
   border-radius: var(--veloura-quick-view-button-radius, 999px);
@@ -34241,50 +34249,55 @@ body.veloura-quick-view-enabled .veloura-quick-view-btn i,
 body.veloura-quick-view-enabled .veloura-quick-view-btn span {
   pointer-events: none;
 }
-body.veloura-quick-view-enabled .veloura-quick-view-btn:hover {
-  transform: translateY(-1px);
-}
 /* ================================
    Option 1: Icon beside wishlist
    أيقونة بجانب المفضلة
 ================================ */
-body.veloura-quick-view-enabled .veloura-quick-view-btn.is-icon-only {
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-image-host {
+  position: relative !important;
+}
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only {
   position: absolute !important;
   top: 18px !important;
   left: 72px !important;
   right: auto !important;
+  bottom: auto !important;
   width: 46px !important;
   height: 46px !important;
   min-width: 46px !important;
   min-height: 46px !important;
+  max-width: 46px !important;
   padding: 0 !important;
+  margin: 0 !important;
   border-radius: 999px !important;
   font-size: 18px !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #0f172a !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
 }
-body.veloura-quick-view-enabled .veloura-quick-view-btn.is-icon-only {
-  background: rgba(255, 255, 255, 0.92);
-  color: #0f172a;
-  border-color: rgba(255, 255, 255, 0.65);
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-body.veloura-quick-view-enabled .veloura-quick-view-btn.is-icon-only:hover {
-  transform: translateY(-1px) scale(1.03);
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only:hover {
+  transform: translateY(-1px) scale(1.03) !important;
 }
-/* إذا كانت المفضلة عندك يمين بدل يسار، فعّل هذا بدل left فوق */
-/*
-body.veloura-quick-view-enabled .veloura-quick-view-btn.is-icon-only {
-  right: 72px !important;
-  left: auto !important;
-}
-*/
 /* ================================
    Option 2: Button below Add to Cart
    زر تحت أضف للسلة
 ================================ */
-body.veloura-quick-view-enabled .veloura-quick-view-btn.is-under-cart {
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
   width: calc(100% - 24px) !important;
+  max-width: calc(100% - 24px) !important;
+  min-width: 0 !important;
+  height: auto !important;
   min-height: 42px !important;
   min-height: var(--veloura-quick-view-button-height, 42px) !important;
   padding: 0 14px !important;
@@ -34293,15 +34306,25 @@ body.veloura-quick-view-enabled .veloura-quick-view-btn.is-under-cart {
   flex: 0 0 calc(100% - 24px) !important;
   flex-basis: calc(100% - 24px) !important;
   clear: both !important;
+  border-radius: 999px !important;
+  border-radius: var(--veloura-quick-view-button-radius, 999px) !important;
+  background: #004d65 !important;
+  background: var(--veloura-quick-view-button-bg, #004d65) !important;
+  color: #ffffff !important;
+  color: var(--veloura-quick-view-button-text, #ffffff) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
-/* يجبر منطقة الأزرار أن تسمح بنزول زر العرض السريع تحت زر السلة */
-body.veloura-quick-view-enabled .s-product-card-content-footer:has(.veloura-quick-view-btn.is-under-cart),
-body.veloura-quick-view-enabled .s-product-card-content:has(.veloura-quick-view-btn.is-under-cart) {
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn:hover {
+  transform: translateY(-1px) !important;
+}
+body.veloura-quick-view-position-below_add_to_cart .s-product-card-content,
+body.veloura-quick-view-position-below_add_to_cart .s-product-card-content-footer {
   flex-wrap: wrap !important;
 }
-/* لو انحقن الزر بعد زر السلة داخل نفس الحاوية */
-body.veloura-quick-view-enabled salla-add-product-button + .veloura-quick-view-btn.is-under-cart,
-body.veloura-quick-view-enabled .s-product-card-content-footer + .veloura-quick-view-btn.is-under-cart {
+body.veloura-quick-view-position-below_add_to_cart salla-add-product-button + .veloura-quick-view-btn,
+body.veloura-quick-view-position-below_add_to_cart .s-product-card-content-footer + .veloura-quick-view-btn {
   display: flex !important;
   width: calc(100% - 24px) !important;
   margin-left: auto !important;
@@ -34309,26 +34332,38 @@ body.veloura-quick-view-enabled .s-product-card-content-footer + .veloura-quick-
 }
 /* ================================
    Button Styles from Settings
+   لا تطبق على أيقونة المفضلة
 ================================ */
 body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only) {
-  background: rgba(255, 255, 255, 0.72);
-  color: #111827;
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only) {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 body.veloura-quick-view-style-outline .veloura-quick-view-btn:not(.is-icon-only) {
-  background: transparent;
-  color: #004d65;
-  color: var(--veloura-quick-view-button-bg, #004d65);
-  border-color: #004d65;
-  border-color: var(--veloura-quick-view-button-bg, #004d65);
+  background: transparent !important;
+  color: #004d65 !important;
+  color: var(--veloura-quick-view-button-bg, #004d65) !important;
+  border-color: #004d65 !important;
+  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
 }
 body.veloura-quick-view-style-soft .veloura-quick-view-btn:not(.is-icon-only) {
-  background: rgba(0, 77, 101, 0.12);
-  color: #004d65;
-  color: var(--veloura-quick-view-button-bg, #004d65);
-  border-color: transparent;
+  background: rgba(0, 77, 101, 0.12) !important;
+  color: #004d65 !important;
+  color: var(--veloura-quick-view-button-bg, #004d65) !important;
+  border-color: transparent !important;
+}
+/* زر تحت السلة لازم يأخذ ألوان الإعدادات حتى لو الشكل Glass */
+body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn {
+  background: #004d65 !important;
+  background: var(--veloura-quick-view-button-bg, #004d65) !important;
+  color: #ffffff !important;
+  color: var(--veloura-quick-view-button-text, #ffffff) !important;
+  border-color: #004d65 !important;
+  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
 }
 /* ================================
    Modal
@@ -34468,13 +34503,14 @@ body.veloura-quick-view-animation-slide_up .veloura-quick-view-modal__dialog {
   .veloura-quick-view-modal__title {
     font-size: 19px;
   }
-  body.veloura-quick-view-enabled .veloura-quick-view-btn.is-icon-only {
+  body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only {
     top: 14px !important;
     left: 64px !important;
     width: 42px !important;
     height: 42px !important;
     min-width: 42px !important;
     min-height: 42px !important;
+    max-width: 42px !important;
   }
 }
 @keyframes velouraQuickViewZoom {

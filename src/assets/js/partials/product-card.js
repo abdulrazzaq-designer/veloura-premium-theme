@@ -367,7 +367,11 @@ customElements.define('custom-salla-product-card', ProductCard);
       return;
     }
 
-    const position = config.buttonPosition || 'wishlist_icon';
+    const position = document.body.classList.contains('veloura-quick-view-position-below_add_to_cart')
+  ? 'below_add_to_cart'
+  : document.body.classList.contains('veloura-quick-view-position-wishlist_icon')
+    ? 'wishlist_icon'
+    : config.buttonPosition || 'wishlist_icon';
 
     function cleanText(value) {
       return (value || '').replace(/\s+/g, ' ').trim();
@@ -760,35 +764,35 @@ const details =
     }
 
     function createButton(card) {
-      const button = document.createElement('button');
+  const button = document.createElement('button');
 
-      button.type = 'button';
-      button.className = 'veloura-quick-view-btn';
-      button.setAttribute('aria-label', config.buttonText || 'عرض سريع');
+  button.type = 'button';
+  button.className = 'veloura-quick-view-btn';
+  button.setAttribute('aria-label', config.buttonText || 'عرض سريع');
 
-      const showIcon = config.showIcon !== false && config.showIcon !== 'false';
-      const iconClass = config.icon || 'sicon-eye';
+  const showIcon = config.showIcon !== false && config.showIcon !== 'false';
+  const iconClass = config.icon || 'sicon-eye';
 
-      if (position === 'wishlist_icon') {
-        button.classList.add('is-icon-only');
-        button.innerHTML = `<i class="${iconClass}" aria-hidden="true"></i>`;
-      } else {
-        button.classList.add('is-under-cart');
-        button.innerHTML = `
-          ${showIcon ? `<i class="${iconClass}" aria-hidden="true"></i>` : ''}
-          <span>${config.buttonText || 'عرض سريع'}</span>
-        `;
-      }
+  if (position === 'below_add_to_cart') {
+    button.classList.add('is-under-cart');
+    button.innerHTML = `
+      ${showIcon ? `<i class="${iconClass}" aria-hidden="true"></i>` : ''}
+      <span>${config.buttonText || 'عرض سريع'}</span>
+    `;
+  } else {
+    button.classList.add('is-icon-only');
+    button.innerHTML = `<i class="${iconClass}" aria-hidden="true"></i>`;
+  }
 
-      button.addEventListener('click', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
+  button.addEventListener('click', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-        openModal(getProductData(card));
-      });
+    openModal(getProductData(card));
+  });
 
-      return button;
-    }
+  return button;
+}
 
     function findWishlistArea(root) {
       return (
@@ -810,32 +814,20 @@ const details =
   }
 
   const button = createButton(root);
-  const imageBox = root.querySelector('.s-product-card-image');
-
-  if (imageBox) {
-    imageBox.classList.add('veloura-quick-view-image-host');
-  }
 
   /**
-   * الخيار الثاني:
    * زر تحت أضف للسلة
    */
   if (position === 'below_add_to_cart') {
-    button.classList.remove('is-icon-only');
-    button.classList.add('is-under-cart');
-
     const footer = root.querySelector('.s-product-card-content-footer');
     const addToCart = root.querySelector('salla-add-product-button');
+    const content = root.querySelector('.s-product-card-content') || root;
 
-    const target =
-      footer ||
-      (addToCart ? addToCart.closest('.s-product-card-content-footer') : null) ||
-      addToCart;
-
-    if (target && target.parentNode) {
-      target.parentNode.insertBefore(button, target.nextSibling);
+    if (footer && footer.parentNode) {
+      footer.parentNode.insertBefore(button, footer.nextSibling);
+    } else if (addToCart && addToCart.parentNode) {
+      addToCart.parentNode.insertBefore(button, addToCart.nextSibling);
     } else {
-      const content = root.querySelector('.s-product-card-content') || root;
       content.appendChild(button);
     }
 
@@ -843,12 +835,12 @@ const details =
   }
 
   /**
-   * الخيار الأول:
-   * أيقونة فقط بجانب زر المفضلة
+   * أيقونة بجانب المفضلة
    */
-  button.classList.add('is-icon-only');
+  const imageBox = root.querySelector('.s-product-card-image');
 
   if (imageBox) {
+    imageBox.classList.add('veloura-quick-view-image-host');
     imageBox.appendChild(button);
   } else {
     root.appendChild(button);
