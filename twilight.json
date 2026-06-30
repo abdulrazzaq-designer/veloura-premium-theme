@@ -3215,6 +3215,606 @@
 },
 {
   "type": "static",
+  "id": "veloura_product_card_line_quick_view_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_card_subtitle_quick_view_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899;box-shadow:inset 0 0 0 1px rgba(236,72,153,.08)\">العرض السريع داخل بطاقة المنتج</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل زر العرض السريع في بطاقة المنتج",
+  "description": "عند التفعيل يظهر زر العرض السريع فوق صورة المنتج أو داخل بطاقة المنتج حسب الإعدادات",
+  "id": "veloura_quick_view_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_text_2026",
+  "type": "string",
+  "format": "text",
+  "label": "نص زر العرض السريع",
+  "value": "عرض سريع",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_position_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "مكان زر العرض السريع",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "وسط صورة المنتج",
+      "value": "image_center",
+      "key": "veloura-quick-view-position-image-center-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "وسط صورة المنتج",
+      "value": "image_center",
+      "key": "veloura-quick-view-position-image-center-2026"
+    },
+    {
+      "label": "أسفل صورة المنتج",
+      "value": "image_bottom",
+      "key": "veloura-quick-view-position-image-bottom-2026"
+    },
+    {
+      "label": "داخل البطاقة",
+      "value": "inside_card",
+      "key": "veloura-quick-view-position-inside-card-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_style_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "شكل زر العرض السريع",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "زجاجي",
+      "value": "glass",
+      "key": "veloura-quick-view-button-style-glass-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "زجاجي",
+      "value": "glass",
+      "key": "veloura-quick-view-button-style-glass-2026"
+    },
+    {
+      "label": "ممتلئ",
+      "value": "solid",
+      "key": "veloura-quick-view-button-style-solid-2026"
+    },
+    {
+      "label": "حد فقط",
+      "value": "outline",
+      "key": "veloura-quick-view-button-style-outline-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "soft",
+      "key": "veloura-quick-view-button-style-soft-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية زر العرض السريع",
+  "value": "#004d65",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_text_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون نص زر العرض السريع",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف زر العرض السريع",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "دائري",
+      "value": "round",
+      "key": "veloura-quick-view-button-radius-round-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "veloura-quick-view-button-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلًا",
+      "value": "soft",
+      "key": "veloura-quick-view-button-radius-soft-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-quick-view-button-radius-medium-2026"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large",
+      "key": "veloura-quick-view-button-radius-large-2026"
+    },
+    {
+      "label": "دائري",
+      "value": "round",
+      "key": "veloura-quick-view-button-radius-round-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_button_height_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "ارتفاع زر العرض السريع",
+  "description": "القيمة الفعلية = 32 + قيمة السلايدر",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "8",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "30",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار أيقونة داخل زر العرض السريع",
+  "description": "عند التفعيل تظهر أيقونة بجانب نص الزر",
+  "id": "veloura_quick_view_show_icon_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_icon_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "أيقونة زر العرض السريع",
+  "icon": "sicon-star",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "عين",
+      "value": "sicon-eye",
+      "key": "veloura-quick-view-icon-eye-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "عين",
+      "value": "sicon-eye",
+      "key": "veloura-quick-view-icon-eye-2026"
+    },
+    {
+      "label": "بحث",
+      "value": "sicon-search",
+      "key": "veloura-quick-view-icon-search-2026"
+    },
+    {
+      "label": "تكبير",
+      "value": "sicon-zoom-in",
+      "key": "veloura-quick-view-icon-zoom-in-2026"
+    },
+    {
+      "label": "برق",
+      "value": "sicon-flash",
+      "key": "veloura-quick-view-icon-flash-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_show_icon_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_card_subtitle_quick_view_modal_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f5f3ff;color:#5b21b6;text-align:right;font-weight:800;border-right:4px solid #8b5cf6;box-shadow:inset 0 0 0 1px rgba(139,92,246,.08)\">نافذة العرض السريع</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_modal_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية نافذة العرض السريع",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_modal_text_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون نص نافذة العرض السريع",
+  "value": "#111827",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_modal_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف نافذة العرض السريع",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "ناعم جدًا",
+      "value": "large",
+      "key": "veloura-quick-view-modal-radius-large-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "veloura-quick-view-modal-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلًا",
+      "value": "soft",
+      "key": "veloura-quick-view-modal-radius-soft-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-quick-view-modal-radius-medium-2026"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large",
+      "key": "veloura-quick-view-modal-radius-large-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_animation_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حركة ظهور نافذة العرض السريع",
+  "icon": "sicon-magic",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "تكبير ناعم",
+      "value": "zoom",
+      "key": "veloura-quick-view-animation-zoom-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "تلاشي",
+      "value": "fade",
+      "key": "veloura-quick-view-animation-fade-2026"
+    },
+    {
+      "label": "تكبير ناعم",
+      "value": "zoom",
+      "key": "veloura-quick-view-animation-zoom-2026"
+    },
+    {
+      "label": "صعود من الأسفل",
+      "value": "slide_up",
+      "key": "veloura-quick-view-animation-slide-up-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل تغبيش خلفية العرض السريع",
+  "description": "عند التفعيل يتم تغبيش خلفية الصفحة خلف نافذة العرض السريع",
+  "id": "veloura_quick_view_overlay_blur_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار الخصم داخل العرض السريع",
+  "description": "عند التفعيل يظهر السعر قبل التخفيض أو نسبة الخصم إذا كانت متوفرة",
+  "id": "veloura_quick_view_show_discount_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار زر عرض تفاصيل المنتج",
+  "description": "عند التفعيل يظهر زر ينقل العميل إلى صفحة المنتج الكاملة",
+  "id": "veloura_quick_view_show_product_link_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_quick_view_product_link_text_2026",
+  "type": "string",
+  "format": "text",
+  "label": "نص زر تفاصيل المنتج",
+  "value": "عرض تفاصيل المنتج",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_show_product_link_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
   "format": "title",
   "id": "veloura_product_card_subtitle_texts_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">النصوص والمسافات</div>",
