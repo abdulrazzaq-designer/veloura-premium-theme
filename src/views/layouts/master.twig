@@ -74,7 +74,6 @@
         window.enable_more_menu = "{{ theme.settings.get('enable_more_menu', true) }}"
         window.enable_add_product_toast = "{{ theme.settings.get('enable_add_product_toast', true) }}"
     </script>
-    
     {% hook 'head:start' %}
     {% hook head %}
     {% block styles %}{% endblock %}
@@ -359,6 +358,198 @@
       {% set vpc_button_text_color = vpc_button_text_color.value %}
     {% endif %}
 
+    {# ================================
+   Veloura Quick View Settings 2026
+   إعدادات العرض السريع داخل بطاقة المنتج
+================================ #}
+
+{% set vqv_enabled_raw = theme.settings.get('veloura_quick_view_enabled_2026', true) %}
+{% if vqv_enabled_raw.value is defined %}
+  {% set vqv_enabled_raw = vqv_enabled_raw.value %}
+{% elseif vqv_enabled_raw.selected is defined %}
+  {% set vqv_enabled_raw = vqv_enabled_raw.selected %}
+{% endif %}
+
+{% set vqv_enabled =
+  vqv_enabled_raw == true
+  or vqv_enabled_raw == 'true'
+  or vqv_enabled_raw == 1
+  or vqv_enabled_raw == '1'
+  or vqv_enabled_raw == 'on'
+%}
+
+{% set vqv_button_text = theme.settings.get('veloura_quick_view_button_text_2026', 'عرض سريع') %}
+{% if vqv_button_text.value is defined %}
+  {% set vqv_button_text = vqv_button_text.value %}
+{% endif %}
+
+{% set vqv_button_position_raw = theme.settings.get('veloura_quick_view_button_position_2026', 'image_center') %}
+{% if vqv_button_position_raw is iterable and vqv_button_position_raw[0].value is defined %}
+  {% set vqv_button_position = vqv_button_position_raw[0].value %}
+{% elseif vqv_button_position_raw.value is defined %}
+  {% set vqv_button_position = vqv_button_position_raw.value %}
+{% else %}
+  {% set vqv_button_position = vqv_button_position_raw %}
+{% endif %}
+
+{% set vqv_button_style_raw = theme.settings.get('veloura_quick_view_button_style_2026', 'glass') %}
+{% if vqv_button_style_raw is iterable and vqv_button_style_raw[0].value is defined %}
+  {% set vqv_button_style = vqv_button_style_raw[0].value %}
+{% elseif vqv_button_style_raw.value is defined %}
+  {% set vqv_button_style = vqv_button_style_raw.value %}
+{% else %}
+  {% set vqv_button_style = vqv_button_style_raw %}
+{% endif %}
+
+{% set vqv_button_radius_raw = theme.settings.get('veloura_quick_view_button_radius_2026', 'round') %}
+{% if vqv_button_radius_raw is iterable and vqv_button_radius_raw[0].value is defined %}
+  {% set vqv_button_radius_key = vqv_button_radius_raw[0].value %}
+{% elseif vqv_button_radius_raw.value is defined %}
+  {% set vqv_button_radius_key = vqv_button_radius_raw.value %}
+{% else %}
+  {% set vqv_button_radius_key = vqv_button_radius_raw %}
+{% endif %}
+
+{% set vqv_button_bg_color = theme.settings.get('veloura_quick_view_button_bg_color_2026', '#004d65') %}
+{% if vqv_button_bg_color.value is defined %}
+  {% set vqv_button_bg_color = vqv_button_bg_color.value %}
+{% endif %}
+
+{% set vqv_button_text_color = theme.settings.get('veloura_quick_view_button_text_color_2026', '#ffffff') %}
+{% if vqv_button_text_color.value is defined %}
+  {% set vqv_button_text_color = vqv_button_text_color.value %}
+{% endif %}
+
+{% set vqv_button_height_raw = theme.settings.get('veloura_quick_view_button_height_2026', '8') %}
+{% if vqv_button_height_raw.value is defined %}
+  {% set vqv_button_height_raw = vqv_button_height_raw.value %}
+{% endif %}
+{% set vqv_button_height_value = vqv_button_height_raw + 0 %}
+{% if vqv_button_height_value < 0 %}
+  {% set vqv_button_height_value = 0 %}
+{% endif %}
+{% if vqv_button_height_value > 30 %}
+  {% set vqv_button_height_value = 30 %}
+{% endif %}
+{% set vqv_button_height = 32 + vqv_button_height_value %}
+
+{% set vqv_show_icon_raw = theme.settings.get('veloura_quick_view_show_icon_2026', true) %}
+{% if vqv_show_icon_raw.value is defined %}
+  {% set vqv_show_icon_raw = vqv_show_icon_raw.value %}
+{% elseif vqv_show_icon_raw.selected is defined %}
+  {% set vqv_show_icon_raw = vqv_show_icon_raw.selected %}
+{% endif %}
+
+{% set vqv_show_icon =
+  vqv_show_icon_raw == true
+  or vqv_show_icon_raw == 'true'
+  or vqv_show_icon_raw == 1
+  or vqv_show_icon_raw == '1'
+  or vqv_show_icon_raw == 'on'
+%}
+
+{% set vqv_icon_raw = theme.settings.get('veloura_quick_view_icon_2026', 'sicon-eye') %}
+{% if vqv_icon_raw is iterable and vqv_icon_raw[0].value is defined %}
+  {% set vqv_icon = vqv_icon_raw[0].value %}
+{% elseif vqv_icon_raw.value is defined %}
+  {% set vqv_icon = vqv_icon_raw.value %}
+{% else %}
+  {% set vqv_icon = vqv_icon_raw %}
+{% endif %}
+
+{% set vqv_modal_bg_color = theme.settings.get('veloura_quick_view_modal_bg_color_2026', '#ffffff') %}
+{% if vqv_modal_bg_color.value is defined %}
+  {% set vqv_modal_bg_color = vqv_modal_bg_color.value %}
+{% endif %}
+
+{% set vqv_modal_text_color = theme.settings.get('veloura_quick_view_modal_text_color_2026', '#111827') %}
+{% if vqv_modal_text_color.value is defined %}
+  {% set vqv_modal_text_color = vqv_modal_text_color.value %}
+{% endif %}
+
+{% set vqv_modal_radius_raw = theme.settings.get('veloura_quick_view_modal_radius_2026', 'large') %}
+{% if vqv_modal_radius_raw is iterable and vqv_modal_radius_raw[0].value is defined %}
+  {% set vqv_modal_radius_key = vqv_modal_radius_raw[0].value %}
+{% elseif vqv_modal_radius_raw.value is defined %}
+  {% set vqv_modal_radius_key = vqv_modal_radius_raw.value %}
+{% else %}
+  {% set vqv_modal_radius_key = vqv_modal_radius_raw %}
+{% endif %}
+
+{% set vqv_animation_raw = theme.settings.get('veloura_quick_view_animation_2026', 'zoom') %}
+{% if vqv_animation_raw is iterable and vqv_animation_raw[0].value is defined %}
+  {% set vqv_animation = vqv_animation_raw[0].value %}
+{% elseif vqv_animation_raw.value is defined %}
+  {% set vqv_animation = vqv_animation_raw.value %}
+{% else %}
+  {% set vqv_animation = vqv_animation_raw %}
+{% endif %}
+
+{% set vqv_overlay_blur_raw = theme.settings.get('veloura_quick_view_overlay_blur_2026', true) %}
+{% if vqv_overlay_blur_raw.value is defined %}
+  {% set vqv_overlay_blur_raw = vqv_overlay_blur_raw.value %}
+{% elseif vqv_overlay_blur_raw.selected is defined %}
+  {% set vqv_overlay_blur_raw = vqv_overlay_blur_raw.selected %}
+{% endif %}
+
+{% set vqv_overlay_blur =
+  vqv_overlay_blur_raw == true
+  or vqv_overlay_blur_raw == 'true'
+  or vqv_overlay_blur_raw == 1
+  or vqv_overlay_blur_raw == '1'
+  or vqv_overlay_blur_raw == 'on'
+%}
+
+{% set vqv_show_discount_raw = theme.settings.get('veloura_quick_view_show_discount_2026', true) %}
+{% if vqv_show_discount_raw.value is defined %}
+  {% set vqv_show_discount_raw = vqv_show_discount_raw.value %}
+{% elseif vqv_show_discount_raw.selected is defined %}
+  {% set vqv_show_discount_raw = vqv_show_discount_raw.selected %}
+{% endif %}
+
+{% set vqv_show_discount =
+  vqv_show_discount_raw == true
+  or vqv_show_discount_raw == 'true'
+  or vqv_show_discount_raw == 1
+  or vqv_show_discount_raw == '1'
+  or vqv_show_discount_raw == 'on'
+%}
+
+{% set vqv_show_product_link_raw = theme.settings.get('veloura_quick_view_show_product_link_2026', true) %}
+{% if vqv_show_product_link_raw.value is defined %}
+  {% set vqv_show_product_link_raw = vqv_show_product_link_raw.value %}
+{% elseif vqv_show_product_link_raw.selected is defined %}
+  {% set vqv_show_product_link_raw = vqv_show_product_link_raw.selected %}
+{% endif %}
+
+{% set vqv_show_product_link =
+  vqv_show_product_link_raw == true
+  or vqv_show_product_link_raw == 'true'
+  or vqv_show_product_link_raw == 1
+  or vqv_show_product_link_raw == '1'
+  or vqv_show_product_link_raw == 'on'
+%}
+
+{% set vqv_product_link_text = theme.settings.get('veloura_quick_view_product_link_text_2026', 'عرض تفاصيل المنتج') %}
+{% if vqv_product_link_text.value is defined %}
+  {% set vqv_product_link_text = vqv_product_link_text.value %}
+{% endif %}
+
+    <script data-cfasync="false">
+      window.velouraQuickView = {
+        enabled: {{ (vpc_enabled and vqv_enabled) ? 'true' : 'false' }},
+        buttonText: {{ vqv_button_text|json_encode|raw }},
+        buttonPosition: {{ vqv_button_position|json_encode|raw }},
+        buttonStyle: {{ vqv_button_style|json_encode|raw }},
+        showIcon: {{ vqv_show_icon ? 'true' : 'false' }},
+        icon: {{ vqv_icon|json_encode|raw }},
+        showDiscount: {{ vqv_show_discount ? 'true' : 'false' }},
+        showProductLink: {{ vqv_show_product_link ? 'true' : 'false' }},
+        productLinkText: {{ vqv_product_link_text|json_encode|raw }},
+        animation: {{ vqv_animation|json_encode|raw }}
+      };
+    </script>
+
     <style>
       :root {
         --font-main: '{{ theme.font.name }}';
@@ -406,6 +597,17 @@
           --veloura-product-button-height: {{ vpc_button_height }}px;
           --veloura-product-button-bg: {{ vpc_button_bg_color }};
           --veloura-product-button-text: {{ vpc_button_text_color }};
+
+          {% if vqv_enabled %}
+            --veloura-quick-view-button-bg: {{ vqv_button_bg_color }};
+            --veloura-quick-view-button-text: {{ vqv_button_text_color }};
+            --veloura-quick-view-button-radius: {{ vpc_radius_map[vqv_button_radius_key]|default('999px') }};
+            --veloura-quick-view-button-height: {{ vqv_button_height }}px;
+
+            --veloura-quick-view-modal-bg: {{ vqv_modal_bg_color }};
+            --veloura-quick-view-modal-text: {{ vqv_modal_text_color }};
+            --veloura-quick-view-modal-radius: {{ vpc_radius_map[vqv_modal_radius_key]|default('28px') }};
+          {% endif %}
         {% endif %}
       }
 
@@ -795,6 +997,11 @@
 
   veloura-general-enabled
   {{ vpc_enabled ? ' veloura-product-card-enabled' : '' }}
+  {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-enabled' : '' }}
+  {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-position-' ~ vqv_button_position : '' }}
+  {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-style-' ~ vqv_button_style : '' }}
+  {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-animation-' ~ vqv_animation : '' }}
+  {{ vpc_enabled and vqv_enabled and vqv_overlay_blur ? ' veloura-quick-view-overlay-blur' : '' }}
   {{ vpc_enabled and vpc_title_one_line ? ' veloura-product-title-one-line' : '' }}
   {{ vpc_enabled and (not vpc_title_one_line and vpc_title_two_lines) ? ' veloura-product-title-two-lines' : '' }}
   {{ vpc_enabled and vpc_image_outside ? ' veloura-product-card-image-outside' : '' }}
