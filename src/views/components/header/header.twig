@@ -215,10 +215,9 @@
 
 </header>
 
-
 {# ================================
    Veloura Categories Bottom Sheet
-   قائمة التصنيفات من الأسفل
+   ضع هذا بعد </header> مباشرة
 ================================ #}
 
 <div class="veloura-cats-sheet" id="veloura-cats-sheet" aria-hidden="true">
@@ -234,63 +233,36 @@
     </div>
 
     <div class="veloura-cats-sheet__body">
-      <custom-main-menu></custom-main-menu>
+      <div class="veloura-cats-sheet__list" data-veloura-cats-list>
+        <div class="veloura-cats-sheet__loading">جاري تحميل التصنيفات...</div>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
+  /* مهم جدًا: إخفاء كامل افتراضيًا حتى لا يظهر على اللابتوب */
+  .veloura-cats-sheet {
+    display: none !important;
+  }
+
+  @media (min-width: 768px) {
+    .veloura-cats-sheet {
+      display: none !important;
+    }
+  }
+
   @media (max-width: 767px) {
-    .veloura-cats-sheet__loading,
-.veloura-cats-sheet__empty {
-  padding: 24px 18px;
-  text-align: center;
-  color: rgba(15, 23, 42, 0.55);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.veloura-cats-sheet__link {
-  min-height: 54px;
-  padding: 0 18px;
-
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-
-  color: #111827 !important;
-  text-decoration: none !important;
-
-  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.veloura-cats-sheet__link i {
-  font-size: 16px;
-  opacity: 0.45;
-}
-
-/* عند فتح التصنيفات: نخفي كلمة وأيقونة التصنيفات من زر القائمة العائمة */
-body.veloura-cats-sheet-open
-  .veloura-mobile-floating-menu
-  [data-vmfm-action="categories"]
-  i,
-body.veloura-cats-sheet-open
-  .veloura-mobile-floating-menu
-  [data-vmfm-action="categories"]
-  span {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
     body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
       z-index: 999999 !important;
     }
 
     body.veloura-cats-sheet-open {
       overflow: hidden !important;
+    }
+
+    body.veloura-cats-sheet-open .veloura-cats-sheet {
+      display: block !important;
     }
 
     .veloura-cats-sheet {
@@ -408,25 +380,23 @@ body.veloura-cats-sheet-open
       padding: 4px 0 10px;
     }
 
-    .veloura-cats-sheet__body custom-main-menu {
-      display: block !important;
-      width: 100% !important;
+    .veloura-cats-sheet__loading,
+    .veloura-cats-sheet__empty {
+      padding: 24px 18px;
+      text-align: center;
+      color: rgba(15, 23, 42, 0.55);
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .veloura-cats-sheet__body ul,
-    .veloura-cats-sheet__body li {
-      list-style: none !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    .veloura-cats-sheet__body a {
+    .veloura-cats-sheet__link {
       min-height: 54px;
       padding: 0 18px;
 
       display: flex !important;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
 
       color: #111827 !important;
       text-decoration: none !important;
@@ -436,8 +406,26 @@ body.veloura-cats-sheet-open
       font-weight: 800;
     }
 
-    .veloura-cats-sheet__body a:hover {
+    .veloura-cats-sheet__link:hover {
       background: rgba(15, 23, 42, 0.04);
+    }
+
+    .veloura-cats-sheet__link i {
+      font-size: 16px;
+      opacity: 0.45;
+    }
+
+    /* عند فتح التصنيفات: إخفاء أيقونة وكلمة التصنيفات من الزر العائم */
+    body.veloura-cats-sheet-open
+      .veloura-mobile-floating-menu
+      [data-vmfm-action="categories"]
+      i,
+    body.veloura-cats-sheet-open
+      .veloura-mobile-floating-menu
+      [data-vmfm-action="categories"]
+      span {
+      opacity: 0 !important;
+      visibility: hidden !important;
     }
   }
 </style>
@@ -453,6 +441,15 @@ body.veloura-cats-sheet-open
 
     function cleanText(value) {
       return String(value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
 
     function isValidMenuLink(link) {
@@ -484,11 +481,14 @@ body.veloura-cats-sheet-open
 
     function getMenuLinks() {
       var selectors = [
-        '#mobile-menu .main-menu a',
+        '.veloura-menu-links-wrap a',
+        '.veloura-desktop-menu-drawer a',
+        'custom-main-menu a',
         '#mobile-menu a',
-        '.veloura-menu-links-wrap custom-main-menu a',
-        '.veloura-desktop-menu-drawer custom-main-menu a',
-        'custom-main-menu a'
+        '.main-menu a',
+        'a[href*="/categories"]',
+        'a[href*="/category"]',
+        'a[href*="/c/"]'
       ];
 
       var links = [];
@@ -524,14 +524,14 @@ body.veloura-cats-sheet-open
       var links = getMenuLinks();
 
       if (!links.length) {
-        list.innerHTML = '<div class="veloura-cats-sheet__empty">لم يتم العثور على تصنيفات بعد</div>';
+        list.innerHTML = '<div class="veloura-cats-sheet__loading">جاري تحميل التصنيفات...</div>';
         return false;
       }
 
       list.innerHTML = links.map(function (item) {
         return (
-          '<a class="veloura-cats-sheet__link" href="' + item.href + '">' +
-            '<span>' + item.text + '</span>' +
+          '<a class="veloura-cats-sheet__link" href="' + escapeHtml(item.href) + '">' +
+            '<span>' + escapeHtml(item.text) + '</span>' +
             '<i class="sicon-keyboard_arrow_left" aria-hidden="true"></i>' +
           '</a>'
         );
@@ -540,18 +540,20 @@ body.veloura-cats-sheet-open
       return true;
     }
 
-    function ensureCatsRendered() {
+    function keepTryingRender() {
       if (renderCatsSheet()) {
         return;
       }
 
-      setTimeout(renderCatsSheet, 200);
-      setTimeout(renderCatsSheet, 600);
+      setTimeout(renderCatsSheet, 300);
+      setTimeout(renderCatsSheet, 700);
       setTimeout(renderCatsSheet, 1200);
+      setTimeout(renderCatsSheet, 2000);
+      setTimeout(renderCatsSheet, 3500);
     }
 
     function openCatsSheet() {
-      ensureCatsRendered();
+      keepTryingRender();
       document.body.classList.add('veloura-cats-sheet-open');
       sheet.setAttribute('aria-hidden', 'false');
     }
@@ -564,7 +566,18 @@ body.veloura-cats-sheet-open
     window.velouraOpenCatsSheet = openCatsSheet;
     window.velouraOpenCategoriesBottomSheet = openCatsSheet;
 
-    ensureCatsRendered();
+    keepTryingRender();
+
+    var observer = new MutationObserver(function () {
+      if (!document.body.classList.contains('veloura-cats-sheet-open')) {
+        renderCatsSheet();
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
 
     document.addEventListener(
       'click',
