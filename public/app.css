@@ -34644,6 +34644,7 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
     pointer-events: none;
   }
   .veloura-mobile-floating-menu__inner {
+    overflow: visible !important;
     border-radius: 999px !important;
     border-radius: var(--veloura-mobile-floating-menu-radius, 999px) !important;
     background: #ffffff !important;
@@ -34653,7 +34654,6 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   }
   .veloura-mobile-floating-menu__inner {
     position: relative;
-    overflow: hidden;
     width: 100%;
     min-height: 56px;
     min-height: var(--veloura-mobile-floating-menu-height, 56px);
@@ -34820,35 +34820,110 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
 /* ================================
    iPhone Glass Style
 ================================ */
+/* ================================
+   iPhone Glass Style
+   يأخذ 10% من لون الخلفية المختار
+================================ */
 @media (max-width: 767px) {
   body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)) !important;
-    border: 1px solid rgba(255, 255, 255, 0.42) !important;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.72), inset 0 -1px 0 rgba(255, 255, 255, 0.18) !important;
+    background: linear-gradient(135deg, rgba(0, 77, 101, 0.1), rgba(0, 77, 101, 0.06)) !important;
+    border: 1px solid rgba(128, 166, 178, 0.36) !important;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(15, 23, 42, 0.05) !important;
   }
   body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
-    backdrop-filter: blur(22px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
   }
+
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #004d65) 10%, transparent), color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #004d65) 6%, transparent)) !important;
+    border: 1px solid color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #004d65) 18%, rgba(255, 255, 255, 0.22)) !important;
+  }
+}
   body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
     content: "";
     position: absolute;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-    left: 1px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 42%);
+    z-index: 0;
+    background: radial-gradient(circle at top left, rgba(0, 77, 101, 0.1), transparent 48%);
   }
+
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+    background: radial-gradient(circle at top left, color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #004d65) 10%, transparent), transparent 48%);
+  }
+}
   body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item {
-    color: #111827 !important;
-    color: var(--veloura-mobile-floating-menu-text, #111827) !important;
+    position: relative;
+    z-index: 2;
   }
   body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item.is-active {
     background: #004d65 !important;
     background: var(--veloura-mobile-floating-menu-active, #004d65) !important;
     color: #ffffff !important;
+  }
+}
+/* ================================
+   Veloura Mobile Menu Fix
+   Glass tint + active not clipped
+================================ */
+@media (max-width: 767px) {
+  .veloura-mobile-floating-menu {
+    overflow: visible !important;
+    padding-top: 22px !important;
+  }
+  .veloura-mobile-floating-menu__inner {
+    overflow: visible !important;
+  }
+  /* البلور ياخذ لمسة خفيفة جدًا من لون الخلفية المختار */
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.794), rgba(255, 255, 255, 0.466)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.579) !important;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.72), inset 0 -1px 0 rgba(255, 255, 255, 0.18) !important;
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+  }
+
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #ffffff) 14%, rgba(255, 255, 255, 0.76)), color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #ffffff) 8%, rgba(255, 255, 255, 0.42))) !important;
+    border: 1px solid color-mix(in srgb, var(--veloura-mobile-floating-menu-bg, #ffffff) 22%, rgba(255, 255, 255, 0.46)) !important;
+  }
+}
+  /* حتى اللمعة الداخلية ما تقص العنصر النشط */
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+    border-radius: inherit;
+    z-index: 0;
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item {
+    z-index: 2;
+  }
+  /* إصلاح قص العنصر النشط */
+  body.veloura-mobile-floating-menu-active-raised .veloura-mobile-floating-menu__item.is-active {
+    transform: translateY(-9px) scale(1.12) !important;
+    transform: translateY(-9px) scale(var(--veloura-mobile-floating-menu-active-scale, 1.12)) !important;
+    z-index: 5 !important;
+  }
+  body.veloura-mobile-floating-menu-active-raised .veloura-mobile-floating-menu__item.is-active::after {
+    bottom: -6px !important;
+  }
+  /* لو بدك النشط يكون أعلى شوي بدون قص */
+  body.veloura-mobile-floating-menu-active-raised .veloura-mobile-floating-menu__item.is-active i {
+    transform: translateY(-1px);
   }
 }
 body.mm-ocd-opened,
