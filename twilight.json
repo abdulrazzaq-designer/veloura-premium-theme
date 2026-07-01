@@ -4251,17 +4251,47 @@
 },
 {
   "id": "veloura_mobile_floating_menu_icon_size_2026",
-  "type": "number",
-  "format": "slider",
+  "type": "items",
+  "format": "dropdown-list",
   "label": "حجم الأيقونات",
-  "description": "القيمة الفعلية = 18 + قيمة السلايدر",
-  "inputType": "range",
+  "description": "اختر حجم أيقونات القائمة",
   "icon": "sicon-pin",
-  "value": "4",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "16",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "متوسط - 22px",
+      "value": "22",
+      "key": "vmfm-icon-size-22-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "صغير - 18px",
+      "value": "18",
+      "key": "vmfm-icon-size-18-2026"
+    },
+    {
+      "label": "عادي - 20px",
+      "value": "20",
+      "key": "vmfm-icon-size-20-2026"
+    },
+    {
+      "label": "متوسط - 22px",
+      "value": "22",
+      "key": "vmfm-icon-size-22-2026"
+    },
+    {
+      "label": "كبير - 24px",
+      "value": "24",
+      "key": "vmfm-icon-size-24-2026"
+    },
+    {
+      "label": "كبير جدًا - 28px",
+      "value": "28",
+      "key": "vmfm-icon-size-28-2026"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_mobile_floating_menu_enabled_2026",
@@ -4272,17 +4302,47 @@
 },
 {
   "id": "veloura_mobile_floating_menu_font_size_2026",
-  "type": "number",
-  "format": "slider",
+  "type": "items",
+  "format": "dropdown-list",
   "label": "حجم خط النصوص",
-  "description": "القيمة الفعلية = 10 + قيمة السلايدر",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "2",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "8",
+  "description": "اختر حجم النص أسفل الأيقونة",
+  "icon": "sicon-font",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "عادي - 12px",
+      "value": "12",
+      "key": "vmfm-font-size-12-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "صغير - 10px",
+      "value": "10",
+      "key": "vmfm-font-size-10-2026"
+    },
+    {
+      "label": "هادئ - 11px",
+      "value": "11",
+      "key": "vmfm-font-size-11-2026"
+    },
+    {
+      "label": "عادي - 12px",
+      "value": "12",
+      "key": "vmfm-font-size-12-2026"
+    },
+    {
+      "label": "واضح - 13px",
+      "value": "13",
+      "key": "vmfm-font-size-13-2026"
+    },
+    {
+      "label": "كبير - 14px",
+      "value": "14",
+      "key": "vmfm-font-size-14-2026"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_mobile_floating_menu_enabled_2026",
@@ -4297,41 +4357,46 @@
   ]
 },
 {
-  "id": "veloura_mobile_floating_menu_active_style_2026",
+  "id": "veloura_mobile_floating_menu_active_scale_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "شكل العنصر النشط",
-  "description": "اختر طريقة إبراز العنصر الحالي داخل القائمة",
+  "label": "تكبير العنصر النشط",
+  "description": "اختر مقدار تكبير العنصر النشط",
   "icon": "sicon-star",
   "source": "Manual",
   "required": true,
   "selected": [
     {
-      "label": "بارز ومكبر",
-      "value": "raised",
-      "key": "veloura-mobile-floating-menu-active-raised-2026"
+      "label": "متوسط",
+      "value": "1.12",
+      "key": "vmfm-active-scale-112-2026"
     }
   ],
   "options": [
     {
-      "label": "بارز ومكبر",
-      "value": "raised",
-      "key": "veloura-mobile-floating-menu-active-raised-2026"
+      "label": "بدون تكبير",
+      "value": "1",
+      "key": "vmfm-active-scale-100-2026"
     },
     {
-      "label": "فقاعة مضيئة",
-      "value": "bubble",
-      "key": "veloura-mobile-floating-menu-active-bubble-2026"
+      "label": "خفيف",
+      "value": "1.08",
+      "key": "vmfm-active-scale-108-2026"
     },
     {
-      "label": "نقطة علوية",
-      "value": "dot",
-      "key": "veloura-mobile-floating-menu-active-dot-2026"
+      "label": "متوسط",
+      "value": "1.12",
+      "key": "vmfm-active-scale-112-2026"
     },
     {
-      "label": "بدون تمييز",
-      "value": "none",
-      "key": "veloura-mobile-floating-menu-active-none-2026"
+      "label": "كبير",
+      "value": "1.18",
+      "key": "vmfm-active-scale-118-2026"
+    },
+    {
+      "label": "كبير جدًا",
+      "value": "1.24",
+      "key": "vmfm-active-scale-124-2026"
     }
   ],
   "conditions": [
@@ -4339,32 +4404,6 @@
       "id": "veloura_mobile_floating_menu_enabled_2026",
       "operation": "=",
       "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_mobile_floating_menu_active_scale_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "تكبير العنصر النشط",
-  "description": "القيمة الفعلية = 1 + قيمة السلايدر / 100",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "12",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "24",
-  "conditions": [
-    {
-      "id": "veloura_mobile_floating_menu_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_mobile_floating_menu_active_style_2026",
-      "operation": "!=",
-      "value": "none"
     }
   ]
 },
@@ -4595,7 +4634,7 @@
   "type": "collection",
   "format": "collection",
   "label": "العناصر المخصصة",
-  "description": "أضف أزرارًا جديدة للقائمة مثل واتساب، العروض، المدونة، صفحة مخصصة",
+  "description": "أضف أزرارًا جديدة للقائمة مثل واتساب، العروض، صفحة مخصصة",
   "icon": "sicon-list-add",
   "required": false,
   "minLength": 0,
@@ -4620,13 +4659,72 @@
     },
     {
       "id": "icon",
-      "type": "string",
-      "format": "text",
-      "label": "كلاس الأيقونة",
-      "description": "مثال: sicon-tag أو sicon-whatsapp2",
-      "placeholder": "sicon-tag",
-      "value": "sicon-tag",
-      "required": true
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "أيقونة العنصر",
+      "description": "اختر أيقونة العنصر داخل القائمة",
+      "icon": "sicon-star",
+      "source": "Manual",
+      "required": true,
+      "selected": [
+        {
+          "label": "سلة",
+          "value": "sicon-shopping-bag",
+          "key": "vmfm-custom-icon-cart-2026"
+        }
+      ],
+      "options": [
+        {
+          "label": "سلة",
+          "value": "sicon-shopping-bag",
+          "key": "vmfm-custom-icon-cart-2026"
+        },
+        {
+          "label": "رئيسية",
+          "value": "sicon-home",
+          "key": "vmfm-custom-icon-home-2026"
+        },
+        {
+          "label": "تصنيفات",
+          "value": "sicon-grid",
+          "key": "vmfm-custom-icon-grid-2026"
+        },
+        {
+          "label": "بحث",
+          "value": "sicon-search",
+          "key": "vmfm-custom-icon-search-2026"
+        },
+        {
+          "label": "حساب",
+          "value": "sicon-user",
+          "key": "vmfm-custom-icon-user-2026"
+        },
+        {
+          "label": "عروض",
+          "value": "sicon-discount-calculator",
+          "key": "vmfm-custom-icon-offer-2026"
+        },
+        {
+          "label": "هدية",
+          "value": "sicon-gift",
+          "key": "vmfm-custom-icon-gift-2026"
+        },
+        {
+          "label": "واتساب",
+          "value": "sicon-whatsapp2",
+          "key": "vmfm-custom-icon-whatsapp-2026"
+        },
+        {
+          "label": "هاتف",
+          "value": "sicon-phone",
+          "key": "vmfm-custom-icon-phone-2026"
+        },
+        {
+          "label": "رابط",
+          "value": "sicon-link",
+          "key": "vmfm-custom-icon-link-2026"
+        }
+      ]
     },
     {
       "id": "url",
@@ -4634,16 +4732,8 @@
       "format": "url",
       "inputType": "url",
       "label": "رابط العنصر",
+      "description": "اختياري، اتركه فارغًا إذا كان العنصر بدون رابط",
       "placeholder": "https://example.com",
-      "required": true
-    },
-    {
-      "id": "active_match",
-      "type": "string",
-      "format": "text",
-      "label": "تمييز العنصر عند وجود هذا النص في الرابط",
-      "description": "مثال: offers أو blog أو whatsapp. اتركه فارغًا إذا لا تريد تمييزه تلقائيًا",
-      "placeholder": "offers",
       "required": false
     },
     {
