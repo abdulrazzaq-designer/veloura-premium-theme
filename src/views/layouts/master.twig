@@ -1442,6 +1442,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var root = document.documentElement;
     var items = menu.querySelectorAll('.veloura-mobile-floating-menu__item');
     var syncTimers = [];
+    var transientAction = '';
+    var transientTimer = null;
 
     root.style.setProperty('--veloura-mobile-floating-menu-height', "{{ vmfm_height }}px");
     root.style.setProperty('--veloura-mobile-floating-menu-bottom', "{{ vmfm_bottom }}px");
@@ -1499,14 +1501,46 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     }
 
+    function isVisibleElement(el) {
+      if (!el) {
+        return false;
+      }
+
+      try {
+        var style = window.getComputedStyle(el);
+        var rect = el.getBoundingClientRect();
+
+        return (
+          style.display !== 'none' &&
+          style.visibility !== 'hidden' &&
+          style.opacity !== '0' &&
+          rect.width > 0 &&
+          rect.height > 0
+        );
+      } catch (error) {
+        return false;
+      }
+    }
+
     function clickFirst(selectors) {
       for (var i = 0; i < selectors.length; i++) {
         var el = document.querySelector(selectors[i]);
 
-        if (el && !closestFromTarget(el, '.veloura-mobile-floating-menu')) {
-          if (nativeClick(el)) {
-            return true;
-          }
+        if (!el || closestFromTarget(el, '.veloura-mobile-floating-menu')) {
+          continue;
+        }
+
+        var clickable = el;
+
+        if (
+          !/^(A|BUTTON)$/i.test(el.tagName || '') &&
+          closestFromTarget(el, 'button, a')
+        ) {
+          clickable = closestFromTarget(el, 'button, a');
+        }
+
+        if (nativeClick(clickable)) {
+          return true;
         }
       }
 
@@ -1522,6 +1556,63 @@ document.addEventListener('DOMContentLoaded', function () {
         'button[aria-label*="بحث"]',
         'button[aria-label*="search"]'
       ]);
+    }
+
+    function closeVisibleModalLikeThings() {
+      var closed = clickFirst([
+        'salla-login-modal button[aria-label*="إغلاق"]',
+        'salla-login-modal button[aria-label*="close"]',
+        'salla-login-modal .s-modal-close',
+        'salla-login-modal .s-modal__close',
+        'salla-login-modal .sicon-cancel',
+        'salla-search button[aria-label*="إغلاق"]',
+        'salla-search button[aria-label*="close"]',
+        'salla-search .s-modal-close',
+        'salla-search .s-modal__close',
+        'salla-search .sicon-cancel',
+        '.s-modal button[aria-label*="إغلاق"]',
+        '.s-modal button[aria-label*="close"]',
+        '.s-modal .s-modal-close',
+        '.s-modal .s-modal__close',
+        '.s-modal .sicon-cancel',
+        '.modal button[aria-label*="إغلاق"]',
+        '.modal button[aria-label*="close"]',
+        '.modal .modal-close',
+        '.modal .sicon-cancel'
+      ]);
+
+      if (closed) {
+        return true;
+      }
+
+      document.body.classList.remove('overflow-hidden');
+
+      return false;
+    }
+
+    function setTransientAction(action) {
+      transientAction = action || '';
+
+      if (transientTimer) {
+        clearTimeout(transientTimer);
+        transientTimer = null;
+      }
+
+      if (transientAction) {
+        transientTimer = setTimeout(function () {
+          transientAction = '';
+          syncFloatingMenuActive();
+        }, 12000);
+      }
+    }
+
+    function clearTransientAction() {
+      transientAction = '';
+
+      if (transientTimer) {
+        clearTimeout(transientTimer);
+        transientTimer = null;
+      }
     }
 
     function ensureCategoriesCloseStyles() {
@@ -1638,6 +1729,26 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
+      if (transientAction === 'search') {
+        matchedItem = menu.querySelector('[data-vmfm-action="search"], [data-vmfm-match="search"]');
+
+        if (matchedItem) {
+          matchedItem.classList.add('is-active');
+        }
+
+        return;
+      }
+
+      if (transientAction === 'login') {
+        matchedItem = menu.querySelector('[data-vmfm-action="login"], [data-vmfm-match="account"]');
+
+        if (matchedItem) {
+          matchedItem.classList.add('is-active');
+        }
+
+        return;
+      }
+
       items.forEach(function (item) {
         if (matchedItem) {
           return;
@@ -1705,7 +1816,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function scheduleFloatingMenuSync() {
-      var delays = [180, 500, 1100, 2200];
+      var delays = [120, 350, 800, 1600, 3000];
 
       syncTimers.forEach(function (timer) {
         clearTimeout(timer);
@@ -1734,9 +1845,24 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.classList.remove('mm-wrapper--opened');
       }
 
+      clearTransientAction();
       scheduleFloatingMenuSync();
 
       return false;
+    }
+
+    function closeOpenOverlays(exceptAction) {
+      if (exceptAction !== 'categories' && isCategoriesMenuOpen()) {
+        closeCategoriesMenu();
+      }
+
+      if (exceptAction !== 'search' && exceptAction !== 'login') {
+        closeVisibleModalLikeThings();
+      }
+
+      if (exceptAction !== 'search' && exceptAction !== 'login') {
+        clearTransientAction();
+      }
     }
 
     function openCategoriesMenu() {
@@ -1745,6 +1871,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (isCategoriesMenuOpen()) {
         return closeCategoriesMenu();
       }
+
+      closeOpenOverlays('categories');
 
       var trigger =
         document.querySelector('.veloura-menu-trigger-mobile[href="#mobile-menu"]') ||
@@ -1762,6 +1890,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openLoginModal() {
+      closeOpenOverlays('login');
+
       var opened = clickFirst([
         '#mobile-nav .mob-login a',
         '.mobile-nav .mob-login a',
@@ -1797,7 +1927,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
       }
 
-      window.location.href = "{{ store.url|default('') }}/login";
+      window.location.href = {{ (store.url|default('') ~ '/login')|json_encode|raw }};
       return true;
     }
 
@@ -1806,8 +1936,13 @@ document.addEventListener('DOMContentLoaded', function () {
       function (event) {
         var closeBtn = closestFromTarget(event.target, '.close-mobile-menu');
         var backdrop = closestFromTarget(event.target, '.mm-ocd__backdrop');
+        var modalClose = closestFromTarget(
+          event.target,
+          '.s-modal-close, .s-modal__close, .modal-close, [aria-label*="إغلاق"], [aria-label*="close"]'
+        );
 
-        if (closeBtn || backdrop) {
+        if (closeBtn || backdrop || modalClose) {
+          clearTransientAction();
           scheduleFloatingMenuSync();
         }
       },
@@ -1816,16 +1951,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
+        clearTransientAction();
         scheduleFloatingMenuSync();
       }
     });
 
-    window.addEventListener('popstate', syncFloatingMenuActive);
-    window.addEventListener('hashchange', syncFloatingMenuActive);
-    window.addEventListener('pageshow', syncFloatingMenuActive);
+    window.addEventListener('popstate', function () {
+      clearTransientAction();
+      syncFloatingMenuActive();
+    });
+
+    window.addEventListener('hashchange', function () {
+      clearTransientAction();
+      syncFloatingMenuActive();
+    });
+
+    window.addEventListener('pageshow', function () {
+      clearTransientAction();
+      syncFloatingMenuActive();
+    });
 
     document.addEventListener('visibilitychange', function () {
       if (!document.hidden) {
+        clearTransientAction();
         syncFloatingMenuActive();
       }
     });
@@ -1840,7 +1988,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         history[methodName] = function () {
           var result = original.apply(this, arguments);
+
+          clearTransientAction();
           scheduleFloatingMenuSync();
+
           return result;
         };
       });
@@ -1858,11 +2009,16 @@ document.addEventListener('DOMContentLoaded', function () {
       var action = actionItem.getAttribute('data-vmfm-action');
 
       if (action === 'search') {
+        closeOpenOverlays('search');
+
         var searchOpened = openSearchFallback();
 
         if (searchOpened) {
           event.preventDefault();
+          setTransientAction('search');
           activateFloatingItem(actionItem);
+        } else {
+          clearTransientAction();
         }
 
         scheduleFloatingMenuSync();
@@ -1875,6 +2031,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var didOpen = openCategoriesMenu();
 
         if (didOpen) {
+          clearTransientAction();
           activateFloatingItem(actionItem);
         } else {
           syncFloatingMenuActive();
@@ -1890,13 +2047,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var loginOpened = openLoginModal();
 
         if (loginOpened) {
+          setTransientAction('login');
           activateFloatingItem(actionItem);
+        } else {
+          clearTransientAction();
+          syncFloatingMenuActive();
         }
 
         scheduleFloatingMenuSync();
         return;
       }
 
+      closeOpenOverlays('');
+      clearTransientAction();
       scheduleFloatingMenuSync();
     });
   });
