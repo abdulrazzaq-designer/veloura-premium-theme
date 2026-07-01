@@ -1511,26 +1511,78 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openCategoriesMenu() {
-      var originalTrigger =
+      var drawer = document.querySelector('.mm-ocd.ocd-categs');
+
+      if (drawer) {
+        drawer.classList.add('ocd-bottom');
+      }
+
+      var trigger =
         document.querySelector('.veloura-menu-trigger-mobile[href="#mobile-menu"]') ||
         document.querySelector('a.mburger[href="#mobile-menu"]') ||
         document.querySelector('a[href="#mobile-menu"]');
 
-      if (originalTrigger) {
-        originalTrigger.dispatchEvent(
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window
-          })
-        );
-
-        return true;
+      if (!trigger) {
+        return false;
       }
 
-      window.location.hash = 'mobile-menu';
+      trigger.dispatchEvent(
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        })
+      );
+
+      function applyBottomMode() {
+        var currentDrawer = document.querySelector('.mm-ocd.ocd-categs');
+
+        if (!currentDrawer) {
+          return;
+        }
+
+        currentDrawer.classList.add('ocd-bottom');
+      }
+
+      requestAnimationFrame(applyBottomMode);
+      setTimeout(applyBottomMode, 20);
+      setTimeout(applyBottomMode, 80);
+      setTimeout(applyBottomMode, 180);
+      setTimeout(applyBottomMode, 350);
+
       return true;
     }
+
+    document.addEventListener('click', function (event) {
+      var closeBtn = event.target.closest('.close-mobile-menu');
+      var backdrop = event.target.closest('.mm-ocd__backdrop');
+
+      if (!closeBtn && !backdrop) {
+        return;
+      }
+
+      setTimeout(function () {
+        var drawer = document.querySelector('.mm-ocd.ocd-categs');
+
+        if (drawer && !drawer.classList.contains('mm-ocd--open')) {
+          drawer.classList.remove('ocd-bottom');
+        }
+      }, 260);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') {
+        return;
+      }
+
+      setTimeout(function () {
+        var drawer = document.querySelector('.mm-ocd.ocd-categs');
+
+        if (drawer && !drawer.classList.contains('mm-ocd--open')) {
+          drawer.classList.remove('ocd-bottom');
+        }
+      }, 260);
+    });
 
     function openLoginModal() {
       var opened = clickFirst([
