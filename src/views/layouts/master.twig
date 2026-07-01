@@ -1649,160 +1649,346 @@ document.addEventListener('DOMContentLoaded', function () {
       ]);
     }
 
-    function openCategoriesMenu() {
-      var originalTrigger =
-        document.querySelector('#mobile-nav .mob-categ a[href="#mobile-menu"]') ||
-        document.querySelector('.mobile-nav .mob-categ a[href="#mobile-menu"]') ||
-        document.querySelector('.mob-categ .mobile-nav--item[href="#mobile-menu"]') ||
-        document.querySelector('.mobile-nav--item[href="#mobile-menu"]') ||
-        document.querySelector('a[href="#mobile-menu"]');
+    function injectVelouraCatsBottomStyle() {
+  if (document.getElementById('veloura-cats-bottom-style')) {
+    return;
+  }
 
-      if (originalTrigger) {
-        originalTrigger.dispatchEvent(new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window
-        }));
+  var style = document.createElement('style');
+  style.id = 'veloura-cats-bottom-style';
+
+  style.textContent = `
+    @media (max-width: 767px) {
+      body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+        z-index: 999999 !important;
       }
 
-      function applyBottomSheet() {
-        var drawer =
-          document.querySelector('.mm-ocd.mm-ocd--open') ||
-          document.querySelector('.mm-ocd.ocd-categs') ||
-          document.querySelector('.mm-ocd');
-
-        var content = drawer ? drawer.querySelector('.mm-ocd__content') : null;
-        var backdrop = drawer ? drawer.querySelector('.mm-ocd__backdrop') : null;
-        var mobileMenu = document.querySelector('#mobile-menu');
-        var floatingMenu = document.querySelector('.veloura-mobile-floating-menu');
-
-        document.documentElement.classList.add('veloura-cats-bottom-open');
-        document.body.classList.add('veloura-cats-bottom-open', 'menu-opened', 'mm-ocd-opened', 'overflow-hidden');
-
-        if (drawer) {
-          drawer.classList.add('mm-ocd--open', 'veloura-cats-bottom-sheet');
-
-          drawer.style.position = 'fixed';
-          drawer.style.inset = '0';
-          drawer.style.width = '100vw';
-          drawer.style.height = '100vh';
-          drawer.style.display = 'block';
-          drawer.style.visibility = 'visible';
-          drawer.style.opacity = '1';
-          drawer.style.zIndex = '999990';
-          drawer.style.pointerEvents = 'auto';
-          drawer.style.background = 'rgba(15, 23, 42, 0.42)';
-          drawer.style.overflow = 'hidden';
-          drawer.style.transform = 'none';
-        }
-
-        if (backdrop) {
-          backdrop.style.position = 'fixed';
-          backdrop.style.inset = '0';
-          backdrop.style.display = 'block';
-          backdrop.style.visibility = 'visible';
-          backdrop.style.opacity = '1';
-          backdrop.style.zIndex = '1';
-          backdrop.style.background = 'rgba(15, 23, 42, 0.42)';
-          backdrop.style.backdropFilter = 'blur(8px)';
-          backdrop.style.webkitBackdropFilter = 'blur(8px)';
-          backdrop.style.pointerEvents = 'auto';
-        }
-
-        if (content) {
-          var floatingHeight = 56;
-          var floatingBottom = 16;
-
-          if (floatingMenu) {
-            var styles = window.getComputedStyle(floatingMenu);
-            var h = parseFloat(styles.getPropertyValue('--veloura-mobile-floating-menu-height'));
-            var b = parseFloat(styles.getPropertyValue('--veloura-mobile-floating-menu-bottom'));
-
-            if (!isNaN(h)) floatingHeight = h;
-            if (!isNaN(b)) floatingBottom = b;
-          }
-
-          content.style.position = 'fixed';
-          content.style.top = 'auto';
-          content.style.left = '10px';
-          content.style.right = '10px';
-          content.style.bottom = 'calc(' + floatingHeight + 'px + ' + floatingBottom + 'px + env(safe-area-inset-bottom, 0px) + 14px)';
-          content.style.width = 'auto';
-          content.style.maxWidth = 'none';
-          content.style.height = 'auto';
-          content.style.maxHeight = 'min(72vh, 620px)';
-          content.style.borderRadius = '28px';
-          content.style.overflow = 'hidden';
-          content.style.background = '#ffffff';
-          content.style.boxShadow = '0 -18px 55px rgba(15, 23, 42, 0.24), inset 0 0 0 1px rgba(15, 23, 42, 0.06)';
-          content.style.zIndex = '2';
-          content.style.opacity = '1';
-          content.style.visibility = 'visible';
-          content.style.transform = 'translate3d(0, 0, 0)';
-          content.style.animation = 'velouraCatsSheetUp 0.28s cubic-bezier(.2, .8, .2, 1) both';
-        }
-
-        if (mobileMenu) {
-          mobileMenu.classList.add('mm-spn--open', 'mm-spn--light');
-
-          mobileMenu.style.position = 'relative';
-          mobileMenu.style.inset = 'auto';
-          mobileMenu.style.width = '100%';
-          mobileMenu.style.height = 'auto';
-          mobileMenu.style.maxHeight = 'min(72vh, 620px)';
-          mobileMenu.style.display = 'block';
-          mobileMenu.style.visibility = 'visible';
-          mobileMenu.style.opacity = '1';
-          mobileMenu.style.overflowY = 'auto';
-          mobileMenu.style.overflowX = 'hidden';
-          mobileMenu.style.background = '#ffffff';
-          mobileMenu.style.transform = 'none';
-        }
-
-        return !!drawer;
+      html.veloura-cats-bottom-open,
+      body.veloura-cats-bottom-open {
+        overflow: hidden !important;
       }
 
-      applyBottomSheet();
-      setTimeout(applyBottomSheet, 50);
-      setTimeout(applyBottomSheet, 150);
-      setTimeout(applyBottomSheet, 300);
-      setTimeout(applyBottomSheet, 600);
-
-      return true;
-    }
-
-    function closeCategoriesBottomSheet() {
-      document.documentElement.classList.remove('veloura-cats-bottom-open');
-      document.body.classList.remove('veloura-cats-bottom-open');
-
-      var drawer = document.querySelector('.veloura-cats-bottom-sheet');
-
-      if (drawer) {
-        drawer.classList.remove('veloura-cats-bottom-sheet');
-        drawer.removeAttribute('style');
-
-        var content = drawer.querySelector('.mm-ocd__content');
-        var backdrop = drawer.querySelector('.mm-ocd__backdrop');
-
-        if (content) content.removeAttribute('style');
-        if (backdrop) backdrop.removeAttribute('style');
+      html.veloura-cats-bottom-open .mm-ocd,
+      body.veloura-cats-bottom-open .mm-ocd {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 999990 !important;
+        pointer-events: auto !important;
+        background: rgba(15, 23, 42, 0.42) !important;
+        overflow: hidden !important;
+        transform: none !important;
       }
 
-      var mobileMenu = document.querySelector('#mobile-menu');
+      html.veloura-cats-bottom-open .mm-ocd__content,
+      body.veloura-cats-bottom-open .mm-ocd__content,
+      html.veloura-cats-bottom-open .mm-ocd--right .mm-ocd__content,
+      body.veloura-cats-bottom-open .mm-ocd--right .mm-ocd__content {
+        position: fixed !important;
+        top: auto !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: calc(
+          var(--veloura-mobile-floating-menu-height, 56px) +
+          var(--veloura-mobile-floating-menu-bottom, 16px) +
+          env(safe-area-inset-bottom, 0px) +
+          14px
+        ) !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: min(72vh, 620px) !important;
+        border-radius: 28px !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+        box-shadow: 0 -18px 55px rgba(15, 23, 42, 0.24), inset 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+        z-index: 2 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translate3d(0, 0, 0) !important;
+        animation: velouraCatsSheetUp 0.28s cubic-bezier(.2, .8, .2, 1) both !important;
+      }
 
-      if (mobileMenu) {
-        mobileMenu.removeAttribute('style');
+      html.veloura-cats-bottom-open .mm-ocd__backdrop,
+      body.veloura-cats-bottom-open .mm-ocd__backdrop {
+        position: fixed !important;
+        inset: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        background: rgba(15, 23, 42, 0.42) !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 1 !important;
+        pointer-events: auto !important;
+      }
+
+      html.veloura-cats-bottom-open #mobile-menu,
+      body.veloura-cats-bottom-open #mobile-menu {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: min(72vh, 620px) !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        background: #ffffff !important;
+        transform: none !important;
+      }
+
+      html.veloura-cats-bottom-open #mobile-menu ul,
+      body.veloura-cats-bottom-open #mobile-menu ul,
+      html.veloura-cats-bottom-open #mobile-menu ul.mm-spn--open,
+      body.veloura-cats-bottom-open #mobile-menu ul.mm-spn--open {
+        position: relative !important;
+        top: auto !important;
+        left: 0 !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow: visible !important;
+        transform: none !important;
+      }
+
+      html.veloura-cats-bottom-open #mobile-menu::before,
+      body.veloura-cats-bottom-open #mobile-menu::before {
+        content: '';
+        display: block;
+        width: 44px;
+        height: 5px;
+        margin: 10px auto 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.16);
+      }
+
+      html.veloura-cats-bottom-open .mm-spn--navbar::before,
+      body.veloura-cats-bottom-open .mm-spn--navbar::before {
+        display: none !important;
       }
     }
 
-    document.addEventListener('click', function (event) {
-      var backdrop = event.target.closest('.mm-ocd__backdrop');
-      var closeBtn = event.target.closest('.close-mobile-menu, .mobile-nav-bottom-btn-close');
-
-      if (backdrop || closeBtn) {
-        closeCategoriesBottomSheet();
+    @keyframes velouraCatsSheetUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 32px, 0) !important;
       }
+
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) !important;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
+}
+
+function setImportant(el, property, value) {
+  if (!el) return;
+  el.style.setProperty(property, value, 'important');
+}
+
+function openCategoriesMenu() {
+  injectVelouraCatsBottomStyle();
+
+  var originalTrigger =
+    document.querySelector('#mobile-nav .mob-categ a[href="#mobile-menu"]') ||
+    document.querySelector('.mobile-nav .mob-categ a[href="#mobile-menu"]') ||
+    document.querySelector('.mob-categ .mobile-nav--item[href="#mobile-menu"]') ||
+    document.querySelector('.mobile-nav--item[href="#mobile-menu"]') ||
+    document.querySelector('a[href="#mobile-menu"]');
+
+  if (originalTrigger) {
+    originalTrigger.dispatchEvent(
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      })
+    );
+  }
+
+  function applyBottomSheet() {
+    var drawer =
+      document.querySelector('.mm-ocd.mm-ocd--open') ||
+      document.querySelector('.mm-ocd.ocd-categs') ||
+      document.querySelector('.mm-ocd');
+
+    var content = drawer ? drawer.querySelector('.mm-ocd__content') : null;
+    var backdrop = drawer ? drawer.querySelector('.mm-ocd__backdrop') : null;
+    var mobileMenu = document.querySelector('#mobile-menu');
+    var floatingMenu = document.querySelector('.veloura-mobile-floating-menu');
+
+    document.documentElement.classList.add('veloura-cats-bottom-open');
+    document.body.classList.add('veloura-cats-bottom-open');
+    document.body.classList.add('menu-opened');
+    document.body.classList.add('mm-ocd-opened');
+    document.body.classList.add('overflow-hidden');
+
+    if (drawer) {
+      drawer.classList.add('mm-ocd--open');
+      drawer.classList.add('veloura-cats-bottom-sheet');
+
+      setImportant(drawer, 'position', 'fixed');
+      setImportant(drawer, 'inset', '0');
+      setImportant(drawer, 'width', '100vw');
+      setImportant(drawer, 'height', '100vh');
+      setImportant(drawer, 'display', 'block');
+      setImportant(drawer, 'visibility', 'visible');
+      setImportant(drawer, 'opacity', '1');
+      setImportant(drawer, 'z-index', '999990');
+      setImportant(drawer, 'pointer-events', 'auto');
+      setImportant(drawer, 'background', 'rgba(15, 23, 42, 0.42)');
+      setImportant(drawer, 'overflow', 'hidden');
+      setImportant(drawer, 'transform', 'none');
+    }
+
+    if (backdrop) {
+      setImportant(backdrop, 'position', 'fixed');
+      setImportant(backdrop, 'inset', '0');
+      setImportant(backdrop, 'display', 'block');
+      setImportant(backdrop, 'visibility', 'visible');
+      setImportant(backdrop, 'opacity', '1');
+      setImportant(backdrop, 'z-index', '1');
+      setImportant(backdrop, 'background', 'rgba(15, 23, 42, 0.42)');
+      setImportant(backdrop, 'backdrop-filter', 'blur(8px)');
+      setImportant(backdrop, '-webkit-backdrop-filter', 'blur(8px)');
+      setImportant(backdrop, 'pointer-events', 'auto');
+    }
+
+    if (content) {
+      var floatingHeight = 56;
+      var floatingBottom = 16;
+
+      if (floatingMenu) {
+        var styles = window.getComputedStyle(floatingMenu);
+        var h = parseFloat(styles.getPropertyValue('--veloura-mobile-floating-menu-height'));
+        var b = parseFloat(styles.getPropertyValue('--veloura-mobile-floating-menu-bottom'));
+
+        if (!isNaN(h)) floatingHeight = h;
+        if (!isNaN(b)) floatingBottom = b;
+      }
+
+      setImportant(content, 'position', 'fixed');
+      setImportant(content, 'top', 'auto');
+      setImportant(content, 'left', '10px');
+      setImportant(content, 'right', '10px');
+      setImportant(
+        content,
+        'bottom',
+        'calc(' + floatingHeight + 'px + ' + floatingBottom + 'px + env(safe-area-inset-bottom, 0px) + 14px)'
+      );
+      setImportant(content, 'width', 'auto');
+      setImportant(content, 'max-width', 'none');
+      setImportant(content, 'height', 'auto');
+      setImportant(content, 'max-height', 'min(72vh, 620px)');
+      setImportant(content, 'border-radius', '28px');
+      setImportant(content, 'overflow', 'hidden');
+      setImportant(content, 'background', '#ffffff');
+      setImportant(
+        content,
+        'box-shadow',
+        '0 -18px 55px rgba(15, 23, 42, 0.24), inset 0 0 0 1px rgba(15, 23, 42, 0.06)'
+      );
+      setImportant(content, 'z-index', '2');
+      setImportant(content, 'opacity', '1');
+      setImportant(content, 'visibility', 'visible');
+      setImportant(content, 'transform', 'translate3d(0, 0, 0)');
+      setImportant(content, 'animation', 'velouraCatsSheetUp 0.28s cubic-bezier(.2, .8, .2, 1) both');
+    }
+
+    if (mobileMenu) {
+      mobileMenu.classList.add('mm-spn--open');
+      mobileMenu.classList.add('mm-spn--light');
+
+      setImportant(mobileMenu, 'position', 'relative');
+      setImportant(mobileMenu, 'inset', 'auto');
+      setImportant(mobileMenu, 'width', '100%');
+      setImportant(mobileMenu, 'height', 'auto');
+      setImportant(mobileMenu, 'max-height', 'min(72vh, 620px)');
+      setImportant(mobileMenu, 'display', 'block');
+      setImportant(mobileMenu, 'visibility', 'visible');
+      setImportant(mobileMenu, 'opacity', '1');
+      setImportant(mobileMenu, 'overflow-y', 'auto');
+      setImportant(mobileMenu, 'overflow-x', 'hidden');
+      setImportant(mobileMenu, 'background', '#ffffff');
+      setImportant(mobileMenu, 'transform', 'none');
+
+      mobileMenu.querySelectorAll('ul').forEach(function (ul) {
+        setImportant(ul, 'position', 'relative');
+        setImportant(ul, 'top', 'auto');
+        setImportant(ul, 'left', '0');
+        setImportant(ul, 'right', 'auto');
+        setImportant(ul, 'bottom', 'auto');
+        setImportant(ul, 'width', '100%');
+        setImportant(ul, 'height', 'auto');
+        setImportant(ul, 'max-height', 'none');
+        setImportant(ul, 'padding-left', '0');
+        setImportant(ul, 'padding-right', '0');
+        setImportant(ul, 'overflow', 'visible');
+        setImportant(ul, 'transform', 'none');
+      });
+    }
+
+    return !!drawer;
+  }
+
+  applyBottomSheet();
+  setTimeout(applyBottomSheet, 50);
+  setTimeout(applyBottomSheet, 150);
+  setTimeout(applyBottomSheet, 300);
+  setTimeout(applyBottomSheet, 700);
+
+  return true;
+}
+
+function closeCategoriesBottomSheet() {
+  document.documentElement.classList.remove('veloura-cats-bottom-open');
+  document.body.classList.remove('veloura-cats-bottom-open');
+
+  var drawer = document.querySelector('.veloura-cats-bottom-sheet');
+
+  if (drawer) {
+    drawer.classList.remove('veloura-cats-bottom-sheet');
+    drawer.removeAttribute('style');
+
+    var content = drawer.querySelector('.mm-ocd__content');
+    var backdrop = drawer.querySelector('.mm-ocd__backdrop');
+
+    if (content) content.removeAttribute('style');
+    if (backdrop) backdrop.removeAttribute('style');
+  }
+
+  var mobileMenu = document.querySelector('#mobile-menu');
+
+  if (mobileMenu) {
+    mobileMenu.removeAttribute('style');
+
+    mobileMenu.querySelectorAll('ul').forEach(function (ul) {
+      ul.removeAttribute('style');
     });
+  }
+}
+
+document.addEventListener('click', function (event) {
+  var backdrop = event.target.closest('.mm-ocd__backdrop');
+  var closeBtn = event.target.closest('.close-mobile-menu, .mobile-nav-bottom-btn-close');
+
+  if (backdrop || closeBtn) {
+    closeCategoriesBottomSheet();
+  }
+});
 
     function openLoginModal() {
       var opened = clickFirst([
