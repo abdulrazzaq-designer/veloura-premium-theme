@@ -548,6 +548,7 @@
 
 {# ================================
    Veloura Mobile Floating Menu
+   Force Fixed Reading
 ================================ #}
 
 {% set vmfm_enabled_raw = theme.settings.get('veloura_mobile_floating_menu_enabled_2026', false) %}
@@ -579,12 +580,8 @@
   {% set vmfm_height_value = vmfm_height_value.value %}
 {% endif %}
 {% set vmfm_height_value = vmfm_height_value + 0 %}
-{% if vmfm_height_value < 0 %}
-  {% set vmfm_height_value = 0 %}
-{% endif %}
-{% if vmfm_height_value > 24 %}
-  {% set vmfm_height_value = 24 %}
-{% endif %}
+{% if vmfm_height_value < 0 %}{% set vmfm_height_value = 0 %}{% endif %}
+{% if vmfm_height_value > 24 %}{% set vmfm_height_value = 24 %}{% endif %}
 {% set vmfm_height = 48 + vmfm_height_value %}
 
 {% set vmfm_bottom_value = theme.settings.get('veloura_mobile_floating_menu_bottom_2026', 8) %}
@@ -592,28 +589,18 @@
   {% set vmfm_bottom_value = vmfm_bottom_value.value %}
 {% endif %}
 {% set vmfm_bottom_value = vmfm_bottom_value + 0 %}
-{% if vmfm_bottom_value < 0 %}
-  {% set vmfm_bottom_value = 0 %}
-{% endif %}
-{% if vmfm_bottom_value > 32 %}
-  {% set vmfm_bottom_value = 32 %}
-{% endif %}
+{% if vmfm_bottom_value < 0 %}{% set vmfm_bottom_value = 0 %}{% endif %}
+{% if vmfm_bottom_value > 32 %}{% set vmfm_bottom_value = 32 %}{% endif %}
 {% set vmfm_bottom = 8 + vmfm_bottom_value %}
 
 {% set vmfm_bg_color = theme.settings.get('veloura_mobile_floating_menu_bg_color_2026', '#ffffff') %}
-{% if vmfm_bg_color.value is defined %}
-  {% set vmfm_bg_color = vmfm_bg_color.value %}
-{% endif %}
+{% if vmfm_bg_color.value is defined %}{% set vmfm_bg_color = vmfm_bg_color.value %}{% endif %}
 
 {% set vmfm_text_color = theme.settings.get('veloura_mobile_floating_menu_text_color_2026', '#111827') %}
-{% if vmfm_text_color.value is defined %}
-  {% set vmfm_text_color = vmfm_text_color.value %}
-{% endif %}
+{% if vmfm_text_color.value is defined %}{% set vmfm_text_color = vmfm_text_color.value %}{% endif %}
 
 {% set vmfm_active_color = theme.settings.get('veloura_mobile_floating_menu_active_color_2026', '#004d65') %}
-{% if vmfm_active_color.value is defined %}
-  {% set vmfm_active_color = vmfm_active_color.value %}
-{% endif %}
+{% if vmfm_active_color.value is defined %}{% set vmfm_active_color = vmfm_active_color.value %}{% endif %}
 
 {% set vmfm_radius_raw = theme.settings.get('veloura_mobile_floating_menu_radius_2026', 'pill') %}
 {% if vmfm_radius_raw is iterable and vmfm_radius_raw[0].value is defined %}
@@ -637,14 +624,7 @@
 {% elseif vmfm_show_labels_raw.selected is defined %}
   {% set vmfm_show_labels_raw = vmfm_show_labels_raw.selected %}
 {% endif %}
-
-{% set vmfm_show_labels =
-  vmfm_show_labels_raw == true
-  or vmfm_show_labels_raw == 'true'
-  or vmfm_show_labels_raw == 1
-  or vmfm_show_labels_raw == '1'
-  or vmfm_show_labels_raw == 'on'
-%}
+{% set vmfm_show_labels = vmfm_show_labels_raw == true or vmfm_show_labels_raw == 'true' or vmfm_show_labels_raw == 1 or vmfm_show_labels_raw == '1' or vmfm_show_labels_raw == 'on' %}
 
 {% set vmfm_icon_size_raw = theme.settings.get('veloura_mobile_floating_menu_icon_size_2026', '22') %}
 {% if vmfm_icon_size_raw is iterable and vmfm_icon_size_raw[0].value is defined %}
@@ -793,6 +773,7 @@
             --veloura-quick-view-modal-text: {{ vqv_modal_text_color }};
             --veloura-quick-view-modal-radius: {{ vpc_radius_map[vqv_modal_radius_key]|default('28px') }};
           {% endif %}
+{% endif %}
         {% if vmfm_enabled %}
           --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
           --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
@@ -805,8 +786,6 @@
           --veloura-mobile-floating-menu-active-scale: {{ vmfm_active_scale }};
         {% endif %}
 
-
-        {% endif %}
       }
 
       body.veloura-general-enabled {
@@ -1343,77 +1322,55 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 {% if vmfm_enabled %}
-  <nav class="veloura-mobile-floating-menu" aria-label="قائمة الجوال العائمة">
+  <nav
+    class="veloura-mobile-floating-menu"
+    aria-label="قائمة الجوال العائمة"
+    style="
+      --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
+      --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
+      --veloura-mobile-floating-menu-bg: {{ vmfm_bg_color }};
+      --veloura-mobile-floating-menu-text: {{ vmfm_text_color }};
+      --veloura-mobile-floating-menu-active: {{ vmfm_active_color }};
+      --veloura-mobile-floating-menu-radius: {{ vmfm_radius_map[vmfm_radius]|default('999px') }};
+      --veloura-mobile-floating-menu-icon-size: {{ vmfm_icon_size }}px;
+      --veloura-mobile-floating-menu-font-size: {{ vmfm_font_size }}px;
+      --veloura-mobile-floating-menu-active-scale: {{ vmfm_active_scale }};
+    "
+  >
     <div class="veloura-mobile-floating-menu__inner">
 
       {% if vmfm_show_home %}
-        <a
-          href="{{ store.url|default('/') }}"
-          class="veloura-mobile-floating-menu__item"
-          data-vmfm-match="home"
-          aria-label="{{ vmfm_home_label|e }}"
-        >
+        <a href="{{ store.url|default('/') }}" class="veloura-mobile-floating-menu__item" data-vmfm-match="home" aria-label="{{ vmfm_home_label|e }}">
           <i class="sicon-home" aria-hidden="true"></i>
-          {% if vmfm_show_labels %}
-            <span>{{ vmfm_home_label }}</span>
-          {% endif %}
+          {% if vmfm_show_labels %}<span>{{ vmfm_home_label }}</span>{% endif %}
         </a>
       {% endif %}
 
       {% if vmfm_show_categories %}
-        <a
-          href="{{ store.url|default('') }}/categories"
-          class="veloura-mobile-floating-menu__item"
-          data-vmfm-match="categories"
-          aria-label="{{ vmfm_categories_label|e }}"
-        >
+        <a href="{{ store.url|default('') }}/categories" class="veloura-mobile-floating-menu__item" data-vmfm-match="categories" aria-label="{{ vmfm_categories_label|e }}">
           <i class="sicon-grid" aria-hidden="true"></i>
-          {% if vmfm_show_labels %}
-            <span>{{ vmfm_categories_label }}</span>
-          {% endif %}
+          {% if vmfm_show_labels %}<span>{{ vmfm_categories_label }}</span>{% endif %}
         </a>
       {% endif %}
 
       {% if vmfm_show_search %}
-        <a
-          href="{{ store.url|default('') }}/search"
-          class="veloura-mobile-floating-menu__item"
-          data-vmfm-match="search"
-          data-vmfm-action="search"
-          aria-label="{{ vmfm_search_label|e }}"
-        >
+        <a href="{{ store.url|default('') }}/search" class="veloura-mobile-floating-menu__item" data-vmfm-match="search" data-vmfm-action="search" aria-label="{{ vmfm_search_label|e }}">
           <i class="sicon-search" aria-hidden="true"></i>
-          {% if vmfm_show_labels %}
-            <span>{{ vmfm_search_label }}</span>
-          {% endif %}
+          {% if vmfm_show_labels %}<span>{{ vmfm_search_label }}</span>{% endif %}
         </a>
       {% endif %}
 
       {% if vmfm_show_cart %}
-        <a
-          href="{{ store.url|default('') }}/cart"
-          class="veloura-mobile-floating-menu__item"
-          data-vmfm-match="cart"
-          aria-label="{{ vmfm_cart_label|e }}"
-        >
+        <a href="{{ store.url|default('') }}/cart" class="veloura-mobile-floating-menu__item" data-vmfm-match="cart" aria-label="{{ vmfm_cart_label|e }}">
           <i class="sicon-shopping-bag" aria-hidden="true"></i>
-          {% if vmfm_show_labels %}
-            <span>{{ vmfm_cart_label }}</span>
-          {% endif %}
+          {% if vmfm_show_labels %}<span>{{ vmfm_cart_label }}</span>{% endif %}
         </a>
       {% endif %}
 
       {% if vmfm_show_account %}
-        <a
-          href="{{ store.url|default('') }}/account"
-          class="veloura-mobile-floating-menu__item"
-          data-vmfm-match="account"
-          aria-label="{{ vmfm_account_label|e }}"
-        >
+        <a href="{{ store.url|default('') }}/account" class="veloura-mobile-floating-menu__item" data-vmfm-match="account" aria-label="{{ vmfm_account_label|e }}">
           <i class="sicon-user" aria-hidden="true"></i>
-          {% if vmfm_show_labels %}
-            <span>{{ vmfm_account_label }}</span>
-          {% endif %}
+          {% if vmfm_show_labels %}<span>{{ vmfm_account_label }}</span>{% endif %}
         </a>
       {% endif %}
 
@@ -1437,27 +1394,14 @@ document.addEventListener('DOMContentLoaded', function () {
           {% endif %}
 
           {% if item_url %}
-            <a
-              href="{{ item_url|e('html_attr') }}"
-              class="veloura-mobile-floating-menu__item"
-              aria-label="{{ item_label|e }}"
-              {% if item_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-            >
+            <a href="{{ item_url|e('html_attr') }}" class="veloura-mobile-floating-menu__item" aria-label="{{ item_label|e }}" {% if item_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
               <i class="{{ item_icon|e('html_attr') }}" aria-hidden="true"></i>
-              {% if vmfm_show_labels %}
-                <span>{{ item_label }}</span>
-              {% endif %}
+              {% if vmfm_show_labels %}<span>{{ item_label }}</span>{% endif %}
             </a>
           {% else %}
-            <button
-              type="button"
-              class="veloura-mobile-floating-menu__item"
-              aria-label="{{ item_label|e }}"
-            >
+            <button type="button" class="veloura-mobile-floating-menu__item" aria-label="{{ item_label|e }}">
               <i class="{{ item_icon|e('html_attr') }}" aria-hidden="true"></i>
-              {% if vmfm_show_labels %}
-                <span>{{ item_label }}</span>
-              {% endif %}
+              {% if vmfm_show_labels %}<span>{{ item_label }}</span>{% endif %}
             </button>
           {% endif %}
         {% endif %}
@@ -1473,6 +1417,17 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!menu) {
         return;
       }
+
+      var root = document.documentElement;
+      root.style.setProperty('--veloura-mobile-floating-menu-height', '{{ vmfm_height }}px');
+      root.style.setProperty('--veloura-mobile-floating-menu-bottom', '{{ vmfm_bottom }}px');
+      root.style.setProperty('--veloura-mobile-floating-menu-bg', '{{ vmfm_bg_color }}');
+      root.style.setProperty('--veloura-mobile-floating-menu-text', '{{ vmfm_text_color }}');
+      root.style.setProperty('--veloura-mobile-floating-menu-active', '{{ vmfm_active_color }}');
+      root.style.setProperty('--veloura-mobile-floating-menu-radius', '{{ vmfm_radius_map[vmfm_radius]|default('999px') }}');
+      root.style.setProperty('--veloura-mobile-floating-menu-icon-size', '{{ vmfm_icon_size }}px');
+      root.style.setProperty('--veloura-mobile-floating-menu-font-size', '{{ vmfm_font_size }}px');
+      root.style.setProperty('--veloura-mobile-floating-menu-active-scale', '{{ vmfm_active_scale }}');
 
       function normalizePath(value) {
         try {
@@ -1495,18 +1450,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (var i = 0; i < triggers.length; i++) {
           var el = document.querySelector(triggers[i]);
-
           if (el && typeof el.click === 'function') {
             el.click();
             return true;
           }
-        }
-
-        if (window.salla && salla.event && typeof salla.event.dispatch === 'function') {
-          try {
-            salla.event.dispatch('search::open');
-            return true;
-          } catch (error) {}
         }
 
         return false;
@@ -1522,9 +1469,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var match = String(item.getAttribute('data-vmfm-match') || '').trim();
         var active = false;
 
-        if (match === 'home') {
-          active = currentPath === '/';
-        }
+        if (match === 'home') active = currentPath === '/';
 
         if (match === 'categories') {
           active =
@@ -1533,13 +1478,8 @@ document.addEventListener('DOMContentLoaded', function () {
             currentPath.indexOf('/c/') !== -1;
         }
 
-        if (match === 'search') {
-          active = currentPath.indexOf('/search') !== -1;
-        }
-
-        if (match === 'cart') {
-          active = currentPath.indexOf('/cart') !== -1;
-        }
+        if (match === 'search') active = currentPath.indexOf('/search') !== -1;
+        if (match === 'cart') active = currentPath.indexOf('/cart') !== -1;
 
         if (match === 'account') {
           active =
@@ -1563,10 +1503,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (searchItem) {
           var opened = openSearchFallback();
-
-          if (opened) {
-            event.preventDefault();
-          }
+          if (opened) event.preventDefault();
         }
 
         var clickedItem = event.target.closest('.veloura-mobile-floating-menu__item');
@@ -1575,7 +1512,6 @@ document.addEventListener('DOMContentLoaded', function () {
           items.forEach(function (item) {
             item.classList.remove('is-active');
           });
-
           clickedItem.classList.add('is-active');
         }
       });
