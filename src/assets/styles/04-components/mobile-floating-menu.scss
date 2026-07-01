@@ -366,89 +366,109 @@
 
 
 
-
 /* ================================
-   Categories Bottom Sheet
-   فتح التصنيفات من الأسفل تحت القائمة العائمة
+   Veloura Categories Bottom Sheet
+   نفس القائمة الأصلية لكن تظهر من تحت
 ================================ */
 
 @media (max-width: 767px) {
   body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
-    z-index: 10050 !important;
+    z-index: 999999 !important;
   }
 
-  body.veloura-mobile-cats-bottom-open {
+  html.veloura-cats-bottom-open,
+  body.veloura-cats-bottom-open {
     overflow: hidden !important;
   }
 
-  body.veloura-mobile-cats-bottom-open .mm-ocd.ocd-categs,
-  body.veloura-mobile-cats-bottom-open .mm-ocd.veloura-cats-bottom-sheet {
+  html.veloura-cats-bottom-open .mm-ocd,
+  body.veloura-cats-bottom-open .mm-ocd {
     position: fixed !important;
     inset: 0 !important;
+
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 10020 !important;
 
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
 
+    z-index: 999990 !important;
     pointer-events: auto !important;
+
     background: transparent !important;
     transform: none !important;
   }
 
-  body.veloura-mobile-cats-bottom-open .mm-ocd.veloura-cats-bottom-sheet .mm-ocd__backdrop,
-  body.veloura-mobile-cats-bottom-open .mm-ocd.ocd-categs .mm-ocd__backdrop {
+  html.veloura-cats-bottom-open .mm-ocd__backdrop,
+  body.veloura-cats-bottom-open .mm-ocd__backdrop {
     position: fixed !important;
     inset: 0 !important;
+
     display: block !important;
-    opacity: 1 !important;
     visibility: visible !important;
+    opacity: 1 !important;
 
     background: rgba(15, 23, 42, 0.42) !important;
+
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 
     z-index: 1 !important;
+    pointer-events: auto !important;
   }
 
-  body.veloura-mobile-cats-bottom-open .mm-ocd.veloura-cats-bottom-sheet .mm-ocd__content,
-  body.veloura-mobile-cats-bottom-open .mm-ocd.ocd-categs .mm-ocd__content {
+  html.veloura-cats-bottom-open .mm-ocd__content,
+  body.veloura-cats-bottom-open .mm-ocd__content {
     position: fixed !important;
 
+    top: auto !important;
     left: 10px !important;
     right: 10px !important;
-    top: auto !important;
 
     bottom: calc(
       var(--veloura-mobile-floating-menu-height, 56px) +
       var(--veloura-mobile-floating-menu-bottom, 16px) +
       env(safe-area-inset-bottom, 0px) +
-      12px
+      14px
     ) !important;
 
     width: auto !important;
     max-width: none !important;
+
     height: auto !important;
     max-height: min(72vh, 620px) !important;
 
-    border-radius: 28px 28px 24px 24px !important;
+    border-radius: 28px !important;
     overflow: hidden !important;
 
     background: #ffffff !important;
+
     box-shadow:
-      0 -18px 55px rgba(15, 23, 42, 0.22),
+      0 -18px 55px rgba(15, 23, 42, 0.24),
       inset 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
 
-    transform: translateY(0) !important;
     z-index: 2 !important;
 
-    animation: velouraCatsBottomSheetIn 0.26s cubic-bezier(.2, .8, .2, 1) both;
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transform: translate3d(0, 0, 0) !important;
+
+    animation: velouraCatsSheetUp 0.28s cubic-bezier(.2, .8, .2, 1) both !important;
   }
 
-  body.veloura-mobile-cats-bottom-open .mm-ocd.veloura-cats-bottom-sheet #mobile-menu,
-  body.veloura-mobile-cats-bottom-open .mm-ocd.ocd-categs #mobile-menu {
+  html.veloura-cats-bottom-open .mm-ocd--right .mm-ocd__content,
+  body.veloura-cats-bottom-open .mm-ocd--right .mm-ocd__content,
+  html.veloura-cats-bottom-open .mm-ocd--left .mm-ocd__content,
+  body.veloura-cats-bottom-open .mm-ocd--left .mm-ocd__content {
+    left: 10px !important;
+    right: 10px !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  html.veloura-cats-bottom-open #mobile-menu,
+  body.veloura-cats-bottom-open #mobile-menu {
     position: relative !important;
     inset: auto !important;
 
@@ -456,41 +476,54 @@
     height: auto !important;
     max-height: min(72vh, 620px) !important;
 
-    overflow: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 
     background: #ffffff !important;
+
     transform: none !important;
   }
 
-  body.veloura-mobile-cats-bottom-open .mm-ocd.veloura-cats-bottom-sheet #mobile-menu::before,
-  body.veloura-mobile-cats-bottom-open .mm-ocd.ocd-categs #mobile-menu::before {
+  html.veloura-cats-bottom-open #mobile-menu::before,
+  body.veloura-cats-bottom-open #mobile-menu::before {
     content: '';
     display: block;
-    width: 42px;
+
+    width: 44px;
     height: 5px;
+
     margin: 10px auto 8px;
+
     border-radius: 999px;
     background: rgba(15, 23, 42, 0.16);
   }
 
-  body.veloura-mobile-cats-bottom-open
-    .mm-ocd.veloura-cats-bottom-sheet
-    .mobile-nav-bottom-btn-close,
-  body.veloura-mobile-cats-bottom-open
-    .mm-ocd.ocd-categs
-    .mobile-nav-bottom-btn-close {
-    display: block !important;
+  html.veloura-cats-bottom-open .mm-spn,
+  body.veloura-cats-bottom-open .mm-spn {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    transform: none !important;
+  }
+
+  html.veloura-cats-bottom-open .mm-spn--navbar::before,
+  body.veloura-cats-bottom-open .mm-spn--navbar::before {
+    display: none !important;
   }
 }
 
-@keyframes velouraCatsBottomSheetIn {
+@keyframes velouraCatsSheetUp {
   from {
     opacity: 0;
-    transform: translateY(24px) !important;
+    transform: translate3d(0, 32px, 0) !important;
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 }
