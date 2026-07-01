@@ -1444,6 +1444,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var syncTimers = [];
     var transientAction = '';
     var transientTimer = null;
+    var transientWatcher = null;
+    var transientSeenOpen = false;
+    var transientStartedAt = 0;
 
     root.style.setProperty('--veloura-mobile-floating-menu-height', "{{ vmfm_height }}px");
     root.style.setProperty('--veloura-mobile-floating-menu-bottom', "{{ vmfm_bottom }}px");
@@ -1495,6 +1498,50 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof el.click === 'function') {
           el.click();
           return true;
+        }
+      }
+
+      return false;
+    }
+
+    function isVisibleElement(el) {
+      if (!el) {
+        return false;
+      }
+
+      try {
+        var style = window.getComputedStyle(el);
+        var rect = el.getBoundingClientRect();
+
+        return (
+          style.display !== 'none' &&
+          style.visibility !== 'hidden' &&
+          style.opacity !== '0' &&
+          rect.width > 0 &&
+          rect.height > 0
+        );
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function anyVisible(selectors) {
+      for (var i = 0; i < selectors.length; i++) {
+        var nodes = document.querySelectorAll(selectors[i]);
+
+        for (var j = 0; j < nodes.length; j++) {
+          var node = nodes[j];
+
+          if (
+            node.hasAttribute('open') ||
+            node.hasAttribute('opened') ||
+            node.classList.contains('is-open') ||
+            node.classList.contains('s-modal-is-open') ||
+            node.classList.contains('active') ||
+            isVisibleElement(node)
+          ) {
+            return true;
+          }
         }
       }
 
@@ -1593,37 +1640,135 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    function clearTransientAction() {
+    function stopTransientWatcher() {
+      if (transientWatcher) {
+        clearInterval(transientWatcher);
+        transientWatcher = null;
+      }
+
       if (transientTimer) {
         clearTimeout(transientTimer);
         transientTimer = null;
       }
 
+      transientSeenOpen = false;
+      transientStartedAt = 0;
+    }
+
+    function clearTransientAction() {
+      stopTransientWatcher();
       transientAction = '';
       syncFloatingMenuActive();
     }
 
-    function setTransientAction(action, item) {
-      if (transientTimer) {
-        clearTimeout(transientTimer);
-        transientTimer = null;
+    function isSearchModalOpen() {
+      if (
+        document.body.classList.contains('search-open') ||
+        document.body.classList.contains('s-search-open') ||
+        document.body.classList.contains('salla-search-open')
+      ) {
+        return true;
       }
 
+      return anyVisible([
+        'salla-search[open]',
+        'salla-search[opened]',
+        'salla-search.is-open',
+        'salla-search.active',
+        '.s-search-modal',
+        '.s-search-modal-open',
+        '.s-search-container',
+        '.s-search-results',
+        '.s-modal-search',
+        '.search-modal',
+        '.search-modal.open',
+        '.search-modal.active',
+        '[class*="search"][class*="modal"]',
+        '[class*="Search"][class*="modal"]'
+      ]);
+    }
+
+    function isLoginModalOpen() {
+      if (
+        document.body.classList.contains('login-open') ||
+        document.body.classList.contains('s-login-open') ||
+        document.body.classList.contains('salla-login-open')
+      ) {
+        return true;
+      }
+
+      return anyVisible([
+        'salla-login-modal[open]',
+        'salla-login-modal[opened]',
+        'salla-login-modal.is-open',
+        'salla-login-modal.active',
+        '.s-login-modal',
+        '.s-auth-modal',
+        '.s-user-modal',
+        '.login-modal',
+        '.login-modal.open',
+        '.login-modal.active',
+        '[class*="login"][class*="modal"]',
+        '[class*="Login"][class*="modal"]',
+        '[class*="auth"][class*="modal"]',
+        '[class*="Auth"][class*="modal"]'
+      ]);
+    }
+
+    function isTransientModalOpen(action) {
+      if (action === 'search') {
+        return isSearchModalOpen();
+      }
+
+      if (action === 'login') {
+        return isLoginModalOpen();
+      }
+
+      return false;
+    }
+
+    function setTransientAction(action, item) {
+      stopTransientWatcher();
+
       transientAction = action || '';
+      transientStartedAt = Date.now();
+      transientSeenOpen = false;
 
       if (item) {
         activateFloatingItem(item);
       }
 
-      /*
-       * البحث وحسابي مجرد مودال/نافذة مؤقتة.
-       * لا نخليهم نشطين عالقين؛ بعد لحظة يرجع النشط حسب رابط الصفحة.
-       */
-      transientTimer = setTimeout(function () {
-        transientAction = '';
-        transientTimer = null;
+      if (!transientAction) {
         syncFloatingMenuActive();
-      }, 1400);
+        return;
+      }
+
+      /*
+       * يثبت البحث/حسابي طالما النافذة مفتوحة.
+       * وإذا انقفلت النافذة يرجع النشط حسب رابط الصفحة.
+       */
+      transientWatcher = setInterval(function () {
+        var elapsed = Date.now() - transientStartedAt;
+        var isOpen = isTransientModalOpen(transientAction);
+
+        if (isOpen) {
+          transientSeenOpen = true;
+          syncFloatingMenuActive();
+          return;
+        }
+
+        if (transientSeenOpen && elapsed > 600) {
+          clearTransientAction();
+          return;
+        }
+
+        /*
+         * حماية لو ما انفتحت النافذة أصلًا.
+         */
+        if (!transientSeenOpen && elapsed > 7000) {
+          clearTransientAction();
+        }
+      }, 300);
     }
 
     function ensureCategoriesCloseStyles() {
@@ -1813,7 +1958,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function scheduleFloatingMenuSync() {
-      var delays = [120, 350, 800, 1600];
+      var delays = [120, 350, 800, 1600, 3000];
 
       syncTimers.forEach(function (timer) {
         clearTimeout(timer);
@@ -1939,18 +2084,8 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        /*
-         * أي ضغطة خارج القائمة بعد فتح البحث/حسابي تعني أن النشط لا يجب أن يبقى عالقًا.
-         * وهذا يشمل زر الإغلاق، الخلفية، أو التفاعل خارج المودال.
-         */
-        if (transientAction || closeBtn || backdrop || modalClose) {
-          setTimeout(function () {
-            if (transientAction) {
-              clearTransientAction();
-            } else {
-              syncFloatingMenuActive();
-            }
-          }, 80);
+        if (closeBtn || backdrop || modalClose) {
+          setTimeout(clearTransientAction, 120);
         }
       },
       true
@@ -1958,7 +2093,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
-        clearTransientAction();
+        setTimeout(clearTransientAction, 120);
       }
     });
 
@@ -1971,12 +2106,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     window.addEventListener('pageshow', function () {
-      clearTransientAction();
+      syncFloatingMenuActive();
     });
 
     document.addEventListener('visibilitychange', function () {
       if (!document.hidden) {
-        clearTransientAction();
+        syncFloatingMenuActive();
       }
     });
 
@@ -2025,11 +2160,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var didOpen = openCategoriesMenu();
 
         if (didOpen) {
-          if (transientTimer) {
-            clearTimeout(transientTimer);
-            transientTimer = null;
-          }
-
+          stopTransientWatcher();
           transientAction = '';
           activateFloatingItem(actionItem);
         } else {
