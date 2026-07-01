@@ -392,15 +392,6 @@
   {% set vqv_button_position = vqv_button_position_raw %}
 {% endif %}
 
-{% set vqv_button_style_raw = theme.settings.get('veloura_quick_view_button_style_2026', 'glass') %}
-{% if vqv_button_style_raw is iterable and vqv_button_style_raw[0].value is defined %}
-  {% set vqv_button_style = vqv_button_style_raw[0].value %}
-{% elseif vqv_button_style_raw.value is defined %}
-  {% set vqv_button_style = vqv_button_style_raw.value %}
-{% else %}
-  {% set vqv_button_style = vqv_button_style_raw %}
-{% endif %}
-
 {% set vqv_button_radius_raw = theme.settings.get('veloura_quick_view_button_radius_2026', 'round') %}
 {% if vqv_button_radius_raw is iterable and vqv_button_radius_raw[0].value is defined %}
   {% set vqv_button_radius_key = vqv_button_radius_raw[0].value %}
@@ -540,7 +531,6 @@
         enabled: {{ (vpc_enabled and vqv_enabled) ? 'true' : 'false' }},
         buttonText: {{ vqv_button_text|json_encode|raw }},
         buttonPosition: {{ vqv_button_position|json_encode|raw }},
-        buttonStyle: {{ vqv_button_style|json_encode|raw }},
         showIcon: {{ vqv_show_icon ? 'true' : 'false' }},
         icon: {{ vqv_icon|json_encode|raw }},
         showDiscount: {{ vqv_show_discount ? 'true' : 'false' }},
@@ -999,7 +989,6 @@
   {{ vpc_enabled ? ' veloura-product-card-enabled' : '' }}
   {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-enabled' : '' }}
   {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-position-' ~ vqv_button_position : '' }}
-  {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-style-' ~ vqv_button_style : '' }}
   {{ vpc_enabled and vqv_enabled ? ' veloura-quick-view-animation-' ~ vqv_animation : '' }}
   {{ vpc_enabled and vqv_enabled and vqv_overlay_blur ? ' veloura-quick-view-overlay-blur' : '' }}
   {{ vpc_enabled and vpc_title_one_line ? ' veloura-product-title-one-line' : '' }}

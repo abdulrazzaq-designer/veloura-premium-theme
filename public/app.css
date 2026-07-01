@@ -34250,7 +34250,7 @@ body.veloura-quick-view-enabled .veloura-quick-view-btn span {
   pointer-events: none;
 }
 /* ================================
-   Option 1: Icon beside wishlist
+   Icon beside wishlist
 ================================ */
 body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-image-host,
 body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-image-host {
@@ -34263,15 +34263,15 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   left: 72px !important;
   right: auto !important;
   bottom: auto !important;
-  width: 46px !important;
-  height: 46px !important;
-  min-width: 46px !important;
-  min-height: 46px !important;
-  max-width: 46px !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  max-width: 44px !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 999px !important;
-  font-size: 18px !important;
+  font-size: 16px !important;
   background: rgba(255, 255, 255, 0.92) !important;
   color: #0f172a !important;
   border-color: rgba(255, 255, 255, 0.65) !important;
@@ -34282,12 +34282,17 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only i,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only i {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
 body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only:hover,
 body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only:hover {
   transform: translateY(-1px) scale(1.03) !important;
 }
 /* ================================
-   Option 2: Button below Add to Cart
+   Button below Add to Cart
 ================================ */
 body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-under-cart-wrap,
 body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-under-cart-wrap,
@@ -34329,51 +34334,71 @@ body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-under-ca
   flex-basis: calc(100% - 24px) !important;
   border-radius: 999px !important;
   border-radius: var(--veloura-quick-view-button-radius, 999px) !important;
-  background: #004d65 !important;
-  background: var(--veloura-quick-view-button-bg, #004d65) !important;
-  color: #ffffff !important;
-  color: var(--veloura-quick-view-button-text, #ffffff) !important;
-  border-color: #004d65 !important;
-  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
 }
 body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn.is-under-cart:hover,
 body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-btn.is-under-cart:hover,
 body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-under-cart:hover {
   transform: translateY(-1px) !important;
 }
-/* لو صار الزر يتولد كأيقونة بالغلط في وضع تحت السلة */
+/* منع الأيقونة لو الخيار هو زر تحت السلة */
 body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn.is-icon-only,
 body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-btn.is-icon-only,
 body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-icon-only {
   display: none !important;
 }
 /* ================================
-   Button Styles from Settings
+   Style: Glass
 ================================ */
-body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
+body.veloura-quick-view-style-glass .veloura-quick-view-btn {
   background: rgba(255, 255, 255, 0.72) !important;
   color: #111827 !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
 }
-body.veloura-quick-view-style-glass .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
+body.veloura-quick-view-style-glass .veloura-quick-view-btn {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-body.veloura-quick-view-style-outline .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
+body.veloura-quick-view-style-glass .veloura-quick-view-btn.is-under-cart {
+  color: #111827 !important;
+}
+/* ================================
+   Style: Solid
+================================ */
+body.veloura-quick-view-style-solid .veloura-quick-view-btn {
+  background: #004d65 !important;
+  background: var(--veloura-quick-view-button-bg, #004d65) !important;
+  color: #ffffff !important;
+  color: var(--veloura-quick-view-button-text, #ffffff) !important;
+  border-color: #004d65 !important;
+  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+/* ================================
+   Style: Outline
+================================ */
+body.veloura-quick-view-style-outline .veloura-quick-view-btn {
   background: transparent !important;
   color: #004d65 !important;
   color: var(--veloura-quick-view-button-bg, #004d65) !important;
   border-color: #004d65 !important;
   border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
-body.veloura-quick-view-style-soft .veloura-quick-view-btn:not(.is-icon-only):not(.is-under-cart) {
+body.veloura-quick-view-style-outline .veloura-quick-view-btn.is-icon-only {
+  background: rgba(255, 255, 255, 0.86) !important;
+}
+/* ================================
+   Style: Soft
+================================ */
+body.veloura-quick-view-style-soft .veloura-quick-view-btn {
   background: rgba(0, 77, 101, 0.12) !important;
   color: #004d65 !important;
   color: var(--veloura-quick-view-button-bg, #004d65) !important;
   border-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 /* ================================
    Modal

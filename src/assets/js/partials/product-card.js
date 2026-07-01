@@ -427,29 +427,15 @@ customElements.define('custom-salla-product-card', ProductCard);
       return 'wishlist_icon';
     }
 
-    function getQuickViewStyle() {
-      const bodyClass = Array.from(document.body.classList).find(function (className) {
-        return className.indexOf('veloura-quick-view-style-') === 0;
-      });
-
-      if (bodyClass) {
-        return bodyClass.replace('veloura-quick-view-style-', '');
-      }
-
-      const raw = String(normalizeSettingValue(config.buttonStyle, 'glass'));
-
-      if (['glass', 'solid', 'outline', 'soft'].indexOf(raw) !== -1) {
-        return raw;
-      }
-
-      return 'glass';
-    }
-
     const position = getQuickViewPosition();
-    const buttonStyle = getQuickViewStyle();
 
     replaceBodyClass('veloura-quick-view-position-', position);
-    replaceBodyClass('veloura-quick-view-style-', buttonStyle);
+
+    Array.from(document.body.classList).forEach(function (className) {
+  if (className.indexOf('veloura-quick-view-style-') === 0) {
+    document.body.classList.remove(className);
+  }
+});
 
     function stripHtml(value) {
       const div = document.createElement('div');

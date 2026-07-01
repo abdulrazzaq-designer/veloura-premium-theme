@@ -3317,56 +3317,6 @@
   ]
 },
 {
-  "id": "veloura_quick_view_button_style_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "شكل زر العرض السريع",
-  "icon": "sicon-list",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "زجاجي",
-      "value": "glass",
-      "key": "veloura-quick-view-button-style-glass-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "زجاجي",
-      "value": "glass",
-      "key": "veloura-quick-view-button-style-glass-2026"
-    },
-    {
-      "label": "ممتلئ",
-      "value": "solid",
-      "key": "veloura-quick-view-button-style-solid-2026"
-    },
-    {
-      "label": "حد فقط",
-      "value": "outline",
-      "key": "veloura-quick-view-button-style-outline-2026"
-    },
-    {
-      "label": "ناعم",
-      "value": "soft",
-      "key": "veloura-quick-view-button-style-soft-2026"
-    }
-  ],
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_quick_view_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "id": "veloura_quick_view_button_bg_color_2026",
   "type": "string",
   "format": "color",
