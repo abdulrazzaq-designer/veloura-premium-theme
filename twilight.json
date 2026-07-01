@@ -3321,14 +3321,14 @@
   "type": "number",
   "format": "slider",
   "label": "حجم أيقونة المفضلة والعرض السريع",
-  "description": "يتحكم بحجم زر المفضلة وزر العرض السريع فوق صورة المنتج حتى يكونان بنفس الحجم",
+  "description": "القيمة الفعلية = 32 + قيمة السلايدر",
   "inputType": "range",
   "icon": "sicon-pin",
-  "value": "42",
+  "value": "10",
   "required": false,
   "step": "1",
-  "minimum": "32",
-  "maximum": "56",
+  "minimum": "0",
+  "maximum": "24",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",

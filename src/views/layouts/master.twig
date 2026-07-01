@@ -424,20 +424,23 @@
 {% endif %}
 {% set vqv_button_height = 32 + vqv_button_height_value %}
 
-{% set vpc_action_size_raw = theme.settings.get('veloura_product_card_action_size_2026', '42') %}
-{% if vpc_action_size_raw.value is defined %}
-  {% set vpc_action_size_raw = vpc_action_size_raw.value %}
+{% set vpc_action_size_value = theme.settings.get('veloura_product_card_action_size_2026', 10) %}
+
+{% if vpc_action_size_value.value is defined %}
+  {% set vpc_action_size_value = vpc_action_size_value.value %}
 {% endif %}
 
-{% set vpc_action_size = vpc_action_size_raw + 0 %}
+{% set vpc_action_size_value = vpc_action_size_value + 0 %}
 
-{% if vpc_action_size < 32 %}
-  {% set vpc_action_size = 32 %}
+{% if vpc_action_size_value < 0 %}
+  {% set vpc_action_size_value = 0 %}
 {% endif %}
 
-{% if vpc_action_size > 56 %}
-  {% set vpc_action_size = 56 %}
+{% if vpc_action_size_value > 24 %}
+  {% set vpc_action_size_value = 24 %}
 {% endif %}
+
+{% set vpc_action_size = 32 + vpc_action_size_value %}
 
 {% set vqv_show_icon_raw = theme.settings.get('veloura_quick_view_show_icon_2026', true) %}
 {% if vqv_show_icon_raw.value is defined %}

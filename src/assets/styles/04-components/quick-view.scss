@@ -384,7 +384,6 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
 
 /* ================================
    Wishlist + Quick View Same Size
-   توحيد حجم المفضلة والعرض السريع
 ================================ */
 
 body.veloura-product-card-enabled .s-product-card-entry {
@@ -413,7 +412,7 @@ body.veloura-product-card-enabled .s-product-card-entry [class*="Wishlist"] {
   justify-content: center !important;
 }
 
-/* أيقونة المفضلة داخل الزر */
+/* أيقونة المفضلة */
 body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn i,
 body.veloura-product-card-enabled .s-product-card-entry [class*="wishlist"] i,
 body.veloura-product-card-enabled .s-product-card-entry [class*="Wishlist"] i,
@@ -436,8 +435,6 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   max-height: var(--veloura-action-size) !important;
 
   top: var(--veloura-action-top) !important;
-
-  /* مكانه بجانب المفضلة */
   left: calc(
     var(--veloura-action-start) + var(--veloura-action-size) + var(--veloura-action-gap)
   ) !important;
@@ -457,7 +454,6 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   line-height: 1 !important;
 }
 
-/* للموبايل */
 @media (max-width: 767px) {
   body.veloura-product-card-enabled .s-product-card-entry {
     --veloura-action-top: 14px;
