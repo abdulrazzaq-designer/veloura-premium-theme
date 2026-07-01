@@ -1431,7 +1431,146 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </nav>
 
-  <script data-cfasync="false">
+  
+  <style data-veloura-cats-bottom-sheet>
+    @media (max-width: 767px) {
+      body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+        z-index: 999999 !important;
+      }
+
+      html.veloura-cats-bottom-open,
+      body.veloura-cats-bottom-open {
+        overflow: hidden !important;
+      }
+
+      html.veloura-cats-bottom-open .mm-ocd,
+      body.veloura-cats-bottom-open .mm-ocd,
+      body.menu-opened.mm-ocd-opened.veloura-cats-bottom-open .mm-ocd {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 999990 !important;
+        pointer-events: auto !important;
+        background: rgba(15, 23, 42, 0.42) !important;
+        overflow: hidden !important;
+        transform: none !important;
+      }
+
+      html.veloura-cats-bottom-open .mm-ocd__content,
+      body.veloura-cats-bottom-open .mm-ocd__content,
+      body.menu-opened.mm-ocd-opened.veloura-cats-bottom-open .mm-ocd__content,
+      body.menu-opened.mm-ocd-opened.veloura-cats-bottom-open .mm-ocd--right .mm-ocd__content {
+        position: fixed !important;
+        top: auto !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: calc(
+          var(--veloura-mobile-floating-menu-height, 56px) +
+          var(--veloura-mobile-floating-menu-bottom, 16px) +
+          env(safe-area-inset-bottom, 0px) +
+          14px
+        ) !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: min(72vh, 620px) !important;
+        border-radius: 28px !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+        box-shadow:
+          0 -18px 55px rgba(15, 23, 42, 0.24),
+          inset 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+        z-index: 2 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translate3d(0, 0, 0) !important;
+        animation: velouraCatsSheetUp 0.28s cubic-bezier(.2, .8, .2, 1) both !important;
+      }
+
+      html.veloura-cats-bottom-open .mm-ocd__backdrop,
+      body.veloura-cats-bottom-open .mm-ocd__backdrop,
+      body.menu-opened.mm-ocd-opened.veloura-cats-bottom-open .mm-ocd__backdrop {
+        position: fixed !important;
+        inset: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        background: rgba(15, 23, 42, 0.42) !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 1 !important;
+        pointer-events: auto !important;
+      }
+
+      html.veloura-cats-bottom-open #mobile-menu,
+      body.veloura-cats-bottom-open #mobile-menu,
+      body.menu-opened.mm-ocd-opened.veloura-cats-bottom-open #mobile-menu {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: min(72vh, 620px) !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        background: #ffffff !important;
+        transform: none !important;
+      }
+
+      html.veloura-cats-bottom-open #mobile-menu::before,
+      body.veloura-cats-bottom-open #mobile-menu::before {
+        content: '';
+        display: block;
+        width: 44px;
+        height: 5px;
+        margin: 10px auto 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.16);
+      }
+
+      html.veloura-cats-bottom-open .mm-spn,
+      body.veloura-cats-bottom-open .mm-spn {
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: none !important;
+      }
+
+      html.veloura-cats-bottom-open .mm-spn ul,
+      body.veloura-cats-bottom-open .mm-spn ul,
+      html.veloura-cats-bottom-open .mm-spn ul.mm-spn--open,
+      body.veloura-cats-bottom-open .mm-spn ul.mm-spn--open {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        transform: none !important;
+      }
+
+      html.veloura-cats-bottom-open .mm-spn--navbar::before,
+      body.veloura-cats-bottom-open .mm-spn--navbar::before {
+        display: none !important;
+      }
+    }
+
+    @keyframes velouraCatsSheetUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 32px, 0) !important;
+      }
+
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) !important;
+      }
+    }
+  </style>
+
+<script data-cfasync="false">
   document.addEventListener('DOMContentLoaded', function () {
     var menu = document.querySelector('.veloura-mobile-floating-menu');
 
@@ -1519,48 +1658,115 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('a[href="#mobile-menu"]');
 
       if (originalTrigger) {
-        originalTrigger.dispatchEvent(
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window
-          })
-        );
+        originalTrigger.dispatchEvent(new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        }));
       }
 
-      function forceBottomSheet() {
+      function applyBottomSheet() {
         var drawer =
-          document.querySelector('.mm-ocd.ocd-categs.mm-ocd--open') ||
           document.querySelector('.mm-ocd.mm-ocd--open') ||
           document.querySelector('.mm-ocd.ocd-categs') ||
           document.querySelector('.mm-ocd');
 
+        var content = drawer ? drawer.querySelector('.mm-ocd__content') : null;
+        var backdrop = drawer ? drawer.querySelector('.mm-ocd__backdrop') : null;
         var mobileMenu = document.querySelector('#mobile-menu');
+        var floatingMenu = document.querySelector('.veloura-mobile-floating-menu');
 
         document.documentElement.classList.add('veloura-cats-bottom-open');
-        document.body.classList.add('veloura-cats-bottom-open');
+        document.body.classList.add('veloura-cats-bottom-open', 'menu-opened', 'mm-ocd-opened', 'overflow-hidden');
 
         if (drawer) {
-          drawer.classList.add('veloura-cats-bottom-sheet');
-          drawer.classList.add('mm-ocd--open');
-          drawer.classList.add('ocd-categs');
+          drawer.classList.add('mm-ocd--open', 'veloura-cats-bottom-sheet');
+
+          drawer.style.position = 'fixed';
+          drawer.style.inset = '0';
+          drawer.style.width = '100vw';
+          drawer.style.height = '100vh';
+          drawer.style.display = 'block';
+          drawer.style.visibility = 'visible';
+          drawer.style.opacity = '1';
+          drawer.style.zIndex = '999990';
+          drawer.style.pointerEvents = 'auto';
+          drawer.style.background = 'rgba(15, 23, 42, 0.42)';
+          drawer.style.overflow = 'hidden';
+          drawer.style.transform = 'none';
+        }
+
+        if (backdrop) {
+          backdrop.style.position = 'fixed';
+          backdrop.style.inset = '0';
+          backdrop.style.display = 'block';
+          backdrop.style.visibility = 'visible';
+          backdrop.style.opacity = '1';
+          backdrop.style.zIndex = '1';
+          backdrop.style.background = 'rgba(15, 23, 42, 0.42)';
+          backdrop.style.backdropFilter = 'blur(8px)';
+          backdrop.style.webkitBackdropFilter = 'blur(8px)';
+          backdrop.style.pointerEvents = 'auto';
+        }
+
+        if (content) {
+          var floatingHeight = 56;
+          var floatingBottom = 16;
+
+          if (floatingMenu) {
+            var styles = window.getComputedStyle(floatingMenu);
+            var h = parseFloat(styles.getPropertyValue('--veloura-mobile-floating-menu-height'));
+            var b = parseFloat(styles.getPropertyValue('--veloura-mobile-floating-menu-bottom'));
+
+            if (!isNaN(h)) floatingHeight = h;
+            if (!isNaN(b)) floatingBottom = b;
+          }
+
+          content.style.position = 'fixed';
+          content.style.top = 'auto';
+          content.style.left = '10px';
+          content.style.right = '10px';
+          content.style.bottom = 'calc(' + floatingHeight + 'px + ' + floatingBottom + 'px + env(safe-area-inset-bottom, 0px) + 14px)';
+          content.style.width = 'auto';
+          content.style.maxWidth = 'none';
+          content.style.height = 'auto';
+          content.style.maxHeight = 'min(72vh, 620px)';
+          content.style.borderRadius = '28px';
+          content.style.overflow = 'hidden';
+          content.style.background = '#ffffff';
+          content.style.boxShadow = '0 -18px 55px rgba(15, 23, 42, 0.24), inset 0 0 0 1px rgba(15, 23, 42, 0.06)';
+          content.style.zIndex = '2';
+          content.style.opacity = '1';
+          content.style.visibility = 'visible';
+          content.style.transform = 'translate3d(0, 0, 0)';
+          content.style.animation = 'velouraCatsSheetUp 0.28s cubic-bezier(.2, .8, .2, 1) both';
         }
 
         if (mobileMenu) {
-          mobileMenu.classList.add('mm-spn--open');
-          mobileMenu.classList.add('mm-spn--light');
-        }
+          mobileMenu.classList.add('mm-spn--open', 'mm-spn--light');
 
-        document.body.classList.add('overflow-hidden');
+          mobileMenu.style.position = 'relative';
+          mobileMenu.style.inset = 'auto';
+          mobileMenu.style.width = '100%';
+          mobileMenu.style.height = 'auto';
+          mobileMenu.style.maxHeight = 'min(72vh, 620px)';
+          mobileMenu.style.display = 'block';
+          mobileMenu.style.visibility = 'visible';
+          mobileMenu.style.opacity = '1';
+          mobileMenu.style.overflowY = 'auto';
+          mobileMenu.style.overflowX = 'hidden';
+          mobileMenu.style.background = '#ffffff';
+          mobileMenu.style.transform = 'none';
+        }
 
         return !!drawer;
       }
 
-      forceBottomSheet();
-
-      setTimeout(forceBottomSheet, 50);
-      setTimeout(forceBottomSheet, 150);
-      setTimeout(forceBottomSheet, 300);
+      applyBottomSheet();
+      setTimeout(applyBottomSheet, 50);
+      setTimeout(applyBottomSheet, 150);
+      setTimeout(applyBottomSheet, 300);
+      setTimeout(applyBottomSheet, 600);
 
       return true;
     }
@@ -1573,6 +1779,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (drawer) {
         drawer.classList.remove('veloura-cats-bottom-sheet');
+        drawer.removeAttribute('style');
+
+        var content = drawer.querySelector('.mm-ocd__content');
+        var backdrop = drawer.querySelector('.mm-ocd__backdrop');
+
+        if (content) content.removeAttribute('style');
+        if (backdrop) backdrop.removeAttribute('style');
+      }
+
+      var mobileMenu = document.querySelector('#mobile-menu');
+
+      if (mobileMenu) {
+        mobileMenu.removeAttribute('style');
       }
     }
 
@@ -1626,25 +1845,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var currentPath = normalizePath(window.location.href);
-
-    document.addEventListener('click', function (event) {
-  var closeTarget = event.target.closest(
-    '.veloura-cats-bottom-sheet .mm-ocd__backdrop, .veloura-cats-bottom-sheet .close-mobile-menu, .veloura-cats-bottom-sheet .mobile-nav-bottom-btn-close'
-  );
-
-  if (!closeTarget) {
-    return;
-  }
-
-  document.body.classList.remove('veloura-cats-bottom-open');
-  document.documentElement.classList.remove('veloura-cats-bottom-open');
-
-  var drawer = document.querySelector('.veloura-cats-bottom-sheet');
-
-  if (drawer) {
-    drawer.classList.remove('veloura-cats-bottom-sheet');
-  }
-});
 
     var items = menu.querySelectorAll('.veloura-mobile-floating-menu__item');
     var hasActive = false;
