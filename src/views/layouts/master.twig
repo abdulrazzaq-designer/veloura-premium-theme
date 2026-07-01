@@ -1578,9 +1578,183 @@ document.addEventListener('DOMContentLoaded', function () {
       );
     }
 
+    function openLoginModal() {
+      var opened = clickFirst([
+        '#mobile-nav .mob-login a',
+        '.mobile-nav .mob-login a',
+        '.mob-login .mobile-nav--item',
+        '[data-login]',
+        '[data-open-login]',
+        '[data-login-open]',
+        '.s-login-modal-trigger',
+        '.login-trigger',
+        '.s-user-menu-trigger',
+        'button[aria-label*="تسجيل"]',
+        'button[aria-label*="دخول"]',
+        'button[aria-label*="login"]',
+        'a[href*="/login"]',
+        'a[href*="/account"]'
+      ]);
+
+      if (opened) {
+        return true;
+      }
+
+      if (window.salla && salla.event && typeof salla.event.dispatch === 'function') {
+        try {
+          salla.event.dispatch('login::open');
+          return true;
+        } catch (error) {}
+      }
+
+      var loginModal = document.querySelector('salla-login-modal');
+
+      if (loginModal && typeof loginModal.open === 'function') {
+        loginModal.open();
+        return true;
+      }
+
+      window.location.href = '{{ store.url|default('') }}/login';
+      return true;
+    }
+
+    var items = menu.querySelectorAll('.veloura-mobile-floating-menu__item');
+
+    function getCurrentPath() {
+      return normalizePath(window.location.href);
+    }
+
+    function getItemPath(item) {
+      var href = item.getAttribute('href');
+
+      if (!href || href === '#' || href === '#mobile-menu') {
+        return '';
+      }
+
+      try {
+        return normalizePath(new URL(href, window.location.origin).href);
+      } catch (error) {
+        return '';
+      }
+    }
+
+    function clearFloatingMenuActive() {
+      items.forEach(function (item) {
+        item.classList.remove('is-active');
+      });
+    }
+
+    function activateFloatingItem(item) {
+      clearFloatingMenuActive();
+
+      if (item) {
+        item.classList.add('is-active');
+      }
+    }
+
+    function syncFloatingMenuActive() {
+      var currentPath = getCurrentPath();
+      var matchedItem = null;
+
+      clearFloatingMenuActive();
+
+      /*
+       * إذا قائمة التصنيفات مفتوحة، خلي التصنيفات نشطة مؤقتًا.
+       */
+      if (isCategoriesMenuOpen()) {
+        matchedItem = menu.querySelector('[data-vmfm-action="categories"]');
+
+        if (matchedItem) {
+          matchedItem.classList.add('is-active');
+        }
+
+        return;
+      }
+
+      items.forEach(function (item) {
+        if (matchedItem) {
+          return;
+        }
+
+        var match = String(item.getAttribute('data-vmfm-match') || '').trim();
+        var itemPath = getItemPath(item);
+
+        if (match === 'home' && currentPath === '/') {
+          matchedItem = item;
+          return;
+        }
+
+        if (
+          match === 'categories' &&
+          (
+            currentPath.indexOf('/categories') !== -1 ||
+            currentPath.indexOf('/category') !== -1 ||
+            currentPath.indexOf('/c/') !== -1
+          )
+        ) {
+          matchedItem = item;
+          return;
+        }
+
+        if (match === 'search' && currentPath.indexOf('/search') !== -1) {
+          matchedItem = item;
+          return;
+        }
+
+        if (match === 'cart' && currentPath.indexOf('/cart') !== -1) {
+          matchedItem = item;
+          return;
+        }
+
+        if (
+          match === 'account' &&
+          (
+            currentPath.indexOf('/account') !== -1 ||
+            currentPath.indexOf('/profile') !== -1 ||
+            currentPath.indexOf('/login') !== -1
+          )
+        ) {
+          matchedItem = item;
+          return;
+        }
+
+        /*
+         * العناصر المخصصة:
+         * إذا رابط الزر يساوي رابط الصفحة الحالية، يصير هو النشط.
+         */
+        if (itemPath && itemPath === currentPath) {
+          matchedItem = item;
+        }
+      });
+
+      if (matchedItem) {
+        matchedItem.classList.add('is-active');
+        return;
+      }
+
+      /*
+       * لا يوجد fallback إلا في الرئيسية فقط.
+       * صفحات المنتجات أو الصفحات غير المطابقة: بدون عنصر نشط.
+       */
+      if (currentPath === '/') {
+        var homeItem = menu.querySelector('[data-vmfm-match="home"]');
+
+        if (homeItem) {
+          homeItem.classList.add('is-active');
+        }
+      }
+    }
+
+    function scheduleFloatingMenuSync() {
+      setTimeout(syncFloatingMenuActive, 250);
+      setTimeout(syncFloatingMenuActive, 800);
+      setTimeout(syncFloatingMenuActive, 1600);
+      setTimeout(syncFloatingMenuActive, 3000);
+    }
+
     function clearCategoriesActiveState() {
-  syncFloatingMenuActive();
-}
+      syncFloatingMenuActive();
+    }
 
     function closeCategoriesMenu() {
       var drawer = getCategoriesDrawer();
@@ -1654,119 +1828,33 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        setTimeout(clearCategoriesActiveState, 260);
+        setTimeout(syncFloatingMenuActive, 260);
       },
       true
     );
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
-        setTimeout(clearCategoriesActiveState, 260);
+        setTimeout(syncFloatingMenuActive, 260);
       }
     });
 
-    function openLoginModal() {
-      var opened = clickFirst([
-        '#mobile-nav .mob-login a',
-        '.mobile-nav .mob-login a',
-        '.mob-login .mobile-nav--item',
-        '[data-login]',
-        '[data-open-login]',
-        '[data-login-open]',
-        '.s-login-modal-trigger',
-        '.login-trigger',
-        '.s-user-menu-trigger',
-        'button[aria-label*="تسجيل"]',
-        'button[aria-label*="دخول"]',
-        'button[aria-label*="login"]',
-        'a[href*="/login"]',
-        'a[href*="/account"]'
-      ]);
+    syncFloatingMenuActive();
 
-      if (opened) {
-        return true;
+    window.addEventListener('popstate', syncFloatingMenuActive);
+    window.addEventListener('hashchange', syncFloatingMenuActive);
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) {
+        syncFloatingMenuActive();
       }
+    });
 
-      if (window.salla && salla.event && typeof salla.event.dispatch === 'function') {
-        try {
-          salla.event.dispatch('login::open');
-          return true;
-        } catch (error) {}
-      }
-
-      var loginModal = document.querySelector('salla-login-modal');
-
-      if (loginModal && typeof loginModal.open === 'function') {
-        loginModal.open();
-        return true;
-      }
-
-      window.location.href = '{{ store.url|default('') }}/login';
-      return true;
-    }
-
-    var currentPath = normalizePath(window.location.href);
-
-    var items = menu.querySelectorAll('.veloura-mobile-floating-menu__item');
-
-function syncFloatingMenuActive() {
-  var currentPath = normalizePath(window.location.href);
-  var hasActive = false;
-
-  items.forEach(function (item) {
-    item.classList.remove('is-active');
-
-    var match = String(item.getAttribute('data-vmfm-match') || '').trim();
-    var active = false;
-
-    if (match === 'home') {
-      active = currentPath === '/';
-    }
-
-    if (match === 'categories') {
-      active =
-        currentPath.indexOf('/categories') !== -1 ||
-        currentPath.indexOf('/category') !== -1 ||
-        currentPath.indexOf('/c/') !== -1;
-    }
-
-    if (match === 'search') {
-      active = currentPath.indexOf('/search') !== -1;
-    }
-
-    if (match === 'cart') {
-      active = currentPath.indexOf('/cart') !== -1;
-    }
-
-    if (match === 'account') {
-      active =
-        currentPath.indexOf('/account') !== -1 ||
-        currentPath.indexOf('/profile') !== -1 ||
-        currentPath.indexOf('/login') !== -1;
-    }
-
-    if (active) {
-      item.classList.add('is-active');
-      hasActive = true;
-    }
-  });
-
-  /*
-   * لو ما فيه أي عنصر مطابق للرابط الحالي
-   * نخلي الرئيسية نشطة كـ fallback
-   */
-  if (!hasActive) {
-    var homeItem = menu.querySelector('[data-vmfm-match="home"]');
-
-    if (homeItem) {
-      homeItem.classList.add('is-active');
-    } else if (items.length) {
-      items[0].classList.add('is-active');
-    }
-  }
-}
-
-syncFloatingMenuActive();
+    /*
+     * فحص خفيف:
+     * يرجع النشط حسب الرابط الحالي، ولا يترك آخر زر مضغوط عالق.
+     */
+    setInterval(syncFloatingMenuActive, 1500);
 
     menu.addEventListener('click', function (event) {
       var actionItem = event.target.closest('.veloura-mobile-floating-menu__item');
@@ -1782,41 +1870,51 @@ syncFloatingMenuActive();
 
         if (searchOpened) {
           event.preventDefault();
+          activateFloatingItem(actionItem);
+          scheduleFloatingMenuSync();
+          return;
         }
+
+        scheduleFloatingMenuSync();
+        return;
       }
 
       if (action === 'categories') {
-  event.preventDefault();
+        event.preventDefault();
 
-  var didOpen = openCategoriesMenu();
+        var didOpen = openCategoriesMenu();
 
-  items.forEach(function (item) {
-    item.classList.remove('is-active');
-  });
+        if (didOpen) {
+          activateFloatingItem(actionItem);
+        } else {
+          syncFloatingMenuActive();
+        }
 
-  if (didOpen) {
-    actionItem.classList.add('is-active');
-  } else {
-    syncFloatingMenuActive();
-  }
-
-  return;
-}
+        scheduleFloatingMenuSync();
+        return;
+      }
 
       if (action === 'login') {
         event.preventDefault();
-        openLoginModal();
+
+        var loginOpened = openLoginModal();
+
+        if (loginOpened) {
+          activateFloatingItem(actionItem);
+        } else {
+          syncFloatingMenuActive();
+        }
+
+        scheduleFloatingMenuSync();
+        return;
       }
 
-      items.forEach(function (item) {
-        item.classList.remove('is-active');
-      });
-
-      actionItem.classList.add('is-active');
+      /*
+       * العناصر العادية والمخصصة:
+       * لا نثبت النشط بسبب الضغط.
+       * الرابط الحالي بعد الانتقال هو الذي يحدد النشط.
+       */
+      scheduleFloatingMenuSync();
     });
   });
 </script>
-{% endif %}
-
-</body>
-</html>
