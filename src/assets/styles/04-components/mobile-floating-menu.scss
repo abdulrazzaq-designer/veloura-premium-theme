@@ -29,6 +29,8 @@
   }
 
   .veloura-mobile-floating-menu__inner {
+    position: relative;
+    overflow: hidden;
     width: 100%;
     min-height: var(--veloura-mobile-floating-menu-height, 56px);
     display: flex;
@@ -188,5 +190,51 @@
     transform: none !important;
     box-shadow: none !important;
     color: var(--veloura-mobile-floating-menu-active, #004d65) !important;
+  }
+}
+
+
+/* ================================
+   iPhone Glass Style
+================================ */
+
+@media (max-width: 767px) {
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.72),
+        rgba(255, 255, 255, 0.38)
+      ) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    box-shadow:
+      0 18px 45px rgba(15, 23, 42, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+  }
+
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.72),
+        transparent 42%
+      );
+  }
+
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item {
+    color: var(--veloura-mobile-floating-menu-text, #111827) !important;
+  }
+
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item.is-active {
+    background: var(--veloura-mobile-floating-menu-active, #004d65) !important;
+    color: #ffffff !important;
   }
 }

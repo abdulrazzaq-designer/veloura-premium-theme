@@ -34652,6 +34652,8 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
     color: var(--veloura-mobile-floating-menu-text, #111827) !important;
   }
   .veloura-mobile-floating-menu__inner {
+    position: relative;
+    overflow: hidden;
     width: 100%;
     min-height: 56px;
     min-height: var(--veloura-mobile-floating-menu-height, 56px);
@@ -34813,6 +34815,40 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
     box-shadow: none !important;
     color: #004d65 !important;
     color: var(--veloura-mobile-floating-menu-active, #004d65) !important;
+  }
+}
+/* ================================
+   iPhone Glass Style
+================================ */
+@media (max-width: 767px) {
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.72), inset 0 -1px 0 rgba(255, 255, 255, 0.18) !important;
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 42%);
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item {
+    color: #111827 !important;
+    color: var(--veloura-mobile-floating-menu-text, #111827) !important;
+  }
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__item.is-active {
+    background: #004d65 !important;
+    background: var(--veloura-mobile-floating-menu-active, #004d65) !important;
+    color: #ffffff !important;
   }
 }
 body.mm-ocd-opened,

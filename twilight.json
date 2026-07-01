@@ -4423,6 +4423,23 @@
   ]
 },
 {
+  "id": "veloura_mobile_floating_menu_glass_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل الشكل البلوري",
+  "description": "يعطي القائمة تأثير زجاجي احترافي مثل iPhone مع Blur وشفافية",
+  "icon": "sicon-magic-wand",
+  "value": false,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_mobile_floating_menu_bg_color_2026",
   "type": "string",
   "format": "color",
@@ -4478,37 +4495,42 @@
   "type": "items",
   "format": "dropdown-list",
   "label": "حواف القائمة",
-  "description": "اختر شكل حواف القائمة العائمة",
+  "description": "اختر شكل حواف القائمة العامة",
   "icon": "sicon-crop",
   "source": "Manual",
   "required": true,
   "selected": [
     {
-      "label": "دائرية",
+      "label": "دائري",
       "value": "pill",
-      "key": "veloura-mobile-floating-menu-radius-pill-2026"
+      "key": "vmfm-radius-pill-2026"
     }
   ],
   "options": [
     {
-      "label": "خفيفة",
+      "label": "حاد",
+      "value": "sharp",
+      "key": "vmfm-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلاً",
       "value": "soft",
-      "key": "veloura-mobile-floating-menu-radius-soft-2026"
+      "key": "vmfm-radius-soft-2026"
     },
     {
-      "label": "متوسطة",
+      "label": "ناعم",
       "value": "medium",
-      "key": "veloura-mobile-floating-menu-radius-medium-2026"
+      "key": "vmfm-radius-medium-2026"
     },
     {
-      "label": "كبيرة",
+      "label": "ناعم جدًا",
       "value": "large",
-      "key": "veloura-mobile-floating-menu-radius-large-2026"
+      "key": "vmfm-radius-large-2026"
     },
     {
-      "label": "دائرية",
+      "label": "دائري",
       "value": "pill",
-      "key": "veloura-mobile-floating-menu-radius-pill-2026"
+      "key": "vmfm-radius-pill-2026"
     }
   ],
   "conditions": [

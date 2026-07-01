@@ -602,6 +602,21 @@
 {% set vmfm_active_color = theme.settings.get('veloura_mobile_floating_menu_active_color_2026', '#004d65') %}
 {% if vmfm_active_color.value is defined %}{% set vmfm_active_color = vmfm_active_color.value %}{% endif %}
 
+{% set vmfm_glass_raw = theme.settings.get('veloura_mobile_floating_menu_glass_2026', false) %}
+{% if vmfm_glass_raw.value is defined %}
+  {% set vmfm_glass_raw = vmfm_glass_raw.value %}
+{% elseif vmfm_glass_raw.selected is defined %}
+  {% set vmfm_glass_raw = vmfm_glass_raw.selected %}
+{% endif %}
+
+{% set vmfm_glass =
+  vmfm_glass_raw == true
+  or vmfm_glass_raw == 'true'
+  or vmfm_glass_raw == 1
+  or vmfm_glass_raw == '1'
+  or vmfm_glass_raw == 'on'
+%}
+
 {% set vmfm_radius_raw = theme.settings.get('veloura_mobile_floating_menu_radius_2026', 'pill') %}
 {% if vmfm_radius_raw is iterable and vmfm_radius_raw[0].value is defined %}
   {% set vmfm_radius = vmfm_radius_raw[0].value %}
@@ -612,6 +627,7 @@
 {% endif %}
 
 {% set vmfm_radius_map = {
+  'sharp': '0px',
   'soft': '14px',
   'medium': '20px',
   'large': '28px',
@@ -1194,6 +1210,7 @@
   {{ vmfm_enabled ? ' veloura-mobile-floating-menu-enabled' : '' }}
 {{ vmfm_enabled ? ' veloura-mobile-floating-menu-position-' ~ vmfm_position : '' }}
 {{ vmfm_enabled ? ' veloura-mobile-floating-menu-active-' ~ vmfm_active_style : '' }}
+{{ vmfm_enabled and vmfm_glass ? ' veloura-mobile-floating-menu-glass' : '' }}
 {{ vmfm_enabled and not vmfm_show_labels ? ' veloura-mobile-floating-menu-no-labels' : '' }}
 ">
 <noscript>
@@ -1347,10 +1364,10 @@ document.addEventListener('DOMContentLoaded', function () {
       {% endif %}
 
       {% if vmfm_show_categories %}
-        <a href="{{ store.url|default('') }}/categories" class="veloura-mobile-floating-menu__item" data-vmfm-match="categories" aria-label="{{ vmfm_categories_label|e }}">
+        <button type="button" class="veloura-mobile-floating-menu__item" data-vmfm-match="categories" data-vmfm-action="categories" aria-label="{{ vmfm_categories_label|e }}">
           <i class="sicon-grid" aria-hidden="true"></i>
           {% if vmfm_show_labels %}<span>{{ vmfm_categories_label }}</span>{% endif %}
-        </a>
+        </button>
       {% endif %}
 
       {% if vmfm_show_search %}
@@ -1368,22 +1385,20 @@ document.addEventListener('DOMContentLoaded', function () {
       {% endif %}
 
       {% if vmfm_show_account %}
-        <a href="{{ store.url|default('') }}/account" class="veloura-mobile-floating-menu__item" data-vmfm-match="account" aria-label="{{ vmfm_account_label|e }}">
+        <button type="button" class="veloura-mobile-floating-menu__item" data-vmfm-match="account" data-vmfm-action="login" aria-label="{{ vmfm_account_label|e }}">
           <i class="sicon-user" aria-hidden="true"></i>
           {% if vmfm_show_labels %}<span>{{ vmfm_account_label }}</span>{% endif %}
-        </a>
+        </button>
       {% endif %}
 
       {% for item in vmfm_custom_items %}
         {% set item_enabled_raw = item.enabled is defined ? item.enabled : true %}
         {% set item_enabled = item_enabled_raw == true or item_enabled_raw == 'true' or item_enabled_raw == 1 or item_enabled_raw == '1' or item_enabled_raw == 'on' %}
-
         {% if item_enabled %}
           {% set item_label = item.label|default('رابط') %}
           {% set item_url = item.url|default('') %}
           {% set item_new_tab_raw = item.open_new_tab is defined ? item.open_new_tab : false %}
           {% set item_new_tab = item_new_tab_raw == true or item_new_tab_raw == 'true' or item_new_tab_raw == 1 or item_new_tab_raw == '1' or item_new_tab_raw == 'on' %}
-
           {% set item_icon_raw = item.icon|default('sicon-shopping-bag') %}
           {% if item_icon_raw is iterable and item_icon_raw[0].value is defined %}
             {% set item_icon = item_icon_raw[0].value %}
@@ -1392,7 +1407,6 @@ document.addEventListener('DOMContentLoaded', function () {
           {% else %}
             {% set item_icon = item_icon_raw %}
           {% endif %}
-
           {% if item_url %}
             <a href="{{ item_url|e('html_attr') }}" class="veloura-mobile-floating-menu__item" aria-label="{{ item_label|e }}" {% if item_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
               <i class="{{ item_icon|e('html_attr') }}" aria-hidden="true"></i>
@@ -1406,17 +1420,13 @@ document.addEventListener('DOMContentLoaded', function () {
           {% endif %}
         {% endif %}
       {% endfor %}
-
     </div>
   </nav>
 
   <script data-cfasync="false">
     document.addEventListener('DOMContentLoaded', function () {
       var menu = document.querySelector('.veloura-mobile-floating-menu');
-
-      if (!menu) {
-        return;
-      }
+      if (!menu) return;
 
       var root = document.documentElement;
       root.style.setProperty('--veloura-mobile-floating-menu-height', '{{ vmfm_height }}px');
@@ -1438,25 +1448,87 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
 
+      function clickFirst(selectors) {
+        for (var i = 0; i < selectors.length; i++) {
+          var el = document.querySelector(selectors[i]);
+          if (el && typeof el.click === 'function') {
+            el.click();
+            return true;
+          }
+        }
+        return false;
+      }
+
       function openSearchFallback() {
-        var triggers = [
+        return clickFirst([
           '[data-search-open]',
           '[data-open-search]',
           '.s-search-modal-trigger',
           '.s-header-search',
           'button[aria-label*="بحث"]',
           'button[aria-label*="search"]'
-        ];
+        ]);
+      }
 
-        for (var i = 0; i < triggers.length; i++) {
-          var el = document.querySelector(triggers[i]);
-          if (el && typeof el.click === 'function') {
-            el.click();
+      function openCategoriesMenu() {
+        var opened = clickFirst([
+          '[data-open-menu]',
+          '[data-menu-open]',
+          '[data-drawer-open]',
+          '[data-open-side-menu]',
+          '.main-menu-trigger',
+          '.mobile-menu-trigger',
+          '.s-menu-trigger',
+          '.s-header-menu-trigger',
+          '.header-btn__menu',
+          '.menu-trigger',
+          'button[aria-label*="القائمة"]',
+          'button[aria-label*="التصنيفات"]',
+          'button[aria-label*="menu"]',
+          'button[aria-label*="categories"]'
+        ]);
+        if (opened) return true;
+
+        var possibleMenus = ['.main-menu','.mobile-menu','.s-main-menu','.side-menu','.s-side-menu','.s-drawer','.s-drawer-menu'];
+        for (var i = 0; i < possibleMenus.length; i++) {
+          var drawer = document.querySelector(possibleMenus[i]);
+          if (drawer) {
+            drawer.classList.add('is-open', 'active', 'opened', 'show');
+            document.body.classList.add('overflow-hidden');
             return true;
           }
         }
-
         return false;
+      }
+
+      function openLoginModal() {
+        var opened = clickFirst([
+          '[data-login]',
+          '[data-open-login]',
+          '[data-login-open]',
+          '.s-login-modal-trigger',
+          '.login-trigger',
+          '.s-user-menu-trigger',
+          'button[aria-label*="تسجيل"]',
+          'button[aria-label*="دخول"]',
+          'button[aria-label*="login"]',
+          'a[href*="/login"]',
+          'a[href*="/account"]'
+        ]);
+        if (opened) return true;
+
+        if (window.salla && salla.event && typeof salla.event.dispatch === 'function') {
+          try { salla.event.dispatch('login::open'); return true; } catch (error) {}
+        }
+
+        var loginModal = document.querySelector('salla-login-modal');
+        if (loginModal && typeof loginModal.open === 'function') {
+          loginModal.open();
+          return true;
+        }
+
+        window.location.href = '{{ store.url|default('') }}/login';
+        return true;
       }
 
       var currentPath = normalizePath(window.location.href);
@@ -1465,28 +1537,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       items.forEach(function (item) {
         item.classList.remove('is-active');
-
         var match = String(item.getAttribute('data-vmfm-match') || '').trim();
         var active = false;
 
         if (match === 'home') active = currentPath === '/';
-
-        if (match === 'categories') {
-          active =
-            currentPath.indexOf('/categories') !== -1 ||
-            currentPath.indexOf('/category') !== -1 ||
-            currentPath.indexOf('/c/') !== -1;
-        }
-
+        if (match === 'categories') active = currentPath.indexOf('/categories') !== -1 || currentPath.indexOf('/category') !== -1 || currentPath.indexOf('/c/') !== -1;
         if (match === 'search') active = currentPath.indexOf('/search') !== -1;
         if (match === 'cart') active = currentPath.indexOf('/cart') !== -1;
-
-        if (match === 'account') {
-          active =
-            currentPath.indexOf('/account') !== -1 ||
-            currentPath.indexOf('/profile') !== -1 ||
-            currentPath.indexOf('/login') !== -1;
-        }
+        if (match === 'account') active = currentPath.indexOf('/account') !== -1 || currentPath.indexOf('/profile') !== -1 || currentPath.indexOf('/login') !== -1;
 
         if (active) {
           item.classList.add('is-active');
@@ -1494,26 +1552,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      if (!hasActive && items.length) {
-        items[0].classList.add('is-active');
-      }
+      if (!hasActive && items.length) items[0].classList.add('is-active');
 
       menu.addEventListener('click', function (event) {
-        var searchItem = event.target.closest('[data-vmfm-action="search"]');
+        var actionItem = event.target.closest('.veloura-mobile-floating-menu__item');
+        if (!actionItem) return;
 
-        if (searchItem) {
-          var opened = openSearchFallback();
-          if (opened) event.preventDefault();
+        var action = actionItem.getAttribute('data-vmfm-action');
+        if (action === 'search') {
+          var searchOpened = openSearchFallback();
+          if (searchOpened) event.preventDefault();
+        }
+        if (action === 'categories') {
+          event.preventDefault();
+          openCategoriesMenu();
+        }
+        if (action === 'login') {
+          event.preventDefault();
+          openLoginModal();
         }
 
-        var clickedItem = event.target.closest('.veloura-mobile-floating-menu__item');
-
-        if (clickedItem) {
-          items.forEach(function (item) {
-            item.classList.remove('is-active');
-          });
-          clickedItem.classList.add('is-active');
-        }
+        items.forEach(function (item) { item.classList.remove('is-active'); });
+        actionItem.classList.add('is-active');
       });
     });
   </script>
