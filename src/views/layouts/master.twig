@@ -1511,59 +1511,54 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openCategoriesMenu() {
-      var opened = clickFirst([
-        '#mobile-nav .mob-categ a[href="#mobile-menu"]',
-        '.mobile-nav .mob-categ a[href="#mobile-menu"]',
-        '.mob-categ .mobile-nav--item[href="#mobile-menu"]',
-        '.mobile-nav--item[href="#mobile-menu"]',
-        'a[href="#mobile-menu"]'
-      ]);
+  function activateBottomSheet() {
+    var drawer =
+      document.querySelector('.mm-ocd.ocd-categs') ||
+      document.querySelector('.ocd-categs') ||
+      document.querySelector('.mm-ocd');
 
-      if (opened) {
-        return true;
-      }
+    var mobileMenu = document.querySelector('#mobile-menu');
 
-      var drawer =
-        document.querySelector('.mm-ocd.ocd-categs') ||
-        document.querySelector('.ocd-categs') ||
-        document.querySelector('.mm-ocd');
+    document.body.classList.add('veloura-mobile-cats-bottom-open');
+    document.documentElement.classList.add('veloura-mobile-cats-bottom-open');
 
-      var mobileMenu = document.querySelector('#mobile-menu');
+    if (drawer) {
+      drawer.classList.add('mm-ocd--open');
+      drawer.classList.add('ocd-categs');
+      drawer.classList.add('veloura-cats-bottom-sheet');
 
-      if (drawer) {
-        drawer.classList.add('mm-ocd--open');
-        drawer.classList.add('ocd-categs');
-        drawer.classList.add('mm-ocd--right');
-
-        document.documentElement.classList.add('mm-wrapper--opened');
-        document.body.classList.add('mm-wrapper--opened');
-        document.body.classList.add('overflow-hidden');
-
-        if (mobileMenu) {
-          mobileMenu.classList.add('mm-spn--open');
-        }
-
-        return true;
-      }
-
-      if (mobileMenu) {
-        mobileMenu.classList.add('mm-spn--open');
-        mobileMenu.classList.add('mm-spn--light');
-
-        var parentDrawer = mobileMenu.closest('.mm-ocd');
-
-        if (parentDrawer) {
-          parentDrawer.classList.add('mm-ocd--open');
-          parentDrawer.classList.add('ocd-categs');
-        }
-
-        document.body.classList.add('overflow-hidden');
-        return true;
-      }
-
-      window.location.hash = 'mobile-menu';
-      return true;
+      drawer.classList.remove('mm-ocd--right');
+      drawer.classList.remove('mm-ocd--left');
     }
+
+    if (mobileMenu) {
+      mobileMenu.classList.add('mm-spn--open');
+      mobileMenu.classList.add('mm-spn--light');
+    }
+
+    document.body.classList.add('overflow-hidden');
+
+    return !!drawer || !!mobileMenu;
+  }
+
+  var opened = clickFirst([
+    '#mobile-nav .mob-categ a[href="#mobile-menu"]',
+    '.mobile-nav .mob-categ a[href="#mobile-menu"]',
+    '.mob-categ .mobile-nav--item[href="#mobile-menu"]',
+    '.mobile-nav--item[href="#mobile-menu"]',
+    'a[href="#mobile-menu"]'
+  ]);
+
+  setTimeout(function () {
+    activateBottomSheet();
+  }, 40);
+
+  if (opened) {
+    return true;
+  }
+
+  return activateBottomSheet();
+}
 
     function openLoginModal() {
       var opened = clickFirst([
@@ -1606,6 +1601,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var currentPath = normalizePath(window.location.href);
+
+    document.addEventListener('click', function (event) {
+  var closeTarget = event.target.closest(
+    '.veloura-cats-bottom-sheet .mm-ocd__backdrop, .veloura-cats-bottom-sheet .close-mobile-menu, .veloura-cats-bottom-sheet .mobile-nav-bottom-btn-close'
+  );
+
+  if (!closeTarget) {
+    return;
+  }
+
+  document.body.classList.remove('veloura-mobile-cats-bottom-open');
+  document.documentElement.classList.remove('veloura-mobile-cats-bottom-open');
+
+  var drawer = document.querySelector('.veloura-cats-bottom-sheet');
+
+  if (drawer) {
+    drawer.classList.remove('veloura-cats-bottom-sheet');
+  }
+});
+
     var items = menu.querySelectorAll('.veloura-mobile-floating-menu__item');
     var hasActive = false;
 
