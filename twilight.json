@@ -4215,7 +4215,7 @@
   "id": "veloura_mobile_floating_menu_show_labels_2026",
   "type": "boolean",
   "format": "switch",
-  "label": "إظهار النصوص تحت الأيقونات",
+  "label": "إظهار النصوص تحت الأيقونات22",
   "description": "عند الإيقاف تظهر الأيقونات فقط داخل القائمة",
   "icon": "sicon-font",
   "value": true,

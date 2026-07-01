@@ -34750,10 +34750,24 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
     opacity: 1;
   }
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
-    width: calc(100vw - 18px);
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding-top: 22px !important;
   }
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner {
-    border-radius: 22px !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    border-top-left-radius: 24px !important;
+    border-top-left-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-top-right-radius: 24px !important;
+    border-top-right-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px)) !important;
   }
   body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu {
     width: auto;
@@ -35051,6 +35065,83 @@ body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::be
   /* نخلي القائمة العائمة فوق الخلفية، لكن تحت زر الإغلاق */
   body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
     z-index: 99999 !important;
+  }
+}
+/* ================================
+   Veloura Full Width Mobile Menu
+   ملتصقة يمين/يسار/أسفل + حواف سفلية حادة
+================================ */
+@media (max-width: 767px) {
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-enabled {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 18px) !important;
+    padding-bottom: calc(var(--veloura-mobile-floating-menu-height, 56px) + env(safe-area-inset-bottom, 0px) + 18px) !important;
+  }
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding-top: 22px !important;
+  }
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    min-width: 100% !important;
+    border-top-left-radius: 24px !important;
+    border-top-left-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-top-right-radius: 24px !important;
+    border-top-right-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item {
+    border-radius: calc(24px - 8px) !important;
+    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
+  }
+}
+/* ================================
+   Veloura Full Width Bottom Corners Hard Fix
+   إجبار الحواف السفلية تكون حادة في وضع بعرض الشاشة
+================================ */
+@media (max-width: 767px) {
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    border-radius: 24px 24px 0 0 !important;
+    border-radius: var(--veloura-mobile-floating-menu-radius, 24px) var(--veloura-mobile-floating-menu-radius, 24px) 0 0 !important;
+  }
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 24px 24px 0 0 !important;
+    border-radius: var(--veloura-mobile-floating-menu-radius, 24px) var(--veloura-mobile-floating-menu-radius, 24px) 0 0 !important;
+    overflow: hidden !important;
+  }
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner::before,
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+    border-radius: 24px 24px 0 0 !important;
+    border-radius: var(--veloura-mobile-floating-menu-radius, 24px) var(--veloura-mobile-floating-menu-radius, 24px) 0 0 !important;
+  }
+  /*
+   * في وضع بعرض الشاشة نخلي العناصر نفسها ما تعمل تدوير سفلي على أطراف البار.
+   * التدوير يبقى فقط للعنصر النشط نفسه إذا كان مرفوعًا، لكن لا يؤثر على حواف البار.
+   */
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item {
+    border-radius: calc(24px - 8px) calc(24px - 8px) 0 0 !important;
+    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) 0 0 !important;
+  }
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised .veloura-mobile-floating-menu__item.is-active {
+    border-radius: calc(24px - 8px) !important;
+    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
   }
 }
 body.mm-ocd-opened,
