@@ -1501,27 +1501,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     }
 
-    function isVisibleElement(el) {
-      if (!el) {
-        return false;
-      }
-
-      try {
-        var style = window.getComputedStyle(el);
-        var rect = el.getBoundingClientRect();
-
-        return (
-          style.display !== 'none' &&
-          style.visibility !== 'hidden' &&
-          style.opacity !== '0' &&
-          rect.width > 0 &&
-          rect.height > 0
-        );
-      } catch (error) {
-        return false;
-      }
-    }
-
     function clickFirst(selectors) {
       for (var i = 0; i < selectors.length; i++) {
         var el = document.querySelector(selectors[i]);
@@ -1548,13 +1527,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openSearchFallback() {
+      if (window.salla && window.salla.event && typeof window.salla.event.dispatch === 'function') {
+        try {
+          window.salla.event.dispatch('search::open');
+        } catch (error) {}
+      }
+
       return clickFirst([
         '[data-search-open]',
         '[data-open-search]',
+        '[data-search]',
         '.s-search-modal-trigger',
         '.s-header-search',
+        '.search-trigger',
+        '.search-btn',
+        '.veloura-header-search',
+        '.veloura-header-search-trigger',
+        '.header-search',
         'button[aria-label*="بحث"]',
-        'button[aria-label*="search"]'
+        'button[aria-label*="search"]',
+        'a[aria-label*="بحث"]',
+        'a[aria-label*="search"]'
       ]);
     }
 
@@ -1581,38 +1574,56 @@ document.addEventListener('DOMContentLoaded', function () {
         '.modal .sicon-cancel'
       ]);
 
-      if (closed) {
-        return true;
-      }
-
       document.body.classList.remove('overflow-hidden');
 
-      return false;
+      return closed;
     }
 
-    function setTransientAction(action) {
-      transientAction = action || '';
+    function clearFloatingMenuActive() {
+      items.forEach(function (item) {
+        item.classList.remove('is-active');
+      });
+    }
 
-      if (transientTimer) {
-        clearTimeout(transientTimer);
-        transientTimer = null;
-      }
+    function activateFloatingItem(item) {
+      clearFloatingMenuActive();
 
-      if (transientAction) {
-        transientTimer = setTimeout(function () {
-          transientAction = '';
-          syncFloatingMenuActive();
-        }, 12000);
+      if (item) {
+        item.classList.add('is-active');
       }
     }
 
     function clearTransientAction() {
-      transientAction = '';
-
       if (transientTimer) {
         clearTimeout(transientTimer);
         transientTimer = null;
       }
+
+      transientAction = '';
+      syncFloatingMenuActive();
+    }
+
+    function setTransientAction(action, item) {
+      if (transientTimer) {
+        clearTimeout(transientTimer);
+        transientTimer = null;
+      }
+
+      transientAction = action || '';
+
+      if (item) {
+        activateFloatingItem(item);
+      }
+
+      /*
+       * البحث وحسابي مجرد مودال/نافذة مؤقتة.
+       * لا نخليهم نشطين عالقين؛ بعد لحظة يرجع النشط حسب رابط الصفحة.
+       */
+      transientTimer = setTimeout(function () {
+        transientAction = '';
+        transientTimer = null;
+        syncFloatingMenuActive();
+      }, 1400);
     }
 
     function ensureCategoriesCloseStyles() {
@@ -1696,20 +1707,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return normalizePath(new URL(href, window.location.origin).href);
       } catch (error) {
         return '';
-      }
-    }
-
-    function clearFloatingMenuActive() {
-      items.forEach(function (item) {
-        item.classList.remove('is-active');
-      });
-    }
-
-    function activateFloatingItem(item) {
-      clearFloatingMenuActive();
-
-      if (item) {
-        item.classList.add('is-active');
       }
     }
 
@@ -1816,7 +1813,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function scheduleFloatingMenuSync() {
-      var delays = [120, 350, 800, 1600, 3000];
+      var delays = [120, 350, 800, 1600];
 
       syncTimers.forEach(function (timer) {
         clearTimeout(timer);
@@ -1846,7 +1843,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       clearTransientAction();
-      scheduleFloatingMenuSync();
 
       return false;
     }
@@ -1858,9 +1854,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (exceptAction !== 'search' && exceptAction !== 'login') {
         closeVisibleModalLikeThings();
-      }
-
-      if (exceptAction !== 'search' && exceptAction !== 'login') {
         clearTransientAction();
       }
     }
@@ -1934,6 +1927,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener(
       'click',
       function (event) {
+        var insideMenu = closestFromTarget(event.target, '.veloura-mobile-floating-menu');
         var closeBtn = closestFromTarget(event.target, '.close-mobile-menu');
         var backdrop = closestFromTarget(event.target, '.mm-ocd__backdrop');
         var modalClose = closestFromTarget(
@@ -1941,9 +1935,22 @@ document.addEventListener('DOMContentLoaded', function () {
           '.s-modal-close, .s-modal__close, .modal-close, [aria-label*="إغلاق"], [aria-label*="close"]'
         );
 
-        if (closeBtn || backdrop || modalClose) {
-          clearTransientAction();
-          scheduleFloatingMenuSync();
+        if (insideMenu) {
+          return;
+        }
+
+        /*
+         * أي ضغطة خارج القائمة بعد فتح البحث/حسابي تعني أن النشط لا يجب أن يبقى عالقًا.
+         * وهذا يشمل زر الإغلاق، الخلفية، أو التفاعل خارج المودال.
+         */
+        if (transientAction || closeBtn || backdrop || modalClose) {
+          setTimeout(function () {
+            if (transientAction) {
+              clearTransientAction();
+            } else {
+              syncFloatingMenuActive();
+            }
+          }, 80);
         }
       },
       true
@@ -1952,29 +1959,24 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         clearTransientAction();
-        scheduleFloatingMenuSync();
       }
     });
 
     window.addEventListener('popstate', function () {
       clearTransientAction();
-      syncFloatingMenuActive();
     });
 
     window.addEventListener('hashchange', function () {
       clearTransientAction();
-      syncFloatingMenuActive();
     });
 
     window.addEventListener('pageshow', function () {
       clearTransientAction();
-      syncFloatingMenuActive();
     });
 
     document.addEventListener('visibilitychange', function () {
       if (!document.hidden) {
         clearTransientAction();
-        syncFloatingMenuActive();
       }
     });
 
@@ -1982,18 +1984,18 @@ document.addEventListener('DOMContentLoaded', function () {
       ['pushState', 'replaceState'].forEach(function (methodName) {
         var original = history[methodName];
 
-        if (typeof original !== 'function') {
+        if (typeof original !== 'function' || original.__velouraVmfmPatched) {
           return;
         }
 
-        history[methodName] = function () {
+        var patched = function () {
           var result = original.apply(this, arguments);
-
-          clearTransientAction();
           scheduleFloatingMenuSync();
-
           return result;
         };
+
+        patched.__velouraVmfmPatched = true;
+        history[methodName] = patched;
       });
     } catch (error) {}
 
@@ -2009,18 +2011,10 @@ document.addEventListener('DOMContentLoaded', function () {
       var action = actionItem.getAttribute('data-vmfm-action');
 
       if (action === 'search') {
+        event.preventDefault();
         closeOpenOverlays('search');
-
-        var searchOpened = openSearchFallback();
-
-        if (searchOpened) {
-          event.preventDefault();
-          setTransientAction('search');
-          activateFloatingItem(actionItem);
-        } else {
-          clearTransientAction();
-        }
-
+        setTransientAction('search', actionItem);
+        openSearchFallback();
         scheduleFloatingMenuSync();
         return;
       }
@@ -2031,7 +2025,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var didOpen = openCategoriesMenu();
 
         if (didOpen) {
-          clearTransientAction();
+          if (transientTimer) {
+            clearTimeout(transientTimer);
+            transientTimer = null;
+          }
+
+          transientAction = '';
           activateFloatingItem(actionItem);
         } else {
           syncFloatingMenuActive();
@@ -2043,17 +2042,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (action === 'login') {
         event.preventDefault();
-
-        var loginOpened = openLoginModal();
-
-        if (loginOpened) {
-          setTransientAction('login');
-          activateFloatingItem(actionItem);
-        } else {
-          clearTransientAction();
-          syncFloatingMenuActive();
-        }
-
+        closeOpenOverlays('login');
+        setTransientAction('login', actionItem);
+        openLoginModal();
         scheduleFloatingMenuSync();
         return;
       }
