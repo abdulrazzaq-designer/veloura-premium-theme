@@ -544,6 +544,158 @@
   {% set vqv_product_link_text = vqv_product_link_text.value %}
 {% endif %}
 
+
+
+{# ================================
+   Veloura Mobile Floating Menu
+================================ #}
+
+{% set vmfm_enabled = theme.settings.get('veloura_mobile_floating_menu_enabled_2026', false) %}
+{% if vmfm_enabled.value is defined %}
+  {% set vmfm_enabled = vmfm_enabled.value %}
+{% endif %}
+
+{% set vmfm_position_raw = theme.settings.get('veloura_mobile_floating_menu_position_2026', 'floating_center') %}
+{% if vmfm_position_raw is iterable and vmfm_position_raw[0].value is defined %}
+  {% set vmfm_position = vmfm_position_raw[0].value %}
+{% elseif vmfm_position_raw.value is defined %}
+  {% set vmfm_position = vmfm_position_raw.value %}
+{% else %}
+  {% set vmfm_position = vmfm_position_raw %}
+{% endif %}
+
+{% set vmfm_height_value = theme.settings.get('veloura_mobile_floating_menu_height_2026', 8) %}
+{% if vmfm_height_value.value is defined %}
+  {% set vmfm_height_value = vmfm_height_value.value %}
+{% endif %}
+{% set vmfm_height_value = vmfm_height_value + 0 %}
+{% if vmfm_height_value < 0 %}
+  {% set vmfm_height_value = 0 %}
+{% endif %}
+{% if vmfm_height_value > 24 %}
+  {% set vmfm_height_value = 24 %}
+{% endif %}
+{% set vmfm_height = 48 + vmfm_height_value %}
+
+{% set vmfm_bottom_value = theme.settings.get('veloura_mobile_floating_menu_bottom_2026', 8) %}
+{% if vmfm_bottom_value.value is defined %}
+  {% set vmfm_bottom_value = vmfm_bottom_value.value %}
+{% endif %}
+{% set vmfm_bottom_value = vmfm_bottom_value + 0 %}
+{% if vmfm_bottom_value < 0 %}
+  {% set vmfm_bottom_value = 0 %}
+{% endif %}
+{% if vmfm_bottom_value > 32 %}
+  {% set vmfm_bottom_value = 32 %}
+{% endif %}
+{% set vmfm_bottom = 8 + vmfm_bottom_value %}
+
+{% set vmfm_bg_color = theme.settings.get('veloura_mobile_floating_menu_bg_color_2026', '#ffffff') %}
+{% set vmfm_text_color = theme.settings.get('veloura_mobile_floating_menu_text_color_2026', '#111827') %}
+{% set vmfm_active_color = theme.settings.get('veloura_mobile_floating_menu_active_color_2026', '#004d65') %}
+
+{% set vmfm_radius_raw = theme.settings.get('veloura_mobile_floating_menu_radius_2026', 'pill') %}
+{% if vmfm_radius_raw is iterable and vmfm_radius_raw[0].value is defined %}
+  {% set vmfm_radius = vmfm_radius_raw[0].value %}
+{% elseif vmfm_radius_raw.value is defined %}
+  {% set vmfm_radius = vmfm_radius_raw.value %}
+{% else %}
+  {% set vmfm_radius = vmfm_radius_raw %}
+{% endif %}
+
+{% set vmfm_radius_map = {
+  'soft': '14px',
+  'medium': '20px',
+  'large': '28px',
+  'pill': '999px'
+} %}
+
+{% set vmfm_show_labels = theme.settings.get('veloura_mobile_floating_menu_show_labels_2026', true) %}
+{% if vmfm_show_labels.value is defined %}
+  {% set vmfm_show_labels = vmfm_show_labels.value %}
+{% endif %}
+
+{% set vmfm_icon_size_value = theme.settings.get('veloura_mobile_floating_menu_icon_size_2026', 4) %}
+{% if vmfm_icon_size_value.value is defined %}
+  {% set vmfm_icon_size_value = vmfm_icon_size_value.value %}
+{% endif %}
+{% set vmfm_icon_size_value = vmfm_icon_size_value + 0 %}
+{% if vmfm_icon_size_value < 0 %}
+  {% set vmfm_icon_size_value = 0 %}
+{% endif %}
+{% if vmfm_icon_size_value > 16 %}
+  {% set vmfm_icon_size_value = 16 %}
+{% endif %}
+{% set vmfm_icon_size = 18 + vmfm_icon_size_value %}
+
+{% set vmfm_font_size_value = theme.settings.get('veloura_mobile_floating_menu_font_size_2026', 2) %}
+{% if vmfm_font_size_value.value is defined %}
+  {% set vmfm_font_size_value = vmfm_font_size_value.value %}
+{% endif %}
+{% set vmfm_font_size_value = vmfm_font_size_value + 0 %}
+{% if vmfm_font_size_value < 0 %}
+  {% set vmfm_font_size_value = 0 %}
+{% endif %}
+{% if vmfm_font_size_value > 8 %}
+  {% set vmfm_font_size_value = 8 %}
+{% endif %}
+{% set vmfm_font_size = 10 + vmfm_font_size_value %}
+
+{% set vmfm_active_style_raw = theme.settings.get('veloura_mobile_floating_menu_active_style_2026', 'raised') %}
+{% if vmfm_active_style_raw is iterable and vmfm_active_style_raw[0].value is defined %}
+  {% set vmfm_active_style = vmfm_active_style_raw[0].value %}
+{% elseif vmfm_active_style_raw.value is defined %}
+  {% set vmfm_active_style = vmfm_active_style_raw.value %}
+{% else %}
+  {% set vmfm_active_style = vmfm_active_style_raw %}
+{% endif %}
+
+{% set vmfm_active_scale_value = theme.settings.get('veloura_mobile_floating_menu_active_scale_2026', 12) %}
+{% if vmfm_active_scale_value.value is defined %}
+  {% set vmfm_active_scale_value = vmfm_active_scale_value.value %}
+{% endif %}
+{% set vmfm_active_scale_value = vmfm_active_scale_value + 0 %}
+{% if vmfm_active_scale_value < 0 %}
+  {% set vmfm_active_scale_value = 0 %}
+{% endif %}
+{% if vmfm_active_scale_value > 24 %}
+  {% set vmfm_active_scale_value = 24 %}
+{% endif %}
+{% set vmfm_active_scale = (100 + vmfm_active_scale_value) / 100 %}
+
+{% set vmfm_show_home = theme.settings.get('veloura_mobile_floating_menu_show_home_2026', true) %}
+{% if vmfm_show_home.value is defined %}
+  {% set vmfm_show_home = vmfm_show_home.value %}
+{% endif %}
+
+{% set vmfm_show_categories = theme.settings.get('veloura_mobile_floating_menu_show_categories_2026', true) %}
+{% if vmfm_show_categories.value is defined %}
+  {% set vmfm_show_categories = vmfm_show_categories.value %}
+{% endif %}
+
+{% set vmfm_show_search = theme.settings.get('veloura_mobile_floating_menu_show_search_2026', true) %}
+{% if vmfm_show_search.value is defined %}
+  {% set vmfm_show_search = vmfm_show_search.value %}
+{% endif %}
+
+{% set vmfm_show_cart = theme.settings.get('veloura_mobile_floating_menu_show_cart_2026', true) %}
+{% if vmfm_show_cart.value is defined %}
+  {% set vmfm_show_cart = vmfm_show_cart.value %}
+{% endif %}
+
+{% set vmfm_show_account = theme.settings.get('veloura_mobile_floating_menu_show_account_2026', true) %}
+{% if vmfm_show_account.value is defined %}
+  {% set vmfm_show_account = vmfm_show_account.value %}
+{% endif %}
+
+{% set vmfm_home_label = theme.settings.get('veloura_mobile_floating_menu_home_label_2026', 'الرئيسية') %}
+{% set vmfm_categories_label = theme.settings.get('veloura_mobile_floating_menu_categories_label_2026', 'التصنيفات') %}
+{% set vmfm_search_label = theme.settings.get('veloura_mobile_floating_menu_search_label_2026', 'البحث') %}
+{% set vmfm_cart_label = theme.settings.get('veloura_mobile_floating_menu_cart_label_2026', 'السلة') %}
+{% set vmfm_account_label = theme.settings.get('veloura_mobile_floating_menu_account_label_2026', 'حسابي') %}
+
+{% set vmfm_custom_items = theme.settings.get('veloura_mobile_floating_menu_custom_items_2026', []) %}
+
     <script data-cfasync="false">
       window.velouraQuickView = {
         enabled: {{ (vpc_enabled and vqv_enabled) ? 'true' : 'false' }},
@@ -617,6 +769,19 @@
             --veloura-quick-view-modal-text: {{ vqv_modal_text_color }};
             --veloura-quick-view-modal-radius: {{ vpc_radius_map[vqv_modal_radius_key]|default('28px') }};
           {% endif %}
+
+          {% if vmfm_enabled %}
+  --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
+  --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
+  --veloura-mobile-floating-menu-bg: {{ vmfm_bg_color }};
+  --veloura-mobile-floating-menu-text: {{ vmfm_text_color }};
+  --veloura-mobile-floating-menu-active: {{ vmfm_active_color }};
+  --veloura-mobile-floating-menu-radius: {{ vmfm_radius_map[vmfm_radius]|default('999px') }};
+  --veloura-mobile-floating-menu-icon-size: {{ vmfm_icon_size }}px;
+  --veloura-mobile-floating-menu-font-size: {{ vmfm_font_size }}px;
+  --veloura-mobile-floating-menu-active-scale: {{ vmfm_active_scale }};
+{% endif %}
+
         {% endif %}
       }
 
@@ -1022,6 +1187,11 @@
   {{ veloura_body_classes }}
   {{ veloura_index_body_classes }}
   {{ veloura_product_body_classes }}
+
+  {{ vmfm_enabled ? ' veloura-mobile-floating-menu-enabled' : '' }}
+{{ vmfm_enabled ? ' veloura-mobile-floating-menu-position-' ~ vmfm_position : '' }}
+{{ vmfm_enabled ? ' veloura-mobile-floating-menu-active-' ~ vmfm_active_style : '' }}
+{{ vmfm_enabled and not vmfm_show_labels ? ' veloura-mobile-floating-menu-no-labels' : '' }}
 ">
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how
@@ -1147,5 +1317,108 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+{% if vmfm_enabled %}
+  <nav class="veloura-mobile-floating-menu" aria-label="قائمة الجوال العائمة">
+    <div class="veloura-mobile-floating-menu__inner">
+
+      {% if vmfm_show_home %}
+        <a
+          href="{{ store.url|default('/') }}"
+          class="veloura-mobile-floating-menu__item"
+          data-vmfm-match="home"
+          aria-label="{{ vmfm_home_label|e }}"
+        >
+          <i class="sicon-home" aria-hidden="true"></i>
+          {% if vmfm_show_labels %}
+            <span>{{ vmfm_home_label }}</span>
+          {% endif %}
+        </a>
+      {% endif %}
+
+      {% if vmfm_show_categories %}
+        <a
+          href="{{ store.url|default('') }}/categories"
+          class="veloura-mobile-floating-menu__item"
+          data-vmfm-match="categories"
+          aria-label="{{ vmfm_categories_label|e }}"
+        >
+          <i class="sicon-apps" aria-hidden="true"></i>
+          {% if vmfm_show_labels %}
+            <span>{{ vmfm_categories_label }}</span>
+          {% endif %}
+        </a>
+      {% endif %}
+
+      {% if vmfm_show_search %}
+        <a
+          href="{{ store.url|default('') }}/search"
+          class="veloura-mobile-floating-menu__item"
+          data-vmfm-match="search"
+          data-vmfm-action="search"
+          aria-label="{{ vmfm_search_label|e }}"
+        >
+          <i class="sicon-search" aria-hidden="true"></i>
+          {% if vmfm_show_labels %}
+            <span>{{ vmfm_search_label }}</span>
+          {% endif %}
+        </a>
+      {% endif %}
+
+      {% if vmfm_show_cart %}
+        <a
+          href="{{ store.url|default('') }}/cart"
+          class="veloura-mobile-floating-menu__item"
+          data-vmfm-match="cart"
+          aria-label="{{ vmfm_cart_label|e }}"
+        >
+          <i class="sicon-shopping-bag" aria-hidden="true"></i>
+          {% if vmfm_show_labels %}
+            <span>{{ vmfm_cart_label }}</span>
+          {% endif %}
+        </a>
+      {% endif %}
+
+      {% if vmfm_show_account %}
+        <a
+          href="{{ store.url|default('') }}/account"
+          class="veloura-mobile-floating-menu__item"
+          data-vmfm-match="account"
+          aria-label="{{ vmfm_account_label|e }}"
+        >
+          <i class="sicon-user" aria-hidden="true"></i>
+          {% if vmfm_show_labels %}
+            <span>{{ vmfm_account_label }}</span>
+          {% endif %}
+        </a>
+      {% endif %}
+
+      {% for item in vmfm_custom_items %}
+        {% set item_enabled = item.enabled is not defined or item.enabled == true or item.enabled == 'true' %}
+        {% if item_enabled %}
+          {% set item_label = item.label|default('رابط') %}
+          {% set item_icon = item.icon|default('sicon-link') %}
+          {% set item_url = item.url|default('#') %}
+          {% set item_active_match = item.active_match|default('') %}
+          {% set item_new_tab = item.open_new_tab is defined and (item.open_new_tab == true or item.open_new_tab == 'true') %}
+
+          <a
+            href="{{ item_url|e('html_attr') }}"
+            class="veloura-mobile-floating-menu__item"
+            data-vmfm-match="{{ item_active_match|e('html_attr') }}"
+            aria-label="{{ item_label|e }}"
+            {% if item_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+          >
+            <i class="{{ item_icon|e('html_attr') }}" aria-hidden="true"></i>
+            {% if vmfm_show_labels %}
+              <span>{{ item_label }}</span>
+            {% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </nav>
+{% endif %}
 </body>
 </html>
