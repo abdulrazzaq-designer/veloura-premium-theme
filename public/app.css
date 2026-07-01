@@ -35014,6 +35014,45 @@ body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::be
     right: 0 !important;
   }
 }
+/* ================================
+   Native Mobile Categories Drawer Fix
+   زر إغلاق للقائمة الأصلية
+================================ */
+@media (max-width: 767px) {
+  .mm-ocd.ocd-categs .close-mobile-menu,
+  .mm-ocd.ocd-categs.mm-ocd--open .close-mobile-menu {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    top: 14px !important;
+    left: 14px !important;
+    z-index: 999999 !important;
+    width: 38px !important;
+    height: 38px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(15, 23, 42, 0.1) !important;
+    color: #111827 !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+  .mm-ocd.ocd-categs .close-mobile-menu,
+  .mm-ocd.ocd-categs.mm-ocd--open .close-mobile-menu {
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  }
+  .mm-ocd.ocd-categs .close-mobile-menu::before,
+  .mm-ocd.ocd-categs.mm-ocd--open .close-mobile-menu::before {
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+  /* نخلي القائمة العائمة فوق الخلفية، لكن تحت زر الإغلاق */
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+    z-index: 99999 !important;
+  }
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {

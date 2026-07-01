@@ -1510,25 +1510,123 @@ document.addEventListener('DOMContentLoaded', function () {
       ]);
     }
 
-    function openCategoriesMenu() {
-      document.documentElement.classList.add('veloura-ocd-bottom-active');
-      document.body.classList.add('veloura-ocd-bottom-active');
-
-      function applyBottomMode() {
-        var drawer =
-          document.querySelector('.mm-ocd.ocd-categs') ||
-          document.querySelector('.mm-ocd--right.ocd-categs') ||
-          document.querySelector('.mm-ocd');
-
-        if (!drawer) {
-          return;
-        }
-
-        drawer.classList.add('ocd-bottom');
-        drawer.classList.add('veloura-native-bottom');
+    function ensureCategoriesCloseStyles() {
+      if (document.getElementById('veloura-native-categories-close-style')) {
+        return;
       }
 
-      applyBottomMode();
+      var style = document.createElement('style');
+      style.id = 'veloura-native-categories-close-style';
+
+      style.textContent = `
+        @media (max-width: 767px) {
+          .mm-ocd.ocd-categs .close-mobile-menu,
+          .mm-ocd.ocd-categs.mm-ocd--open .close-mobile-menu {
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: fixed !important;
+            top: 14px !important;
+            left: 14px !important;
+            z-index: 999999 !important;
+            width: 38px !important;
+            height: 38px !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border: 0 !important;
+            border-radius: 999px !important;
+            background: rgba(15, 23, 42, 0.10) !important;
+            color: #111827 !important;
+            font-size: 18px !important;
+            line-height: 1 !important;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+          }
+
+          .mm-ocd.ocd-categs .close-mobile-menu::before,
+          .mm-ocd.ocd-categs.mm-ocd--open .close-mobile-menu::before {
+            font-size: 18px !important;
+            line-height: 1 !important;
+          }
+
+          body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+            z-index: 99999 !important;
+          }
+        }
+      `;
+
+      document.head.appendChild(style);
+    }
+
+    function getCategoriesDrawer() {
+      return (
+        document.querySelector('.mm-ocd.ocd-categs') ||
+        document.querySelector('.mm-ocd--right.ocd-categs') ||
+        document.querySelector('.mm-ocd')
+      );
+    }
+
+    function isCategoriesMenuOpen() {
+      var drawer = getCategoriesDrawer();
+
+      return !!(
+        drawer &&
+        (
+          drawer.classList.contains('mm-ocd--open') ||
+          document.body.classList.contains('menu-opened') ||
+          document.body.classList.contains('mm-ocd-opened')
+        )
+      );
+    }
+
+    function clearCategoriesActiveState() {
+      document
+        .querySelectorAll('.veloura-mobile-floating-menu [data-vmfm-action="categories"]')
+        .forEach(function (item) {
+          item.classList.remove('is-active');
+        });
+    }
+
+    function closeCategoriesMenu() {
+      var drawer = getCategoriesDrawer();
+      var closeBtn = drawer ? drawer.querySelector('.close-mobile-menu') : null;
+      var backdrop = drawer ? drawer.querySelector('.mm-ocd__backdrop') : null;
+
+      if (closeBtn) {
+        closeBtn.dispatchEvent(
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+          })
+        );
+      } else if (backdrop) {
+        backdrop.dispatchEvent(
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+          })
+        );
+      } else if (drawer) {
+        drawer.classList.remove('mm-ocd--open');
+        document.body.classList.remove('menu-opened');
+        document.body.classList.remove('mm-ocd-opened');
+        document.body.classList.remove('overflow-hidden');
+        document.body.classList.remove('mm-wrapper--opened');
+        document.documentElement.classList.remove('mm-wrapper--opened');
+      }
+
+      clearCategoriesActiveState();
+
+      return false;
+    }
+
+    function openCategoriesMenu() {
+      ensureCategoriesCloseStyles();
+
+      if (isCategoriesMenuOpen()) {
+        return closeCategoriesMenu();
+      }
 
       var trigger =
         document.querySelector('.veloura-menu-trigger-mobile[href="#mobile-menu"]') ||
@@ -1547,29 +1645,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
       );
 
-      requestAnimationFrame(applyBottomMode);
-      setTimeout(applyBottomMode, 20);
-      setTimeout(applyBottomMode, 80);
-      setTimeout(applyBottomMode, 180);
-      setTimeout(applyBottomMode, 350);
-      setTimeout(applyBottomMode, 700);
-
       return true;
-    }
-
-    function cleanupCategoriesBottomMode() {
-      document.documentElement.classList.remove('veloura-ocd-bottom-active');
-      document.body.classList.remove('veloura-ocd-bottom-active');
-
-      var drawer =
-        document.querySelector('.mm-ocd.ocd-categs') ||
-        document.querySelector('.mm-ocd--right.ocd-categs') ||
-        document.querySelector('.mm-ocd');
-
-      if (drawer && !drawer.classList.contains('mm-ocd--open')) {
-        drawer.classList.remove('ocd-bottom');
-        drawer.classList.remove('veloura-native-bottom');
-      }
     }
 
     document.addEventListener(
@@ -1582,17 +1658,15 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        setTimeout(cleanupCategoriesBottomMode, 320);
+        setTimeout(clearCategoriesActiveState, 260);
       },
       true
     );
 
     document.addEventListener('keydown', function (event) {
-      if (event.key !== 'Escape') {
-        return;
+      if (event.key === 'Escape') {
+        setTimeout(clearCategoriesActiveState, 260);
       }
-
-      setTimeout(cleanupCategoriesBottomMode, 320);
     });
 
     function openLoginModal() {
@@ -1701,7 +1775,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (action === 'categories') {
         event.preventDefault();
-        openCategoriesMenu();
+
+        var didOpen = openCategoriesMenu();
+
+        items.forEach(function (item) {
+          item.classList.remove('is-active');
+        });
+
+        if (didOpen) {
+          actionItem.classList.add('is-active');
+        }
+
+        return;
       }
 
       if (action === 'login') {
