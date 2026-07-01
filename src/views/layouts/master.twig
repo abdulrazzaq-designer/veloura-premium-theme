@@ -1579,12 +1579,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function clearCategoriesActiveState() {
-      document
-        .querySelectorAll('.veloura-mobile-floating-menu [data-vmfm-action="categories"]')
-        .forEach(function (item) {
-          item.classList.remove('is-active');
-        });
-    }
+  syncFloatingMenuActive();
+}
 
     function closeCategoriesMenu() {
       var drawer = getCategoriesDrawer();
@@ -1712,49 +1708,65 @@ document.addEventListener('DOMContentLoaded', function () {
     var currentPath = normalizePath(window.location.href);
 
     var items = menu.querySelectorAll('.veloura-mobile-floating-menu__item');
-    var hasActive = false;
 
-    items.forEach(function (item) {
-      item.classList.remove('is-active');
+function syncFloatingMenuActive() {
+  var currentPath = normalizePath(window.location.href);
+  var hasActive = false;
 
-      var match = String(item.getAttribute('data-vmfm-match') || '').trim();
-      var active = false;
+  items.forEach(function (item) {
+    item.classList.remove('is-active');
 
-      if (match === 'home') {
-        active = currentPath === '/';
-      }
+    var match = String(item.getAttribute('data-vmfm-match') || '').trim();
+    var active = false;
 
-      if (match === 'categories') {
-        active =
-          currentPath.indexOf('/categories') !== -1 ||
-          currentPath.indexOf('/category') !== -1 ||
-          currentPath.indexOf('/c/') !== -1;
-      }
+    if (match === 'home') {
+      active = currentPath === '/';
+    }
 
-      if (match === 'search') {
-        active = currentPath.indexOf('/search') !== -1;
-      }
+    if (match === 'categories') {
+      active =
+        currentPath.indexOf('/categories') !== -1 ||
+        currentPath.indexOf('/category') !== -1 ||
+        currentPath.indexOf('/c/') !== -1;
+    }
 
-      if (match === 'cart') {
-        active = currentPath.indexOf('/cart') !== -1;
-      }
+    if (match === 'search') {
+      active = currentPath.indexOf('/search') !== -1;
+    }
 
-      if (match === 'account') {
-        active =
-          currentPath.indexOf('/account') !== -1 ||
-          currentPath.indexOf('/profile') !== -1 ||
-          currentPath.indexOf('/login') !== -1;
-      }
+    if (match === 'cart') {
+      active = currentPath.indexOf('/cart') !== -1;
+    }
 
-      if (active) {
-        item.classList.add('is-active');
-        hasActive = true;
-      }
-    });
+    if (match === 'account') {
+      active =
+        currentPath.indexOf('/account') !== -1 ||
+        currentPath.indexOf('/profile') !== -1 ||
+        currentPath.indexOf('/login') !== -1;
+    }
 
-    if (!hasActive && items.length) {
+    if (active) {
+      item.classList.add('is-active');
+      hasActive = true;
+    }
+  });
+
+  /*
+   * لو ما فيه أي عنصر مطابق للرابط الحالي
+   * نخلي الرئيسية نشطة كـ fallback
+   */
+  if (!hasActive) {
+    var homeItem = menu.querySelector('[data-vmfm-match="home"]');
+
+    if (homeItem) {
+      homeItem.classList.add('is-active');
+    } else if (items.length) {
       items[0].classList.add('is-active');
     }
+  }
+}
+
+syncFloatingMenuActive();
 
     menu.addEventListener('click', function (event) {
       var actionItem = event.target.closest('.veloura-mobile-floating-menu__item');
@@ -1774,20 +1786,22 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (action === 'categories') {
-        event.preventDefault();
+  event.preventDefault();
 
-        var didOpen = openCategoriesMenu();
+  var didOpen = openCategoriesMenu();
 
-        items.forEach(function (item) {
-          item.classList.remove('is-active');
-        });
+  items.forEach(function (item) {
+    item.classList.remove('is-active');
+  });
 
-        if (didOpen) {
-          actionItem.classList.add('is-active');
-        }
+  if (didOpen) {
+    actionItem.classList.add('is-active');
+  } else {
+    syncFloatingMenuActive();
+  }
 
-        return;
-      }
+  return;
+}
 
       if (action === 'login') {
         event.preventDefault();
