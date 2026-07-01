@@ -4106,7 +4106,7 @@
   "type": "static",
   "format": "title",
   "label": "قائمة الجوال العائمة",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(0,77,101,.22)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-mobile'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">قائمة الجوال العائمة</strong><span style=\"display:block;font-size:13px;font-weight:500;opacity:.88;line-height:1.7\">تحكم بالقائمة العائمة أسفل شاشة الجوال</span></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(0,77,101,.22)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-airplay-screen'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">قائمة الجوال العائمة</strong><span style=\"display:block;font-size:13px;font-weight:500;opacity:.88;line-height:1.7\">تحكم بالقائمة العائمة أسفل شاشة الجوال</span></div></div>",
   "icon": "sicon-mobile"
 },
 {
@@ -4214,6 +4214,157 @@
       "id": "veloura_mobile_floating_menu_enabled_2026",
       "operation": "=",
       "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_subtitle_pro_2026",
+  "type": "static",
+  "format": "title",
+  "label": "الشكل الاحترافي",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eef2ff;color:#3730a3;text-align:right;font-weight:800;border-right:4px solid #6366f1;box-shadow:inset 0 0 0 1px rgba(99,102,241,.10)\">الشكل الاحترافي والعنصر النشط</div>",
+  "icon": "sicon-magic-wand",
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_show_labels_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار النصوص تحت الأيقونات",
+  "description": "عند الإيقاف تظهر الأيقونات فقط داخل القائمة",
+  "icon": "sicon-font",
+  "value": true,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_icon_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم الأيقونات",
+  "description": "القيمة الفعلية = 18 + قيمة السلايدر",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "4",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "16",
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_font_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم خط النصوص",
+  "description": "القيمة الفعلية = 10 + قيمة السلايدر",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "2",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "8",
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_mobile_floating_menu_show_labels_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_active_style_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "شكل العنصر النشط",
+  "description": "اختر طريقة إبراز العنصر الحالي داخل القائمة",
+  "icon": "sicon-star",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "بارز ومكبر",
+      "value": "raised",
+      "key": "veloura-mobile-floating-menu-active-raised-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "بارز ومكبر",
+      "value": "raised",
+      "key": "veloura-mobile-floating-menu-active-raised-2026"
+    },
+    {
+      "label": "فقاعة مضيئة",
+      "value": "bubble",
+      "key": "veloura-mobile-floating-menu-active-bubble-2026"
+    },
+    {
+      "label": "نقطة علوية",
+      "value": "dot",
+      "key": "veloura-mobile-floating-menu-active-dot-2026"
+    },
+    {
+      "label": "بدون تمييز",
+      "value": "none",
+      "key": "veloura-mobile-floating-menu-active-none-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_active_scale_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "تكبير العنصر النشط",
+  "description": "القيمة الفعلية = 1 + قيمة السلايدر / 100",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "12",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "24",
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_mobile_floating_menu_active_style_2026",
+      "operation": "!=",
+      "value": "none"
     }
   ]
 },
@@ -4334,7 +4485,7 @@
   "type": "static",
   "format": "title",
   "label": "عناصر القائمة",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfdf5;color:#047857;text-align:right;font-weight:800;border-right:4px solid #10b981;box-shadow:inset 0 0 0 1px rgba(16,185,129,.10)\">عناصر القائمة</div>",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfdf5;color:#047857;text-align:right;font-weight:800;border-right:4px solid #10b981;box-shadow:inset 0 0 0 1px rgba(16,185,129,.10)\">العناصر الافتراضية والإضافية</div>",
   "icon": "sicon-grid",
   "conditions": [
     {
@@ -4416,6 +4567,94 @@
   "icon": "sicon-user",
   "value": true,
   "required": false,
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_subtitle_custom_items_2026",
+  "type": "static",
+  "format": "title",
+  "label": "عناصر مخصصة",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#c2410c;text-align:right;font-weight:800;border-right:4px solid #f97316;box-shadow:inset 0 0 0 1px rgba(249,115,22,.10)\">إضافة عناصر مخصصة للقائمة</div>",
+  "icon": "sicon-plus",
+  "conditions": [
+    {
+      "id": "veloura_mobile_floating_menu_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_mobile_floating_menu_custom_items_2026",
+  "type": "collection",
+  "format": "collection",
+  "label": "العناصر المخصصة",
+  "description": "أضف أزرارًا جديدة للقائمة مثل واتساب، العروض، المدونة، صفحة مخصصة",
+  "icon": "sicon-list-add",
+  "required": false,
+  "minLength": 0,
+  "maxLength": 5,
+  "fields": [
+    {
+      "id": "enabled",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل العنصر",
+      "value": true,
+      "required": false
+    },
+    {
+      "id": "label",
+      "type": "string",
+      "format": "text",
+      "label": "اسم العنصر",
+      "placeholder": "مثال: العروض",
+      "value": "العروض",
+      "required": true
+    },
+    {
+      "id": "icon",
+      "type": "string",
+      "format": "text",
+      "label": "كلاس الأيقونة",
+      "description": "مثال: sicon-tag أو sicon-whatsapp2",
+      "placeholder": "sicon-tag",
+      "value": "sicon-tag",
+      "required": true
+    },
+    {
+      "id": "url",
+      "type": "string",
+      "format": "url",
+      "inputType": "url",
+      "label": "رابط العنصر",
+      "placeholder": "https://example.com",
+      "required": true
+    },
+    {
+      "id": "active_match",
+      "type": "string",
+      "format": "text",
+      "label": "تمييز العنصر عند وجود هذا النص في الرابط",
+      "description": "مثال: offers أو blog أو whatsapp. اتركه فارغًا إذا لا تريد تمييزه تلقائيًا",
+      "placeholder": "offers",
+      "required": false
+    },
+    {
+      "id": "open_new_tab",
+      "type": "boolean",
+      "format": "switch",
+      "label": "فتح الرابط في تبويب جديد",
+      "value": false,
+      "required": false
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_mobile_floating_menu_enabled_2026",
@@ -5663,7 +5902,7 @@
                 "en": "صور مربعة (فيلورا)",
                 "ar": "صور مربعة (فيلورا)"
             },
-            "icon": "sicon-store",
+            "icon": "sicon-photo-library",
             "path": "home.ultra-square-images",
             "fields": [
                 {
@@ -6358,7 +6597,7 @@
                 "en": "بنرات متحركة (فيلورا)",
                 "ar": "بنرات متحركة (فيلورا)"
             },
-            "icon": "sicon-store",
+            "icon": "sicon-carousel",
             "path": "home.animated-banners",
             "fields": [
                 {
@@ -6971,7 +7210,7 @@
                 "en": "مميزات المتجر (فيلورا)",
                 "ar": "مميزات المتجر (فيلورا)"
             },
-            "icon": "sicon-store",
+            "icon": "sicon-favorite",
             "path": "home.store-features-veloura",
             "fields": [
                 {
