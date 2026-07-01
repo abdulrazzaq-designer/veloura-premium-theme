@@ -1332,9 +1332,130 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+  <style data-veloura-mobile-full-width-master-fix>
+    @media (max-width: 767px) {
+      body.veloura-mobile-floating-menu-position-full_width {
+        overflow-x: hidden !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-enabled {
+        padding-bottom: calc(
+          var(--veloura-mobile-floating-menu-height, 56px) +
+          env(safe-area-inset-bottom, 0px) +
+          18px
+        ) !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu,
+      .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width {
+        position: fixed !important;
+
+        left: 0 !important;
+        right: 0 !important;
+        inset-inline-start: 0 !important;
+        inset-inline-end: 0 !important;
+        bottom: 0 !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+
+        transform: none !important;
+        margin: 0 !important;
+
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 24px !important;
+        padding-bottom: 0 !important;
+
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        pointer-events: none !important;
+
+        border-radius:
+          var(--veloura-mobile-floating-menu-radius, 24px)
+          var(--veloura-mobile-floating-menu-radius, 24px)
+          0
+          0 !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner,
+      body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner,
+      .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner,
+      body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        margin: 0 !important;
+        box-sizing: border-box !important;
+
+        padding-inline: 10px !important;
+        padding-top: 7px !important;
+        padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px)) !important;
+
+        border-radius:
+          var(--veloura-mobile-floating-menu-radius, 24px)
+          var(--veloura-mobile-floating-menu-radius, 24px)
+          0
+          0 !important;
+
+        overflow: visible !important;
+        pointer-events: auto !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner::before,
+      body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before,
+      .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner::before {
+        border-radius:
+          var(--veloura-mobile-floating-menu-radius, 24px)
+          var(--veloura-mobile-floating-menu-radius, 24px)
+          0
+          0 !important;
+
+        z-index: 0 !important;
+        pointer-events: none !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item,
+      .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__item {
+        position: relative !important;
+        z-index: 2 !important;
+
+        min-width: 0 !important;
+        margin-inline: 0 !important;
+
+        overflow: visible !important;
+        border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised
+        .veloura-mobile-floating-menu__item.is-active,
+      body.veloura-mobile-floating-menu-active-raised
+        .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width
+        .veloura-mobile-floating-menu__item.is-active {
+        z-index: 10 !important;
+        transform:
+          translateY(-10px)
+          scale(var(--veloura-mobile-floating-menu-active-scale, 1.12)) !important;
+        overflow: visible !important;
+      }
+
+      body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised
+        .veloura-mobile-floating-menu__item.is-active::after,
+      body.veloura-mobile-floating-menu-active-raised
+        .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width
+        .veloura-mobile-floating-menu__item.is-active::after {
+        bottom: -6px !important;
+        z-index: 11 !important;
+      }
+    }
+  </style>
+
 {% if vmfm_enabled %}
   <nav
-    class="veloura-mobile-floating-menu"
+    class="veloura-mobile-floating-menu {{ vmfm_position == 'full_width' ? 'veloura-mobile-floating-menu--full-width' : '' }}"
     aria-label="قائمة الجوال العائمة"
     style="
       --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;

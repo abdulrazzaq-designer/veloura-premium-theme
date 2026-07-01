@@ -491,16 +491,18 @@
 
 
 /* ================================
-   Veloura Full Width No Horizontal Overflow Fix
-   بعرض الشاشة بدون خروج من اليمين/اليسار + النشط غير مقصوص
+   Veloura Full Width Final Edge Fix
+   بعرض الشاشة: يمين/يسار/أسفل بدون خروج + النشط غير مقصوص
 ================================ */
 
 @media (max-width: 767px) {
-  body.veloura-mobile-floating-menu-position-full_width {
+  body.veloura-mobile-floating-menu-position-full_width,
+  body:has(.veloura-mobile-floating-menu--full-width) {
     overflow-x: hidden !important;
   }
 
-  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-enabled {
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-enabled,
+  body.veloura-mobile-floating-menu-enabled:has(.veloura-mobile-floating-menu--full-width) {
     padding-bottom: calc(
       var(--veloura-mobile-floating-menu-height, 56px) +
       env(safe-area-inset-bottom, 0px) +
@@ -508,7 +510,8 @@
     ) !important;
   }
 
-  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width {
     position: fixed !important;
 
     left: 0 !important;
@@ -517,6 +520,11 @@
     inset-inline-end: 0 !important;
     bottom: 0 !important;
 
+    /*
+      مهم جدًا:
+      لا نستخدم 100vw حتى لا يطلع يمين/يسار بسبب RTL أو scrollbar.
+      left/right تكفي لملء العرض.
+    */
     width: auto !important;
     min-width: 0 !important;
     max-width: none !important;
@@ -540,15 +548,14 @@
   }
 
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner,
-  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
-    width: auto !important;
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
     min-width: 0 !important;
-    max-width: none !important;
+    max-width: 100% !important;
 
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-inline: 0 !important;
-
+    margin: 0 !important;
     box-sizing: border-box !important;
 
     padding-inline: 10px !important;
@@ -565,7 +572,8 @@
   }
 
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner::before,
-  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before {
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner::before,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner::before {
     border-radius: var(--veloura-mobile-floating-menu-radius, 24px)
       var(--veloura-mobile-floating-menu-radius, 24px)
       0
@@ -575,21 +583,22 @@
     pointer-events: none !important;
   }
 
-  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item {
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__item {
     position: relative !important;
     z-index: 2 !important;
-    min-width: 0 !important;
-    overflow: visible !important;
 
+    min-width: 0 !important;
+    margin-inline: 0 !important;
+
+    overflow: visible !important;
     border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
   }
 
-  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item:first-child,
-  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item:last-child {
-    margin-inline: 0 !important;
-  }
-
   body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised
+    .veloura-mobile-floating-menu__item.is-active,
+  body.veloura-mobile-floating-menu-active-raised
+    .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width
     .veloura-mobile-floating-menu__item.is-active {
     z-index: 10 !important;
     transform:
@@ -599,6 +608,9 @@
   }
 
   body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised
+    .veloura-mobile-floating-menu__item.is-active::after,
+  body.veloura-mobile-floating-menu-active-raised
+    .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width
     .veloura-mobile-floating-menu__item.is-active::after {
     bottom: -6px !important;
     z-index: 11 !important;
