@@ -1511,17 +1511,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openCategoriesMenu() {
-      if (window.velouraOpenCatsSheet) {
-        window.velouraOpenCatsSheet();
+      var originalTrigger =
+        document.querySelector('.veloura-menu-trigger-mobile[href="#mobile-menu"]') ||
+        document.querySelector('a.mburger[href="#mobile-menu"]') ||
+        document.querySelector('a[href="#mobile-menu"]');
+
+      if (originalTrigger) {
+        originalTrigger.dispatchEvent(
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+          })
+        );
+
         return true;
       }
 
-      if (window.velouraOpenCategoriesBottomSheet) {
-        window.velouraOpenCategoriesBottomSheet();
-        return true;
-      }
-
-      return false;
+      window.location.hash = 'mobile-menu';
+      return true;
     }
 
     function openLoginModal() {
