@@ -3317,6 +3317,32 @@
   ]
 },
 {
+  "id": "veloura_product_card_action_size_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم أيقونة المفضلة والعرض السريع",
+  "description": "يتحكم بحجم زر المفضلة وزر العرض السريع فوق صورة المنتج حتى يكونان بنفس الحجم",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "42",
+  "required": false,
+  "step": "1",
+  "minimum": "32",
+  "maximum": "56",
+  "conditions": [
+    {
+      "id": "veloura_product_card_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_quick_view_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_quick_view_button_bg_color_2026",
   "type": "string",
   "format": "color",

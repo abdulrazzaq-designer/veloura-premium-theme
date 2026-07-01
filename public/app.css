@@ -34263,11 +34263,6 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   left: 72px !important;
   right: auto !important;
   bottom: auto !important;
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  max-width: 44px !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 999px !important;
@@ -34345,60 +34340,6 @@ body.veloura-quick-view-position-below_add_to_cart .veloura-quick-view-btn.is-ic
 body.veloura-quick-view-position-below-add-to-cart .veloura-quick-view-btn.is-icon-only,
 body.veloura-quick-view-position-inside_card .veloura-quick-view-btn.is-icon-only {
   display: none !important;
-}
-/* ================================
-   Style: Glass
-================================ */
-body.veloura-quick-view-style-glass .veloura-quick-view-btn {
-  background: rgba(255, 255, 255, 0.72) !important;
-  color: #111827 !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
-}
-body.veloura-quick-view-style-glass .veloura-quick-view-btn {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-body.veloura-quick-view-style-glass .veloura-quick-view-btn.is-under-cart {
-  color: #111827 !important;
-}
-/* ================================
-   Style: Solid
-================================ */
-body.veloura-quick-view-style-solid .veloura-quick-view-btn {
-  background: #004d65 !important;
-  background: var(--veloura-quick-view-button-bg, #004d65) !important;
-  color: #ffffff !important;
-  color: var(--veloura-quick-view-button-text, #ffffff) !important;
-  border-color: #004d65 !important;
-  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-/* ================================
-   Style: Outline
-================================ */
-body.veloura-quick-view-style-outline .veloura-quick-view-btn {
-  background: transparent !important;
-  color: #004d65 !important;
-  color: var(--veloura-quick-view-button-bg, #004d65) !important;
-  border-color: #004d65 !important;
-  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-body.veloura-quick-view-style-outline .veloura-quick-view-btn.is-icon-only {
-  background: rgba(255, 255, 255, 0.86) !important;
-}
-/* ================================
-   Style: Soft
-================================ */
-body.veloura-quick-view-style-soft .veloura-quick-view-btn {
-  background: rgba(0, 77, 101, 0.12) !important;
-  color: #004d65 !important;
-  color: var(--veloura-quick-view-button-bg, #004d65) !important;
-  border-color: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
 }
 /* ================================
    Modal
@@ -34575,6 +34516,116 @@ body.veloura-quick-view-animation-slide_up .veloura-quick-view-modal__dialog {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+/* ================================
+   Veloura Quick View Final Style
+   فقط لون الخلفية + لون النص + الحواف
+================================ */
+body.veloura-quick-view-enabled .veloura-quick-view-btn,
+body.veloura-quick-view-enabled .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-enabled .veloura-quick-view-btn.is-under-cart {
+  background: #004d65 !important;
+  background: var(--veloura-quick-view-button-bg, #004d65) !important;
+  color: #ffffff !important;
+  color: var(--veloura-quick-view-button-text, #ffffff) !important;
+  border-color: #004d65 !important;
+  border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
+  border-radius: 999px !important;
+  border-radius: var(--veloura-quick-view-button-radius, 999px) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.veloura-quick-view-enabled .veloura-quick-view-btn i,
+body.veloura-quick-view-enabled .veloura-quick-view-btn span {
+  color: #ffffff !important;
+  color: var(--veloura-quick-view-button-text, #ffffff) !important;
+}
+/* حجم أيقونة العرض السريع مثل المفضلة */
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  max-width: 42px !important;
+  padding: 0 !important;
+  font-size: 15px !important;
+}
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only i,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only i {
+  font-size: 15px !important;
+}
+/* ================================
+   Wishlist + Quick View Same Size
+   توحيد حجم المفضلة والعرض السريع
+================================ */
+body.veloura-product-card-enabled .s-product-card-entry {
+  --veloura-action-size: var(--veloura-product-action-size, 42px);
+  --veloura-action-gap: 8px;
+  --veloura-action-top: 18px;
+  --veloura-action-start: 18px;
+}
+/* زر المفضلة */
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn,
+body.veloura-product-card-enabled .s-product-card-entry [class*=wishlist],
+body.veloura-product-card-enabled .s-product-card-entry [class*=Wishlist] {
+  width: var(--veloura-action-size) !important;
+  height: var(--veloura-action-size) !important;
+  min-width: var(--veloura-action-size) !important;
+  min-height: var(--veloura-action-size) !important;
+  max-width: var(--veloura-action-size) !important;
+  max-height: var(--veloura-action-size) !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* أيقونة المفضلة داخل الزر */
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn i,
+body.veloura-product-card-enabled .s-product-card-entry [class*=wishlist] i,
+body.veloura-product-card-enabled .s-product-card-entry [class*=Wishlist] i,
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn svg,
+body.veloura-product-card-enabled .s-product-card-entry [class*=wishlist] svg,
+body.veloura-product-card-enabled .s-product-card-entry [class*=Wishlist] svg {
+  font-size: calc(var(--veloura-action-size) * 0.42) !important;
+  width: calc(var(--veloura-action-size) * 0.42) !important;
+  height: calc(var(--veloura-action-size) * 0.42) !important;
+}
+/* زر العرض السريع كأيقونة */
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
+  width: var(--veloura-action-size) !important;
+  height: var(--veloura-action-size) !important;
+  min-width: var(--veloura-action-size) !important;
+  min-height: var(--veloura-action-size) !important;
+  max-width: var(--veloura-action-size) !important;
+  max-height: var(--veloura-action-size) !important;
+  top: var(--veloura-action-top) !important;
+  left: calc(var(--veloura-action-start) + var(--veloura-action-size) + var(--veloura-action-gap)) !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
+  /* مكانه بجانب المفضلة */
+}
+/* أيقونة العرض السريع */
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only i,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only i {
+  font-size: calc(var(--veloura-action-size) * 0.42) !important;
+  line-height: 1 !important;
+}
+/* للموبايل */
+@media (max-width: 767px) {
+  body.veloura-product-card-enabled .s-product-card-entry {
+    --veloura-action-top: 14px;
+    --veloura-action-start: 14px;
+    --veloura-action-gap: 7px;
   }
 }
 body.mm-ocd-opened,

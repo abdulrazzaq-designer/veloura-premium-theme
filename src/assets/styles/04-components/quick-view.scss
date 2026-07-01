@@ -61,11 +61,6 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   right: auto !important;
   bottom: auto !important;
 
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  max-width: 44px !important;
 
   padding: 0 !important;
   margin: 0 !important;
@@ -384,4 +379,89 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
 body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only i,
 body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only i {
   font-size: 15px !important;
+}
+
+
+/* ================================
+   Wishlist + Quick View Same Size
+   توحيد حجم المفضلة والعرض السريع
+================================ */
+
+body.veloura-product-card-enabled .s-product-card-entry {
+  --veloura-action-size: var(--veloura-product-action-size, 42px);
+  --veloura-action-gap: 8px;
+  --veloura-action-top: 18px;
+  --veloura-action-start: 18px;
+}
+
+/* زر المفضلة */
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn,
+body.veloura-product-card-enabled .s-product-card-entry [class*="wishlist"],
+body.veloura-product-card-enabled .s-product-card-entry [class*="Wishlist"] {
+  width: var(--veloura-action-size) !important;
+  height: var(--veloura-action-size) !important;
+  min-width: var(--veloura-action-size) !important;
+  min-height: var(--veloura-action-size) !important;
+  max-width: var(--veloura-action-size) !important;
+  max-height: var(--veloura-action-size) !important;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* أيقونة المفضلة داخل الزر */
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn i,
+body.veloura-product-card-enabled .s-product-card-entry [class*="wishlist"] i,
+body.veloura-product-card-enabled .s-product-card-entry [class*="Wishlist"] i,
+body.veloura-product-card-enabled .s-product-card-entry .s-product-card-wishlist-btn svg,
+body.veloura-product-card-enabled .s-product-card-entry [class*="wishlist"] svg,
+body.veloura-product-card-enabled .s-product-card-entry [class*="Wishlist"] svg {
+  font-size: calc(var(--veloura-action-size) * 0.42) !important;
+  width: calc(var(--veloura-action-size) * 0.42) !important;
+  height: calc(var(--veloura-action-size) * 0.42) !important;
+}
+
+/* زر العرض السريع كأيقونة */
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only {
+  width: var(--veloura-action-size) !important;
+  height: var(--veloura-action-size) !important;
+  min-width: var(--veloura-action-size) !important;
+  min-height: var(--veloura-action-size) !important;
+  max-width: var(--veloura-action-size) !important;
+  max-height: var(--veloura-action-size) !important;
+
+  top: var(--veloura-action-top) !important;
+
+  /* مكانه بجانب المفضلة */
+  left: calc(
+    var(--veloura-action-start) + var(--veloura-action-size) + var(--veloura-action-gap)
+  ) !important;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* أيقونة العرض السريع */
+body.veloura-quick-view-position-wishlist_icon .veloura-quick-view-btn.is-icon-only i,
+body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-only i {
+  font-size: calc(var(--veloura-action-size) * 0.42) !important;
+  line-height: 1 !important;
+}
+
+/* للموبايل */
+@media (max-width: 767px) {
+  body.veloura-product-card-enabled .s-product-card-entry {
+    --veloura-action-top: 14px;
+    --veloura-action-start: 14px;
+    --veloura-action-gap: 7px;
+  }
 }
