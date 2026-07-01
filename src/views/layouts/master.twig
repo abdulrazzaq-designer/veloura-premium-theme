@@ -1511,11 +1511,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openCategoriesMenu() {
-      var drawer = document.querySelector('.mm-ocd.ocd-categs');
+      document.documentElement.classList.add('veloura-ocd-bottom-active');
+      document.body.classList.add('veloura-ocd-bottom-active');
 
-      if (drawer) {
+      function applyBottomMode() {
+        var drawer =
+          document.querySelector('.mm-ocd.ocd-categs') ||
+          document.querySelector('.mm-ocd--right.ocd-categs') ||
+          document.querySelector('.mm-ocd');
+
+        if (!drawer) {
+          return;
+        }
+
         drawer.classList.add('ocd-bottom');
+        drawer.classList.add('veloura-native-bottom');
       }
+
+      applyBottomMode();
 
       var trigger =
         document.querySelector('.veloura-menu-trigger-mobile[href="#mobile-menu"]') ||
@@ -1534,54 +1547,52 @@ document.addEventListener('DOMContentLoaded', function () {
         })
       );
 
-      function applyBottomMode() {
-        var currentDrawer = document.querySelector('.mm-ocd.ocd-categs');
-
-        if (!currentDrawer) {
-          return;
-        }
-
-        currentDrawer.classList.add('ocd-bottom');
-      }
-
       requestAnimationFrame(applyBottomMode);
       setTimeout(applyBottomMode, 20);
       setTimeout(applyBottomMode, 80);
       setTimeout(applyBottomMode, 180);
       setTimeout(applyBottomMode, 350);
+      setTimeout(applyBottomMode, 700);
 
       return true;
     }
 
-    document.addEventListener('click', function (event) {
-      var closeBtn = event.target.closest('.close-mobile-menu');
-      var backdrop = event.target.closest('.mm-ocd__backdrop');
+    function cleanupCategoriesBottomMode() {
+      document.documentElement.classList.remove('veloura-ocd-bottom-active');
+      document.body.classList.remove('veloura-ocd-bottom-active');
 
-      if (!closeBtn && !backdrop) {
-        return;
+      var drawer =
+        document.querySelector('.mm-ocd.ocd-categs') ||
+        document.querySelector('.mm-ocd--right.ocd-categs') ||
+        document.querySelector('.mm-ocd');
+
+      if (drawer && !drawer.classList.contains('mm-ocd--open')) {
+        drawer.classList.remove('ocd-bottom');
+        drawer.classList.remove('veloura-native-bottom');
       }
+    }
 
-      setTimeout(function () {
-        var drawer = document.querySelector('.mm-ocd.ocd-categs');
+    document.addEventListener(
+      'click',
+      function (event) {
+        var closeBtn = event.target.closest('.close-mobile-menu');
+        var backdrop = event.target.closest('.mm-ocd__backdrop');
 
-        if (drawer && !drawer.classList.contains('mm-ocd--open')) {
-          drawer.classList.remove('ocd-bottom');
+        if (!closeBtn && !backdrop) {
+          return;
         }
-      }, 260);
-    });
+
+        setTimeout(cleanupCategoriesBottomMode, 320);
+      },
+      true
+    );
 
     document.addEventListener('keydown', function (event) {
       if (event.key !== 'Escape') {
         return;
       }
 
-      setTimeout(function () {
-        var drawer = document.querySelector('.mm-ocd.ocd-categs');
-
-        if (drawer && !drawer.classList.contains('mm-ocd--open')) {
-          drawer.classList.remove('ocd-bottom');
-        }
-      }, 260);
+      setTimeout(cleanupCategoriesBottomMode, 320);
     });
 
     function openLoginModal() {

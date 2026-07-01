@@ -1,5 +1,28 @@
+/* ================================
+   Veloura Mobile Floating Menu
+   Clean final version
+================================ */
+
 .veloura-mobile-floating-menu {
   display: none;
+}
+
+/* إخفاء أي تجربة Bottom Sheet قديمة تم إضافتها في header.twig */
+.veloura-cats-sheet,
+.veloura-cats-sheet__overlay,
+.veloura-cats-sheet__panel,
+.veloura-cats-sheet__body,
+.veloura-cats-sheet__list,
+.veloura-cats-sheet__loading,
+.veloura-cats-sheet__empty {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 @media (max-width: 767px) {
@@ -153,10 +176,6 @@
     transform: translateX(-50%);
   }
 
-  body.veloura-mobile-floating-menu-active-raised .veloura-mobile-floating-menu__item.is-active i {
-    transform: translateY(-1px);
-  }
-
   body.veloura-mobile-floating-menu-active-bubble .veloura-mobile-floating-menu__item.is-active {
     transform: scale(var(--veloura-mobile-floating-menu-active-scale, 1.12)) !important;
     background: rgba(0, 77, 101, 0.10) !important;
@@ -263,12 +282,23 @@
 }
 
 /* ================================
-   Veloura Categories Native Bottom Mode
-   يستخدم نفس قائمة سلة الأصلية: .mm-ocd.ocd-categs
+   Native Categories Bottom Mode
+   يحول نفس قائمة سلة الأصلية إلى Bottom Sheet
 ================================ */
 
 @media only screen and (max-width: 767px) {
-  .mm-ocd.ocd-categs.ocd-bottom {
+  html.veloura-ocd-bottom-active,
+  body.veloura-ocd-bottom-active {
+    overflow: hidden !important;
+  }
+
+  body.veloura-ocd-bottom-active .veloura-mobile-floating-menu {
+    z-index: 999999 !important;
+  }
+
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs,
+  .mm-ocd.ocd-categs.ocd-bottom,
+  .mm-ocd.ocd-categs.veloura-native-bottom {
     position: fixed !important;
     inset: 0 !important;
     width: 100vw !important;
@@ -276,9 +306,12 @@
     z-index: 99990 !important;
     background: rgba(15, 23, 42, 0.42) !important;
     overflow: hidden !important;
+    transform: none !important;
   }
 
-  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__backdrop {
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-ocd__backdrop,
+  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__backdrop,
+  .mm-ocd.ocd-categs.veloura-native-bottom .mm-ocd__backdrop {
     position: absolute !important;
     inset: 0 !important;
     background: transparent !important;
@@ -287,26 +320,32 @@
     pointer-events: auto !important;
   }
 
-  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__content {
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-ocd__content,
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs.mm-ocd--right .mm-ocd__content,
+  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__content,
+  .mm-ocd.ocd-categs.ocd-bottom.mm-ocd--right .mm-ocd__content,
+  .mm-ocd.ocd-categs.veloura-native-bottom .mm-ocd__content {
     position: fixed !important;
+
     top: auto !important;
-    right: 0 !important;
-    left: 0 !important;
-    bottom: 0 !important;
+    left: 10px !important;
+    right: 10px !important;
 
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    max-height: 75vh !important;
-
-    padding-bottom: calc(
+    bottom: calc(
       var(--veloura-mobile-floating-menu-height, 56px) +
       var(--veloura-mobile-floating-menu-bottom, 16px) +
       env(safe-area-inset-bottom, 0px) +
       12px
     ) !important;
 
-    border-radius: 24px 24px 0 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: min(68vh, 620px) !important;
+
+    padding-bottom: 0 !important;
+
+    border-radius: 24px !important;
     overflow: hidden !important;
     background: #ffffff !important;
 
@@ -314,12 +353,17 @@
     transition: transform 0.28s cubic-bezier(.2, .8, .2, 1) !important;
   }
 
-  .mm-ocd.ocd-categs.ocd-bottom.mm-ocd--open .mm-ocd__content {
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs.mm-ocd--open .mm-ocd__content,
+  .mm-ocd.ocd-categs.ocd-bottom.mm-ocd--open .mm-ocd__content,
+  .mm-ocd.ocd-categs.veloura-native-bottom.mm-ocd--open .mm-ocd__content {
     transform: translate3d(0, 0, 0) !important;
   }
 
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mobile-menu,
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs #mobile-menu,
   .mm-ocd.ocd-categs.ocd-bottom .mobile-menu,
-  .mm-ocd.ocd-categs.ocd-bottom #mobile-menu {
+  .mm-ocd.ocd-categs.ocd-bottom #mobile-menu,
+  .mm-ocd.ocd-categs.veloura-native-bottom #mobile-menu {
     display: block !important;
     position: relative !important;
     inset: auto !important;
@@ -327,7 +371,7 @@
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: calc(75vh - 10px) !important;
+    max-height: min(68vh, 620px) !important;
 
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -336,7 +380,9 @@
     transform: none !important;
   }
 
-  .mm-ocd.ocd-categs.ocd-bottom #mobile-menu::before {
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs #mobile-menu::before,
+  .mm-ocd.ocd-categs.ocd-bottom #mobile-menu::before,
+  .mm-ocd.ocd-categs.veloura-native-bottom #mobile-menu::before {
     content: '';
     display: block;
     width: 44px;
@@ -346,7 +392,9 @@
     background: rgba(15, 23, 42, 0.16);
   }
 
-  .mm-ocd.ocd-categs.ocd-bottom .close-mobile-menu {
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .close-mobile-menu,
+  .mm-ocd.ocd-categs.ocd-bottom .close-mobile-menu,
+  .mm-ocd.ocd-categs.veloura-native-bottom .close-mobile-menu {
     display: inline-flex !important;
     position: absolute !important;
     top: 12px !important;
@@ -364,12 +412,16 @@
     color: #111827 !important;
   }
 
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-spn,
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-spn ul,
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-spn ul.mm-spn--open,
   .mm-ocd.ocd-categs.ocd-bottom .mm-spn,
   .mm-ocd.ocd-categs.ocd-bottom .mm-spn ul,
   .mm-ocd.ocd-categs.ocd-bottom .mm-spn ul.mm-spn--open {
     max-width: 100% !important;
   }
 
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-spn ul.mm-spn--open,
   .mm-ocd.ocd-categs.ocd-bottom .mm-spn ul.mm-spn--open {
     left: 0 !important;
     right: 0 !important;
