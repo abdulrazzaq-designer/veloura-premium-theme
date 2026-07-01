@@ -127,11 +127,27 @@
   }
 
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
-    width: calc(100vw - 18px);
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    padding-top: 22px !important;
   }
 
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner {
-    border-radius: 22px !important;
+    width: 100% !important;
+    min-width: 100% !important;
+
+    border-top-left-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-top-right-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu {
@@ -486,5 +502,50 @@
   /* نخلي القائمة العائمة فوق الخلفية، لكن تحت زر الإغلاق */
   body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
     z-index: 99999 !important;
+  }
+}
+
+
+/* ================================
+   Veloura Full Width Mobile Menu
+   ملتصقة يمين/يسار/أسفل + حواف سفلية حادة
+================================ */
+
+@media (max-width: 767px) {
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-enabled {
+    padding-bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      env(safe-area-inset-bottom, 0px) +
+      18px
+    ) !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    padding-top: 22px !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    min-width: 100% !important;
+
+    border-top-left-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-top-right-radius: var(--veloura-mobile-floating-menu-radius, 24px) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width
+    .veloura-mobile-floating-menu__item {
+    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
   }
 }

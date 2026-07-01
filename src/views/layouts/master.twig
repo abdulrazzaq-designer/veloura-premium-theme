@@ -584,14 +584,8 @@
 {% if vmfm_height_value > 24 %}{% set vmfm_height_value = 24 %}{% endif %}
 {% set vmfm_height = 48 + vmfm_height_value %}
 
-{% set vmfm_bottom_value = theme.settings.get('veloura_mobile_floating_menu_bottom_2026', 8) %}
-{% if vmfm_bottom_value.value is defined %}
-  {% set vmfm_bottom_value = vmfm_bottom_value.value %}
-{% endif %}
-{% set vmfm_bottom_value = vmfm_bottom_value + 0 %}
-{% if vmfm_bottom_value < 0 %}{% set vmfm_bottom_value = 0 %}{% endif %}
-{% if vmfm_bottom_value > 32 %}{% set vmfm_bottom_value = 32 %}{% endif %}
-{% set vmfm_bottom = 8 + vmfm_bottom_value %}
+{# تم إلغاء خيار المسافة من الأسفل: القائمة تلتصق بأسفل الشاشة #}
+{% set vmfm_bottom = 0 %}
 
 {% set vmfm_bg_color = theme.settings.get('veloura_mobile_floating_menu_bg_color_2026', '#ffffff') %}
 {% if vmfm_bg_color.value is defined %}{% set vmfm_bg_color = vmfm_bg_color.value %}{% endif %}
@@ -792,7 +786,7 @@
 {% endif %}
         {% if vmfm_enabled %}
           --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
-          --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
+          --veloura-mobile-floating-menu-bottom: 0px;
           --veloura-mobile-floating-menu-bg: {{ vmfm_bg_color }};
           --veloura-mobile-floating-menu-text: {{ vmfm_text_color }};
           --veloura-mobile-floating-menu-active: {{ vmfm_active_color }};
@@ -1344,7 +1338,7 @@ document.addEventListener('DOMContentLoaded', function () {
     aria-label="قائمة الجوال العائمة"
     style="
       --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
-      --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
+      --veloura-mobile-floating-menu-bottom: 0px;
       --veloura-mobile-floating-menu-bg: {{ vmfm_bg_color }};
       --veloura-mobile-floating-menu-text: {{ vmfm_text_color }};
       --veloura-mobile-floating-menu-active: {{ vmfm_active_color }};
@@ -1449,7 +1443,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var transientStartedAt = 0;
 
     root.style.setProperty('--veloura-mobile-floating-menu-height', "{{ vmfm_height }}px");
-    root.style.setProperty('--veloura-mobile-floating-menu-bottom', "{{ vmfm_bottom }}px");
+    root.style.setProperty('--veloura-mobile-floating-menu-bottom', "0px");
     root.style.setProperty('--veloura-mobile-floating-menu-bg', "{{ vmfm_bg_color }}");
     root.style.setProperty('--veloura-mobile-floating-menu-text', "{{ vmfm_text_color }}");
     root.style.setProperty('--veloura-mobile-floating-menu-active', "{{ vmfm_active_color }}");

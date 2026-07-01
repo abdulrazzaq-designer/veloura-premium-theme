@@ -4197,27 +4197,6 @@
   ]
 },
 {
-  "id": "veloura_mobile_floating_menu_bottom_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "المسافة من الأسفل",
-  "description": "القيمة الفعلية = 8 + قيمة السلايدر",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "8",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "32",
-  "conditions": [
-    {
-      "id": "veloura_mobile_floating_menu_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "id": "veloura_mobile_floating_menu_subtitle_pro_2026",
   "type": "static",
   "format": "title",
