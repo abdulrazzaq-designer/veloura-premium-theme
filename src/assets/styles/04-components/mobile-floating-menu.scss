@@ -552,19 +552,33 @@
 
 
 /* ================================
-   Veloura Full Width Bottom Corners Hard Fix
-   إجبار الحواف السفلية تكون حادة في وضع بعرض الشاشة
+   Veloura Full Width Active Not Clipped Fix
+   بعرض الشاشة: ملتصقة من تحت + الحواف السفلية حادة + النشط غير مقصوص
 ================================ */
 
 @media (max-width: 767px) {
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-enabled {
+    padding-bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      env(safe-area-inset-bottom, 0px) +
+      18px
+    ) !important;
+  }
+
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     transform: none !important;
+
     width: 100vw !important;
     max-width: 100vw !important;
+
     margin: 0 !important;
+    padding-top: 24px !important;
+
+    overflow: visible !important;
+    pointer-events: none !important;
 
     border-radius: var(--veloura-mobile-floating-menu-radius, 24px)
       var(--veloura-mobile-floating-menu-radius, 24px)
@@ -576,14 +590,26 @@
   body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-glass .veloura-mobile-floating-menu__inner {
     width: 100% !important;
     min-width: 100% !important;
+    max-width: 100% !important;
+
     margin: 0 !important;
+    box-sizing: border-box !important;
+
+    padding-inline: 10px !important;
+    padding-top: 7px !important;
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px)) !important;
 
     border-radius: var(--veloura-mobile-floating-menu-radius, 24px)
       var(--veloura-mobile-floating-menu-radius, 24px)
       0
       0 !important;
 
-    overflow: hidden !important;
+    /*
+     * مهم:
+     * لا نخلي inner يعمل overflow hidden لأنه يقص العنصر النشط.
+     */
+    overflow: visible !important;
+    pointer-events: auto !important;
   }
 
   body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner::before,
@@ -592,22 +618,46 @@
       var(--veloura-mobile-floating-menu-radius, 24px)
       0
       0 !important;
+
+    /*
+     * طبقة اللمعة تكون خلف العناصر ولا تقص النشط.
+     */
+    z-index: 0 !important;
+    pointer-events: none !important;
   }
 
-  /*
-   * في وضع بعرض الشاشة نخلي العناصر نفسها ما تعمل تدوير سفلي على أطراف البار.
-   * التدوير يبقى فقط للعنصر النشط نفسه إذا كان مرفوعًا، لكن لا يؤثر على حواف البار.
-   */
-  body.veloura-mobile-floating-menu-position-full_width
-    .veloura-mobile-floating-menu__item {
-    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px)
-      calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px)
-      0
-      0 !important;
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item {
+    position: relative !important;
+    z-index: 2 !important;
+
+    min-width: 0 !important;
+    overflow: visible !important;
+
+    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item:first-child,
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__item:last-child {
+    margin-inline: 2px !important;
   }
 
   body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised
     .veloura-mobile-floating-menu__item.is-active {
-    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 24px) - 8px) !important;
+    z-index: 10 !important;
+
+    /*
+     * في وضع بعرض الشاشة نرفع النشط لكن بدون قص عند الطرف.
+     */
+    transform:
+      translateY(-10px)
+      scale(var(--veloura-mobile-floating-menu-active-scale, 1.12)) !important;
+
+    overflow: visible !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width.veloura-mobile-floating-menu-active-raised
+    .veloura-mobile-floating-menu__item.is-active::after {
+    bottom: -6px !important;
+    z-index: 11 !important;
   }
 }
