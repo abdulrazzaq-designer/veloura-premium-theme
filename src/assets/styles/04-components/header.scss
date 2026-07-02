@@ -951,12 +951,6 @@ body.dark,
    Veloura Native Mobile Menu On Desktop - CLEAN
 ================================ */
 
-/*
-  لا نبني قائمة ولا Drawer جديد.
-  نستخدم زر الجوال الأصلي href="#mobile-menu".
-  ونخفي custom-main-menu بصرياً فقط حتى يبقى #mobile-menu مبني.
-*/
-
 @media (max-width: 1023px) {
   .store-header.veloura-top-enabled .veloura-menu-trigger-mobile,
   .store-header.veloura-top-enabled a.mburger[href="#mobile-menu"] {
@@ -1072,23 +1066,24 @@ body.dark,
 
 
 /* ================================
-   Veloura Mobile Menu Final Fix v3
-   padding + red X + small back arrow + drawer width
+   Veloura Mobile Menu Final Fix v4
+   إصلاح البادنج + X + سهم الرجوع الأصلي + الأسهم الزائدة
 ================================ */
 
 /*
-  هذا يعدل الموجود فقط:
-  - نفس سهم mmenu-light: .mm-spn li:before
-  - نفس سهم الرجوع: .mm-spn--navbar ul:before
-  - نفس زر الإغلاق الموجود
+  ملاحظات مهمة:
+  - لا نستخدم ul:before للرجوع نهائياً.
+  - سهم الرجوع الأصلي في mmenu-light هو:
+    .mm-spn.mm-spn--navbar:after
+  - سهم الفرعية الأصلي هو:
+    .mm-spn li:before
 */
 
 .mm-ocd {
   z-index: 999999 !important;
-  --veloura-menu-danger: #ff3030;
 }
 
-/* القائمة ليست full screen */
+/* الدرج لا يكون full screen */
 .mm-ocd .mm-ocd__content,
 .mm-ocd.mm-ocd--right .mm-ocd__content,
 .mm-ocd.mm-ocd--left .mm-ocd__content {
@@ -1096,16 +1091,6 @@ body.dark,
   max-width: 86vw !important;
   background: #f8f8f8 !important;
   box-shadow: -14px 0 34px rgba(0, 0, 0, .13) !important;
-}
-
-/* على الشاشات الصغيرة تبقى درج واضح وليس شاشة كاملة */
-@media (max-width: 640px) {
-  .mm-ocd .mm-ocd__content,
-  .mm-ocd.mm-ocd--right .mm-ocd__content,
-  .mm-ocd.mm-ocd--left .mm-ocd__content {
-    width: min(360px, 86vw) !important;
-    max-width: 86vw !important;
-  }
 }
 
 /* إعدادات القائمة */
@@ -1119,22 +1104,65 @@ body.dark,
   font-weight: 700 !important;
 }
 
-/* عنوان القائمة العلوي */
+/* عنوان القائمة */
 .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:before {
-  height: var(--mm-spn-item-height, 56px) !important;
-  line-height: var(--mm-spn-item-height, 56px) !important;
+  height: 56px !important;
+  line-height: 56px !important;
   padding: 0 70px !important;
   color: rgba(17, 24, 39, .68) !important;
   font-size: 14px !important;
   font-weight: 800 !important;
-  letter-spacing: .2px !important;
   text-align: center !important;
   border-bottom: 1px solid rgba(17, 24, 39, .13) !important;
   background: linear-gradient(180deg, #fbfbfb 0%, #f6f6f6 100%) !important;
   box-sizing: border-box !important;
 }
 
-/* القائمة داخل drawer سطور كاملة */
+/* امسح السهم الكبير الخطأ الذي كان معمول على ul:before */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+}
+
+/* سهم الرجوع الأصلي: nav:after */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 28px !important;
+  right: 25px !important;
+  left: auto !important;
+  width: 10px !important;
+  height: 10px !important;
+  z-index: 30 !important;
+  opacity: .55 !important;
+  background: transparent !important;
+  border-top: 2px solid rgba(17, 24, 39, .45) !important;
+  border-right: 2px solid rgba(17, 24, 39, .45) !important;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  transform: translateY(-50%) rotate(45deg) !important;
+}
+
+/* لا تظهر سهم الرجوع في الصفحة الرئيسية */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar.mm-spn--main:after {
+  content: none !important;
+  display: none !important;
+}
+
+/* LTR عكس الاتجاه */
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  left: 25px !important;
+  right: auto !important;
+  transform: translateY(-50%) rotate(-135deg) !important;
+}
+
+/* القائمة سطور كاملة */
 .mm-ocd #mobile-menu.mm-spn,
 .mm-ocd #mobile-menu.mm-spn ul,
 .mm-ocd #mobile-menu.mm-spn ul.main-menu {
@@ -1151,7 +1179,7 @@ body.dark,
   display: block !important;
 }
 
-/* إخفاء نسخة الديسكتوب المكررة */
+/* إخفاء نسخ الديسكتوب المكررة */
 .mm-ocd #mobile-menu.mm-spn li[class~="!hidden"],
 .mm-ocd #mobile-menu.mm-spn li[class*="!hidden"],
 .mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:block"],
@@ -1164,35 +1192,36 @@ body.dark,
   pointer-events: none !important;
 }
 
-/* الصفوف: ارتفاع ثابت */
+/* الصفوف */
 .mm-ocd #mobile-menu.mm-spn li {
   display: block !important;
   position: relative !important;
   width: 100% !important;
   max-width: none !important;
-  min-height: var(--mm-spn-item-height, 56px) !important;
-  height: var(--mm-spn-item-height, 56px) !important;
+  min-height: 56px !important;
+  height: 56px !important;
   float: none !important;
   clear: both !important;
   text-align: start !important;
   box-sizing: border-box !important;
 }
 
-/*
-  إصلاح البادنج:
-  نكسر قاعدة mm-spn الأصلية:
-  padding: calc(...) var(--mm-spn-item-indent)
-*/
+/* كسر بادنج mm-spn الأصلي */
 .mm-ocd #mobile-menu.mm-spn a,
-.mm-ocd #mobile-menu.mm-spn span,
+.mm-ocd #mobile-menu.mm-spn span {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* روابط/عناوين الصفوف */
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span {
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
   max-width: none !important;
-  min-height: var(--mm-spn-item-height, 56px) !important;
-  height: var(--mm-spn-item-height, 56px) !important;
+  min-height: 56px !important;
+  height: 56px !important;
   box-sizing: border-box !important;
   margin: 0 !important;
   line-height: 1.35 !important;
@@ -1200,10 +1229,21 @@ body.dark,
   font-size: 15px !important;
   font-weight: 700 !important;
   color: #111827 !important;
-  background: transparent !important;
 }
 
-/* RTL: العناصر العادية بدون مساحة سهم زائدة */
+/* أي span داخل الرابط لا يأخذ padding */
+.mm-ocd #mobile-menu.mm-spn li > a span,
+.mm-ocd #mobile-menu.mm-spn li > span span {
+  display: inline !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: inherit !important;
+}
+
+/* RTL: بدون مساحة سهم للعناصر العادية */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
@@ -1213,7 +1253,7 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span {
   justify-content: flex-start !important;
 }
 
-/* RTL: فقط من له فرعيات نعطيه مساحة جهة السهم اليسار */
+/* RTL: فقط من عنده فرعية يأخذ مساحة السهم */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
@@ -1238,7 +1278,14 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   padding: 0 54px 0 22px !important;
 }
 
-/* الصور لا تكسر ارتفاع الصف */
+/* منع السهم/الفاصل الداخلي من a:not(:last-child) */
+.mm-ocd #mobile-menu.mm-spn li > a:after,
+.mm-ocd #mobile-menu.mm-spn li > span:after {
+  content: none !important;
+  display: none !important;
+}
+
+/* الصور */
 .mm-ocd #mobile-menu.mm-spn li img {
   width: 36px !important;
   height: 36px !important;
@@ -1253,7 +1300,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   box-shadow: 0 6px 14px rgba(0, 0, 0, .08) !important;
 }
 
-/* خط الفصل أوضح */
+/* خط الفصل */
 .mm-ocd #mobile-menu.mm-spn li:after {
   left: 20px !important;
   right: 20px !important;
@@ -1261,13 +1308,13 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   border-color: rgba(17, 24, 39, .16) !important;
 }
 
-/* سهم الفرعيات الموجود: مخفي لمن لا يملك فرعيات */
+/* سهم الفرعيات الأصلي: يخفي عن العناصر بدون فرعية */
 .mm-ocd #mobile-menu.mm-spn li:not(:has(> ul)):before {
   display: none !important;
   opacity: 0 !important;
 }
 
-/* سهم الفرعيات الموجود: يظهر فقط لمن عنده فرعيات */
+/* سهم الفرعيات الأصلي: يظهر فقط لمن لديه فرعية */
 .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   display: block !important;
   position: absolute !important;
@@ -1279,6 +1326,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   pointer-events: none !important;
 }
 
+/* RTL submenu arrow */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   left: 26px !important;
@@ -1290,6 +1338,7 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   border-bottom: 0 !important;
 }
 
+/* LTR submenu arrow */
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   right: 26px !important;
@@ -1301,7 +1350,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   border-bottom: 0 !important;
 }
 
-/* X أحمر واضح */
+/* زر X أحمر واضح */
 .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
 .mm-ocd #mobile-menu.mm-spn .btn--close,
 .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
@@ -1316,7 +1365,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   min-height: 38px !important;
   padding: 0 !important;
   margin: 0 !important;
-  border: 1px solid rgba(255, 48, 48, .34) !important;
+  border: 1px solid rgba(255, 48, 48, .38) !important;
   border-radius: 15px !important;
   background: rgba(255, 48, 48, .075) !important;
   color: #ff3030 !important;
@@ -1342,28 +1391,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   line-height: 1 !important;
 }
 
-/* سهم الرجوع العلوي الموجود: تصغيره وإبعاده عن X */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
-  content: "" !important;
-  display: block !important;
-  position: absolute !important;
-  top: calc(var(--mm-spn-item-height, 56px) / 2) !important;
-  right: 24px !important;
-  left: auto !important;
-  width: 11px !important;
-  height: 11px !important;
-  z-index: 24 !important;
-  opacity: .62 !important;
-  pointer-events: auto !important;
-  background: transparent !important;
-  border-top: 2px solid rgba(17, 24, 39, .44) !important;
-  border-right: 2px solid rgba(17, 24, 39, .44) !important;
-  border-left: 0 !important;
-  border-bottom: 0 !important;
-  transform: translateY(-50%) rotate(45deg) !important;
-}
-
-/* LTR يعكس مكان X وسهم الرجوع */
+/* LTR يعكس مكان X */
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm,
@@ -1372,11 +1400,4 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   right: 14px !important;
   left: auto !important;
-}
-
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
-  left: 24px !important;
-  right: auto !important;
-  transform: translateY(-50%) rotate(-135deg) !important;
 }
