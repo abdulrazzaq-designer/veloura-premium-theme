@@ -14,11 +14,13 @@
 
 {# General Settings #}
 {% set top_logo_center = theme.settings.get('veloura_top_logo_center_2026', true) %}
+{% if top_logo_center.value is defined %}{% set top_logo_center = top_logo_center.value %}{% endif %}
+
 {% set top_logo_no_center_laptop = theme.settings.get('veloura_top_logo_no_center_laptop_2026', false) %}
+{% if top_logo_no_center_laptop.value is defined %}{% set top_logo_no_center_laptop = top_logo_no_center_laptop.value %}{% endif %}
+
 {% set top_logo_size_value = theme.settings.get('veloura_top_logo_size_2026', 5) %}
-{% if top_logo_size_value.value is defined %}
-  {% set top_logo_size_value = top_logo_size_value.value %}
-{% endif %}
+{% if top_logo_size_value.value is defined %}{% set top_logo_size_value = top_logo_size_value.value %}{% endif %}
 {% set top_logo_size_px = 32 + (top_logo_size_value * 3) %}
 
 {% set top_bg = theme.settings.get('veloura_top_bg_color_2026', '#ffffff') %}
@@ -31,25 +33,48 @@
 {% if top_cart_bg.value is defined %}{% set top_cart_bg = top_cart_bg.value %}{% endif %}
 
 {% set top_border = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
-{% if top_border.value is defined %}{% set top_border = top_border.value %}{% endif %}
+{% if top_border.selected is defined and top_border.selected[0].value is defined %}
+  {% set top_border = top_border.selected[0].value %}
+{% elseif top_border.value is defined %}
+  {% set top_border = top_border.value %}
+{% elseif top_border[0].value is defined %}
+  {% set top_border = top_border[0].value %}
+{% endif %}
 
 {% set icons_size = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
-{% if icons_size.value is defined %}{% set icons_size = icons_size.value %}{% endif %}
+{% if icons_size.selected is defined and icons_size.selected[0].value is defined %}
+  {% set icons_size = icons_size.selected[0].value %}
+{% elseif icons_size.value is defined %}
+  {% set icons_size = icons_size.value %}
+{% elseif icons_size[0].value is defined %}
+  {% set icons_size = icons_size[0].value %}
+{% endif %}
 
 {% set mobile_search = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
-{% if mobile_search.value is defined %}{% set mobile_search = mobile_search.value %}{% endif %}
+{% if mobile_search.selected is defined and mobile_search.selected[0].value is defined %}
+  {% set mobile_search = mobile_search.selected[0].value %}
+{% elseif mobile_search.value is defined %}
+  {% set mobile_search = mobile_search.value %}
+{% elseif mobile_search[0].value is defined %}
+  {% set mobile_search = mobile_search[0].value %}
+{% endif %}
 
 {% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
-{% if desktop_search.value is defined %}{% set desktop_search = desktop_search.value %}{% endif %}
+{% if desktop_search.selected is defined and desktop_search.selected[0].value is defined %}
+  {% set desktop_search = desktop_search.selected[0].value %}
+{% elseif desktop_search.value is defined %}
+  {% set desktop_search = desktop_search.value %}
+{% elseif desktop_search[0].value is defined %}
+  {% set desktop_search = desktop_search[0].value %}
+{% endif %}
 
-{% set desktop_menu_mode_raw = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
-{% set desktop_menu_mode = desktop_menu_mode_raw %}
-{% if desktop_menu_mode_raw.selected is defined and desktop_menu_mode_raw.selected[0].value is defined %}
-  {% set desktop_menu_mode = desktop_menu_mode_raw.selected[0].value %}
-{% elseif desktop_menu_mode_raw.value is defined %}
-  {% set desktop_menu_mode = desktop_menu_mode_raw.value %}
-{% elseif desktop_menu_mode_raw[0].value is defined %}
-  {% set desktop_menu_mode = desktop_menu_mode_raw[0].value %}
+{% set desktop_menu_mode = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
+{% if desktop_menu_mode.selected is defined and desktop_menu_mode.selected[0].value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode.selected[0].value %}
+{% elseif desktop_menu_mode.value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode.value %}
+{% elseif desktop_menu_mode[0].value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode[0].value %}
 {% endif %}
 
 {% set show_mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
@@ -68,77 +93,25 @@
 {% if show_wishlist.value is defined %}{% set show_wishlist = show_wishlist.value %}{% endif %}
 
 {% set dark_pos = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
-{% if dark_pos.value is defined %}{% set dark_pos = dark_pos.value %}{% endif %}
+{% if dark_pos.selected is defined and dark_pos.selected[0].value is defined %}
+  {% set dark_pos = dark_pos.selected[0].value %}
+{% elseif dark_pos.value is defined %}
+  {% set dark_pos = dark_pos.value %}
+{% elseif dark_pos[0].value is defined %}
+  {% set dark_pos = dark_pos[0].value %}
+{% endif %}
 
-{% set top_menu_icon_raw = theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') %}
-{% set top_menu_icon = top_menu_icon_raw %}
-{% if top_menu_icon_raw.selected is defined and top_menu_icon_raw.selected[0].value is defined %}
-  {% set top_menu_icon = top_menu_icon_raw.selected[0].value %}
-{% elseif top_menu_icon_raw.value is defined %}
-  {% set top_menu_icon = top_menu_icon_raw.value %}
-{% elseif top_menu_icon_raw[0].value is defined %}
-  {% set top_menu_icon = top_menu_icon_raw[0].value %}
+{% set top_menu_icon = theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') %}
+{% if top_menu_icon.selected is defined and top_menu_icon.selected[0].value is defined %}
+  {% set top_menu_icon = top_menu_icon.selected[0].value %}
+{% elseif top_menu_icon.value is defined %}
+  {% set top_menu_icon = top_menu_icon.value %}
+{% elseif top_menu_icon[0].value is defined %}
+  {% set top_menu_icon = top_menu_icon[0].value %}
 {% endif %}
 {% if not top_menu_icon %}
   {% set top_menu_icon = 'sicon-menu' %}
 {% endif %}
-
-{# Side Categories Settings - التأثير يبقى ظاهر حتى لو زر الإعدادات مطفأ #}
-{% set side_gap = theme.settings.get('veloura_side_categories_gap_2026', 14) %}
-{% if side_gap.value is defined %}{% set side_gap = side_gap.value %}{% endif %}
-
-{% set side_parent_action = theme.settings.get('veloura_side_categories_parent_click_action_2026', 'open_subcategories') %}
-{% if side_parent_action.value is defined %}{% set side_parent_action = side_parent_action.value %}{% endif %}
-
-{% set side_bg = theme.settings.get('veloura_side_categories_bg_color_2026', '#ffffff') %}
-{% if side_bg.value is defined %}{% set side_bg = side_bg.value %}{% endif %}
-
-{% set side_text = theme.settings.get('veloura_side_categories_text_color_2026', '#111827') %}
-{% if side_text.value is defined %}{% set side_text = side_text.value %}{% endif %}
-
-{% set side_menu_radius = theme.settings.get('veloura_side_categories_menu_radius_2026', 'soft') %}
-{% if side_menu_radius.value is defined %}{% set side_menu_radius = side_menu_radius.value %}{% endif %}
-
-{% set side_title_size = theme.settings.get('veloura_side_categories_title_size_2026', 'medium') %}
-{% if side_title_size.value is defined %}{% set side_title_size = side_title_size.value %}{% endif %}
-
-{% set side_image_radius = theme.settings.get('veloura_side_categories_image_radius_2026', 'medium') %}
-{% if side_image_radius.value is defined %}{% set side_image_radius = side_image_radius.value %}{% endif %}
-
-{% set side_image_fit = theme.settings.get('veloura_side_categories_image_fit_2026', 'cover') %}
-{% if side_image_fit.value is defined %}{% set side_image_fit = side_image_fit.value %}{% endif %}
-
-{% set side_img_w = theme.settings.get('veloura_side_cat_img_w_2026', 60) %}
-{% if side_img_w.value is defined %}{% set side_img_w = side_img_w.value %}{% endif %}
-
-{% set side_img_h = theme.settings.get('veloura_side_cat_img_h_2026', 60) %}
-{% if side_img_h.value is defined %}{% set side_img_h = side_img_h.value %}{% endif %}
-
-{% set side_radius_map = {
-  'sharp': '0px',
-  'soft': '10px',
-  'medium': '16px',
-  'large': '24px',
-  'xl': '34px'
-} %}
-
-{% set side_img_radius_map = {
-  'sharp': '0px',
-  'soft': '8px',
-  'medium': '14px',
-  'large': '22px',
-  'round': '999px'
-} %}
-
-{% set side_title_size_map = {
-  'xs': '12px',
-  'small': '13px',
-  'medium': '15px',
-  'large': '17px',
-  'xl': '19px',
-  'xxl': '22px',
-  'xxxl': '26px'
-} %}
 
 <header
   class="store-header
@@ -156,22 +129,11 @@
   veloura-desktop-search-{{ desktop_search }}
   veloura-desktop-menu-{{ desktop_menu_mode }}
   "
-  data-veloura-side-parent-action="{{ side_parent_action }}"
   style="
     --veloura-top-bg: {{ top_bg }};
     --veloura-top-text: {{ top_text }};
     --veloura-top-cart-bg: {{ top_cart_bg }};
     --veloura-top-logo-size: {{ top_logo_size_px }}px;
-
-    --veloura-side-cat-bg: {{ side_bg }};
-    --veloura-side-cat-text: {{ side_text }};
-    --veloura-side-cat-gap: {{ side_gap }}px;
-    --veloura-side-cat-radius: {{ side_radius_map[side_menu_radius]|default('10px') }};
-    --veloura-side-cat-title-size: {{ side_title_size_map[side_title_size]|default('15px') }};
-    --veloura-side-cat-img-radius: {{ side_img_radius_map[side_image_radius]|default('14px') }};
-    --veloura-side-cat-img-fit: {{ side_image_fit }};
-    --veloura-side-cat-img-w: {{ side_img_w }}px;
-    --veloura-side-cat-img-h: {{ side_img_h }}px;
   "
 >
   <div id="mainnav" class="main-nav-container shadow-default bg-white">
@@ -279,12 +241,16 @@
               </button>
             {% endif %}
 
-            {# مصدر التصنيفات: يبقى في DOM حتى على وضع hamburger كي نستطيع بناء nav#mobile-menu على اللابتوب #}
+            {#
+              custom-main-menu هو المصدر الصحيح في ثيمك، وليس aali-main-menu.
+              في وضع links يظهر كروابط.
+              في وضع hamburger نخفيه بصريًا فقط، ونتركه يهيئ nav#mobile-menu الأصلي.
+            #}
             <div class="veloura-menu-links-wrap">
               <custom-main-menu></custom-main-menu>
             </div>
 
-            {# زر سلة الأصلي للجوال، ونستخدمه أيضًا في اللابتوب مع بناء nav#mobile-menu إذا كان فارغًا #}
+            {# زر سلة الأصلي؛ لا تغيّر href ولا mburger #}
             <a
               class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse"
               href="#mobile-menu"
@@ -324,360 +290,69 @@
       );
     }
 
-    function getParentAction() {
-      return header.getAttribute('data-veloura-side-parent-action') || 'open_subcategories';
-    }
-
-    function nativeClick(el) {
-      if (!el) return false;
-
-      try {
-        el.dispatchEvent(
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window
-          })
-        );
-
-        return true;
-      } catch (error) {
-        if (typeof el.click === 'function') {
-          el.click();
-          return true;
-        }
-      }
-
-      return false;
-    }
-
     function getDrawer() {
       return document.querySelector('.mm-ocd');
     }
 
-    function getDrawerContent() {
+    function getContent() {
       var drawer = getDrawer();
       return drawer ? drawer.querySelector('.mm-ocd__content') : null;
     }
 
-    function getDirectChildUl(li) {
-      var children = li ? li.children : [];
-
-      for (var i = 0; i < children.length; i++) {
-        if (children[i].tagName && children[i].tagName.toLowerCase() === 'ul') {
-          return children[i];
-        }
-      }
-
-      return null;
-    }
-
-    function cleanText(value) {
-      return String(value || '').replace(/\s+/g, ' ').trim();
-    }
-
-    function normalizeHref(value) {
-      if (!value || value === '#') {
-        return '#';
-      }
-
-      try {
-        var url = new URL(value, window.location.origin);
-        return url.pathname.replace(/\/+$/, '') || '/';
-      } catch (error) {
-        return String(value || '').trim();
-      }
-    }
-
-    function makeCleanLinkFrom(link) {
-      var a = document.createElement('a');
-
-      a.href = link ? (link.getAttribute('href') || '#') : '#';
-      a.textContent = cleanText(link ? link.textContent : '');
-
-      return a;
-    }
-
-    function cleanClonedUl(ul) {
-      if (!ul) {
-        return null;
-      }
-
-      ul.querySelectorAll('script, style').forEach(function (node) {
-        node.remove();
-      });
-
-      ul.querySelectorAll('li').forEach(function (li) {
-        li.className = '';
-        li.removeAttribute('style');
-
-        Array.prototype.slice.call(li.children).forEach(function (child) {
-          var tag = child.tagName ? child.tagName.toLowerCase() : '';
-
-          if (tag !== 'a' && tag !== 'ul') {
-            child.remove();
-          }
-        });
-      });
-
-      ul.querySelectorAll('a').forEach(function (a) {
-        a.className = '';
-        a.removeAttribute('style');
-      });
-
-      ul.className = '';
-
-      return ul;
-    }
-
-    function createLiFromSource(sourceLi) {
-      var sourceLink = sourceLi ? sourceLi.querySelector(':scope > a') : null;
-
-      if (!sourceLink) {
-        return null;
-      }
-
-      var text = cleanText(sourceLink.textContent);
-      var href = sourceLink.getAttribute('href') || '#';
-
-      if (!text) {
-        return null;
-      }
-
-      var li = document.createElement('li');
-      var a = makeCleanLinkFrom(sourceLink);
-
-      li.appendChild(a);
-
-      var sourceChildUl = getDirectChildUl(sourceLi);
-
-      if (sourceChildUl) {
-        var childClone = cleanClonedUl(sourceChildUl.cloneNode(true));
-
-        if (childClone && childClone.children.length) {
-          li.appendChild(childClone);
-        }
-      }
-
-      return li;
-    }
-
-    function getMenuSourceList() {
-      /*
-       * مهم:
-       * لا نأخذ أي قائمة من mm-ocd أو nav#mobile-menu حتى لا تتكرر العناصر.
-       * المصدر الوحيد هو custom-main-menu داخل الهيدر.
-       */
+    function getCustomNativeNav() {
       return (
-        header.querySelector('.veloura-menu-links-wrap custom-main-menu .main-menu') ||
-        header.querySelector('.veloura-menu-links-wrap .main-menu')
+        header.querySelector('.veloura-menu-links-wrap nav#mobile-menu') ||
+        header.querySelector('.veloura-menu-links-wrap #mobile-menu') ||
+        header.querySelector('.veloura-menu-links-wrap custom-main-menu nav#mobile-menu') ||
+        header.querySelector('.veloura-menu-links-wrap custom-main-menu #mobile-menu')
       );
     }
 
-    function makeFallbackList() {
-      var links = header.querySelectorAll('.veloura-menu-links-wrap a');
-      var ul = document.createElement('ul');
-      var seen = {};
-
-      ul.className = 'main-menu mm-spn--open veloura-side-built-list';
-
-      links.forEach(function (link) {
-        var text = cleanText(link.textContent);
-        var href = link.getAttribute('href') || '#';
-        var key = text + '|' + normalizeHref(href);
-
-        if (!text || seen[key]) {
-          return;
-        }
-
-        seen[key] = true;
-
-        var li = document.createElement('li');
-        var a = makeCleanLinkFrom(link);
-
-        li.appendChild(a);
-        ul.appendChild(li);
-      });
-
-      return ul.children.length ? ul : null;
+    function getCustomCloseButton() {
+      return header.querySelector('.veloura-menu-links-wrap .close-mobile-menu');
     }
 
-    function prepareMenuList(list) {
-      if (!list) return null;
-
-      list.className = 'main-menu mm-spn--open veloura-side-built-list';
-
-      list.querySelectorAll('script, style').forEach(function (node) {
-        node.remove();
-      });
-
-      list.querySelectorAll('li').forEach(function (li) {
-        var childUl = getDirectChildUl(li);
-        var link = li.querySelector(':scope > a');
-
-        if (!link) {
-          li.remove();
-          return;
-        }
-
-        link.textContent = cleanText(link.textContent);
-
-        if (!link.textContent) {
-          li.remove();
-          return;
-        }
-
-        if (!childUl) {
-          return;
-        }
-
-        li.classList.add('veloura-side-has-children');
-        childUl.classList.add('veloura-side-submenu');
-
-        if (!li.querySelector(':scope > button.veloura-side-parent-toggle')) {
-          var button = document.createElement('button');
-
-          button.type = 'button';
-          button.className = 'veloura-side-parent-toggle';
-          button.setAttribute('aria-label', 'فتح التصنيفات الفرعية');
-          button.innerHTML = '<i class="sicon-keyboard_arrow_down" aria-hidden="true"></i>';
-
-          link.after(button);
-        }
-      });
-
-      return list;
-    }
-
-    function buildMenuList() {
-      var source = getMenuSourceList();
-      var output = document.createElement('ul');
-      var seen = {};
-
-      output.className = 'main-menu mm-spn--open veloura-side-built-list';
-
-      if (source && source.children && source.children.length) {
-        Array.prototype.slice.call(source.children).forEach(function (sourceLi) {
-          var sourceLink = sourceLi.querySelector(':scope > a');
-
-          if (!sourceLink) {
-            return;
-          }
-
-          var text = cleanText(sourceLink.textContent);
-          var href = sourceLink.getAttribute('href') || '#';
-          var key = text + '|' + normalizeHref(href);
-
-          if (!text || seen[key]) {
-            return;
-          }
-
-          seen[key] = true;
-
-          var li = createLiFromSource(sourceLi);
-
-          if (li) {
-            output.appendChild(li);
-          }
-        });
-      }
-
-      if (!output.children.length) {
-        return makeFallbackList();
-      }
-
-      return prepareMenuList(output);
-    }
-
-    function enhanceNav(nav) {
-      if (!nav || nav.getAttribute('data-veloura-desktop-enhanced') === '1') {
-        return;
-      }
-
-      nav.setAttribute('data-veloura-desktop-enhanced', '1');
-
-      nav.addEventListener('click', function (event) {
-        if (!isDesktopHamburger()) {
-          return;
-        }
-
-        var toggle = event.target.closest('.veloura-side-parent-toggle');
-        var parentLi = event.target.closest('.veloura-side-has-children');
-        var parentLink = event.target.closest('.veloura-side-has-children > a');
-
-        if (toggle) {
-          event.preventDefault();
-          event.stopPropagation();
-
-          var li = toggle.closest('.veloura-side-has-children');
-
-          if (li) {
-            li.classList.toggle('is-open');
-          }
-
-          return;
-        }
-
-        if (parentLink && parentLi && getParentAction() === 'open_subcategories') {
-          event.preventDefault();
-          parentLi.classList.toggle('is-open');
-        }
-      });
-    }
-
-    function ensureDesktopNativeMenu() {
+    function moveCustomMenuIntoDrawer() {
       if (!isDesktopHamburger()) {
         return false;
       }
 
+      var content = getContent();
+      var nativeNav = getCustomNativeNav();
+
+      if (!content || !nativeNav) {
+        return false;
+      }
+
       var drawer = getDrawer();
-      var content = getDrawerContent();
 
-      if (!drawer || !content) {
-        return false;
+      if (drawer) {
+        drawer.classList.add('ocd-categs');
+        drawer.classList.add('veloura-desktop-custom-native');
       }
 
-      drawer.classList.add('ocd-categs');
-      drawer.classList.add('veloura-desktop-native-mobile-menu');
-
-      var list = buildMenuList();
-
-      if (!list || !list.children.length) {
-        return false;
+      if (nativeNav.closest('.mm-ocd__content')) {
+        return true;
       }
 
-      /*
-       * على اللابتوب نبني nav#mobile-menu من الصفر كل مرة.
-       * هذا يمنع تكرار العناصر بسبب تداخل قائمة سلة الأصلية مع القائمة المبنية.
-       */
       content.innerHTML = '';
+      content.appendChild(nativeNav);
 
-      var nav = document.createElement('nav');
-      nav.id = 'mobile-menu';
-      nav.className = 'mobile-menu mm-spn--light mm-spn--navbar mm-spn--main mm-spn veloura-side-native-menu';
-      nav.setAttribute('data-mmenu-init', '1');
-      nav.setAttribute('data-mm-spn-title', 'القائمة الرئيسية');
+      var closeButton = getCustomCloseButton();
 
-      var closeButton = document.createElement('button');
-      closeButton.type = 'button';
-      closeButton.className = 'btn--close close-mobile-menu sicon-cancel';
-      closeButton.setAttribute('aria-label', 'إغلاق قائمة التنقل');
-
-      nav.appendChild(list);
-      nav.appendChild(closeButton);
-      content.appendChild(nav);
-
-      enhanceNav(nav);
+      if (closeButton && !closeButton.closest('.mm-ocd__content')) {
+        nativeNav.appendChild(closeButton);
+      }
 
       return true;
     }
 
-    function retryEnsureDesktopNativeMenu() {
-      ensureDesktopNativeMenu();
-      setTimeout(ensureDesktopNativeMenu, 60);
-      setTimeout(ensureDesktopNativeMenu, 180);
-      setTimeout(ensureDesktopNativeMenu, 420);
-      setTimeout(ensureDesktopNativeMenu, 900);
+    function retryMoveCustomMenu() {
+      moveCustomMenuIntoDrawer();
+      setTimeout(moveCustomMenuIntoDrawer, 80);
+      setTimeout(moveCustomMenuIntoDrawer, 220);
+      setTimeout(moveCustomMenuIntoDrawer, 520);
+      setTimeout(moveCustomMenuIntoDrawer, 1000);
     }
 
     document.addEventListener(
@@ -686,35 +361,14 @@
         var trigger = event.target.closest('.veloura-menu-trigger-mobile[href="#mobile-menu"], a.mburger[href="#mobile-menu"]');
 
         if (trigger && isDesktopHamburger()) {
-          retryEnsureDesktopNativeMenu();
-          return;
-        }
-
-        var closeButton = event.target.closest('.close-mobile-menu');
-        var backdrop = event.target.closest('.mm-ocd__backdrop');
-
-        if ((closeButton || backdrop) && isDesktopHamburger()) {
-          var drawer = getDrawer();
-
-          if (drawer) {
-            drawer.classList.remove('mm-ocd--open');
-          }
-
-          document.body.classList.remove('menu-opened');
-          document.body.classList.remove('mm-ocd-opened');
-          document.body.classList.remove('overflow-hidden');
-          document.documentElement.classList.remove('mm-wrapper--opened');
+          retryMoveCustomMenu();
         }
       },
       true
     );
 
-    window.addEventListener('resize', function () {
-      if (isDesktopHamburger()) {
-        retryEnsureDesktopNativeMenu();
-      }
-    });
+    window.addEventListener('resize', retryMoveCustomMenu);
 
-    retryEnsureDesktopNativeMenu();
+    retryMoveCustomMenu();
   });
 </script>

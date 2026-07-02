@@ -26871,12 +26871,15 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
   font-size: 34px !important;
 }
 /* ================================
-   Veloura Desktop Force Native Mobile Menu
-   إجبار nav#mobile-menu على اللابتوب + استخدام إعدادات القائمة الجانبية
+   Veloura Use Custom Main Menu Native On Desktop
+   يستخدم custom-main-menu الأصلي، وليس aali-main-menu
 ================================ */
 @media (max-width: 1023px) {
   .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
     display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
   .store-header.veloura-top-enabled .veloura-menu-links-wrap {
     display: none !important;
@@ -26894,8 +26897,8 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
   }
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger {
     /*
-     * نخفي مصدر custom-main-menu بصريًا فقط، ولا نحذفه بـ display:none
-     * حتى يستطيع JS ينسخ منه التصنيفات ويبني nav#mobile-menu على اللابتوب.
+     * لا نستخدم display:none هنا.
+     * لازم custom-main-menu يظل يشتغل ويبني nav#mobile-menu.
      */
   }
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap {
@@ -26903,12 +26906,14 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
+    max-width: 1px !important;
+    max-height: 1px !important;
     overflow: hidden !important;
     clip: rect(0 0 0 0) !important;
     clip-path: inset(50%) !important;
-    white-space: nowrap !important;
     opacity: 0 !important;
     pointer-events: none !important;
+    white-space: nowrap !important;
   }
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile {
     display: inline-flex !important;
@@ -26916,223 +26921,27 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
     opacity: 1 !important;
     pointer-events: auto !important;
   }
-  .mm-ocd.veloura-desktop-native-mobile-menu,
-  .mm-ocd.veloura-desktop-native-mobile-menu.mm-ocd--open {
+  .mm-ocd.veloura-desktop-custom-native,
+  .mm-ocd.veloura-desktop-custom-native.mm-ocd--open {
     z-index: 999999 !important;
   }
-  .mm-ocd.veloura-desktop-native-mobile-menu .mm-ocd__content {
+  .mm-ocd.veloura-desktop-custom-native .mm-ocd__content {
     background: #ffffff !important;
-    background: var(--veloura-side-cat-bg, #ffffff) !important;
-    color: #111827 !important;
-    color: var(--veloura-side-cat-text, #111827) !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
   }
-  .mm-ocd.veloura-desktop-native-mobile-menu #mobile-menu,
-  .mm-ocd.veloura-desktop-native-mobile-menu .mobile-menu {
+  .mm-ocd.veloura-desktop-custom-native #mobile-menu {
     background: #ffffff !important;
-    background: var(--veloura-side-cat-bg, #ffffff) !important;
-    color: #111827 !important;
-    color: var(--veloura-side-cat-text, #111827) !important;
   }
-  .mm-ocd.veloura-desktop-native-mobile-menu .close-mobile-menu {
+  /*
+   * زر الإغلاق الأصلي عندك عليه lg:hidden، نخليه ظاهر على اللابتوب.
+   */
+  .mm-ocd.veloura-desktop-custom-native .close-mobile-menu,
+  .mm-ocd.veloura-desktop-custom-native.mm-ocd--open .close-mobile-menu {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
-    position: absolute !important;
-    top: 16px !important;
-    left: 16px !important;
-    z-index: 10 !important;
-    width: 40px !important;
-    height: 40px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border: 0 !important;
-    border-radius: 999px !important;
-    background: rgba(15, 23, 42, 0.08) !important;
-    color: #111827 !important;
-    color: var(--veloura-side-cat-text, #111827) !important;
-    cursor: pointer !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu,
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-built-list {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-    gap: var(--veloura-side-cat-gap, 14px) !important;
-    padding: 92px 14px 22px !important;
-    margin: 0 !important;
-    list-style: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li {
-    position: relative !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    list-style: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li > a {
-    min-height: 56px !important;
-    width: 100% !important;
-    padding: 0 18px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 12px !important;
-    background: rgba(15, 23, 42, 0.045) !important;
-    color: #111827 !important;
-    color: var(--veloura-side-cat-text, #111827) !important;
-    -webkit-text-decoration: none !important;
-    text-decoration: none !important;
-    border-radius: 10px !important;
-    border-radius: var(--veloura-side-cat-radius, 10px) !important;
-    font-size: 15px !important;
-    font-size: var(--veloura-side-cat-title-size, 15px) !important;
-    font-weight: 900 !important;
-    line-height: 1.4 !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu img {
-    width: 60px !important;
-    width: var(--veloura-side-cat-img-w, 60px) !important;
-    height: 60px !important;
-    height: var(--veloura-side-cat-img-h, 60px) !important;
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
-    -o-object-fit: var(--veloura-side-cat-img-fit, cover) !important;
-       object-fit: var(--veloura-side-cat-img-fit, cover) !important;
-    border-radius: 14px !important;
-    border-radius: var(--veloura-side-cat-img-radius, 14px) !important;
-    flex: 0 0 auto !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-parent-toggle {
-    position: absolute !important;
-    top: 8px !important;
-    left: 12px !important;
-    z-index: 4 !important;
-    width: 40px !important;
-    height: 40px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border: 0 !important;
-    border-radius: 999px !important;
-    background: transparent !important;
-    color: #111827 !important;
-    color: var(--veloura-side-cat-text, #111827) !important;
-    cursor: pointer !important;
-    transition: transform 0.22s ease !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-has-children.is-open > .veloura-side-parent-toggle {
-    transform: rotate(180deg) !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-submenu,
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li > ul,
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li > .sub-menu {
-    display: none !important;
-    margin: 8px 0 0 !important;
-    padding: 0 12px 0 0 !important;
-    list-style: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-has-children.is-open > .veloura-side-submenu,
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-has-children.is-open > ul,
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-has-children.is-open > .sub-menu {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-submenu li a,
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li > ul li a {
-    min-height: 44px !important;
-    padding: 0 14px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    border-radius: calc(10px - 2px) !important;
-    border-radius: calc(var(--veloura-side-cat-radius, 10px) - 2px) !important;
-    background: rgba(15, 23, 42, 0.03) !important;
-    color: #111827 !important;
-    color: var(--veloura-side-cat-text, #111827) !important;
-    -webkit-text-decoration: none !important;
-    text-decoration: none !important;
-    font-size: calc(15px - 1px) !important;
-    font-size: calc(var(--veloura-side-cat-title-size, 15px) - 1px) !important;
-    font-weight: 800 !important;
-  }
-}
-/* ================================
-   Veloura Menu Icon Visibility Hard Fix
-   إصلاح اختفاء أيقونة القائمة في وضع اللابتوب hamburger
-================================ */
-@media (max-width: 1023px) {
-  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-}
-@media (min-width: 1024px) {
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile i {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    color: var(--veloura-top-text) !important;
-    font-size: inherit !important;
-    line-height: 1 !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile {
-    display: none !important;
-  }
-}
-/* ================================
-   Veloura Desktop Native Menu Dedupe Style Fix
-   إزالة التكرار والفراغ الكبير وتحسين شكل القائمة
-================================ */
-@media (min-width: 1024px) {
-  .mm-ocd.veloura-desktop-native-mobile-menu #mobile-menu::before,
-  .mm-ocd.veloura-desktop-native-mobile-menu #mobile-menu::after,
-  .mm-ocd.veloura-desktop-native-mobile-menu .mm-spn::before,
-  .mm-ocd.veloura-desktop-native-mobile-menu .mm-spn::after {
-    display: none !important;
-    content: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .mm-ocd__content {
-    background: #ffffff !important;
-    background: var(--veloura-side-cat-bg, #ffffff) !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu,
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-built-list {
-    padding: 82px 14px 22px !important;
-    gap: 14px !important;
-    gap: var(--veloura-side-cat-gap, 14px) !important;
-    border: 0 !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li {
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li::before,
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li::after {
-    display: none !important;
-    content: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li > a {
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-  .mm-ocd.veloura-desktop-native-mobile-menu .veloura-side-submenu,
-  .mm-ocd.veloura-desktop-native-mobile-menu .main-menu > li > ul {
-    border: 0 !important;
   }
 }
 .store-footer{
