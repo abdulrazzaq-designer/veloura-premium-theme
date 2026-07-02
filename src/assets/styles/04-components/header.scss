@@ -947,244 +947,52 @@ body.dark,
 }
 
 
-
-
-
 /* ================================
-   Veloura Desktop Drawer + Cart Fix
-================================ */
-
-/* زر القائمة */
-.store-header.veloura-top-enabled {
-  .veloura-menu-trigger-desktop,
-  .veloura-menu-trigger-mobile {
-    color: var(--veloura-top-text) !important;
-  }
-}
-
-/* في الجوال: استخدم قائمة سلة الأصلية */
-@media (max-width: 1023px) {
-  .store-header.veloura-top-enabled {
-    .veloura-menu-trigger-mobile {
-      display: inline-flex !important;
-    }
-
-    .veloura-menu-trigger-desktop {
-      display: none !important;
-    }
-  }
-
-  .veloura-desktop-menu-overlay,
-  .veloura-desktop-menu-drawer {
-    display: none !important;
-  }
-}
-
-/* في اللابتوب */
-@media (min-width: 1024px) {
-  .store-header.veloura-top-enabled {
-    .veloura-menu-trigger-mobile {
-      display: none !important;
-    }
-  }
-
-  .store-header.veloura-desktop-menu-links {
-    .veloura-menu-trigger-desktop {
-      display: none !important;
-    }
-  }
-
-  .store-header.veloura-desktop-menu-hamburger {
-    .veloura-menu-trigger-desktop {
-      display: inline-flex !important;
-    }
-
-    .veloura-menu-links-wrap {
-      display: none !important;
-    }
-  }
-
-  .veloura-desktop-menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .42);
-    z-index: 9998;
-    opacity: 0;
-    visibility: hidden;
-    transition: .25s ease;
-  }
-
-  .veloura-desktop-menu-drawer {
-    position: fixed;
-    top: 0;
-    inset-inline-end: 0;
-    width: 360px;
-    max-width: 88vw;
-    height: 100vh;
-    background: #fff;
-    color: #111;
-    z-index: 9999;
-    transform: translateX(110%);
-    transition: transform .28s ease;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, .16);
-    overflow-y: auto;
-  }
-
-  html.veloura-desktop-drawer-open {
-    overflow: hidden;
-  }
-
-  html.veloura-desktop-drawer-open .veloura-desktop-menu-overlay {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  html.veloura-desktop-drawer-open .veloura-desktop-menu-drawer {
-    transform: translateX(0);
-  }
-
-  .veloura-desktop-menu-drawer__head {
-    height: 72px;
-    padding: 0 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(0, 0, 0, .08);
-    font-weight: 800;
-    font-size: 18px;
-  }
-
-  .veloura-desktop-menu-close {
-    border: 0;
-    background: transparent;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  .veloura-desktop-menu-drawer__body {
-    padding: 18px;
-  }
-
-  .veloura-desktop-menu-drawer custom-main-menu {
-    display: block !important;
-    min-height: auto !important;
-  }
-
-  .veloura-desktop-menu-drawer .main-menu {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 4px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .veloura-desktop-menu-drawer .main-menu > li,
-  .veloura-desktop-menu-drawer .main-menu > li > a {
-    width: 100% !important;
-  }
-
-  .veloura-desktop-menu-drawer .main-menu > li > a {
-    display: flex !important;
-    padding: 14px 12px !important;
-    border-radius: 10px;
-    font-size: 15px;
-  }
-}
-
-/* إصلاح السلة */
-.store-header.veloura-top-enabled {
-  .veloura-cart-custom-icon {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: var(--veloura-top-text) !important;
-    line-height: 1 !important;
-  }
-
-  .veloura-cart-custom-icon i {
-    color: inherit !important;
-    font-size: inherit !important;
-    line-height: 1 !important;
-    width: 1em !important;
-    height: 1em !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .veloura-cart-hide-total {
-    min-width: auto !important;
-  }
-
-  .veloura-cart-hide-total .s-cart-summary-total,
-  .veloura-cart-hide-total .s-cart-summary-content {
-    display: none !important;
-  }
-}
-
-/* إخفاء السعر في الجوال فقط حسب اسم الخيار */
-@media (max-width: 1023px) {
-  .store-header.veloura-top-enabled {
-    .veloura-cart-icon-only-mobile .s-cart-summary-total,
-    .veloura-cart-icon-only-mobile .s-cart-summary-content {
-      display: none !important;
-    }
-  }
-}
-
-/* حجم أيقونة السلة من إعداد حجم الأيقونات */
-.store-header.veloura-top-icons-small {
-  .veloura-cart-summary,
-  .veloura-cart-custom-icon {
-    font-size: 22px !important;
-  }
-}
-
-.store-header.veloura-top-icons-medium {
-  .veloura-cart-summary,
-  .veloura-cart-custom-icon {
-    font-size: 28px !important;
-  }
-}
-
-.store-header.veloura-top-icons-large {
-  .veloura-cart-summary,
-  .veloura-cart-custom-icon {
-    font-size: 34px !important;
-  }
-}
-
-
-/* ================================
-   Veloura Clean Native Mobile Menu On Desktop
-   يستخدم MobileMenu الأصلي فقط بعد تعديل app.js
+   Veloura Native Mobile Menu On Desktop - CLEAN
 ================================ */
 
 /*
-  مهم:
-  لا تضف أي CSS يغير .mm-ocd .main-menu أو .mm-spn أو ul داخل القائمة.
-  هذه القواعد فقط لإظهار/إخفاء الزر والمصدر.
+  هذا البلوك لا يبني سهم جديد ولا Drawer جديد.
+  هو فقط:
+  1) يظهر زر الجوال على اللابتوب عند وضع hamburger.
+  2) يخفي custom-main-menu بصرياً بدون display:none حتى يبقى #mobile-menu مبني.
 */
 
 @media (max-width: 1023px) {
-  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled a.mburger[href="#mobile-menu"] {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .store-header.veloura-top-enabled .veloura-menu-links-wrap {
+    display: block !important;
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
+    max-width: 1px !important;
+    max-height: 1px !important;
     overflow: hidden !important;
     clip: rect(0 0 0 0) !important;
     clip-path: inset(50%) !important;
     opacity: 0 !important;
     pointer-events: none !important;
     white-space: nowrap !important;
+  }
+
+  .store-header.veloura-top-enabled .veloura-menu-links-wrap custom-main-menu {
+    display: block !important;
+    min-height: 0 !important;
+  }
+
+  .veloura-desktop-menu-overlay,
+  .veloura-desktop-menu-drawer,
+  .veloura-menu-trigger-desktop {
+    display: none !important;
   }
 }
 
@@ -1193,22 +1001,48 @@ body.dark,
     display: flex !important;
     align-items: center !important;
     min-width: 0 !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    clip: auto !important;
+    clip-path: none !important;
+    white-space: normal !important;
   }
 
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap custom-main-menu {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links a.mburger[href="#mobile-menu"],
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-desktop {
     display: none !important;
   }
 
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap {
+    display: block !important;
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
+    max-width: 1px !important;
+    max-height: 1px !important;
     overflow: hidden !important;
     clip: rect(0 0 0 0) !important;
     clip-path: inset(50%) !important;
     opacity: 0 !important;
     pointer-events: none !important;
     white-space: nowrap !important;
+  }
+
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap custom-main-menu {
+    display: block !important;
+    min-height: 0 !important;
   }
 
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
@@ -1221,11 +1055,19 @@ body.dark,
     justify-content: center !important;
   }
 
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile i {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile i,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.mburger[href="#mobile-menu"] i {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     color: var(--veloura-top-text) !important;
+    line-height: 1 !important;
+  }
+
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-desktop,
+  .veloura-desktop-menu-overlay,
+  .veloura-desktop-menu-drawer {
+    display: none !important;
   }
 
   .mm-ocd,
@@ -1234,7 +1076,9 @@ body.dark,
   }
 
   .mm-ocd .close-mobile-menu,
-  .mm-ocd.mm-ocd--open .close-mobile-menu {
+  .mm-ocd .btn--close,
+  .mm-ocd.mm-ocd--open .close-mobile-menu,
+  .mm-ocd.mm-ocd--open .btn--close {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -1244,22 +1088,21 @@ body.dark,
 
 
 /* ================================
-   Veloura mm-spn Desktop Utility Reset
-   إصلاح تكرار العناصر ومكان سهم الفرعيات داخل قائمة الجوال على اللابتوب
+   Veloura mm-spn Existing Arrow Fix
 ================================ */
 
 /*
-  السبب:
-  عناصر القائمة تأتي معها Tailwind classes مثل:
-  hidden lg:block lg:inline-block
-  وعندما نستدعي قائمة الجوال على اللابتوب، كلاس lg:block يكسر hidden
-  ويحوّل عناصر mm-spn إلى inline-block، فيتكرر العنصر وينزل السهم تحت العنوان.
+  مهم:
+  هذا لا يضيف سهم جديد.
+  هذا يعدل نفس السهم الموجود أصلاً في mmenu-light:
+  .mm-spn li:before
 
-  هذا البلوك يعمل فقط داخل قائمة mmenu الأصلية:
-  .mm-ocd #mobile-menu.mm-spn
+  - السهم يظهر فقط على li التي عندها ul مباشر.
+  - عناصر desktop المكررة hidden / root-level لا تظهر داخل drawer.
+  - عناصر lg:hidden الخاصة بالجوال تظهر داخل drawer حتى على اللابتوب.
 */
 
-/* القائمة داخل الـ drawer لازم تبقى block وليس inline/flex */
+/* القائمة داخل drawer لازم تكون block حتى lg:inline-block لا يكسرها */
 .mm-ocd #mobile-menu.mm-spn,
 .mm-ocd #mobile-menu.mm-spn ul,
 .mm-ocd #mobile-menu.mm-spn ul.main-menu {
@@ -1269,17 +1112,24 @@ body.dark,
   margin: 0 !important;
   padding: 0 !important;
   list-style: none !important;
-  text-align: start !important;
 }
 
-/* كسر lg:inline-block / lg:block داخل drawer فقط */
-.mm-ocd #mobile-menu.mm-spn li,
-.mm-ocd #mobile-menu.mm-spn li.root-level,
-.mm-ocd #mobile-menu.mm-spn li.lg\:block,
-.mm-ocd #mobile-menu.mm-spn li.lg\:inline-block,
-.mm-ocd #mobile-menu.mm-spn li[class*="lg:block"],
-.mm-ocd #mobile-menu.mm-spn li[class*="lg:inline-block"] {
+/* إخفاء نسخة الديسكتوب داخل قائمة الجوال */
+.mm-ocd #mobile-menu.mm-spn li[class~="!hidden"],
+.mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:block"],
+.mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:inline-block"],
+.mm-ocd #mobile-menu.mm-spn li[class~="root-level"][class~="lg:block"],
+.mm-ocd #mobile-menu.mm-spn li[class~="root-level"][class~="lg:inline-block"] {
+  display: none !important;
+}
+
+/* إظهار نسخة الجوال داخل drawer حتى على اللابتوب */
+.mm-ocd #mobile-menu.mm-spn li[class~="lg:hidden"]:not([class~="!hidden"]) {
   display: block !important;
+}
+
+/* كسر inline-block فقط للعناصر الظاهرة داخل drawer */
+.mm-ocd #mobile-menu.mm-spn li:not([class~="!hidden"]):not([class~="hidden"][class~="lg:block"]):not([class~="root-level"][class~="lg:inline-block"]) {
   position: relative !important;
   width: 100% !important;
   max-width: none !important;
@@ -1289,34 +1139,21 @@ body.dark,
   text-align: start !important;
 }
 
-/* الأهم: أي عنصر عليه hidden يبقى مخفي حتى على اللابتوب داخل قائمة الجوال */
-.mm-ocd #mobile-menu.mm-spn li.hidden,
-.mm-ocd #mobile-menu.mm-spn li[class~="hidden"],
-.mm-ocd #mobile-menu.mm-spn .hidden {
-  display: none !important;
-}
-
-/* رابط/عنوان التصنيف يأخذ عرض السطر كامل حتى يصير الضغط على السهم/السطر صحيح */
+/* عنوان/رابط العنصر */
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  position: relative !important;
   width: 100% !important;
   max-width: none !important;
   min-height: var(--mm-spn-item-height, 50px) !important;
   box-sizing: border-box !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
   margin: 0 !important;
   line-height: 1.4 !important;
-  text-align: start !important;
-  cursor: pointer !important;
   white-space: normal !important;
 }
 
-/* RTL: اترك مساحة للسهم في الجهة اليسرى */
+/* مساحة للسهم الموجود */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
@@ -1325,7 +1162,6 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span {
   padding-inline-end: 54px !important;
 }
 
-/* LTR: اترك مساحة للسهم في الجهة اليمنى */
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > a,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > span,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > a,
@@ -1334,54 +1170,51 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > span {
   padding-inline-end: 20px !important;
 }
 
-/* إعادة سهم الفرعيات لمكانه الصحيح */
-.mm-ocd #mobile-menu.mm-spn li:before {
-  top: calc(var(--mm-spn-item-height, 50px) / 2) !important;
-  transform: rotate(135deg) translate(50%, -50%) !important;
+/* تعديل السهم الموجود: أخفه عن أي عنصر ليس لديه فرعية */
+.mm-ocd #mobile-menu.mm-spn li:not(:has(> ul)):before {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* تعديل السهم الموجود: أظهره فقط للعنصر الذي لديه ul */
+.mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
+  display: block !important;
+  position: absolute !important;
+  top: 50% !important;
   z-index: 3 !important;
-  opacity: .45 !important;
   width: 10px !important;
   height: 10px !important;
+  opacity: .45 !important;
   pointer-events: none !important;
 }
 
-[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:before,
-html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:before {
+/* مكان واتجاه السهم الموجود في RTL */
+[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
+html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   left: 24px !important;
   right: auto !important;
-  border-right: 2px solid !important;
-  border-top: 2px solid !important;
+  transform: translateY(-50%) rotate(135deg) !important;
+  border-top: 2px solid currentColor !important;
+  border-right: 2px solid currentColor !important;
   border-left: 0 !important;
   border-bottom: 0 !important;
 }
 
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:before,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:before {
+/* مكان واتجاه السهم الموجود في LTR */
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   right: 24px !important;
   left: auto !important;
-  border-right: 2px solid !important;
-  border-top: 2px solid !important;
+  transform: translateY(-50%) rotate(-45deg) !important;
+  border-top: 2px solid currentColor !important;
+  border-right: 2px solid currentColor !important;
   border-left: 0 !important;
   border-bottom: 0 !important;
 }
 
-/* خط الفصل يبقى بكامل السطر */
+/* خط الفصل */
 .mm-ocd #mobile-menu.mm-spn li:after {
   left: 0 !important;
   right: 0 !important;
   width: auto !important;
-}
-
-/* لا تسمح لقواعد hover desktop أن تكسر القائمة الأصلية */
-.mm-ocd #mobile-menu.mm-spn li:hover > .sub-menu,
-.mm-ocd #mobile-menu.mm-spn li:hover > .mega-menu,
-.mm-ocd #mobile-menu.mm-spn li:hover > [class*="dropdown"] {
-  display: inherit;
-}
-
-/* زر الإغلاق فوق الكل */
-.mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
-.mm-ocd #mobile-menu.mm-spn .btn--close,
-.mm-ocd #mobile-menu.mm-spn .btn--close-sm {
-  z-index: 10 !important;
 }
