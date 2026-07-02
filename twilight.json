@@ -2305,6 +2305,555 @@
   ]
 },
 {
+  "id": "veloura_side_categories_line_2026",
+  "type": "static",
+  "format": "line",
+  "label": "",
+  "icon": "sicon-minus"
+},
+{
+  "id": "veloura_side_categories_title_2026",
+  "type": "static",
+  "format": "title",
+  "label": "القائمة الجانبية للتصنيفات",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(0,77,101,.22)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-menu'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">القائمة الجانبية للتصنيفات</strong></div></div>",
+  "icon": "sicon-menu"
+},
+{
+  "id": "veloura_side_categories_enabled_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار إعدادات القائمة الجانبية",
+  "description": "هذا الزر لإظهار أو إخفاء الإعدادات فقط من لوحة التحكم ولا يوقف التأثير من الواجهة",
+  "icon": "sicon-toggle-on",
+  "value": false,
+  "required": false
+},
+{
+  "id": "veloura_side_categories_subtitle_general_2026",
+  "type": "static",
+  "format": "title",
+  "label": "الإعدادات العامة",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eff6ff;color:#1d4ed8;text-align:right;font-weight:800;border-right:4px solid #3b82f6;box-shadow:inset 0 0 0 1px rgba(59,130,246,.10)\">الإعدادات العامة للقائمة الجانبية</div>",
+  "icon": "sicon-sliders",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_gap_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "المسافة بين التصنيفات في القائمة الجانبية",
+  "description": "تحكم بالمسافة بين عناصر التصنيفات داخل القائمة",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "value": "14",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "25",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_parent_click_action_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "ما يحدث عند الضغط على تصنيف يحتوي على تصنيفات فرعية",
+  "description": "إذا كان عندك صور للتصنيفات الفرعية فقد يكون خيار فتح القائمة الفرعية أنسب لك",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "فتح قائمة التصنيفات الفرعية",
+      "value": "open_subcategories",
+      "key": "side-categories-parent-action-open-subcategories-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "الذهاب للتصنيف (فتح الرابط)",
+      "value": "open_link",
+      "key": "side-categories-parent-action-open-link-2026"
+    },
+    {
+      "label": "فتح قائمة التصنيفات الفرعية",
+      "value": "open_subcategories",
+      "key": "side-categories-parent-action-open-subcategories-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_subtitle_style_2026",
+  "type": "static",
+  "format": "title",
+  "label": "الألوان والحواف",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899;box-shadow:inset 0 0 0 1px rgba(236,72,153,.08)\">الألوان والحواف</div>",
+  "icon": "sicon-paint-brush",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية القائمة الجانبية",
+  "description": "اختر لون خلفية القائمة الجانبية",
+  "icon": "sicon-paint-bucket",
+  "value": "#ffffff",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_text_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون نص عناوين القائمة الجانبية",
+  "description": "اختر لون النصوص والعناوين داخل القائمة الجانبية",
+  "icon": "sicon-font",
+  "value": "#000000",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_menu_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف القائمة الجانبية",
+  "description": "اختر شكل حواف القائمة الجانبية",
+  "icon": "sicon-crop",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "ناعم قليلًا",
+      "value": "soft",
+      "key": "side-categories-menu-radius-soft-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "side-categories-menu-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلًا",
+      "value": "soft",
+      "key": "side-categories-menu-radius-soft-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "side-categories-menu-radius-medium-2026"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large",
+      "key": "side-categories-menu-radius-large-2026"
+    },
+    {
+      "label": "ناعم جدًا جدًا",
+      "value": "xl",
+      "key": "side-categories-menu-radius-xl-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_subtitle_special_images_2026",
+  "type": "static",
+  "format": "title",
+  "label": "صور الأقسام الخاصة",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#c2410c;text-align:right;font-weight:800;border-right:4px solid #f97316;box-shadow:inset 0 0 0 1px rgba(249,115,22,.10)\">صور الأقسام الخاصة</div>",
+  "icon": "sicon-image",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_discounts_image_2026",
+  "type": "string",
+  "format": "image",
+  "label": "صورة لقسم التخفيضات",
+  "description": "يتم عرضها في القائمة الجانبية",
+  "icon": "sicon-image",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_blog_image_2026",
+  "type": "string",
+  "format": "image",
+  "label": "صورة لقسم المدونة",
+  "description": "يتم عرضها إذا كان تطبيق المدونة مثبتًا من سلة",
+  "icon": "sicon-image",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_subtitle_images_text_2026",
+  "type": "static",
+  "format": "title",
+  "label": "النصوص والصور",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eef2ff;color:#3730a3;text-align:right;font-weight:800;border-right:4px solid #6366f1;box-shadow:inset 0 0 0 1px rgba(99,102,241,.10)\">النصوص والصور داخل القائمة</div>",
+  "icon": "sicon-font",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_title_size_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حجم النص لعناوين القائمة الجانبية",
+  "description": "اختر حجم نص عناوين التصنيفات",
+  "icon": "sicon-font",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "side-categories-title-size-medium-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "صغير جدًا",
+      "value": "xs",
+      "key": "side-categories-title-size-xs-2026"
+    },
+    {
+      "label": "صغير",
+      "value": "small",
+      "key": "side-categories-title-size-small-2026"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "side-categories-title-size-medium-2026"
+    },
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "side-categories-title-size-large-2026"
+    },
+    {
+      "label": "كبير جدًا",
+      "value": "xl",
+      "key": "side-categories-title-size-xl-2026"
+    },
+    {
+      "label": "ضخم",
+      "value": "xxl",
+      "key": "side-categories-title-size-xxl-2026"
+    },
+    {
+      "label": "ضخم جدًا",
+      "value": "xxxl",
+      "key": "side-categories-title-size-xxxl-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_image_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف الصور في القائمة الجانبية",
+  "description": "اختر شكل حواف صور التصنيفات",
+  "icon": "sicon-crop",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "side-categories-image-radius-medium-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "side-categories-image-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلًا",
+      "value": "soft",
+      "key": "side-categories-image-radius-soft-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "side-categories-image-radius-medium-2026"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large",
+      "key": "side-categories-image-radius-large-2026"
+    },
+    {
+      "label": "دائري",
+      "value": "round",
+      "key": "side-categories-image-radius-round-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_image_fit_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض صور التصنيفات في القائمة الجانبية",
+  "description": "اختر طريقة ملء صور التصنيفات داخل المساحة المحددة",
+  "icon": "sicon-image",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "تغطية الصورة كامل المساحة كغلاف (Cover)",
+      "value": "cover",
+      "key": "side-categories-image-fit-cover-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "تغطية الصورة كامل المساحة كغلاف (Cover)",
+      "value": "cover",
+      "key": "side-categories-image-fit-cover-2026"
+    },
+    {
+      "label": "احتواء الصورة بالكامل داخل المساحة (Contain)",
+      "value": "contain",
+      "key": "side-categories-image-fit-contain-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_image_width_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم صورة التصنيف في القائمة الجانبية (العرض)",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "value": "60",
+  "required": false,
+  "step": "1",
+  "minimum": "40",
+  "maximum": "160",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_image_height_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حجم صورة التصنيف في القائمة الجانبية (الارتفاع)",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "value": "60",
+  "required": false,
+  "step": "1",
+  "minimum": "40",
+  "maximum": "160",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_subtitle_extra_2026",
+  "type": "static",
+  "format": "title",
+  "label": "الروابط والأقسام الإضافية",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfdf5;color:#047857;text-align:right;font-weight:800;border-right:4px solid #10b981;box-shadow:inset 0 0 0 1px rgba(16,185,129,.10)\">الروابط والأقسام الإضافية</div>",
+  "icon": "sicon-link",
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_hide_important_links_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء روابط تهمك من القائمة الجانبية",
+  "icon": "sicon-eye-off",
+  "value": false,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_hide_customer_service_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء خدمة العملاء من القائمة الجانبية",
+  "icon": "sicon-eye-off",
+  "value": false,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_side_categories_custom_links_2026",
+  "type": "collection",
+  "format": "collection",
+  "label": "روابط مخصصة للقائمة الجانبية",
+  "description": "أضف روابط تظهر داخل القائمة الجانبية للتصنيفات",
+  "icon": "sicon-list-add",
+  "required": false,
+  "minLength": 0,
+  "maxLength": 6,
+  "fields": [
+    {
+      "id": "label",
+      "type": "string",
+      "format": "text",
+      "label": "أضف نص الرابط",
+      "placeholder": "مثال: العروض",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "image",
+      "type": "string",
+      "format": "image",
+      "label": "أضف صورة الرابط",
+      "description": "أفضل المقاسات: 400 × 60 بكسل",
+      "icon": "sicon-image",
+      "required": false
+    },
+    {
+      "id": "url",
+      "type": "string",
+      "format": "url",
+      "inputType": "url",
+      "label": "الرابط",
+      "placeholder": "https://example.com",
+      "required": false
+    },
+    {
+      "id": "new_tab",
+      "type": "boolean",
+      "format": "switch",
+      "label": "عرض الرابط في صفحة جديدة",
+      "value": false,
+      "required": false
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "type": "static",
   "format": "title",
   "id": "veloura_category_settings_title_2026",
@@ -4215,7 +4764,7 @@
   "id": "veloura_mobile_floating_menu_show_labels_2026",
   "type": "boolean",
   "format": "switch",
-  "label": "إظهار النصوص تحت الأيقونات3333",
+  "label": "إظهار النصوص تحت الأيقونات",
   "description": "عند الإيقاف تظهر الأيقونات فقط داخل القائمة",
   "icon": "sicon-font",
   "value": true,
