@@ -372,3 +372,107 @@
     retryMoveCustomMenu();
   });
 </script>
+
+
+<script data-cfasync="false">
+  document.addEventListener('DOMContentLoaded', function () {
+    var header = document.querySelector('.store-header.veloura-top-enabled');
+
+    if (!header) return;
+
+    function isDesktopHamburger() {
+      return window.matchMedia('(min-width: 1024px)').matches &&
+        header.classList.contains('veloura-desktop-menu-hamburger');
+    }
+
+    function enhanceDesktopCustomMenu() {
+      if (!isDesktopHamburger()) return;
+
+      var drawer = document.querySelector('.mm-ocd');
+      var menu = drawer ? drawer.querySelector('.main-menu') : null;
+
+      if (!drawer || !menu) return;
+
+      drawer.classList.add('veloura-desktop-custom-native');
+      menu.classList.add('veloura-desktop-custom-native__menu');
+
+      menu.querySelectorAll('li').forEach(function (li) {
+        var directSubmenu = null;
+        var children = li.children || [];
+
+        for (var i = 0; i < children.length; i++) {
+          if (children[i].tagName && children[i].tagName.toLowerCase() === 'ul') {
+            directSubmenu = children[i];
+            break;
+          }
+        }
+
+        if (!directSubmenu) return;
+
+        li.classList.add('veloura-side-has-children');
+        directSubmenu.classList.add('veloura-side-submenu');
+
+        if (!li.querySelector(':scope > button.veloura-side-parent-toggle')) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'veloura-side-parent-toggle';
+          btn.setAttribute('aria-label', 'فتح التصنيفات الفرعية');
+          btn.innerHTML = '<i class="sicon-keyboard_arrow_down" aria-hidden="true"></i>';
+
+          var firstLink = li.querySelector(':scope > a');
+
+          if (firstLink) {
+            firstLink.after(btn);
+          } else {
+            li.insertBefore(btn, directSubmenu);
+          }
+        }
+      });
+    }
+
+    function scheduleEnhance() {
+      enhanceDesktopCustomMenu();
+      setTimeout(enhanceDesktopCustomMenu, 80);
+      setTimeout(enhanceDesktopCustomMenu, 240);
+      setTimeout(enhanceDesktopCustomMenu, 600);
+      setTimeout(enhanceDesktopCustomMenu, 1200);
+    }
+
+    document.addEventListener('click', function (event) {
+      if (!isDesktopHamburger()) return;
+
+      var trigger = event.target.closest('.veloura-menu-trigger-mobile[href="#mobile-menu"], a.mburger[href="#mobile-menu"]');
+
+      if (trigger) {
+        scheduleEnhance();
+        return;
+      }
+
+      var toggle = event.target.closest('.mm-ocd.veloura-desktop-custom-native .veloura-side-parent-toggle');
+      var parentLink = event.target.closest('.mm-ocd.veloura-desktop-custom-native .veloura-side-has-children > a');
+
+      if (toggle) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var toggleLi = toggle.closest('.veloura-side-has-children');
+
+        if (toggleLi) toggleLi.classList.toggle('is-open');
+
+        return;
+      }
+
+      if (parentLink) {
+        event.preventDefault();
+
+        var li = parentLink.closest('.veloura-side-has-children');
+
+        if (li) li.classList.toggle('is-open');
+      }
+    }, true);
+
+    window.addEventListener('resize', scheduleEnhance);
+    scheduleEnhance();
+  });
+</script>
+
