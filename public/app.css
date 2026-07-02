@@ -26933,6 +26933,76 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
     pointer-events: auto !important;
   }
 }
+/* ================================
+   Veloura Native Mobile Menu On Desktop
+   يعتمد على MobileMenu الأصلي بعد تعديل app.js
+================================ */
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .store-header.veloura-top-enabled .veloura-menu-links-wrap {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+  }
+}
+@media (min-width: 1024px) {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile {
+    display: none !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.mburger[href="#mobile-menu"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile i {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--veloura-top-text) !important;
+  }
+  .mm-ocd,
+  .mm-ocd.mm-ocd--open {
+    z-index: 999999 !important;
+  }
+  .mm-ocd .close-mobile-menu,
+  .mm-ocd.mm-ocd--open .close-mobile-menu {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
