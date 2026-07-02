@@ -151,29 +151,65 @@ isElementLoaded(selector){
 
 
   initiateMobileMenu() {
+  /**
+   * منع تهيئة القائمة أكثر من مرة.
+   * مهم لأن initiateMobileMenu قد تُستدعى من app.js ومن products.js.
+   */
+  if (window.__velouraNativeMobileMenuStarted) {
+    return;
+  }
+
+  window.__velouraNativeMobileMenuStarted = true;
 
   this.isElementLoaded('#mobile-menu').then((menu) => {
+    if (!menu) {
+      return;
+    }
 
- 
-  const mobileMenu = new MobileMenu(menu, "(min-width: 0px)", "( slidingSubmenus: false)");
+    if (menu.dataset.velouraMmenuReady === '1') {
+      return;
+    }
 
-  salla.lang.onLoaded(() => {
-    mobileMenu.navigation({ title: salla.lang.get('blocks.header.main_menu') });
-  });
-  const drawer = mobileMenu.offcanvas({ position: salla.config.get('theme.is_rtl') ? "right" : 'left' });
+    menu.dataset.velouraMmenuReady = '1';
 
-  this.onClick("a[href='#mobile-menu']", event => {
-    document.body.classList.add('menu-opened');
-    event.preventDefault() || drawer.close() || drawer.open()
-    
-  });
-  this.onClick(".close-mobile-menu", event => {
-    document.body.classList.remove('menu-opened');
-    event.preventDefault() || drawer.close()
-  });
-  });
+    const mobileMenu = new MobileMenu(
+      menu,
+      "(min-width: 0px)",
+      "( slidingSubmenus: false)"
+    );
 
-  }
+    salla.lang.onLoaded(() => {
+      mobileMenu.navigation({
+        title: salla.lang.get('blocks.header.main_menu')
+      });
+    });
+
+    const drawer = mobileMenu.offcanvas({
+      position: salla.config.get('theme.is_rtl') ? "right" : "left"
+    });
+
+    window.__velouraNativeMobileMenuDrawer = drawer;
+
+    this.onClick("a[href='#mobile-menu']", event => {
+      event.preventDefault();
+
+      document.body.classList.add('menu-opened');
+      drawer.open();
+    });
+
+    this.onClick(".close-mobile-menu", event => {
+      event.preventDefault();
+
+      document.body.classList.remove('menu-opened');
+      drawer.close();
+    });
+
+    this.onClick(".mm-ocd__backdrop", event => {
+      document.body.classList.remove('menu-opened');
+      drawer.close();
+    });
+  });
+}
 
   initiateStickyMenu() {
     let header = this.element('#mainnav'),
