@@ -1157,263 +1157,72 @@ body.dark,
 
 
 /* ================================
-   Veloura Use Custom Main Menu Native On Desktop
-   يستخدم custom-main-menu الأصلي، وليس aali-main-menu
+   Veloura Simple Native Mobile Menu On Desktop
+   بدون JS وبدون بناء قائمة مخصصة
 ================================ */
 
-@media (max-width: 1023px) {
-  .store-header.veloura-top-enabled {
-    .veloura-menu-trigger-mobile {
-      display: inline-flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
+/*
+ * هذا الإصلاح يعتمد فقط على نفس زر الجوال:
+ * a.mburger[href="#mobile-menu"]
+ * ويترك main-menu.js / mm-spn يفتح القائمة الأصلية.
+ */
 
-    .veloura-menu-links-wrap {
-      display: none !important;
-    }
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .store-header.veloura-top-enabled .veloura-menu-links-wrap {
+    display: none !important;
   }
 }
 
 @media (min-width: 1024px) {
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links {
-    .veloura-menu-links-wrap {
-      display: flex !important;
-      align-items: center !important;
-      min-width: 0 !important;
-      overflow: hidden !important;
-    }
-
-    .veloura-menu-trigger-mobile {
-      display: none !important;
-    }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
   }
 
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger {
-    /*
-     * لا نستخدم display:none هنا.
-     * لازم custom-main-menu يظل يشتغل ويبني nav#mobile-menu.
-     */
-    .veloura-menu-links-wrap {
-      display: block !important;
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      max-width: 1px !important;
-      max-height: 1px !important;
-      overflow: hidden !important;
-      clip: rect(0 0 0 0) !important;
-      clip-path: inset(50%) !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-      white-space: nowrap !important;
-    }
-
-    .veloura-menu-trigger-mobile {
-      display: inline-flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile {
+    display: none !important;
   }
 
-  .mm-ocd.veloura-desktop-custom-native,
-  .mm-ocd.veloura-desktop-custom-native.mm-ocd--open {
-    z-index: 999999 !important;
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap {
+    display: none !important;
   }
 
-  .mm-ocd.veloura-desktop-custom-native .mm-ocd__content {
-    background: #ffffff !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.mburger[href="#mobile-menu"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
-  .mm-ocd.veloura-desktop-custom-native #mobile-menu {
-    background: #ffffff !important;
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile i {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--veloura-top-text) !important;
   }
 
   /*
-   * زر الإغلاق الأصلي عندك عليه lg:hidden، نخليه ظاهر على اللابتوب.
+   * قائمة سلة الأصلية فوق الهيدر.
+   * لا نغير بنية mm-spn ولا شكلها حتى تبقى الفرعيات تعمل مثل الجوال.
    */
-  .mm-ocd.veloura-desktop-custom-native .close-mobile-menu,
-  .mm-ocd.veloura-desktop-custom-native.mm-ocd--open .close-mobile-menu {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-}
-
-
-/* ================================
-   Veloura Desktop Custom Menu Vertical Fix
-   منع ظهور قائمة اللابتوب أفقياً داخل mm-ocd
-================================ */
-
-@media (min-width: 1024px) {
-  .mm-ocd.veloura-desktop-custom-native,
-  .mm-ocd.veloura-desktop-custom-native.mm-ocd--open {
+  .mm-ocd,
+  .mm-ocd.mm-ocd--open {
     z-index: 999999 !important;
   }
 
-  .mm-ocd.veloura-desktop-custom-native .mm-ocd__content {
-    background: #ffffff !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native #mobile-menu,
-  .mm-ocd.veloura-desktop-custom-native .mobile-menu {
-    background: #ffffff !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu,
-  .mm-ocd.veloura-desktop-custom-native .veloura-desktop-custom-native__menu {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    gap: 10px !important;
-    margin: 0 !important;
-    padding: 86px 14px 24px !important;
-    list-style: none !important;
-    background: transparent !important;
-    border: 0 !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li {
-    width: 100% !important;
-    position: relative !important;
-    display: block !important;
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    border: 0 !important;
-    background: transparent !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li::before,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li::after {
-    display: none !important;
-    content: none !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > a {
-    width: 100% !important;
-    min-height: 54px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    padding: 0 18px !important;
-    margin: 0 !important;
-    border: 0 !important;
-    border-radius: 14px !important;
-    background: rgba(15, 23, 42, .045) !important;
-    color: #111827 !important;
-    text-decoration: none !important;
-    font-size: 15px !important;
-    font-weight: 900 !important;
-    line-height: 1.4 !important;
-    box-shadow: none !important;
-    transform: none !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li:hover > ul,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li:hover > .sub-menu,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li:hover > .mega-menu,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li:hover > [class*="dropdown"] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > ul,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > .sub-menu,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > .mega-menu,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > [class*="dropdown"],
-  .mm-ocd.veloura-desktop-custom-native .veloura-side-submenu {
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    display: none !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    margin: 8px 0 0 !important;
-    padding: 0 12px 0 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    transform: none !important;
-    list-style: none !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li.is-open > ul,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li.is-open > .sub-menu,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li.is-open > .mega-menu,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li.is-open > [class*="dropdown"],
-  .mm-ocd.veloura-desktop-custom-native .veloura-side-has-children.is-open > .veloura-side-submenu {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > ul li,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > .sub-menu li {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > ul li a,
-  .mm-ocd.veloura-desktop-custom-native .main-menu > li > .sub-menu li a {
-    min-height: 44px !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    padding: 0 14px !important;
-    border-radius: 12px !important;
-    background: rgba(15, 23, 42, .03) !important;
-    color: #111827 !important;
-    text-decoration: none !important;
-    font-size: 14px !important;
-    font-weight: 800 !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .veloura-side-parent-toggle {
-    position: absolute !important;
-    top: 7px !important;
-    left: 12px !important;
-    z-index: 4 !important;
-    width: 40px !important;
-    height: 40px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border: 0 !important;
-    border-radius: 999px !important;
-    background: transparent !important;
-    color: #111827 !important;
-    cursor: pointer !important;
-    transition: transform .22s ease !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .veloura-side-has-children.is-open > .veloura-side-parent-toggle {
-    transform: rotate(180deg) !important;
-  }
-
-  .mm-ocd.veloura-desktop-custom-native .close-mobile-menu,
-  .mm-ocd.veloura-desktop-custom-native.mm-ocd--open .close-mobile-menu {
+  .mm-ocd .close-mobile-menu,
+  .mm-ocd.mm-ocd--open .close-mobile-menu {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;

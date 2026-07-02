@@ -242,15 +242,19 @@
             {% endif %}
 
             {#
-              custom-main-menu هو المصدر الصحيح في ثيمك، وليس aali-main-menu.
-              في وضع links يظهر كروابط.
-              في وضع hamburger نخفيه بصريًا فقط، ونتركه يهيئ nav#mobile-menu الأصلي.
+              مهم:
+              هذا هو عنصر القائمة الأصلي. لا نستبدله ولا ننقله.
+              في وضع links يظهر على اللابتوب كروابط.
+              في وضع hamburger نخفيه فقط، ونترك زر الجوال الأصلي يفتح nav#mobile-menu.
             #}
             <div class="veloura-menu-links-wrap">
               <custom-main-menu></custom-main-menu>
             </div>
 
-            {# زر سلة الأصلي؛ لا تغيّر href ولا mburger #}
+            {#
+              نفس زر الجوال الأصلي تمامًا.
+              لا يوجد JS مخصص ولا بناء قائمة ولا نقل DOM.
+            #}
             <a
               class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse"
               href="#mobile-menu"
@@ -274,205 +278,3 @@
     </div>
   </div>
 </header>
-
-<script data-cfasync="false">
-  document.addEventListener('DOMContentLoaded', function () {
-    var header = document.querySelector('.store-header.veloura-top-enabled');
-
-    if (!header) {
-      return;
-    }
-
-    function isDesktopHamburger() {
-      return (
-        window.matchMedia('(min-width: 1024px)').matches &&
-        header.classList.contains('veloura-desktop-menu-hamburger')
-      );
-    }
-
-    function getDrawer() {
-      return document.querySelector('.mm-ocd');
-    }
-
-    function getContent() {
-      var drawer = getDrawer();
-      return drawer ? drawer.querySelector('.mm-ocd__content') : null;
-    }
-
-    function getCustomNativeNav() {
-      return (
-        header.querySelector('.veloura-menu-links-wrap nav#mobile-menu') ||
-        header.querySelector('.veloura-menu-links-wrap #mobile-menu') ||
-        header.querySelector('.veloura-menu-links-wrap custom-main-menu nav#mobile-menu') ||
-        header.querySelector('.veloura-menu-links-wrap custom-main-menu #mobile-menu')
-      );
-    }
-
-    function getCustomCloseButton() {
-      return header.querySelector('.veloura-menu-links-wrap .close-mobile-menu');
-    }
-
-    function moveCustomMenuIntoDrawer() {
-      if (!isDesktopHamburger()) {
-        return false;
-      }
-
-      var content = getContent();
-      var nativeNav = getCustomNativeNav();
-
-      if (!content || !nativeNav) {
-        return false;
-      }
-
-      var drawer = getDrawer();
-
-      if (drawer) {
-        drawer.classList.add('ocd-categs');
-        drawer.classList.add('veloura-desktop-custom-native');
-      }
-
-      if (nativeNav.closest('.mm-ocd__content')) {
-        return true;
-      }
-
-      content.innerHTML = '';
-      content.appendChild(nativeNav);
-
-      var closeButton = getCustomCloseButton();
-
-      if (closeButton && !closeButton.closest('.mm-ocd__content')) {
-        nativeNav.appendChild(closeButton);
-      }
-
-      return true;
-    }
-
-    function retryMoveCustomMenu() {
-      moveCustomMenuIntoDrawer();
-      setTimeout(moveCustomMenuIntoDrawer, 80);
-      setTimeout(moveCustomMenuIntoDrawer, 220);
-      setTimeout(moveCustomMenuIntoDrawer, 520);
-      setTimeout(moveCustomMenuIntoDrawer, 1000);
-    }
-
-    document.addEventListener(
-      'click',
-      function (event) {
-        var trigger = event.target.closest('.veloura-menu-trigger-mobile[href="#mobile-menu"], a.mburger[href="#mobile-menu"]');
-
-        if (trigger && isDesktopHamburger()) {
-          retryMoveCustomMenu();
-        }
-      },
-      true
-    );
-
-    window.addEventListener('resize', retryMoveCustomMenu);
-
-    retryMoveCustomMenu();
-  });
-</script>
-
-
-<script data-cfasync="false">
-  document.addEventListener('DOMContentLoaded', function () {
-    var header = document.querySelector('.store-header.veloura-top-enabled');
-
-    if (!header) return;
-
-    function isDesktopHamburger() {
-      return window.matchMedia('(min-width: 1024px)').matches &&
-        header.classList.contains('veloura-desktop-menu-hamburger');
-    }
-
-    function enhanceDesktopCustomMenu() {
-      if (!isDesktopHamburger()) return;
-
-      var drawer = document.querySelector('.mm-ocd');
-      var menu = drawer ? drawer.querySelector('.main-menu') : null;
-
-      if (!drawer || !menu) return;
-
-      drawer.classList.add('veloura-desktop-custom-native');
-      menu.classList.add('veloura-desktop-custom-native__menu');
-
-      menu.querySelectorAll('li').forEach(function (li) {
-        var directSubmenu = null;
-        var children = li.children || [];
-
-        for (var i = 0; i < children.length; i++) {
-          if (children[i].tagName && children[i].tagName.toLowerCase() === 'ul') {
-            directSubmenu = children[i];
-            break;
-          }
-        }
-
-        if (!directSubmenu) return;
-
-        li.classList.add('veloura-side-has-children');
-        directSubmenu.classList.add('veloura-side-submenu');
-
-        if (!li.querySelector(':scope > button.veloura-side-parent-toggle')) {
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'veloura-side-parent-toggle';
-          btn.setAttribute('aria-label', 'فتح التصنيفات الفرعية');
-          btn.innerHTML = '<i class="sicon-keyboard_arrow_down" aria-hidden="true"></i>';
-
-          var firstLink = li.querySelector(':scope > a');
-
-          if (firstLink) {
-            firstLink.after(btn);
-          } else {
-            li.insertBefore(btn, directSubmenu);
-          }
-        }
-      });
-    }
-
-    function scheduleEnhance() {
-      enhanceDesktopCustomMenu();
-      setTimeout(enhanceDesktopCustomMenu, 80);
-      setTimeout(enhanceDesktopCustomMenu, 240);
-      setTimeout(enhanceDesktopCustomMenu, 600);
-      setTimeout(enhanceDesktopCustomMenu, 1200);
-    }
-
-    document.addEventListener('click', function (event) {
-      if (!isDesktopHamburger()) return;
-
-      var trigger = event.target.closest('.veloura-menu-trigger-mobile[href="#mobile-menu"], a.mburger[href="#mobile-menu"]');
-
-      if (trigger) {
-        scheduleEnhance();
-        return;
-      }
-
-      var toggle = event.target.closest('.mm-ocd.veloura-desktop-custom-native .veloura-side-parent-toggle');
-      var parentLink = event.target.closest('.mm-ocd.veloura-desktop-custom-native .veloura-side-has-children > a');
-
-      if (toggle) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        var toggleLi = toggle.closest('.veloura-side-has-children');
-
-        if (toggleLi) toggleLi.classList.toggle('is-open');
-
-        return;
-      }
-
-      if (parentLink) {
-        event.preventDefault();
-
-        var li = parentLink.closest('.veloura-side-has-children');
-
-        if (li) li.classList.toggle('is-open');
-      }
-    }, true);
-
-    window.addEventListener('resize', scheduleEnhance);
-    scheduleEnhance();
-  });
-</script>
-
