@@ -372,32 +372,128 @@
       return null;
     }
 
+    function cleanText(value) {
+      return String(value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function normalizeHref(value) {
+      if (!value || value === '#') {
+        return '#';
+      }
+
+      try {
+        var url = new URL(value, window.location.origin);
+        return url.pathname.replace(/\/+$/, '') || '/';
+      } catch (error) {
+        return String(value || '').trim();
+      }
+    }
+
+    function makeCleanLinkFrom(link) {
+      var a = document.createElement('a');
+
+      a.href = link ? (link.getAttribute('href') || '#') : '#';
+      a.textContent = cleanText(link ? link.textContent : '');
+
+      return a;
+    }
+
+    function cleanClonedUl(ul) {
+      if (!ul) {
+        return null;
+      }
+
+      ul.querySelectorAll('script, style').forEach(function (node) {
+        node.remove();
+      });
+
+      ul.querySelectorAll('li').forEach(function (li) {
+        li.className = '';
+        li.removeAttribute('style');
+
+        Array.prototype.slice.call(li.children).forEach(function (child) {
+          var tag = child.tagName ? child.tagName.toLowerCase() : '';
+
+          if (tag !== 'a' && tag !== 'ul') {
+            child.remove();
+          }
+        });
+      });
+
+      ul.querySelectorAll('a').forEach(function (a) {
+        a.className = '';
+        a.removeAttribute('style');
+      });
+
+      ul.className = '';
+
+      return ul;
+    }
+
+    function createLiFromSource(sourceLi) {
+      var sourceLink = sourceLi ? sourceLi.querySelector(':scope > a') : null;
+
+      if (!sourceLink) {
+        return null;
+      }
+
+      var text = cleanText(sourceLink.textContent);
+      var href = sourceLink.getAttribute('href') || '#';
+
+      if (!text) {
+        return null;
+      }
+
+      var li = document.createElement('li');
+      var a = makeCleanLinkFrom(sourceLink);
+
+      li.appendChild(a);
+
+      var sourceChildUl = getDirectChildUl(sourceLi);
+
+      if (sourceChildUl) {
+        var childClone = cleanClonedUl(sourceChildUl.cloneNode(true));
+
+        if (childClone && childClone.children.length) {
+          li.appendChild(childClone);
+        }
+      }
+
+      return li;
+    }
+
     function getMenuSourceList() {
+      /*
+       * مهم:
+       * لا نأخذ أي قائمة من mm-ocd أو nav#mobile-menu حتى لا تتكرر العناصر.
+       * المصدر الوحيد هو custom-main-menu داخل الهيدر.
+       */
       return (
         header.querySelector('.veloura-menu-links-wrap custom-main-menu .main-menu') ||
-        header.querySelector('.veloura-menu-links-wrap .main-menu') ||
-        document.querySelector('custom-main-menu .main-menu') ||
-        document.querySelector('.main-menu')
+        header.querySelector('.veloura-menu-links-wrap .main-menu')
       );
     }
 
     function makeFallbackList() {
       var links = header.querySelectorAll('.veloura-menu-links-wrap a');
       var ul = document.createElement('ul');
+      var seen = {};
 
       ul.className = 'main-menu mm-spn--open veloura-side-built-list';
 
       links.forEach(function (link) {
-        var text = String(link.textContent || '').replace(/\s+/g, ' ').trim();
+        var text = cleanText(link.textContent);
         var href = link.getAttribute('href') || '#';
+        var key = text + '|' + normalizeHref(href);
 
-        if (!text) return;
+        if (!text || seen[key]) {
+          return;
+        }
+
+        seen[key] = true;
 
         var li = document.createElement('li');
-        var a = document.createElement('a');
-
-        a.href = href;
-        a.textContent = text;
+        var a = makeCleanLinkFrom(link);
 
         li.appendChild(a);
         ul.appendChild(li);
@@ -409,9 +505,7 @@
     function prepareMenuList(list) {
       if (!list) return null;
 
-      list.classList.add('main-menu');
-      list.classList.add('mm-spn--open');
-      list.classList.add('veloura-side-built-list');
+      list.className = 'main-menu mm-spn--open veloura-side-built-list';
 
       list.querySelectorAll('script, style').forEach(function (node) {
         node.remove();
@@ -421,7 +515,19 @@
         var childUl = getDirectChildUl(li);
         var link = li.querySelector(':scope > a');
 
-        if (!childUl || !link) {
+        if (!link) {
+          li.remove();
+          return;
+        }
+
+        link.textContent = cleanText(link.textContent);
+
+        if (!link.textContent) {
+          li.remove();
+          return;
+        }
+
+        if (!childUl) {
           return;
         }
 
@@ -445,17 +551,42 @@
 
     function buildMenuList() {
       var source = getMenuSourceList();
-      var clone = null;
+      var output = document.createElement('ul');
+      var seen = {};
+
+      output.className = 'main-menu mm-spn--open veloura-side-built-list';
 
       if (source && source.children && source.children.length) {
-        clone = source.cloneNode(true);
+        Array.prototype.slice.call(source.children).forEach(function (sourceLi) {
+          var sourceLink = sourceLi.querySelector(':scope > a');
+
+          if (!sourceLink) {
+            return;
+          }
+
+          var text = cleanText(sourceLink.textContent);
+          var href = sourceLink.getAttribute('href') || '#';
+          var key = text + '|' + normalizeHref(href);
+
+          if (!text || seen[key]) {
+            return;
+          }
+
+          seen[key] = true;
+
+          var li = createLiFromSource(sourceLi);
+
+          if (li) {
+            output.appendChild(li);
+          }
+        });
       }
 
-      if (!clone) {
-        clone = makeFallbackList();
+      if (!output.children.length) {
+        return makeFallbackList();
       }
 
-      return prepareMenuList(clone);
+      return prepareMenuList(output);
     }
 
     function enhanceNav(nav) {
@@ -509,20 +640,16 @@
       drawer.classList.add('ocd-categs');
       drawer.classList.add('veloura-desktop-native-mobile-menu');
 
-      var existingNav = content.querySelector('#mobile-menu');
-      var hasItems = existingNav && existingNav.querySelector('.main-menu > li');
-
-      if (hasItems) {
-        enhanceNav(existingNav);
-        return true;
-      }
-
       var list = buildMenuList();
 
-      if (!list) {
+      if (!list || !list.children.length) {
         return false;
       }
 
+      /*
+       * على اللابتوب نبني nav#mobile-menu من الصفر كل مرة.
+       * هذا يمنع تكرار العناصر بسبب تداخل قائمة سلة الأصلية مع القائمة المبنية.
+       */
       content.innerHTML = '';
 
       var nav = document.createElement('nav');
