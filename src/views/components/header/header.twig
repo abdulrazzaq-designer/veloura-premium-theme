@@ -42,8 +42,15 @@
 {% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
 {% if desktop_search.value is defined %}{% set desktop_search = desktop_search.value %}{% endif %}
 
-{% set desktop_menu_mode = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
-{% if desktop_menu_mode.value is defined %}{% set desktop_menu_mode = desktop_menu_mode.value %}{% endif %}
+{% set desktop_menu_mode_raw = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
+{% set desktop_menu_mode = desktop_menu_mode_raw %}
+{% if desktop_menu_mode_raw.selected is defined and desktop_menu_mode_raw.selected[0].value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode_raw.selected[0].value %}
+{% elseif desktop_menu_mode_raw.value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode_raw.value %}
+{% elseif desktop_menu_mode_raw[0].value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode_raw[0].value %}
+{% endif %}
 
 {% set show_mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
 {% if show_mobile_lang.value is defined %}{% set show_mobile_lang = show_mobile_lang.value %}{% endif %}
@@ -62,6 +69,19 @@
 
 {% set dark_pos = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
 {% if dark_pos.value is defined %}{% set dark_pos = dark_pos.value %}{% endif %}
+
+{% set top_menu_icon_raw = theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') %}
+{% set top_menu_icon = top_menu_icon_raw %}
+{% if top_menu_icon_raw.selected is defined and top_menu_icon_raw.selected[0].value is defined %}
+  {% set top_menu_icon = top_menu_icon_raw.selected[0].value %}
+{% elseif top_menu_icon_raw.value is defined %}
+  {% set top_menu_icon = top_menu_icon_raw.value %}
+{% elseif top_menu_icon_raw[0].value is defined %}
+  {% set top_menu_icon = top_menu_icon_raw[0].value %}
+{% endif %}
+{% if not top_menu_icon %}
+  {% set top_menu_icon = 'sicon-menu' %}
+{% endif %}
 
 {# Side Categories Settings - التأثير يبقى ظاهر حتى لو زر الإعدادات مطفأ #}
 {% set side_gap = theme.settings.get('veloura_side_categories_gap_2026', 14) %}
@@ -269,7 +289,7 @@
               class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse"
               href="#mobile-menu"
               aria-label="فتح القائمة">
-              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+              <i class="{{ top_menu_icon }}"></i>
             </a>
 
           </div>
