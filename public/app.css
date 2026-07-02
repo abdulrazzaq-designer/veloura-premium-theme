@@ -26845,6 +26845,17 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
     pointer-events: auto !important;
   }
 }
+body::before {
+  content: "CSS LOADED";
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  z-index: 999999999;
+  background: red;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
