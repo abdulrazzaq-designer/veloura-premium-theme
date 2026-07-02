@@ -1066,24 +1066,23 @@ body.dark,
 
 
 /* ================================
-   Veloura Mobile Menu Final Fix v4
-   إصلاح البادنج + X + سهم الرجوع الأصلي + الأسهم الزائدة
+   Veloura Mobile Menu Final Fix v6
+   before = سهم الرجوع / after = عنوان القائمة
 ================================ */
 
 /*
-  ملاحظات مهمة:
-  - لا نستخدم ul:before للرجوع نهائياً.
-  - سهم الرجوع الأصلي في mmenu-light هو:
-    .mm-spn.mm-spn--navbar:after
-  - سهم الفرعية الأصلي هو:
-    .mm-spn li:before
+  المهم:
+  حسب mmenu-light:
+  .mm-spn.mm-spn--navbar:before = سهم الرجوع
+  .mm-spn.mm-spn--navbar:after  = عنوان القائمة من data-mm-spn-title
+
+  لذلك لا نستخدم after كسهم ولا نخفيه.
 */
 
 .mm-ocd {
   z-index: 999999 !important;
 }
 
-/* الدرج لا يكون full screen */
 .mm-ocd .mm-ocd__content,
 .mm-ocd.mm-ocd--right .mm-ocd__content,
 .mm-ocd.mm-ocd--left .mm-ocd__content {
@@ -1093,7 +1092,6 @@ body.dark,
   box-shadow: -14px 0 34px rgba(0, 0, 0, .13) !important;
 }
 
-/* إعدادات القائمة */
 .mm-ocd #mobile-menu.mm-spn {
   --mm-spn-item-height: 56px !important;
   --mm-spn-item-indent: 18px !important;
@@ -1104,32 +1102,91 @@ body.dark,
   font-weight: 700 !important;
 }
 
-/* عنوان القائمة */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:before {
+/* عنوان القائمة الحقيقي: after */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  content: attr(data-mm-spn-title) !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 70px !important;
+  right: 70px !important;
+  width: auto !important;
   height: 56px !important;
+  min-width: 0 !important;
+  min-height: 56px !important;
+  max-width: none !important;
+  max-height: 56px !important;
   line-height: 56px !important;
-  padding: 0 70px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 22 !important;
   color: rgba(17, 24, 39, .68) !important;
+  -webkit-text-fill-color: rgba(17, 24, 39, .68) !important;
   font-size: 14px !important;
   font-weight: 800 !important;
   text-align: center !important;
-  border-bottom: 1px solid rgba(17, 24, 39, .13) !important;
-  background: linear-gradient(180deg, #fbfbfb 0%, #f6f6f6 100%) !important;
-  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  pointer-events: none !important;
 }
 
-/* امسح السهم الكبير الخطأ الذي كان معمول على ul:before */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
+/* شريط الهيدر خلف العنوان */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar {
+  padding-top: 56px !important;
+}
+
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul {
+  top: 56px !important;
+}
+
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar::marker {
+  display: none !important;
+}
+
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar {
+  background:
+    linear-gradient(180deg, #fbfbfb 0 56px, #f8f8f8 56px 100%) !important;
+}
+
+/* خط تحت عنوان القائمة */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar .main-menu:after {
+  content: "" !important;
+  position: fixed !important;
+  top: 56px !important;
+  inset-inline-start: 0 !important;
+  width: 100% !important;
+  height: 1px !important;
+  background: rgba(17, 24, 39, .13) !important;
+  z-index: 18 !important;
+  pointer-events: none !important;
+}
+
+/* امسح الأسهم الكبيرة التي كانت تظهر فوق من ul */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul:before,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul:after,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--open:before,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--open:after,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--parent:before,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--parent:after {
   content: none !important;
   display: none !important;
   width: 0 !important;
   height: 0 !important;
   border: 0 !important;
   opacity: 0 !important;
+  transform: none !important;
+  background: transparent !important;
+  pointer-events: none !important;
 }
 
-/* سهم الرجوع الأصلي: nav:after */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+/* سهم الرجوع الحقيقي: before */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:before {
   content: "" !important;
   display: block !important;
   position: absolute !important;
@@ -1138,28 +1195,36 @@ body.dark,
   left: auto !important;
   width: 10px !important;
   height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  max-width: 10px !important;
+  max-height: 10px !important;
   z-index: 30 !important;
-  opacity: .55 !important;
+  opacity: .58 !important;
   background: transparent !important;
-  border-top: 2px solid rgba(17, 24, 39, .45) !important;
-  border-right: 2px solid rgba(17, 24, 39, .45) !important;
-  border-left: 0 !important;
+  box-shadow: none !important;
+  border-top: 2px solid rgba(17, 24, 39, .48) !important;
+  border-left: 2px solid rgba(17, 24, 39, .48) !important;
+  border-right: 0 !important;
   border-bottom: 0 !important;
-  transform: translateY(-50%) rotate(45deg) !important;
+  border-radius: 0 !important;
+  transform-origin: center !important;
+  transform: translateY(-50%) rotate(135deg) !important;
+  pointer-events: auto !important;
 }
 
-/* لا تظهر سهم الرجوع في الصفحة الرئيسية */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar.mm-spn--main:after {
+/* الصفحة الرئيسية: لا يوجد سهم رجوع، لكن العنوان يبقى موجود */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar.mm-spn--main:before {
   content: none !important;
   display: none !important;
 }
 
-/* LTR عكس الاتجاه */
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+/* LTR */
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:before,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:before {
   left: 25px !important;
   right: auto !important;
-  transform: translateY(-50%) rotate(-135deg) !important;
+  transform: translateY(-50%) rotate(-45deg) !important;
 }
 
 /* القائمة سطور كاملة */
@@ -1192,7 +1257,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
   pointer-events: none !important;
 }
 
-/* الصفوف */
 .mm-ocd #mobile-menu.mm-spn li {
   display: block !important;
   position: relative !important;
@@ -1213,7 +1277,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
   background: transparent !important;
 }
 
-/* روابط/عناوين الصفوف */
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span {
   display: flex !important;
@@ -1231,7 +1294,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
   color: #111827 !important;
 }
 
-/* أي span داخل الرابط لا يأخذ padding */
 .mm-ocd #mobile-menu.mm-spn li > a span,
 .mm-ocd #mobile-menu.mm-spn li > span span {
   display: inline !important;
@@ -1243,7 +1305,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
   line-height: inherit !important;
 }
 
-/* RTL: بدون مساحة سهم للعناصر العادية */
+/* RTL */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
@@ -1253,7 +1315,6 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span {
   justify-content: flex-start !important;
 }
 
-/* RTL: فقط من عنده فرعية يأخذ مساحة السهم */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
@@ -1278,14 +1339,12 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   padding: 0 54px 0 22px !important;
 }
 
-/* منع السهم/الفاصل الداخلي من a:not(:last-child) */
 .mm-ocd #mobile-menu.mm-spn li > a:after,
 .mm-ocd #mobile-menu.mm-spn li > span:after {
   content: none !important;
   display: none !important;
 }
 
-/* الصور */
 .mm-ocd #mobile-menu.mm-spn li img {
   width: 36px !important;
   height: 36px !important;
@@ -1300,7 +1359,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   box-shadow: 0 6px 14px rgba(0, 0, 0, .08) !important;
 }
 
-/* خط الفصل */
 .mm-ocd #mobile-menu.mm-spn li:after {
   left: 20px !important;
   right: 20px !important;
@@ -1308,13 +1366,12 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   border-color: rgba(17, 24, 39, .16) !important;
 }
 
-/* سهم الفرعيات الأصلي: يخفي عن العناصر بدون فرعية */
+/* سهم الفرعيات الأصلي */
 .mm-ocd #mobile-menu.mm-spn li:not(:has(> ul)):before {
   display: none !important;
   opacity: 0 !important;
 }
 
-/* سهم الفرعيات الأصلي: يظهر فقط لمن لديه فرعية */
 .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   display: block !important;
   position: absolute !important;
@@ -1326,7 +1383,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
   pointer-events: none !important;
 }
 
-/* RTL submenu arrow */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   left: 26px !important;
@@ -1338,7 +1394,6 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   border-bottom: 0 !important;
 }
 
-/* LTR submenu arrow */
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   right: 26px !important;
@@ -1358,7 +1413,7 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   top: 10px !important;
   left: 14px !important;
   right: auto !important;
-  z-index: 35 !important;
+  z-index: 40 !important;
   width: 38px !important;
   height: 38px !important;
   min-width: 38px !important;
@@ -1392,106 +1447,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
 }
 
 /* LTR يعكس مكان X */
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
-  right: 14px !important;
-  left: auto !important;
-}
-
-
-/* ================================
-   Veloura Top Back Arrow Hard Fix
-   إصلاح الأسهم الكبيرة فوق داخل mmenu
-================================ */
-
-/*
-  المشكلة كانت من pseudo-elements العلوية الخاصة بـ mmenu:
-  nav:after و ul:before / ul:after
-  هذه القواعد لا تلمس أسهم التصنيفات داخل القائمة، فقط منطقة الهيدر العلوية.
-*/
-
-/* احذف أي سهم كبير مرسوم على ul فوق */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul:before,
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul:after,
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--open:before,
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--open:after,
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--parent:before,
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--parent:after {
-  content: none !important;
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  max-width: 0 !important;
-  max-height: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  opacity: 0 !important;
-  transform: none !important;
-  pointer-events: none !important;
-}
-
-/* امسح شكل سهم الرجوع الافتراضي تماماً ثم ارسمه صغيراً بنفس pseudo الأصلي nav:after */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
-  content: "" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 28px !important;
-  right: 24px !important;
-  left: auto !important;
-  width: 10px !important;
-  height: 10px !important;
-  min-width: 10px !important;
-  min-height: 10px !important;
-  max-width: 10px !important;
-  max-height: 10px !important;
-  z-index: 32 !important;
-  opacity: .58 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  border: 0 !important;
-  border-top: 2px solid rgba(17, 24, 39, .48) !important;
-  border-right: 2px solid rgba(17, 24, 39, .48) !important;
-  border-left: 0 !important;
-  border-bottom: 0 !important;
-  border-radius: 0 !important;
-  transform-origin: center !important;
-  transform: translateY(-50%) rotate(45deg) !important;
-  pointer-events: auto !important;
-}
-
-/* الصفحة الرئيسية لا تحتاج سهم رجوع */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar.mm-spn--main:after {
-  content: none !important;
-  display: none !important;
-}
-
-/* LTR */
-[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after,
-html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
-  left: 24px !important;
-  right: auto !important;
-  transform: translateY(-50%) rotate(-135deg) !important;
-}
-
-/* تأكيد أن زر X يبقى فوق السهم وبحجم صحيح */
-.mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
-.mm-ocd #mobile-menu.mm-spn .btn--close,
-.mm-ocd #mobile-menu.mm-spn .btn--close-sm {
-  top: 10px !important;
-  left: 14px !important;
-  right: auto !important;
-  z-index: 40 !important;
-  color: #ff3030 !important;
-  -webkit-text-fill-color: #ff3030 !important;
-}
-
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm,
