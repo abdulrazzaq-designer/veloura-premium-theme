@@ -26871,73 +26871,153 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
   font-size: 34px !important;
 }
 /* ================================
-   Veloura Header Native Menu - Final Safe
-   اللابتوب يستدعي نفس قائمة الجوال الأصلية
+   Veloura Header Desktop Drawer Safe Final
+   على اللابتوب لا نستخدم mm-ocd لأنه يطلع فارغ
 ================================ */
-/*
- * مهم:
- * لا نستخدم زر button ولا درج لابتوب.
- * الزر الذي يفتح القائمة يجب أن يبقى:
- * a.mburger[href="#mobile-menu"]
- */
 @media (max-width: 1023px) {
   .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
     display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
   }
-  .store-header.veloura-top-enabled .veloura-menu-links-wrap {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-desktop,
+  .store-header.veloura-top-enabled .veloura-menu-links-wrap,
+  .store-header.veloura-top-enabled .veloura-desktop-menu-overlay,
+  .store-header.veloura-top-enabled .veloura-desktop-menu-drawer {
     display: none !important;
   }
 }
 @media (min-width: 1024px) {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
+    display: none !important;
+  }
   .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
     display: flex !important;
     align-items: center !important;
     min-width: 0 !important;
     overflow: hidden !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links a[href="#mobile-menu"].mburger,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links a.lg\:hidden[href="#mobile-menu"] {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-desktop {
     display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap custom-main-menu {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap {
     display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a[href="#mobile-menu"].mburger,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.lg\:hidden[href="#mobile-menu"] {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-desktop {
     display: inline-flex !important;
-    visibility: visible !important;
+  }
+  .veloura-desktop-menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    background: rgba(15, 23, 42, 0.42) !important;
+    z-index: 999998 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.24s ease, visibility 0.24s ease !important;
+  }
+  .veloura-desktop-menu-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: min(390px, 88vw) !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    z-index: 999999 !important;
+    transform: translateX(110%) !important;
+    transition: transform 0.28s ease !important;
+    box-shadow: -18px 0 45px rgba(15, 23, 42, 0.18) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: block !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  html.veloura-desktop-drawer-open {
+    overflow: hidden !important;
+  }
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-overlay {
     opacity: 1 !important;
+    visibility: visible !important;
     pointer-events: auto !important;
+  }
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-drawer {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  .veloura-desktop-menu-drawer__head {
+    height: 72px !important;
+    padding: 0 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+    font-weight: 900 !important;
+    font-size: 18px !important;
+  }
+  .veloura-desktop-menu-close {
+    width: 38px !important;
+    height: 38px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(15, 23, 42, 0.08) !important;
+    color: #111827 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
+  }
+  .veloura-desktop-menu-drawer__body {
+    padding: 14px !important;
+  }
+  .veloura-desktop-menu-drawer custom-main-menu {
+    display: block !important;
+    min-height: auto !important;
+  }
+  .veloura-desktop-menu-drawer .main-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .veloura-desktop-menu-drawer .main-menu > li {
+    width: 100% !important;
+    position: relative !important;
+  }
+  .veloura-desktop-menu-drawer .main-menu > li > a {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-radius: 12px !important;
+    color: #111827 !important;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+    background: rgba(15, 23, 42, 0.035) !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
   }
   /*
-   * زر الإغلاق داخل قائمة سلة عندك عليه lg:hidden،
-   * لذلك نجبر ظهوره على اللابتوب عند فتح القائمة.
+   * هذا هو المهم:
+   * لا نسمح للـ hover بإظهار التصنيفات الفرعية على اللابتوب.
    */
-  .mm-ocd .close-mobile-menu,
-  .mm-ocd.mm-ocd--open .close-mobile-menu {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-  .mm-ocd,
-  .mm-ocd.mm-ocd--open {
-    z-index: 999999 !important;
-  }
-  .mm-ocd.mm-ocd--open .mm-ocd__content {
-    z-index: 1000000 !important;
+  .veloura-desktop-menu-drawer .sub-menu,
+  .veloura-desktop-menu-drawer .mega-menu,
+  .veloura-desktop-menu-drawer [class*=sub-menu],
+  .veloura-desktop-menu-drawer [class*=mega],
+  .veloura-desktop-menu-drawer [class*=dropdown] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }
 .store-footer{
@@ -27736,25 +27816,11 @@ input[type=radio].sr-only:checked ~ div.main-menu .sub-menu {
     display: none;
     overflow: hidden;
   }
-@media (min-width: 1024px) {
-  
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links a.mobile-menu[href="#mobile-menu"] {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.mobile-menu[href="#mobile-menu"] {
-    display: inline-flex;
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .mobile-menu{
+  @media (min-width: 1024px){
+        .mobile-menu{
             display: none;
         }
-}
+    }
   .mm-ocd__content {
     overflow-y: auto;
   }

@@ -30,49 +30,39 @@
 {% set top_cart_bg = theme.settings.get('veloura_top_cart_bg_2026', '#f87171') %}
 {% if top_cart_bg.value is defined %}{% set top_cart_bg = top_cart_bg.value %}{% endif %}
 
-{% set top_border_raw = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
-{% if top_border_raw is iterable and top_border_raw[0].value is defined %}
-  {% set top_border = top_border_raw[0].value %}
-{% elseif top_border_raw.value is defined %}
-  {% set top_border = top_border_raw.value %}
-{% else %}
-  {% set top_border = top_border_raw %}
+{% set top_border = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
+{% if top_border is iterable and top_border[0].value is defined %}
+  {% set top_border = top_border[0].value %}
+{% elseif top_border.value is defined %}
+  {% set top_border = top_border.value %}
 {% endif %}
 
-{% set icons_size_raw = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
-{% if icons_size_raw is iterable and icons_size_raw[0].value is defined %}
-  {% set icons_size = icons_size_raw[0].value %}
-{% elseif icons_size_raw.value is defined %}
-  {% set icons_size = icons_size_raw.value %}
-{% else %}
-  {% set icons_size = icons_size_raw %}
+{% set icons_size = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
+{% if icons_size is iterable and icons_size[0].value is defined %}
+  {% set icons_size = icons_size[0].value %}
+{% elseif icons_size.value is defined %}
+  {% set icons_size = icons_size.value %}
 {% endif %}
 
-{% set mobile_search_raw = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
-{% if mobile_search_raw is iterable and mobile_search_raw[0].value is defined %}
-  {% set mobile_search = mobile_search_raw[0].value %}
-{% elseif mobile_search_raw.value is defined %}
-  {% set mobile_search = mobile_search_raw.value %}
-{% else %}
-  {% set mobile_search = mobile_search_raw %}
+{% set mobile_search = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
+{% if mobile_search is iterable and mobile_search[0].value is defined %}
+  {% set mobile_search = mobile_search[0].value %}
+{% elseif mobile_search.value is defined %}
+  {% set mobile_search = mobile_search.value %}
 {% endif %}
 
-{% set desktop_search_raw = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
-{% if desktop_search_raw is iterable and desktop_search_raw[0].value is defined %}
-  {% set desktop_search = desktop_search_raw[0].value %}
-{% elseif desktop_search_raw.value is defined %}
-  {% set desktop_search = desktop_search_raw.value %}
-{% else %}
-  {% set desktop_search = desktop_search_raw %}
+{% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
+{% if desktop_search is iterable and desktop_search[0].value is defined %}
+  {% set desktop_search = desktop_search[0].value %}
+{% elseif desktop_search.value is defined %}
+  {% set desktop_search = desktop_search.value %}
 {% endif %}
 
-{% set desktop_menu_mode_raw = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
-{% if desktop_menu_mode_raw is iterable and desktop_menu_mode_raw[0].value is defined %}
-  {% set desktop_menu_mode = desktop_menu_mode_raw[0].value %}
-{% elseif desktop_menu_mode_raw.value is defined %}
-  {% set desktop_menu_mode = desktop_menu_mode_raw.value %}
-{% else %}
-  {% set desktop_menu_mode = desktop_menu_mode_raw %}
+{% set desktop_menu_mode = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
+{% if desktop_menu_mode is iterable and desktop_menu_mode[0].value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode[0].value %}
+{% elseif desktop_menu_mode.value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode.value %}
 {% endif %}
 
 {% set show_mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
@@ -100,13 +90,11 @@
   {% set show_wishlist = show_wishlist.value %}
 {% endif %}
 
-{% set dark_pos_raw = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
-{% if dark_pos_raw is iterable and dark_pos_raw[0].value is defined %}
-  {% set dark_pos = dark_pos_raw[0].value %}
-{% elseif dark_pos_raw.value is defined %}
-  {% set dark_pos = dark_pos_raw.value %}
-{% else %}
-  {% set dark_pos = dark_pos_raw %}
+{% set dark_pos = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
+{% if dark_pos is iterable and dark_pos[0].value is defined %}
+  {% set dark_pos = dark_pos[0].value %}
+{% elseif dark_pos.value is defined %}
+  {% set dark_pos = dark_pos.value %}
 {% endif %}
 
 <header
@@ -237,28 +225,23 @@
               </button>
             {% endif %}
 
-            {# 
-              مهم:
-              لازم يبقى custom-main-menu موجودًا في DOM حتى يستطيع main-menu.js بناء #mobile-menu.
-              في اللابتوب:
-              - links: يظهر كروابط.
-              - hamburger: يبقى موجودًا لكنه مخفي بالـ CSS، ونستخدم زر الجوال الأصلي.
-            #}
+            {# روابط التصنيفات في وضع links فقط على اللابتوب #}
             <div class="veloura-menu-links-wrap">
               <custom-main-menu></custom-main-menu>
             </div>
 
-            {#
-              هذا زر سلة الأصلي لقائمة الجوال.
-              لا تغيّر href="#mobile-menu" ولا mburger؛ هذا ما يستدعي main-menu.js.
-              على اللابتوب يظهر فقط إذا كان desktop_menu_mode = hamburger عبر CSS.
-            #}
+            {# زر الجوال الأصلي؛ يبقى للجوال فقط حتى لا نخرب main-menu.js #}
             <a
               class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse"
               href="#mobile-menu"
               aria-label="فتح القائمة">
               <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
             </a>
+
+            {# زر اللابتوب في وضع hamburger يفتح Drawer خاص بدون hover #}
+            <button type="button" class="veloura-header-icon veloura-menu-trigger-desktop" aria-label="فتح القائمة">
+              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+            </button>
 
           </div>
 
@@ -275,4 +258,68 @@
       </div>
     </div>
   </div>
+
+  {# Drawer اللابتوب الآمن: لا يعتمد على mm-ocd لأن mm-ocd على اللابتوب يطلع فارغ #}
+  <div class="veloura-desktop-menu-overlay"></div>
+
+  <div class="veloura-desktop-menu-drawer" aria-hidden="true">
+    <div class="veloura-desktop-menu-drawer__head">
+      <span>القائمة</span>
+
+      <button type="button" class="veloura-desktop-menu-close" aria-label="إغلاق القائمة">
+        <i class="sicon-cancel"></i>
+      </button>
+    </div>
+
+    <div class="veloura-desktop-menu-drawer__body">
+      <custom-main-menu></custom-main-menu>
+    </div>
+  </div>
 </header>
+
+<script data-cfasync="false">
+  document.addEventListener('DOMContentLoaded', function () {
+    var html = document.documentElement;
+
+    function openDesktopDrawer() {
+      html.classList.add('veloura-desktop-drawer-open');
+
+      var drawer = document.querySelector('.veloura-desktop-menu-drawer');
+      if (drawer) {
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function closeDesktopDrawer() {
+      html.classList.remove('veloura-desktop-drawer-open');
+
+      var drawer = document.querySelector('.veloura-desktop-menu-drawer');
+      if (drawer) {
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      var desktopTrigger = event.target.closest('.veloura-menu-trigger-desktop');
+      var closeButton = event.target.closest('.veloura-desktop-menu-close');
+      var overlay = event.target.closest('.veloura-desktop-menu-overlay');
+      var drawerLink = event.target.closest('.veloura-desktop-menu-drawer a');
+
+      if (desktopTrigger) {
+        event.preventDefault();
+        openDesktopDrawer();
+        return;
+      }
+
+      if (closeButton || overlay || drawerLink) {
+        closeDesktopDrawer();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeDesktopDrawer();
+      }
+    });
+  });
+</script>
