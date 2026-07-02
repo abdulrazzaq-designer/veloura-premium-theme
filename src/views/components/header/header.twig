@@ -16,27 +16,98 @@
 {% set top_logo_center = theme.settings.get('veloura_top_logo_center_2026', true) %}
 {% set top_logo_no_center_laptop = theme.settings.get('veloura_top_logo_no_center_laptop_2026', false) %}
 {% set top_logo_size_value = theme.settings.get('veloura_top_logo_size_2026', 5) %}
+{% if top_logo_size_value.value is defined %}
+  {% set top_logo_size_value = top_logo_size_value.value %}
+{% endif %}
 {% set top_logo_size_px = 32 + (top_logo_size_value * 3) %}
 
 {% set top_bg = theme.settings.get('veloura_top_bg_color_2026', '#ffffff') %}
+{% if top_bg.value is defined %}{% set top_bg = top_bg.value %}{% endif %}
+
 {% set top_text = theme.settings.get('veloura_top_text_color_2026', '#004d65') %}
+{% if top_text.value is defined %}{% set top_text = top_text.value %}{% endif %}
+
 {% set top_cart_bg = theme.settings.get('veloura_top_cart_bg_2026', '#f87171') %}
+{% if top_cart_bg.value is defined %}{% set top_cart_bg = top_cart_bg.value %}{% endif %}
 
-{% set top_border = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
-{% set icons_size = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
+{% set top_border_raw = theme.settings.get('veloura_top_border_style_2026', 'sharp') %}
+{% if top_border_raw is iterable and top_border_raw[0].value is defined %}
+  {% set top_border = top_border_raw[0].value %}
+{% elseif top_border_raw.value is defined %}
+  {% set top_border = top_border_raw.value %}
+{% else %}
+  {% set top_border = top_border_raw %}
+{% endif %}
 
-{% set mobile_search = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
-{% set desktop_search = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
-{% set desktop_menu_mode = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
+{% set icons_size_raw = theme.settings.get('veloura_top_icons_size_2026', 'small') %}
+{% if icons_size_raw is iterable and icons_size_raw[0].value is defined %}
+  {% set icons_size = icons_size_raw[0].value %}
+{% elseif icons_size_raw.value is defined %}
+  {% set icons_size = icons_size_raw.value %}
+{% else %}
+  {% set icons_size = icons_size_raw %}
+{% endif %}
+
+{% set mobile_search_raw = theme.settings.get('veloura_top_mobile_search_display_2026', 'icon_right') %}
+{% if mobile_search_raw is iterable and mobile_search_raw[0].value is defined %}
+  {% set mobile_search = mobile_search_raw[0].value %}
+{% elseif mobile_search_raw.value is defined %}
+  {% set mobile_search = mobile_search_raw.value %}
+{% else %}
+  {% set mobile_search = mobile_search_raw %}
+{% endif %}
+
+{% set desktop_search_raw = theme.settings.get('veloura_top_desktop_search_display_2026', 'bar_sticky_icon') %}
+{% if desktop_search_raw is iterable and desktop_search_raw[0].value is defined %}
+  {% set desktop_search = desktop_search_raw[0].value %}
+{% elseif desktop_search_raw.value is defined %}
+  {% set desktop_search = desktop_search_raw.value %}
+{% else %}
+  {% set desktop_search = desktop_search_raw %}
+{% endif %}
+
+{% set desktop_menu_mode_raw = theme.settings.get('veloura_top_desktop_menu_mode_2026', 'links') %}
+{% if desktop_menu_mode_raw is iterable and desktop_menu_mode_raw[0].value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode_raw[0].value %}
+{% elseif desktop_menu_mode_raw.value is defined %}
+  {% set desktop_menu_mode = desktop_menu_mode_raw.value %}
+{% else %}
+  {% set desktop_menu_mode = desktop_menu_mode_raw %}
+{% endif %}
 
 {% set show_mobile_lang = theme.settings.get('veloura_top_mobile_currency_lang_icon_2026', true) %}
+{% if show_mobile_lang.value is defined %}
+  {% set show_mobile_lang = show_mobile_lang.value %}
+{% endif %}
+
 {% set hide_lang_desktop = theme.settings.get('veloura_top_hide_currency_lang_desktop_2026', false) %}
+{% if hide_lang_desktop.value is defined %}
+  {% set hide_lang_desktop = hide_lang_desktop.value %}
+{% endif %}
+
 {% set hide_cart_total_mobile = theme.settings.get('veloura_top_hide_cart_total_mobile_2026', true) %}
+{% if hide_cart_total_mobile.value is defined %}
+  {% set hide_cart_total_mobile = hide_cart_total_mobile.value %}
+{% endif %}
 
 {% set full_width_desktop = theme.settings.get('veloura_top_full_width_desktop_2026', true) %}
-{% set show_wishlist = theme.settings.get('veloura_top_show_wishlist_2026', false) %}
+{% if full_width_desktop.value is defined %}
+  {% set full_width_desktop = full_width_desktop.value %}
+{% endif %}
 
-{% set dark_pos = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
+{% set show_wishlist = theme.settings.get('veloura_top_show_wishlist_2026', false) %}
+{% if show_wishlist.value is defined %}
+  {% set show_wishlist = show_wishlist.value %}
+{% endif %}
+
+{% set dark_pos_raw = theme.settings.get('veloura_dark_toggle_position_2026', 'left') %}
+{% if dark_pos_raw is iterable and dark_pos_raw[0].value is defined %}
+  {% set dark_pos = dark_pos_raw[0].value %}
+{% elseif dark_pos_raw.value is defined %}
+  {% set dark_pos = dark_pos_raw.value %}
+{% else %}
+  {% set dark_pos = dark_pos_raw %}
+{% endif %}
 
 <header
   class="store-header
@@ -166,21 +237,26 @@
               </button>
             {% endif %}
 
-            {# روابط اللابتوب في وضع links فقط #}
-            {% if desktop_menu_mode == 'links' %}
-              <div class="veloura-menu-links-wrap">
-                <custom-main-menu></custom-main-menu>
-              </div>
-            {% endif %}
+            {# 
+              مهم:
+              لازم يبقى custom-main-menu موجودًا في DOM حتى يستطيع main-menu.js بناء #mobile-menu.
+              في اللابتوب:
+              - links: يظهر كروابط.
+              - hamburger: يبقى موجودًا لكنه مخفي بالـ CSS، ونستخدم زر الجوال الأصلي.
+            #}
+            <div class="veloura-menu-links-wrap">
+              <custom-main-menu></custom-main-menu>
+            </div>
 
-            {# نفس زر قائمة الجوال الأصلي.
-               في الجوال يظهر دائمًا.
-               في اللابتوب يظهر فقط عندما يكون الخيار hamburger.
+            {#
+              هذا زر سلة الأصلي لقائمة الجوال.
+              لا تغيّر href="#mobile-menu" ولا mburger؛ هذا ما يستدعي main-menu.js.
+              على اللابتوب يظهر فقط إذا كان desktop_menu_mode = hamburger عبر CSS.
             #}
             <a
-              class="veloura-header-icon veloura-menu-trigger-native mburger mburger--collapse"
+              class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse"
               href="#mobile-menu"
-              aria-label="Open-menu">
+              aria-label="فتح القائمة">
               <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
             </a>
 

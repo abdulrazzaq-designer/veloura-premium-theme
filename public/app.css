@@ -26871,67 +26871,73 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
   font-size: 34px !important;
 }
 /* ================================
-   Veloura Desktop Native Mobile Menu Final
-   خيار اللابتوب "عرضها كقائمة مثل الجوال"
-   يستخدم href="#mobile-menu" وليس درج اللابتوب
+   Veloura Header Native Menu - Final Safe
+   اللابتوب يستدعي نفس قائمة الجوال الأصلية
 ================================ */
+/*
+ * مهم:
+ * لا نستخدم زر button ولا درج لابتوب.
+ * الزر الذي يفتح القائمة يجب أن يبقى:
+ * a.mburger[href="#mobile-menu"]
+ */
 @media (max-width: 1023px) {
-  .store-header.veloura-top-enabled .veloura-menu-trigger-native {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
     display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
-  .store-header.veloura-top-enabled .veloura-menu-links-wrap,
-  .store-header.veloura-top-enabled .veloura-desktop-menu-drawer,
-  .store-header.veloura-top-enabled .veloura-desktop-menu-overlay {
+  .store-header.veloura-top-enabled .veloura-menu-links-wrap {
     display: none !important;
   }
 }
 @media (min-width: 1024px) {
-  .store-header.veloura-top-enabled .veloura-menu-trigger-native {
-    display: none !important;
-  }
   .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
     display: flex !important;
     align-items: center !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-native,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-desktop {
-    display: none !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap custom-main-menu,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-desktop-menu-drawer,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-desktop-menu-overlay,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-desktop {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links a[href="#mobile-menu"].mburger,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links a.lg\:hidden[href="#mobile-menu"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-native {
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap custom-main-menu {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a[href="#mobile-menu"].mburger,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.lg\:hidden[href="#mobile-menu"] {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
   }
   /*
-   * حماية: لا نستخدم درج اللابتوب نهائيًا؛ حتى لو كان عندك سكربت قديم يضيف كلاس فتح.
+   * زر الإغلاق داخل قائمة سلة عندك عليه lg:hidden،
+   * لذلك نجبر ظهوره على اللابتوب عند فتح القائمة.
    */
-  html.veloura-desktop-drawer-open {
-    overflow: auto !important;
+  .mm-ocd .close-mobile-menu,
+  .mm-ocd.mm-ocd--open .close-mobile-menu {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
-  html.veloura-desktop-drawer-open .veloura-desktop-menu-overlay,
-  html.veloura-desktop-drawer-open .veloura-desktop-menu-drawer {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-  /*
-   * قائمة سلة الأصلية فوق كل شيء على اللابتوب.
-   */
   .mm-ocd,
   .mm-ocd.mm-ocd--open {
     z-index: 999999 !important;
+  }
+  .mm-ocd.mm-ocd--open .mm-ocd__content {
+    z-index: 1000000 !important;
   }
 }
 .store-footer{
@@ -27730,11 +27736,25 @@ input[type=radio].sr-only:checked ~ div.main-menu .sub-menu {
     display: none;
     overflow: hidden;
   }
-  @media (min-width: 1024px){
-        .mobile-menu{
+@media (min-width: 1024px) {
+  
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links a.mobile-menu[href="#mobile-menu"] {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.mobile-menu[href="#mobile-menu"] {
+    display: inline-flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-menu{
             display: none;
         }
-    }
+}
   .mm-ocd__content {
     overflow-y: auto;
   }
