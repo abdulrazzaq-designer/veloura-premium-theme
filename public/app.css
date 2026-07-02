@@ -26871,72 +26871,14 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
   font-size: 34px !important;
 }
 /* ================================
-   Veloura Simple Native Mobile Menu On Desktop
-   بدون JS وبدون بناء قائمة مخصصة
+   Veloura Clean Native Mobile Menu On Desktop
+   يستخدم MobileMenu الأصلي فقط بعد تعديل app.js
 ================================ */
 /*
- * هذا الإصلاح يعتمد فقط على نفس زر الجوال:
- * a.mburger[href="#mobile-menu"]
- * ويترك main-menu.js / mm-spn يفتح القائمة الأصلية.
- */
-@media (max-width: 1023px) {
-  .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-  .store-header.veloura-top-enabled .veloura-menu-links-wrap {
-    display: none !important;
-  }
-}
-@media (min-width: 1024px) {
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
-    display: flex !important;
-    align-items: center !important;
-    min-width: 0 !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile {
-    display: none !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap {
-    display: none !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger a.mburger[href="#mobile-menu"] {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile i {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    color: var(--veloura-top-text) !important;
-  }
-  /*
-   * قائمة سلة الأصلية فوق الهيدر.
-   * لا نغير بنية mm-spn ولا شكلها حتى تبقى الفرعيات تعمل مثل الجوال.
-   */
-  .mm-ocd,
-  .mm-ocd.mm-ocd--open {
-    z-index: 999999 !important;
-  }
-  .mm-ocd .close-mobile-menu,
-  .mm-ocd.mm-ocd--open .close-mobile-menu {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-}
-/* ================================
-   Veloura Native Mobile Menu On Desktop
-   يعتمد على MobileMenu الأصلي بعد تعديل app.js
-================================ */
+  مهم:
+  لا تضف أي CSS يغير .mm-ocd .main-menu أو .mm-spn أو ul داخل القائمة.
+  هذه القواعد فقط لإظهار/إخفاء الزر والمصدر.
+*/
 @media (max-width: 1023px) {
   .store-header.veloura-top-enabled .veloura-menu-trigger-mobile {
     display: inline-flex !important;
