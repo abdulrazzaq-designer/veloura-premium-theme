@@ -1157,26 +1157,44 @@ body.dark,
 
 
 /* ================================
-   Veloura Desktop Uses Native Mobile Menu
-   عند اختيار "عرضها كقائمة مثل الجوال"
-   نخفي قائمة اللابتوب نهائياً ونستخدم href="#mobile-menu"
+   Veloura Desktop Native Mobile Menu Final
+   خيار اللابتوب "عرضها كقائمة مثل الجوال"
+   يستخدم href="#mobile-menu" وليس درج اللابتوب
 ================================ */
 
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled {
+    .veloura-menu-trigger-native {
+      display: inline-flex !important;
+    }
+
+    .veloura-menu-links-wrap,
+    .veloura-desktop-menu-drawer,
+    .veloura-desktop-menu-overlay {
+      display: none !important;
+    }
+  }
+}
+
 @media (min-width: 1024px) {
-  /* وضع الروابط العادي */
+  .store-header.veloura-top-enabled {
+    .veloura-menu-trigger-native {
+      display: none !important;
+    }
+  }
+
   .store-header.veloura-top-enabled.veloura-desktop-menu-links {
-    .veloura-menu-trigger-mobile,
+    .veloura-menu-links-wrap {
+      display: flex !important;
+      align-items: center !important;
+    }
+
     .veloura-menu-trigger-native,
     .veloura-menu-trigger-desktop {
       display: none !important;
     }
-
-    .veloura-menu-links-wrap {
-      display: flex !important;
-    }
   }
 
-  /* وضع قائمة مثل الجوال */
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger {
     .veloura-menu-links-wrap,
     .veloura-menu-links-wrap custom-main-menu,
@@ -1189,31 +1207,32 @@ body.dark,
       pointer-events: none !important;
     }
 
-    .veloura-menu-trigger-mobile,
     .veloura-menu-trigger-native {
       display: inline-flex !important;
       visibility: visible !important;
       opacity: 1 !important;
       pointer-events: auto !important;
     }
-
-    /*
-      حماية إضافية:
-      أي custom-main-menu داخل الهيدر في وضع hamburger لا يظهر،
-      حتى لا تظهر التصنيفات الفرعية بالـ hover على اللابتوب.
-    */
-    custom-main-menu {
-      display: none !important;
-    }
   }
 
-  /* Drawer اللابتوب القديم لا يظهر أبداً في وضع hamburger */
-  .store-header.veloura-desktop-menu-hamburger .veloura-desktop-menu-drawer,
-  .store-header.veloura-desktop-menu-hamburger .veloura-desktop-menu-overlay {
+  /*
+   * حماية: لا نستخدم درج اللابتوب نهائيًا؛ حتى لو كان عندك سكربت قديم يضيف كلاس فتح.
+   */
+  html.veloura-desktop-drawer-open {
+    overflow: auto !important;
+  }
+
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-overlay,
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-drawer {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 
-  /* نرفع قائمة سلة الأصلية فوق الهيدر عند فتحها على اللابتوب */
+  /*
+   * قائمة سلة الأصلية فوق كل شيء على اللابتوب.
+   */
   .mm-ocd,
   .mm-ocd.mm-ocd--open {
     z-index: 999999 !important;

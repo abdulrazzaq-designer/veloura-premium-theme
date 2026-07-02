@@ -26871,21 +26871,32 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
   font-size: 34px !important;
 }
 /* ================================
-   Veloura Desktop Uses Native Mobile Menu
-   عند اختيار "عرضها كقائمة مثل الجوال"
-   نخفي قائمة اللابتوب نهائياً ونستخدم href="#mobile-menu"
+   Veloura Desktop Native Mobile Menu Final
+   خيار اللابتوب "عرضها كقائمة مثل الجوال"
+   يستخدم href="#mobile-menu" وليس درج اللابتوب
 ================================ */
+@media (max-width: 1023px) {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-native {
+    display: inline-flex !important;
+  }
+  .store-header.veloura-top-enabled .veloura-menu-links-wrap,
+  .store-header.veloura-top-enabled .veloura-desktop-menu-drawer,
+  .store-header.veloura-top-enabled .veloura-desktop-menu-overlay {
+    display: none !important;
+  }
+}
 @media (min-width: 1024px) {
-  /* وضع الروابط العادي */
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-native,
-  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-desktop {
+  .store-header.veloura-top-enabled .veloura-menu-trigger-native {
     display: none !important;
   }
   .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
     display: flex !important;
+    align-items: center !important;
   }
-  /* وضع قائمة مثل الجوال */
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-native,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-desktop {
+    display: none !important;
+  }
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap,
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap custom-main-menu,
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-desktop-menu-drawer,
@@ -26896,29 +26907,28 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
     opacity: 0 !important;
     pointer-events: none !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
   .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-native {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger {
-    /*
-      حماية إضافية:
-      أي custom-main-menu داخل الهيدر في وضع hamburger لا يظهر،
-      حتى لا تظهر التصنيفات الفرعية بالـ hover على اللابتوب.
-    */
+  /*
+   * حماية: لا نستخدم درج اللابتوب نهائيًا؛ حتى لو كان عندك سكربت قديم يضيف كلاس فتح.
+   */
+  html.veloura-desktop-drawer-open {
+    overflow: auto !important;
   }
-  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger custom-main-menu {
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-overlay,
+  html.veloura-desktop-drawer-open .veloura-desktop-menu-drawer {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
-  /* Drawer اللابتوب القديم لا يظهر أبداً في وضع hamburger */
-  .store-header.veloura-desktop-menu-hamburger .veloura-desktop-menu-drawer,
-  .store-header.veloura-desktop-menu-hamburger .veloura-desktop-menu-overlay {
-    display: none !important;
-  }
-  /* نرفع قائمة سلة الأصلية فوق الهيدر عند فتحها على اللابتوب */
+  /*
+   * قائمة سلة الأصلية فوق كل شيء على اللابتوب.
+   */
   .mm-ocd,
   .mm-ocd.mm-ocd--open {
     z-index: 999999 !important;
