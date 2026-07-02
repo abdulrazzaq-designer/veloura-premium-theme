@@ -78,10 +78,10 @@
             {% endif %}
 
             <salla-cart-summary class="veloura-cart-summary {{ hide_cart_total_mobile ? 'veloura-cart-hide-total veloura-cart-icon-only-mobile' : '' }}">
-  <span slot="icon" class="veloura-cart-custom-icon">
-    <i class="{{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
-  </span>
-</salla-cart-summary>
+              <span slot="icon" class="veloura-cart-custom-icon">
+                <i class="{{ theme.settings.get('veloura_top_cart_icon_2026', 'sicon-shopping-bag') }}"></i>
+              </span>
+            </salla-cart-summary>
 
             <button type="button" class="veloura-header-icon veloura-login-btn" onclick="salla.event.dispatch('login::open')" aria-label="تسجيل الدخول">
               <i class="{{ theme.settings.get('veloura_top_login_icon_2026', 'sicon-user-circle') }}"></i>
@@ -166,19 +166,26 @@
               </button>
             {% endif %}
 
-            <div class="veloura-cats-sheet__body">
-  <div class="veloura-cats-sheet__list" data-veloura-cats-list>
-    <div class="veloura-cats-sheet__loading">جاري تحميل التصنيفات...</div>
-  </div>
-</div>
+            {# روابط التصنيفات في وضع links فقط على اللابتوب #}
+            <div class="veloura-menu-links-wrap">
+              <custom-main-menu></custom-main-menu>
+            </div>
 
-            <a class="veloura-header-icon veloura-menu-trigger-mobile mburger mburger--collapse" href="#mobile-menu" aria-label="Open-menu">
-  <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
-</a>
+            {# نفس زر قائمة الجوال الأصلي.
+               في اللابتوب يظهر فقط عندما يكون الخيار:
+               طريقة عرض التصنيفات في اللابتوب = عرضها كقائمة مثل الجوال
+            #}
+            <a
+              class="veloura-header-icon veloura-menu-trigger-mobile veloura-menu-trigger-native mburger mburger--collapse"
+              href="#mobile-menu"
+              aria-label="Open-menu">
+              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+            </a>
 
-<button type="button" class="veloura-header-icon veloura-menu-trigger-desktop" aria-label="فتح القائمة">
-  <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
-</button>
+            {# زر درج اللابتوب القديم موجود للاحتياط، لكنه مخفي في CSS عند وضع hamburger #}
+            <button type="button" class="veloura-header-icon veloura-menu-trigger-desktop" aria-label="فتح القائمة">
+              <i class="{{ theme.settings.get('veloura_top_menu_icon_2026', 'sicon-menu') }}"></i>
+            </button>
 
           </div>
 
@@ -196,21 +203,20 @@
     </div>
   </div>
 
-
+  {# درج اللابتوب القديم: مخفي تماماً في وضع عرضها كقائمة مثل الجوال #}
   <div class="veloura-desktop-menu-overlay"></div>
 
-<div class="veloura-desktop-menu-drawer" aria-hidden="true">
-  <div class="veloura-desktop-menu-drawer__head">
-    <span>القائمة</span>
+  <div class="veloura-desktop-menu-drawer" aria-hidden="true">
+    <div class="veloura-desktop-menu-drawer__head">
+      <span>القائمة</span>
 
-    <button type="button" class="veloura-desktop-menu-close" aria-label="إغلاق القائمة">
-      <i class="sicon-cancel"></i>
-    </button>
+      <button type="button" class="veloura-desktop-menu-close" aria-label="إغلاق القائمة">
+        <i class="sicon-cancel"></i>
+      </button>
+    </div>
+
+    <div class="veloura-desktop-menu-drawer__body">
+      <custom-main-menu></custom-main-menu>
+    </div>
   </div>
-
-  <div class="veloura-desktop-menu-drawer__body">
-    <custom-main-menu></custom-main-menu>
-  </div>
-</div>
-
 </header>

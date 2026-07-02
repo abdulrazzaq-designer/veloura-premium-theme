@@ -2712,10 +2712,11 @@
   ]
 },
 {
-  "id": "veloura_side_categories_image_width_2026",
+  "id": "veloura_side_cat_img_w_2026",
   "type": "number",
   "format": "slider",
-  "label": "حجم صورة التصنيف في القائمة الجانبية (العرض)",
+  "label": "عرض صورة التصنيف في القائمة الجانبية",
+  "description": "تحكم بعرض صورة التصنيف داخل القائمة الجانبية",
   "inputType": "range",
   "icon": "sicon-resize",
   "value": "60",
@@ -2732,10 +2733,11 @@
   ]
 },
 {
-  "id": "veloura_side_categories_image_height_2026",
+  "id": "veloura_side_cat_img_h_2026",
   "type": "number",
   "format": "slider",
-  "label": "حجم صورة التصنيف في القائمة الجانبية (الارتفاع)",
+  "label": "ارتفاع صورة التصنيف في القائمة الجانبية",
+  "description": "تحكم بارتفاع صورة التصنيف داخل القائمة الجانبية",
   "inputType": "range",
   "icon": "sicon-resize",
   "value": "60",

@@ -26870,6 +26870,60 @@ body.dark .store-header.veloura-top-enabled .veloura-dark-toggle .veloura-dark-t
 .store-header.veloura-top-icons-large .veloura-cart-custom-icon {
   font-size: 34px !important;
 }
+/* ================================
+   Veloura Desktop Uses Native Mobile Menu
+   عند اختيار "عرضها كقائمة مثل الجوال"
+   نخفي قائمة اللابتوب نهائياً ونستخدم href="#mobile-menu"
+================================ */
+@media (min-width: 1024px) {
+  /* وضع الروابط العادي */
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-native,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-trigger-desktop {
+    display: none !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-links .veloura-menu-links-wrap {
+    display: flex !important;
+  }
+  /* وضع قائمة مثل الجوال */
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-links-wrap custom-main-menu,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-desktop-menu-drawer,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-desktop-menu-overlay,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-desktop {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-mobile,
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger .veloura-menu-trigger-native {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger {
+    /*
+      حماية إضافية:
+      أي custom-main-menu داخل الهيدر في وضع hamburger لا يظهر،
+      حتى لا تظهر التصنيفات الفرعية بالـ hover على اللابتوب.
+    */
+  }
+  .store-header.veloura-top-enabled.veloura-desktop-menu-hamburger custom-main-menu {
+    display: none !important;
+  }
+  /* Drawer اللابتوب القديم لا يظهر أبداً في وضع hamburger */
+  .store-header.veloura-desktop-menu-hamburger .veloura-desktop-menu-drawer,
+  .store-header.veloura-desktop-menu-hamburger .veloura-desktop-menu-overlay {
+    display: none !important;
+  }
+  /* نرفع قائمة سلة الأصلية فوق الهيدر عند فتحها على اللابتوب */
+  .mm-ocd,
+  .mm-ocd.mm-ocd--open {
+    z-index: 999999 !important;
+  }
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
