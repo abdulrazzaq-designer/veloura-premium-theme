@@ -952,9 +952,9 @@ body.dark,
 ================================ */
 
 /*
-  لا نبني قائمة جديدة ولا نضيف Drawer جديد.
-  فقط نظهر زر الجوال الأصلي على اللابتوب في وضع hamburger
-  ونخفي مصدر custom-main-menu بصرياً بدون display:none حتى يبقى #mobile-menu مبني.
+  هذا البلوك لا يبني قائمة ولا يضيف Drawer.
+  فقط يظهر زر الجوال الأصلي على اللابتوب في وضع hamburger
+  ويخفي مصدر custom-main-menu بصرياً بدون display:none حتى يبقى #mobile-menu مبني.
 */
 
 @media (max-width: 1023px) {
@@ -1068,74 +1068,71 @@ body.dark,
   .veloura-desktop-menu-drawer {
     display: none !important;
   }
-
-  .mm-ocd,
-  .mm-ocd.mm-ocd--open {
-    z-index: 999999 !important;
-  }
 }
 
 
 /* ================================
-   Veloura Mobile Drawer Polish
-   تعديل السهم الموجود + ضبط X والمقاسات
+   Veloura Mobile Menu Final Polish
+   تعديل السهم الموجود + ضبط العرض + X + المقاسات
 ================================ */
 
 /*
-  هذا البلوك يعدل السهم الأصلي فقط:
+  مهم:
+  هذا يعدل نفس سهم mmenu-light الأصلي:
   .mm-spn li:before
-  ولا ينشئ سهم جديد.
+  ولا يضيف سهم جديد.
 */
 
 .mm-ocd {
+  z-index: 999999 !important;
   --veloura-menu-accent: var(--veloura-top-text, #004d65);
   --veloura-menu-danger: var(--veloura-top-cart-bg, #ef4444);
 }
 
-.mm-ocd .mm-ocd__content {
-  background: #f7f7f7 !important;
-}
-
+/* لا تخلي قائمة الجوال تأخذ الشاشة كاملة */
 .mm-ocd.mm-ocd--right .mm-ocd__content,
 .mm-ocd.mm-ocd--left .mm-ocd__content {
-  width: min(390px, 92vw) !important;
-  max-width: 92vw !important;
+  width: min(390px, 88vw) !important;
+  max-width: 88vw !important;
+  background: #f8f8f8 !important;
+  box-shadow: -14px 0 34px rgba(0, 0, 0, .13) !important;
 }
 
+/* على الشاشات الصغيرة تبقى درج، وليس full screen */
 @media (max-width: 640px) {
   .mm-ocd.mm-ocd--right .mm-ocd__content,
   .mm-ocd.mm-ocd--left .mm-ocd__content {
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 88vw !important;
+    max-width: 88vw !important;
   }
 }
 
-/* مقاسات القائمة الأصلية */
+/* مقاسات عامة للقائمة */
 .mm-ocd #mobile-menu.mm-spn {
   --mm-spn-item-height: 58px !important;
-  --mm-spn-item-indent: 22px !important;
-  background: #f7f7f7 !important;
+  --mm-spn-item-indent: 20px !important;
+  background: #f8f8f8 !important;
   color: #111827 !important;
   font-size: 15px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
-/* عنوان القائمة العلوي */
+/* عنوان القائمة العلوي: اللون كان فاتح جداً */
 .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:before {
   height: var(--mm-spn-item-height, 58px) !important;
   line-height: var(--mm-spn-item-height, 58px) !important;
-  padding: 0 78px !important;
-  color: rgba(17, 24, 39, .28) !important;
+  padding: 0 72px !important;
+  color: rgba(17, 24, 39, .62) !important;
   font-size: 14px !important;
   font-weight: 800 !important;
   letter-spacing: .2px !important;
   text-align: center !important;
-  border-bottom: 1px solid rgba(0, 0, 0, .07) !important;
-  background: linear-gradient(180deg, #fbfbfb 0%, #f4f4f4 100%) !important;
+  border-bottom: 1px solid rgba(17, 24, 39, .14) !important;
+  background: linear-gradient(180deg, #fbfbfb 0%, #f6f6f6 100%) !important;
   box-sizing: border-box !important;
 }
 
-/* القائمة داخل drawer تبقى سطور كاملة */
+/* القائمة داخل drawer سطور كاملة */
 .mm-ocd #mobile-menu.mm-spn,
 .mm-ocd #mobile-menu.mm-spn ul,
 .mm-ocd #mobile-menu.mm-spn ul.main-menu {
@@ -1147,13 +1144,24 @@ body.dark,
   list-style: none !important;
 }
 
-/* إخفاء نسخة الديسكتوب المكررة داخل قائمة الجوال */
-.mm-ocd #mobile-menu.mm-spn li[class~="!hidden"],
-.mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:block"],
-.mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:inline-block"],
-.mm-ocd #mobile-menu.mm-spn li[class~="root-level"][class~="lg:block"],
-.mm-ocd #mobile-menu.mm-spn li[class~="root-level"][class~="lg:inline-block"] {
-  display: none !important;
+/* كسر inline-block القادم من Tailwind داخل drawer */
+.mm-ocd #mobile-menu.mm-spn li {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: var(--mm-spn-item-height, 58px) !important;
+  height: var(--mm-spn-item-height, 58px) !important;
+  float: none !important;
+  clear: both !important;
+  text-align: start !important;
+  box-sizing: border-box !important;
+}
+
+/* عناصر فيها صورة: نفس ارتفاع الصف، والصورة تتأقلم داخله */
+.mm-ocd #mobile-menu.mm-spn li:has(img) {
+  min-height: var(--mm-spn-item-height, 58px) !important;
+  height: var(--mm-spn-item-height, 58px) !important;
 }
 
 /* إظهار نسخة الجوال داخل drawer حتى على اللابتوب */
@@ -1161,19 +1169,20 @@ body.dark,
   display: block !important;
 }
 
-/* كسر inline-block فقط للعناصر الظاهرة */
-.mm-ocd #mobile-menu.mm-spn li:not([class~="!hidden"]):not([class~="hidden"][class~="lg:block"]):not([class~="root-level"][class~="lg:inline-block"]) {
-  display: block !important;
-  position: relative !important;
-  width: 100% !important;
-  max-width: none !important;
-  min-height: var(--mm-spn-item-height, 58px) !important;
-  float: none !important;
-  clear: both !important;
-  text-align: start !important;
+/* إخفاء نسخة الديسكتوب المكررة داخل قائمة الجوال */
+.mm-ocd #mobile-menu.mm-spn li[class~="!hidden"],
+.mm-ocd #mobile-menu.mm-spn li[class*="!hidden"],
+.mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:block"],
+.mm-ocd #mobile-menu.mm-spn li[class~="hidden"][class~="lg:inline-block"],
+.mm-ocd #mobile-menu.mm-spn li[class~="root-level"][class~="lg:block"],
+.mm-ocd #mobile-menu.mm-spn li[class~="root-level"][class~="lg:inline-block"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-/* السطر نفسه */
+/* رابط/عنوان الصف: ارتفاع ثابت للجميع */
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span {
   display: flex !important;
@@ -1182,6 +1191,7 @@ body.dark,
   width: 100% !important;
   max-width: none !important;
   min-height: var(--mm-spn-item-height, 58px) !important;
+  height: var(--mm-spn-item-height, 58px) !important;
   box-sizing: border-box !important;
   margin: 0 !important;
   line-height: 1.35 !important;
@@ -1191,14 +1201,23 @@ body.dark,
   color: #111827 !important;
 }
 
-/* RTL: النص يمين والسهم الأصلي يسار */
+/* RTL: بدون مساحة زايدة يمين للعناصر العادية */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > a,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span {
   padding-inline-start: 20px !important;
-  padding-inline-end: 28px !important;
+  padding-inline-end: 18px !important;
   text-align: right !important;
+}
+
+/* فقط العناصر التي لها فرعيات تحتاج مساحة جهة السهم */
+[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
+[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span,
+html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
+html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
+  padding-inline-start: 54px !important;
+  padding-inline-end: 18px !important;
 }
 
 /* LTR */
@@ -1206,45 +1225,49 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li > span {
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > span,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > a,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > span {
-  padding-inline-start: 28px !important;
+  padding-inline-start: 18px !important;
   padding-inline-end: 20px !important;
   text-align: left !important;
 }
 
-/* الصور داخل الفرعيات */
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > a,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul) > span {
+  padding-inline-start: 18px !important;
+  padding-inline-end: 54px !important;
+}
+
+/* الصور داخل الفرعيات لا تكبر ارتفاع الصف */
 .mm-ocd #mobile-menu.mm-spn li img {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  max-width: 44px !important;
-  max-height: 44px !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  max-width: 38px !important;
+  max-height: 38px !important;
   object-fit: cover !important;
-  border-radius: 16px !important;
-  margin-inline-start: 12px !important;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, .08) !important;
+  border-radius: 14px !important;
+  margin-inline-start: 10px !important;
+  margin-inline-end: 0 !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .08) !important;
 }
 
-.mm-ocd #mobile-menu.mm-spn li:has(img) > a,
-.mm-ocd #mobile-menu.mm-spn li:has(img) > span {
-  min-height: 72px !important;
-}
-
-/* خط الفصل */
+/* خط الفصل أوضح */
 .mm-ocd #mobile-menu.mm-spn li:after {
-  left: 24px !important;
-  right: 24px !important;
+  left: 22px !important;
+  right: 22px !important;
   width: auto !important;
-  border-color: rgba(0, 0, 0, .075) !important;
+  border-color: rgba(17, 24, 39, .14) !important;
 }
 
-/* تعديل السهم الموجود: لا يظهر إلا على العناصر التي لديها فرعيات */
+/* تعديل السهم الموجود: إخفاؤه عن العناصر التي لا تحتوي فرعية */
 .mm-ocd #mobile-menu.mm-spn li:not(:has(> ul)):before {
   display: none !important;
   opacity: 0 !important;
 }
 
-/* تعديل نفس سهم mmenu-light الأصلي */
+/* تعديل نفس السهم الموجود: يظهر فقط عند وجود فرعية */
 .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   display: block !important;
   position: absolute !important;
@@ -1252,14 +1275,14 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li > span {
   z-index: 3 !important;
   width: 9px !important;
   height: 9px !important;
-  opacity: .42 !important;
+  opacity: .52 !important;
   pointer-events: none !important;
 }
 
-/* RTL arrow position */
+/* RTL arrow */
 [dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
 html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
-  left: 27px !important;
+  left: 26px !important;
   right: auto !important;
   transform: translateY(-50%) rotate(135deg) !important;
   border-top: 2px solid currentColor !important;
@@ -1268,10 +1291,10 @@ html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   border-bottom: 0 !important;
 }
 
-/* LTR arrow position */
+/* LTR arrow */
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
-  right: 27px !important;
+  right: 26px !important;
   left: auto !important;
   transform: translateY(-50%) rotate(-45deg) !important;
   border-top: 2px solid currentColor !important;
@@ -1280,25 +1303,14 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   border-bottom: 0 !important;
 }
 
-/* سهم الرجوع العلوي عند دخول تصنيف: نتركه يسار، وننقل X لليمين حتى ما يتراكبوا */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
-  top: 0 !important;
-  left: 20px !important;
-  right: auto !important;
-  width: 42px !important;
-  height: var(--mm-spn-item-height, 58px) !important;
-  z-index: 20 !important;
-  opacity: .42 !important;
-}
-
-/* زر الإغلاق بشكل خاص للثيم */
+/* زر X: موقع ثابت ومميز بدون تراكب مع العنوان أو الرجوع */
 .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
 .mm-ocd #mobile-menu.mm-spn .btn--close,
 .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   position: absolute !important;
   top: 10px !important;
-  right: 14px !important;
-  left: auto !important;
+  left: 14px !important;
+  right: auto !important;
   z-index: 35 !important;
   width: 38px !important;
   height: 38px !important;
@@ -1306,13 +1318,13 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   min-height: 38px !important;
   padding: 0 !important;
   margin: 0 !important;
-  border: 1px solid rgba(255, 59, 59, .16) !important;
+  border: 1px solid rgba(239, 68, 68, .18) !important;
   border-radius: 15px !important;
   background:
-    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, .95), rgba(255, 255, 255, .15) 42%),
-    linear-gradient(135deg, rgba(255, 59, 59, .14), rgba(255, 59, 59, .05)) !important;
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, .95), rgba(255, 255, 255, .18) 42%),
+    linear-gradient(135deg, rgba(239, 68, 68, .13), rgba(239, 68, 68, .045)) !important;
   color: var(--veloura-menu-danger) !important;
-  box-shadow: 0 10px 24px rgba(239, 68, 68, .13), inset 0 1px 0 rgba(255, 255, 255, .9) !important;
+  box-shadow: 0 10px 24px rgba(239, 68, 68, .12), inset 0 1px 0 rgba(255, 255, 255, .9) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1332,19 +1344,30 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn li:has(> ul):before {
   line-height: 1 !important;
 }
 
-/* في LTR نخلي X يسار وسهم الرجوع يمين */
+/* سهم الرجوع عند دخول تصنيف: في الجهة المقابلة للـ X */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
+  top: 0 !important;
+  right: 16px !important;
+  left: auto !important;
+  width: 42px !important;
+  height: var(--mm-spn-item-height, 58px) !important;
+  z-index: 20 !important;
+  opacity: .62 !important;
+}
+
+/* LTR يعكس المواقع */
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
-  left: 14px !important;
-  right: auto !important;
+  right: 14px !important;
+  left: auto !important;
 }
 
 [dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before,
 html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul:before {
-  right: 20px !important;
-  left: auto !important;
+  left: 16px !important;
+  right: auto !important;
 }
