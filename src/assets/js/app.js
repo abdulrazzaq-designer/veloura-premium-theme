@@ -149,67 +149,98 @@ isElementLoaded(selector){
     });
   }
 
-
   initiateMobileMenu() {
-  /**
-   * منع تهيئة القائمة أكثر من مرة.
-   * مهم لأن initiateMobileMenu قد تُستدعى من app.js ومن products.js.
-   */
-  if (window.__velouraNativeMobileMenuStarted) {
-    return;
-  }
-
-  window.__velouraNativeMobileMenuStarted = true;
-
-  this.isElementLoaded('#mobile-menu').then((menu) => {
-    if (!menu) {
-      return;
+    /**
+     * Veloura fix:
+     * - نهيئ mmenu-light مرة واحدة فقط.
+     * - يعمل على الجوال واللابتوب بعد تغيير media query إلى min-width: 0px.
+     * - لا يعمل close ثم open بنفس الضغطة.
+     * - لا يكرر عناصر القائمة ولا يكرر event listeners.
+     */
+    if (window.__velouraNativeMobileMenuInitPromise) {
+      return window.__velouraNativeMobileMenuInitPromise;
     }
 
-    if (menu.dataset.velouraMmenuReady === '1') {
-      return;
-    }
+    window.__velouraNativeMobileMenuInitPromise = this.isElementLoaded('#mobile-menu').then((menu) => {
+      if (!menu) {
+        window.__velouraNativeMobileMenuInitPromise = null;
+        return;
+      }
 
-    menu.dataset.velouraMmenuReady = '1';
+      if (menu.dataset.velouraMmenuReady === '1') {
+        return;
+      }
 
-    const mobileMenu = new MobileMenu(
-      menu,
-      "(min-width: 0px)",
-      "( slidingSubmenus: false)"
-    );
+      menu.dataset.velouraMmenuReady = '1';
 
-    salla.lang.onLoaded(() => {
-      mobileMenu.navigation({
-        title: salla.lang.get('blocks.header.main_menu')
+      const mobileMenu = new MobileMenu(
+        menu,
+        "(min-width: 0px)",
+        "( slidingSubmenus: false)"
+      );
+
+      salla.lang.onLoaded(() => {
+        mobileMenu.navigation({
+          title: salla.lang.get('blocks.header.main_menu')
+        });
+      });
+
+      const drawer = mobileMenu.offcanvas({
+        position: salla.config.get('theme.is_rtl') ? "right" : "left"
+      });
+
+      window.__velouraNativeMobileMenuDrawer = drawer;
+
+      if (window.__velouraNativeMobileMenuEventsBound) {
+        return;
+      }
+
+      window.__velouraNativeMobileMenuEventsBound = true;
+
+      this.onClick("a[href='#mobile-menu']", event => {
+        event.preventDefault();
+
+        const activeDrawer = window.__velouraNativeMobileMenuDrawer || drawer;
+
+        if (!activeDrawer) {
+          return;
+        }
+
+        if (document.body.classList.contains('menu-opened')) {
+          document.body.classList.remove('menu-opened');
+          activeDrawer.close();
+          return;
+        }
+
+        document.body.classList.add('menu-opened');
+        activeDrawer.open();
+      });
+
+      this.onClick(".close-mobile-menu", event => {
+        event.preventDefault();
+
+        const activeDrawer = window.__velouraNativeMobileMenuDrawer || drawer;
+
+        document.body.classList.remove('menu-opened');
+
+        if (activeDrawer) {
+          activeDrawer.close();
+        }
+      });
+
+      this.onClick(".mm-ocd__backdrop", event => {
+        const activeDrawer = window.__velouraNativeMobileMenuDrawer || drawer;
+
+        document.body.classList.remove('menu-opened');
+
+        if (activeDrawer) {
+          activeDrawer.close();
+        }
       });
     });
 
-    const drawer = mobileMenu.offcanvas({
-      position: salla.config.get('theme.is_rtl') ? "right" : "left"
-    });
-
-    window.__velouraNativeMobileMenuDrawer = drawer;
-
-    this.onClick("a[href='#mobile-menu']", event => {
-      event.preventDefault();
-
-      document.body.classList.add('menu-opened');
-      drawer.open();
-    });
-
-    this.onClick(".close-mobile-menu", event => {
-      event.preventDefault();
-
-      document.body.classList.remove('menu-opened');
-      drawer.close();
-    });
-
-    this.onClick(".mm-ocd__backdrop", event => {
-      document.body.classList.remove('menu-opened');
-      drawer.close();
-    });
-  });
-}
+    return window.__velouraNativeMobileMenuInitPromise;
+  }
 
   initiateStickyMenu() {
     let header = this.element('#mainnav'),
@@ -488,38 +519,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-
-
 /* ================================
-   Veloura Desktop Drawer + Cart Total
+   Veloura Cart Total Hide Only
+   تم حذف سكربت درج اللابتوب القديم لأنه يتعارض مع قائمة الجوال الأصلية
 ================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const openButtons = document.querySelectorAll('.veloura-menu-trigger-desktop');
-  const closeButtons = document.querySelectorAll('.veloura-desktop-menu-close, .veloura-desktop-menu-overlay');
-
-  openButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      document.documentElement.classList.add('veloura-desktop-drawer-open');
-    });
-  });
-
-  closeButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      document.documentElement.classList.remove('veloura-desktop-drawer-open');
-    });
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      document.documentElement.classList.remove('veloura-desktop-drawer-open');
-    }
-  });
-
   function velouraHideCartTotal() {
     document.querySelectorAll('.veloura-cart-hide-total').forEach((cart) => {
       cart.querySelectorAll('.s-cart-summary-total, .s-cart-summary-content').forEach((item) => {
