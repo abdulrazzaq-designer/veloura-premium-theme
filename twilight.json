@@ -1131,7 +1131,7 @@
   "id": "veloura_top_border_style_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "الحواف السفلية للقسم العلوي33",
+  "label": "الحواف السفلية للقسم العلوي",
   "icon": "sicon-list",
   "source": "Manual",
   "required": true,

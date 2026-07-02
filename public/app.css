@@ -27121,6 +27121,97 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   right: 14px !important;
   left: auto !important;
 }
+/* ================================
+   Veloura Top Back Arrow Hard Fix
+   إصلاح الأسهم الكبيرة فوق داخل mmenu
+================================ */
+/*
+  المشكلة كانت من pseudo-elements العلوية الخاصة بـ mmenu:
+  nav:after و ul:before / ul:after
+  هذه القواعد لا تلمس أسهم التصنيفات داخل القائمة، فقط منطقة الهيدر العلوية.
+*/
+/* احذف أي سهم كبير مرسوم على ul فوق */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul:before,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar > ul:after,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--open:before,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--open:after,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--parent:before,
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar ul.mm-spn--parent:after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  transform: none !important;
+  pointer-events: none !important;
+}
+/* امسح شكل سهم الرجوع الافتراضي تماماً ثم ارسمه صغيراً بنفس pseudo الأصلي nav:after */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 28px !important;
+  right: 24px !important;
+  left: auto !important;
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  max-width: 10px !important;
+  max-height: 10px !important;
+  z-index: 32 !important;
+  opacity: 0.58 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-top: 2px solid rgba(17, 24, 39, 0.48) !important;
+  border-right: 2px solid rgba(17, 24, 39, 0.48) !important;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  transform-origin: center !important;
+  transform: translateY(-50%) rotate(45deg) !important;
+  pointer-events: auto !important;
+}
+/* الصفحة الرئيسية لا تحتاج سهم رجوع */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar.mm-spn--main:after {
+  content: none !important;
+  display: none !important;
+}
+/* LTR */
+[dir=ltr] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after,
+html[dir=ltr] .mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  left: 24px !important;
+  right: auto !important;
+  transform: translateY(-50%) rotate(-135deg) !important;
+}
+/* تأكيد أن زر X يبقى فوق السهم وبحجم صحيح */
+.mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
+.mm-ocd #mobile-menu.mm-spn .btn--close,
+.mm-ocd #mobile-menu.mm-spn .btn--close-sm {
+  top: 10px !important;
+  left: 14px !important;
+  right: auto !important;
+  z-index: 40 !important;
+  color: #ff3030 !important;
+  -webkit-text-fill-color: #ff3030 !important;
+}
+[dir=ltr] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
+[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close,
+[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm,
+html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .close-mobile-menu,
+html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close,
+html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
+  right: 14px !important;
+  left: auto !important;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
