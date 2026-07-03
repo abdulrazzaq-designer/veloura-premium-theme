@@ -1578,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__grid{
         display:grid;
-        grid-template-columns:minmax(320px,40%) minmax(0,60%);
+        grid-template-columns:minmax(300px,38%) minmax(0,62%);
         min-height:620px;
         max-height:min(720px,94vh);
       }
@@ -1604,10 +1604,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__content{
         order:2;
-        padding:42px 28px 34px;
+        padding:40px 28px 32px;
         display:flex;
         flex-direction:column;
-        gap:13px;
+        gap:12px;
         min-width:0;
         overflow:hidden;
       }
@@ -1704,19 +1704,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__read-more{
         align-self:flex-start;
+        height:42px;
+        border-radius:999px;
+        border:1px solid rgba(148,163,184,.42);
+        padding:0 22px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
         color:inherit;
         font-weight:900;
         text-decoration:none;
         font-size:13px;
-        opacity:.9;
+        opacity:.96;
+        background:rgba(255,255,255,.04);
+        margin-top:2px;
       }
 
       .veloura-qv-full__bottom{
         margin-top:auto;
         display:flex;
         flex-direction:column;
-        gap:14px;
-        padding-top:16px;
+        gap:13px;
+        padding-top:12px;
       }
 
       .veloura-qv-full__row{
@@ -1785,18 +1794,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__add.is-busy{opacity:.68;pointer-events:none}
 
       .veloura-qv-full__link{
-        height:44px;
-        border-radius:999px;
-        border:1px solid rgba(148,163,184,.42);
-        padding:0 22px;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        text-decoration:none;
-        color:inherit;
-        font-weight:900;
-        background:rgba(255,255,255,.04);
-        align-self:flex-start;
+        display:none!important;
       }
 
       .veloura-qv-full__hidden{display:none!important}
@@ -1814,26 +1812,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         .veloura-qv-full__media{
           order:1;
-          min-height:280px;
+          min-height:260px;
+          max-height:360px;
         }
         .veloura-qv-full__image{
-          min-height:280px;
+          min-height:260px;
           max-height:360px;
+          object-fit:contain;
         }
         .veloura-qv-full__content{
           order:2;
-          padding:22px 18px;
+          padding:20px 18px 22px;
           overflow:visible;
+          gap:12px;
+        }
+        .veloura-qv-full__top{
+          align-items:center;
+          margin-bottom:4px;
         }
         .veloura-qv-full__title{font-size:22px}
+        .veloura-qv-full__circle{
+          width:44px;
+          height:44px;
+          font-size:17px;
+        }
         .veloura-qv-full__price,
         .veloura-qv-full__mini-current{font-size:22px}
+        .veloura-qv-full__desc{
+          max-height:104px;
+          line-height:1.8;
+        }
+        .veloura-qv-full__read-more{
+          align-self:flex-start;
+          height:40px;
+          padding:0 18px;
+        }
+        .veloura-qv-full__bottom{
+          gap:12px;
+          padding-top:8px;
+        }
         .veloura-qv-full__row{
-          grid-template-columns:1fr;
+          display:flex;
+          flex-direction:column;
           gap:8px;
+          align-items:stretch;
         }
         .veloura-qv-full__label{
-          justify-self:start;
+          order:-1;
+          align-self:flex-end;
+          justify-self:auto;
+          margin-bottom:0;
+        }
+        .veloura-qv-full__mini-price{
+          justify-content:flex-start;
         }
         .veloura-qv-full__qty{width:100%;grid-template-columns:56px 1fr 56px}
       }
@@ -1882,7 +1913,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="veloura-qv-full__divider"></div>
             <p class="veloura-qv-full__desc"></p>
-            <a class="veloura-qv-full__read-more" href="#">قراءة المزيد ↗</a>
+            <a class="veloura-qv-full__read-more" href="#">عرض المزيد</a>
             <div class="veloura-qv-full__bottom">
               <div class="veloura-qv-full__row veloura-qv-full__row--qty">
                 <div class="veloura-qv-full__qty">
@@ -1903,7 +1934,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i class="sicon-shopping-bag"></i>
                 <span>إضافة للسلة</span>
               </button>
-              <a class="veloura-qv-full__link" href="#">عرض المزيد</a>
               <div class="veloura-qv-full__divider veloura-qv-full__divider--bottom"></div>
             </div>
           </div>
@@ -1954,7 +1984,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var regular = modal.querySelector('.veloura-qv-full__regular');
     var desc = modal.querySelector('.veloura-qv-full__desc');
     var readMore = modal.querySelector('.veloura-qv-full__read-more');
-    var link = modal.querySelector('.veloura-qv-full__link');
     var actions = modal.querySelector('.veloura-qv-full__actions');
     var bottom = modal.querySelector('.veloura-qv-full__bottom');
     var qtyWrap = modal.querySelector('.veloura-qv-full__row--qty');
@@ -1976,19 +2005,16 @@ document.addEventListener('DOMContentLoaded', () => {
     desc.textContent = data.description || '';
     image.src = data.image || '';
     image.alt = data.name || '';
-    link.href = data.url || '#';
-    link.textContent = 'عرض المزيد';
     readMore.href = data.url || '#';
 
     toggle(price.parentElement, setting('showPrice', true) && !!(data.price || data.regularPrice));
     toggle(regular, setting('showDiscount', true) && !!regular.textContent);
     toggle(desc, setting('showDescription', true) && !!data.description);
     toggle(readMore, setting('showProductLink', true));
-    toggle(link, setting('showProductLink', true));
     toggle(actions.querySelector('[data-veloura-qv-wishlist]'), setting('showWishlist', true));
     toggle(actions.querySelector('[data-veloura-qv-share]'), setting('showShare', true));
     toggle(actions, setting('showWishlist', true) || setting('showShare', true));
-    toggle(bottom, setting('showAddToCart', true) || setting('showProductLink', true) || setting('showPrice', true));
+    toggle(bottom, setting('showAddToCart', true) || setting('showPrice', true));
     toggle(qtyWrap, setting('showAddToCart', true) && setting('showQuantity', true));
     toggle(miniPrice, setting('showPrice', true) && !!(data.price || data.regularPrice));
     toggle(add, setting('showAddToCart', true));
