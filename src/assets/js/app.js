@@ -2477,3 +2477,273 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 /* Veloura Quick View Safe CSS Patch V9 END */
 
+
+/* ================================
+   Veloura Quick View Mobile Compact Patch V10
+   تصغير الجوال + ضبط الكمية والسعر + هوامش يمين ويسار
+================================ */
+(function () {
+  var STYLE_ID = 'veloura-qv-mobile-compact-v10';
+
+  function injectVelouraQuickViewMobileCompactStyle() {
+    if (document.getElementById(STYLE_ID)) return;
+
+    var style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = `
+      /* Desktop small improvements */
+      .veloura-qv-full__dialog {
+        width: min(1080px, calc(100vw - 64px)) !important;
+      }
+
+      .veloura-qv-full__grid {
+        min-height: 560px !important;
+        max-height: min(680px, 90vh) !important;
+      }
+
+      .veloura-qv-full__media {
+        min-height: 560px !important;
+      }
+
+      .veloura-qv-full__image {
+        min-height: 560px !important;
+      }
+
+      .veloura-qv-full__content {
+        padding-top: 34px !important;
+        padding-bottom: 26px !important;
+      }
+
+      .veloura-qv-full__desc {
+        max-height: 96px !important;
+      }
+
+      /* Mobile compact modal */
+      @media (max-width: 767px) {
+        .veloura-qv-full {
+          padding: 18px 22px !important;
+          align-items: flex-start !important;
+          justify-content: center !important;
+          overflow-y: auto !important;
+        }
+
+        .veloura-qv-full__dialog {
+          width: 100% !important;
+          max-width: 430px !important;
+          max-height: 88vh !important;
+          overflow: auto !important;
+          border-radius: 22px !important;
+          margin: 0 auto !important;
+        }
+
+        .veloura-qv-full__grid {
+          grid-template-columns: 1fr !important;
+          grid-template-areas:
+            "media"
+            "content" !important;
+          min-height: 0 !important;
+          max-height: none !important;
+        }
+
+        .veloura-qv-full__media {
+          grid-area: media !important;
+          min-height: 205px !important;
+          height: 245px !important;
+          max-height: 245px !important;
+          border-radius: 22px 22px 0 0 !important;
+        }
+
+        .veloura-qv-full__image {
+          min-height: 0 !important;
+          height: 100% !important;
+          max-height: none !important;
+          width: 100% !important;
+          object-fit: contain !important;
+          object-position: center !important;
+        }
+
+        .veloura-qv-full__close {
+          top: 14px !important;
+          inset-inline-start: 14px !important;
+          width: 44px !important;
+          height: 44px !important;
+          font-size: 22px !important;
+        }
+
+        .veloura-qv-full__content {
+          grid-area: content !important;
+          padding: 16px 18px 18px !important;
+          gap: 9px !important;
+          overflow: visible !important;
+        }
+
+        .veloura-qv-full__top {
+          min-height: 46px !important;
+          margin-bottom: 2px !important;
+        }
+
+        .veloura-qv-full__top > div:first-child {
+          padding-left: 100px !important;
+        }
+
+        .veloura-qv-full__actions {
+          left: 0 !important;
+          right: auto !important;
+          top: 0 !important;
+          gap: 8px !important;
+        }
+
+        .veloura-qv-full__circle {
+          width: 42px !important;
+          height: 42px !important;
+          font-size: 16px !important;
+        }
+
+        .veloura-qv-full__title {
+          font-size: 24px !important;
+          line-height: 1.25 !important;
+        }
+
+        .veloura-qv-full__price-row {
+          min-height: 28px !important;
+          margin-top: 0 !important;
+        }
+
+        .veloura-qv-full__price,
+        .veloura-qv-full__mini-current {
+          font-size: 22px !important;
+          line-height: 1.2 !important;
+        }
+
+        .veloura-qv-full__regular,
+        .veloura-qv-full__mini-regular {
+          font-size: 14px !important;
+        }
+
+        .veloura-qv-full__divider {
+          margin: 1px 0 !important;
+        }
+
+        .veloura-qv-full__desc {
+          font-size: 14px !important;
+          line-height: 1.65 !important;
+          max-height: 72px !important;
+          overflow: auto !important;
+        }
+
+        .veloura-qv-full__read-more {
+          height: 36px !important;
+          padding: 0 16px !important;
+          font-size: 13px !important;
+          margin-top: 0 !important;
+        }
+
+        .veloura-qv-full__bottom {
+          margin-top: 6px !important;
+          padding-top: 4px !important;
+          gap: 10px !important;
+        }
+
+        /* Mobile: label on right, control/value on left */
+        .veloura-qv-full__row {
+          display: grid !important;
+          grid-template-columns: minmax(150px, max-content) 1fr !important;
+          align-items: center !important;
+          gap: 12px !important;
+          direction: ltr !important;
+        }
+
+        .veloura-qv-full__label {
+          order: initial !important;
+          align-self: auto !important;
+          justify-self: end !important;
+          text-align: right !important;
+          font-size: 14px !important;
+          margin: 0 !important;
+          direction: rtl !important;
+        }
+
+        .veloura-qv-full__qty {
+          width: 172px !important;
+          height: 44px !important;
+          grid-template-columns: 46px 80px 46px !important;
+          justify-self: start !important;
+        }
+
+        .veloura-qv-full__qty button {
+          font-size: 22px !important;
+        }
+
+        .veloura-qv-full__qty input {
+          font-size: 17px !important;
+        }
+
+        .veloura-qv-full__mini-price {
+          justify-content: flex-start !important;
+          justify-self: start !important;
+          min-height: 26px !important;
+        }
+
+        .veloura-qv-full__add {
+          height: 48px !important;
+          font-size: 14px !important;
+          border-radius: 10px !important;
+          margin-top: 0 !important;
+        }
+
+        .veloura-qv-full__divider--bottom {
+          margin-top: 8px !important;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .veloura-qv-full {
+          padding-left: 18px !important;
+          padding-right: 18px !important;
+        }
+
+        .veloura-qv-full__media {
+          height: 225px !important;
+          max-height: 225px !important;
+          min-height: 200px !important;
+        }
+
+        .veloura-qv-full__row {
+          grid-template-columns: minmax(128px, max-content) 1fr !important;
+          gap: 10px !important;
+        }
+
+        .veloura-qv-full__qty {
+          width: 156px !important;
+          grid-template-columns: 42px 72px 42px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function runV10Patch() {
+    injectVelouraQuickViewMobileCompactStyle();
+
+    document.querySelectorAll('.veloura-qv-full__link').forEach(function (el) {
+      el.remove();
+    });
+
+    document.querySelectorAll('.veloura-qv-full__read-more').forEach(function (el) {
+      el.textContent = 'عرض المزيد';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runV10Patch);
+  } else {
+    runV10Patch();
+  }
+
+  document.addEventListener('click', function () {
+    setTimeout(runV10Patch, 80);
+    setTimeout(runV10Patch, 300);
+  }, true);
+})();
+/* Veloura Quick View Mobile Compact Patch V10 END */
+
