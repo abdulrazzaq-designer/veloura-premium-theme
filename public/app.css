@@ -27175,7 +27175,6 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
    Veloura Side Categories Final Override
    لازم يكون آخر شيء في _header.scss
 ================================ */
-/* خلفية القائمة من الإعدادات */
 .mm-ocd .mm-ocd__content,
 .mm-ocd.mm-ocd--right .mm-ocd__content,
 .mm-ocd.mm-ocd--left .mm-ocd__content,
@@ -27187,7 +27186,6 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   color: #111827 !important;
   color: var(--veloura-side-cats-text, #111827) !important;
 }
-/* حواف القائمة نفسها */
 .mm-ocd.mm-ocd--right .mm-ocd__content {
   border-radius: 18px 0 0 18px !important;
   border-radius: var(--veloura-side-cats-menu-radius, 18px) 0 0 var(--veloura-side-cats-menu-radius, 18px) !important;
@@ -27198,7 +27196,7 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   border-radius: 0 var(--veloura-side-cats-menu-radius, 18px) var(--veloura-side-cats-menu-radius, 18px) 0 !important;
   overflow: hidden !important;
 }
-/* لا تعطي التصنيفات خلفية خاصة */
+/* لا يوجد خلفية خاصة للتصنيفات */
 .mm-ocd #mobile-menu.mm-spn li,
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span,
@@ -27207,7 +27205,15 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   background: transparent !important;
   box-shadow: none !important;
 }
-/* النص من الإعدادات */
+/* ارتفاع التصنيفات من السلايدر */
+.mm-ocd #mobile-menu.mm-spn li,
+.mm-ocd #mobile-menu.mm-spn li > a,
+.mm-ocd #mobile-menu.mm-spn li > span {
+  min-height: 56px !important;
+  min-height: var(--veloura-side-cats-item-h, 56px) !important;
+  height: 56px !important;
+  height: var(--veloura-side-cats-item-h, 56px) !important;
+}
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span {
   color: #111827 !important;
@@ -27216,18 +27222,15 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   font-size: var(--veloura-side-cats-title-font-size, 15px) !important;
   gap: 10px !important;
 }
-/* عنوان القائمة */
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
-  font-size: 14px !important;
-  font-size: var(--veloura-side-cats-title-font-size, 14px) !important;
-}
 /* المسافة بين العناصر */
 .mm-ocd #mobile-menu.mm-spn .main-menu > li:not(:last-child),
 .mm-ocd #mobile-menu.mm-spn ul.mm-spn--open > li:not(:last-child) {
   margin-bottom: 0px !important;
   margin-bottom: var(--veloura-side-cats-gap, 0px) !important;
 }
-/* صورة التصنيف من الإعدادات */
+/* صور التصنيفات: الصور المرفوعة + صور سلة الأصلية */
+.mm-ocd #mobile-menu.mm-spn li > a > img,
+.mm-ocd #mobile-menu.mm-spn li > span > img,
 .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
 .mm-ocd #mobile-menu.mm-spn .veloura-side-menu-img {
   width: 60px !important;
@@ -27253,37 +27256,51 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   box-shadow: none !important;
   flex-shrink: 0 !important;
 }
-/* في RTL الصورة تكون يمين العنوان */
+/* خيار المقاس التلقائي */
+html.veloura-side-cats-img-auto .mm-ocd #mobile-menu.mm-spn li > a > img,
+html.veloura-side-cats-img-auto .mm-ocd #mobile-menu.mm-spn li > span > img,
+html.veloura-side-cats-img-auto .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
+html.veloura-side-cats-img-auto .mm-ocd #mobile-menu.mm-spn .veloura-side-menu-img {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 60px !important;
+  max-width: var(--veloura-side-cats-img-w, 60px) !important;
+  max-height: 60px !important;
+  max-height: var(--veloura-side-cats-img-h, 60px) !important;
+}
+/* RTL: الصورة يمين العنوان */
+[dir=rtl] .mm-ocd #mobile-menu.mm-spn li > a > img,
+[dir=rtl] .mm-ocd #mobile-menu.mm-spn li > span > img,
 [dir=rtl] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
+html[dir=rtl] .mm-ocd #mobile-menu.mm-spn li > a > img,
+html[dir=rtl] .mm-ocd #mobile-menu.mm-spn li > span > img,
 html[dir=rtl] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img {
   order: -1 !important;
   margin-left: 0 !important;
   margin-right: 10px !important;
 }
-/* في LTR الصورة تكون يسار العنوان */
+/* LTR: الصورة يسار العنوان */
+[dir=ltr] .mm-ocd #mobile-menu.mm-spn li > a > img,
+[dir=ltr] .mm-ocd #mobile-menu.mm-spn li > span > img,
 [dir=ltr] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
+html[dir=ltr] .mm-ocd #mobile-menu.mm-spn li > a > img,
+html[dir=ltr] .mm-ocd #mobile-menu.mm-spn li > span > img,
 html[dir=ltr] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img {
   order: -1 !important;
   margin-left: 0 !important;
   margin-right: 10px !important;
 }
-/* ارتفاع الصف يتأقلم مع الصورة فقط بدون خلفية خاصة */
-.mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img),
-.mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img) > a,
-.mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img) > span {
+/* ارتفاع الصف يتأقلم مع الصورة لو كانت أكبر */
+.mm-ocd #mobile-menu.mm-spn li:has(img),
+.mm-ocd #mobile-menu.mm-spn li:has(img) > a,
+.mm-ocd #mobile-menu.mm-spn li:has(img) > span {
   min-height: max(56px, 60px + 16px) !important;
-  min-height: max(56px, var(--veloura-side-cats-img-h, 60px) + 16px) !important;
+  min-height: max(var(--veloura-side-cats-item-h, 56px), var(--veloura-side-cats-img-h, 60px) + 16px) !important;
   height: max(56px, 60px + 16px) !important;
-  height: max(56px, var(--veloura-side-cats-img-h, 60px) + 16px) !important;
+  height: max(var(--veloura-side-cats-item-h, 56px), var(--veloura-side-cats-img-h, 60px) + 16px) !important;
 }
-/* لو الصورة كبيرة، خليه سطر مرتب وليس بلوك فوق النص */
-.mm-ocd #mobile-menu.mm-spn li > a:has(.veloura-side-menu-img),
-.mm-ocd #mobile-menu.mm-spn li > span:has(.veloura-side-menu-img) {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-}
-/* لا يوجد مربع أبيض خاص حول الصور من الكود */
 .mm-ocd #mobile-menu.mm-spn .veloura-side-custom-link,
 .mm-ocd #mobile-menu.mm-spn .veloura-side-custom-link > a {
   background: transparent !important;

@@ -2366,33 +2366,18 @@
   ]
 },
 {
-  "id": "veloura_side_categories_parent_click_action_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "ما يحدث عند الضغط على تصنيف يحتوي على تصنيفات فرعية",
-  "description": "إذا كان عندك صور للتصنيفات الفرعية فقد يكون خيار فتح القائمة الفرعية أنسب لك",
-  "icon": "sicon-list",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "فتح قائمة التصنيفات الفرعية",
-      "value": "open_subcategories",
-      "key": "side-categories-parent-action-open-subcategories-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "الذهاب للتصنيف (فتح الرابط)",
-      "value": "open_link",
-      "key": "side-categories-parent-action-open-link-2026"
-    },
-    {
-      "label": "فتح قائمة التصنيفات الفرعية",
-      "value": "open_subcategories",
-      "key": "side-categories-parent-action-open-subcategories-2026"
-    }
-  ],
+  "id": "veloura_side_cat_item_h_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "ارتفاع عنصر التصنيف في القائمة الجانبية",
+  "description": "تحكم بارتفاع كل تصنيف داخل القائمة الجانبية",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "value": "56",
+  "required": false,
+  "step": "1",
+  "minimum": "1",
+  "maximum": "120",
   "conditions": [
     {
       "id": "veloura_side_categories_enabled_2026",
@@ -2712,10 +2697,46 @@
   ]
 },
 {
+  "id": "veloura_side_categories_image_size_mode_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "مقاس صور التصنيفات في القائمة الجانبية",
+  "description": "اختر هل يتم التحكم بالمقاس يدويًا أو ترك الصورة بمقاس تلقائي",
+  "icon": "sicon-image",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "تحكم يدوي بالعرض والارتفاع",
+      "value": "manual",
+      "key": "side-categories-image-size-manual-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "تحكم يدوي بالعرض والارتفاع",
+      "value": "manual",
+      "key": "side-categories-image-size-manual-2026"
+    },
+    {
+      "label": "مقاس تلقائي للصورة222",
+      "value": "auto",
+      "key": "side-categories-image-size-auto-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_side_cat_img_w_2026",
   "type": "number",
   "format": "slider",
-  "label": "عرض صورة التصنيف في القائمة الجانبية5555",
+  "label": "عرض صورة التصنيف في القائمة الجانبية",
   "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-resize",

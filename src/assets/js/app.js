@@ -551,8 +551,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ================================
    Veloura Side Categories Settings Hook
-   ضع هذا في آخر:
-   src/assets/js/app.js
 ================================ */
 
 (function () {
@@ -572,6 +570,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return menu && menu.querySelector('ul.main-menu');
   }
 
+  function allowSideImages(settings) {
+    var value = String(settings.imageDisplayLocation || 'side_and_category');
+
+    if (
+      value === 'category_pages_only' ||
+      value === 'pages_only' ||
+      value === 'linked_categories_only' ||
+      value === 'category_only'
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function syncImageMode(settings) {
+    var mode = String(settings.imageSizeMode || 'manual');
+
+    document.documentElement.classList.toggle(
+      'veloura-side-cats-img-auto',
+      mode === 'auto'
+    );
+  }
+
   function createImage(src) {
     if (!src) return null;
 
@@ -584,24 +606,38 @@ document.addEventListener('DOMContentLoaded', () => {
     return img;
   }
 
+  function markNativeCategoryImages(menu) {
+    menu.querySelectorAll('li > a > img, li > span > img').forEach(function (img) {
+      img.classList.add('veloura-side-menu-img', 'veloura-side-menu-img-native');
+    });
+  }
+
   function ensureImageOnLink(link, src) {
-  if (!link || !src || link.querySelector('.veloura-side-menu-img')) return;
+    if (!link || !src || link.querySelector('.veloura-side-menu-img')) return;
 
-  var img = createImage(src);
-  if (!img) return;
+    var img = createImage(src);
+    if (!img) return;
 
-  link.insertBefore(img, link.firstChild);
-}
+    link.insertBefore(img, link.firstChild);
+  }
 
   function enhanceSpecialImages(menu, settings) {
+    if (!allowSideImages(settings)) return;
+
     menu.querySelectorAll('li > a, li > span').forEach(function (link) {
       var text = normalizeText(link.textContent);
 
-      if (settings.discountImage && /تخفيض|خصم|عروض|offer|discount/i.test(text)) {
+      if (
+        settings.discountImage &&
+        /تخفيض|تخفيضات|خصم|خصومات|عروض|العروض|عرض|offer|offers|discount|sale/i.test(text)
+      ) {
         ensureImageOnLink(link, settings.discountImage);
       }
 
-      if (settings.blogImage && /مدونة|blog/i.test(text)) {
+      if (
+        settings.blogImage &&
+        /مدونة|المدونة|blog/i.test(text)
+      ) {
         ensureImageOnLink(link, settings.blogImage);
       }
     });
@@ -611,6 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.querySelectorAll('li > a, li > span').forEach(function (link) {
       var text = normalizeText(link.textContent);
       var li = link.closest('li');
+
       if (!li) return;
 
       if (settings.hideImportantLinks && /روابط تهمك|تهمك|important/i.test(text)) {
@@ -625,7 +662,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function normalizeCollection(collection) {
     if (!collection) return [];
-    if (Array.isArray(collection)) return collection;
+
+    if (Array.isArray(collection)) {
+      return collection;
+    }
 
     if (typeof collection === 'object') {
       return Object.keys(collection).map(function (key) {
@@ -665,12 +705,12 @@ document.addEventListener('DOMContentLoaded', () => {
         a.rel = 'noopener noreferrer';
       }
 
-      if (item.image) {
-  var img = createImage(item.image);
-  if (img) {
-    a.insertBefore(img, a.firstChild);
-  }
-}
+      if (item.image && allowSideImages(settings)) {
+        var img = createImage(item.image);
+        if (img) {
+          a.insertBefore(img, a.firstChild);
+        }
+      }
 
       li.appendChild(a);
       list.appendChild(li);
@@ -679,44 +719,18 @@ document.addEventListener('DOMContentLoaded', () => {
     list.dataset.velouraCustomLinksReady = '1';
   }
 
-  function bindParentClickAction(menu) {
-    if (!menu || menu.dataset.velouraParentActionBound === '1') return;
-
-    menu.dataset.velouraParentActionBound = '1';
-
-    menu.addEventListener('click', function (event) {
-      var settings = getSettings();
-      var action = String(settings.parentAction || 'open_subcategories');
-      var link = event.target.closest('li > a');
-
-      if (!link || !menu.contains(link)) return;
-
-      var li = link.closest('li');
-      if (!li || !li.querySelector(':scope > ul')) return;
-
-      if (action !== 'open_link') return;
-
-      var href = link.getAttribute('href');
-      if (!href || href === '#') return;
-
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-
-      window.location.href = href;
-    }, true);
-  }
-
   function applySideCategoriesSettings() {
     var menu = findMobileMenu();
     var settings = getSettings();
 
+    syncImageMode(settings);
+
     if (!menu) return;
 
+    markNativeCategoryImages(menu);
     enhanceSpecialImages(menu, settings);
     hideMatchingLinks(menu, settings);
     appendCustomLinks(menu, settings);
-    bindParentClickAction(menu);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
