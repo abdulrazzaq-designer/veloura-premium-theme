@@ -550,15 +550,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ================================
-   Veloura Side Categories Settings Hook V4
-   يقرأ الصور المرفوعة المرتبطة بالتصنيفات ويستبدل صور سلة
+   Veloura Side Categories Settings Hook V5
+   يمنع صورة التخفيضات من أخذ مكان صورة الرابط المخصصة
 ================================ */
 
 (function () {
   function normalizeText(value) {
-    return String(value || '')
-      .replace(/\s+/g, ' ')
-      .trim();
+    return String(value || '').replace(/\s+/g, ' ').trim();
   }
 
   function normalizeKey(value) {
@@ -584,10 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function normalizeCollection(collection) {
     if (!collection) return [];
-
-    if (Array.isArray(collection)) {
-      return collection;
-    }
+    if (Array.isArray(collection)) return collection;
 
     if (typeof collection === 'object') {
       if (Array.isArray(collection.value)) return collection.value;
@@ -606,9 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function extractImageUrl(value) {
     if (!value) return '';
 
-    if (typeof value === 'string') {
-      return value;
-    }
+    if (typeof value === 'string') return value;
 
     if (Array.isArray(value)) {
       for (var i = 0; i < value.length; i++) {
@@ -632,6 +625,77 @@ document.addEventListener('DOMContentLoaded', () => {
     return '';
   }
 
+  function allowSideImages(settings) {
+    var value = String(
+      settings.categoryImagesLocation ||
+      settings.imageDisplayLocation ||
+      'sidebar_and_page'
+    );
+
+    return (
+      value === 'sidebar_and_page' ||
+      value === 'sidebar_only' ||
+      value === 'sidebar_and_related' ||
+      value === 'side_and_category' ||
+      value === 'side'
+    );
+  }
+
+  function syncImageMode(settings) {
+    document.documentElement.classList.toggle(
+      'veloura-side-cats-img-auto-width',
+      settings.imageAutoWidth === true || settings.imageAutoWidth === 'true'
+    );
+  }
+
+  function createImage(src, extraClass) {
+    if (!src) return null;
+
+    var img = document.createElement('img');
+    img.className = 'veloura-side-menu-img ' + (extraClass || '');
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+
+    return img;
+  }
+
+  function removeExistingImages(link) {
+    link.querySelectorAll('img').forEach(function (img) {
+      img.remove();
+    });
+  }
+
+  function setImageOnLink(link, src, type) {
+    if (!link || !src) return;
+
+    removeExistingImages(link);
+
+    var img = createImage(src, type === 'custom-link' ? 'veloura-side-menu-img-custom-link' : 'veloura-side-menu-img-custom');
+
+    if (!img) return;
+
+    link.insertBefore(img, link.firstChild);
+
+    if (type === 'custom-link') {
+      link.dataset.velouraOwnImage = '1';
+    }
+
+    if (type === 'mapped') {
+      link.dataset.velouraMappedImage = '1';
+    }
+
+    if (type === 'special') {
+      link.dataset.velouraSpecialImage = '1';
+    }
+  }
+
+  function markNativeCategoryImages(menu) {
+    menu.querySelectorAll('li > a > img, li > span > img').forEach(function (img) {
+      img.classList.add('veloura-side-menu-img', 'veloura-side-menu-img-native');
+    });
+  }
+
   function getItemImage(item) {
     if (!item || typeof item !== 'object') return '';
 
@@ -650,15 +714,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function add(v) {
       var key = normalizeKey(v);
-
       if (key && tokens.indexOf(key) === -1) {
         tokens.push(key);
       }
     }
 
-    if (value === null || value === undefined) {
-      return tokens;
-    }
+    if (value === null || value === undefined) return tokens;
 
     if (typeof value === 'string' || typeof value === 'number') {
       add(value);
@@ -669,7 +730,6 @@ document.addEventListener('DOMContentLoaded', () => {
       value.forEach(function (item) {
         collectPrimitiveTokens(item, tokens);
       });
-
       return tokens;
     }
 
@@ -717,7 +777,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function add(value) {
       var key = normalizeKey(value);
-
       if (key && tokens.indexOf(key) === -1) {
         tokens.push(key);
       }
@@ -746,7 +805,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return categoryTokens.some(function (categoryToken) {
       return linkTokens.some(function (linkToken) {
         if (!categoryToken || !linkToken) return false;
-
         if (linkToken === categoryToken) return true;
 
         if (linkToken.length >= 2 && categoryToken.length >= 2) {
@@ -761,73 +819,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function allowSideImages(settings) {
-    var value = String(
-      settings.categoryImagesLocation ||
-      settings.imageDisplayLocation ||
-      'sidebar_and_page'
-    );
-
-    return (
-      value === 'sidebar_and_page' ||
-      value === 'sidebar_only' ||
-      value === 'sidebar_and_related' ||
-      value === 'side_and_category' ||
-      value === 'side'
-    );
-  }
-
-  function syncImageMode(settings) {
-    var mode = String(settings.imageSizeMode || 'manual');
-
-    document.documentElement.classList.toggle(
-      'veloura-side-cats-img-auto',
-      mode === 'auto'
-    );
-  }
-
-  function createImage(src) {
-    if (!src) return null;
-
-    var img = document.createElement('img');
-    img.className = 'veloura-side-menu-img veloura-side-menu-img-custom';
-    img.src = src;
-    img.alt = '';
-    img.loading = 'lazy';
-
-    return img;
-  }
-
-  function removeExistingMenuImages(link) {
-    link.querySelectorAll('img').forEach(function (img) {
-      img.remove();
-    });
-  }
-
-  function setCustomImageOnLink(link, src) {
-    if (!link || !src) return;
-
-    removeExistingMenuImages(link);
-
-    var img = createImage(src);
-
-    if (!img) return;
-
-    link.insertBefore(img, link.firstChild);
-    link.dataset.velouraCustomImageApplied = '1';
-  }
-
-  function markNativeCategoryImages(menu) {
-    menu.querySelectorAll('li > a > img, li > span > img').forEach(function (img) {
-      img.classList.add('veloura-side-menu-img', 'veloura-side-menu-img-native');
-    });
-  }
-
   function applyMappedCategoryImages(menu, settings) {
     var map = normalizeCollection(settings.categoryImagesMap);
 
-    if (!map.length) return;
-    if (!allowSideImages(settings)) return;
+    if (!map.length || !allowSideImages(settings)) return;
 
     var links = menu.querySelectorAll('li > a, li > span');
 
@@ -839,7 +834,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       links.forEach(function (link) {
         if (isSameCategory(link, categoryTokens)) {
-          setCustomImageOnLink(link, image);
+          setImageOnLink(link, image, 'mapped');
         }
       });
     });
@@ -849,9 +844,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!allowSideImages(settings)) return;
 
     menu.querySelectorAll('li > a, li > span').forEach(function (link) {
-      if (link.dataset.velouraCustomImageApplied === '1') {
-        return;
-      }
+      if (link.dataset.velouraOwnImage === '1') return;
+      if (link.dataset.velouraMappedImage === '1') return;
 
       var text = normalizeText(link.textContent);
 
@@ -859,14 +853,14 @@ document.addEventListener('DOMContentLoaded', () => {
         settings.discountImage &&
         /تخفيض|تخفيضات|خصم|خصومات|عروض|العروض|عرض|offer|offers|discount|sale/i.test(text)
       ) {
-        setCustomImageOnLink(link, settings.discountImage);
+        setImageOnLink(link, settings.discountImage, 'special');
       }
 
       if (
         settings.blogImage &&
         /مدونة|المدونة|blog/i.test(text)
       ) {
-        setCustomImageOnLink(link, settings.blogImage);
+        setImageOnLink(link, settings.blogImage, 'special');
       }
     });
   }
@@ -901,6 +895,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       var label = normalizeText(item.label || item.title || item.name);
       var url = normalizeText(item.url || item.link);
+      var image = extractImageUrl(item.image || item.img || item.photo || item.veloura_link_image);
 
       if (!label || !url) return;
 
@@ -917,16 +912,12 @@ document.addEventListener('DOMContentLoaded', () => {
         a.rel = 'noopener noreferrer';
       }
 
-      if (item.image && allowSideImages(settings)) {
-        var img = createImage(extractImageUrl(item.image));
-
-        if (img) {
-          a.insertBefore(img, a.firstChild);
-        }
-      }
-
       li.appendChild(a);
       list.appendChild(li);
+
+      if (image && allowSideImages(settings)) {
+        setImageOnLink(a, image, 'custom-link');
+      }
     });
 
     list.dataset.velouraCustomLinksReady = '1';
@@ -942,16 +933,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     markNativeCategoryImages(menu);
 
-    /**
-     * الترتيب مهم:
-     * أولاً الصور الخاصة مثل التخفيضات.
-     * ثم الصور المرتبطة بالتصنيفات في النهاية حتى تستبدل صور سلة.
-     */
-    enhanceSpecialImages(menu, settings);
     applyMappedCategoryImages(menu, settings);
-
-    hideMatchingLinks(menu, settings);
     appendCustomLinks(menu, settings);
+    enhanceSpecialImages(menu, settings);
+    hideMatchingLinks(menu, settings);
   }
 
   document.addEventListener('DOMContentLoaded', function () {

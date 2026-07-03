@@ -2697,33 +2697,14 @@
   ]
 },
 {
-  "id": "veloura_side_categories_image_size_mode_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "مقاس صور التصنيفات في القائمة الجانبية",
-  "description": "اختر هل يتم التحكم بالمقاس يدويًا أو ترك الصورة بمقاس تلقائي",
+  "id": "veloura_side_cat_img_auto_w_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل العرض التلقائي لصورة التصنيف",
+  "description": "إذا كان مفعلًا يتم إخفاء خيار العرض ويبقى التحكم بالارتفاع فقط",
   "icon": "sicon-image",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "تحكم يدوي بالعرض والارتفاع",
-      "value": "manual",
-      "key": "side-categories-image-size-manual-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "تحكم يدوي بالعرض والارتفاع",
-      "value": "manual",
-      "key": "side-categories-image-size-manual-2026"
-    },
-    {
-      "label": "مقاس تلقائي للصورة",
-      "value": "auto",
-      "key": "side-categories-image-size-auto-2026"
-    }
-  ],
+  "value": false,
+  "required": false,
   "conditions": [
     {
       "id": "veloura_side_categories_enabled_2026",
@@ -2737,7 +2718,7 @@
   "type": "number",
   "format": "slider",
   "label": "عرض صورة التصنيف في القائمة الجانبية",
-  "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
+  "description": "يظهر فقط إذا كان العرض التلقائي غير مفعل",
   "inputType": "range",
   "icon": "sicon-resize",
   "value": "60",
@@ -2750,6 +2731,11 @@
       "id": "veloura_side_categories_enabled_2026",
       "operation": "=",
       "value": true
+    },
+    {
+      "id": "veloura_side_cat_img_auto_w_2026",
+      "operation": "=",
+      "value": false
     }
   ]
 },
@@ -2758,7 +2744,7 @@
   "type": "number",
   "format": "slider",
   "label": "ارتفاع صورة التصنيف في القائمة الجانبية",
-  "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
+  "description": "يتحكم بارتفاع الصورة دائمًا، حتى عند تفعيل العرض التلقائي",
   "inputType": "range",
   "icon": "sicon-resize",
   "value": "60",

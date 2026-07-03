@@ -1354,6 +1354,23 @@
   {% set vsc_img_size_mode = vsc_img_size_mode[0].value %}
 {% endif %}
 
+
+
+{% set vsc_img_auto_w_raw = theme.settings.get('veloura_side_cat_img_auto_w_2026', false) %}
+{% if vsc_img_auto_w_raw.value is defined %}
+  {% set vsc_img_auto_w_raw = vsc_img_auto_w_raw.value %}
+{% elseif vsc_img_auto_w_raw.selected is defined %}
+  {% set vsc_img_auto_w_raw = vsc_img_auto_w_raw.selected %}
+{% endif %}
+
+{% set vsc_img_auto_w =
+  vsc_img_auto_w_raw == true
+  or vsc_img_auto_w_raw == 'true'
+  or vsc_img_auto_w_raw == 1
+  or vsc_img_auto_w_raw == '1'
+  or vsc_img_auto_w_raw == 'on'
+%}
+
 {# هذا يقرأ خيار مكان ظهور صور التصنيفات من القسم الثاني إن كان موجودًا #}
 {% set vsc_image_location = theme.settings.get('veloura_category_images_display_location_2026', theme.settings.get('veloura_category_image_display_location_2026', 'side_and_category')) %}
 {% if vsc_image_location.selected is defined and vsc_image_location.selected[0].value is defined %}
@@ -1425,9 +1442,9 @@
 
 <script>
   window.velouraSideCategoriesSettings = {
-    imageSizeMode: {{ vsc_img_size_mode|json_encode|raw }},
-    imageDisplayLocation: {{ vc_images_location|json_encode|raw }},
+    imageAutoWidth: {{ vsc_img_auto_w ? 'true' : 'false' }},
     categoryImagesLocation: {{ vc_images_location|json_encode|raw }},
+    imageDisplayLocation: {{ vc_images_location|json_encode|raw }},
     categoryUseCustomImages: {{ vc_use_custom_images ? 'true' : 'false' }},
     categoryImagesMap: {{ vc_images_map|json_encode|raw }},
 
