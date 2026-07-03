@@ -35271,6 +35271,198 @@ body.veloura-quick-view-position-wishlist-icon .veloura-quick-view-btn.is-icon-o
   }
 }
 /* ================================
+   Veloura Quick View - ترتيب النافذة
+   ضعه في آخر ملف quick-view.scss
+================================ */
+.veloura-quick-view-modal.veloura-qv-fixed {
+  direction: rtl;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__dialog {
+  width: min(1120px, 100vw - 32px) !important;
+  max-height: min(760px, 94vh) !important;
+  padding: 28px !important;
+  border-radius: 26px !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.95fr) !important;
+  grid-gap: 34px !important;
+  gap: 34px !important;
+  align-items: stretch !important;
+  direction: ltr !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__grid {
+  grid-template-areas: "content media";
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__media {
+  background: #f7f7f7 !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__media {
+  grid-area: media;
+  min-height: 620px;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__image {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: calc(92vh - 80px) !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  aspect-ratio: auto !important;
+  display: block !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__content {
+  direction: rtl !important;
+  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 14px !important;
+  padding: 18px 0 12px !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__content {
+  grid-area: content;
+  min-width: 0;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__title {
+  margin: 0 !important;
+  font-size: 28px !important;
+  line-height: 1.45 !important;
+  font-weight: 900 !important;
+  color: #111827 !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__price {
+  margin: 0 !important;
+  font-size: 30px !important;
+  line-height: 1.4 !important;
+  font-weight: 900 !important;
+  color: #00586f !important;
+  color: var(--veloura-quick-view-button-bg, #00586f) !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__price {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__description {
+  margin: 0 !important;
+  color: #4b5563 !important;
+  font-size: 15px !important;
+  line-height: 1.9 !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__description {
+  max-height: 150px;
+  overflow: auto;
+}
+.veloura-qv-buybox {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 18px;
+}
+.veloura-qv-qty-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.veloura-qv-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: #374151;
+}
+.veloura-qv-qty-control {
+  height: 56px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 54px 1fr 54px;
+  direction: ltr;
+  background: #ffffff;
+}
+.veloura-qv-qty-btn {
+  border: 0;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.veloura-qv-qty-btn:hover {
+  background: #f1f5f9;
+}
+.veloura-qv-qty-input {
+  border: 0;
+  outline: 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 900;
+  color: #ffffff;
+  background: #00586f;
+  background: var(--veloura-quick-view-button-bg, #00586f);
+}
+.veloura-qv-cart-button,
+.veloura-qv-cart-button salla-button,
+.veloura-qv-cart-button button {
+  width: 100% !important;
+}
+.veloura-qv-cart-button {
+  display: block !important;
+  min-height: 56px !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-qv-products-link,
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__link {
+  width: 100% !important;
+  min-height: 52px !important;
+  border-radius: 999px !important;
+  border: 1px solid #d1d5db !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-qv-products-link:hover,
+.veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__link:hover {
+  border-color: #00586f !important;
+  border-color: var(--veloura-quick-view-button-bg, #00586f) !important;
+  color: #00586f !important;
+  color: var(--veloura-quick-view-button-bg, #00586f) !important;
+}
+@media (max-width: 900px) {
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__dialog {
+    padding: 16px !important;
+  }
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__grid {
+    grid-template-areas: "media" "content";
+  }
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__media {
+    min-height: auto;
+  }
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__image {
+    height: auto !important;
+    max-height: 52vh !important;
+  }
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__title {
+    font-size: 22px !important;
+  }
+  .veloura-quick-view-modal.veloura-qv-fixed .veloura-quick-view-modal__price {
+    font-size: 24px !important;
+  }
+}
+/* ================================
    Veloura Mobile Floating Menu
    Clean final version
 ================================ */

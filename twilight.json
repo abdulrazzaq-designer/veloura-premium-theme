@@ -4037,7 +4037,7 @@
   "type": "number",
   "format": "slider",
   "inputType": "range",
-  "label": "بعد عناصر فوق الصورة عن الحواف2",
+  "label": "بعد عناصر فوق الصورة عن الحواف",
   "description": "يتحكم في بعد العنوان الترويجي والمفضلة والعرض السريع عن الحواف",
   "icon": "sicon-resize",
   "value": "14",

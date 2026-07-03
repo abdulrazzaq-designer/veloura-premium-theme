@@ -1815,3 +1815,256 @@ document.addEventListener('DOMContentLoaded', () => {
     openQuickView(button);
   }, true);
 })();
+
+
+
+
+
+
+/* ================================
+   Veloura Quick View - إصلاح الترتيب والكمية والسلة
+   ضعه في آخر ملف app.js
+================================ */
+
+(function () {
+  'use strict';
+
+  let lastQuickViewProduct = null;
+
+  function cleanVisibleText(value) {
+    let text = String(value || '');
+
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    text = textarea.value;
+
+    const div = document.createElement('div');
+    div.innerHTML = text;
+    text = div.textContent || div.innerText || text;
+
+    return text
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/sicon-sar/gi, ' ')
+      .replace(/class=/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function getAttr(node, names) {
+    if (!node) return '';
+
+    for (const name of names) {
+      const value = node.getAttribute && node.getAttribute(name);
+      if (value) return value;
+    }
+
+    return '';
+  }
+
+  function findProductId(root, url) {
+    if (!root) return '';
+
+    const fromRoot =
+      getAttr(root, ['product-id', 'data-product-id', 'data-id', 'product']) ||
+      (root.dataset && (root.dataset.productId || root.dataset.id));
+
+    if (fromRoot) return String(fromRoot);
+
+    const addButton = root.querySelector(
+      'salla-add-product-button, [product-id], [data-product-id], [data-id]'
+    );
+
+    const fromButton =
+      getAttr(addButton, ['product-id', 'data-product-id', 'data-id']) ||
+      (addButton &&
+        addButton.dataset &&
+        (addButton.dataset.productId || addButton.dataset.id));
+
+    if (fromButton) return String(fromButton);
+
+    const matched =
+      String(url || '').match(/\/p(\d+)/i) ||
+      String(url || '').match(/[?&]product(?:_id)?=(\d+)/i);
+
+    return matched && matched[1] ? matched[1] : '';
+  }
+
+  function getProductFromQuickButton(button) {
+    const root =
+      button.closest('.s-product-card-entry') ||
+      button.closest('product-card') ||
+      button.closest('[product-id]') ||
+      button.closest('[data-product-id]');
+
+    if (!root) return null;
+
+    const titleLink =
+      root.querySelector('.s-product-card-content-title a') ||
+      root.querySelector('.s-product-card-content h3 a') ||
+      root.querySelector('a[href*="/products/"]') ||
+      root.querySelector('a[href*="/p"]');
+
+    const url = titleLink && titleLink.href ? titleLink.href : '#';
+
+    return {
+      id: findProductId(root, url),
+      url: url
+    };
+  }
+
+  document.addEventListener(
+    'click',
+    function (event) {
+      const quickButton = event.target.closest('.veloura-quick-view-btn');
+
+      if (!quickButton) return;
+
+      lastQuickViewProduct = getProductFromQuickButton(quickButton);
+    },
+    true
+  );
+
+  function fixTexts(modal) {
+    const title = modal.querySelector('.veloura-quick-view-modal__title');
+    const price = modal.querySelector('.veloura-quick-view-modal__price');
+    const description = modal.querySelector('.veloura-quick-view-modal__description');
+
+    [title, price, description].forEach(function (el) {
+      if (!el) return;
+
+      const cleaned = cleanVisibleText(el.innerHTML || el.textContent);
+
+      if (cleaned) {
+        el.textContent = cleaned;
+      }
+    });
+  }
+
+  function createQtyControl(addButton) {
+    const row = document.createElement('div');
+    row.className = 'veloura-qv-qty-row';
+
+    row.innerHTML = `
+      <span class="veloura-qv-label">الكمية</span>
+      <div class="veloura-qv-qty-control">
+        <button type="button" class="veloura-qv-qty-btn" data-qv-plus aria-label="زيادة">+</button>
+        <input class="veloura-qv-qty-input" type="number" min="1" value="1" inputmode="numeric">
+        <button type="button" class="veloura-qv-qty-btn" data-qv-minus aria-label="نقصان">−</button>
+      </div>
+    `;
+
+    const input = row.querySelector('.veloura-qv-qty-input');
+    const plus = row.querySelector('[data-qv-plus]');
+    const minus = row.querySelector('[data-qv-minus]');
+
+    function syncQuantity() {
+      let qty = parseInt(input.value, 10);
+
+      if (!qty || qty < 1) {
+        qty = 1;
+      }
+
+      input.value = qty;
+      addButton.setAttribute('quantity', String(qty));
+    }
+
+    plus.addEventListener('click', function () {
+      input.value = parseInt(input.value || '1', 10) + 1;
+      syncQuantity();
+    });
+
+    minus.addEventListener('click', function () {
+      input.value = Math.max(1, parseInt(input.value || '1', 10) - 1);
+      syncQuantity();
+    });
+
+    input.addEventListener('input', syncQuantity);
+    syncQuantity();
+
+    return row;
+  }
+
+  function enhanceModal(modal) {
+    if (!modal) return;
+
+    modal.classList.add('veloura-qv-fixed');
+    modal.setAttribute('dir', 'rtl');
+
+    fixTexts(modal);
+
+    const content = modal.querySelector('.veloura-quick-view-modal__content');
+    const link = modal.querySelector('.veloura-quick-view-modal__link');
+
+    if (!content) return;
+
+    if (link) {
+      link.textContent = 'منتجات';
+      link.classList.add('veloura-qv-products-link');
+    }
+
+    let productId = '';
+
+    if (lastQuickViewProduct && lastQuickViewProduct.id) {
+      productId = lastQuickViewProduct.id;
+    }
+
+    if (!productId && link) {
+      productId = findProductId(modal, link.href);
+    }
+
+    let buyBox = content.querySelector('.veloura-qv-buybox');
+
+    if (!buyBox) {
+      buyBox = document.createElement('div');
+      buyBox.className = 'veloura-qv-buybox';
+      content.appendChild(buyBox);
+    }
+
+    let addButton = buyBox.querySelector('salla-add-product-button');
+
+    if (!addButton) {
+      addButton = document.createElement('salla-add-product-button');
+      addButton.className = 'veloura-qv-cart-button';
+      addButton.setAttribute('product-status', 'sale');
+      addButton.setAttribute('product-type', 'product');
+      addButton.setAttribute('width', 'wide');
+      addButton.setAttribute('quantity', '1');
+
+      const qtyControl = createQtyControl(addButton);
+
+      buyBox.appendChild(qtyControl);
+      buyBox.appendChild(addButton);
+    }
+
+    if (productId) {
+      addButton.style.display = '';
+      addButton.setAttribute('product-id', productId);
+    } else {
+      addButton.style.display = 'none';
+    }
+
+    if (link && !buyBox.contains(link)) {
+      buyBox.appendChild(link);
+    }
+  }
+
+  function scanQuickView() {
+    document.querySelectorAll('.veloura-quick-view-modal').forEach(enhanceModal);
+  }
+
+  document.addEventListener('DOMContentLoaded', scanQuickView);
+  document.addEventListener('theme::ready', scanQuickView);
+
+  const observer = new MutationObserver(function () {
+    clearTimeout(window.__velouraQuickViewFixTimer);
+    window.__velouraQuickViewFixTimer = setTimeout(scanQuickView, 60);
+  });
+
+  if (document.body) {
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  }
+})();
