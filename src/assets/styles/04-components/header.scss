@@ -1722,3 +1722,125 @@ html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn {
   position: relative !important;
   z-index: 2 !important;
 }
+
+
+/* ================================
+   Veloura HARD Fix
+   Floating menu above side menu + iPhone glass
+   لازم يكون آخر CSS نهائيًا
+================================ */
+
+@media (max-width: 767px) {
+  html.veloura-side-menu-open body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu,
+  body.veloura-side-menu-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu,
+  body.veloura-side-categories-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  html.veloura-side-menu-open body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner,
+  body.veloura-side-menu-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner,
+  body.veloura-side-categories-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner {
+    pointer-events: auto !important;
+  }
+
+  html.veloura-side-menu-open .mm-ocd.mm-ocd--open,
+  body.veloura-side-menu-open .mm-ocd.mm-ocd--open,
+  body.veloura-side-categories-open .mm-ocd.mm-ocd--open {
+    z-index: 2147483000 !important;
+  }
+
+  html.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__backdrop,
+  body.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__backdrop,
+  body.veloura-side-categories-open .mm-ocd.mm-ocd--open .mm-ocd__backdrop {
+    z-index: 0 !important;
+  }
+
+  html.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__content,
+  body.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__content,
+  body.veloura-side-categories-open .mm-ocd.mm-ocd--open .mm-ocd__content {
+    z-index: 1 !important;
+  }
+}
+
+/* التأثير البلوري للقائمة الجانبية */
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open .mm-ocd__content,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open .mm-ocd__content {
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--veloura-side-cats-bg, #e0f7ff) 16%,
+        rgba(255, 255, 255, 0.46)
+      ),
+      color-mix(
+        in srgb,
+        var(--veloura-side-cats-bg, #e0f7ff) 8%,
+        rgba(255, 255, 255, 0.30)
+      )
+    ) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
+
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.05) !important;
+
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open .mm-ocd__content::before,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open .mm-ocd__content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.36),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      color-mix(
+        in srgb,
+        var(--veloura-side-cats-bg, #e0f7ff) 18%,
+        transparent
+      ),
+      transparent 50%
+    ) !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn,
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul,
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn .main-menu,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn .main-menu {
+  background: transparent !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li,
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > a,
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > span,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > a,
+body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > span {
+  background: transparent !important;
+}

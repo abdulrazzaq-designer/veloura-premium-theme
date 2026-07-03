@@ -964,3 +964,84 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, true);
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   Veloura Side Menu UI State Hard Fix
+   glass + floating menu above drawer
+================================ */
+
+(function () {
+  function isTruthy(value) {
+    return (
+      value === true ||
+      value === 'true' ||
+      value === 1 ||
+      value === '1' ||
+      value === 'on'
+    );
+  }
+
+  function getSettings() {
+    return window.velouraSideCategoriesSettings || {};
+  }
+
+  function syncVelouraSideMenuState() {
+    var settings = getSettings();
+
+    var hasOpenMenu = !!document.querySelector('.mm-ocd.mm-ocd--open');
+    var hasOpenCategories =
+      !!document.querySelector('.mm-ocd.mm-ocd--open #mobile-menu') ||
+      !!document.querySelector('.mm-ocd.mm-ocd--open .mobile-menu');
+
+    document.documentElement.classList.toggle('veloura-side-menu-open', hasOpenMenu);
+    document.body.classList.toggle('veloura-side-menu-open', hasOpenMenu);
+
+    document.documentElement.classList.toggle('veloura-side-categories-open', hasOpenCategories);
+    document.body.classList.toggle('veloura-side-categories-open', hasOpenCategories);
+
+    document.documentElement.classList.toggle(
+      'veloura-side-cats-glass',
+      isTruthy(settings.glass)
+    );
+
+    document.body.classList.toggle(
+      'veloura-side-cats-glass',
+      isTruthy(settings.glass)
+    );
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    syncVelouraSideMenuState();
+
+    var observer = new MutationObserver(function () {
+      syncVelouraSideMenuState();
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    setInterval(syncVelouraSideMenuState, 500);
+  });
+
+  document.addEventListener('click', function () {
+    setTimeout(syncVelouraSideMenuState, 50);
+    setTimeout(syncVelouraSideMenuState, 250);
+    setTimeout(syncVelouraSideMenuState, 700);
+  }, true);
+})();
