@@ -4033,54 +4033,23 @@
   ]
 },
 {
-  "id": "veloura_pc_promo_px_2026",
+  "id": "veloura_pc_overlay_offset_2026",
   "type": "number",
   "format": "slider",
-  "label": "المسافة الداخلية يمين ويسار العنوان الترويجي",
-  "description": "القيمة الفعلية في الواجهة لا تقل عن 4px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "12",
+  "label": "بعد عناصر فوق الصورة عن الحواف",
+  "description": "يتحكم في بعد العنوان الترويجي والمفضلة والعرض السريع عن الحواف",
+  "icon": "sicon-resize",
+  "value": "14",
   "required": false,
   "step": "1",
-  "minimum": "1",
-  "maximum": "30",
+  "minimum": "0",
+  "maximum": "60",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
       "operation": "=",
       "value": true
-    },
-    {
-      "id": "veloura_pc_hide_promo_2026",
-      "operation": "=",
-      "value": false
-    }
-  ]
-},
-{
-  "id": "veloura_pc_promo_py_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "المسافة الداخلية أعلى وأسفل العنوان الترويجي",
-  "description": "القيمة الفعلية في الواجهة لا تقل عن 2px حتى لو السلايدر يبدأ من 1",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "7",
-  "required": false,
-  "step": "1",
-  "minimum": "1",
-  "maximum": "18",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_pc_hide_promo_2026",
-      "operation": "=",
-      "value": false
     }
   ]
 },
@@ -4161,48 +4130,6 @@
   "required": false,
   "value": false,
   "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_pc_actions_top_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "بعد أزرار المفضلة والعرض السريع من الأعلى",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "14",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "60",
-  "conditions": [
-    {
-      "id": "veloura_product_card_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_pc_actions_side_2026",
-  "type": "number",
-  "format": "slider",
-  "label": "بعد أزرار المفضلة والعرض السريع من الأطراف",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-pin",
-  "value": "14",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "60",
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
