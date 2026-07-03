@@ -959,3 +959,210 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+/* ================================
+   Veloura Product Card Enhancer
+   wishlist + quick view + promo badge
+================================ */
+
+(function () {
+  function normalizeText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function findCardRoot(node) {
+    return node && (
+      node.matches?.('.s-product-card-entry')
+        ? node
+        : node.querySelector?.('.s-product-card-entry')
+    );
+  }
+
+  function isVisibleElement(el) {
+    return !!(el && el.offsetParent !== null);
+  }
+
+  function findImageBox(card) {
+    return (
+      card.querySelector('.s-product-card-image') ||
+      card.querySelector('[class*="product-card-image"]') ||
+      card.querySelector('[class*="image"]')
+    );
+  }
+
+  function findWishlistButton(card) {
+    var selectors = [
+      '.s-product-card-wishlist-btn',
+      '[class*="wishlist"]',
+      '[class*="favorite"]',
+      '[aria-label*="المفضلة"]',
+      '[aria-label*="الأمنيات"]',
+      '[aria-label*="wishlist"]',
+      '[title*="المفضلة"]',
+      '[title*="wishlist"]'
+    ];
+
+    for (var i = 0; i < selectors.length; i++) {
+      var found = card.querySelector(selectors[i]);
+
+      if (found && !found.classList.contains('veloura-quick-view-button')) {
+        return found;
+      }
+    }
+
+    return null;
+  }
+
+  function findQuickViewButton(card) {
+    var selectors = [
+      '.veloura-quick-view-button',
+      '.veloura-quick-view-btn',
+      '[data-veloura-quick-view]',
+      '[class*="quick-view"]',
+      '[class*="quick"]'
+    ];
+
+    for (var i = 0; i < selectors.length; i++) {
+      var found = card.querySelector(selectors[i]);
+
+      if (found) {
+        return found;
+      }
+    }
+
+    var buttons = Array.from(card.querySelectorAll('button, a, salla-button, .s-button-element'));
+
+    return buttons.find(function (button) {
+      var text = normalizeText(button.textContent);
+      var aria = normalizeText(button.getAttribute('aria-label'));
+      var title = normalizeText(button.getAttribute('title'));
+
+      return /عرض سريع|مشاهدة سريعة|quick view|quick/i.test(text + ' ' + aria + ' ' + title);
+    }) || null;
+  }
+
+  function looksLikePromo(el) {
+    if (!el) return false;
+
+    var cls = String(el.className || '').toLowerCase();
+    var text = normalizeText(el.textContent);
+
+    if (!text) return false;
+
+    if (
+      /price|rating|title|button|wishlist|favorite|quick|image|content|footer/.test(cls)
+    ) {
+      return false;
+    }
+
+    return (
+      /promotion|promo|badge|ribbon|tag|offer|discount/.test(cls) ||
+      /شحن|مجاني|خصم|عرض|العرض|وفر|ادفع|لاحق|هدية|جديد|نفدت|مخزون/i.test(text)
+    );
+  }
+
+  function findPromoItems(card) {
+    var all = Array.from(card.querySelectorAll('span, div, p, small, strong, b'));
+
+    return all.filter(function (el) {
+      return looksLikePromo(el);
+    });
+  }
+
+  function ensureActionsWrap(card, imageBox) {
+    var wrap = imageBox.querySelector('.veloura-pc-actions-wrap');
+
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'veloura-pc-actions-wrap';
+      imageBox.appendChild(wrap);
+    }
+
+    return wrap;
+  }
+
+  function moveActions(card, imageBox) {
+    var wrap = ensureActionsWrap(card, imageBox);
+    var wishlist = findWishlistButton(card);
+    var quick = findQuickViewButton(card);
+
+    if (wishlist) {
+      wishlist.classList.add('veloura-pc-action-btn', 'veloura-pc-wishlist-btn');
+
+      if (!wrap.contains(wishlist)) {
+        wrap.appendChild(wishlist);
+      }
+    }
+
+    if (quick) {
+      quick.classList.add('veloura-pc-action-btn', 'veloura-pc-quick-btn');
+
+      if (!wrap.contains(quick)) {
+        wrap.appendChild(quick);
+      }
+    }
+  }
+
+  function movePromo(card, imageBox) {
+    var promos = findPromoItems(card);
+
+    promos.forEach(function (promo) {
+      if (!promo.classList.contains('veloura-pc-promo')) {
+        promo.classList.add('veloura-pc-promo');
+      }
+
+      if (!imageBox.contains(promo)) {
+        imageBox.appendChild(promo);
+      }
+    });
+  }
+
+  function enhanceProductCard(card) {
+    if (!card || card.dataset.velouraProductCardEnhanced === '1') return;
+
+    var imageBox = findImageBox(card);
+
+    if (!imageBox) return;
+
+    imageBox.style.position = 'relative';
+
+    moveActions(card, imageBox);
+    movePromo(card, imageBox);
+
+    card.dataset.velouraProductCardEnhanced = '1';
+  }
+
+  function enhanceAllProductCards() {
+    document.querySelectorAll('product-card, .s-product-card-entry').forEach(function (node) {
+      var card = findCardRoot(node);
+      enhanceProductCard(card);
+    });
+  }
+
+  function runLater() {
+    enhanceAllProductCards();
+    setTimeout(enhanceAllProductCards, 300);
+    setTimeout(enhanceAllProductCards, 900);
+    setTimeout(enhanceAllProductCards, 1800);
+  }
+
+  document.addEventListener('DOMContentLoaded', runLater);
+  document.addEventListener('theme::ready', runLater);
+
+  window.addEventListener('load', function () {
+    runLater();
+
+    var observer = new MutationObserver(function () {
+      clearTimeout(window.__velouraPcObserverTimer);
+      window.__velouraPcObserverTimer = setTimeout(enhanceAllProductCards, 120);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    setTimeout(function () {
+      observer.disconnect();
+    }, 8000);
+  });
+})();
