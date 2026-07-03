@@ -1842,9 +1842,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .veloura-qv-full__media{
           grid-area:media!important;
           width:100%!important;
-          min-height:205px!important;
-          height:235px!important;
-          max-height:235px!important;
+          min-height:285px!important;
+          height:315px!important;
+          max-height:315px!important;
           overflow:hidden!important;
           border-radius:22px 22px 0 0!important;
         }
@@ -1905,9 +1905,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .veloura-qv-full__regular,
         .veloura-qv-full__mini-regular{font-size:14px!important}
         .veloura-qv-full__desc{
-          max-height:60px!important;
+          max-height:78px!important;
           font-size:14px!important;
-          line-height:1.6!important;
+          line-height:1.65!important;
+          overflow:hidden!important;
+          scrollbar-width:none!important;
         }
         .veloura-qv-full__read-more{
           height:34px!important;
@@ -1958,9 +1960,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
       @media(max-width:420px){
         .veloura-qv-full{padding-left:20px!important;padding-right:20px!important}
-        .veloura-qv-full__media{height:220px!important;max-height:220px!important;min-height:195px!important}
+        .veloura-qv-full__media{height:285px!important;max-height:285px!important;min-height:195px!important}
         .veloura-qv-full__row{grid-template-columns:minmax(112px,max-content) 1fr!important;gap:9px!important}
         .veloura-qv-full__qty{width:144px!important;grid-template-columns:38px 68px 38px!important}
+      }
+
+
+      /* V12: تكبير صورة الجوال وإخفاء سكرول الوصف */
+      @media(max-width:767px){
+        .veloura-qv-full__media{
+          background:rgba(15,23,42,.035)!important;
+        }
+
+        .veloura-qv-full__image{
+          transform:scale(1.16)!important;
+          transform-origin:center!important;
+        }
+
+        .veloura-qv-full__desc{
+          overflow:hidden!important;
+          scrollbar-width:none!important;
+          -ms-overflow-style:none!important;
+        }
+
+        .veloura-qv-full__desc::-webkit-scrollbar{
+          display:none!important;
+          width:0!important;
+          height:0!important;
+        }
+      }
+
+      @media(max-width:420px){
+        .veloura-qv-full__image{
+          transform:scale(1.14)!important;
+        }
       }
 
       @keyframes velouraQvFullZoom{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
@@ -1970,7 +2003,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
     document.head.appendChild(style);
-    console.info('[Veloura] Quick View Direct CSS V11 loaded');
+    console.info('[Veloura] Quick View Direct CSS V12 loaded');
   }
 
   function ensureModal() {
