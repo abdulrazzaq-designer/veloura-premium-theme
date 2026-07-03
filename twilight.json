@@ -2405,7 +2405,7 @@
   "id": "veloura_side_categories_glass_2026",
   "type": "boolean",
   "format": "switch",
-  "label": "تفعيل التأثير البلوري للقائمة الجانبية",
+  "label": "تفعيل التأثير البلوري للقائمة الجانبية11",
   "description": "يعطي القائمة الجانبية تأثير زجاجي شبيه بتأثير الآيفون والقائمة العائمة",
   "icon": "sicon-magic",
   "value": false,
@@ -2793,42 +2793,10 @@
   ]
 },
 {
-  "id": "veloura_side_categories_hide_important_links_2026",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إخفاء روابط تهمك من القائمة الجانبية",
-  "icon": "sicon-eye-off",
-  "value": false,
-  "required": false,
-  "conditions": [
-    {
-      "id": "veloura_side_categories_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_side_categories_hide_customer_service_2026",
-  "type": "boolean",
-  "format": "switch",
-  "label": "إخفاء خدمة العملاء من القائمة الجانبية",
-  "icon": "sicon-eye-off",
-  "value": false,
-  "required": false,
-  "conditions": [
-    {
-      "id": "veloura_side_categories_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "id": "veloura_side_categories_custom_links_2026",
   "type": "collection",
   "format": "collection",
-  "label": "روابط مخصصة للقائمة الجانبية",
+  "label": "روابط مخصصة للقائمة الجانبية2",
   "description": "أضف روابط تظهر داخل القائمة الجانبية للتصنيفات",
   "icon": "sicon-list-add",
   "required": false,
