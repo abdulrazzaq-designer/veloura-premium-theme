@@ -1425,6 +1425,21 @@
   {% set vc_images_map = vc_images_map.value %}
 {% endif %}
 
+{% set vsc_glass_raw = theme.settings.get('veloura_side_categories_glass_2026', false) %}
+{% if vsc_glass_raw.value is defined %}
+  {% set vsc_glass_raw = vsc_glass_raw.value %}
+{% elseif vsc_glass_raw.selected is defined %}
+  {% set vsc_glass_raw = vsc_glass_raw.selected %}
+{% endif %}
+
+{% set vsc_glass =
+  vsc_glass_raw == true
+  or vsc_glass_raw == 'true'
+  or vsc_glass_raw == 1
+  or vsc_glass_raw == '1'
+  or vsc_glass_raw == 'on'
+%}
+
 <style id="veloura-side-categories-vars">
   :root {
     --veloura-side-cats-bg: {{ vsc_bg }};
@@ -1442,6 +1457,7 @@
 
 <script>
   window.velouraSideCategoriesSettings = {
+    glass: {{ vsc_glass ? 'true' : 'false' }},
     imageAutoWidth: {{ vsc_img_auto_w ? 'true' : 'false' }},
     categoryImagesLocation: {{ vc_images_location|json_encode|raw }},
     imageDisplayLocation: {{ vc_images_location|json_encode|raw }},

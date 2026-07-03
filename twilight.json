@@ -2402,6 +2402,23 @@
   ]
 },
 {
+  "id": "veloura_side_categories_glass_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "تفعيل التأثير البلوري للقائمة الجانبية",
+  "description": "يعطي القائمة الجانبية تأثير زجاجي شبيه بتأثير الآيفون والقائمة العائمة",
+  "icon": "sicon-magic",
+  "value": false,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_side_categories_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_side_categories_bg_color_2026",
   "type": "string",
   "format": "color",

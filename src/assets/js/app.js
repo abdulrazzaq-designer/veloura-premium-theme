@@ -641,12 +641,17 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  function syncImageMode(settings) {
-    document.documentElement.classList.toggle(
-      'veloura-side-cats-img-auto-width',
-      settings.imageAutoWidth === true || settings.imageAutoWidth === 'true'
-    );
-  }
+  function syncVisualModes(settings) {
+  document.documentElement.classList.toggle(
+    'veloura-side-cats-img-auto-width',
+    settings.imageAutoWidth === true || settings.imageAutoWidth === 'true'
+  );
+
+  document.documentElement.classList.toggle(
+    'veloura-side-cats-glass',
+    settings.glass === true || settings.glass === 'true'
+  );
+}
 
   function createImage(src, extraClass) {
     if (!src) return null;
@@ -927,7 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var menu = findMobileMenu();
     var settings = getSettings();
 
-    syncImageMode(settings);
+    syncVisualModes(settings);
 
     if (!menu) return;
 

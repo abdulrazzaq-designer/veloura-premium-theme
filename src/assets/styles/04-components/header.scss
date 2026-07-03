@@ -1596,3 +1596,129 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img {
 .mm-ocd #mobile-menu.mm-spn .veloura-side-custom-link > a {
   background: transparent !important;
 }
+
+/* ================================
+   Veloura Floating Menu Above Categories + Glass Side Menu
+   لازم يكون آخر شيء في _header.scss
+================================ */
+
+@media (max-width: 767px) {
+  /*
+    نخلي القائمة العائمة فوق قائمة التصنيفات عند فتحها.
+    هذا يعالج المشكلة أنها صارت تحت القائمة.
+  */
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+    z-index: 2147483600 !important;
+  }
+
+  body.veloura-mobile-floating-menu-enabled:has(.mm-ocd.mm-ocd--open) .veloura-mobile-floating-menu,
+  body.veloura-ocd-bottom-active .veloura-mobile-floating-menu {
+    z-index: 2147483600 !important;
+    pointer-events: none !important;
+  }
+
+  body.veloura-mobile-floating-menu-enabled:has(.mm-ocd.mm-ocd--open) .veloura-mobile-floating-menu__inner,
+  body.veloura-ocd-bottom-active .veloura-mobile-floating-menu__inner {
+    pointer-events: auto !important;
+  }
+
+  /*
+    نخلي طبقة القائمة أقل من العائمة.
+    القائمة نفسها تبقى فوق الموقع، لكن تحت القائمة العائمة.
+  */
+  body:has(.mm-ocd.mm-ocd--open) .mm-ocd.mm-ocd--open {
+    z-index: 2147483000 !important;
+  }
+
+  /*
+    لو القائمة بنظام Bottom Sheet، نخليها تبدأ فوق القائمة العائمة.
+  */
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-ocd__content,
+  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__content,
+  .mm-ocd.ocd-categs.veloura-native-bottom .mm-ocd__content {
+    bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      var(--veloura-mobile-floating-menu-bottom, 0px) +
+      env(safe-area-inset-bottom, 0px) +
+      12px
+    ) !important;
+  }
+}
+
+/* ================================
+   Veloura Side Categories Glass Effect
+   نفس فكرة القائمة العائمة البلورية
+================================ */
+
+html.veloura-side-cats-glass .mm-ocd .mm-ocd__content,
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--right .mm-ocd__content,
+html.veloura-side-cats-glass .mm-ocd.mm-ocd--left .mm-ocd__content {
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--veloura-side-cats-bg, #004d65) 10%,
+        transparent
+      ),
+      color-mix(
+        in srgb,
+        var(--veloura-side-cats-bg, #004d65) 6%,
+        transparent
+      )
+    ) !important;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--veloura-side-cats-bg, #004d65) 18%,
+      rgba(255, 255, 255, 0.22)
+    ) !important;
+
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.05) !important;
+
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn,
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn ul,
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn .main-menu {
+  background: transparent !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn li,
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn li > a,
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn li > span,
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn a,
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn span {
+  background: transparent !important;
+}
+
+html.veloura-side-cats-glass .mm-ocd .mm-ocd__content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      color-mix(
+        in srgb,
+        var(--veloura-side-cats-bg, #004d65) 10%,
+        transparent
+      ),
+      transparent 48%
+    );
+}
+
+html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn {
+  position: relative !important;
+  z-index: 2 !important;
+}
