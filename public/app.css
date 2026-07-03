@@ -27501,6 +27501,23 @@ body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > a,
 body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > span {
   background: transparent !important;
 }
+/* ================================
+   Veloura Safe mmenu Panel Offset Fix
+   حل التداخل بدون التأثير على باقي الموقع
+================================ */
+.mm-ocd.mm-ocd--open #mobile-menu.mm-spn {
+  --mm-spn-panel-offset: 100% !important;
+}
+[dir=rtl] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent,
+html[dir=rtl] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
+  left: -100% !important;
+  right: auto !important;
+}
+[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent,
+html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
+  right: -100% !important;
+  left: auto !important;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
