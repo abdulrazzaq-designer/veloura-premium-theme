@@ -1543,8 +1543,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       .veloura-qv-full__dialog{
         position:relative;
-        width:min(1180px,100%);
-        max-height:min(740px,94vh);
+        width:min(1120px,100%);
+        max-height:min(720px,94vh);
         overflow:hidden;
         background:var(--veloura-quick-view-modal-bg,#fff);
         color:var(--veloura-quick-view-modal-text,#111827);
@@ -1578,9 +1578,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__grid{
         display:grid;
-        grid-template-columns:minmax(390px,.94fr) minmax(0,1.06fr);
+        grid-template-columns:minmax(320px,40%) minmax(0,60%);
         min-height:620px;
-        max-height:min(740px,94vh);
+        max-height:min(720px,94vh);
       }
 
       .veloura-qv-full__media{
@@ -1589,6 +1589,9 @@ document.addEventListener('DOMContentLoaded', () => {
         background:rgba(15,23,42,.045);
         min-height:620px;
         order:1;
+        display:flex;
+        align-items:center;
+        justify-content:center;
       }
       .veloura-qv-full__image{
         width:100%;
@@ -1601,20 +1604,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__content{
         order:2;
-        padding:44px 44px 32px;
+        padding:42px 28px 34px;
         display:flex;
         flex-direction:column;
-        gap:14px;
+        gap:13px;
         min-width:0;
         overflow:hidden;
       }
 
       .veloura-qv-full__top{
         display:flex;
+        flex-direction:row-reverse;
         justify-content:space-between;
         align-items:flex-start;
-        gap:12px;
-        margin-bottom:4px;
+        gap:14px;
+        margin-bottom:10px;
       }
       .veloura-qv-full__actions{
         display:flex;
@@ -1648,15 +1652,11 @@ document.addEventListener('DOMContentLoaded', () => {
         text-align:right;
       }
       .veloura-qv-full__sku{
-        font-size:13px;
-        opacity:.62;
-        display:none;
-        direction:ltr;
-        text-align:right;
+        display:none!important;
       }
-      .veloura-qv-full__sku:not(:empty){display:block}
 
-      .veloura-qv-full__price-row{
+      .veloura-qv-full__price-row,
+      .veloura-qv-full__mini-price{
         display:flex;
         align-items:baseline;
         gap:10px;
@@ -1665,12 +1665,14 @@ document.addEventListener('DOMContentLoaded', () => {
         direction:rtl;
         min-height:34px;
       }
-      .veloura-qv-full__price{
+      .veloura-qv-full__price,
+      .veloura-qv-full__mini-current{
         font-size:26px;
         font-weight:900;
         color:#ef4444;
       }
-      .veloura-qv-full__regular{
+      .veloura-qv-full__regular,
+      .veloura-qv-full__mini-regular{
         font-size:15px;
         opacity:.65;
         text-decoration:line-through;
@@ -1679,8 +1681,11 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__divider{
         height:1px;
         background:currentColor;
-        opacity:.12;
-        margin:2px 0 2px;
+        opacity:.16;
+        margin:2px 0 0;
+      }
+      .veloura-qv-full__divider--bottom{
+        margin-top:18px;
       }
 
       .veloura-qv-full__desc{
@@ -1691,7 +1696,7 @@ document.addEventListener('DOMContentLoaded', () => {
         white-space:normal;
         overflow-wrap:anywhere;
         word-break:normal;
-        max-height:150px;
+        max-height:112px;
         overflow:auto;
         padding-inline-end:2px;
         text-align:right;
@@ -1708,37 +1713,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__bottom{
         margin-top:auto;
-        display:grid;
-        grid-template-columns:minmax(170px,auto) minmax(260px,1fr);
+        display:flex;
+        flex-direction:column;
         gap:14px;
-        align-items:end;
-        padding-top:18px;
+        padding-top:16px;
       }
 
-      .veloura-qv-full__buy{
-        display:contents;
+      .veloura-qv-full__row{
+        display:grid;
+        grid-template-columns:minmax(160px,max-content) 1fr;
+        align-items:center;
+        gap:18px;
       }
 
       .veloura-qv-full__label{
         display:block;
-        font-size:13px;
+        font-size:14px;
         font-weight:900;
-        margin-bottom:8px;
-        opacity:.82;
+        margin:0;
+        opacity:.9;
         text-align:right;
-      }
-
-      .veloura-qv-full__qty-wrap{
-        grid-column:1;
-        grid-row:1;
+        justify-self:end;
       }
 
       .veloura-qv-full__qty{
         display:grid;
         grid-template-columns:52px 66px 52px;
-        height:54px;
+        height:48px;
         border:1px solid rgba(148,163,184,.58);
-        border-radius:13px;
+        border-radius:9px;
         overflow:hidden;
         width:max-content;
         max-width:100%;
@@ -1765,11 +1768,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       .veloura-qv-full__add{
-        grid-column:2;
-        grid-row:1;
-        height:54px;
+        height:52px;
         border:0;
-        border-radius:13px;
+        border-radius:10px;
         background:var(--veloura-quick-view-button-bg,#004d65);
         color:var(--veloura-quick-view-button-text,#fff);
         font-weight:900;
@@ -1784,9 +1785,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__add.is-busy{opacity:.68;pointer-events:none}
 
       .veloura-qv-full__link{
-        grid-column:1 / -1;
-        justify-self:flex-start;
-        height:46px;
+        height:44px;
         border-radius:999px;
         border:1px solid rgba(148,163,184,.42);
         padding:0 22px;
@@ -1797,6 +1796,7 @@ document.addEventListener('DOMContentLoaded', () => {
         color:inherit;
         font-weight:900;
         background:rgba(255,255,255,.04);
+        align-self:flex-start;
       }
 
       .veloura-qv-full__hidden{display:none!important}
@@ -1826,14 +1826,14 @@ document.addEventListener('DOMContentLoaded', () => {
           overflow:visible;
         }
         .veloura-qv-full__title{font-size:22px}
-        .veloura-qv-full__price{font-size:22px}
-        .veloura-qv-full__bottom{
+        .veloura-qv-full__price,
+        .veloura-qv-full__mini-current{font-size:22px}
+        .veloura-qv-full__row{
           grid-template-columns:1fr;
+          gap:8px;
         }
-        .veloura-qv-full__qty-wrap,
-        .veloura-qv-full__add,
-        .veloura-qv-full__link{
-          grid-column:1;
+        .veloura-qv-full__label{
+          justify-self:start;
         }
         .veloura-qv-full__qty{width:100%;grid-template-columns:56px 1fr 56px}
       }
@@ -1866,13 +1866,15 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="veloura-qv-full__content">
             <div class="veloura-qv-full__top">
-              <span class="veloura-qv-full__loading">جاري تحميل التفاصيل...</span>
+              <div>
+                <h3 class="veloura-qv-full__title"></h3>
+                <span class="veloura-qv-full__loading">جاري تحميل التفاصيل...</span>
+              </div>
               <div class="veloura-qv-full__actions">
                 <button type="button" class="veloura-qv-full__circle" data-veloura-qv-share aria-label="مشاركة"><i class="sicon-share"></i></button>
                 <button type="button" class="veloura-qv-full__circle" data-veloura-qv-wishlist aria-label="المفضلة"><i class="sicon-heart"></i></button>
               </div>
             </div>
-            <h3 class="veloura-qv-full__title"></h3>
             <span class="veloura-qv-full__sku"></span>
             <div class="veloura-qv-full__price-row">
               <strong class="veloura-qv-full__price"></strong>
@@ -1882,21 +1884,27 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="veloura-qv-full__desc"></p>
             <a class="veloura-qv-full__read-more" href="#">قراءة المزيد ↗</a>
             <div class="veloura-qv-full__bottom">
-              <div class="veloura-qv-full__buy">
-                <div class="veloura-qv-full__qty-wrap">
-                  <span class="veloura-qv-full__label">الكمية</span>
-                  <div class="veloura-qv-full__qty">
-                    <button type="button" data-veloura-qv-qty-minus>−</button>
-                    <input type="number" min="1" value="1" data-veloura-qv-qty>
-                    <button type="button" data-veloura-qv-qty-plus>+</button>
-                  </div>
+              <div class="veloura-qv-full__row veloura-qv-full__row--qty">
+                <div class="veloura-qv-full__qty">
+                  <button type="button" data-veloura-qv-qty-minus>−</button>
+                  <input type="number" min="1" value="1" data-veloura-qv-qty>
+                  <button type="button" data-veloura-qv-qty-plus>+</button>
                 </div>
-                <button type="button" class="veloura-qv-full__add" data-veloura-qv-add>
-                  <i class="sicon-shopping-bag"></i>
-                  <span>إضافة للسلة</span>
-                </button>
+                <span class="veloura-qv-full__label">الكمية</span>
               </div>
+              <div class="veloura-qv-full__row veloura-qv-full__row--price">
+                <div class="veloura-qv-full__mini-price">
+                  <strong class="veloura-qv-full__mini-current"></strong>
+                  <span class="veloura-qv-full__mini-regular"></span>
+                </div>
+                <span class="veloura-qv-full__label">السعر</span>
+              </div>
+              <button type="button" class="veloura-qv-full__add" data-veloura-qv-add>
+                <i class="sicon-shopping-bag"></i>
+                <span>إضافة للسلة</span>
+              </button>
               <a class="veloura-qv-full__link" href="#">عرض المزيد</a>
+              <div class="veloura-qv-full__divider veloura-qv-full__divider--bottom"></div>
             </div>
           </div>
         </div>
@@ -1949,9 +1957,11 @@ document.addEventListener('DOMContentLoaded', () => {
     var link = modal.querySelector('.veloura-qv-full__link');
     var actions = modal.querySelector('.veloura-qv-full__actions');
     var bottom = modal.querySelector('.veloura-qv-full__bottom');
-    var buy = modal.querySelector('.veloura-qv-full__buy');
-    var qtyWrap = modal.querySelector('.veloura-qv-full__qty-wrap');
+    var qtyWrap = modal.querySelector('.veloura-qv-full__row--qty');
     var add = modal.querySelector('.veloura-qv-full__add');
+    var miniPrice = modal.querySelector('.veloura-qv-full__row--price');
+    var miniCurrent = modal.querySelector('.veloura-qv-full__mini-current');
+    var miniRegular = modal.querySelector('.veloura-qv-full__mini-regular');
 
     title.textContent = data.name || 'المنتج';
     var cleanSku = cleanText(data.sku || '').replace(/^-+|-+$/g, '');
@@ -1961,6 +1971,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     price.textContent = data.price || '';
     regular.textContent = data.regularPrice && data.regularPrice !== data.price ? data.regularPrice : '';
+    miniCurrent.textContent = data.price || '';
+    miniRegular.textContent = data.regularPrice && data.regularPrice !== data.price ? data.regularPrice : '';
     desc.textContent = data.description || '';
     image.src = data.image || '';
     image.alt = data.name || '';
@@ -1976,9 +1988,9 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle(actions.querySelector('[data-veloura-qv-wishlist]'), setting('showWishlist', true));
     toggle(actions.querySelector('[data-veloura-qv-share]'), setting('showShare', true));
     toggle(actions, setting('showWishlist', true) || setting('showShare', true));
-    toggle(bottom, setting('showAddToCart', true) || setting('showProductLink', true));
-    toggle(buy, setting('showAddToCart', true));
-    toggle(qtyWrap, setting('showQuantity', true));
+    toggle(bottom, setting('showAddToCart', true) || setting('showProductLink', true) || setting('showPrice', true));
+    toggle(qtyWrap, setting('showAddToCart', true) && setting('showQuantity', true));
+    toggle(miniPrice, setting('showPrice', true) && !!(data.price || data.regularPrice));
     toggle(add, setting('showAddToCart', true));
   }
 
