@@ -250,6 +250,138 @@
       or vpc_center_text_raw == 'on'
     %}
 
+    {# ================================
+       Veloura Product Card Safe Visibility + Promo Settings
+       V4 Safe: لا ينقل أزرار المفضلة والعرض السريع
+    ================================ #}
+    
+    {% set vpc_hide_wish_raw = theme.settings.get('veloura_pc_hide_wish_2026', false) %}
+    {% if vpc_hide_wish_raw.value is defined %}
+      {% set vpc_hide_wish_raw = vpc_hide_wish_raw.value %}
+    {% elseif vpc_hide_wish_raw.selected is defined %}
+      {% set vpc_hide_wish_raw = vpc_hide_wish_raw.selected %}
+    {% endif %}
+    {% set vpc_hide_wish =
+      vpc_hide_wish_raw == true
+      or vpc_hide_wish_raw == 'true'
+      or vpc_hide_wish_raw == 1
+      or vpc_hide_wish_raw == '1'
+      or vpc_hide_wish_raw == 'on'
+    %}
+    
+    {% set vpc_hide_cart_raw = theme.settings.get('veloura_pc_hide_cart_2026', false) %}
+    {% if vpc_hide_cart_raw.value is defined %}
+      {% set vpc_hide_cart_raw = vpc_hide_cart_raw.value %}
+    {% elseif vpc_hide_cart_raw.selected is defined %}
+      {% set vpc_hide_cart_raw = vpc_hide_cart_raw.selected %}
+    {% endif %}
+    {% set vpc_hide_cart =
+      vpc_hide_cart_raw == true
+      or vpc_hide_cart_raw == 'true'
+      or vpc_hide_cart_raw == 1
+      or vpc_hide_cart_raw == '1'
+      or vpc_hide_cart_raw == 'on'
+    %}
+    
+    {% set vpc_hide_promo_raw = theme.settings.get('veloura_pc_hide_promo_2026', false) %}
+    {% if vpc_hide_promo_raw.value is defined %}
+      {% set vpc_hide_promo_raw = vpc_hide_promo_raw.value %}
+    {% elseif vpc_hide_promo_raw.selected is defined %}
+      {% set vpc_hide_promo_raw = vpc_hide_promo_raw.selected %}
+    {% endif %}
+    {% set vpc_hide_promo =
+      vpc_hide_promo_raw == true
+      or vpc_hide_promo_raw == 'true'
+      or vpc_hide_promo_raw == 1
+      or vpc_hide_promo_raw == '1'
+      or vpc_hide_promo_raw == 'on'
+    %}
+    
+    {% set vpc_promo_pos_raw = theme.settings.get('veloura_pc_promo_pos_2026', 'top_right') %}
+    {% if vpc_promo_pos_raw.selected is defined and vpc_promo_pos_raw.selected[0].value is defined %}
+      {% set vpc_promo_pos = vpc_promo_pos_raw.selected[0].value %}
+    {% elseif vpc_promo_pos_raw is iterable and vpc_promo_pos_raw[0].value is defined %}
+      {% set vpc_promo_pos = vpc_promo_pos_raw[0].value %}
+    {% elseif vpc_promo_pos_raw.value is defined %}
+      {% set vpc_promo_pos = vpc_promo_pos_raw.value %}
+    {% else %}
+      {% set vpc_promo_pos = vpc_promo_pos_raw %}
+    {% endif %}
+    
+    {% set vpc_promo_bg = theme.settings.get('veloura_pc_promo_bg_2026', '#b91c1c') %}
+    {% if vpc_promo_bg.value is defined %}{% set vpc_promo_bg = vpc_promo_bg.value %}{% endif %}
+    
+    {% set vpc_promo_text = theme.settings.get('veloura_pc_promo_text_2026', '#ffffff') %}
+    {% if vpc_promo_text.value is defined %}{% set vpc_promo_text = vpc_promo_text.value %}{% endif %}
+    
+    {% set vpc_promo_size = theme.settings.get('veloura_pc_promo_size_2026', '12') %}
+    {% if vpc_promo_size.value is defined %}{% set vpc_promo_size = vpc_promo_size.value %}{% endif %}
+    {% set vpc_promo_size = vpc_promo_size + 0 %}
+    {% if vpc_promo_size < 10 %}{% set vpc_promo_size = 10 %}{% endif %}
+    {% if vpc_promo_size > 20 %}{% set vpc_promo_size = 20 %}{% endif %}
+    
+    {% set vpc_promo_radius_raw = theme.settings.get('veloura_pc_promo_radius_2026', 'large') %}
+    {% if vpc_promo_radius_raw.selected is defined and vpc_promo_radius_raw.selected[0].value is defined %}
+      {% set vpc_promo_radius_key = vpc_promo_radius_raw.selected[0].value %}
+    {% elseif vpc_promo_radius_raw is iterable and vpc_promo_radius_raw[0].value is defined %}
+      {% set vpc_promo_radius_key = vpc_promo_radius_raw[0].value %}
+    {% elseif vpc_promo_radius_raw.value is defined %}
+      {% set vpc_promo_radius_key = vpc_promo_radius_raw.value %}
+    {% else %}
+      {% set vpc_promo_radius_key = vpc_promo_radius_raw %}
+    {% endif %}
+    
+    {% set vpc_promo_radius_map = {
+      'sharp': '0px',
+      'soft': '8px',
+      'medium': '14px',
+      'large': '22px',
+      'pill': '999px'
+    } %}
+    
+    {% set vpc_promo_px = theme.settings.get('veloura_pc_promo_px_2026', '12') %}
+    {% if vpc_promo_px.value is defined %}{% set vpc_promo_px = vpc_promo_px.value %}{% endif %}
+    {% set vpc_promo_px = vpc_promo_px + 0 %}
+    {% if vpc_promo_px < 4 %}{% set vpc_promo_px = 4 %}{% endif %}
+    {% if vpc_promo_px > 30 %}{% set vpc_promo_px = 30 %}{% endif %}
+    
+    {% set vpc_promo_py = theme.settings.get('veloura_pc_promo_py_2026', '7') %}
+    {% if vpc_promo_py.value is defined %}{% set vpc_promo_py = vpc_promo_py.value %}{% endif %}
+    {% set vpc_promo_py = vpc_promo_py + 0 %}
+    {% if vpc_promo_py < 2 %}{% set vpc_promo_py = 2 %}{% endif %}
+    {% if vpc_promo_py > 18 %}{% set vpc_promo_py = 18 %}{% endif %}
+    
+    {% set vpc_actions_pos_raw = theme.settings.get('veloura_pc_actions_pos_2026', 'native') %}
+    {% if vpc_actions_pos_raw.selected is defined and vpc_actions_pos_raw.selected[0].value is defined %}
+      {% set vpc_actions_pos = vpc_actions_pos_raw.selected[0].value %}
+    {% elseif vpc_actions_pos_raw is iterable and vpc_actions_pos_raw[0].value is defined %}
+      {% set vpc_actions_pos = vpc_actions_pos_raw[0].value %}
+    {% elseif vpc_actions_pos_raw.value is defined %}
+      {% set vpc_actions_pos = vpc_actions_pos_raw.value %}
+    {% else %}
+      {% set vpc_actions_pos = vpc_actions_pos_raw %}
+    {% endif %}
+    
+    {% set vpc_actions_style_raw = theme.settings.get('veloura_pc_actions_style_2026', 'native') %}
+    {% if vpc_actions_style_raw.selected is defined and vpc_actions_style_raw.selected[0].value is defined %}
+      {% set vpc_actions_style = vpc_actions_style_raw.selected[0].value %}
+    {% elseif vpc_actions_style_raw is iterable and vpc_actions_style_raw[0].value is defined %}
+      {% set vpc_actions_style = vpc_actions_style_raw[0].value %}
+    {% elseif vpc_actions_style_raw.value is defined %}
+      {% set vpc_actions_style = vpc_actions_style_raw.value %}
+    {% else %}
+      {% set vpc_actions_style = vpc_actions_style_raw %}
+    {% endif %}
+    
+    {% set vpc_actions_top = theme.settings.get('veloura_pc_actions_top_2026', '14') %}
+    {% if vpc_actions_top.value is defined %}{% set vpc_actions_top = vpc_actions_top.value %}{% endif %}
+    
+    {% set vpc_actions_side = theme.settings.get('veloura_pc_actions_side_2026', '14') %}
+    {% if vpc_actions_side.value is defined %}{% set vpc_actions_side = vpc_actions_side.value %}{% endif %}
+    
+    {% set vpc_actions_gap = theme.settings.get('veloura_pc_actions_gap_2026', '10') %}
+    {% if vpc_actions_gap.value is defined %}{% set vpc_actions_gap = vpc_actions_gap.value %}{% endif %}
+
     {% set vpc_title_size_map = {
       'xs': '12px',
       'small': '13px',
@@ -1135,80 +1267,38 @@
         }
 
         /* ================================
-           Veloura Product Card Actions + Promo
-           V3: actions inside product image + settings fixed
+           Veloura Product Card Safe Controls V4
+           لا ينقل المفضلة ولا العرض السريع
         ================================ */
 
-        body.veloura-product-card-enabled .s-product-card-entry {
-          position: relative !important;
-        }
-
+        body.veloura-product-card-enabled .s-product-card-entry,
         body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image {
           position: relative !important;
         }
 
-        body.veloura-product-card-enabled.veloura-pc-hide-wish .veloura-pc-wishlist-btn,
-        body.veloura-product-card-enabled.veloura-pc-hide-wish .s-product-card-wishlist-btn,
-        body.veloura-product-card-enabled.veloura-pc-hide-wish [class*="wishlist"],
-        body.veloura-product-card-enabled.veloura-pc-hide-wish [class*="favorite"] {
+        /* إخفاء المفضلة فقط عند تفعيل الخيار */
+        body.veloura-product-card-enabled.veloura-pc-hide-wish .s-product-card-entry [class*="wishlist"],
+        body.veloura-product-card-enabled.veloura-pc-hide-wish .s-product-card-entry [class*="favorite"],
+        body.veloura-product-card-enabled.veloura-pc-hide-wish .s-product-card-entry [aria-label*="المفضلة"],
+        body.veloura-product-card-enabled.veloura-pc-hide-wish .s-product-card-entry [aria-label*="الأمنيات"],
+        body.veloura-product-card-enabled.veloura-pc-hide-wish .s-product-card-entry [aria-label*="wishlist"] {
           display: none !important;
         }
 
+        /* إخفاء زر السلة فقط عند تفعيل الخيار */
         body.veloura-product-card-enabled.veloura-pc-hide-cart .s-product-card-entry salla-add-product-button,
         body.veloura-product-card-enabled.veloura-pc-hide-cart .s-product-card-entry .s-product-card-content-footer .s-button-element,
         body.veloura-product-card-enabled.veloura-pc-hide-cart .s-product-card-entry .s-product-card-content-footer button {
           display: none !important;
         }
 
-        /* الأزرار داخل صورة المنتج */
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap {
-          position: absolute !important;
-          top: var(--veloura-pc-actions-top) !important;
-          z-index: 50 !important;
-          display: flex !important;
-          align-items: center !important;
-          gap: var(--veloura-pc-actions-gap) !important;
-          pointer-events: none !important;
-        }
-
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap > * {
-          pointer-events: auto !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-actions-split_top .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap {
-          left: var(--veloura-pc-actions-side) !important;
-          right: var(--veloura-pc-actions-side) !important;
-          justify-content: space-between !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-actions-top_right .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap {
-          inset-inline-end: var(--veloura-pc-actions-side) !important;
-          justify-content: flex-end !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-actions-top_left .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap {
-          inset-inline-start: var(--veloura-pc-actions-side) !important;
-          justify-content: flex-start !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-actions-bottom_right .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap {
-          top: auto !important;
-          bottom: var(--veloura-pc-actions-top) !important;
-          inset-inline-end: var(--veloura-pc-actions-side) !important;
-          justify-content: flex-end !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-actions-bottom_left .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap {
-          top: auto !important;
-          bottom: var(--veloura-pc-actions-top) !important;
-          inset-inline-start: var(--veloura-pc-actions-side) !important;
-          justify-content: flex-start !important;
-        }
-
-        body.veloura-product-card-enabled .s-product-card-entry .veloura-pc-action-btn,
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap button,
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap salla-button,
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap .s-button-element {
+        /* تحسين شكل أزرار المفضلة والعرض السريع الموجودة أصلًا بدون نقلها */
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="wishlist"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="favorite"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="quick"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [aria-label*="المفضلة"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [aria-label*="الأمنيات"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [aria-label*="wishlist"] {
           width: var(--veloura-product-action-size, 42px) !important;
           height: var(--veloura-product-action-size, 42px) !important;
           min-width: var(--veloura-product-action-size, 42px) !important;
@@ -1216,27 +1306,13 @@
           max-width: var(--veloura-product-action-size, 42px) !important;
           max-height: var(--veloura-product-action-size, 42px) !important;
           border-radius: var(--veloura-quick-view-button-radius, 999px) !important;
-          display: inline-flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          overflow: hidden !important;
           opacity: 1 !important;
           visibility: visible !important;
-          padding: 0 !important;
-          margin: 0 !important;
         }
 
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap i,
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap svg {
-          font-size: calc(var(--veloura-product-action-size, 42px) * .48) !important;
-          width: calc(var(--veloura-product-action-size, 42px) * .48) !important;
-          height: calc(var(--veloura-product-action-size, 42px) * .48) !important;
-          line-height: 1 !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-actions-style-glass .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap button,
-        body.veloura-product-card-enabled.veloura-pc-actions-style-glass .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap salla-button,
-        body.veloura-product-card-enabled.veloura-pc-actions-style-glass .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap .s-button-element {
+        body.veloura-product-card-enabled.veloura-pc-actions-style-glass .s-product-card-entry .s-product-card-image [class*="wishlist"],
+        body.veloura-product-card-enabled.veloura-pc-actions-style-glass .s-product-card-entry .s-product-card-image [class*="favorite"],
+        body.veloura-product-card-enabled.veloura-pc-actions-style-glass .s-product-card-entry .s-product-card-image [class*="quick"] {
           background: rgba(255, 255, 255, .76) !important;
           color: #0f172a !important;
           border: 1px solid rgba(255, 255, 255, .55) !important;
@@ -1245,89 +1321,38 @@
           -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
         }
 
-        body.veloura-product-card-enabled.veloura-pc-actions-style-solid .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap button,
-        body.veloura-product-card-enabled.veloura-pc-actions-style-solid .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap salla-button,
-        body.veloura-product-card-enabled.veloura-pc-actions-style-solid .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap .s-button-element {
+        body.veloura-product-card-enabled.veloura-pc-actions-style-solid .s-product-card-entry .s-product-card-image [class*="wishlist"],
+        body.veloura-product-card-enabled.veloura-pc-actions-style-solid .s-product-card-entry .s-product-card-image [class*="favorite"],
+        body.veloura-product-card-enabled.veloura-pc-actions-style-solid .s-product-card-entry .s-product-card-image [class*="quick"] {
           background: var(--veloura-quick-view-button-bg, #004d65) !important;
           color: var(--veloura-quick-view-button-text, #fff) !important;
           border-color: var(--veloura-quick-view-button-bg, #004d65) !important;
         }
 
-        body.veloura-product-card-enabled.veloura-pc-actions-style-clean .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap button,
-        body.veloura-product-card-enabled.veloura-pc-actions-style-clean .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap salla-button,
-        body.veloura-product-card-enabled.veloura-pc-actions-style-clean .s-product-card-entry .s-product-card-image > .veloura-pc-actions-wrap .s-button-element {
-          background: #fff !important;
-          color: #111827 !important;
-          border: 0 !important;
-          box-shadow: none !important;
-        }
-
-        /* العنوان الترويجي داخل الصورة */
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-promo {
-          position: absolute !important;
-          z-index: 45 !important;
-          display: inline-flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          width: auto !important;
-          max-width: calc(100% - 28px) !important;
-          padding: var(--veloura-pc-promo-py) var(--veloura-pc-promo-px) !important;
+        /* العنوان الترويجي الموجود أصلًا */
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="promotion"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="promo"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="badge"],
+        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image [class*="ribbon"] {
           border-radius: var(--veloura-pc-promo-radius) !important;
           background: var(--veloura-pc-promo-bg) !important;
           color: var(--veloura-pc-promo-text) !important;
           font-size: var(--veloura-pc-promo-size) !important;
           font-weight: 800 !important;
           line-height: 1.2 !important;
-          white-space: nowrap !important;
+          padding: var(--veloura-pc-promo-py) var(--veloura-pc-promo-px) !important;
           box-shadow: 0 12px 28px rgba(15, 23, 42, .18) !important;
-          overflow: hidden !important;
-          opacity: 1 !important;
-          visibility: visible !important;
         }
 
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-promo *,
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-promo i,
-        body.veloura-product-card-enabled .s-product-card-entry .s-product-card-image > .veloura-pc-promo svg {
-          color: var(--veloura-pc-promo-text) !important;
-          fill: var(--veloura-pc-promo-text) !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry .s-product-card-image > .veloura-pc-promo,
-        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry [class*="promotion"],
-        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry [class*="promo"],
-        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry [class*="badge"],
-        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry [class*="ribbon"] {
+        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry .s-product-card-image [class*="promotion"],
+        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry .s-product-card-image [class*="promo"],
+        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry .s-product-card-image [class*="badge"],
+        body.veloura-product-card-enabled.veloura-pc-hide-promo .s-product-card-entry .s-product-card-image [class*="ribbon"] {
           display: none !important;
         }
 
-        body.veloura-product-card-enabled.veloura-pc-promo-top_right .s-product-card-entry .s-product-card-image > .veloura-pc-promo {
-          top: 14px !important;
-          inset-inline-end: 14px !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-promo-top_left .s-product-card-entry .s-product-card-image > .veloura-pc-promo {
-          top: 14px !important;
-          inset-inline-start: 14px !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-promo-bottom_right .s-product-card-entry .s-product-card-image > .veloura-pc-promo {
-          bottom: 14px !important;
-          inset-inline-end: 14px !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-promo-bottom_left .s-product-card-entry .s-product-card-image > .veloura-pc-promo {
-          bottom: 14px !important;
-          inset-inline-start: 14px !important;
-        }
-
-        body.veloura-product-card-enabled.veloura-pc-promo-top_center .s-product-card-entry .s-product-card-image > .veloura-pc-promo {
-          top: 14px !important;
-          left: 50% !important;
-          transform: translateX(-50%) !important;
-        }
-
         /* ================================
-           Veloura Product Card Actions + Promo END
+           Veloura Product Card Safe Controls V4 END
         ================================ */
 
         {% if vpc_center_text %}
@@ -2638,217 +2663,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 </script>
 {% endif %}
-
-<script data-cfasync="false" id="veloura-product-card-enhancer-2026">
-/* ================================
-   Veloura Product Card Enhancer V3
-   actions inside image + settings fixed
-================================ */
-(function () {
-  function normalizeText(value) {
-    return String(value || '').replace(/\s+/g, ' ').trim();
-  }
-
-  function findCardRoot(node) {
-    return node && (
-      node.matches && node.matches('.s-product-card-entry')
-        ? node
-        : node.querySelector && node.querySelector('.s-product-card-entry')
-    );
-  }
-
-  function findImageBox(card) {
-    return (
-      card.querySelector('.s-product-card-image') ||
-      card.querySelector('[class*="product-card-image"]') ||
-      card.querySelector('[class*="image"]')
-    );
-  }
-
-  function findWishlistButton(card) {
-    var selectors = [
-      '.s-product-card-wishlist-btn',
-      '[class*="wishlist"]',
-      '[class*="favorite"]',
-      '[aria-label*="المفضلة"]',
-      '[aria-label*="الأمنيات"]',
-      '[aria-label*="wishlist"]',
-      '[title*="المفضلة"]',
-      '[title*="wishlist"]'
-    ];
-
-    for (var i = 0; i < selectors.length; i++) {
-      var found = card.querySelector(selectors[i]);
-
-      if (
-        found &&
-        !found.classList.contains('veloura-quick-view-button') &&
-        !found.classList.contains('veloura-pc-quick-btn') &&
-        !found.closest('salla-add-product-button')
-      ) {
-        return found;
-      }
-    }
-
-    return null;
-  }
-
-  function findQuickViewButton(card) {
-    var selectors = [
-      '.veloura-quick-view-button',
-      '.veloura-quick-view-btn',
-      '[data-veloura-quick-view]',
-      '[class*="quick-view"]'
-    ];
-
-    for (var i = 0; i < selectors.length; i++) {
-      var found = card.querySelector(selectors[i]);
-
-      if (found) {
-        return found;
-      }
-    }
-
-    var buttons = Array.prototype.slice.call(
-      card.querySelectorAll('button, a, salla-button, .s-button-element')
-    );
-
-    return buttons.find(function (button) {
-      if (button.closest('salla-add-product-button')) return false;
-
-      var text = normalizeText(button.textContent);
-      var aria = normalizeText(button.getAttribute('aria-label'));
-      var title = normalizeText(button.getAttribute('title'));
-
-      return /عرض سريع|مشاهدة سريعة|quick view/i.test(text + ' ' + aria + ' ' + title);
-    }) || null;
-  }
-
-  function looksLikePromo(el) {
-    if (!el) return false;
-
-    var cls = String(el.className || '').toLowerCase();
-    var text = normalizeText(el.textContent);
-
-    if (!text) return false;
-
-    if (/price|rating|title|button|wishlist|favorite|quick|image|content|footer/.test(cls)) {
-      return false;
-    }
-
-    return (
-      /promotion|promo|badge|ribbon|tag|offer|discount/.test(cls) ||
-      /شحن|مجاني|خصم|عرض|العرض|وفر|ادفع|لاحق|هدية|جديد|نفدت|مخزون/i.test(text)
-    );
-  }
-
-  function findPromoItems(card) {
-    var all = Array.prototype.slice.call(card.querySelectorAll('span, div, p, small, strong, b'));
-
-    return all.filter(function (el) {
-      return looksLikePromo(el);
-    });
-  }
-
-  function ensureActionsWrap(imageBox) {
-    var wrap = imageBox.querySelector(':scope > .veloura-pc-actions-wrap');
-
-    if (!wrap) {
-      wrap = document.createElement('div');
-      wrap.className = 'veloura-pc-actions-wrap';
-      imageBox.appendChild(wrap);
-    }
-
-    return wrap;
-  }
-
-  function moveActions(card, imageBox) {
-    var wrap = ensureActionsWrap(imageBox);
-    var wishlist = findWishlistButton(card);
-    var quick = findQuickViewButton(card);
-
-    if (wishlist) {
-      wishlist.classList.add('veloura-pc-action-btn', 'veloura-pc-wishlist-btn');
-
-      if (!wrap.contains(wishlist)) {
-        wrap.appendChild(wishlist);
-      }
-    }
-
-    if (quick) {
-      quick.classList.add('veloura-pc-action-btn', 'veloura-pc-quick-btn');
-
-      if (!wrap.contains(quick)) {
-        wrap.appendChild(quick);
-      }
-    }
-  }
-
-  function movePromo(card, imageBox) {
-    var promos = findPromoItems(card);
-
-    promos.forEach(function (promo) {
-      promo.classList.add('veloura-pc-promo');
-
-      if (promo.parentElement !== imageBox) {
-        imageBox.appendChild(promo);
-      }
-    });
-  }
-
-  function enhanceProductCard(card) {
-    if (!card) return;
-
-    var imageBox = findImageBox(card);
-
-    if (!imageBox) return;
-
-    card.style.position = 'relative';
-    imageBox.style.position = 'relative';
-
-    moveActions(card, imageBox);
-    movePromo(card, imageBox);
-
-    card.dataset.velouraProductCardEnhanced = '1';
-  }
-
-  function enhanceAllProductCards() {
-    document.querySelectorAll('product-card, .s-product-card-entry').forEach(function (node) {
-      var card = findCardRoot(node);
-      enhanceProductCard(card);
-    });
-  }
-
-  function runLater() {
-    enhanceAllProductCards();
-    setTimeout(enhanceAllProductCards, 300);
-    setTimeout(enhanceAllProductCards, 900);
-    setTimeout(enhanceAllProductCards, 1800);
-  }
-
-  document.addEventListener('DOMContentLoaded', runLater);
-  document.addEventListener('theme::ready', runLater);
-
-  window.addEventListener('load', function () {
-    runLater();
-
-    var timer = null;
-    var observer = new MutationObserver(function () {
-      clearTimeout(timer);
-      timer = setTimeout(enhanceAllProductCards, 160);
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
-    setTimeout(function () {
-      observer.disconnect();
-    }, 9000);
-  });
-})();
-</script>
 
 </body>
 </html>
