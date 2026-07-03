@@ -3970,13 +3970,13 @@
   "type": "number",
   "format": "slider",
   "label": "حجم نص العنوان الترويجي",
-  "description": "القيمة بالبكسل",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 10px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-font",
   "value": "12",
   "required": false,
   "step": "1",
-  "minimum": "10",
+  "minimum": "1",
   "maximum": "20",
   "conditions": [
     {
@@ -4051,12 +4051,13 @@
   "type": "number",
   "format": "slider",
   "label": "المسافة الداخلية يمين ويسار العنوان الترويجي",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 4px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-pin",
   "value": "12",
   "required": false,
   "step": "1",
-  "minimum": "4",
+  "minimum": "1",
   "maximum": "30",
   "conditions": [
     {
@@ -4076,12 +4077,13 @@
   "type": "number",
   "format": "slider",
   "label": "المسافة الداخلية أعلى وأسفل العنوان الترويجي",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 2px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-pin",
   "value": "7",
   "required": false,
   "step": "1",
-  "minimum": "2",
+  "minimum": "1",
   "maximum": "18",
   "conditions": [
     {
