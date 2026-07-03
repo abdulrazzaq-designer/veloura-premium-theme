@@ -1378,6 +1378,36 @@
 
 {% set vsc_custom_links = theme.settings.get('veloura_side_categories_custom_links_2026', []) %}
 
+{# صور التصنيفات المرفوعة من قسم صور صفحات التصنيفات #}
+{% set vc_use_custom_images_raw = theme.settings.get('veloura_category_use_custom_images_2026', false) %}
+{% if vc_use_custom_images_raw.value is defined %}
+  {% set vc_use_custom_images_raw = vc_use_custom_images_raw.value %}
+{% elseif vc_use_custom_images_raw.selected is defined %}
+  {% set vc_use_custom_images_raw = vc_use_custom_images_raw.selected %}
+{% endif %}
+
+{% set vc_use_custom_images =
+  vc_use_custom_images_raw == true
+  or vc_use_custom_images_raw == 'true'
+  or vc_use_custom_images_raw == 1
+  or vc_use_custom_images_raw == '1'
+  or vc_use_custom_images_raw == 'on'
+%}
+
+{% set vc_images_location = theme.settings.get('veloura_category_images_location_2026', 'sidebar_and_page') %}
+{% if vc_images_location.selected is defined and vc_images_location.selected[0].value is defined %}
+  {% set vc_images_location = vc_images_location.selected[0].value %}
+{% elseif vc_images_location.value is defined %}
+  {% set vc_images_location = vc_images_location.value %}
+{% elseif vc_images_location is iterable and vc_images_location[0].value is defined %}
+  {% set vc_images_location = vc_images_location[0].value %}
+{% endif %}
+
+{% set vc_images_map = theme.settings.get('veloura_category_images_map_v7_2026', []) %}
+{% if vc_images_map.value is defined %}
+  {% set vc_images_map = vc_images_map.value %}
+{% endif %}
+
 <style id="veloura-side-categories-vars">
   :root {
     --veloura-side-cats-bg: {{ vsc_bg }};
@@ -1396,7 +1426,11 @@
 <script>
   window.velouraSideCategoriesSettings = {
     imageSizeMode: {{ vsc_img_size_mode|json_encode|raw }},
-    imageDisplayLocation: {{ vsc_image_location|json_encode|raw }},
+    imageDisplayLocation: {{ vc_images_location|json_encode|raw }},
+    categoryImagesLocation: {{ vc_images_location|json_encode|raw }},
+    categoryUseCustomImages: {{ vc_use_custom_images ? 'true' : 'false' }},
+    categoryImagesMap: {{ vc_images_map|json_encode|raw }},
+
     discountImage: {{ vsc_discount_image|json_encode|raw }},
     blogImage: {{ vsc_blog_image|json_encode|raw }},
     hideImportantLinks: {{ vsc_hide_important ? 'true' : 'false' }},

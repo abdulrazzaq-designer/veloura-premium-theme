@@ -550,12 +550,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ================================
-   Veloura Side Categories Settings Hook
+   Veloura Side Categories Settings Hook V3
+   يقرأ صور التصنيفات المرفوعة والمرتبطة من:
+   veloura_category_images_map_v7_2026
 ================================ */
 
 (function () {
   function normalizeText(value) {
-    return String(value || '').replace(/\s+/g, ' ').trim();
+    return String(value || '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function normalizeKey(value) {
+    return normalizeText(value)
+      .toLowerCase()
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .replace(/\/+$/, '');
   }
 
   function getSettings() {
@@ -570,14 +582,35 @@ document.addEventListener('DOMContentLoaded', () => {
     return menu && menu.querySelector('ul.main-menu');
   }
 
+  function normalizeCollection(collection) {
+    if (!collection) return [];
+
+    if (Array.isArray(collection)) {
+      return collection;
+    }
+
+    if (typeof collection === 'object') {
+      return Object.keys(collection).map(function (key) {
+        return collection[key];
+      });
+    }
+
+    return [];
+  }
+
   function allowSideImages(settings) {
-    var value = String(settings.imageDisplayLocation || 'side_and_category');
+    var value = String(
+      settings.categoryImagesLocation ||
+      settings.imageDisplayLocation ||
+      'sidebar_and_page'
+    );
 
     if (
+      value === 'related_pages_only' ||
       value === 'category_pages_only' ||
       value === 'pages_only' ||
-      value === 'linked_categories_only' ||
-      value === 'category_only'
+      value === 'category_only' ||
+      value === 'page_images_sidebar_icons'
     ) {
       return false;
     }
@@ -606,19 +639,167 @@ document.addEventListener('DOMContentLoaded', () => {
     return img;
   }
 
+  function ensureImageOnLink(link, src) {
+    if (!link || !src) return;
+
+    var old = link.querySelector('.veloura-side-menu-img');
+
+    if (old) {
+      old.src = src;
+      return;
+    }
+
+    var img = createImage(src);
+
+    if (!img) return;
+
+    link.insertBefore(img, link.firstChild);
+  }
+
   function markNativeCategoryImages(menu) {
     menu.querySelectorAll('li > a > img, li > span > img').forEach(function (img) {
       img.classList.add('veloura-side-menu-img', 'veloura-side-menu-img-native');
     });
   }
 
-  function ensureImageOnLink(link, src) {
-    if (!link || !src || link.querySelector('.veloura-side-menu-img')) return;
+  function getItemImage(item) {
+    if (!item || typeof item !== 'object') return '';
 
-    var img = createImage(src);
-    if (!img) return;
+    return (
+      item.veloura_map_image ||
+      item.image ||
+      item.img ||
+      item.photo ||
+      ''
+    );
+  }
 
-    link.insertBefore(img, link.firstChild);
+  function getItemCategories(item) {
+    if (!item || typeof item !== 'object') return [];
+
+    return normalizeCollection(
+      item.veloura_map_categories ||
+      item.categories ||
+      item.category ||
+      item.selected ||
+      []
+    );
+  }
+
+  function collectCategoryTokens(category) {
+    var tokens = [];
+
+    function add(value) {
+      var key = normalizeKey(value);
+      if (key && tokens.indexOf(key) === -1) {
+        tokens.push(key);
+      }
+    }
+
+    if (typeof category === 'string' || typeof category === 'number') {
+      add(category);
+      return tokens;
+    }
+
+    if (!category || typeof category !== 'object') {
+      return tokens;
+    }
+
+    add(category.label);
+    add(category.name);
+    add(category.title);
+    add(category.value);
+    add(category.id);
+    add(category.key);
+    add(category.url);
+    add(category.link);
+    add(category.slug);
+
+    if (Array.isArray(category.selected)) {
+      category.selected.forEach(function (child) {
+        collectCategoryTokens(child).forEach(add);
+      });
+    }
+
+    return tokens;
+  }
+
+  function getLinkTokens(link) {
+    var li = link.closest('li');
+    var tokens = [];
+
+    function add(value) {
+      var key = normalizeKey(value);
+      if (key && tokens.indexOf(key) === -1) {
+        tokens.push(key);
+      }
+    }
+
+    add(link.textContent);
+    add(link.getAttribute('href'));
+    add(link.href);
+
+    if (li) {
+      add(li.id);
+      add(li.getAttribute('data-id'));
+      add(li.getAttribute('data-category-id'));
+      add(li.getAttribute('data-slug'));
+      add(li.getAttribute('data-url'));
+    }
+
+    return tokens;
+  }
+
+  function isSameCategory(link, categoryTokens) {
+    var linkTokens = getLinkTokens(link);
+
+    return categoryTokens.some(function (categoryToken) {
+      return linkTokens.some(function (linkToken) {
+        if (!categoryToken || !linkToken) return false;
+
+        return (
+          linkToken === categoryToken ||
+          linkToken.indexOf(categoryToken) !== -1 ||
+          categoryToken.indexOf(linkToken) !== -1
+        );
+      });
+    });
+  }
+
+  function applyMappedCategoryImages(menu, settings) {
+    if (!settings.categoryUseCustomImages) return;
+    if (!allowSideImages(settings)) return;
+
+    var map = normalizeCollection(settings.categoryImagesMap);
+
+    if (!map.length) return;
+
+    var links = menu.querySelectorAll('li > a, li > span');
+
+    map.forEach(function (item) {
+      var image = getItemImage(item);
+      var categories = getItemCategories(item);
+
+      if (!image || !categories.length) return;
+
+      var categoryTokens = [];
+
+      categories.forEach(function (category) {
+        collectCategoryTokens(category).forEach(function (token) {
+          if (categoryTokens.indexOf(token) === -1) {
+            categoryTokens.push(token);
+          }
+        });
+      });
+
+      if (!categoryTokens.length) return;
+
+      links.forEach(function (link) {
+        if (isSameCategory(link, categoryTokens)) {
+          ensureImageOnLink(link, image);
+        }
+      });
+    });
   }
 
   function enhanceSpecialImages(menu, settings) {
@@ -658,22 +839,6 @@ document.addEventListener('DOMContentLoaded', () => {
         li.style.setProperty('display', 'none', 'important');
       }
     });
-  }
-
-  function normalizeCollection(collection) {
-    if (!collection) return [];
-
-    if (Array.isArray(collection)) {
-      return collection;
-    }
-
-    if (typeof collection === 'object') {
-      return Object.keys(collection).map(function (key) {
-        return collection[key];
-      });
-    }
-
-    return [];
   }
 
   function appendCustomLinks(menu, settings) {
@@ -728,6 +893,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!menu) return;
 
     markNativeCategoryImages(menu);
+    applyMappedCategoryImages(menu, settings);
     enhanceSpecialImages(menu, settings);
     hideMatchingLinks(menu, settings);
     appendCustomLinks(menu, settings);
