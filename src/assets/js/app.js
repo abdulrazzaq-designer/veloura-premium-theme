@@ -585,11 +585,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function ensureImageOnLink(link, src) {
-    if (!link || !src || link.querySelector('.veloura-side-menu-img')) return;
+  if (!link || !src || link.querySelector('.veloura-side-menu-img')) return;
 
-    var img = createImage(src);
-    if (img) link.appendChild(img);
-  }
+  var img = createImage(src);
+  if (!img) return;
+
+  link.insertBefore(img, link.firstChild);
+}
 
   function enhanceSpecialImages(menu, settings) {
     menu.querySelectorAll('li > a, li > span').forEach(function (link) {
@@ -664,9 +666,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (item.image) {
-        var img = createImage(item.image);
-        if (img) a.appendChild(img);
-      }
+  var img = createImage(item.image);
+  if (img) {
+    a.insertBefore(img, a.firstChild);
+  }
+}
 
       li.appendChild(a);
       list.appendChild(li);

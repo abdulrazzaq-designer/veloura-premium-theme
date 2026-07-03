@@ -2715,7 +2715,7 @@
   "id": "veloura_side_cat_img_w_2026",
   "type": "number",
   "format": "slider",
-  "label": "عرض صورة التصنيف في القائمة الجانبية",
+  "label": "عرض صورة التصنيف في القائمة الجانبية5555",
   "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-resize",

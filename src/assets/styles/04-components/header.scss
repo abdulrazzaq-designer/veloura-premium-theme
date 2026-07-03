@@ -1465,44 +1465,64 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
 
 
 
-
 /* ================================
-   Veloura Side Categories Settings Hook
-   ضع هذا في آخر:
-   src/assets/styles/04-components/_header.scss
+   Veloura Side Categories Final Override
+   لازم يكون آخر شيء في _header.scss
 ================================ */
 
-.mm-ocd #mobile-menu.mm-spn,
+/* خلفية القائمة من الإعدادات */
 .mm-ocd .mm-ocd__content,
 .mm-ocd.mm-ocd--right .mm-ocd__content,
-.mm-ocd.mm-ocd--left .mm-ocd__content {
+.mm-ocd.mm-ocd--left .mm-ocd__content,
+.mm-ocd #mobile-menu.mm-spn,
+.mm-ocd #mobile-menu.mm-spn ul,
+.mm-ocd #mobile-menu.mm-spn .main-menu {
   background: var(--veloura-side-cats-bg, #f8f8f8) !important;
   color: var(--veloura-side-cats-text, #111827) !important;
 }
 
+/* حواف القائمة نفسها */
 .mm-ocd.mm-ocd--right .mm-ocd__content {
   border-radius: var(--veloura-side-cats-menu-radius, 18px) 0 0 var(--veloura-side-cats-menu-radius, 18px) !important;
+  overflow: hidden !important;
 }
 
 .mm-ocd.mm-ocd--left .mm-ocd__content {
   border-radius: 0 var(--veloura-side-cats-menu-radius, 18px) var(--veloura-side-cats-menu-radius, 18px) 0 !important;
+  overflow: hidden !important;
 }
 
-.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
-  font-size: var(--veloura-side-cats-title-font-size, 14px) !important;
+/* لا تعطي التصنيفات خلفية خاصة */
+.mm-ocd #mobile-menu.mm-spn li,
+.mm-ocd #mobile-menu.mm-spn li > a,
+.mm-ocd #mobile-menu.mm-spn li > span,
+.mm-ocd #mobile-menu.mm-spn a,
+.mm-ocd #mobile-menu.mm-spn span {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
+/* النص من الإعدادات */
 .mm-ocd #mobile-menu.mm-spn li > a,
 .mm-ocd #mobile-menu.mm-spn li > span {
   color: var(--veloura-side-cats-text, #111827) !important;
   font-size: var(--veloura-side-cats-title-font-size, 15px) !important;
+  gap: 10px !important;
 }
 
+/* عنوان القائمة */
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  font-size: var(--veloura-side-cats-title-font-size, 14px) !important;
+}
+
+/* المسافة بين العناصر */
 .mm-ocd #mobile-menu.mm-spn .main-menu > li:not(:last-child),
 .mm-ocd #mobile-menu.mm-spn ul.mm-spn--open > li:not(:last-child) {
   margin-bottom: var(--veloura-side-cats-gap, 0px) !important;
 }
 
+/* صورة التصنيف من الإعدادات */
+.mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
 .mm-ocd #mobile-menu.mm-spn .veloura-side-menu-img {
   width: var(--veloura-side-cats-img-w, 60px) !important;
   height: var(--veloura-side-cats-img-h, 60px) !important;
@@ -1512,11 +1532,29 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   max-height: var(--veloura-side-cats-img-h, 60px) !important;
   object-fit: var(--veloura-side-cats-img-fit, cover) !important;
   border-radius: var(--veloura-side-cats-img-radius, 16px) !important;
-  margin-inline-start: 10px !important;
-  margin-inline-end: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
   flex-shrink: 0 !important;
 }
 
+/* في RTL الصورة تكون يمين العنوان */
+[dir="rtl"] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
+html[dir="rtl"] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img {
+  order: -1 !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 10px !important;
+}
+
+/* في LTR الصورة تكون يسار العنوان */
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img {
+  order: -1 !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 10px !important;
+}
+
+/* ارتفاع الصف يتأقلم مع الصورة فقط بدون خلفية خاصة */
 .mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img),
 .mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img) > a,
 .mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img) > span {
@@ -1524,6 +1562,16 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   height: max(56px, calc(var(--veloura-side-cats-img-h, 60px) + 16px)) !important;
 }
 
+/* لو الصورة كبيرة، خليه سطر مرتب وليس بلوك فوق النص */
+.mm-ocd #mobile-menu.mm-spn li > a:has(.veloura-side-menu-img),
+.mm-ocd #mobile-menu.mm-spn li > span:has(.veloura-side-menu-img) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* لا يوجد مربع أبيض خاص حول الصور من الكود */
+.mm-ocd #mobile-menu.mm-spn .veloura-side-custom-link,
 .mm-ocd #mobile-menu.mm-spn .veloura-side-custom-link > a {
-  gap: 10px !important;
+  background: transparent !important;
 }
