@@ -2796,7 +2796,7 @@
   "id": "veloura_side_categories_custom_links_2026",
   "type": "collection",
   "format": "collection",
-  "label": "روابط مخصصة للقائمة الجانبية2",
+  "label": "روابط مخصصة للقائمة الجانبية",
   "description": "أضف روابط تظهر داخل القائمة الجانبية للتصنيفات",
   "icon": "sicon-list-add",
   "required": false,

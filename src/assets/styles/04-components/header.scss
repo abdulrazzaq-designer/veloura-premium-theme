@@ -1847,3 +1847,36 @@ body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > span 
 
 
 
+/* ================================
+   Veloura mmenu Panel Offset Fix
+   حل تداخل القائمة الرئيسية مع الفرعية
+================================ */
+
+.mm-ocd #mobile-menu.mm-spn {
+  --mm-spn-panel-offset: 100% !important;
+}
+
+/* اللوحة المفتوحة تكون بعرضها الصحيح */
+.mm-ocd #mobile-menu.mm-spn ul.mm-spn--open {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+/* اللوحة الأب تخرج بالكامل بدل 30% */
+.mm-ocd #mobile-menu.mm-spn ul.mm-spn--parent {
+  left: -100% !important;
+  right: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+/* للـ LTR لو احتجته */
+[dir="ltr"] .mm-ocd #mobile-menu.mm-spn ul.mm-spn--parent,
+html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn ul.mm-spn--parent {
+  right: -100% !important;
+  left: auto !important;
+}
