@@ -2716,13 +2716,13 @@
   "type": "number",
   "format": "slider",
   "label": "عرض صورة التصنيف في القائمة الجانبية",
-  "description": "تحكم بعرض صورة التصنيف داخل القائمة الجانبية",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-resize",
   "value": "60",
   "required": false,
   "step": "1",
-  "minimum": "40",
+  "minimum": "1",
   "maximum": "160",
   "conditions": [
     {
@@ -2737,13 +2737,13 @@
   "type": "number",
   "format": "slider",
   "label": "ارتفاع صورة التصنيف في القائمة الجانبية",
-  "description": "تحكم بارتفاع صورة التصنيف داخل القائمة الجانبية",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
   "inputType": "range",
   "icon": "sicon-resize",
   "value": "60",
   "required": false,
   "step": "1",
-  "minimum": "40",
+  "minimum": "1",
   "maximum": "160",
   "conditions": [
     {

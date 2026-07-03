@@ -1329,9 +1329,15 @@
 
 {% set vsc_img_w = theme.settings.get('veloura_side_cat_img_w_2026', 60) %}
 {% if vsc_img_w.value is defined %}{% set vsc_img_w = vsc_img_w.value %}{% endif %}
+{% set vsc_img_w = vsc_img_w + 0 %}
+{% if vsc_img_w < 40 %}{% set vsc_img_w = 40 %}{% endif %}
+{% if vsc_img_w > 160 %}{% set vsc_img_w = 160 %}{% endif %}
 
 {% set vsc_img_h = theme.settings.get('veloura_side_cat_img_h_2026', 60) %}
 {% if vsc_img_h.value is defined %}{% set vsc_img_h = vsc_img_h.value %}{% endif %}
+{% set vsc_img_h = vsc_img_h + 0 %}
+{% if vsc_img_h < 40 %}{% set vsc_img_h = 40 %}{% endif %}
+{% if vsc_img_h > 160 %}{% set vsc_img_h = 160 %}{% endif %}
 
 {% set vsc_parent_action = theme.settings.get('veloura_side_categories_parent_click_action_2026', 'open_subcategories') %}
 {% if vsc_parent_action.selected is defined and vsc_parent_action.selected[0].value is defined %}
