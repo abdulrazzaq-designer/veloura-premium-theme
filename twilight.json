@@ -3899,16 +3899,6 @@
       "key": "veloura-pc-promo-top-left-2026"
     },
     {
-      "label": "أسفل يمين الصورة",
-      "value": "bottom_right",
-      "key": "veloura-pc-promo-bottom-right-2026"
-    },
-    {
-      "label": "أسفل يسار الصورة",
-      "value": "bottom_left",
-      "key": "veloura-pc-promo-bottom-left-2026"
-    },
-    {
       "label": "منتصف أعلى الصورة",
       "value": "top_center",
       "key": "veloura-pc-promo-top-center-2026"
@@ -3919,14 +3909,10 @@
       "id": "veloura_product_card_enabled_2026",
       "operation": "=",
       "value": true
-    },
-    {
-      "id": "veloura_pc_hide_promo_2026",
-      "operation": "=",
-      "value": false
     }
   ]
 },
+
 {
   "id": "veloura_pc_promo_bg_2026",
   "type": "string",
@@ -4129,42 +4115,32 @@
   "type": "items",
   "format": "dropdown-list",
   "label": "مكان أزرار المفضلة والعرض السريع",
-  "description": "يتحكم بمكان الأزرار الصغيرة فوق صورة المنتج",
+  "description": "يمين أو يسار فوق بعض، أو توزيع يمين ويسار أسفل الصورة",
   "icon": "sicon-grid",
   "source": "Manual",
   "required": true,
   "selected": [
     {
-      "label": "أعلى الصورة - موزعة يمين ويسار",
-      "value": "split_top",
-      "key": "veloura-pc-actions-split-top-2026"
+      "label": "يسار الصورة - فوق بعض",
+      "value": "left_stack",
+      "key": "veloura-pc-actions-left-stack-2026"
     }
   ],
   "options": [
     {
-      "label": "أعلى الصورة - موزعة يمين ويسار",
-      "value": "split_top",
-      "key": "veloura-pc-actions-split-top-2026"
+      "label": "يمين الصورة - فوق بعض",
+      "value": "right_stack",
+      "key": "veloura-pc-actions-right-stack-2026"
     },
     {
-      "label": "أعلى يمين الصورة",
-      "value": "top_right",
-      "key": "veloura-pc-actions-top-right-2026"
+      "label": "يسار الصورة - فوق بعض",
+      "value": "left_stack",
+      "key": "veloura-pc-actions-left-stack-2026"
     },
     {
-      "label": "أعلى يسار الصورة",
-      "value": "top_left",
-      "key": "veloura-pc-actions-top-left-2026"
-    },
-    {
-      "label": "أسفل يمين الصورة",
-      "value": "bottom_right",
-      "key": "veloura-pc-actions-bottom-right-2026"
-    },
-    {
-      "label": "أسفل يسار الصورة",
-      "value": "bottom_left",
-      "key": "veloura-pc-actions-bottom-left-2026"
+      "label": "أسفل الصورة - توزيع يمين ويسار",
+      "value": "bottom_split",
+      "key": "veloura-pc-actions-bottom-split-2026"
     }
   ],
   "conditions": [
@@ -4176,37 +4152,15 @@
   ]
 },
 {
-  "id": "veloura_pc_actions_style_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "ستايل أزرار المفضلة والعرض السريع",
+  "type": "boolean",
   "icon": "sicon-magic",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "زجاجي ناعم",
-      "value": "glass",
-      "key": "veloura-pc-actions-style-glass-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "زجاجي ناعم",
-      "value": "glass",
-      "key": "veloura-pc-actions-style-glass-2026"
-    },
-    {
-      "label": "صلب",
-      "value": "solid",
-      "key": "veloura-pc-actions-style-solid-2026"
-    },
-    {
-      "label": "نظيف بدون ظل",
-      "value": "clean",
-      "key": "veloura-pc-actions-style-clean-2026"
-    }
-  ],
+  "label": "تفعيل الشكل الزجاجي لأزرار البطاقة والعنوان الترويجي",
+  "description": "يجعل المفضلة والعرض السريع والعنوان الترويجي بشكل زجاجي شفاف قليلاً",
+  "id": "veloura_pc_glass_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
   "conditions": [
     {
       "id": "veloura_product_card_enabled_2026",
