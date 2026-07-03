@@ -758,12 +758,12 @@
   "format": "slider",
   "inputType": "range",
   "label": "عرض الشعار",
-  "description": "عرض الشعار بالبكسل",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 40px حتى لو السلايدر يبدأ من 1",
   "icon": "sicon-resize",
   "value": "120",
   "required": false,
   "step": "1",
-  "minimum": "40",
+  "minimum": "1",
   "maximum": "260",
   "conditions": [
     {
@@ -1111,12 +1111,12 @@
   "format": "slider",
   "inputType": "range",
   "label": "مدة ظهور صفحة التحميل",
-  "description": "بالميلي ثانية. 1200 تعني ثانية و200 جزء",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 300ms حتى لو السلايدر يبدأ من 1",
   "icon": "sicon-timer",
   "value": "1200",
   "required": false,
   "step": "100",
-  "minimum": "300",
+  "minimum": "1",
   "maximum": "5000",
   "conditions": [
     {
@@ -1132,12 +1132,12 @@
   "format": "slider",
   "inputType": "range",
   "label": "سرعة اختفاء صفحة التحميل",
-  "description": "بالميلي ثانية",
+  "description": "القيمة الفعلية في الواجهة لا تقل عن 100ms حتى لو السلايدر يبدأ من 1",
   "icon": "sicon-timer",
   "value": "450",
   "required": false,
   "step": "50",
-  "minimum": "100",
+  "minimum": "1",
   "maximum": "1500",
   "conditions": [
     {

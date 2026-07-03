@@ -1741,16 +1741,25 @@
   {% if vl_bar_color.value is defined %}{% set vl_bar_color = vl_bar_color.value %}{% endif %}
 
   {% set vl_logo_w = theme.settings.get('veloura_loader_logo_w_2026', '120') %}
-  {% if vl_logo_w.value is defined %}{% set vl_logo_w = vl_logo_w.value %}{% endif %}
+{% if vl_logo_w.value is defined %}{% set vl_logo_w = vl_logo_w.value %}{% endif %}
+{% set vl_logo_w = vl_logo_w + 0 %}
+{% if vl_logo_w < 40 %}{% set vl_logo_w = 40 %}{% endif %}
+{% if vl_logo_w > 260 %}{% set vl_logo_w = 260 %}{% endif %}
 
   {% set vl_logo_radius = theme.settings.get('veloura_loader_logo_radius_2026', '20') %}
   {% if vl_logo_radius.value is defined %}{% set vl_logo_radius = vl_logo_radius.value %}{% endif %}
 
   {% set vl_duration = theme.settings.get('veloura_loader_duration_2026', '1200') %}
-  {% if vl_duration.value is defined %}{% set vl_duration = vl_duration.value %}{% endif %}
+{% if vl_duration.value is defined %}{% set vl_duration = vl_duration.value %}{% endif %}
+{% set vl_duration = vl_duration + 0 %}
+{% if vl_duration < 300 %}{% set vl_duration = 300 %}{% endif %}
+{% if vl_duration > 5000 %}{% set vl_duration = 5000 %}{% endif %}
 
   {% set vl_fade = theme.settings.get('veloura_loader_fade_2026', '450') %}
-  {% if vl_fade.value is defined %}{% set vl_fade = vl_fade.value %}{% endif %}
+{% if vl_fade.value is defined %}{% set vl_fade = vl_fade.value %}{% endif %}
+{% set vl_fade = vl_fade + 0 %}
+{% if vl_fade < 100 %}{% set vl_fade = 100 %}{% endif %}
+{% if vl_fade > 1500 %}{% set vl_fade = 1500 %}{% endif %}
 
   {% set vl_blur = theme.settings.get('veloura_loader_bg_blur_2026', '16') %}
   {% if vl_blur.value is defined %}{% set vl_blur = vl_blur.value %}{% endif %}
