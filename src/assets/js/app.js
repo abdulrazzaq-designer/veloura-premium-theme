@@ -870,22 +870,189 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function hideMatchingLinks(menu, settings) {
-    menu.querySelectorAll('li > a, li > span').forEach(function (link) {
-      var text = normalizeText(link.textContent);
-      var li = link.closest('li');
+  function createSideSection(sectionClass, title) {
+  var li = document.createElement('li');
+  li.className = 'veloura-side-footer-section ' + sectionClass;
 
-      if (!li) return;
+  var span = document.createElement('span');
+  span.textContent = title;
 
-      if (settings.hideImportantLinks && /روابط تهمك|تهمك|important/i.test(text)) {
-        li.style.setProperty('display', 'none', 'important');
-      }
+  var ul = document.createElement('ul');
+  ul.className = 'veloura-side-footer-submenu';
 
-      if (settings.hideCustomerService && /خدمة العملاء|العملاء|customer/i.test(text)) {
-        li.style.setProperty('display', 'none', 'important');
+  li.appendChild(span);
+  li.appendChild(ul);
+
+  return {
+    li: li,
+    ul: ul
+  };
+}
+
+function cleanText(value) {
+  return normalizeText(value)
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function cloneLinkForSideMenu(sourceLink) {
+  if (!sourceLink) return null;
+
+  var href = sourceLink.getAttribute('href') || sourceLink.href || '#';
+  var text =
+    cleanText(sourceLink.textContent) ||
+    sourceLink.getAttribute('aria-label') ||
+    sourceLink.getAttribute('title') ||
+    '';
+
+  if (!text && href === '#') return null;
+
+  var li = document.createElement('li');
+  li.className = 'veloura-side-footer-link';
+
+  var a = document.createElement('a');
+  a.href = href;
+  a.textContent = text || href;
+
+  if (sourceLink.target === '_blank') {
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+  }
+
+  li.appendChild(a);
+
+  return li;
+}
+
+function removeFooterSections(menu) {
+  menu.querySelectorAll(
+    '.veloura-side-important-links-section, .veloura-side-customer-service-section'
+  ).forEach(function (item) {
+    item.remove();
+  });
+}
+
+function findImportantFooterLinks() {
+  var selectors = [
+    'footer .links-menu .footer-list a',
+    'footer .links .footer-list a',
+    'footer li.links .footer-list a',
+    'footer [class*="links"] .footer-list a'
+  ];
+
+  var found = [];
+
+  selectors.forEach(function (selector) {
+    document.querySelectorAll(selector).forEach(function (link) {
+      if (found.indexOf(link) === -1) {
+        found.push(link);
       }
     });
+  });
+
+  return found;
+}
+
+function findCustomerServiceLinks() {
+  var selectors = [
+    'footer salla-contacts a',
+    'footer .s-contacts-list a',
+    'footer salla-contacts .s-contacts-list a',
+    'salla-contacts a',
+    '.s-contacts-list a'
+  ];
+
+  var found = [];
+
+  selectors.forEach(function (selector) {
+    document.querySelectorAll(selector).forEach(function (link) {
+      if (found.indexOf(link) === -1) {
+        found.push(link);
+      }
+    });
+  });
+
+  return found;
+}
+
+function appendImportantLinks(menu, settings) {
+  if (settings.hideImportantLinks) {
+    return;
   }
+
+  var list = getMainList(menu);
+  if (!list) return;
+
+  if (list.querySelector('.veloura-side-important-links-section')) {
+    return;
+  }
+
+  var links = findImportantFooterLinks();
+
+  if (!links.length) {
+    return;
+  }
+
+  var section = createSideSection(
+    'veloura-side-important-links-section',
+    'روابط تهمك'
+  );
+
+  links.forEach(function (sourceLink) {
+    var cloned = cloneLinkForSideMenu(sourceLink);
+
+    if (cloned) {
+      section.ul.appendChild(cloned);
+    }
+  });
+
+  if (section.ul.children.length) {
+    list.appendChild(section.li);
+  }
+}
+
+function appendCustomerServiceLinks(menu, settings) {
+  if (settings.hideCustomerService) {
+    return;
+  }
+
+  var list = getMainList(menu);
+  if (!list) return;
+
+  if (list.querySelector('.veloura-side-customer-service-section')) {
+    return;
+  }
+
+  var links = findCustomerServiceLinks();
+
+  if (!links.length) {
+    return;
+  }
+
+  var section = createSideSection(
+    'veloura-side-customer-service-section',
+    'خدمة العملاء'
+  );
+
+  links.forEach(function (sourceLink) {
+    var cloned = cloneLinkForSideMenu(sourceLink);
+
+    if (cloned) {
+      section.ul.appendChild(cloned);
+    }
+  });
+
+  if (section.ul.children.length) {
+    list.appendChild(section.li);
+  }
+}
+
+function applyFooterSections(menu, settings) {
+  removeFooterSections(menu);
+
+  appendImportantLinks(menu, settings);
+  appendCustomerServiceLinks(menu, settings);
+}
 
   function appendCustomLinks(menu, settings) {
     var list = getMainList(menu);
@@ -929,20 +1096,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function applySideCategoriesSettings() {
-    var menu = findMobileMenu();
-    var settings = getSettings();
+  var menu = findMobileMenu();
+  var settings = getSettings();
 
-    syncVisualModes(settings);
+  syncImageMode(settings);
 
-    if (!menu) return;
+  if (!menu) return;
 
-    markNativeCategoryImages(menu);
+  markNativeCategoryImages(menu);
 
-    applyMappedCategoryImages(menu, settings);
-    appendCustomLinks(menu, settings);
-    enhanceSpecialImages(menu, settings);
-    hideMatchingLinks(menu, settings);
-  }
+  applyMappedCategoryImages(menu, settings);
+  appendCustomLinks(menu, settings);
+  enhanceSpecialImages(menu, settings);
+
+  applyFooterSections(menu, settings);
+}
 
   document.addEventListener('DOMContentLoaded', function () {
     applySideCategoriesSettings();

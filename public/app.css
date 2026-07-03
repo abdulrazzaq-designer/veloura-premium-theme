@@ -27501,6 +27501,33 @@ body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > a,
 body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > span {
   background: transparent !important;
 }
+/* ================================
+   Veloura Side Menu Footer Sections
+================================ */
+.mm-ocd #mobile-menu.mm-spn .veloura-side-footer-section {
+  display: block !important;
+  position: relative !important;
+}
+.mm-ocd #mobile-menu.mm-spn .veloura-side-footer-section > span {
+  font-weight: 800 !important;
+  color: #111827 !important;
+  color: var(--veloura-side-cats-text, #111827) !important;
+}
+.mm-ocd #mobile-menu.mm-spn .veloura-side-footer-section > ul {
+  background: #f8f8f8 !important;
+  background: var(--veloura-side-cats-bg, #f8f8f8) !important;
+}
+.mm-ocd #mobile-menu.mm-spn .veloura-side-footer-link > a {
+  color: #111827 !important;
+  color: var(--veloura-side-cats-text, #111827) !important;
+  font-weight: 700 !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+}
+.mm-ocd #mobile-menu.mm-spn .veloura-side-footer-link > a i,
+.mm-ocd #mobile-menu.mm-spn .veloura-side-footer-link > a svg {
+  margin-right: 8px !important;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
