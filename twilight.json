@@ -588,6 +588,658 @@
             ]
         },
         
+
+
+        {
+  "type": "static",
+  "id": "veloura_loader_line_2026",
+  "format": "line"
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_loader_title_2026",
+  "value": "<div style=\"padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#020617,#005f73,#38bdf8);color:#fff;text-align:right;font-weight:900;box-shadow:0 14px 34px rgba(2,6,23,.18);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><i class='sicon-flash' style='font-size:22px;color:#fff'></i><span>صفحة التحميل الاحترافية</span></div>",
+  "variant": "h6"
+},
+{
+  "type": "static",
+  "format": "description",
+  "id": "veloura_loader_desc_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eff6ff;color:#0f172a;text-align:right;line-height:1.8;border-right:4px solid #0ea5e9\">تحكم كامل بصفحة التحميل التي تظهر عند دخول المتجر: الشعار، الخلفية، الحركة، المدة، النصوص، والشفافية.</div>"
+},
+{
+  "type": "boolean",
+  "format": "switch",
+  "id": "veloura_loader_enable_2026",
+  "label": "تفعيل صفحة التحميل",
+  "description": "إظهار شاشة تحميل عند دخول الموقع",
+  "icon": "sicon-toggle-on",
+  "value": false,
+  "selected": false,
+  "required": false
+},
+
+{
+  "type": "static",
+  "id": "veloura_loader_logo_line_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_loader_logo_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:900;border-right:4px solid #64748b\">الشعار داخل صفحة التحميل</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_loader_logo_type_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "نوع شعار صفحة التحميل",
+  "description": "اختر مصدر الشعار الذي يظهر في صفحة التحميل",
+  "icon": "sicon-image",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "شعار مرفوع من الإعدادات",
+      "value": "upload",
+      "key": "veloura-loader-logo-upload-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "شعار مرفوع من الإعدادات",
+      "value": "upload",
+      "key": "veloura-loader-logo-upload-2026"
+    },
+    {
+      "label": "شعار متحرك GIF / WEBP",
+      "value": "animated",
+      "key": "veloura-loader-logo-animated-2026"
+    },
+    {
+      "label": "شعار من رابط خارجي",
+      "value": "url",
+      "key": "veloura-loader-logo-url-2026"
+    },
+    {
+      "label": "استخدام شعار المتجر الأساسي",
+      "value": "store_logo",
+      "key": "veloura-loader-logo-store-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "image",
+  "id": "veloura_loader_logo_img_2026",
+  "label": "رفع شعار صفحة التحميل",
+  "description": "ارفع صورة الشعار الثابتة",
+  "icon": "sicon-image",
+  "value": null,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_logo_type_2026",
+      "operation": "=",
+      "value": "upload"
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "image",
+  "id": "veloura_loader_anim_img_2026",
+  "label": "رفع شعار متحرك",
+  "description": "يفضل GIF أو WEBP متحرك",
+  "icon": "sicon-image",
+  "value": null,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_logo_type_2026",
+      "operation": "=",
+      "value": "animated"
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "text",
+  "id": "veloura_loader_logo_url_2026",
+  "label": "رابط شعار صفحة التحميل",
+  "description": "ضع رابط مباشر للصورة",
+  "icon": "sicon-link",
+  "value": "",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_logo_type_2026",
+      "operation": "=",
+      "value": "url"
+    }
+  ]
+},
+{
+  "id": "veloura_loader_logo_w_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "عرض الشعار",
+  "description": "عرض الشعار بالبكسل",
+  "icon": "sicon-resize",
+  "value": "120",
+  "required": false,
+  "step": "1",
+  "minimum": "40",
+  "maximum": "260",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_loader_logo_radius_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "حواف الشعار",
+  "description": "تحكم بحواف صورة الشعار",
+  "icon": "sicon-crop",
+  "value": "20",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "80",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+
+{
+  "type": "static",
+  "id": "veloura_loader_bg_line_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_loader_bg_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#164e63;text-align:right;font-weight:900;border-right:4px solid #06b6d4\">خلفية صفحة التحميل</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_loader_bg_type_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "نوع الخلفية",
+  "description": "اختر شكل خلفية شاشة التحميل",
+  "icon": "sicon-paint-bucket",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "لون ثابت",
+      "value": "solid",
+      "key": "veloura-loader-bg-solid-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "لون ثابت",
+      "value": "solid",
+      "key": "veloura-loader-bg-solid-2026"
+    },
+    {
+      "label": "تدرج لوني",
+      "value": "gradient",
+      "key": "veloura-loader-bg-gradient-2026"
+    },
+    {
+      "label": "صورة كاملة",
+      "value": "image",
+      "key": "veloura-loader-bg-image-2026"
+    },
+    {
+      "label": "شفاف / زجاجي",
+      "value": "glass",
+      "key": "veloura-loader-bg-glass-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "color",
+  "id": "veloura_loader_bg_color_2026",
+  "label": "لون خلفية التحميل",
+  "icon": "sicon-paint-bucket",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "color",
+  "id": "veloura_loader_grad_1_2026",
+  "label": "لون التدرج الأول",
+  "icon": "sicon-paint-bucket",
+  "value": "#020617",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_bg_type_2026",
+      "operation": "=",
+      "value": "gradient"
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "color",
+  "id": "veloura_loader_grad_2_2026",
+  "label": "لون التدرج الثاني",
+  "icon": "sicon-paint-bucket",
+  "value": "#0ea5e9",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_bg_type_2026",
+      "operation": "=",
+      "value": "gradient"
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "image",
+  "id": "veloura_loader_bg_img_2026",
+  "label": "صورة خلفية صفحة التحميل",
+  "description": "ارفع صورة تظهر كخلفية كاملة",
+  "icon": "sicon-image",
+  "value": null,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_bg_type_2026",
+      "operation": "=",
+      "value": "image"
+    }
+  ]
+},
+{
+  "id": "veloura_loader_bg_blur_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "قوة البلور للخلفية الزجاجية",
+  "description": "يظهر فقط عند اختيار الخلفية الزجاجية",
+  "icon": "sicon-magic",
+  "value": "16",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "40",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_bg_type_2026",
+      "operation": "=",
+      "value": "glass"
+    }
+  ]
+},
+
+{
+  "type": "static",
+  "id": "veloura_loader_text_line_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_loader_text_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fefce8;color:#713f12;text-align:right;font-weight:900;border-right:4px solid #eab308\">النصوص داخل صفحة التحميل</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "format": "switch",
+  "id": "veloura_loader_show_text_2026",
+  "label": "إظهار نص أسفل الشعار",
+  "icon": "sicon-format-text",
+  "value": true,
+  "selected": true,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "text",
+  "id": "veloura_loader_main_text_2026",
+  "label": "النص الرئيسي",
+  "description": "مثال: جاري تجهيز المتجر لك",
+  "icon": "sicon-format-text",
+  "value": "جاري تجهيز المتجر لك",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_show_text_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "text",
+  "id": "veloura_loader_sub_text_2026",
+  "label": "النص الفرعي",
+  "description": "مثال: لحظات قليلة ونبدأ",
+  "icon": "sicon-format-text",
+  "value": "لحظات قليلة ونبدأ",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_show_text_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "color",
+  "id": "veloura_loader_text_color_2026",
+  "label": "لون نص صفحة التحميل",
+  "icon": "sicon-paint-bucket",
+  "value": "#111827",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_show_text_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+
+{
+  "type": "static",
+  "id": "veloura_loader_anim_line_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_loader_anim_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f5f3ff;color:#4c1d95;text-align:right;font-weight:900;border-right:4px solid #8b5cf6\">الحركة والتوقيت</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_loader_duration_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "مدة ظهور صفحة التحميل",
+  "description": "بالميلي ثانية. 1200 تعني ثانية و200 جزء",
+  "icon": "sicon-timer",
+  "value": "1200",
+  "required": false,
+  "step": "100",
+  "minimum": "300",
+  "maximum": "5000",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_loader_fade_2026",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "سرعة اختفاء صفحة التحميل",
+  "description": "بالميلي ثانية",
+  "icon": "sicon-timer",
+  "value": "450",
+  "required": false,
+  "step": "50",
+  "minimum": "100",
+  "maximum": "1500",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_loader_anim_type_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حركة الشعار",
+  "icon": "sicon-magic",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "نبض ناعم",
+      "value": "pulse",
+      "key": "veloura-loader-anim-pulse-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "بدون حركة",
+      "value": "none",
+      "key": "veloura-loader-anim-none-2026"
+    },
+    {
+      "label": "نبض ناعم",
+      "value": "pulse",
+      "key": "veloura-loader-anim-pulse-2026"
+    },
+    {
+      "label": "دوران خفيف",
+      "value": "spin",
+      "key": "veloura-loader-anim-spin-2026"
+    },
+    {
+      "label": "ظهور وارتفاع",
+      "value": "float",
+      "key": "veloura-loader-anim-float-2026"
+    },
+    {
+      "label": "تكبير وتصغير",
+      "value": "scale",
+      "key": "veloura-loader-anim-scale-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "format": "switch",
+  "id": "veloura_loader_bar_2026",
+  "label": "إظهار شريط تحميل أسفل الشعار",
+  "icon": "sicon-minus",
+  "value": true,
+  "selected": true,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "string",
+  "format": "color",
+  "id": "veloura_loader_bar_color_2026",
+  "label": "لون شريط التحميل",
+  "icon": "sicon-paint-bucket",
+  "value": "#0ea5e9",
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_loader_bar_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
         {
   "id": "veloura_dark_mode_header",
   "type": "static",
