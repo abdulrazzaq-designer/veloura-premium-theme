@@ -1108,12 +1108,26 @@ document.addEventListener('DOMContentLoaded', () => {
     return textarea.value || text;
   }
 
+  function stripHtmlText(value) {
+    var text = String(value || '');
+
+    // Salla currency icon sometimes arrives as text, encoded HTML, or real HTML.
+    text = text
+      .replace(/&lt;\s*i[^&]*sicon-sar[^&]*&gt;\s*&lt;\s*\/\s*i\s*&gt;/gi, ' ر.س ')
+      .replace(/<\s*i[^>]*sicon-sar[^>]*>\s*<\s*\/\s*i\s*>/gi, ' ر.س ')
+      .replace(/&lt;[^&]*&gt;/g, ' ')
+      .replace(/<[^>]*>/g, ' ');
+
+    return text;
+  }
+
   function cleanText(value) {
     var text = decodeHtml(value);
+    text = stripHtmlText(text);
 
     return String(text || '')
-      .replace(/<i[^>]*sicon-sar[^>]*><\/i>/gi, ' ر.س ')
-      .replace(/<[^>]*>/g, ' ')
+      .replace(/sicon-sar/gi, ' ر.س ')
+      .replace(/SAR/gi, ' ر.س ')
       .replace(/&nbsp;/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
@@ -1278,10 +1292,17 @@ document.addEventListener('DOMContentLoaded', () => {
     var text = cleanText(value);
 
     text = text
+      .replace(/<\/?[^>]+>/g, ' ')
+      .replace(/&lt;\/?[^&]+&gt;/g, ' ')
+      .replace(/class\s*=\s*['"]?sicon-sar['"]?/gi, ' ')
       .replace(/sicon-sar/gi, ' ر.س ')
       .replace(/SAR/gi, ' ر.س ')
+      .replace(/\bi\b/gi, ' ')
       .replace(/\s+/g, ' ')
       .trim();
+
+    // Fix duplicated currency words if any.
+    text = text.replace(/(ر\.س\s*){2,}/g, 'ر.س ');
 
     return text;
   }
@@ -1472,7 +1493,7 @@ document.addEventListener('DOMContentLoaded', () => {
         url: url,
         image: image || '',
         price: formatMoney(price),
-        regularPrice: regularPrice,
+        regularPrice: cleanPriceString(regularPrice),
         description: cleanText(description)
       };
     } catch (error) {
@@ -1516,18 +1537,18 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__overlay{
         position:absolute;
         inset:0;
-        background:rgba(15,23,42,.62);
+        background:rgba(15,23,42,.58);
         backdrop-filter:blur(8px);
         -webkit-backdrop-filter:blur(8px);
       }
       .veloura-qv-full__dialog{
         position:relative;
         width:min(1180px,100%);
-        max-height:min(760px,94vh);
+        max-height:min(740px,94vh);
         overflow:hidden;
         background:var(--veloura-quick-view-modal-bg,#fff);
         color:var(--veloura-quick-view-modal-text,#111827);
-        border-radius:var(--veloura-quick-view-modal-radius,28px);
+        border-radius:var(--veloura-quick-view-modal-radius,26px);
         box-shadow:0 28px 100px rgba(15,23,42,.32);
         padding:0;
         animation:velouraQvFullZoom .22s ease both;
@@ -1538,13 +1559,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__close{
         position:absolute;
-        top:16px;
-        inset-inline-end:16px;
-        width:42px;
-        height:42px;
+        top:18px;
+        inset-inline-start:18px;
+        width:50px;
+        height:50px;
         border:0;
         border-radius:999px;
-        background:rgba(255,255,255,.92);
+        background:rgba(255,255,255,.95);
         color:#111827;
         font-size:25px;
         display:flex;
@@ -1552,57 +1573,58 @@ document.addEventListener('DOMContentLoaded', () => {
         justify-content:center;
         cursor:pointer;
         z-index:7;
-        box-shadow:0 10px 26px rgba(15,23,42,.18);
+        box-shadow:0 10px 26px rgba(15,23,42,.16);
       }
 
       .veloura-qv-full__grid{
         display:grid;
-        grid-template-columns:minmax(430px,.95fr) minmax(0,1.05fr);
-        min-height:600px;
-        max-height:min(760px,94vh);
+        grid-template-columns:minmax(390px,.94fr) minmax(0,1.06fr);
+        min-height:620px;
+        max-height:min(740px,94vh);
       }
 
-      /* الصورة يمين في RTL */
       .veloura-qv-full__media{
         position:relative;
         overflow:hidden;
-        background:rgba(15,23,42,.06);
-        min-height:600px;
+        background:rgba(15,23,42,.045);
+        min-height:620px;
         order:1;
       }
       .veloura-qv-full__image{
         width:100%;
         height:100%;
-        min-height:600px;
-        object-fit:cover;
+        min-height:620px;
+        object-fit:contain;
+        object-position:center;
         display:block;
       }
 
       .veloura-qv-full__content{
         order:2;
-        padding:36px 38px 32px;
+        padding:44px 44px 32px;
         display:flex;
         flex-direction:column;
-        gap:16px;
+        gap:14px;
         min-width:0;
-        overflow:auto;
+        overflow:hidden;
       }
 
       .veloura-qv-full__top{
         display:flex;
         justify-content:space-between;
-        align-items:center;
+        align-items:flex-start;
         gap:12px;
-        margin-bottom:2px;
+        margin-bottom:4px;
       }
       .veloura-qv-full__actions{
         display:flex;
         align-items:center;
         gap:10px;
+        flex-shrink:0;
       }
       .veloura-qv-full__circle{
-        width:46px;
-        height:46px;
+        width:50px;
+        height:50px;
         border:0;
         border-radius:999px;
         background:var(--veloura-quick-view-button-bg,#004d65);
@@ -1611,8 +1633,8 @@ document.addEventListener('DOMContentLoaded', () => {
         align-items:center;
         justify-content:center;
         cursor:pointer;
-        font-size:18px;
-        box-shadow:0 10px 24px rgba(15,23,42,.12);
+        font-size:19px;
+        box-shadow:0 12px 28px rgba(15,23,42,.14);
       }
       .veloura-qv-full__loading{font-size:12px;opacity:.65;display:none}
       .veloura-qv-full.is-loading .veloura-qv-full__loading{display:inline-flex}
@@ -1623,10 +1645,11 @@ document.addEventListener('DOMContentLoaded', () => {
         font-weight:900;
         line-height:1.35;
         color:inherit;
+        text-align:right;
       }
       .veloura-qv-full__sku{
         font-size:13px;
-        opacity:.65;
+        opacity:.62;
         display:none;
         direction:ltr;
         text-align:right;
@@ -1638,9 +1661,12 @@ document.addEventListener('DOMContentLoaded', () => {
         align-items:baseline;
         gap:10px;
         flex-wrap:wrap;
+        justify-content:flex-start;
+        direction:rtl;
+        min-height:34px;
       }
       .veloura-qv-full__price{
-        font-size:25px;
+        font-size:26px;
         font-weight:900;
         color:#ef4444;
       }
@@ -1654,20 +1680,21 @@ document.addEventListener('DOMContentLoaded', () => {
         height:1px;
         background:currentColor;
         opacity:.12;
-        margin:4px 0 0;
+        margin:2px 0 2px;
       }
 
       .veloura-qv-full__desc{
         margin:0;
         font-size:14px;
         line-height:1.95;
-        opacity:.84;
+        opacity:.86;
         white-space:normal;
         overflow-wrap:anywhere;
         word-break:normal;
-        max-height:132px;
+        max-height:150px;
         overflow:auto;
         padding-inline-end:2px;
+        text-align:right;
       }
 
       .veloura-qv-full__read-more{
@@ -1676,22 +1703,20 @@ document.addEventListener('DOMContentLoaded', () => {
         font-weight:900;
         text-decoration:none;
         font-size:13px;
-        opacity:.88;
+        opacity:.9;
       }
 
       .veloura-qv-full__bottom{
         margin-top:auto;
-        display:flex;
-        flex-direction:column;
-        gap:12px;
-        padding-top:8px;
+        display:grid;
+        grid-template-columns:minmax(170px,auto) minmax(260px,1fr);
+        gap:14px;
+        align-items:end;
+        padding-top:18px;
       }
 
       .veloura-qv-full__buy{
-        display:flex;
-        flex-direction:column;
-        gap:12px;
-        align-items:stretch;
+        display:contents;
       }
 
       .veloura-qv-full__label{
@@ -1700,14 +1725,20 @@ document.addEventListener('DOMContentLoaded', () => {
         font-weight:900;
         margin-bottom:8px;
         opacity:.82;
+        text-align:right;
+      }
+
+      .veloura-qv-full__qty-wrap{
+        grid-column:1;
+        grid-row:1;
       }
 
       .veloura-qv-full__qty{
         display:grid;
-        grid-template-columns:48px 64px 48px;
-        height:50px;
+        grid-template-columns:52px 66px 52px;
+        height:54px;
         border:1px solid rgba(148,163,184,.58);
-        border-radius:12px;
+        border-radius:13px;
         overflow:hidden;
         width:max-content;
         max-width:100%;
@@ -1734,7 +1765,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       .veloura-qv-full__add{
-        height:52px;
+        grid-column:2;
+        grid-row:1;
+        height:54px;
         border:0;
         border-radius:13px;
         background:var(--veloura-quick-view-button-bg,#004d65);
@@ -1751,17 +1784,18 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__add.is-busy{opacity:.68;pointer-events:none}
 
       .veloura-qv-full__link{
+        grid-column:1 / -1;
+        justify-self:flex-start;
         height:46px;
         border-radius:999px;
         border:1px solid rgba(148,163,184,.42);
-        padding:0 20px;
+        padding:0 22px;
         display:inline-flex;
         align-items:center;
         justify-content:center;
         text-decoration:none;
         color:inherit;
         font-weight:900;
-        align-self:flex-start;
         background:rgba(255,255,255,.04);
       }
 
@@ -1789,9 +1823,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .veloura-qv-full__content{
           order:2;
           padding:22px 18px;
+          overflow:visible;
         }
         .veloura-qv-full__title{font-size:22px}
         .veloura-qv-full__price{font-size:22px}
+        .veloura-qv-full__bottom{
+          grid-template-columns:1fr;
+        }
+        .veloura-qv-full__qty-wrap,
+        .veloura-qv-full__add,
+        .veloura-qv-full__link{
+          grid-column:1;
+        }
         .veloura-qv-full__qty{width:100%;grid-template-columns:56px 1fr 56px}
       }
 
@@ -1911,7 +1954,11 @@ document.addEventListener('DOMContentLoaded', () => {
     var add = modal.querySelector('.veloura-qv-full__add');
 
     title.textContent = data.name || 'المنتج';
-    sku.textContent = data.sku ? ('SKU: ' + data.sku) : '';
+    var cleanSku = cleanText(data.sku || '').replace(/^-+|-+$/g, '');
+    sku.textContent = cleanSku ? ('SKU: ' + cleanSku) : '';
+    data.price = cleanPriceString(data.price || '');
+    data.regularPrice = cleanPriceString(data.regularPrice || '');
+
     price.textContent = data.price || '';
     regular.textContent = data.regularPrice && data.regularPrice !== data.price ? data.regularPrice : '';
     desc.textContent = data.description || '';
