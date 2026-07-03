@@ -1234,6 +1234,153 @@
     <salla-add-product-toast></salla-add-product-toast>
 {% endif %}
 
+{# ================================
+   Veloura Side Categories Settings Bridge
+   ربط إعدادات القائمة الجانبية من twilight.json بالواجهة
+================================ #}
+
+{% set vsc_bg = theme.settings.get('veloura_side_categories_bg_color_2026', '#f8f8f8') %}
+{% if vsc_bg.value is defined %}{% set vsc_bg = vsc_bg.value %}{% endif %}
+
+{% set vsc_text = theme.settings.get('veloura_side_categories_text_color_2026', '#111827') %}
+{% if vsc_text.value is defined %}{% set vsc_text = vsc_text.value %}{% endif %}
+
+{% set vsc_gap = theme.settings.get('veloura_side_categories_gap_2026', 0) %}
+{% if vsc_gap.value is defined %}{% set vsc_gap = vsc_gap.value %}{% endif %}
+
+{% set vsc_menu_radius = theme.settings.get('veloura_side_categories_menu_radius_2026', 'soft') %}
+{% if vsc_menu_radius.selected is defined and vsc_menu_radius.selected[0].value is defined %}
+  {% set vsc_menu_radius = vsc_menu_radius.selected[0].value %}
+{% elseif vsc_menu_radius.value is defined %}
+  {% set vsc_menu_radius = vsc_menu_radius.value %}
+{% elseif vsc_menu_radius is iterable and vsc_menu_radius[0].value is defined %}
+  {% set vsc_menu_radius = vsc_menu_radius[0].value %}
+{% endif %}
+
+{% set vsc_menu_radius_px = '18px' %}
+{% if vsc_menu_radius == 'sharp' %}
+  {% set vsc_menu_radius_px = '0px' %}
+{% elseif vsc_menu_radius == 'soft' %}
+  {% set vsc_menu_radius_px = '16px' %}
+{% elseif vsc_menu_radius == 'medium' %}
+  {% set vsc_menu_radius_px = '24px' %}
+{% elseif vsc_menu_radius == 'large' %}
+  {% set vsc_menu_radius_px = '34px' %}
+{% elseif vsc_menu_radius == 'xl' %}
+  {% set vsc_menu_radius_px = '44px' %}
+{% endif %}
+
+{% set vsc_title_size = theme.settings.get('veloura_side_categories_title_size_2026', 'medium') %}
+{% if vsc_title_size.selected is defined and vsc_title_size.selected[0].value is defined %}
+  {% set vsc_title_size = vsc_title_size.selected[0].value %}
+{% elseif vsc_title_size.value is defined %}
+  {% set vsc_title_size = vsc_title_size.value %}
+{% elseif vsc_title_size is iterable and vsc_title_size[0].value is defined %}
+  {% set vsc_title_size = vsc_title_size[0].value %}
+{% endif %}
+
+{% set vsc_title_font_px = '15px' %}
+{% if vsc_title_size == 'xs' %}
+  {% set vsc_title_font_px = '12px' %}
+{% elseif vsc_title_size == 'small' %}
+  {% set vsc_title_font_px = '13px' %}
+{% elseif vsc_title_size == 'medium' %}
+  {% set vsc_title_font_px = '15px' %}
+{% elseif vsc_title_size == 'large' %}
+  {% set vsc_title_font_px = '17px' %}
+{% elseif vsc_title_size == 'xl' %}
+  {% set vsc_title_font_px = '19px' %}
+{% elseif vsc_title_size == 'xxl' %}
+  {% set vsc_title_font_px = '21px' %}
+{% elseif vsc_title_size == 'xxxl' %}
+  {% set vsc_title_font_px = '24px' %}
+{% endif %}
+
+{% set vsc_img_radius = theme.settings.get('veloura_side_categories_image_radius_2026', 'medium') %}
+{% if vsc_img_radius.selected is defined and vsc_img_radius.selected[0].value is defined %}
+  {% set vsc_img_radius = vsc_img_radius.selected[0].value %}
+{% elseif vsc_img_radius.value is defined %}
+  {% set vsc_img_radius = vsc_img_radius.value %}
+{% elseif vsc_img_radius is iterable and vsc_img_radius[0].value is defined %}
+  {% set vsc_img_radius = vsc_img_radius[0].value %}
+{% endif %}
+
+{% set vsc_img_radius_px = '14px' %}
+{% if vsc_img_radius == 'sharp' %}
+  {% set vsc_img_radius_px = '0px' %}
+{% elseif vsc_img_radius == 'soft' %}
+  {% set vsc_img_radius_px = '10px' %}
+{% elseif vsc_img_radius == 'medium' %}
+  {% set vsc_img_radius_px = '16px' %}
+{% elseif vsc_img_radius == 'large' %}
+  {% set vsc_img_radius_px = '24px' %}
+{% elseif vsc_img_radius == 'round' %}
+  {% set vsc_img_radius_px = '999px' %}
+{% endif %}
+
+{% set vsc_img_fit = theme.settings.get('veloura_side_categories_image_fit_2026', 'cover') %}
+{% if vsc_img_fit.selected is defined and vsc_img_fit.selected[0].value is defined %}
+  {% set vsc_img_fit = vsc_img_fit.selected[0].value %}
+{% elseif vsc_img_fit.value is defined %}
+  {% set vsc_img_fit = vsc_img_fit.value %}
+{% elseif vsc_img_fit is iterable and vsc_img_fit[0].value is defined %}
+  {% set vsc_img_fit = vsc_img_fit[0].value %}
+{% endif %}
+
+{% set vsc_img_w = theme.settings.get('veloura_side_cat_img_w_2026', 60) %}
+{% if vsc_img_w.value is defined %}{% set vsc_img_w = vsc_img_w.value %}{% endif %}
+
+{% set vsc_img_h = theme.settings.get('veloura_side_cat_img_h_2026', 60) %}
+{% if vsc_img_h.value is defined %}{% set vsc_img_h = vsc_img_h.value %}{% endif %}
+
+{% set vsc_parent_action = theme.settings.get('veloura_side_categories_parent_click_action_2026', 'open_subcategories') %}
+{% if vsc_parent_action.selected is defined and vsc_parent_action.selected[0].value is defined %}
+  {% set vsc_parent_action = vsc_parent_action.selected[0].value %}
+{% elseif vsc_parent_action.value is defined %}
+  {% set vsc_parent_action = vsc_parent_action.value %}
+{% elseif vsc_parent_action is iterable and vsc_parent_action[0].value is defined %}
+  {% set vsc_parent_action = vsc_parent_action[0].value %}
+{% endif %}
+
+{% set vsc_discount_image = theme.settings.get('veloura_side_categories_discounts_image_2026') %}
+{% if vsc_discount_image.value is defined %}{% set vsc_discount_image = vsc_discount_image.value %}{% endif %}
+
+{% set vsc_blog_image = theme.settings.get('veloura_side_categories_blog_image_2026') %}
+{% if vsc_blog_image.value is defined %}{% set vsc_blog_image = vsc_blog_image.value %}{% endif %}
+
+{% set vsc_hide_important = theme.settings.get('veloura_side_categories_hide_important_links_2026', false) %}
+{% if vsc_hide_important.value is defined %}{% set vsc_hide_important = vsc_hide_important.value %}{% endif %}
+
+{% set vsc_hide_customer = theme.settings.get('veloura_side_categories_hide_customer_service_2026', false) %}
+{% if vsc_hide_customer.value is defined %}{% set vsc_hide_customer = vsc_hide_customer.value %}{% endif %}
+
+{% set vsc_custom_links = theme.settings.get('veloura_side_categories_custom_links_2026', []) %}
+
+<style id="veloura-side-categories-vars">
+  :root {
+    --veloura-side-cats-bg: {{ vsc_bg }};
+    --veloura-side-cats-text: {{ vsc_text }};
+    --veloura-side-cats-gap: {{ vsc_gap }}px;
+    --veloura-side-cats-menu-radius: {{ vsc_menu_radius_px }};
+    --veloura-side-cats-title-font-size: {{ vsc_title_font_px }};
+    --veloura-side-cats-img-radius: {{ vsc_img_radius_px }};
+    --veloura-side-cats-img-fit: {{ vsc_img_fit }};
+    --veloura-side-cats-img-w: {{ vsc_img_w }}px;
+    --veloura-side-cats-img-h: {{ vsc_img_h }}px;
+  }
+</style>
+
+<script>
+  window.velouraSideCategoriesSettings = {
+    parentAction: {{ vsc_parent_action|json_encode|raw }},
+    discountImage: {{ vsc_discount_image|json_encode|raw }},
+    blogImage: {{ vsc_blog_image|json_encode|raw }},
+    hideImportantLinks: {{ vsc_hide_important ? 'true' : 'false' }},
+    hideCustomerService: {{ vsc_hide_customer ? 'true' : 'false' }},
+    customLinks: {{ vsc_custom_links|json_encode|raw }}
+  };
+</script>
+
 <script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
 
 {# Twilight Components #}

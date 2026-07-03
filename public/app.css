@@ -27171,6 +27171,78 @@ html[dir=ltr] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
   right: 14px !important;
   left: auto !important;
 }
+/* ================================
+   Veloura Side Categories Settings Hook
+   ضع هذا في آخر:
+   src/assets/styles/04-components/_header.scss
+================================ */
+.mm-ocd #mobile-menu.mm-spn,
+.mm-ocd .mm-ocd__content,
+.mm-ocd.mm-ocd--right .mm-ocd__content,
+.mm-ocd.mm-ocd--left .mm-ocd__content {
+  background: #f8f8f8 !important;
+  background: var(--veloura-side-cats-bg, #f8f8f8) !important;
+  color: #111827 !important;
+  color: var(--veloura-side-cats-text, #111827) !important;
+}
+.mm-ocd.mm-ocd--right .mm-ocd__content {
+  border-radius: 18px 0 0 18px !important;
+  border-radius: var(--veloura-side-cats-menu-radius, 18px) 0 0 var(--veloura-side-cats-menu-radius, 18px) !important;
+}
+.mm-ocd.mm-ocd--left .mm-ocd__content {
+  border-radius: 0 18px 18px 0 !important;
+  border-radius: 0 var(--veloura-side-cats-menu-radius, 18px) var(--veloura-side-cats-menu-radius, 18px) 0 !important;
+}
+.mm-ocd #mobile-menu.mm-spn.mm-spn--navbar:after {
+  font-size: 14px !important;
+  font-size: var(--veloura-side-cats-title-font-size, 14px) !important;
+}
+.mm-ocd #mobile-menu.mm-spn li > a,
+.mm-ocd #mobile-menu.mm-spn li > span {
+  color: #111827 !important;
+  color: var(--veloura-side-cats-text, #111827) !important;
+  font-size: 15px !important;
+  font-size: var(--veloura-side-cats-title-font-size, 15px) !important;
+}
+.mm-ocd #mobile-menu.mm-spn .main-menu > li:not(:last-child),
+.mm-ocd #mobile-menu.mm-spn ul.mm-spn--open > li:not(:last-child) {
+  margin-bottom: 0px !important;
+  margin-bottom: var(--veloura-side-cats-gap, 0px) !important;
+}
+.mm-ocd #mobile-menu.mm-spn .veloura-side-menu-img {
+  width: 60px !important;
+  width: var(--veloura-side-cats-img-w, 60px) !important;
+  height: 60px !important;
+  height: var(--veloura-side-cats-img-h, 60px) !important;
+  min-width: 60px !important;
+  min-width: var(--veloura-side-cats-img-w, 60px) !important;
+  min-height: 60px !important;
+  min-height: var(--veloura-side-cats-img-h, 60px) !important;
+  max-width: 60px !important;
+  max-width: var(--veloura-side-cats-img-w, 60px) !important;
+  max-height: 60px !important;
+  max-height: var(--veloura-side-cats-img-h, 60px) !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  -o-object-fit: var(--veloura-side-cats-img-fit, cover) !important;
+     object-fit: var(--veloura-side-cats-img-fit, cover) !important;
+  border-radius: 16px !important;
+  border-radius: var(--veloura-side-cats-img-radius, 16px) !important;
+  margin-left: 10px !important;
+  margin-right: 0 !important;
+  flex-shrink: 0 !important;
+}
+.mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img),
+.mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img) > a,
+.mm-ocd #mobile-menu.mm-spn li:has(.veloura-side-menu-img) > span {
+  min-height: max(56px, 60px + 16px) !important;
+  min-height: max(56px, var(--veloura-side-cats-img-h, 60px) + 16px) !important;
+  height: max(56px, 60px + 16px) !important;
+  height: max(56px, var(--veloura-side-cats-img-h, 60px) + 16px) !important;
+}
+.mm-ocd #mobile-menu.mm-spn .veloura-side-custom-link > a {
+  gap: 10px !important;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;

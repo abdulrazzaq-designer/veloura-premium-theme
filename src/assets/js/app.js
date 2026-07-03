@@ -544,3 +544,193 @@ document.addEventListener('DOMContentLoaded', () => {
     subtree: true
   });
 });
+
+
+
+
+
+/* ================================
+   Veloura Side Categories Settings Hook
+   ضع هذا في آخر:
+   src/assets/js/app.js
+================================ */
+
+(function () {
+  function normalizeText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function getSettings() {
+    return window.velouraSideCategoriesSettings || {};
+  }
+
+  function findMobileMenu() {
+    return document.querySelector('#mobile-menu.mm-spn');
+  }
+
+  function getMainList(menu) {
+    return menu && menu.querySelector('ul.main-menu');
+  }
+
+  function createImage(src) {
+    if (!src) return null;
+
+    var img = document.createElement('img');
+    img.className = 'veloura-side-menu-img';
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+
+    return img;
+  }
+
+  function ensureImageOnLink(link, src) {
+    if (!link || !src || link.querySelector('.veloura-side-menu-img')) return;
+
+    var img = createImage(src);
+    if (img) link.appendChild(img);
+  }
+
+  function enhanceSpecialImages(menu, settings) {
+    menu.querySelectorAll('li > a, li > span').forEach(function (link) {
+      var text = normalizeText(link.textContent);
+
+      if (settings.discountImage && /تخفيض|خصم|عروض|offer|discount/i.test(text)) {
+        ensureImageOnLink(link, settings.discountImage);
+      }
+
+      if (settings.blogImage && /مدونة|blog/i.test(text)) {
+        ensureImageOnLink(link, settings.blogImage);
+      }
+    });
+  }
+
+  function hideMatchingLinks(menu, settings) {
+    menu.querySelectorAll('li > a, li > span').forEach(function (link) {
+      var text = normalizeText(link.textContent);
+      var li = link.closest('li');
+      if (!li) return;
+
+      if (settings.hideImportantLinks && /روابط تهمك|تهمك|important/i.test(text)) {
+        li.style.setProperty('display', 'none', 'important');
+      }
+
+      if (settings.hideCustomerService && /خدمة العملاء|العملاء|customer/i.test(text)) {
+        li.style.setProperty('display', 'none', 'important');
+      }
+    });
+  }
+
+  function normalizeCollection(collection) {
+    if (!collection) return [];
+    if (Array.isArray(collection)) return collection;
+
+    if (typeof collection === 'object') {
+      return Object.keys(collection).map(function (key) {
+        return collection[key];
+      });
+    }
+
+    return [];
+  }
+
+  function appendCustomLinks(menu, settings) {
+    var list = getMainList(menu);
+    var links = normalizeCollection(settings.customLinks);
+
+    if (!list || !links.length || list.dataset.velouraCustomLinksReady === '1') {
+      return;
+    }
+
+    links.forEach(function (item, index) {
+      if (!item) return;
+
+      var label = normalizeText(item.label || item.title || item.name);
+      var url = normalizeText(item.url || item.link);
+
+      if (!label || !url) return;
+
+      var li = document.createElement('li');
+      li.className = 'veloura-side-custom-link';
+      li.setAttribute('data-veloura-custom-link-index', String(index));
+
+      var a = document.createElement('a');
+      a.href = url;
+      a.textContent = label;
+
+      if (item.new_tab === true || item.new_tab === 'true') {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+
+      if (item.image) {
+        var img = createImage(item.image);
+        if (img) a.appendChild(img);
+      }
+
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+
+    list.dataset.velouraCustomLinksReady = '1';
+  }
+
+  function bindParentClickAction(menu) {
+    if (!menu || menu.dataset.velouraParentActionBound === '1') return;
+
+    menu.dataset.velouraParentActionBound = '1';
+
+    menu.addEventListener('click', function (event) {
+      var settings = getSettings();
+      var action = String(settings.parentAction || 'open_subcategories');
+      var link = event.target.closest('li > a');
+
+      if (!link || !menu.contains(link)) return;
+
+      var li = link.closest('li');
+      if (!li || !li.querySelector(':scope > ul')) return;
+
+      if (action !== 'open_link') return;
+
+      var href = link.getAttribute('href');
+      if (!href || href === '#') return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      window.location.href = href;
+    }, true);
+  }
+
+  function applySideCategoriesSettings() {
+    var menu = findMobileMenu();
+    var settings = getSettings();
+
+    if (!menu) return;
+
+    enhanceSpecialImages(menu, settings);
+    hideMatchingLinks(menu, settings);
+    appendCustomLinks(menu, settings);
+    bindParentClickAction(menu);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    applySideCategoriesSettings();
+    setTimeout(applySideCategoriesSettings, 300);
+    setTimeout(applySideCategoriesSettings, 900);
+    setTimeout(applySideCategoriesSettings, 1800);
+  });
+
+  document.addEventListener('theme::ready', function () {
+    applySideCategoriesSettings();
+    setTimeout(applySideCategoriesSettings, 500);
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target.closest("a[href='#mobile-menu']")) {
+      setTimeout(applySideCategoriesSettings, 120);
+      setTimeout(applySideCategoriesSettings, 500);
+    }
+  }, true);
+})();
