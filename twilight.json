@@ -774,18 +774,33 @@
   ]
 },
 {
-  "id": "veloura_loader_logo_radius_2026",
-  "type": "number",
-  "format": "slider",
-  "inputType": "range",
-  "label": "حواف الشعار",
-  "description": "تحكم بحواف صورة الشعار",
-  "icon": "sicon-crop",
-  "value": "20",
-  "required": false,
-  "step": "1",
-  "minimum": "0",
-  "maximum": "80",
+  "id": "veloura_loader_hide_style_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة اختفاء صفحة التحميل",
+  "description": "اختر طريقة اختفاء صفحة التحميل عند انتهاء المدة",
+  "icon": "sicon-loading",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "اختفاء عادي",
+      "value": "normal",
+      "key": "veloura-loader-hide-normal"
+    }
+  ],
+  "options": [
+    {
+      "label": "اختفاء عادي",
+      "value": "normal",
+      "key": "veloura-loader-hide-normal"
+    },
+    {
+      "label": "اختفاء دائري",
+      "value": "circle",
+      "key": "veloura-loader-hide-circle"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_loader_enable_2026",
@@ -794,7 +809,6 @@
     }
   ]
 },
-
 {
   "type": "static",
   "id": "veloura_loader_bg_line_2026",
@@ -1139,56 +1153,6 @@
   "step": "50",
   "minimum": "1",
   "maximum": "1500",
-  "conditions": [
-    {
-      "id": "veloura_loader_enable_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_loader_anim_type_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "حركة الشعار",
-  "icon": "sicon-magic",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "نبض ناعم",
-      "value": "pulse",
-      "key": "veloura-loader-anim-pulse-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "بدون حركة",
-      "value": "none",
-      "key": "veloura-loader-anim-none-2026"
-    },
-    {
-      "label": "نبض ناعم",
-      "value": "pulse",
-      "key": "veloura-loader-anim-pulse-2026"
-    },
-    {
-      "label": "دوران خفيف",
-      "value": "spin",
-      "key": "veloura-loader-anim-spin-2026"
-    },
-    {
-      "label": "ظهور وارتفاع",
-      "value": "float",
-      "key": "veloura-loader-anim-float-2026"
-    },
-    {
-      "label": "تكبير وتصغير",
-      "value": "scale",
-      "key": "veloura-loader-anim-scale-2026"
-    }
-  ],
   "conditions": [
     {
       "id": "veloura_loader_enable_2026",
