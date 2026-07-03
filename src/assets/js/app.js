@@ -1543,7 +1543,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       .veloura-qv-full__dialog{
         position:relative!important;
-        width:min(1120px,100%)!important;
+        width:min(1140px,100%)!important;
         max-height:min(720px,94vh)!important;
         overflow:hidden!important;
         background:var(--veloura-quick-view-modal-bg,#fff)!important;
@@ -1573,17 +1573,18 @@ document.addEventListener('DOMContentLoaded', () => {
         justify-content:center!important;
         cursor:pointer!important;
         z-index:7!important;
-        box-shadow:0 10px 26px rgba(15,23,42,.16)!important;
+        box-shadow:0 10px 26px rgba(15,23,42,.16);
       }
 
-      /* فرض الاتجاه: المحتوى يسار، الصورة يمين */
+      /* Desktop: content left, image far right */
       .veloura-qv-full__grid{
         display:grid!important;
         direction:ltr!important;
-        grid-template-columns:minmax(0,62%) minmax(280px,38%)!important;
+        grid-template-columns:minmax(0,61%) minmax(300px,39%)!important;
         grid-template-areas:"content media"!important;
         min-height:620px!important;
         max-height:min(720px,94vh)!important;
+        width:100%!important;
       }
 
       .veloura-qv-full__media{
@@ -1595,6 +1596,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display:flex!important;
         align-items:center!important;
         justify-content:center!important;
+        width:100%!important;
       }
       .veloura-qv-full__image{
         width:100%!important;
@@ -1608,24 +1610,30 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__content{
         grid-area:content!important;
         direction:rtl!important;
-        padding:40px 28px 32px!important;
+        padding:42px 34px 32px!important;
         display:flex!important;
         flex-direction:column!important;
-        gap:12px!important;
+        gap:14px!important;
         min-width:0!important;
         overflow:hidden!important;
+        width:100%!important;
+        box-sizing:border-box!important;
       }
 
-      /* فرض ترتيب الهيدر: الأزرار يسار، العنوان يمين */
+      /* Header: buttons left, title far right */
       .veloura-qv-full__top{
         position:relative!important;
-        min-height:58px!important;
+        min-height:62px!important;
         display:block!important;
         margin-bottom:8px!important;
         direction:rtl!important;
+        width:100%!important;
       }
       .veloura-qv-full__top > div:first-child{
-        padding-inline-start:128px!important;
+        width:100%!important;
+        padding-left:132px!important;
+        padding-right:0!important;
+        box-sizing:border-box!important;
         text-align:right!important;
         direction:rtl!important;
       }
@@ -1640,8 +1648,8 @@ document.addEventListener('DOMContentLoaded', () => {
         z-index:2!important;
       }
       .veloura-qv-full__circle{
-        width:50px!important;
-        height:50px!important;
+        width:52px!important;
+        height:52px!important;
         border:0!important;
         border-radius:999px!important;
         background:var(--veloura-quick-view-button-bg,#004d65)!important;
@@ -1650,17 +1658,17 @@ document.addEventListener('DOMContentLoaded', () => {
         align-items:center!important;
         justify-content:center!important;
         cursor:pointer!important;
-        font-size:19px!important;
+        font-size:20px!important;
         box-shadow:0 12px 28px rgba(15,23,42,.14)!important;
       }
-      .veloura-qv-full__loading{font-size:12px!important;opacity:.65!important;display:none}
+      .veloura-qv-full__loading{font-size:13px!important;opacity:.65!important;display:none}
       .veloura-qv-full.is-loading .veloura-qv-full__loading{display:inline-flex!important}
 
       .veloura-qv-full__title{
         margin:0!important;
-        font-size:28px!important;
+        font-size:34px!important;
         font-weight:900!important;
-        line-height:1.35!important;
+        line-height:1.3!important;
         color:inherit!important;
         text-align:right!important;
       }
@@ -1674,17 +1682,17 @@ document.addEventListener('DOMContentLoaded', () => {
         flex-wrap:wrap!important;
         justify-content:flex-start!important;
         direction:rtl!important;
-        min-height:34px!important;
+        min-height:36px!important;
       }
       .veloura-qv-full__price,
       .veloura-qv-full__mini-current{
-        font-size:26px!important;
+        font-size:29px!important;
         font-weight:900!important;
         color:#ef4444!important;
       }
       .veloura-qv-full__regular,
       .veloura-qv-full__mini-regular{
-        font-size:15px!important;
+        font-size:17px!important;
         opacity:.65!important;
         text-decoration:line-through!important;
       }
@@ -1699,13 +1707,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__desc{
         margin:0!important;
-        font-size:14px!important;
-        line-height:1.95!important;
-        opacity:.86!important;
+        font-size:16px!important;
+        line-height:1.9!important;
+        opacity:.88!important;
         white-space:normal!important;
         overflow-wrap:anywhere!important;
         word-break:normal!important;
-        max-height:112px!important;
+        max-height:124px!important;
         overflow:auto!important;
         padding-inline-end:2px!important;
         text-align:right!important;
@@ -1723,7 +1731,7 @@ document.addEventListener('DOMContentLoaded', () => {
         color:inherit!important;
         font-weight:900!important;
         text-decoration:none!important;
-        font-size:13px!important;
+        font-size:14px!important;
         opacity:.96!important;
         background:rgba(255,255,255,.04)!important;
         margin-top:2px!important;
@@ -1733,13 +1741,13 @@ document.addEventListener('DOMContentLoaded', () => {
         margin-top:auto!important;
         display:flex!important;
         flex-direction:column!important;
-        gap:13px!important;
+        gap:14px!important;
         padding-top:12px!important;
       }
 
       .veloura-qv-full__row{
         display:grid!important;
-        grid-template-columns:minmax(160px,max-content) 1fr!important;
+        grid-template-columns:minmax(170px,max-content) 1fr!important;
         align-items:center!important;
         gap:18px!important;
         direction:ltr!important;
@@ -1747,10 +1755,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__label{
         display:block!important;
-        font-size:14px!important;
+        font-size:16px!important;
         font-weight:900!important;
         margin:0!important;
-        opacity:.9!important;
+        opacity:.92!important;
         text-align:right!important;
         justify-self:end!important;
         direction:rtl!important;
@@ -1758,8 +1766,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .veloura-qv-full__qty{
         display:grid!important;
-        grid-template-columns:52px 66px 52px!important;
-        height:48px!important;
+        grid-template-columns:54px 70px 54px!important;
+        height:50px!important;
         border:1px solid rgba(148,163,184,.58)!important;
         border-radius:9px!important;
         overflow:hidden!important;
@@ -1770,7 +1778,7 @@ document.addEventListener('DOMContentLoaded', () => {
         border:0!important;
         background:transparent!important;
         color:inherit!important;
-        font-size:25px!important;
+        font-size:26px!important;
         font-weight:800!important;
         cursor:pointer!important;
         display:flex!important;
@@ -1782,18 +1790,19 @@ document.addEventListener('DOMContentLoaded', () => {
         background:var(--veloura-quick-view-button-bg,#004d65)!important;
         color:var(--veloura-quick-view-button-text,#fff)!important;
         text-align:center!important;
-        font-size:18px!important;
+        font-size:19px!important;
         font-weight:900!important;
         width:100%!important;
       }
 
       .veloura-qv-full__add{
-        height:52px!important;
+        height:54px!important;
         border:0!important;
         border-radius:10px!important;
         background:var(--veloura-quick-view-button-bg,#004d65)!important;
         color:var(--veloura-quick-view-button-text,#fff)!important;
         font-weight:900!important;
+        font-size:16px!important;
         cursor:pointer!important;
         width:100%!important;
         display:flex!important;
@@ -1805,55 +1814,86 @@ document.addEventListener('DOMContentLoaded', () => {
       .veloura-qv-full__add.is-busy{opacity:.68!important;pointer-events:none!important}
 
       .veloura-qv-full__link{display:none!important}
-
       .veloura-qv-full__hidden{display:none!important}
 
       @media(max-width:767px){
-        .veloura-qv-full{padding:10px!important}
+        .veloura-qv-full{
+          padding:8px!important;
+          align-items:flex-start!important;
+          overflow-y:auto!important;
+        }
         .veloura-qv-full__dialog{
-          max-height:94vh!important;
-          overflow:auto!important;
+          width:100%!important;
+          max-width:520px!important;
+          max-height:none!important;
+          overflow:hidden!important;
           border-radius:22px!important;
+          margin:0 auto!important;
         }
         .veloura-qv-full__grid{
+          display:grid!important;
+          direction:ltr!important;
           grid-template-columns:1fr!important;
           grid-template-areas:
             "media"
             "content"!important;
           min-height:0!important;
           max-height:none!important;
+          width:100%!important;
         }
         .veloura-qv-full__media{
-          min-height:260px!important;
-          max-height:340px!important;
+          grid-area:media!important;
+          width:100%!important;
+          min-height:250px!important;
+          height:330px!important;
+          max-height:330px!important;
+          overflow:hidden!important;
         }
         .veloura-qv-full__image{
-          min-height:260px!important;
-          max-height:340px!important;
+          min-height:0!important;
+          height:100%!important;
+          max-height:none!important;
+          width:100%!important;
           object-fit:contain!important;
+          object-position:center!important;
         }
         .veloura-qv-full__content{
+          grid-area:content!important;
+          direction:rtl!important;
           padding:20px 18px 22px!important;
           overflow:visible!important;
           gap:12px!important;
+          width:100%!important;
         }
         .veloura-qv-full__top{
           min-height:50px!important;
           margin-bottom:4px!important;
         }
         .veloura-qv-full__top > div:first-child{
-          padding-inline-start:110px!important;
+          width:100%!important;
+          padding-left:110px!important;
+          padding-right:0!important;
+          box-sizing:border-box!important;
+          text-align:right!important;
         }
-        .veloura-qv-full__title{font-size:22px!important}
+        .veloura-qv-full__actions{
+          top:0!important;
+          left:0!important;
+          right:auto!important;
+        }
+        .veloura-qv-full__title{font-size:26px!important}
         .veloura-qv-full__circle{
           width:44px!important;
           height:44px!important;
           font-size:17px!important;
         }
         .veloura-qv-full__price,
-        .veloura-qv-full__mini-current{font-size:22px!important}
+        .veloura-qv-full__mini-current{font-size:24px!important}
+        .veloura-qv-full__regular,
+        .veloura-qv-full__mini-regular{font-size:15px!important}
         .veloura-qv-full__desc{
-          max-height:104px!important;
+          max-height:112px!important;
+          font-size:15px!important;
           line-height:1.8!important;
         }
         .veloura-qv-full__read-more{
@@ -1877,6 +1917,7 @@ document.addEventListener('DOMContentLoaded', () => {
           align-self:flex-end!important;
           justify-self:auto!important;
           margin-bottom:0!important;
+          font-size:15px!important;
         }
         .veloura-qv-full__mini-price{
           justify-content:flex-start!important;
@@ -1961,22 +2002,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.body.appendChild(modal);
 
-    // Veloura V6 runtime hard layout patch
-    modal.querySelectorAll('.veloura-qv-full__link').forEach(function (el) { el.remove(); });
-    var grid = modal.querySelector('.veloura-qv-full__grid');
-    var media = modal.querySelector('.veloura-qv-full__media');
-    var content = modal.querySelector('.veloura-qv-full__content');
-    if (grid) {
+    // Veloura V7 responsive runtime layout patch
+    function applyVelouraQvLayout() {
+      var grid = modal.querySelector('.veloura-qv-full__grid');
+      var media = modal.querySelector('.veloura-qv-full__media');
+      var content = modal.querySelector('.veloura-qv-full__content');
+      if (!grid || !media || !content) return;
+
       grid.style.setProperty('display', 'grid', 'important');
       grid.style.setProperty('direction', 'ltr', 'important');
-      grid.style.setProperty('grid-template-areas', '"content media"', 'important');
-      grid.style.setProperty('grid-template-columns', 'minmax(0,62%) minmax(280px,38%)', 'important');
-    }
-    if (media) media.style.setProperty('grid-area', 'media', 'important');
-    if (content) {
+      media.style.setProperty('grid-area', 'media', 'important');
       content.style.setProperty('grid-area', 'content', 'important');
       content.style.setProperty('direction', 'rtl', 'important');
+
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        grid.style.setProperty('grid-template-columns', '1fr', 'important');
+        grid.style.setProperty('grid-template-areas', '"media" "content"', 'important');
+      } else {
+        grid.style.setProperty('grid-template-columns', 'minmax(0,61%) minmax(300px,39%)', 'important');
+        grid.style.setProperty('grid-template-areas', '"content media"', 'important');
+      }
     }
+
+    applyVelouraQvLayout();
+    window.addEventListener('resize', applyVelouraQvLayout, { passive: true });
 
     modal.addEventListener('click', function (event) {
       if (event.target.closest('[data-veloura-qv-full-close]')) closeModal();
