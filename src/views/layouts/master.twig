@@ -1641,30 +1641,15 @@
 ">
 
 {# ================================
-   Veloura Loader Full Settings Safe 2026
-   خصائص كاملة + آمن: لا يخفي المتجر ولا يضيف كلاسات على body
+   Veloura Loader Full Settings HARD SAFE 2026
+   لا يعتمد على شرط Twig للإظهار: يظهر افتراضيًا، ثم يقرأ الخصائص بالـ JS
 ================================ #}
 
-{% set vl_enable_raw = theme.settings.get('veloura_loader_enable_2026', theme.settings.get('veloura_loader_enabled_2026', true)) %}
-{% if vl_enable_raw.value is defined %}
-  {% set vl_enable_raw = vl_enable_raw.value %}
-{% elseif vl_enable_raw.selected is defined %}
-  {% set vl_enable_raw = vl_enable_raw.selected %}
-{% endif %}
-{% set vl_enable =
-  vl_enable_raw == true
-  or vl_enable_raw == 'true'
-  or vl_enable_raw == 1
-  or vl_enable_raw == '1'
-  or vl_enable_raw == 'on'
-%}
-
-{% if vl_enable %}
   <div id="veloura-loader-2026" class="vl-loader-direct vl-bg-solid" style="--vl-bg:#ffffff;--vl-text:#111827;--vl-bar:#004d65;--vl-logo-w:120px;--vl-fade:450ms;--vl-blur:16px;">
     <div class="vl-bg" aria-hidden="true"></div>
     <button type="button" class="vl-skip" data-vl-loader-skip>تخطي</button>
     <div class="vl-content">
-      <img class="vl-logo" src="{{ store.logo ?: '' }}" alt="{{ store.name }}" loading="eager" {% if not store.logo %}style="display:none"{% endif %}>
+      <img class="vl-logo" src="{{ store.logo }}" alt="{{ store.name }}" loading="eager" {% if not store.logo %}style="display:none"{% endif %}>
       <div class="vl-texts">
         <h2>جاري تجهيز المتجر لك</h2>
         <p>لحظات قليلة ونبدأ</p>
@@ -1710,6 +1695,7 @@
         if (!loader) return;
 
         var settings = {
+          enable: {{ theme.settings.get('veloura_loader_enable_2026', theme.settings.get('veloura_loader_enabled_2026', true))|json_encode|raw }},
           logoType: {{ theme.settings.get('veloura_loader_logo_type_2026', 'store_logo')|json_encode|raw }},
           logoUpload: {{ theme.settings.get('veloura_loader_logo_img_2026')|json_encode|raw }},
           logoAnimated: {{ theme.settings.get('veloura_loader_anim_img_2026')|json_encode|raw }},
@@ -1767,6 +1753,16 @@
         function safeType(input, allowed, fallback) {
           var v = String(value(input, fallback));
           return allowed.indexOf(v) !== -1 ? v : fallback;
+        }
+
+        /*
+          مهم:
+          لا نستخدم {% if %} لإظهار/إخفاء اللودر لأن بعض إعدادات سلة ترجع selected/value/array
+          فتخلي شرط Twig يفشل ويختفي اللودر كاملًا. هنا اللودر يظهر افتراضيًا، وإذا الإعداد مطفأ نشيله فورًا.
+        */
+        if (!bool(settings.enable, true)) {
+          removeLoader();
+          return;
         }
 
         var logoType = safeType(settings.logoType, ['store_logo', 'upload', 'animated', 'url'], 'store_logo');
@@ -1857,8 +1853,7 @@
       }
     })();
   </script>
-{% endif %}
-{# END Veloura Loader Full Settings Safe 2026 #}
+{# END Veloura Loader Full Settings HARD SAFE 2026 #}
 
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how

@@ -2120,6 +2120,9 @@ input:where([type='file']):focus{
 .duration-500{
     transition-duration: 500ms;
 }
+.ease-in-out{
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .ease-out{
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
