@@ -1640,6 +1640,162 @@
 {{ vmfm_enabled and not vmfm_show_labels ? ' veloura-mobile-floating-menu-no-labels' : '' }}
 ">
 
+
+{# ================================
+   Veloura Loader Safe 2026
+   يظهر فوق المتجر ثم يختفي بدون لمس محتوى الصفحة
+================================ #}
+{% set veloura_loader_enabled_raw = theme.settings.get('veloura_loader_enabled_2026', true) %}
+{% if veloura_loader_enabled_raw.value is defined %}
+  {% set veloura_loader_enabled_raw = veloura_loader_enabled_raw.value %}
+{% elseif veloura_loader_enabled_raw.selected is defined %}
+  {% set veloura_loader_enabled_raw = veloura_loader_enabled_raw.selected %}
+{% endif %}
+
+{% set veloura_loader_enabled =
+  veloura_loader_enabled_raw == true
+  or veloura_loader_enabled_raw == 'true'
+  or veloura_loader_enabled_raw == 1
+  or veloura_loader_enabled_raw == '1'
+  or veloura_loader_enabled_raw == 'on'
+%}
+
+{% if veloura_loader_enabled %}
+  {% set veloura_loader_bg = theme.settings.get('veloura_loader_bg_color_2026', '#ffffff') %}
+  {% if veloura_loader_bg.value is defined %}{% set veloura_loader_bg = veloura_loader_bg.value %}{% endif %}
+
+  {% set veloura_loader_text = theme.settings.get('veloura_loader_text_color_2026', '#111827') %}
+  {% if veloura_loader_text.value is defined %}{% set veloura_loader_text = veloura_loader_text.value %}{% endif %}
+
+  {% set veloura_loader_logo = theme.settings.get('veloura_loader_logo_2026') %}
+  {% if veloura_loader_logo.value is defined %}{% set veloura_loader_logo = veloura_loader_logo.value %}{% endif %}
+  {% if veloura_loader_logo.url is defined %}{% set veloura_loader_logo = veloura_loader_logo.url %}{% endif %}
+  {% if not veloura_loader_logo and store.logo %}{% set veloura_loader_logo = store.logo %}{% endif %}
+
+  <style>
+    #veloura-loader-2026 {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      width: 100vw;
+      height: 100vh;
+      background: {{ veloura_loader_bg }};
+      color: {{ veloura_loader_text }};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    #veloura-loader-2026.veloura-loader-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .veloura-loader-2026__inner {
+      width: min(90vw, 360px);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .veloura-loader-2026__logo {
+      display: block;
+      max-width: 150px;
+      max-height: 150px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0 !important;
+      animation: none !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .veloura-loader-2026__name {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .veloura-loader-2026__skip {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 2;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: {{ veloura_loader_text }};
+      font: inherit;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 10px 12px;
+      border-radius: 10px;
+      opacity: .85;
+    }
+
+    .veloura-loader-2026__skip:hover {
+      opacity: 1;
+    }
+  </style>
+
+  <div id="veloura-loader-2026" aria-label="Loading" role="status">
+    <button class="veloura-loader-2026__skip" type="button" data-veloura-loader-close>تخطي</button>
+    <div class="veloura-loader-2026__inner">
+      {% if veloura_loader_logo %}
+        <img class="veloura-loader-2026__logo" src="{{ veloura_loader_logo }}" alt="{{ store.name }}">
+      {% else %}
+        <p class="veloura-loader-2026__name">{{ store.name }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <script data-cfasync="false">
+    (function () {
+      var loader = document.getElementById('veloura-loader-2026');
+      if (!loader) return;
+
+      function closeVelouraLoader() {
+        if (!loader || loader.dataset.closed === '1') return;
+        loader.dataset.closed = '1';
+        loader.classList.add('veloura-loader-hidden');
+
+        window.setTimeout(function () {
+          if (loader && loader.parentNode) {
+            loader.parentNode.removeChild(loader);
+          }
+        }, 450);
+      }
+
+      var closeButton = loader.querySelector('[data-veloura-loader-close]');
+      if (closeButton) {
+        closeButton.addEventListener('click', closeVelouraLoader);
+      }
+
+      window.addEventListener('load', function () {
+        window.setTimeout(closeVelouraLoader, 900);
+      });
+
+      document.addEventListener('theme::ready', function () {
+        window.setTimeout(closeVelouraLoader, 900);
+      });
+
+      window.setTimeout(closeVelouraLoader, 3500);
+    })();
+  </script>
+{% endif %}
+
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how
     <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">To enable JavaScript on webpage</a>.
