@@ -1871,6 +1871,658 @@
 
 {% hook 'body:end' %}
 
+{# ============================================================
+   Veloura Loader Settings Tester 2026
+   ضع هذا البلوك مؤقتًا قبل </body> داخل master.twig
+   لا يغير خصائص المتجر، فقط يقرأ القيم ويعرض تقرير فحص.
+============================================================ #}
+
+<div id="veloura-loader-settings-tester" dir="rtl">
+  <div class="vlst-head">
+    <div>
+      <strong>فحص خصائص صفحة التحميل Veloura</strong>
+      <span>يعرض القيمة الخام + القيمة بعد التنظيف لكل إعداد</span>
+    </div>
+    <div class="vlst-actions">
+      <button type="button" data-vlst-hide-loader>إخفاء اللودر الآن</button>
+      <button type="button" data-vlst-copy>نسخ التقرير</button>
+      <button type="button" data-vlst-close>إغلاق</button>
+    </div>
+  </div>
+
+  <div class="vlst-summary">
+    <span>JS Timer: <b data-vlst-timer>ينتظر...</b></span>
+    <span>النتيجة: <b data-vlst-summary>جاري الفحص...</b></span>
+  </div>
+
+  <div class="vlst-notes">
+    إذا كان اللودر ثابتًا، شوف أولًا هل <b>JS Timer</b> صار OK. إذا لم يتغير، المشكلة ليست من الخصائص بل من السكربت/الكاش/مكان الكود.
+  </div>
+
+  <div class="vlst-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>الوصف</th>
+          <th>النوع</th>
+          <th>حرج؟</th>
+          <th>القيمة الخام من theme.settings</th>
+          <th>بعد التنظيف</th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set vl_dbg_0 = theme.settings.get('veloura_loader_enable_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_enable_2026" data-kind="boolean" data-critical="نعم" data-raw="{{ vl_dbg_0|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_enable_2026</code></td>
+  <td>تفعيل صفحة التحميل</td>
+  <td>boolean/switch</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_0|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_1 = theme.settings.get('veloura_loader_logo_line_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_logo_line_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_1|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_logo_line_2026</code></td>
+  <td>veloura_loader_logo_line_2026</td>
+  <td>static/line</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_1|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_2 = theme.settings.get('veloura_loader_logo_title_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_logo_title_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_2|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_logo_title_2026</code></td>
+  <td>الشعار داخل صفحة التحميل</td>
+  <td>static/title</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_2|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_3 = theme.settings.get('veloura_loader_logo_type_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_logo_type_2026" data-kind="select" data-critical="نعم" data-raw="{{ vl_dbg_3|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_logo_type_2026</code></td>
+  <td>نوع شعار صفحة التحميل</td>
+  <td>items/dropdown-list</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_3|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_4 = theme.settings.get('veloura_loader_logo_img_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_logo_img_2026" data-kind="image" data-critical="لا" data-raw="{{ vl_dbg_4|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_logo_img_2026</code></td>
+  <td>رفع شعار صفحة التحميل</td>
+  <td>string/image</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_4|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_5 = theme.settings.get('veloura_loader_anim_img_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_anim_img_2026" data-kind="image" data-critical="لا" data-raw="{{ vl_dbg_5|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_anim_img_2026</code></td>
+  <td>رفع شعار متحرك</td>
+  <td>string/image</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_5|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_6 = theme.settings.get('veloura_loader_logo_url_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_logo_url_2026" data-kind="string" data-critical="لا" data-raw="{{ vl_dbg_6|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_logo_url_2026</code></td>
+  <td>رابط شعار صفحة التحميل</td>
+  <td>string/text</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_6|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_7 = theme.settings.get('veloura_loader_logo_w_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_logo_w_2026" data-kind="number" data-critical="لا" data-raw="{{ vl_dbg_7|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_logo_w_2026</code></td>
+  <td>عرض الشعار</td>
+  <td>number/slider</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_7|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_8 = theme.settings.get('veloura_loader_skip_enable_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_skip_enable_2026" data-kind="boolean" data-critical="نعم" data-raw="{{ vl_dbg_8|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_skip_enable_2026</code></td>
+  <td>إظهار زر تخطي</td>
+  <td>boolean/switch</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_8|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_9 = theme.settings.get('veloura_loader_skip_text_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_skip_text_2026" data-kind="string" data-critical="لا" data-raw="{{ vl_dbg_9|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_skip_text_2026</code></td>
+  <td>نص زر التخطي</td>
+  <td>string/text</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_9|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_10 = theme.settings.get('veloura_loader_hide_style_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_hide_style_2026" data-kind="select" data-critical="نعم" data-raw="{{ vl_dbg_10|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_hide_style_2026</code></td>
+  <td>طريقة اختفاء صفحة التحميل</td>
+  <td>items/dropdown-list</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_10|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_11 = theme.settings.get('veloura_loader_bg_line_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bg_line_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_11|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bg_line_2026</code></td>
+  <td>veloura_loader_bg_line_2026</td>
+  <td>static/line</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_11|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_12 = theme.settings.get('veloura_loader_bg_title_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bg_title_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_12|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bg_title_2026</code></td>
+  <td>خلفية صفحة التحميل</td>
+  <td>static/title</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_12|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_13 = theme.settings.get('veloura_loader_bg_type_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bg_type_2026" data-kind="select" data-critical="نعم" data-raw="{{ vl_dbg_13|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bg_type_2026</code></td>
+  <td>نوع الخلفية</td>
+  <td>items/dropdown-list</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_13|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_14 = theme.settings.get('veloura_loader_bg_color_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bg_color_2026" data-kind="color" data-critical="لا" data-raw="{{ vl_dbg_14|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bg_color_2026</code></td>
+  <td>لون خلفية التحميل</td>
+  <td>string/color</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_14|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_15 = theme.settings.get('veloura_loader_grad_1_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_grad_1_2026" data-kind="color" data-critical="لا" data-raw="{{ vl_dbg_15|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_grad_1_2026</code></td>
+  <td>لون التدرج الأول</td>
+  <td>string/color</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_15|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_16 = theme.settings.get('veloura_loader_grad_2_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_grad_2_2026" data-kind="color" data-critical="لا" data-raw="{{ vl_dbg_16|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_grad_2_2026</code></td>
+  <td>لون التدرج الثاني</td>
+  <td>string/color</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_16|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_17 = theme.settings.get('veloura_loader_bg_img_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bg_img_2026" data-kind="image" data-critical="لا" data-raw="{{ vl_dbg_17|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bg_img_2026</code></td>
+  <td>صورة خلفية صفحة التحميل</td>
+  <td>string/image</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_17|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_18 = theme.settings.get('veloura_loader_bg_blur_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bg_blur_2026" data-kind="number" data-critical="لا" data-raw="{{ vl_dbg_18|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bg_blur_2026</code></td>
+  <td>قوة البلور للخلفية الزجاجية</td>
+  <td>number/slider</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_18|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_19 = theme.settings.get('veloura_loader_text_line_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_text_line_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_19|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_text_line_2026</code></td>
+  <td>veloura_loader_text_line_2026</td>
+  <td>static/line</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_19|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_20 = theme.settings.get('veloura_loader_text_title_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_text_title_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_20|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_text_title_2026</code></td>
+  <td>النصوص داخل صفحة التحميل</td>
+  <td>static/title</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_20|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_21 = theme.settings.get('veloura_loader_show_text_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_show_text_2026" data-kind="boolean" data-critical="نعم" data-raw="{{ vl_dbg_21|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_show_text_2026</code></td>
+  <td>إظهار نص أسفل الشعار</td>
+  <td>boolean/switch</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_21|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_22 = theme.settings.get('veloura_loader_main_text_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_main_text_2026" data-kind="string" data-critical="لا" data-raw="{{ vl_dbg_22|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_main_text_2026</code></td>
+  <td>النص الرئيسي</td>
+  <td>string/text</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_22|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_23 = theme.settings.get('veloura_loader_sub_text_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_sub_text_2026" data-kind="string" data-critical="لا" data-raw="{{ vl_dbg_23|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_sub_text_2026</code></td>
+  <td>النص الفرعي</td>
+  <td>string/text</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_23|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_24 = theme.settings.get('veloura_loader_text_color_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_text_color_2026" data-kind="color" data-critical="لا" data-raw="{{ vl_dbg_24|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_text_color_2026</code></td>
+  <td>لون نص صفحة التحميل</td>
+  <td>string/color</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_24|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_25 = theme.settings.get('veloura_loader_timing_line_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_timing_line_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_25|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_timing_line_2026</code></td>
+  <td>veloura_loader_timing_line_2026</td>
+  <td>static/line</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_25|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_26 = theme.settings.get('veloura_loader_timing_title_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_timing_title_2026" data-kind="static" data-critical="لا" data-raw="{{ vl_dbg_26|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_timing_title_2026</code></td>
+  <td>التوقيت والاختفاء</td>
+  <td>static/title</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_26|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_27 = theme.settings.get('veloura_loader_duration_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_duration_2026" data-kind="number" data-critical="نعم" data-raw="{{ vl_dbg_27|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_duration_2026</code></td>
+  <td>مدة ظهور صفحة التحميل</td>
+  <td>number/slider</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_27|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_28 = theme.settings.get('veloura_loader_fade_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_fade_2026" data-kind="number" data-critical="نعم" data-raw="{{ vl_dbg_28|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_fade_2026</code></td>
+  <td>سرعة اختفاء صفحة التحميل</td>
+  <td>number/slider</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_28|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_29 = theme.settings.get('veloura_loader_bar_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bar_2026" data-kind="boolean" data-critical="نعم" data-raw="{{ vl_dbg_29|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bar_2026</code></td>
+  <td>إظهار شريط تحميل أسفل الشعار</td>
+  <td>boolean/switch</td>
+  <td>نعم</td>
+  <td class="vl-raw"><code>{{ vl_dbg_29|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr> {% set vl_dbg_30 = theme.settings.get('veloura_loader_bar_color_2026', '__MISSING__') %}
+<tr data-id="veloura_loader_bar_color_2026" data-kind="color" data-critical="لا" data-raw="{{ vl_dbg_30|json_encode|e('html_attr') }}">
+  <td><code>veloura_loader_bar_color_2026</code></td>
+  <td>لون شريط التحميل</td>
+  <td>string/color</td>
+  <td>لا</td>
+  <td class="vl-raw"><code>{{ vl_dbg_30|json_encode }}</code></td>
+  <td class="vl-normalized">...</td>
+  <td class="vl-status">...</td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  #veloura-loader-settings-tester {
+    position: fixed;
+    inset: auto 12px 12px 12px;
+    z-index: 2147483647;
+    max-height: 70vh;
+    overflow: hidden;
+    background: #0f172a;
+    color: #e5e7eb;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.35);
+    font-family: inherit;
+    font-size: 12px;
+  }
+  #veloura-loader-settings-tester .vlst-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  #veloura-loader-settings-tester .vlst-head strong {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+  }
+  #veloura-loader-settings-tester .vlst-head span {
+    display: block;
+    margin-top: 3px;
+    color: #cbd5e1;
+  }
+  #veloura-loader-settings-tester .vlst-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  #veloura-loader-settings-tester button {
+    border: 0;
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: #38bdf8;
+    color: #082f49;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  #veloura-loader-settings-tester button[data-vlst-close] {
+    background: #334155;
+    color: #fff;
+  }
+  #veloura-loader-settings-tester .vlst-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(56,189,248,.08);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  #veloura-loader-settings-tester .vlst-summary b.ok { color:#86efac; }
+  #veloura-loader-settings-tester .vlst-summary b.warn { color:#fde68a; }
+  #veloura-loader-settings-tester .vlst-notes {
+    padding: 8px 12px;
+    color: #fde68a;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  #veloura-loader-settings-tester .vlst-table-wrap {
+    max-height: 48vh;
+    overflow: auto;
+  }
+  #veloura-loader-settings-tester table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+  }
+  #veloura-loader-settings-tester th,
+  #veloura-loader-settings-tester td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    vertical-align: top;
+    text-align: right;
+  }
+  #veloura-loader-settings-tester th {
+    position: sticky;
+    top: 0;
+    background: #111827;
+    color: #fff;
+    z-index: 1;
+  }
+  #veloura-loader-settings-tester code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #bae6fd;
+  }
+  #veloura-loader-settings-tester tr.is-ok td.vl-status { color: #86efac; font-weight: 900; }
+  #veloura-loader-settings-tester tr.is-warn td.vl-status { color: #fde68a; font-weight: 900; }
+  #veloura-loader-settings-tester tr.is-bad td.vl-status { color: #fca5a5; font-weight: 900; }
+</style>
+
+<script data-cfasync="false">
+(function () {
+  var panel = document.getElementById('veloura-loader-settings-tester');
+  if (!panel) return;
+
+  function parseRaw(raw) {
+    try { return JSON.parse(raw); }
+    catch (e) { return { __parse_error: String(e && e.message || e), raw: raw }; }
+  }
+
+  function clean(value, fallback) {
+    if (value === null || value === undefined || value === '') return fallback;
+    if (Array.isArray(value)) return value.length ? clean(value[0], fallback) : fallback;
+    if (typeof value === 'object') {
+      if (value.__parse_error) return value;
+      if (value.selected !== undefined) return clean(value.selected, fallback);
+      if (value.value !== undefined) return clean(value.value, fallback);
+      if (value.url !== undefined) return clean(value.url, fallback);
+      if (value.src !== undefined) return clean(value.src, fallback);
+      if (value.path !== undefined) return clean(value.path, fallback);
+      if (value.cdn !== undefined) return clean(value.cdn, fallback);
+      if (value.image !== undefined) return clean(value.image, fallback);
+      return value;
+    }
+    return value;
+  }
+
+  function cleanBool(value, fallback) {
+    var v = clean(value, fallback);
+    if (v === true || v === 1 || v === '1' || v === 'true' || v === 'on' || v === 'yes') return true;
+    if (v === false || v === 0 || v === '0' || v === 'false' || v === 'off' || v === 'no') return false;
+    return fallback;
+  }
+
+  function cleanNumber(value, fallback) {
+    var v = clean(value, fallback);
+    var n = parseInt(v, 10);
+    return isNaN(n) ? null : n;
+  }
+
+  function display(value) {
+    if (value && value.__parse_error) return 'JSON PARSE ERROR: ' + value.__parse_error;
+    if (typeof value === 'object') {
+      try { return JSON.stringify(value); } catch(e) { return String(value); }
+    }
+    return String(value);
+  }
+
+  var report = [];
+  var rows = panel.querySelectorAll('tbody tr');
+  var ok = 0, warn = 0, bad = 0;
+
+  rows.forEach(function (row) {
+    var id = row.getAttribute('data-id');
+    var kind = row.getAttribute('data-kind');
+    var critical = row.getAttribute('data-critical') === 'نعم';
+    var raw = parseRaw(row.getAttribute('data-raw') || 'null');
+    var normalized = clean(raw, '');
+    var status = 'OK';
+    var level = 'ok';
+
+    if (raw === '__MISSING__') {
+      status = 'MISSING من theme.settings';
+      level = critical ? 'bad' : 'warn';
+    } else if (raw && raw.__parse_error) {
+      status = 'JSON ERROR';
+      level = 'bad';
+      normalized = raw;
+    } else if (kind === 'static') {
+      status = 'لوحة فقط - لا يدخل في كود اللودر';
+      level = 'ok';
+    } else if (kind === 'boolean') {
+      normalized = cleanBool(raw, true);
+      status = 'Boolean OK';
+    } else if (kind === 'number') {
+      normalized = cleanNumber(raw, null);
+      if (normalized === null) {
+        status = 'رقم غير صالح';
+        level = critical ? 'bad' : 'warn';
+      } else {
+        status = 'Number OK';
+      }
+    } else if (kind === 'select') {
+      normalized = clean(raw, '');
+      if (!normalized || typeof normalized === 'object') {
+        status = 'Dropdown لم يرجع value واضح';
+        level = critical ? 'bad' : 'warn';
+      } else {
+        status = 'Dropdown OK';
+      }
+    } else if (kind === 'color') {
+      normalized = clean(raw, '');
+      if (!normalized || !/^#|rgb|hsl|var\(/i.test(String(normalized))) {
+        status = 'لون مش واضح';
+        level = 'warn';
+      } else {
+        status = 'Color OK';
+      }
+    } else if (kind === 'image') {
+      normalized = clean(raw, '');
+      status = normalized ? 'Image OK' : 'فارغة - مسموح إذا لها fallback';
+      level = normalized ? 'ok' : 'warn';
+    } else {
+      normalized = clean(raw, '');
+      status = 'String OK';
+    }
+
+    row.querySelector('.vl-normalized').textContent = display(normalized);
+    row.querySelector('.vl-status').textContent = status;
+    row.classList.add('is-' + level);
+
+    if (level === 'ok') ok++;
+    if (level === 'warn') warn++;
+    if (level === 'bad') bad++;
+
+    report.push({
+      id: id,
+      kind: kind,
+      critical: critical,
+      raw: raw,
+      normalized: normalized,
+      status: status,
+      level: level
+    });
+  });
+
+  function getReportItem(id) {
+    return report.filter(function (item) { return item.id === id; })[0];
+  }
+
+  var extraWarnings = [];
+
+  var enable = getReportItem('veloura_loader_enable_2026');
+  if (enable && enable.normalized === false) {
+    extraWarnings.push('خاصية التفعيل veloura_loader_enable_2026 مطفأة، لذلك اللودر ينحذف فورًا.');
+  }
+
+  var logoType = getReportItem('veloura_loader_logo_type_2026');
+  var logoUpload = getReportItem('veloura_loader_logo_img_2026');
+  var logoAnim = getReportItem('veloura_loader_anim_img_2026');
+  var logoUrl = getReportItem('veloura_loader_logo_url_2026');
+  if (logoType && logoType.normalized === 'upload' && logoUpload && !logoUpload.normalized) {
+    extraWarnings.push('نوع الشعار upload لكن صورة الشعار فارغة؛ لازم الكود يستخدم شعار المتجر كـ fallback.');
+  }
+  if (logoType && logoType.normalized === 'animated' && logoAnim && !logoAnim.normalized) {
+    extraWarnings.push('نوع الشعار animated لكن صورة الشعار المتحرك فارغة.');
+  }
+  if (logoType && logoType.normalized === 'url' && logoUrl && !logoUrl.normalized) {
+    extraWarnings.push('نوع الشعار url لكن رابط الشعار فارغ.');
+  }
+
+  var bgType = getReportItem('veloura_loader_bg_type_2026');
+  var bgImg = getReportItem('veloura_loader_bg_img_2026');
+  if (bgType && bgType.normalized === 'image' && bgImg && !bgImg.normalized) {
+    extraWarnings.push('نوع الخلفية image لكن صورة الخلفية فارغة؛ هذا لا يخرب الظهور لكن يعطي خلفية ناقصة.');
+  }
+
+  var summary = panel.querySelector('[data-vlst-summary]');
+  if (summary) {
+    var text = 'OK: ' + ok + ' / تحذير: ' + warn + ' / خطأ: ' + bad;
+    if (extraWarnings.length) text += ' — ملاحظات: ' + extraWarnings.join(' | ');
+    summary.textContent = text;
+    summary.className = bad ? 'warn' : 'ok';
+  }
+
+  window.velouraLoaderSettingsReport = report;
+  window.velouraLoaderSettingsWarnings = extraWarnings;
+  try { console.table(report); } catch(e) {}
+  if (extraWarnings.length) console.warn('Veloura Loader Warnings:', extraWarnings);
+
+  window.setTimeout(function () {
+    var timer = panel.querySelector('[data-vlst-timer]');
+    if (timer) {
+      timer.textContent = 'OK - setTimeout يعمل';
+      timer.className = 'ok';
+    }
+  }, 1200);
+
+  function forceHideLoader() {
+    var loader = document.getElementById('veloura-loader-2026');
+    if (!loader) return alert('ما لقيت #veloura-loader-2026 في الصفحة');
+    loader.style.setProperty('opacity', '0', 'important');
+    loader.style.setProperty('visibility', 'hidden', 'important');
+    loader.style.setProperty('pointer-events', 'none', 'important');
+    window.setTimeout(function () {
+      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 700);
+  }
+
+  var hideBtn = panel.querySelector('[data-vlst-hide-loader]');
+  if (hideBtn) hideBtn.addEventListener('click', forceHideLoader);
+
+  var closeBtn = panel.querySelector('[data-vlst-close]');
+  if (closeBtn) closeBtn.addEventListener('click', function () {
+    panel.remove();
+  });
+
+  var copyBtn = panel.querySelector('[data-vlst-copy]');
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var payload = JSON.stringify({
+      report: report,
+      warnings: extraWarnings,
+      userAgent: navigator.userAgent,
+      href: location.href
+    }, null, 2);
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(payload).then(function () {
+        copyBtn.textContent = 'تم النسخ';
+      });
+    } else {
+      var t = document.createElement('textarea');
+      t.value = payload;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand('copy');
+      t.remove();
+      copyBtn.textContent = 'تم النسخ';
+    }
+  });
+})();
+</script>
+{# END Veloura Loader Settings Tester 2026 #}
+
+
 {% if theme.settings.get('enable_add_product_toast', true) %}
     <salla-add-product-toast></salla-add-product-toast>
 {% endif %}

@@ -889,6 +889,9 @@ input:where([type='file']):focus{
 .visible{
     visibility: visible;
 }
+.collapse{
+    visibility: collapse;
+}
 .static{
     position: static;
 }
@@ -1285,6 +1288,9 @@ input:where([type='file']):focus{
 }
 .table-fixed{
     table-layout: fixed;
+}
+.border-collapse{
+    border-collapse: collapse;
 }
 .translate-y-0{
     --tw-translate-y: 0px;
