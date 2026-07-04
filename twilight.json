@@ -609,8 +609,8 @@
   "label": "تفعيل صفحة التحميل",
   "description": "إظهار شاشة تحميل عند دخول الموقع",
   "icon": "sicon-toggle-on",
-  "value": false,
-  "selected": false,
+  "value": true,
+  "selected": true,
   "required": false
 },
 
@@ -1118,7 +1118,7 @@
 
 {
   "type": "static",
-  "id": "veloura_loader_anim_line_2026",
+  "id": "veloura_loader_timing_line_2026",
   "format": "line",
   "conditions": [
     {
@@ -1131,8 +1131,8 @@
 {
   "type": "static",
   "format": "title",
-  "id": "veloura_loader_anim_title_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f5f3ff;color:#4c1d95;text-align:right;font-weight:900;border-right:4px solid #8b5cf6\">الحركة والتوقيت</div>",
+  "id": "veloura_loader_timing_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f5f3ff;color:#4c1d95;text-align:right;font-weight:900;border-right:4px solid #8b5cf6\">التوقيت والاختفاء</div>",
   "variant": "h6",
   "conditions": [
     {
