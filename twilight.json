@@ -774,6 +774,29 @@
   ]
 },
 {
+  "id": "veloura_loader_skip_enable_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار زر تخطي",
+  "description": "إظهار كلمة تخطي أعلى يمين صفحة التحميل",
+  "icon": "sicon-cursor",
+  "value": true,
+  "selected": true,
+  "conditions": [{"id":"veloura_loader_enable_2026","operation":"=","value":true}]
+},
+{
+  "id": "veloura_loader_skip_text_2026",
+  "type": "string",
+  "format": "text",
+  "label": "نص زر التخطي",
+  "icon": "sicon-edit",
+  "value": "تخطي",
+  "conditions": [
+    {"id":"veloura_loader_enable_2026","operation":"=","value":true},
+    {"id":"veloura_loader_skip_enable_2026","operation":"=","value":true}
+  ]
+},
+{
   "id": "veloura_loader_hide_style_2026",
   "type": "items",
   "format": "dropdown-list",
