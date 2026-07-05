@@ -4062,6 +4062,135 @@
 {
   "type": "static",
   "format": "description",
+  "id": "veloura_cart_banners_settings_title_2026",
+  "label": " ",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class=\"sicon-image\"></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بنرات صفحة السلة</strong></div></div>",
+  "icon": "sicon-image"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل بنرات صفحة السلة",
+  "description": "عند التفعيل تظهر بنرات مخصصة داخل صفحة السلة",
+  "id": "veloura_cart_banners_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "id": "veloura_cart_banners_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "العنوان داخل صفحة السلة",
+  "icon": "sicon-format-text",
+  "value": "عروض خاصة لك",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_cart_banners_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_cart_banners_radius_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "حواف البنرات",
+  "description": "القيمة بالبكسل",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "value": "18",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "60",
+  "conditions": [
+    {
+      "id": "veloura_cart_banners_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_cart_banners_gap_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "المسافة بين البنرات",
+  "description": "القيمة بالبكسل",
+  "inputType": "range",
+  "icon": "sicon-resize",
+  "value": "14",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "40",
+  "conditions": [
+    {
+      "id": "veloura_cart_banners_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_cart_banners_items_2026",
+  "type": "collection",
+  "format": "collection",
+  "label": "بنرات صفحة السلة",
+  "description": "أضف بنر أو أكثر، كل بنر يحتوي على صورة ورابط اختياري",
+  "icon": "sicon-list-add",
+  "required": false,
+  "minLength": 0,
+  "maxLength": 12,
+  "value": [],
+  "fields": [
+    {
+      "id": "image",
+      "type": "string",
+      "format": "image",
+      "label": "صورة البنر",
+      "description": "ارفع صورة البنر",
+      "icon": "sicon-image",
+      "value": "",
+      "required": true
+    },
+    {
+      "id": "url",
+      "type": "string",
+      "format": "url",
+      "inputType": "url",
+      "label": "رابط البنر",
+      "placeholder": "https://example.com",
+      "icon": "sicon-link",
+      "value": "",
+      "required": false
+    },
+    {
+      "id": "new_tab",
+      "type": "boolean",
+      "format": "switch",
+      "label": "فتح الرابط في صفحة جديدة",
+      "icon": "sicon-external-link",
+      "value": false,
+      "selected": false,
+      "required": false
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_cart_banners_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "description",
   "id": "veloura_product_card_settings_title_2026",
   "label": " ",
   "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-braille-hand'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات بطاقة المنتج</strong></div></div>",
