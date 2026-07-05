@@ -26,10 +26,20 @@
     {% set veloura_show_breadcrumb = veloura_show_breadcrumb.value %}
   {% endif %}
 
-  {% set veloura_hide_product_count = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
-  {% if veloura_hide_product_count.value is defined %}
-    {% set veloura_hide_product_count = veloura_hide_product_count.value %}
+  {% set veloura_hide_product_count_raw = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
+  {% if veloura_hide_product_count_raw.value is defined %}
+    {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.value %}
+  {% elseif veloura_hide_product_count_raw.selected is defined %}
+    {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.selected %}
   {% endif %}
+
+  {% set veloura_hide_product_count =
+    veloura_hide_product_count_raw == true
+    or veloura_hide_product_count_raw == 'true'
+    or veloura_hide_product_count_raw == 1
+    or veloura_hide_product_count_raw == '1'
+    or veloura_hide_product_count_raw == 'on'
+  %}
 
   {# إخفاء المنتجات عند وجود تصنيفات فرعية #}
   {% set veloura_hide_products_if_children_raw = theme.settings.get('veloura_category_hide_products_if_children_2026', false) %}
@@ -246,8 +256,16 @@
         <div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
 
           <div class="mb-4 sm:mb-6 flex justify-between items-center veloura-category-head">
-            <h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title" id="page-main-title">
-              {{ page.title|raw }}
+            <h1
+              class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title"
+              id="page-main-title"
+              data-veloura-clean-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
+            >
+              {% if veloura_hide_product_count %}
+                {{ category.name|default(page.title)|striptags }}
+              {% else %}
+                {{ page.title|raw }}
+              {% endif %}
             </h1>
           </div>
 
@@ -1213,15 +1231,11 @@
 
         if (!title) return;
 
-        title.querySelectorAll('span, small, em').forEach(function (item) {
-          if (/\d+/.test(item.textContent || '')) {
-            item.remove();
-          }
-        });
+        const cleanTitle = title.getAttribute('data-veloura-clean-title');
 
-        title.innerHTML = title.innerHTML
-          .replace(/\s*[\(\[]\s*\d+\s*[\)\]]\s*$/g, '')
-          .replace(/\s*[-–]\s*\d+\s*$/g, '');
+        if (cleanTitle) {
+          title.textContent = cleanTitle;
+        }
       });
     </script>
   {% endif %}
