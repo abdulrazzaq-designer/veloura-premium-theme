@@ -459,9 +459,20 @@
   <script defer src="{{ 'product.js' | asset }}"></script>
 
 
-  {# Veloura Category Banners JSON - Always printed for safe debugging/rendering #}
+  {# Veloura Category Banners JSON - نفس طريقة صور التصنيفات: نعيد قراءة الإعداد داخل block scripts #}
+  {% set veloura_cat_banner_items_script = theme.settings.get('veloura_cat_banner_map_2026') ?: [] %}
+  {% if veloura_cat_banner_items_script.value is defined %}
+    {% set veloura_cat_banner_items_script = veloura_cat_banner_items_script.value %}
+  {% elseif veloura_cat_banner_items_script.selected is defined %}
+    {% set veloura_cat_banner_items_script = veloura_cat_banner_items_script.selected %}
+  {% elseif veloura_cat_banner_items_script.items is defined %}
+    {% set veloura_cat_banner_items_script = veloura_cat_banner_items_script.items %}
+  {% elseif veloura_cat_banner_items_script.data is defined %}
+    {% set veloura_cat_banner_items_script = veloura_cat_banner_items_script.data %}
+  {% endif %}
+
   <script type="application/json" id="veloura-category-banners-json">
-    {{ veloura_cat_banner_items|json_encode|raw }}
+    {{ veloura_cat_banner_items_script|json_encode|raw }}
   </script>
 
   <script>
@@ -507,6 +518,63 @@
         }
 
         return item;
+      }
+
+      function flattenFieldItem(item) {
+        item = unwrap(item);
+
+        if (!item || typeof item !== 'object') return item;
+
+        const fieldsArray = Array.isArray(item)
+          ? item
+          : (Array.isArray(item.fields) ? item.fields : null);
+
+        if (!fieldsArray) {
+          if (item.data && typeof item.data === 'object' && !Array.isArray(item.data)) {
+            return Object.assign({}, item, item.data);
+          }
+
+          if (item.settings && typeof item.settings === 'object' && !Array.isArray(item.settings)) {
+            return Object.assign({}, item, item.settings);
+          }
+
+          return item;
+        }
+
+        const output = {};
+
+        fieldsArray.forEach(function (field) {
+          field = unwrap(field);
+
+          if (!field || typeof field !== 'object') return;
+
+          const id = field.id || field.key || field.name;
+          if (!id) return;
+
+          if (field.value !== undefined && field.value !== null && field.value !== '') {
+            output[id] = field.value;
+            return;
+          }
+
+          if (field.selected !== undefined && field.selected !== null && field.selected !== '') {
+            output[id] = field.selected;
+            return;
+          }
+
+          if (field.items !== undefined && field.items !== null && field.items !== '') {
+            output[id] = field.items;
+            return;
+          }
+
+          if (field.data !== undefined && field.data !== null && field.data !== '') {
+            output[id] = field.data;
+            return;
+          }
+
+          output[id] = field;
+        });
+
+        return output;
       }
 
       function normalizeCollection(value) {
@@ -559,7 +627,7 @@
       }
 
       function getImageUrl(item) {
-        item = unwrap(item);
+        item = flattenFieldItem(item);
         if (!item) return '';
 
         const image =
@@ -602,7 +670,7 @@
       }
 
       function getBannerUrl(item) {
-        item = unwrap(item);
+        item = flattenFieldItem(item);
         if (!item) return '';
 
         let url = item.veloura_cat_banner_url || item['veloura_cat_banner_url'] || item.url || '';
@@ -616,7 +684,7 @@
       }
 
       function getCategoryTokens(item) {
-        item = unwrap(item);
+        item = flattenFieldItem(item);
         const tokens = [];
 
         if (!item) return tokens;
@@ -659,7 +727,7 @@
 
       const prepared = items
         .map(function (item) {
-          item = unwrap(item);
+          item = flattenFieldItem(item);
 
           return {
             image: getImageUrl(item),
