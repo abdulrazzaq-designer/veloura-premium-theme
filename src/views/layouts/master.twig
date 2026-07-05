@@ -1741,30 +1741,35 @@
   {% set vl_skip_text = theme.settings.get('veloura_loader_skip_text_2026', 'تخطي') %}
   {% if vl_skip_text.value is defined %}{% set vl_skip_text = vl_skip_text.value %}{% endif %}
 
-  {# Timing controls restored safely from twilight.json #}
-  {% set vl_duration = theme.settings.get('veloura_loader_duration_2026', 1200) %}
-  {% if vl_duration.value is defined %}{% set vl_duration = vl_duration.value %}{% endif %}
-  {% set vl_duration = vl_duration + 0 %}
-  {% if vl_duration < 300 %}{% set vl_duration = 300 %}{% endif %}
-  {% if vl_duration > 5000 %}{% set vl_duration = 5000 %}{% endif %}
+  {# Timing controls in seconds. Backward compatible: old millisecond values above 50 are converted to seconds. #}
+  {% set vl_duration_seconds = theme.settings.get('veloura_loader_duration_2026', 2) %}
+  {% if vl_duration_seconds.value is defined %}{% set vl_duration_seconds = vl_duration_seconds.value %}{% endif %}
+  {% set vl_duration_seconds = vl_duration_seconds + 0 %}
+  {% if vl_duration_seconds > 50 %}{% set vl_duration_seconds = vl_duration_seconds / 1000 %}{% endif %}
+  {% if vl_duration_seconds < 1 %}{% set vl_duration_seconds = 1 %}{% endif %}
+  {% if vl_duration_seconds > 10 %}{% set vl_duration_seconds = 10 %}{% endif %}
+  {% set vl_duration = vl_duration_seconds * 1000 %}
 
-  {% set vl_fade = theme.settings.get('veloura_loader_fade_2026', 450) %}
-  {% if vl_fade.value is defined %}{% set vl_fade = vl_fade.value %}{% endif %}
-  {% set vl_fade = vl_fade + 0 %}
-  {% if vl_fade < 100 %}{% set vl_fade = 100 %}{% endif %}
-  {% if vl_fade > 1500 %}{% set vl_fade = 1500 %}{% endif %}
+  {% set vl_fade_seconds = theme.settings.get('veloura_loader_fade_2026', 1) %}
+  {% if vl_fade_seconds.value is defined %}{% set vl_fade_seconds = vl_fade_seconds.value %}{% endif %}
+  {% set vl_fade_seconds = vl_fade_seconds + 0 %}
+  {% if vl_fade_seconds > 50 %}{% set vl_fade_seconds = vl_fade_seconds / 1000 %}{% endif %}
+  {% if vl_fade_seconds < 1 %}{% set vl_fade_seconds = 1 %}{% endif %}
+  {% if vl_fade_seconds > 3 %}{% set vl_fade_seconds = 3 %}{% endif %}
+  {% set vl_fade = vl_fade_seconds * 1000 %}
 
   <input id="veloura-loader-skip-2026" class="veloura-loader-skip-check" type="checkbox" aria-hidden="true">
-
-  {% if vl_skip_enable %}
-    <label class="veloura-loader-skip-label" for="veloura-loader-skip-2026">{{ vl_skip_text }}</label>
-  {% endif %}
 
   <div id="veloura-loader-2026"
        class="veloura-loader-stable veloura-loader-bg-{{ vl_bg_type }}"
        style="--vl-bg:{{ vl_bg_color }};--vl-grad-1:{{ vl_grad_1 }};--vl-grad-2:{{ vl_grad_2 }};--vl-text:{{ vl_text_color }};--vl-bar:{{ vl_bar_color }};--vl-logo-w:{{ vl_logo_w }}px;--vl-duration:{{ vl_duration }}ms;--vl-fade:{{ vl_fade }}ms;{% if vl_bg_type == 'image' %}--vl-bg-img:url('{{ vl_bg_img }}');{% endif %}"
        aria-hidden="true">
     <div class="veloura-loader-bg"></div>
+
+    {% if vl_skip_enable %}
+      <label class="veloura-loader-skip-label" for="veloura-loader-skip-2026">{{ vl_skip_text }}</label>
+    {% endif %}
+
     <div class="veloura-loader-content">
       {% if vl_logo_src %}
         <img class="veloura-loader-logo" src="{{ vl_logo_src }}" alt="{{ store.name }}" loading="eager">
@@ -1828,13 +1833,9 @@
       color:#0f172a!important;font-size:14px!important;font-weight:900!important;line-height:38px!important;cursor:pointer!important;
       box-shadow:0 12px 30px rgba(15,23,42,.14)!important;font-family:inherit!important;user-select:none!important;
       opacity:1;visibility:visible;pointer-events:auto!important;
-      animation:velouraLoaderStableFadeOut var(--vl-fade) ease var(--vl-duration) 1 forwards!important;
     }
 
-    .veloura-loader-skip-check:checked ~ #veloura-loader-2026,
-    .veloura-loader-skip-check:checked ~ .veloura-loader-skip-label,
-    .veloura-loader-skip-check:checked + .veloura-loader-skip-label,
-    .veloura-loader-skip-check:checked ~ label.veloura-loader-skip-label{
+    .veloura-loader-skip-check:checked ~ #veloura-loader-2026{
       display:none!important;opacity:0!important;visibility:hidden!important;animation:none!important;
     }
 
@@ -1853,7 +1854,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      #veloura-loader-2026.veloura-loader-stable,.veloura-loader-skip-label{animation:velouraLoaderStableFadeOut var(--vl-fade) linear var(--vl-duration) 1 forwards!important}
+      #veloura-loader-2026.veloura-loader-stable{animation:velouraLoaderStableFadeOut var(--vl-fade) linear var(--vl-duration) 1 forwards!important}
       #veloura-loader-2026 .veloura-loader-logo,#veloura-loader-2026 .veloura-loader-bar span{animation:none!important}
     }
   </style>
