@@ -4060,6 +4060,227 @@
   ]
 },
 {
+    "type": "static",
+    "id": "veloura_cart_banners_line_2026",
+    "format": "line"
+  },
+  {
+    "type": "static",
+    "format": "title",
+    "id": "veloura_cart_banners_title_static_2026",
+    "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#164e63;text-align:right;font-weight:900;border-right:4px solid #06b6d4\">بنرات صفحة السلة</div>",
+    "variant": "h6"
+  },
+  {
+    "type": "boolean",
+    "format": "switch",
+    "id": "veloura_cart_banners_enable_2026",
+    "label": "تفعيل بنرات صفحة السلة",
+    "description": "إظهار قسم بنرات داخل صفحة السلة فقط",
+    "icon": "sicon-toggle-on",
+    "value": true,
+    "selected": true,
+    "required": false
+  },
+  {
+    "type": "string",
+    "format": "text",
+    "id": "veloura_cart_banners_title_2026",
+    "label": "العنوان الرئيسي للقسم",
+    "description": "يظهر فوق البنرات داخل صفحة السلة",
+    "icon": "sicon-format-text",
+    "value": "عروض قد تهمك",
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "id": "veloura_cart_banners_radius_2026",
+    "type": "number",
+    "format": "slider",
+    "inputType": "range",
+    "label": "حواف البنرات",
+    "icon": "sicon-resize",
+    "value": "18",
+    "required": false,
+    "step": "1",
+    "minimum": "0",
+    "maximum": "40",
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "id": "veloura_cart_banners_gap_2026",
+    "type": "number",
+    "format": "slider",
+    "inputType": "range",
+    "label": "المسافة بين البنرات",
+    "icon": "sicon-resize",
+    "value": "14",
+    "required": false,
+    "step": "1",
+    "minimum": "0",
+    "maximum": "32",
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "static",
+    "format": "title",
+    "id": "veloura_cart_banner_1_title_static_2026",
+    "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:900;border-right:4px solid #64748b\">البنر الأول</div>",
+    "variant": "h6",
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "string",
+    "format": "image",
+    "id": "veloura_cart_banner_1_img_2026",
+    "label": "صورة البنر الأول",
+    "icon": "sicon-image",
+    "value": null,
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "string",
+    "format": "text",
+    "id": "veloura_cart_banner_1_url_2026",
+    "label": "رابط البنر الأول",
+    "description": "اختياري، إذا تركته فارغًا يظهر البنر بدون رابط",
+    "icon": "sicon-link",
+    "value": "",
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "static",
+    "format": "title",
+    "id": "veloura_cart_banner_2_title_static_2026",
+    "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:900;border-right:4px solid #64748b\">البنر الثاني</div>",
+    "variant": "h6",
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "string",
+    "format": "image",
+    "id": "veloura_cart_banner_2_img_2026",
+    "label": "صورة البنر الثاني",
+    "icon": "sicon-image",
+    "value": null,
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "string",
+    "format": "text",
+    "id": "veloura_cart_banner_2_url_2026",
+    "label": "رابط البنر الثاني",
+    "description": "اختياري، إذا تركته فارغًا يظهر البنر بدون رابط",
+    "icon": "sicon-link",
+    "value": "",
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "static",
+    "format": "title",
+    "id": "veloura_cart_banner_3_title_static_2026",
+    "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:900;border-right:4px solid #64748b\">البنر الثالث</div>",
+    "variant": "h6",
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "string",
+    "format": "image",
+    "id": "veloura_cart_banner_3_img_2026",
+    "label": "صورة البنر الثالث",
+    "icon": "sicon-image",
+    "value": null,
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "string",
+    "format": "text",
+    "id": "veloura_cart_banner_3_url_2026",
+    "label": "رابط البنر الثالث",
+    "description": "اختياري، إذا تركته فارغًا يظهر البنر بدون رابط",
+    "icon": "sicon-link",
+    "value": "",
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_cart_banners_enable_2026",
+        "operation": "=",
+        "value": true
+      }
+    ]
+  },
+{
   "type": "static",
   "format": "description",
   "id": "veloura_product_card_settings_title_2026",
