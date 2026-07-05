@@ -1,7 +1,7 @@
 {# ==========================================
-   Veloura Cart Banners 2026
+   Veloura Cart Banners 2026 - Collection Version
    الملف: views/components/cart-banners/cart-banners.twig
-   ملاحظة: هذا الملف مستقل ولا يوضع داخل cart.twig.
+   يعتمد على collection واحدة: veloura_cart_banners_collection_2026
 ========================================== #}
 
 {% set vcb_enable_raw = theme.settings.get('veloura_cart_banners_enable_2026', false) %}
@@ -10,7 +10,6 @@
 {% elseif vcb_enable_raw.selected is defined %}
   {% set vcb_enable_raw = vcb_enable_raw.selected %}
 {% endif %}
-
 {% set vcb_enable =
   vcb_enable_raw == true
   or vcb_enable_raw == 'true'
@@ -19,47 +18,77 @@
   or vcb_enable_raw == 'on'
 %}
 
-{% set vcb_heading = theme.settings.get('veloura_cart_banners_heading_2026', 'عروض قد تهمك') %}
-{% if vcb_heading.value is defined %}
-  {% set vcb_heading = vcb_heading.value %}
+{% set vcb_title = theme.settings.get('veloura_cart_banners_section_title_2026', 'عروض خاصة لك') %}
+{% if vcb_title.value is defined %}
+  {% set vcb_title = vcb_title.value %}
 {% endif %}
 
-{% set vcb_radius = theme.settings.get('veloura_cart_banners_radius_2026', '18') %}
+{% set vcb_radius = theme.settings.get('veloura_cart_banners_radius_2026', 18) %}
 {% if vcb_radius.value is defined %}
   {% set vcb_radius = vcb_radius.value %}
 {% endif %}
 {% set vcb_radius = vcb_radius + 0 %}
 {% if vcb_radius < 0 %}{% set vcb_radius = 0 %}{% endif %}
-{% if vcb_radius > 40 %}{% set vcb_radius = 40 %}{% endif %}
+{% if vcb_radius > 60 %}{% set vcb_radius = 60 %}{% endif %}
 
-{# Banner 1 #}
-{% set vcb_b1_img = theme.settings.get('veloura_cart_banner_1_img_2026', '') %}
-{% if vcb_b1_img.value is defined %}{% set vcb_b1_img = vcb_b1_img.value %}{% endif %}
-{% if vcb_b1_img.url is defined %}{% set vcb_b1_img = vcb_b1_img.url %}{% endif %}
-{% if vcb_b1_img.src is defined %}{% set vcb_b1_img = vcb_b1_img.src %}{% endif %}
-{% set vcb_b1_link = theme.settings.get('veloura_cart_banner_1_url_2026', '') %}
-{% if vcb_b1_link.value is defined %}{% set vcb_b1_link = vcb_b1_link.value %}{% endif %}
+{% set vcb_gap = theme.settings.get('veloura_cart_banners_gap_2026', 14) %}
+{% if vcb_gap.value is defined %}
+  {% set vcb_gap = vcb_gap.value %}
+{% endif %}
+{% set vcb_gap = vcb_gap + 0 %}
+{% if vcb_gap < 0 %}{% set vcb_gap = 0 %}{% endif %}
+{% if vcb_gap > 40 %}{% set vcb_gap = 40 %}{% endif %}
 
-{# Banner 2 #}
-{% set vcb_b2_img = theme.settings.get('veloura_cart_banner_2_img_2026', '') %}
-{% if vcb_b2_img.value is defined %}{% set vcb_b2_img = vcb_b2_img.value %}{% endif %}
-{% if vcb_b2_img.url is defined %}{% set vcb_b2_img = vcb_b2_img.url %}{% endif %}
-{% if vcb_b2_img.src is defined %}{% set vcb_b2_img = vcb_b2_img.src %}{% endif %}
-{% set vcb_b2_link = theme.settings.get('veloura_cart_banner_2_url_2026', '') %}
-{% if vcb_b2_link.value is defined %}{% set vcb_b2_link = vcb_b2_link.value %}{% endif %}
+{# قراءة الكولكشن بأكثر من شكل حتى لا تكسر الصفحة #}
+{% set vcb_collection_raw = theme.settings.get('veloura_cart_banners_collection_2026', []) %}
+{% if vcb_collection_raw.value is defined %}
+  {% set vcb_collection_raw = vcb_collection_raw.value %}
+{% elseif vcb_collection_raw.selected is defined %}
+  {% set vcb_collection_raw = vcb_collection_raw.selected %}
+{% elseif vcb_collection_raw.items is defined %}
+  {% set vcb_collection_raw = vcb_collection_raw.items %}
+{% elseif vcb_collection_raw.data is defined %}
+  {% set vcb_collection_raw = vcb_collection_raw.data %}
+{% endif %}
 
-{# Banner 3 #}
-{% set vcb_b3_img = theme.settings.get('veloura_cart_banner_3_img_2026', '') %}
-{% if vcb_b3_img.value is defined %}{% set vcb_b3_img = vcb_b3_img.value %}{% endif %}
-{% if vcb_b3_img.url is defined %}{% set vcb_b3_img = vcb_b3_img.url %}{% endif %}
-{% if vcb_b3_img.src is defined %}{% set vcb_b3_img = vcb_b3_img.src %}{% endif %}
-{% set vcb_b3_link = theme.settings.get('veloura_cart_banner_3_url_2026', '') %}
-{% if vcb_b3_link.value is defined %}{% set vcb_b3_link = vcb_b3_link.value %}{% endif %}
+{% set vcb_banners = [] %}
+{% if vcb_collection_raw is iterable %}
+  {% for item in vcb_collection_raw %}
+    {% set banner = item %}
+    {% if banner.value is defined and banner.value is iterable %}
+      {% set banner = banner.value %}
+    {% endif %}
 
-{% set vcb_has_banners = vcb_b1_img or vcb_b2_img or vcb_b3_img %}
+    {% set img = '' %}
+    {% if banner.banner_image is defined %}{% set img = banner.banner_image %}{% endif %}
+    {% if not img and banner.image is defined %}{% set img = banner.image %}{% endif %}
+    {% if not img and banner.img is defined %}{% set img = banner.img %}{% endif %}
+    {% if not img and banner.photo is defined %}{% set img = banner.photo %}{% endif %}
+    {% if not img and banner.url_image is defined %}{% set img = banner.url_image %}{% endif %}
 
-{% if vcb_enable and vcb_has_banners %}
-  <section class="veloura-cart-banners-section" aria-label="{{ vcb_heading }}">
+    {% if img.value is defined %}{% set img = img.value %}{% endif %}
+    {% if img.url is defined %}{% set img = img.url %}{% endif %}
+    {% if img.src is defined %}{% set img = img.src %}{% endif %}
+    {% if img.path is defined %}{% set img = img.path %}{% endif %}
+    {% if img.cdn is defined %}{% set img = img.cdn %}{% endif %}
+    {% if img[0].url is defined %}{% set img = img[0].url %}{% endif %}
+    {% if img[0].src is defined %}{% set img = img[0].src %}{% endif %}
+
+    {% set link = '' %}
+    {% if banner.banner_url is defined %}{% set link = banner.banner_url %}{% endif %}
+    {% if not link and banner.url is defined %}{% set link = banner.url %}{% endif %}
+    {% if not link and banner.link is defined %}{% set link = banner.link %}{% endif %}
+    {% if not link and banner.href is defined %}{% set link = banner.href %}{% endif %}
+    {% if link.value is defined %}{% set link = link.value %}{% endif %}
+
+    {% if img %}
+      {% set vcb_banners = vcb_banners|merge([{'img': img, 'link': link}]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if vcb_enable and vcb_banners|length %}
+  <section class="veloura-cart-banners-section" aria-label="{{ vcb_title }}">
     <style>
       .veloura-cart-banners-section {
         margin: 0 0 24px;
@@ -76,7 +105,7 @@
       .veloura-cart-banners-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+        gap: {{ vcb_gap }}px;
       }
 
       .veloura-cart-banner {
@@ -85,6 +114,7 @@
         border-radius: {{ vcb_radius }}px;
         background: #f8fafc;
         box-shadow: 0 10px 24px rgba(15, 23, 42, .06);
+        line-height: 0;
       }
 
       .veloura-cart-banner img {
@@ -112,46 +142,22 @@
       }
     </style>
 
-    {% if vcb_heading %}
-      <h2 class="veloura-cart-banners-title">{{ vcb_heading }}</h2>
+    {% if vcb_title %}
+      <h2 class="veloura-cart-banners-title">{{ vcb_title }}</h2>
     {% endif %}
 
     <div class="veloura-cart-banners-grid">
-      {% if vcb_b1_img %}
-        {% if vcb_b1_link %}
-          <a class="veloura-cart-banner" href="{{ vcb_b1_link }}">
-            <img src="{{ vcb_b1_img }}" alt="{{ vcb_heading }}" loading="lazy">
+      {% for banner in vcb_banners %}
+        {% if banner.link %}
+          <a class="veloura-cart-banner" href="{{ banner.link }}">
+            <img src="{{ banner.img }}" alt="{{ vcb_title }}" loading="lazy">
           </a>
         {% else %}
           <div class="veloura-cart-banner">
-            <img src="{{ vcb_b1_img }}" alt="{{ vcb_heading }}" loading="lazy">
+            <img src="{{ banner.img }}" alt="{{ vcb_title }}" loading="lazy">
           </div>
         {% endif %}
-      {% endif %}
-
-      {% if vcb_b2_img %}
-        {% if vcb_b2_link %}
-          <a class="veloura-cart-banner" href="{{ vcb_b2_link }}">
-            <img src="{{ vcb_b2_img }}" alt="{{ vcb_heading }}" loading="lazy">
-          </a>
-        {% else %}
-          <div class="veloura-cart-banner">
-            <img src="{{ vcb_b2_img }}" alt="{{ vcb_heading }}" loading="lazy">
-          </div>
-        {% endif %}
-      {% endif %}
-
-      {% if vcb_b3_img %}
-        {% if vcb_b3_link %}
-          <a class="veloura-cart-banner" href="{{ vcb_b3_link }}">
-            <img src="{{ vcb_b3_img }}" alt="{{ vcb_heading }}" loading="lazy">
-          </a>
-        {% else %}
-          <div class="veloura-cart-banner">
-            <img src="{{ vcb_b3_img }}" alt="{{ vcb_heading }}" loading="lazy">
-          </div>
-        {% endif %}
-      {% endif %}
+      {% endfor %}
     </div>
   </section>
 {% endif %}
