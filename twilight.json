@@ -797,42 +797,6 @@
   ]
 },
 {
-  "id": "veloura_loader_hide_style_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "طريقة اختفاء صفحة التحميل",
-  "description": "اختر طريقة اختفاء صفحة التحميل عند انتهاء المدة",
-  "icon": "sicon-loading",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "اختفاء عادي",
-      "value": "normal",
-      "key": "veloura-loader-hide-normal"
-    }
-  ],
-  "options": [
-    {
-      "label": "اختفاء عادي",
-      "value": "normal",
-      "key": "veloura-loader-hide-normal"
-    },
-    {
-      "label": "اختفاء دائري",
-      "value": "circle",
-      "key": "veloura-loader-hide-circle"
-    }
-  ],
-  "conditions": [
-    {
-      "id": "veloura_loader_enable_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "type": "static",
   "id": "veloura_loader_bg_line_2026",
   "format": "line",
@@ -1143,12 +1107,30 @@
   ]
 },
 {
+  "id": "veloura_loader_auto_hide_2026",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إخفاء تلقائي عند اكتمال تحميل الصفحة",
+  "description": "إذا كان مفعلاً، تختفي صفحة التحميل تلقائياً بعد اكتمال تحميل الصفحة، ويتم إخفاء خيارات الوقت اليدوي.",
+  "icon": "sicon-bolt",
+  "value": true,
+  "selected": true,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_loader_enable_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_loader_duration_2026",
   "type": "number",
   "format": "slider",
   "inputType": "range",
   "label": "مدة ظهور صفحة التحميل بالثواني",
-  "description": "اكتب عدد الثواني. مثال: 2 يعني ثانيتين",
+  "description": "يظهر فقط عند إيقاف الإخفاء التلقائي. مثال: 2 يعني ثانيتين.",
   "icon": "sicon-timer",
   "value": "2",
   "required": false,
@@ -1160,6 +1142,11 @@
       "id": "veloura_loader_enable_2026",
       "operation": "=",
       "value": true
+    },
+    {
+      "id": "veloura_loader_auto_hide_2026",
+      "operation": "=",
+      "value": false
     }
   ]
 },
@@ -1169,7 +1156,7 @@
   "format": "slider",
   "inputType": "range",
   "label": "سرعة اختفاء صفحة التحميل بالثواني",
-  "description": "اكتب عدد الثواني. مثال: 1 يعني ثانية واحدة",
+  "description": "يظهر فقط عند إيقاف الإخفاء التلقائي. مثال: 1 يعني ثانية واحدة.",
   "icon": "sicon-timer",
   "value": "1",
   "required": false,
@@ -1181,6 +1168,11 @@
       "id": "veloura_loader_enable_2026",
       "operation": "=",
       "value": true
+    },
+    {
+      "id": "veloura_loader_auto_hide_2026",
+      "operation": "=",
+      "value": false
     }
   ]
 },

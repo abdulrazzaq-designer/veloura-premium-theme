@@ -1642,9 +1642,9 @@
 
 {# ================================
    Veloura Loader Stable Minimal 2026
-   نسخة نهائية مستقرة: لا تعتمد على JavaScript ولا تسمح للودر بإخفاء المتجر
-   الخصائص الآمنة فقط: تفعيل، شعار، خلفية، نص، شريط، تخطي
-   الخصائص المستخدمة بأمان: duration / fade — والمتجاهلة عمدًا: circle / glass blur
+   نسخة نهائية مستقرة: الوضع اليدوي يعمل بالوقت، والوضع التلقائي يخفي عند اكتمال تحميل الصفحة
+   الخصائص الآمنة فقط: تفعيل، شعار، خلفية، نص، شريط، تخطي، إخفاء تلقائي، توقيت يدوي
+   الخصائص المتجاهلة عمدًا: circle / glass blur
 ================================ #}
 {% set vl_enable_raw = theme.settings.get('veloura_loader_enable_2026', true) %}
 {% if vl_enable_raw.value is defined %}
@@ -1741,27 +1741,42 @@
   {% set vl_skip_text = theme.settings.get('veloura_loader_skip_text_2026', 'تخطي') %}
   {% if vl_skip_text.value is defined %}{% set vl_skip_text = vl_skip_text.value %}{% endif %}
 
-  {# Timing controls in seconds. Backward compatible: old millisecond values above 50 are converted to seconds. #}
-  {% set vl_duration_seconds = theme.settings.get('veloura_loader_duration_2026', 2) %}
-  {% if vl_duration_seconds.value is defined %}{% set vl_duration_seconds = vl_duration_seconds.value %}{% endif %}
-  {% set vl_duration_seconds = vl_duration_seconds + 0 %}
-  {% if vl_duration_seconds > 50 %}{% set vl_duration_seconds = vl_duration_seconds / 1000 %}{% endif %}
-  {% if vl_duration_seconds < 1 %}{% set vl_duration_seconds = 1 %}{% endif %}
-  {% if vl_duration_seconds > 10 %}{% set vl_duration_seconds = 10 %}{% endif %}
-  {% set vl_duration = vl_duration_seconds * 1000 %}
+  {# Auto hide: when enabled, loader hides after the page load event and manual timing controls are ignored. #}
+  {% set vl_auto_hide_raw = theme.settings.get('veloura_loader_auto_hide_2026', false) %}
+  {% if vl_auto_hide_raw.value is defined %}
+    {% set vl_auto_hide_raw = vl_auto_hide_raw.value %}
+  {% elseif vl_auto_hide_raw.selected is defined %}
+    {% set vl_auto_hide_raw = vl_auto_hide_raw.selected %}
+  {% endif %}
+  {% set vl_auto_hide = vl_auto_hide_raw == true or vl_auto_hide_raw == 'true' or vl_auto_hide_raw == 1 or vl_auto_hide_raw == '1' or vl_auto_hide_raw == 'on' or vl_auto_hide_raw == 'yes' %}
 
-  {% set vl_fade_seconds = theme.settings.get('veloura_loader_fade_2026', 1) %}
-  {% if vl_fade_seconds.value is defined %}{% set vl_fade_seconds = vl_fade_seconds.value %}{% endif %}
-  {% set vl_fade_seconds = vl_fade_seconds + 0 %}
-  {% if vl_fade_seconds > 50 %}{% set vl_fade_seconds = vl_fade_seconds / 1000 %}{% endif %}
-  {% if vl_fade_seconds < 1 %}{% set vl_fade_seconds = 1 %}{% endif %}
-  {% if vl_fade_seconds > 3 %}{% set vl_fade_seconds = 3 %}{% endif %}
-  {% set vl_fade = vl_fade_seconds * 1000 %}
+  {# Timing controls in seconds. Backward compatible: old millisecond values above 50 are converted to seconds.
+     If auto hide is enabled, CSS uses a safe fallback only, while JS hides on page load. #}
+  {% if vl_auto_hide %}
+    {% set vl_duration = 5500 %}
+    {% set vl_fade = 450 %}
+  {% else %}
+    {% set vl_duration_seconds = theme.settings.get('veloura_loader_duration_2026', 2) %}
+    {% if vl_duration_seconds.value is defined %}{% set vl_duration_seconds = vl_duration_seconds.value %}{% endif %}
+    {% set vl_duration_seconds = vl_duration_seconds + 0 %}
+    {% if vl_duration_seconds > 50 %}{% set vl_duration_seconds = vl_duration_seconds / 1000 %}{% endif %}
+    {% if vl_duration_seconds < 1 %}{% set vl_duration_seconds = 1 %}{% endif %}
+    {% if vl_duration_seconds > 10 %}{% set vl_duration_seconds = 10 %}{% endif %}
+    {% set vl_duration = vl_duration_seconds * 1000 %}
+
+    {% set vl_fade_seconds = theme.settings.get('veloura_loader_fade_2026', 1) %}
+    {% if vl_fade_seconds.value is defined %}{% set vl_fade_seconds = vl_fade_seconds.value %}{% endif %}
+    {% set vl_fade_seconds = vl_fade_seconds + 0 %}
+    {% if vl_fade_seconds > 50 %}{% set vl_fade_seconds = vl_fade_seconds / 1000 %}{% endif %}
+    {% if vl_fade_seconds < 1 %}{% set vl_fade_seconds = 1 %}{% endif %}
+    {% if vl_fade_seconds > 3 %}{% set vl_fade_seconds = 3 %}{% endif %}
+    {% set vl_fade = vl_fade_seconds * 1000 %}
+  {% endif %}
 
   <input id="veloura-loader-skip-2026" class="veloura-loader-skip-check" type="checkbox" aria-hidden="true">
 
   <div id="veloura-loader-2026"
-       class="veloura-loader-stable veloura-loader-bg-{{ vl_bg_type }}"
+       class="veloura-loader-stable veloura-loader-bg-{{ vl_bg_type }}{{ vl_auto_hide ? ' veloura-loader-auto-hide' : '' }}"
        style="--vl-bg:{{ vl_bg_color }};--vl-grad-1:{{ vl_grad_1 }};--vl-grad-2:{{ vl_grad_2 }};--vl-text:{{ vl_text_color }};--vl-bar:{{ vl_bar_color }};--vl-logo-w:{{ vl_logo_w }}px;--vl-duration:{{ vl_duration }}ms;--vl-fade:{{ vl_fade }}ms;{% if vl_bg_type == 'image' %}--vl-bg-img:url('{{ vl_bg_img }}');{% endif %}"
        aria-hidden="true">
     <div class="veloura-loader-bg"></div>
@@ -1799,6 +1814,7 @@
       color:var(--vl-text)!important;font-family:inherit!important;
       opacity:1;visibility:visible;pointer-events:none!important;
       animation:velouraLoaderStableFadeOut var(--vl-fade) ease var(--vl-duration) 1 forwards!important;
+      transition:opacity var(--vl-fade) ease, visibility var(--vl-fade) ease!important;
       will-change:opacity,visibility;
     }
 
@@ -1839,6 +1855,10 @@
       display:none!important;opacity:0!important;visibility:hidden!important;animation:none!important;
     }
 
+    #veloura-loader-2026.veloura-loader-is-hidden{
+      opacity:0!important;visibility:hidden!important;animation:none!important;pointer-events:none!important;
+    }
+
     @keyframes velouraLoaderStableFadeOut{
       from{opacity:1;visibility:visible}
       to{opacity:0;visibility:hidden}
@@ -1858,6 +1878,45 @@
       #veloura-loader-2026 .veloura-loader-logo,#veloura-loader-2026 .veloura-loader-bar span{animation:none!important}
     }
   </style>
+
+  {% if vl_auto_hide %}
+    <script data-cfasync="false">
+      (function () {
+        var loader = document.getElementById('veloura-loader-2026');
+        var checkbox = document.getElementById('veloura-loader-skip-2026');
+        if (!loader) return;
+
+        var done = false;
+        var fade = {{ vl_fade|round(0, 'ceil') }};
+
+        function removeLoader() {
+          if (!loader || !loader.parentNode) return;
+          loader.parentNode.removeChild(loader);
+          if (checkbox && checkbox.parentNode) {
+            checkbox.parentNode.removeChild(checkbox);
+          }
+        }
+
+        function hideLoader() {
+          if (done) return;
+          done = true;
+          loader.classList.add('veloura-loader-is-hidden');
+          setTimeout(removeLoader, fade + 120);
+        }
+
+        if (document.readyState === 'complete') {
+          setTimeout(hideLoader, 250);
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(hideLoader, 250);
+          }, { once: true });
+        }
+
+        /* Safety fallback: if load event is delayed or blocked, the loader still disappears. */
+        setTimeout(hideLoader, 5500);
+      })();
+    </script>
+  {% endif %}
 {% endif %}
 {# END Veloura Loader Stable Minimal 2026 #}
 
