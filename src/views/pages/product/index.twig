@@ -459,230 +459,253 @@
   <script defer src="{{ 'product.js' | asset }}"></script>
 
 
-  {% if veloura_cat_banner_items|length %}
-    <script type="application/json" id="veloura-category-banners-json">
-      {{ veloura_cat_banner_items|json_encode|raw }}
-    </script>
+  {# Veloura Category Banners JSON - Always printed for safe debugging/rendering #}
+  <script type="application/json" id="veloura-category-banners-json">
+    {{ veloura_cat_banner_items|json_encode|raw }}
+  </script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const root = document.getElementById('veloura-category-banner-root');
-        const jsonEl = document.getElementById('veloura-category-banners-json');
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const root = document.getElementById('veloura-category-banner-root');
+      const jsonEl = document.getElementById('veloura-category-banners-json');
 
-        if (!root || !jsonEl) return;
+      if (!root || !jsonEl) return;
 
-        function parseMaybe(value) {
-          if (typeof value !== 'string') return value;
+      function parseMaybe(value) {
+        if (typeof value !== 'string') return value;
+        const text = value.trim();
 
-          const text = value.trim();
-
-          if (
-            (text.startsWith('{') && text.endsWith('}')) ||
-            (text.startsWith('[') && text.endsWith(']'))
-          ) {
-            try {
-              return JSON.parse(text);
-            } catch (e) {
-              return value;
-            }
-          }
-
-          return value;
-        }
-
-        function normalize(value) {
-          return String(value || '')
-            .trim()
-            .toLowerCase()
-            .split('?')[0]
-            .replace(/\/+$/g, '');
-        }
-
-        function unwrap(item) {
-          item = parseMaybe(item);
-
-          if (!item || typeof item !== 'object') return item;
-
-          if (item.value && typeof item.value === 'object' && !Array.isArray(item.value)) {
-            return Object.assign({}, item, item.value);
-          }
-
-          return item;
-        }
-
-        function collectAllValues(value, result) {
-          value = parseMaybe(value);
-
-          if (value === null || value === undefined) return;
-
-          if (typeof value === 'string' || typeof value === 'number') {
-            result.push(String(value));
-            return;
-          }
-
-          if (Array.isArray(value)) {
-            value.forEach(function (item) {
-              collectAllValues(item, result);
-            });
-            return;
-          }
-
-          if (typeof value === 'object') {
-            Object.keys(value).forEach(function (key) {
-              collectAllValues(value[key], result);
-            });
+        if (
+          (text.startsWith('{') && text.endsWith('}')) ||
+          (text.startsWith('[') && text.endsWith(']'))
+        ) {
+          try {
+            return JSON.parse(text);
+          } catch (e) {
+            return value;
           }
         }
 
-        function getImageUrl(item) {
-          item = unwrap(item);
-          if (!item) return '';
+        return value;
+      }
 
-          const image =
-            item.veloura_cat_banner_image ||
-            item['veloura_cat_banner_image'] ||
-            item.image ||
-            item['image'] ||
-            '';
+      function normalize(value) {
+        return String(value || '')
+          .trim()
+          .toLowerCase()
+          .split('?')[0]
+          .replace(/\/+$/g, '');
+      }
 
-          const parsedImage = parseMaybe(image);
+      function unwrap(item) {
+        item = parseMaybe(item);
 
-          if (!parsedImage) return '';
+        if (!item || typeof item !== 'object') return item;
 
-          if (typeof parsedImage === 'string') {
-            return parsedImage;
+        if (item.value && typeof item.value === 'object' && !Array.isArray(item.value)) {
+          return Object.assign({}, item, item.value);
+        }
+
+        return item;
+      }
+
+      function normalizeCollection(value) {
+        value = parseMaybe(value);
+
+        if (!value) return [];
+
+        if (Array.isArray(value)) return value;
+
+        if (typeof value === 'object') {
+          if (Array.isArray(value.value)) return value.value;
+          if (Array.isArray(value.items)) return value.items;
+          if (Array.isArray(value.data)) return value.data;
+          if (Array.isArray(value.selected)) return value.selected;
+
+          const values = Object.values(value);
+
+          if (values.length === 1 && Array.isArray(values[0])) {
+            return values[0];
           }
 
-          if (Array.isArray(parsedImage)) {
-            for (let i = 0; i < parsedImage.length; i++) {
-              const url = getImageUrl({ veloura_cat_banner_image: parsedImage[i] });
-              if (url) return url;
-            }
-          }
-
-          if (typeof parsedImage === 'object') {
-            return parsedImage.url ||
-              parsedImage.src ||
-              parsedImage.original ||
-              parsedImage.large ||
-              parsedImage.medium ||
-              parsedImage.thumbnail ||
-              parsedImage.path ||
-              '';
-          }
-
-          return '';
+          return values;
         }
 
-        function getBannerUrl(item) {
-          item = unwrap(item);
-          if (!item) return '';
+        return [];
+      }
 
-          let url = item.veloura_cat_banner_url || item['veloura_cat_banner_url'] || item.url || '';
-          url = parseMaybe(url);
+      function collectAllValues(value, result) {
+        value = parseMaybe(value);
 
-          if (!url) return '';
+        if (value === null || value === undefined) return;
 
-          if (typeof url === 'string') return url.trim();
-          if (typeof url === 'object') return String(url.value || url.url || '').trim();
-
-          return '';
+        if (typeof value === 'string' || typeof value === 'number') {
+          result.push(String(value));
+          return;
         }
 
-        function getCategoryTokens(item) {
-          item = unwrap(item);
-
-          const tokens = [];
-
-          if (!item) return tokens;
-
-          const categories =
-            item.veloura_cat_banner_categories ||
-            item['veloura_cat_banner_categories'] ||
-            item.category ||
-            item.categories ||
-            item.selected_categories ||
-            item.value ||
-            [];
-
-          collectAllValues(categories, tokens);
-
-          return tokens.map(normalize).filter(Boolean);
-        }
-
-        const currentTokens = [
-          root.getAttribute('data-current-id'),
-          root.getAttribute('data-current-category-id'),
-          root.getAttribute('data-current-name'),
-          root.getAttribute('data-current-title'),
-          root.getAttribute('data-current-url'),
-          root.getAttribute('data-current-slug')
-        ].map(normalize).filter(Boolean);
-
-        if (!currentTokens.length) return;
-
-        let items = [];
-
-        try {
-          items = JSON.parse(jsonEl.textContent || '[]');
-        } catch (error) {
-          items = [];
-        }
-
-        if (!Array.isArray(items) && typeof items === 'object') {
-          items = Object.values(items);
-        }
-
-        const prepared = items
-          .map(function (item) {
-            item = unwrap(item);
-
-            return {
-              image: getImageUrl(item),
-              url: getBannerUrl(item),
-              tokens: getCategoryTokens(item)
-            };
-          })
-          .filter(function (item) {
-            return item.image && item.tokens.length;
+        if (Array.isArray(value)) {
+          value.forEach(function (item) {
+            collectAllValues(item, result);
           });
+          return;
+        }
 
-        const match = prepared.find(function (item) {
-          const exact = currentTokens.some(function (currentToken) {
-            return item.tokens.some(function (token) {
-              return token === currentToken;
-            });
+        if (typeof value === 'object') {
+          Object.keys(value).forEach(function (key) {
+            collectAllValues(value[key], result);
           });
+        }
+      }
 
-          if (exact) return true;
+      function getImageUrl(item) {
+        item = unwrap(item);
+        if (!item) return '';
 
-          return currentTokens.some(function (currentToken) {
-            return item.tokens.some(function (token) {
-              return token.includes(currentToken) || currentToken.includes(token);
-            });
+        const image =
+          item.veloura_cat_banner_image ||
+          item['veloura_cat_banner_image'] ||
+          item.image ||
+          item['image'] ||
+          '';
+
+        const parsedImage = parseMaybe(image);
+
+        if (!parsedImage) return '';
+
+        if (typeof parsedImage === 'string') {
+          return parsedImage.trim();
+        }
+
+        if (Array.isArray(parsedImage)) {
+          for (let i = 0; i < parsedImage.length; i++) {
+            const url = getImageUrl({ veloura_cat_banner_image: parsedImage[i] });
+            if (url) return url;
+          }
+        }
+
+        if (typeof parsedImage === 'object') {
+          return String(
+            parsedImage.url ||
+            parsedImage.src ||
+            parsedImage.original ||
+            parsedImage.large ||
+            parsedImage.medium ||
+            parsedImage.thumbnail ||
+            parsedImage.path ||
+            parsedImage.value ||
+            ''
+          ).trim();
+        }
+
+        return '';
+      }
+
+      function getBannerUrl(item) {
+        item = unwrap(item);
+        if (!item) return '';
+
+        let url = item.veloura_cat_banner_url || item['veloura_cat_banner_url'] || item.url || '';
+        url = parseMaybe(url);
+
+        if (!url) return '';
+        if (typeof url === 'string') return url.trim();
+        if (typeof url === 'object') return String(url.value || url.url || '').trim();
+
+        return '';
+      }
+
+      function getCategoryTokens(item) {
+        item = unwrap(item);
+        const tokens = [];
+
+        if (!item) return tokens;
+
+        const categories =
+          item.veloura_cat_banner_categories ||
+          item['veloura_cat_banner_categories'] ||
+          item.category ||
+          item.categories ||
+          item.selected_categories ||
+          [];
+
+        collectAllValues(categories, tokens);
+
+        return tokens.map(normalize).filter(Boolean);
+      }
+
+      const currentTokens = [
+        root.getAttribute('data-current-id'),
+        root.getAttribute('data-current-category-id'),
+        root.getAttribute('data-current-name'),
+        root.getAttribute('data-current-title'),
+        root.getAttribute('data-current-url'),
+        root.getAttribute('data-current-slug'),
+        window.location.pathname,
+        window.location.href
+      ].map(normalize).filter(Boolean);
+
+      if (!currentTokens.length) return;
+
+      let rawItems = [];
+
+      try {
+        rawItems = JSON.parse(jsonEl.textContent || '[]');
+      } catch (error) {
+        rawItems = [];
+      }
+
+      const items = normalizeCollection(rawItems);
+
+      const prepared = items
+        .map(function (item) {
+          item = unwrap(item);
+
+          return {
+            image: getImageUrl(item),
+            url: getBannerUrl(item),
+            tokens: getCategoryTokens(item)
+          };
+        })
+        .filter(function (item) {
+          return item.image && item.tokens.length;
+        });
+
+      const match = prepared.find(function (item) {
+        const exact = currentTokens.some(function (currentToken) {
+          return item.tokens.some(function (token) {
+            return token === currentToken;
           });
         });
 
-        if (!match || !match.image) return;
+        if (exact) return true;
 
-        const holder = document.createElement(match.url ? 'a' : 'div');
-        holder.className = match.url ? 'veloura-category-banner-link' : 'veloura-category-banner-box';
-
-        if (match.url) {
-          holder.href = match.url;
-        }
-
-        const img = document.createElement('img');
-        img.className = 'veloura-category-banner-img';
-        img.src = match.image;
-        img.alt = root.getAttribute('data-current-name') || root.getAttribute('data-current-title') || '';
-        img.loading = 'lazy';
-
-        holder.appendChild(img);
-        root.appendChild(holder);
+        return currentTokens.some(function (currentToken) {
+          return item.tokens.some(function (token) {
+            return token && currentToken && (token.includes(currentToken) || currentToken.includes(token));
+          });
+        });
       });
-    </script>
-  {% endif %}
+
+      if (!match || !match.image) return;
+
+      const holder = document.createElement(match.url ? 'a' : 'div');
+      holder.className = match.url ? 'veloura-category-banner-link' : 'veloura-category-banner-box';
+
+      if (match.url) {
+        holder.href = match.url;
+      }
+
+      const img = document.createElement('img');
+      img.className = 'veloura-category-banner-img';
+      img.src = match.image;
+      img.alt = root.getAttribute('data-current-name') || root.getAttribute('data-current-title') || '';
+      img.loading = 'lazy';
+
+      holder.appendChild(img);
+      root.appendChild(holder);
+    });
+  </script>
 
   {# إعادة قراءة إعدادات الصور المخصصة داخل scripts #}
   {% set veloura_show_images_script_raw = theme.settings.get('veloura_category_show_images_2026', true) %}
