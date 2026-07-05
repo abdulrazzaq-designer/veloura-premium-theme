@@ -184,20 +184,8 @@
 
   {% set veloura_cat_banner_items = theme.settings.get('veloura_cat_banner_map_2026') ?: [] %}
 
-  {% set veloura_cat_banner_layout_raw = theme.settings.get('veloura_cat_banner_layout_2026', 'normal') %}
-  {% if veloura_cat_banner_layout_raw.selected is defined and veloura_cat_banner_layout_raw.selected[0].value is defined %}
-    {% set veloura_cat_banner_layout = veloura_cat_banner_layout_raw.selected[0].value %}
-  {% elseif veloura_cat_banner_layout_raw is iterable and veloura_cat_banner_layout_raw[0].value is defined %}
-    {% set veloura_cat_banner_layout = veloura_cat_banner_layout_raw[0].value %}
-  {% elseif veloura_cat_banner_layout_raw.value is defined %}
-    {% set veloura_cat_banner_layout = veloura_cat_banner_layout_raw.value %}
-  {% else %}
-    {% set veloura_cat_banner_layout = veloura_cat_banner_layout_raw %}
-  {% endif %}
-
-  {% if veloura_cat_banner_layout != 'centered' %}
-    {% set veloura_cat_banner_layout = 'normal' %}
-  {% endif %}
+  {# ترتيب العنوان والبنر ثابت بدون خيار داخل الإعدادات #}
+  {% set veloura_cat_banner_layout = 'normal' %}
 
   {% set veloura_cat_banner_radius_raw = theme.settings.get('veloura_cat_banner_radius_2026', 'medium') %}
   {% if veloura_cat_banner_radius_raw.selected is defined and veloura_cat_banner_radius_raw.selected[0].value is defined %}
@@ -223,7 +211,6 @@
   <div
     class="
       veloura-category-page
-      veloura-cat-banner-layout-{{ veloura_cat_banner_layout }}
       {{ veloura_hide_product_count ? 'veloura-category-hide-count' : '' }}
       {{ veloura_images_transparent ? 'veloura-category-images-transparent' : '' }}
       {{ veloura_show_images ? 'veloura-category-show-images' : 'veloura-category-hide-images' }}
@@ -327,24 +314,7 @@
               width: 100%;
               height: auto;
               border-radius: inherit;
-            }
-
-            .veloura-cat-banner-layout-centered .veloura-category-breadcrumb {
-              text-align: center;
-            }
-
-            .veloura-cat-banner-layout-centered .veloura-category-head {
-              justify-content: center;
-              text-align: center;
-              flex-direction: column;
-              gap: 12px;
-            }
-
-            .veloura-cat-banner-layout-centered .veloura-category-main-title {
-              padding-left: 0 !important;
-              padding-right: 0 !important;
-            }
-          </style>
+            }          </style>
 
           {% if has_sub_categories %}
             <section class="veloura-category-children">

@@ -4704,34 +4704,6 @@
   ]
 },
 {
-  "id": "veloura_cat_banner_layout_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "ترتيب العنوان والبنر",
-  "icon": "sicon-list",
-  "source": "Manual",
-  "required": true,
-  "selected": [
-    {
-      "label": "العنوان والمسار فوق البنر",
-      "value": "normal",
-      "key": "veloura-cat-banner-layout-normal-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "العنوان والمسار فوق البنر",
-      "value": "normal",
-      "key": "veloura-cat-banner-layout-normal-2026"
-    },
-    {
-      "label": "العنوان والمسار فوق البنر في المنتصف",
-      "value": "centered",
-      "key": "veloura-cat-banner-layout-centered-2026"
-    }
-  ]
-},
-{
   "id": "veloura_cat_banner_radius_2026",
   "type": "items",
   "format": "dropdown-list",
