@@ -4084,7 +4084,7 @@
   "format": "text",
   "label": "العنوان داخل صفحة السلة",
   "icon": "sicon-format-text",
-  "value": "عروض خاصة لك",
+  "value": "عروض قد تهمك",
   "required": false,
   "conditions": [
     {
@@ -4095,18 +4095,105 @@
   ]
 },
 {
-  "id": "veloura_cart_banners_radius_2026",
+  "id": "veloura_cart_banners_min_total_2026",
   "type": "number",
-  "format": "slider",
-  "label": "حواف البنرات",
-  "description": "القيمة بالبكسل",
-  "inputType": "range",
-  "icon": "sicon-resize",
-  "value": "18",
+  "format": "number",
+  "label": "القيمة الأدنى لسلة المشتريات لإظهار البنر (مثلا 10 ريال فأعلى)",
+  "description": "يظهر البنر فقط في حال كان مجموع السلة أكبر من أو يساوي هذه القيمة",
+  "icon": "sicon-hashtag",
+  "value": "0",
   "required": false,
-  "step": "1",
   "minimum": "0",
-  "maximum": "60",
+  "conditions": [
+    {
+      "id": "veloura_cart_banners_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_cart_banners_position_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "مكان ظهور البنر",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "بعد منتجات السلة",
+      "value": "after_products",
+      "key": "veloura-cart-banners-position-after-products-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "قبل منتجات السلة",
+      "value": "before_products",
+      "key": "veloura-cart-banners-position-before-products-2026"
+    },
+    {
+      "label": "بعد منتجات السلة",
+      "value": "after_products",
+      "key": "veloura-cart-banners-position-after-products-2026"
+    },
+    {
+      "label": "بعد زر إتمام الطلب",
+      "value": "after_checkout_button",
+      "key": "veloura-cart-banners-position-after-checkout-button-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_cart_banners_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_cart_banners_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف البنرات",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-cart-banners-radius-medium-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "حاد",
+      "value": "sharp",
+      "key": "veloura-cart-banners-radius-sharp-2026"
+    },
+    {
+      "label": "ناعم قليلًا",
+      "value": "soft",
+      "key": "veloura-cart-banners-radius-soft-2026"
+    },
+    {
+      "label": "ناعم",
+      "value": "medium",
+      "key": "veloura-cart-banners-radius-medium-2026"
+    },
+    {
+      "label": "ناعم جدًا",
+      "value": "large",
+      "key": "veloura-cart-banners-radius-large-2026"
+    },
+    {
+      "label": "دائري",
+      "value": "round",
+      "key": "veloura-cart-banners-radius-round-2026"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_cart_banners_enabled_2026",
