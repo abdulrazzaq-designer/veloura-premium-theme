@@ -249,32 +249,6 @@
             <h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title" id="page-main-title">
               {{ page.title|raw }}
             </h1>
-
-            <div class="flex items-center space-x-2 rtl:space-x-reverse">
-
-              {% if filters %}
-                <a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2">
-                  <i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
-                </a>
-              {% endif %}
-
-              {% if sort_options|length %}
-                <div class="flex items-center veloura-category-sort">
-                  <label class="hidden sm:block rtl:ml-3 ltr:mr-3 whitespace-nowrap" for="product-filter">
-                    {{ trans('pages.categories.sorting') }}
-                  </label>
-
-                  <select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10">
-                    {% for sort in sort_options %}
-                      <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>
-                        {{ sort.name }}
-                      </option>
-                    {% endfor %}
-                  </select>
-                </div>
-              {% endif %}
-
-            </div>
           </div>
 
           <div
@@ -314,7 +288,26 @@
               width: 100%;
               height: auto;
               border-radius: inherit;
-            }          </style>
+            }
+
+            .veloura-category-products-toolbar {
+              width: 100%;
+            }
+
+            @media (max-width: 767px) {
+              .veloura-category-products-toolbar {
+                margin-top: 6px;
+              }
+
+              .veloura-category-products-toolbar .veloura-category-sort {
+                flex: 1;
+              }
+
+              .veloura-category-products-toolbar .veloura-category-sort select {
+                width: 100%;
+              }
+            }
+          </style>
 
           {% if has_sub_categories %}
             <section class="veloura-category-children">
@@ -393,6 +386,36 @@
                 </div>
               </div>
             </section>
+          {% endif %}
+
+          {% if sort_options|length or filters %}
+            <div class="veloura-category-products-toolbar mb-5 flex items-center justify-between gap-3">
+              <div class="veloura-category-products-toolbar__spacer flex-1"></div>
+
+              <div class="flex items-center gap-3 rtl:space-x-reverse">
+                {% if filters %}
+                  <a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden">
+                    <i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
+                  </a>
+                {% endif %}
+
+                {% if sort_options|length %}
+                  <div class="flex items-center veloura-category-sort">
+                    <label class="hidden sm:block rtl:ml-3 ltr:mr-3 whitespace-nowrap" for="product-filter">
+                      {{ trans('pages.categories.sorting') }}
+                    </label>
+
+                    <select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10">
+                      {% for sort in sort_options %}
+                        <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>
+                          {{ sort.name }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
           {% endif %}
 
           {% if not (veloura_hide_products_if_children and has_sub_categories) %}
