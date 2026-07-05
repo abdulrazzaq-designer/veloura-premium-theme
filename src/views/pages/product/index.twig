@@ -176,6 +176,239 @@
 
   {% set has_sub_categories = category and category.sub_categories and category.sub_categories|length %}
 
+  {# ================================
+     Veloura Category Banners 2026
+     التحضير - بدون ملفات إضافية
+  ================================ #}
+
+  {% set vcat_banner_enabled_raw = theme.settings.get('veloura_category_banners_enabled_2026', false) %}
+  {% if vcat_banner_enabled_raw.value is defined %}
+    {% set vcat_banner_enabled_raw = vcat_banner_enabled_raw.value %}
+  {% elseif vcat_banner_enabled_raw.selected is defined %}
+    {% set vcat_banner_enabled_raw = vcat_banner_enabled_raw.selected %}
+  {% endif %}
+
+  {% set vcat_banner_enabled =
+    vcat_banner_enabled_raw == true
+    or vcat_banner_enabled_raw == 'true'
+    or vcat_banner_enabled_raw == 1
+    or vcat_banner_enabled_raw == '1'
+    or vcat_banner_enabled_raw == 'on'
+  %}
+
+  {% set vcat_banner_items_raw = theme.settings.get('veloura_category_banners_items_2026', []) %}
+  {% if vcat_banner_items_raw.value is defined %}
+    {% set vcat_banner_items = vcat_banner_items_raw.value %}
+  {% elseif vcat_banner_items_raw.selected is defined %}
+    {% set vcat_banner_items = vcat_banner_items_raw.selected %}
+  {% elseif vcat_banner_items_raw.items is defined %}
+    {% set vcat_banner_items = vcat_banner_items_raw.items %}
+  {% elseif vcat_banner_items_raw.data is defined %}
+    {% set vcat_banner_items = vcat_banner_items_raw.data %}
+  {% else %}
+    {% set vcat_banner_items = vcat_banner_items_raw %}
+  {% endif %}
+
+  {% set vcat_banner_position_raw = theme.settings.get('veloura_category_banners_position_2026', 'after_title') %}
+  {% if vcat_banner_position_raw.selected is defined and vcat_banner_position_raw.selected[0].value is defined %}
+    {% set vcat_banner_position = vcat_banner_position_raw.selected[0].value %}
+  {% elseif vcat_banner_position_raw is iterable and vcat_banner_position_raw[0].value is defined %}
+    {% set vcat_banner_position = vcat_banner_position_raw[0].value %}
+  {% elseif vcat_banner_position_raw.value is defined %}
+    {% set vcat_banner_position = vcat_banner_position_raw.value %}
+  {% else %}
+    {% set vcat_banner_position = vcat_banner_position_raw %}
+  {% endif %}
+
+  {% set vcat_banner_radius_raw = theme.settings.get('veloura_category_banners_radius_2026', 'medium') %}
+  {% if vcat_banner_radius_raw.selected is defined and vcat_banner_radius_raw.selected[0].value is defined %}
+    {% set vcat_banner_radius_key = vcat_banner_radius_raw.selected[0].value %}
+  {% elseif vcat_banner_radius_raw is iterable and vcat_banner_radius_raw[0].value is defined %}
+    {% set vcat_banner_radius_key = vcat_banner_radius_raw[0].value %}
+  {% elseif vcat_banner_radius_raw.value is defined %}
+    {% set vcat_banner_radius_key = vcat_banner_radius_raw.value %}
+  {% else %}
+    {% set vcat_banner_radius_key = vcat_banner_radius_raw %}
+  {% endif %}
+
+  {% set vcat_banner_radius_map = {
+    'sharp': '0px',
+    'soft': '8px',
+    'medium': '16px',
+    'large': '28px',
+    'round': '999px'
+  } %}
+  {% set vcat_banner_radius = vcat_banner_radius_map[vcat_banner_radius_key]|default('16px') %}
+
+  {% set vcat_banner_fit_raw = theme.settings.get('veloura_category_banners_fit_2026', 'cover') %}
+  {% if vcat_banner_fit_raw.selected is defined and vcat_banner_fit_raw.selected[0].value is defined %}
+    {% set vcat_banner_fit = vcat_banner_fit_raw.selected[0].value %}
+  {% elseif vcat_banner_fit_raw is iterable and vcat_banner_fit_raw[0].value is defined %}
+    {% set vcat_banner_fit = vcat_banner_fit_raw[0].value %}
+  {% elseif vcat_banner_fit_raw.value is defined %}
+    {% set vcat_banner_fit = vcat_banner_fit_raw.value %}
+  {% else %}
+    {% set vcat_banner_fit = vcat_banner_fit_raw %}
+  {% endif %}
+  {% if vcat_banner_fit != 'contain' %}
+    {% set vcat_banner_fit = 'cover' %}
+  {% endif %}
+
+  {% set vcat_banner_desktop_height = theme.settings.get('veloura_category_banners_desktop_height_2026', 260) %}
+  {% if vcat_banner_desktop_height.value is defined %}
+    {% set vcat_banner_desktop_height = vcat_banner_desktop_height.value %}
+  {% endif %}
+  {% set vcat_banner_desktop_height = vcat_banner_desktop_height + 0 %}
+  {% if vcat_banner_desktop_height < 120 %}{% set vcat_banner_desktop_height = 120 %}{% endif %}
+  {% if vcat_banner_desktop_height > 520 %}{% set vcat_banner_desktop_height = 520 %}{% endif %}
+
+  {% set vcat_banner_mobile_height = theme.settings.get('veloura_category_banners_mobile_height_2026', 150) %}
+  {% if vcat_banner_mobile_height.value is defined %}
+    {% set vcat_banner_mobile_height = vcat_banner_mobile_height.value %}
+  {% endif %}
+  {% set vcat_banner_mobile_height = vcat_banner_mobile_height + 0 %}
+  {% if vcat_banner_mobile_height < 90 %}{% set vcat_banner_mobile_height = 90 %}{% endif %}
+  {% if vcat_banner_mobile_height > 320 %}{% set vcat_banner_mobile_height = 320 %}{% endif %}
+
+  {% set vcat_banner_margin_bottom = theme.settings.get('veloura_category_banners_margin_bottom_2026', 20) %}
+  {% if vcat_banner_margin_bottom.value is defined %}
+    {% set vcat_banner_margin_bottom = vcat_banner_margin_bottom.value %}
+  {% endif %}
+  {% set vcat_banner_margin_bottom = vcat_banner_margin_bottom + 0 %}
+  {% if vcat_banner_margin_bottom < 0 %}{% set vcat_banner_margin_bottom = 0 %}{% endif %}
+  {% if vcat_banner_margin_bottom > 80 %}{% set vcat_banner_margin_bottom = 80 %}{% endif %}
+
+  {% set vcat_current_name = category.name|default(page.title|striptags)|striptags|trim|lower %}
+  {% set vcat_current_title = page.title|striptags|trim|lower %}
+  {% set vcat_current_id = page.id|default(category.id|default(''))|trim|lower %}
+  {% set vcat_current_category_id = category.id|default(page.id|default(''))|trim|lower %}
+  {% set vcat_current_url = category.url|default('')|trim|lower %}
+  {% set vcat_current_slug = page.slug|default('')|trim|lower %}
+
+  {% set vcat_banner_markup %}
+    {% if vcat_banner_enabled and vcat_banner_items is iterable and vcat_banner_items|length %}
+      {% for banner in vcat_banner_items %}
+        {% if banner.value is defined and banner.value is iterable %}
+          {% set banner = banner.value %}
+        {% endif %}
+
+        {% set banner_key = banner.category_key|default('') %}
+        {% if banner_key.value is defined %}{% set banner_key = banner_key.value %}{% endif %}
+        {% set banner_key_clean = banner_key|striptags|trim|lower %}
+
+        {% set banner_desktop = banner.desktop_image|default('') %}
+        {% if banner_desktop.value is defined %}{% set banner_desktop = banner_desktop.value %}{% endif %}
+        {% if banner_desktop is iterable and banner_desktop.url is defined %}{% set banner_desktop = banner_desktop.url %}{% endif %}
+        {% if banner_desktop is iterable and banner_desktop.src is defined %}{% set banner_desktop = banner_desktop.src %}{% endif %}
+        {% if banner_desktop is iterable and banner_desktop[0].url is defined %}{% set banner_desktop = banner_desktop[0].url %}{% endif %}
+
+        {% set banner_mobile = banner.mobile_image|default('') %}
+        {% if banner_mobile.value is defined %}{% set banner_mobile = banner_mobile.value %}{% endif %}
+        {% if banner_mobile is iterable and banner_mobile.url is defined %}{% set banner_mobile = banner_mobile.url %}{% endif %}
+        {% if banner_mobile is iterable and banner_mobile.src is defined %}{% set banner_mobile = banner_mobile.src %}{% endif %}
+        {% if banner_mobile is iterable and banner_mobile[0].url is defined %}{% set banner_mobile = banner_mobile[0].url %}{% endif %}
+        {% if not banner_mobile %}{% set banner_mobile = banner_desktop %}{% endif %}
+
+        {% set banner_url = banner.url|default('') %}
+        {% if banner_url.value is defined %}{% set banner_url = banner_url.value %}{% endif %}
+
+        {% set banner_new_tab = banner.new_tab|default(false) %}
+        {% if banner_new_tab.value is defined %}{% set banner_new_tab = banner_new_tab.value %}{% endif %}
+        {% if banner_new_tab.selected is defined %}{% set banner_new_tab = banner_new_tab.selected %}{% endif %}
+        {% set banner_target_blank =
+          banner_new_tab == true
+          or banner_new_tab == 'true'
+          or banner_new_tab == 1
+          or banner_new_tab == '1'
+          or banner_new_tab == 'on'
+        %}
+
+        {% set banner_is_match =
+          banner_key_clean
+          and (
+            banner_key_clean == vcat_current_name
+            or banner_key_clean == vcat_current_title
+            or banner_key_clean == vcat_current_id
+            or banner_key_clean == vcat_current_category_id
+            or banner_key_clean in vcat_current_url
+            or banner_key_clean in vcat_current_slug
+            or vcat_current_name in banner_key_clean
+            or vcat_current_title in banner_key_clean
+          )
+        %}
+
+        {% if banner_is_match and banner_desktop %}
+          <section
+            class="veloura-category-banner"
+            style="
+              --vcat-banner-radius: {{ vcat_banner_radius }};
+              --vcat-banner-desktop-height: {{ vcat_banner_desktop_height }}px;
+              --vcat-banner-mobile-height: {{ vcat_banner_mobile_height }}px;
+              --vcat-banner-fit: {{ vcat_banner_fit }};
+              --vcat-banner-margin-bottom: {{ vcat_banner_margin_bottom }}px;
+            "
+          >
+            <style>
+              .veloura-category-banner {
+                display: block;
+                width: 100%;
+                margin: 0 0 var(--vcat-banner-margin-bottom);
+              }
+
+              .veloura-category-banner__link,
+              .veloura-category-banner__box {
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                border-radius: var(--vcat-banner-radius);
+                background: #f8fafc;
+                box-shadow: 0 14px 34px rgba(15, 23, 42, .08);
+              }
+
+              .veloura-category-banner__picture,
+              .veloura-category-banner__img {
+                display: block;
+                width: 100%;
+              }
+
+              .veloura-category-banner__img {
+                height: var(--vcat-banner-desktop-height);
+                object-fit: var(--vcat-banner-fit);
+                object-position: center;
+              }
+
+              @media (max-width: 767px) {
+                .veloura-category-banner__img {
+                  height: var(--vcat-banner-mobile-height);
+                }
+              }
+            </style>
+
+            {% if banner_url %}
+              <a class="veloura-category-banner__link" href="{{ banner_url }}" {% if banner_target_blank %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                <picture class="veloura-category-banner__picture">
+                  {% if banner_mobile %}
+                    <source media="(max-width: 767px)" srcset="{{ banner_mobile }}">
+                  {% endif %}
+                  <img class="veloura-category-banner__img" src="{{ banner_desktop }}" alt="{{ category.name|default(page.title)|striptags|e('html_attr') }}" loading="lazy">
+                </picture>
+              </a>
+            {% else %}
+              <div class="veloura-category-banner__box">
+                <picture class="veloura-category-banner__picture">
+                  {% if banner_mobile %}
+                    <source media="(max-width: 767px)" srcset="{{ banner_mobile }}">
+                  {% endif %}
+                  <img class="veloura-category-banner__img" src="{{ banner_desktop }}" alt="{{ category.name|default(page.title)|striptags|e('html_attr') }}" loading="lazy">
+                </picture>
+              </div>
+            {% endif %}
+          </section>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
+
   <div
     class="
       veloura-category-page
@@ -213,6 +446,10 @@
 
         <div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
 
+          {% if vcat_banner_position == 'before_title' %}
+            {{ vcat_banner_markup|raw }}
+          {% endif %}
+
           <div class="mb-4 sm:mb-6 flex justify-between items-center veloura-category-head">
             <h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title" id="page-main-title">
               {{ page.title|raw }}
@@ -244,6 +481,10 @@
 
             </div>
           </div>
+
+          {% if vcat_banner_position == 'after_title' %}
+            {{ vcat_banner_markup|raw }}
+          {% endif %}
 
           {% if has_sub_categories %}
             <section class="veloura-category-children">
@@ -325,6 +566,10 @@
           {% endif %}
 
           {% if not (veloura_hide_products_if_children and has_sub_categories) %}
+
+            {% if vcat_banner_position == 'before_products' %}
+              {{ vcat_banner_markup|raw }}
+            {% endif %}
 
             {% hook 'product:index.items.start' %}
 
