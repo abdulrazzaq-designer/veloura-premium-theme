@@ -56,7 +56,171 @@
         </nav>
         <h1 class="sr-only">{{ trans('blocks.header.cart') }}</h1>
         <salla-conditional-offer></salla-conditional-offer>
-        {% include 'components.cart-banners.cart-banners' ignore missing %}
+
+        {# ================================
+           Veloura Cart Banners Inline 2026
+           داخل صفحة السلة فقط - بدون ملفات إضافية
+        ================================ #}
+
+        {% set vcb_enable_raw = theme.settings.get('veloura_cart_banners_enable_2026', false) %}
+        {% if vcb_enable_raw.value is defined %}
+          {% set vcb_enable_raw = vcb_enable_raw.value %}
+        {% elseif vcb_enable_raw.selected is defined %}
+          {% set vcb_enable_raw = vcb_enable_raw.selected %}
+        {% endif %}
+
+        {% set vcb_enable =
+          vcb_enable_raw == true
+          or vcb_enable_raw == 'true'
+          or vcb_enable_raw == 1
+          or vcb_enable_raw == '1'
+          or vcb_enable_raw == 'on'
+        %}
+
+        {% set vcb_title = theme.settings.get('veloura_cart_banners_title_2026', 'عروض خاصة لك') %}
+        {% if vcb_title.value is defined %}
+          {% set vcb_title = vcb_title.value %}
+        {% endif %}
+
+        {% set vcb_radius = theme.settings.get('veloura_cart_banners_radius_2026', 18) %}
+        {% if vcb_radius.value is defined %}
+          {% set vcb_radius = vcb_radius.value %}
+        {% endif %}
+        {% set vcb_radius = vcb_radius + 0 %}
+        {% if vcb_radius < 0 %}{% set vcb_radius = 0 %}{% endif %}
+        {% if vcb_radius > 60 %}{% set vcb_radius = 60 %}{% endif %}
+
+        {% set vcb_gap = theme.settings.get('veloura_cart_banners_gap_2026', 14) %}
+        {% if vcb_gap.value is defined %}
+          {% set vcb_gap = vcb_gap.value %}
+        {% endif %}
+        {% set vcb_gap = vcb_gap + 0 %}
+        {% if vcb_gap < 0 %}{% set vcb_gap = 0 %}{% endif %}
+        {% if vcb_gap > 40 %}{% set vcb_gap = 40 %}{% endif %}
+
+        {% set vcb_collection_raw = theme.settings.get('veloura_cart_banners_collection_2026', []) %}
+        {% if vcb_collection_raw.value is defined %}
+          {% set vcb_collection = vcb_collection_raw.value %}
+        {% elseif vcb_collection_raw.selected is defined %}
+          {% set vcb_collection = vcb_collection_raw.selected %}
+        {% elseif vcb_collection_raw.items is defined %}
+          {% set vcb_collection = vcb_collection_raw.items %}
+        {% elseif vcb_collection_raw.data is defined %}
+          {% set vcb_collection = vcb_collection_raw.data %}
+        {% else %}
+          {% set vcb_collection = vcb_collection_raw %}
+        {% endif %}
+
+        {% if vcb_enable and vcb_collection is iterable and vcb_collection|length %}
+          <section class="veloura-cart-banners-inline" aria-label="{{ vcb_title }}">
+            <style>
+              .veloura-cart-banners-inline {
+                margin: 0 0 24px;
+              }
+
+              .veloura-cart-banners-inline__title {
+                margin: 0 0 14px;
+                font-size: 18px;
+                line-height: 1.5;
+                font-weight: 900;
+                color: #111827;
+              }
+
+              .veloura-cart-banners-inline__grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: {{ vcb_gap }}px;
+              }
+
+              .veloura-cart-banners-inline__item {
+                display: block;
+                overflow: hidden;
+                border-radius: {{ vcb_radius }}px;
+                background: #f8fafc;
+                box-shadow: 0 10px 24px rgba(15, 23, 42, .06);
+              }
+
+              .veloura-cart-banners-inline__item img {
+                display: block;
+                width: 100%;
+                height: auto;
+                min-height: 90px;
+                object-fit: cover;
+                border-radius: inherit;
+              }
+
+              @media (max-width: 767px) {
+                .veloura-cart-banners-inline {
+                  margin-bottom: 20px;
+                }
+
+                .veloura-cart-banners-inline__title {
+                  font-size: 16px;
+                  margin-bottom: 12px;
+                }
+
+                .veloura-cart-banners-inline__grid {
+                  grid-template-columns: 1fr;
+                }
+              }
+            </style>
+
+            {% if vcb_title %}
+              <h2 class="veloura-cart-banners-inline__title">{{ vcb_title }}</h2>
+            {% endif %}
+
+            <div class="veloura-cart-banners-inline__grid">
+              {% for banner in vcb_collection %}
+                {% set banner_image = '' %}
+                {% if banner.banner_image is defined %}
+                  {% set banner_image = banner.banner_image %}
+                {% elseif banner.image is defined %}
+                  {% set banner_image = banner.image %}
+                {% elseif banner.img is defined %}
+                  {% set banner_image = banner.img %}
+                {% elseif banner.value is defined and banner.value.banner_image is defined %}
+                  {% set banner_image = banner.value.banner_image %}
+                {% elseif banner.data is defined and banner.data.banner_image is defined %}
+                  {% set banner_image = banner.data.banner_image %}
+                {% endif %}
+
+                {% if banner_image is iterable and banner_image.value is defined %}{% set banner_image = banner_image.value %}{% endif %}
+                {% if banner_image is iterable and banner_image.url is defined %}{% set banner_image = banner_image.url %}{% endif %}
+                {% if banner_image is iterable and banner_image.src is defined %}{% set banner_image = banner_image.src %}{% endif %}
+                {% if banner_image is iterable and banner_image.path is defined %}{% set banner_image = banner_image.path %}{% endif %}
+                {% if banner_image is iterable and banner_image[0] is defined and banner_image[0].url is defined %}{% set banner_image = banner_image[0].url %}{% endif %}
+
+                {% set banner_url = '' %}
+                {% if banner.banner_url is defined %}
+                  {% set banner_url = banner.banner_url %}
+                {% elseif banner.url is defined %}
+                  {% set banner_url = banner.url %}
+                {% elseif banner.link is defined %}
+                  {% set banner_url = banner.link %}
+                {% elseif banner.value is defined and banner.value.banner_url is defined %}
+                  {% set banner_url = banner.value.banner_url %}
+                {% elseif banner.data is defined and banner.data.banner_url is defined %}
+                  {% set banner_url = banner.data.banner_url %}
+                {% endif %}
+
+                {% if banner_url is iterable and banner_url.value is defined %}{% set banner_url = banner_url.value %}{% endif %}
+                {% if banner_url is iterable and banner_url.url is defined %}{% set banner_url = banner_url.url %}{% endif %}
+
+                {% if banner_image %}
+                  {% if banner_url %}
+                    <a class="veloura-cart-banners-inline__item" href="{{ banner_url }}">
+                      <img src="{{ banner_image }}" alt="{{ vcb_title }}" loading="lazy">
+                    </a>
+                  {% else %}
+                    <div class="veloura-cart-banners-inline__item">
+                      <img src="{{ banner_image }}" alt="{{ vcb_title }}" loading="lazy">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </section>
+        {% endif %}
         <div class="pt-5 flex flex-col items-start lg:flex-row pb-6 lg:pb-20">
             <div class="main-content w-full lg:w-[calc(100%-384px)]">
                 {% hook 'cart:items.start' %}
