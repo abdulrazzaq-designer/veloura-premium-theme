@@ -1640,6 +1640,286 @@
 {{ vmfm_enabled and not vmfm_show_labels ? ' veloura-mobile-floating-menu-no-labels' : '' }}
 ">
 
+{# ================================
+   Veloura Loader Stable Minimal 2026
+   نسخة نهائية مستقرة: الوضع اليدوي يعمل بالوقت، والوضع التلقائي يخفي عند اكتمال تحميل الصفحة
+   الخصائص الآمنة فقط: تفعيل، شعار، خلفية، نص، شريط، تخطي، إخفاء تلقائي، توقيت يدوي
+   الخصائص المتجاهلة عمدًا: circle / glass blur
+================================ #}
+{% set vl_enable_raw = theme.settings.get('veloura_loader_enable_2026', true) %}
+{% if vl_enable_raw.value is defined %}
+  {% set vl_enable_raw = vl_enable_raw.value %}
+{% elseif vl_enable_raw.selected is defined %}
+  {% set vl_enable_raw = vl_enable_raw.selected %}
+{% endif %}
+{% set vl_enable = vl_enable_raw == true or vl_enable_raw == 'true' or vl_enable_raw == 1 or vl_enable_raw == '1' or vl_enable_raw == 'on' or vl_enable_raw == 'yes' %}
+
+{% if vl_enable %}
+  {# Logo type: upload / animated / url / store_logo #}
+  {% set vl_logo_type_raw = theme.settings.get('veloura_loader_logo_type_2026', 'store_logo') %}
+  {% if vl_logo_type_raw.selected is defined and vl_logo_type_raw.selected[0].value is defined %}
+    {% set vl_logo_type = vl_logo_type_raw.selected[0].value %}
+  {% elseif vl_logo_type_raw is iterable and vl_logo_type_raw[0].value is defined %}
+    {% set vl_logo_type = vl_logo_type_raw[0].value %}
+  {% elseif vl_logo_type_raw.value is defined %}
+    {% set vl_logo_type = vl_logo_type_raw.value %}
+  {% else %}
+    {% set vl_logo_type = vl_logo_type_raw %}
+  {% endif %}
+  {% if vl_logo_type not in ['upload','animated','url','store_logo'] %}{% set vl_logo_type = 'store_logo' %}{% endif %}
+
+  {% set vl_logo_upload = theme.settings.get('veloura_loader_logo_img_2026', '') %}
+  {% if vl_logo_upload.url is defined %}{% set vl_logo_upload = vl_logo_upload.url %}{% elseif vl_logo_upload.src is defined %}{% set vl_logo_upload = vl_logo_upload.src %}{% elseif vl_logo_upload.path is defined %}{% set vl_logo_upload = vl_logo_upload.path %}{% elseif vl_logo_upload.value is defined %}{% set vl_logo_upload = vl_logo_upload.value %}{% endif %}
+
+  {% set vl_logo_anim = theme.settings.get('veloura_loader_anim_img_2026', '') %}
+  {% if vl_logo_anim.url is defined %}{% set vl_logo_anim = vl_logo_anim.url %}{% elseif vl_logo_anim.src is defined %}{% set vl_logo_anim = vl_logo_anim.src %}{% elseif vl_logo_anim.path is defined %}{% set vl_logo_anim = vl_logo_anim.path %}{% elseif vl_logo_anim.value is defined %}{% set vl_logo_anim = vl_logo_anim.value %}{% endif %}
+
+  {% set vl_logo_url = theme.settings.get('veloura_loader_logo_url_2026', '') %}
+  {% if vl_logo_url.value is defined %}{% set vl_logo_url = vl_logo_url.value %}{% endif %}
+
+  {% set vl_logo_src = store.logo %}
+  {% if vl_logo_type == 'upload' and vl_logo_upload %}{% set vl_logo_src = vl_logo_upload %}{% endif %}
+  {% if vl_logo_type == 'animated' and vl_logo_anim %}{% set vl_logo_src = vl_logo_anim %}{% endif %}
+  {% if vl_logo_type == 'url' and vl_logo_url %}{% set vl_logo_src = vl_logo_url %}{% endif %}
+
+  {% set vl_logo_w = theme.settings.get('veloura_loader_logo_w_2026', 120) %}
+  {% if vl_logo_w.value is defined %}{% set vl_logo_w = vl_logo_w.value %}{% endif %}
+  {% set vl_logo_w = vl_logo_w + 0 %}
+  {% if vl_logo_w < 40 %}{% set vl_logo_w = 40 %}{% endif %}
+  {% if vl_logo_w > 220 %}{% set vl_logo_w = 220 %}{% endif %}
+
+  {# Background type: glass deliberately disabled; it can cause heavy rendering on some previews #}
+  {% set vl_bg_type_raw = theme.settings.get('veloura_loader_bg_type_2026', 'solid') %}
+  {% if vl_bg_type_raw.selected is defined and vl_bg_type_raw.selected[0].value is defined %}
+    {% set vl_bg_type = vl_bg_type_raw.selected[0].value %}
+  {% elseif vl_bg_type_raw is iterable and vl_bg_type_raw[0].value is defined %}
+    {% set vl_bg_type = vl_bg_type_raw[0].value %}
+  {% elseif vl_bg_type_raw.value is defined %}
+    {% set vl_bg_type = vl_bg_type_raw.value %}
+  {% else %}
+    {% set vl_bg_type = vl_bg_type_raw %}
+  {% endif %}
+  {% if vl_bg_type not in ['solid','gradient','image'] %}{% set vl_bg_type = 'solid' %}{% endif %}
+
+  {% set vl_bg_color = theme.settings.get('veloura_loader_bg_color_2026', '#ffffff') %}
+  {% if vl_bg_color.value is defined %}{% set vl_bg_color = vl_bg_color.value %}{% endif %}
+
+  {% set vl_grad_1 = theme.settings.get('veloura_loader_grad_1_2026', '#020617') %}
+  {% if vl_grad_1.value is defined %}{% set vl_grad_1 = vl_grad_1.value %}{% endif %}
+
+  {% set vl_grad_2 = theme.settings.get('veloura_loader_grad_2_2026', '#0ea5e9') %}
+  {% if vl_grad_2.value is defined %}{% set vl_grad_2 = vl_grad_2.value %}{% endif %}
+
+  {% set vl_bg_img = theme.settings.get('veloura_loader_bg_img_2026', '') %}
+  {% if vl_bg_img.url is defined %}{% set vl_bg_img = vl_bg_img.url %}{% elseif vl_bg_img.src is defined %}{% set vl_bg_img = vl_bg_img.src %}{% elseif vl_bg_img.path is defined %}{% set vl_bg_img = vl_bg_img.path %}{% elseif vl_bg_img.value is defined %}{% set vl_bg_img = vl_bg_img.value %}{% endif %}
+  {% if vl_bg_type == 'image' and not vl_bg_img %}{% set vl_bg_type = 'solid' %}{% endif %}
+
+  {% set vl_show_text_raw = theme.settings.get('veloura_loader_show_text_2026', true) %}
+  {% if vl_show_text_raw.value is defined %}{% set vl_show_text_raw = vl_show_text_raw.value %}{% elseif vl_show_text_raw.selected is defined %}{% set vl_show_text_raw = vl_show_text_raw.selected %}{% endif %}
+  {% set vl_show_text = vl_show_text_raw == true or vl_show_text_raw == 'true' or vl_show_text_raw == 1 or vl_show_text_raw == '1' or vl_show_text_raw == 'on' or vl_show_text_raw == 'yes' %}
+
+  {% set vl_main_text = theme.settings.get('veloura_loader_main_text_2026', 'جاري تجهيز المتجر لك') %}
+  {% if vl_main_text.value is defined %}{% set vl_main_text = vl_main_text.value %}{% endif %}
+
+  {% set vl_sub_text = theme.settings.get('veloura_loader_sub_text_2026', 'لحظات قليلة ونبدأ') %}
+  {% if vl_sub_text.value is defined %}{% set vl_sub_text = vl_sub_text.value %}{% endif %}
+
+  {% set vl_text_color = theme.settings.get('veloura_loader_text_color_2026', '#111827') %}
+  {% if vl_text_color.value is defined %}{% set vl_text_color = vl_text_color.value %}{% endif %}
+
+  {% set vl_bar_raw = theme.settings.get('veloura_loader_bar_2026', true) %}
+  {% if vl_bar_raw.value is defined %}{% set vl_bar_raw = vl_bar_raw.value %}{% elseif vl_bar_raw.selected is defined %}{% set vl_bar_raw = vl_bar_raw.selected %}{% endif %}
+  {% set vl_bar = vl_bar_raw == true or vl_bar_raw == 'true' or vl_bar_raw == 1 or vl_bar_raw == '1' or vl_bar_raw == 'on' or vl_bar_raw == 'yes' %}
+
+  {% set vl_bar_color = theme.settings.get('veloura_loader_bar_color_2026', '#0ea5e9') %}
+  {% if vl_bar_color.value is defined %}{% set vl_bar_color = vl_bar_color.value %}{% endif %}
+
+  {% set vl_skip_enable_raw = theme.settings.get('veloura_loader_skip_enable_2026', true) %}
+  {% if vl_skip_enable_raw.value is defined %}{% set vl_skip_enable_raw = vl_skip_enable_raw.value %}{% elseif vl_skip_enable_raw.selected is defined %}{% set vl_skip_enable_raw = vl_skip_enable_raw.selected %}{% endif %}
+  {% set vl_skip_enable = vl_skip_enable_raw == true or vl_skip_enable_raw == 'true' or vl_skip_enable_raw == 1 or vl_skip_enable_raw == '1' or vl_skip_enable_raw == 'on' or vl_skip_enable_raw == 'yes' %}
+
+  {% set vl_skip_text = theme.settings.get('veloura_loader_skip_text_2026', 'تخطي') %}
+  {% if vl_skip_text.value is defined %}{% set vl_skip_text = vl_skip_text.value %}{% endif %}
+
+  {# Auto hide: when enabled, loader hides after the page load event and manual timing controls are ignored. #}
+  {% set vl_auto_hide_raw = theme.settings.get('veloura_loader_auto_hide_2026', false) %}
+  {% if vl_auto_hide_raw.value is defined %}
+    {% set vl_auto_hide_raw = vl_auto_hide_raw.value %}
+  {% elseif vl_auto_hide_raw.selected is defined %}
+    {% set vl_auto_hide_raw = vl_auto_hide_raw.selected %}
+  {% endif %}
+  {% set vl_auto_hide = vl_auto_hide_raw == true or vl_auto_hide_raw == 'true' or vl_auto_hide_raw == 1 or vl_auto_hide_raw == '1' or vl_auto_hide_raw == 'on' or vl_auto_hide_raw == 'yes' %}
+
+  {# Timing controls in seconds. Backward compatible: old millisecond values above 50 are converted to seconds.
+     If auto hide is enabled, CSS uses a safe fallback only, while JS hides on page load. #}
+  {% if vl_auto_hide %}
+    {% set vl_duration = 5500 %}
+    {% set vl_fade = 450 %}
+  {% else %}
+    {% set vl_duration_seconds = theme.settings.get('veloura_loader_duration_2026', 2) %}
+    {% if vl_duration_seconds.value is defined %}{% set vl_duration_seconds = vl_duration_seconds.value %}{% endif %}
+    {% set vl_duration_seconds = vl_duration_seconds + 0 %}
+    {% if vl_duration_seconds > 50 %}{% set vl_duration_seconds = vl_duration_seconds / 1000 %}{% endif %}
+    {% if vl_duration_seconds < 1 %}{% set vl_duration_seconds = 1 %}{% endif %}
+    {% if vl_duration_seconds > 10 %}{% set vl_duration_seconds = 10 %}{% endif %}
+    {% set vl_duration = vl_duration_seconds * 1000 %}
+
+    {% set vl_fade_seconds = theme.settings.get('veloura_loader_fade_2026', 1) %}
+    {% if vl_fade_seconds.value is defined %}{% set vl_fade_seconds = vl_fade_seconds.value %}{% endif %}
+    {% set vl_fade_seconds = vl_fade_seconds + 0 %}
+    {% if vl_fade_seconds > 50 %}{% set vl_fade_seconds = vl_fade_seconds / 1000 %}{% endif %}
+    {% if vl_fade_seconds < 1 %}{% set vl_fade_seconds = 1 %}{% endif %}
+    {% if vl_fade_seconds > 3 %}{% set vl_fade_seconds = 3 %}{% endif %}
+    {% set vl_fade = vl_fade_seconds * 1000 %}
+  {% endif %}
+
+  <input id="veloura-loader-skip-2026" class="veloura-loader-skip-check" type="checkbox" aria-hidden="true">
+
+  <div id="veloura-loader-2026"
+       class="veloura-loader-stable veloura-loader-bg-{{ vl_bg_type }}{{ vl_auto_hide ? ' veloura-loader-auto-hide' : '' }}"
+       style="--vl-bg:{{ vl_bg_color }};--vl-grad-1:{{ vl_grad_1 }};--vl-grad-2:{{ vl_grad_2 }};--vl-text:{{ vl_text_color }};--vl-bar:{{ vl_bar_color }};--vl-logo-w:{{ vl_logo_w }}px;--vl-duration:{{ vl_duration }}ms;--vl-fade:{{ vl_fade }}ms;{% if vl_bg_type == 'image' %}--vl-bg-img:url('{{ vl_bg_img }}');{% endif %}"
+       aria-hidden="true">
+    <div class="veloura-loader-bg"></div>
+
+    {% if vl_skip_enable %}
+      <label class="veloura-loader-skip-label" for="veloura-loader-skip-2026">{{ vl_skip_text }}</label>
+    {% endif %}
+
+    <div class="veloura-loader-content">
+      {% if vl_logo_src %}
+        <img class="veloura-loader-logo" src="{{ vl_logo_src }}" alt="{{ store.name }}" loading="eager">
+      {% else %}
+        <div class="veloura-loader-store-name">{{ store.name }}</div>
+      {% endif %}
+
+      {% if vl_show_text %}
+        <div class="veloura-loader-texts">
+          <h2>{{ vl_main_text }}</h2>
+          <p>{{ vl_sub_text }}</p>
+        </div>
+      {% endif %}
+
+      {% if vl_bar %}
+        <div class="veloura-loader-bar"><span></span></div>
+      {% endif %}
+    </div>
+  </div>
+
+  <style>
+    .veloura-loader-skip-check{position:fixed!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;z-index:-1!important}
+
+    #veloura-loader-2026.veloura-loader-stable{
+      position:fixed!important;inset:0!important;z-index:2147483000!important;
+      display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;
+      color:var(--vl-text)!important;font-family:inherit!important;
+      opacity:1;visibility:visible;pointer-events:none!important;
+      animation:velouraLoaderStableFadeOut var(--vl-fade) ease var(--vl-duration) 1 forwards!important;
+      transition:opacity var(--vl-fade) ease, visibility var(--vl-fade) ease!important;
+      will-change:opacity,visibility;
+    }
+
+    #veloura-loader-2026 .veloura-loader-bg{position:absolute!important;inset:0!important;z-index:0!important;background:var(--vl-bg)!important}
+    #veloura-loader-2026.veloura-loader-bg-solid .veloura-loader-bg{background:var(--vl-bg)!important}
+    #veloura-loader-2026.veloura-loader-bg-gradient .veloura-loader-bg{background:linear-gradient(135deg,var(--vl-grad-1),var(--vl-grad-2))!important}
+    #veloura-loader-2026.veloura-loader-bg-image .veloura-loader-bg{background-image:var(--vl-bg-img)!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+    #veloura-loader-2026.veloura-loader-bg-image .veloura-loader-bg:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.28)}
+
+    #veloura-loader-2026 .veloura-loader-content{
+      position:relative!important;z-index:2!important;display:flex!important;flex-direction:column!important;
+      align-items:center!important;justify-content:center!important;gap:16px!important;text-align:center!important;
+      width:min(420px,calc(100vw - 32px))!important;padding:26px!important;
+      animation:velouraLoaderStableEnter 420ms ease both!important;
+    }
+
+    #veloura-loader-2026 .veloura-loader-logo{
+      width:var(--vl-logo-w)!important;height:var(--vl-logo-w)!important;max-width:220px!important;max-height:220px!important;
+      object-fit:contain!important;display:block!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;
+      animation:velouraLoaderStablePulse 1200ms ease-in-out infinite!important;transform:none!important;
+    }
+
+    #veloura-loader-2026 .veloura-loader-store-name{font-size:24px!important;font-weight:900!important;color:var(--vl-text)!important}
+    #veloura-loader-2026 .veloura-loader-texts h2{margin:0!important;font-size:22px!important;font-weight:900!important;line-height:1.5!important;color:var(--vl-text)!important}
+    #veloura-loader-2026 .veloura-loader-texts p{margin:4px 0 0!important;font-size:14px!important;font-weight:600!important;line-height:1.8!important;color:var(--vl-text)!important;opacity:.82!important}
+    #veloura-loader-2026 .veloura-loader-bar{width:170px!important;height:5px!important;border-radius:999px!important;background:rgba(148,163,184,.30)!important;overflow:hidden!important}
+    #veloura-loader-2026 .veloura-loader-bar span{display:block!important;width:42%!important;height:100%!important;border-radius:inherit!important;background:var(--vl-bar)!important;animation:velouraLoaderStableBar 1100ms ease-in-out infinite!important}
+
+    .veloura-loader-skip-label{
+      position:fixed!important;top:18px!important;right:18px!important;left:auto!important;z-index:2147483001!important;
+      min-height:38px!important;padding:0 16px!important;border-radius:999px!important;background:rgba(255,255,255,.88)!important;
+      color:#0f172a!important;font-size:14px!important;font-weight:900!important;line-height:38px!important;cursor:pointer!important;
+      box-shadow:0 12px 30px rgba(15,23,42,.14)!important;font-family:inherit!important;user-select:none!important;
+      opacity:1;visibility:visible;pointer-events:auto!important;
+    }
+
+    .veloura-loader-skip-check:checked ~ #veloura-loader-2026{
+      display:none!important;opacity:0!important;visibility:hidden!important;animation:none!important;
+    }
+
+    #veloura-loader-2026.veloura-loader-is-hidden{
+      opacity:0!important;visibility:hidden!important;animation:none!important;pointer-events:none!important;
+    }
+
+    @keyframes velouraLoaderStableFadeOut{
+      from{opacity:1;visibility:visible}
+      to{opacity:0;visibility:hidden}
+    }
+    @keyframes velouraLoaderStableEnter{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes velouraLoaderStableBar{0%{transform:translateX(145%)}50%{transform:translateX(0)}100%{transform:translateX(-145%)}}
+    @keyframes velouraLoaderStablePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+
+    @media(max-width:767px){
+      .veloura-loader-skip-label{top:14px!important;right:14px!important;min-height:36px!important;padding:0 14px!important;font-size:13px!important;line-height:36px!important}
+      #veloura-loader-2026 .veloura-loader-texts h2{font-size:19px!important}
+      #veloura-loader-2026 .veloura-loader-content{gap:14px!important}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      #veloura-loader-2026.veloura-loader-stable{animation:velouraLoaderStableFadeOut var(--vl-fade) linear var(--vl-duration) 1 forwards!important}
+      #veloura-loader-2026 .veloura-loader-logo,#veloura-loader-2026 .veloura-loader-bar span{animation:none!important}
+    }
+  </style>
+
+  {% if vl_auto_hide %}
+    <script data-cfasync="false">
+      (function () {
+        var loader = document.getElementById('veloura-loader-2026');
+        var checkbox = document.getElementById('veloura-loader-skip-2026');
+        if (!loader) return;
+
+        var done = false;
+        var fade = {{ vl_fade|round(0, 'ceil') }};
+
+        function removeLoader() {
+          if (!loader || !loader.parentNode) return;
+          loader.parentNode.removeChild(loader);
+          if (checkbox && checkbox.parentNode) {
+            checkbox.parentNode.removeChild(checkbox);
+          }
+        }
+
+        function hideLoader() {
+          if (done) return;
+          done = true;
+          loader.classList.add('veloura-loader-is-hidden');
+          setTimeout(removeLoader, fade + 120);
+        }
+
+        if (document.readyState === 'complete') {
+          setTimeout(hideLoader, 250);
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(hideLoader, 250);
+          }, { once: true });
+        }
+
+        /* Safety fallback: if load event is delayed or blocked, the loader still disappears. */
+        setTimeout(hideLoader, 5500);
+      })();
+    </script>
+  {% endif %}
+{% endif %}
+{# END Veloura Loader Stable Minimal 2026 #}
+
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how
     <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">To enable JavaScript on webpage</a>.
