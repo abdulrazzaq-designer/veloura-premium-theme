@@ -27,10 +27,7 @@
   {% endif %}
 
   {% set veloura_hide_product_count_raw = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
-  {#
-    مهم: بعض إعدادات سلة ترجع حالة السويتش داخل selected وليس value.
-    لذلك نقرأ selected أولاً، ثم value، ثم القيمة المباشرة.
-  #}
+  {# هذا هو ID الصحيح في نفس متجرك الحالي، وليس من متجر آخر. نقرأ selected ثم value لأن سلة أحياناً تحفظ السويتش بواحد منهم. #}
   {% if veloura_hide_product_count_raw.selected is defined %}
     {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.selected %}
   {% elseif veloura_hide_product_count_raw.value is defined %}
@@ -43,6 +40,8 @@
     or veloura_hide_product_count_raw == 1
     or veloura_hide_product_count_raw == '1'
     or veloura_hide_product_count_raw == 'on'
+    or veloura_hide_product_count_raw == 'yes'
+    or veloura_hide_product_count_raw == 'checked'
   %}
 
   {# إخفاء المنتجات عند وجود تصنيفات فرعية #}
@@ -1249,27 +1248,20 @@
     });
   </script>
 
-  {# Veloura: إصلاح عنوان التصنيف إذا رجع من سلة كعدد منتجات مثل "منتج واحد" #}
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const title = document.getElementById('page-main-title');
-      if (!title) return;
+  {% if veloura_hide_product_count %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const title = document.getElementById('page-main-title');
 
-      const cleanTitle = (title.getAttribute('data-veloura-clean-title') || '').trim();
-      const currentTitle = (title.textContent || '').trim();
+        if (!title) return;
 
-      if (!cleanTitle) return;
+        const cleanTitle = title.getAttribute('data-veloura-clean-title');
 
-      const looksLikeProductCount =
-        /منتج/.test(currentTitle) ||
-        /products?/i.test(currentTitle) ||
-        /^\d+/.test(currentTitle) ||
-        /\d+$/.test(currentTitle);
-
-      if (looksLikeProductCount) {
-        title.textContent = cleanTitle;
-      }
-    });
-  </script>
+        if (cleanTitle) {
+          title.textContent = cleanTitle;
+        }
+      });
+    </script>
+  {% endif %}
 
 {% endblock %}
