@@ -2111,7 +2111,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_footer_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-layout-footer'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات القسم السفلي</strong><span style=\"display:block;font-size:12px;opacity:.85\">نسخة مبسطة: الألوان، الشكل، التواصل، التطبيقات</span></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-layout-footer'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">خيارات القسم السفلي</strong></div></div>",
   "variant": "h1",
   "icon": "sicon-layout-footer"
 },
@@ -2170,7 +2170,7 @@
   "type": "string",
   "format": "url",
   "label": "أو رابط شعار متحرك",
-  "description": "gif / webm / mp4 / svg / png / webp",
+  "description": "يدعم gif / webm / mp4 / svg / png / webp",
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -2259,7 +2259,7 @@
 {
   "type": "static",
   "format": "title",
-  "id": "veloura_footer_subtitle_titles_2026",
+  "id": "veloura_footer_subtitle_texts_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4\">العناوين والنصوص</div>",
   "variant": "h6",
   "conditions": [
@@ -2275,7 +2275,8 @@
   "type": "string",
   "format": "text",
   "label": "عنوان معلومات المتجر",
-  "value": "متجر تجريبي",
+  "value": "",
+  "description": "اتركه فارغاً لاستخدام اسم المتجر",
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -2290,6 +2291,7 @@
   "format": "textarea",
   "label": "وصف معلومات المتجر",
   "value": "",
+  "description": "اتركه فارغاً لاستخدام وصف المتجر",
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
@@ -2434,7 +2436,7 @@
   "type": "string",
   "format": "color",
   "inputType": "color",
-  "label": "لون الأيقونات",
+  "label": "لون أيقونات التواصل والسوشيال",
   "value": "#26265c",
   "conditions": [
     {
@@ -2713,8 +2715,26 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
+  "label": "عرض وسائل الاتصال جنب بعض",
+  "description": "إذا أغلقت الخيار تصبح الوسائل عامود واحد. الافتراضي جنب بعض.",
+  "id": "veloura_footer_contact_inline_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
   "label": "دمج السوشيال مع وسائل الاتصال",
-  "description": "عند التفعيل تظهر أيقونات السوشيال مع الهاتف والإيميل بنفس الشكل المختار. عند الإغلاق تبقى السوشيال تحت معلومات المتجر كأيقونات فقط",
+  "description": "عند التفعيل تظهر السوشيال مع الهاتف والإيميل وبنفس الشكل المختار. عند الإغلاق تبقى السوشيال تحت معلومات المتجر كأيقونات فقط.",
   "id": "veloura_footer_merge_social_with_contacts_2026",
   "format": "switch",
   "required": false,
@@ -2785,7 +2805,7 @@
   "type": "boolean",
   "icon": "sicon-toggle-off",
   "label": "تفعيل شكل مميز لأيقونات التطبيقات",
-  "description": "يحوّل أزرار Google Play و App Store إلى أزرار إطار + أيقونة SVG + نص",
+  "description": "يحوّل Google Play و App Store إلى أزرار SVG بإطار ونص قابل للتلوين.",
   "id": "veloura_footer_featured_apps_2026",
   "format": "switch",
   "required": false,
@@ -2801,6 +2821,33 @@
       "id": "veloura_footer_hide_apps_2026",
       "operation": "=",
       "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_footer_app_svg_color_2026",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون SVG تطبيقات الجوال",
+  "icon": "sicon-format-fill",
+  "value": "#26265c",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_footer_hide_apps_2026",
+      "operation": "=",
+      "value": false
+    },
+    {
+      "id": "veloura_footer_featured_apps_2026",
+      "operation": "=",
+      "value": true
     }
   ]
 },
