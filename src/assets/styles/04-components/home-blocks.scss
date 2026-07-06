@@ -4105,3 +4105,177 @@
 .ultra-square-images__container salla-slider {
   width: 100%;
 }
+
+
+
+
+/* =========================================================
+   Veloura Mobile Spacing Only Fix
+   الفكرة:
+   - على اللابتوب/التابلت: كل العناصر ترجع للـ container/max-width العام.
+   - خيار المسافة الأفقية المخصصة يشتغل فقط على الجوال.
+   ضع هذا الكود آخر ملف: src/assets/styles/04-components/home-blocks.scss
+========================================================= */
+
+:root {
+  /* إذا كنت معرفها في master.twig سيستخدمها. وإلا fallback 1280px */
+  --veloura-home-container-width: var(--veloura-global-container, 1280px);
+  --veloura-home-container-padding: var(--veloura-global-spacing, 0px);
+}
+
+/* =========================
+   Desktop / Tablet
+   المسافة المخصصة لا تغيّر العرض هنا
+========================= */
+@media (min-width: 768px) {
+  .veloura-faq__container,
+  .veloura-store-features__container,
+  .ultra-square-images__container,
+  .veloura-animated-articles__container,
+  .veloura-before-after__container,
+  .veloura-branches__container,
+  .veloura-brands__container,
+  .veloura-products__container,
+  .veloura-purchase-steps__container,
+  .veloura-quick-links__container,
+  .veloura-testimonials__container,
+  .veloura-title__container,
+  .animated-banners__container {
+    width: 100%;
+    max-width: var(--veloura-home-container-width) !important;
+    margin-inline: auto !important;
+    padding-inline: var(--veloura-home-container-padding) !important;
+    box-sizing: border-box;
+  }
+
+  /* العناصر التي كان خيار المسافة يطلعها Full Width: نرجعها للكونتينر على اللابتوب */
+  .veloura-faq.has-spacing .veloura-faq__container,
+  .veloura-store-features.has-spacing .veloura-store-features__container,
+  .ultra-square-images.has-spacing .ultra-square-images__container,
+  .veloura-animated-articles.has-spacing .veloura-animated-articles__container,
+  .veloura-before-after.has-spacing .veloura-before-after__container,
+  .veloura-branches.has-spacing .veloura-branches__container,
+  .veloura-brands.has-spacing .veloura-brands__container,
+  .veloura-products.has-custom-spacing .veloura-products__container,
+  .veloura-purchase-steps.has-spacing .veloura-purchase-steps__container,
+  .veloura-quick-links.has-custom-spacing .veloura-quick-links__container,
+  .veloura-testimonials.has-spacing .veloura-testimonials__container,
+  .veloura-title.has-spacing .veloura-title__container,
+  .animated-banners.has-mobile-spacing .animated-banners__container {
+    max-width: var(--veloura-home-container-width) !important;
+    padding-inline: var(--veloura-home-container-padding) !important;
+    margin-inline: auto !important;
+  }
+
+  /* دعم نسخة animated-banners القديمة التي كان section نفسه يحمل container */
+  .animated-banners.container,
+  .animated-banners.has-mobile-spacing.container {
+    max-width: var(--veloura-home-container-width) !important;
+    margin-inline: auto !important;
+    padding-inline: var(--veloura-home-container-padding) !important;
+    width: 100%;
+  }
+
+  /* full width يبقى Full Width فقط إذا الزر الخاص فيه مفعّل */
+  .animated-banners.full-banner,
+  .animated-banners.is-full-width-desktop,
+  .animated-banners.full-banner .animated-banners__container,
+  .animated-banners.is-full-width-desktop .animated-banners__container,
+  .animated-banners .fullwidth-slider {
+    max-width: none !important;
+    padding-inline: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* =========================
+   Mobile only
+   هنا فقط تشتغل المسافة المخصصة
+========================= */
+@media (max-width: 767px) {
+  .veloura-faq.has-spacing .veloura-faq__container {
+    max-width: none !important;
+    padding-inline: var(--faq-spacing, 0px) !important;
+  }
+
+  .veloura-store-features.has-spacing .veloura-store-features__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-custom-spacing, 0px) !important;
+  }
+
+  .ultra-square-images.has-spacing .ultra-square-images__container {
+    max-width: none !important;
+    padding-inline: var(--ultra-horizontal-spacing, 0px) !important;
+  }
+
+  .veloura-animated-articles.has-spacing .veloura-animated-articles__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-articles-spacing, 0px) !important;
+  }
+
+  .veloura-before-after.has-spacing .veloura-before-after__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-before-after-spacing, 0px) !important;
+  }
+
+  .veloura-branches.has-spacing .veloura-branches__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-branches-spacing, 0px) !important;
+  }
+
+  .veloura-brands.has-spacing .veloura-brands__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-brands-spacing, 0px) !important;
+  }
+
+  .veloura-products.has-custom-spacing .veloura-products__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-products-spacing, 0px) !important;
+  }
+
+  .veloura-purchase-steps.has-spacing .veloura-purchase-steps__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-steps-spacing, 0px) !important;
+  }
+
+  .veloura-quick-links.has-custom-spacing .veloura-quick-links__container {
+    max-width: none !important;
+    padding-inline: var(--quick-spacing, 0px) !important;
+  }
+
+  .veloura-testimonials.has-spacing .veloura-testimonials__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-testimonials-spacing, 0px) !important;
+  }
+
+  .veloura-title.has-spacing .veloura-title__container {
+    max-width: none !important;
+    padding-inline: var(--veloura-title-spacing, 0px) !important;
+  }
+
+  .animated-banners.has-mobile-spacing .animated-banners__container,
+  .animated-banners.has-mobile-spacing.container {
+    max-width: none !important;
+    padding-inline: var(--banner-margin, 0px) !important;
+  }
+}
+
+/* =========================
+   Animated banners width fix
+========================= */
+.animated-banners:not(.full-banner):not(.is-full-width-desktop) {
+  width: 100%;
+}
+
+.animated-banners:not(.full-banner):not(.is-full-width-desktop) .animated-banners__slider,
+.animated-banners:not(.full-banner):not(.is-full-width-desktop) salla-slider {
+  width: 100%;
+  max-width: 100%;
+}
+
+.animated-banners__card,
+.animated-banners__card picture,
+.animated-banners__card img {
+  display: block;
+  width: 100%;
+}
