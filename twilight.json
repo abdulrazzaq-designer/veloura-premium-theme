@@ -2206,7 +2206,7 @@
   "label": "حجم شعار القسم السفلي",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "متوسط",
@@ -2247,7 +2247,9 @@
       "operation": "=",
       "value": false
     }
-  ]
+  ],
+  "value": "medium",
+  "default": "medium"
 },
 {
   "id": "veloura_footer_bg_image_2026",
@@ -2572,7 +2574,7 @@
   "label": "حواف القسم السفلي",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "ناعم",
@@ -2608,7 +2610,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "medium",
+  "default": "medium"
 },
 {
   "id": "veloura_footer_columns_desktop_2026",
@@ -2617,7 +2621,7 @@
   "label": "عدد أعمدة الفوتر في اللابتوب",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "4 أعمدة",
@@ -2643,7 +2647,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "4",
+  "default": "4"
 },
 {
   "id": "veloura_footer_title_size_2026",
@@ -2652,7 +2658,7 @@
   "label": "حجم عناوين القسم السفلي",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "كبير",
@@ -2693,7 +2699,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "large",
+  "default": "large"
 },
 {
   "id": "veloura_footer_text_size_2026",
@@ -2702,7 +2710,7 @@
   "label": "حجم نصوص القسم السفلي",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "متوسط",
@@ -2738,7 +2746,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "medium",
+  "default": "medium"
 },
 {
   "type": "static",
@@ -2761,7 +2771,7 @@
   "label": "شكل وسائل الاتصال والسوشيال",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "عنوان + أيقونة + إطار فقط",
@@ -2797,7 +2807,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "outline_label",
+  "default": "outline_label"
 },
 {
   "id": "veloura_footer_contact_layout_2026",
@@ -2806,7 +2818,7 @@
   "label": "ترتيب وسائل الاتصال والسوشيال",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "جنب بعض",
@@ -2832,7 +2844,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "row",
+  "default": "row"
 },
 {
   "id": "veloura_footer_icon_radius_2026",
@@ -2841,7 +2855,7 @@
   "label": "حواف أزرار وأيقونات التواصل",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "دائرية",
@@ -2872,7 +2886,9 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "value": "round",
+  "default": "round"
 },
 {
   "type": "boolean",
@@ -2995,7 +3011,7 @@
   "label": "حجم شعارات تطبيق الجوال",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
   "selected": [
     {
       "label": "متوسط",
@@ -3036,7 +3052,9 @@
       "operation": "=",
       "value": false
     }
-  ]
+  ],
+  "value": "medium",
+  "default": "medium"
 },
 {
   "type": "boolean",
