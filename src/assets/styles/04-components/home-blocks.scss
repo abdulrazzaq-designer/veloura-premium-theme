@@ -4282,15 +4282,19 @@
 
 
 /* ================================
-   Veloura Title Block Icon + Next Section Fix
-   ضع الملف آخر home-blocks.scss أو آخر ملف SCSS الخاص بعناصر الصفحة الرئيسية
+   Veloura Title Block Clean Fix
+   - الأيقونة Icon font فقط، وتكبر وتصغر مع حجم العنوان
+   - لا يوجد width/height للأيقونة
+   - لا تكرار لقواعد العنوان
+   - يخفي عنوان/أيقونة القسم التالي عند تفعيل عنوان للقسم التالي
 ================================ */
 
 .veloura-title {
-  padding-inline: var(--veloura-title-spacing, 0px);
   text-align: var(--veloura-title-align, center);
 }
 
+/* إذا عنصر العنوان نفسه عليه container، لا نعطيه padding إضافي هنا.
+   المسافة العامة أو container هي التي تتحكم بالعرض. */
 .veloura-title__inner {
   width: 100%;
 }
@@ -4306,12 +4310,17 @@
   font-size: var(--veloura-title-size, 28px);
   line-height: 1.35;
   font-weight: 800;
-  text-align: inherit;
+  text-align: var(--veloura-title-align, center);
 }
 
 .veloura-title--align-right .veloura-title__heading {
   justify-content: flex-start;
   text-align: right;
+}
+
+.veloura-title--align-center .veloura-title__heading {
+  justify-content: center;
+  text-align: center;
 }
 
 .veloura-title--align-left .veloura-title__heading {
@@ -4323,9 +4332,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: .38em;
   max-width: 100%;
-  flex: 0 0 auto;
+  color: inherit;
+  line-height: inherit;
+  flex: 0 1 auto;
 }
 
 .veloura-title--align-right .veloura-title__content {
@@ -4336,34 +4347,30 @@
   justify-content: flex-end;
 }
 
-.veloura-title__text {
-  display: inline-block;
-}
-
 .veloura-title__icon {
-  width: var(--veloura-title-icon-size, 34px);
-  height: var(--veloura-title-icon-size, 34px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  color: inherit;
   flex: 0 0 auto;
 }
 
-.veloura-title__icon img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.veloura-title__icon::before {
+  line-height: 1;
 }
 
-.veloura-title__icon i {
-  font-size: var(--veloura-title-icon-size, 34px);
-  line-height: 1;
+.veloura-title__text {
+  display: inline-block;
+  line-height: inherit;
 }
 
 .veloura-title__line {
   display: block;
-  height: 3px;
+  height: 2px;
   width: clamp(44px, 9vw, 110px);
   max-width: 22%;
   background: var(--veloura-title-line-color, #111111);
@@ -4371,7 +4378,7 @@
 }
 
 .veloura-title--line-none .veloura-title__line {
-  display: none;
+  display: none !important;
 }
 
 .veloura-title__subtitle {
@@ -4379,7 +4386,7 @@
   color: var(--veloura-title-color, #323232);
   font-size: var(--veloura-subtitle-size, 18px);
   line-height: 1.6;
-  text-align: inherit;
+  text-align: var(--veloura-title-align, center);
 }
 
 .veloura-title--align-center .veloura-title__subtitle {
@@ -4394,7 +4401,9 @@
   text-align: left;
 }
 
-.veloura-hidden-by-title-block {
+/* عند استخدام عنصر العنوان كعنوان للقسم التالي */
+.veloura-hidden-by-title-block,
+.veloura-products__icon.veloura-hidden-by-title-block {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -4411,6 +4420,8 @@
   .veloura-products__texts
 ) {
   display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 @media (max-width: 767px) {
@@ -4419,12 +4430,12 @@
     font-size: calc(var(--veloura-title-size, 28px) * .86);
   }
 
+  .veloura-title__content {
+    gap: .32em;
+  }
+
   .veloura-title__line {
     width: clamp(28px, 13vw, 70px);
     max-width: 18%;
-  }
-
-  .veloura-title__content {
-    gap: 8px;
   }
 }
