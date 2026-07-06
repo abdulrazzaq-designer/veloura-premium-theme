@@ -27,10 +27,8 @@
   {% endif %}
 
   {% set veloura_hide_product_count_raw = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
-  {# هذا هو ID الصحيح في نفس متجرك الحالي، وليس من متجر آخر. نقرأ selected ثم value لأن سلة أحياناً تحفظ السويتش بواحد منهم. #}
-  {% if veloura_hide_product_count_raw.selected is defined %}
-    {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.selected %}
-  {% elseif veloura_hide_product_count_raw.value is defined %}
+  {# نقرأ قيمة الزر الحقيقية فقط حتى لا تتأثر الصفحة بأي selected قديم أو مكرر من twilight.json #}
+  {% if veloura_hide_product_count_raw.value is defined %}
     {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.value %}
   {% endif %}
 
@@ -40,8 +38,6 @@
     or veloura_hide_product_count_raw == 1
     or veloura_hide_product_count_raw == '1'
     or veloura_hide_product_count_raw == 'on'
-    or veloura_hide_product_count_raw == 'yes'
-    or veloura_hide_product_count_raw == 'checked'
   %}
 
   {# إخفاء المنتجات عند وجود تصنيفات فرعية #}
@@ -425,11 +421,7 @@
                 id="page-main-title"
                 data-veloura-clean-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
               >
-                {% if veloura_hide_product_count %}
-                  {{ category.name|default(page.title)|striptags }}
-                {% else %}
-                  {{ page.title|raw }}
-                {% endif %}
+                {{ category.name|default(page.title)|striptags }}
               </h1>
             </div>
 
@@ -1248,20 +1240,5 @@
     });
   </script>
 
-  {% if veloura_hide_product_count %}
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const title = document.getElementById('page-main-title');
-
-        if (!title) return;
-
-        const cleanTitle = title.getAttribute('data-veloura-clean-title');
-
-        if (cleanTitle) {
-          title.textContent = cleanTitle;
-        }
-      });
-    </script>
-  {% endif %}
 
 {% endblock %}
