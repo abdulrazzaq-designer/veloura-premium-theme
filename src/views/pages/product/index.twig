@@ -254,7 +254,19 @@
 
         <div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
 
-          <div class="mb-4 sm:mb-6 flex justify-between items-center veloura-category-head">
+          <div
+            id="veloura-category-banner-root"
+            class="veloura-category-banner-root"
+            data-current-id="{{ page.id|default(category.id|default(''))|e('html_attr') }}"
+            data-current-category-id="{{ category.id|default(page.id|default(''))|e('html_attr') }}"
+            data-current-name="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
+            data-current-title="{{ page.title|striptags|e('html_attr') }}"
+            data-current-url="{{ category.url|default('')|e('html_attr') }}"
+            data-current-slug="{{ page.slug|default('')|e('html_attr') }}"
+            style="--veloura-cat-banner-radius: {{ veloura_cat_banner_radius }};"
+          ></div>
+
+          <div class="mt-4 mb-4 sm:mt-5 sm:mb-6 flex justify-between items-center veloura-category-head veloura-category-head--below-banner">
             <h1
               class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title"
               id="page-main-title"
@@ -267,18 +279,6 @@
               {% endif %}
             </h1>
           </div>
-
-          <div
-            id="veloura-category-banner-root"
-            class="veloura-category-banner-root"
-            data-current-id="{{ page.id|default(category.id|default(''))|e('html_attr') }}"
-            data-current-category-id="{{ category.id|default(page.id|default(''))|e('html_attr') }}"
-            data-current-name="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
-            data-current-title="{{ page.title|striptags|e('html_attr') }}"
-            data-current-url="{{ category.url|default('')|e('html_attr') }}"
-            data-current-slug="{{ page.slug|default('')|e('html_attr') }}"
-            style="--veloura-cat-banner-radius: {{ veloura_cat_banner_radius }};"
-          ></div>
 
           <style>
             .veloura-category-banner-root {
@@ -305,6 +305,14 @@
               width: 100%;
               height: auto;
               border-radius: inherit;
+            }
+
+            .veloura-category-head--below-banner {
+              width: 100%;
+            }
+
+            .veloura-category-head--below-banner .veloura-category-main-title {
+              margin: 0;
             }
 
             .veloura-category-products-toolbar {
