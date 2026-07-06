@@ -1084,7 +1084,7 @@
 .animated-banners__card {
   display: block;
   width: 100%;
-  max-width: 1280px;
+  max-width: 100%;
   margin-inline: auto;
   overflow: hidden;
   border-radius: var(--animated-radius, 0px) !important;
@@ -4278,4 +4278,153 @@
 .animated-banners__card img {
   display: block;
   width: 100%;
+}
+
+
+/* ================================
+   Veloura Title Block Icon + Next Section Fix
+   ضع الملف آخر home-blocks.scss أو آخر ملف SCSS الخاص بعناصر الصفحة الرئيسية
+================================ */
+
+.veloura-title {
+  padding-inline: var(--veloura-title-spacing, 0px);
+  text-align: var(--veloura-title-align, center);
+}
+
+.veloura-title__inner {
+  width: 100%;
+}
+
+.veloura-title__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  margin: 0;
+  color: var(--veloura-title-color, #323232);
+  font-size: var(--veloura-title-size, 28px);
+  line-height: 1.35;
+  font-weight: 800;
+  text-align: inherit;
+}
+
+.veloura-title--align-right .veloura-title__heading {
+  justify-content: flex-start;
+  text-align: right;
+}
+
+.veloura-title--align-left .veloura-title__heading {
+  justify-content: flex-end;
+  text-align: left;
+}
+
+.veloura-title__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  flex: 0 0 auto;
+}
+
+.veloura-title--align-right .veloura-title__content {
+  justify-content: flex-start;
+}
+
+.veloura-title--align-left .veloura-title__content {
+  justify-content: flex-end;
+}
+
+.veloura-title__text {
+  display: inline-block;
+}
+
+.veloura-title__icon {
+  width: var(--veloura-title-icon-size, 34px);
+  height: var(--veloura-title-icon-size, 34px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.veloura-title__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.veloura-title__icon i {
+  font-size: var(--veloura-title-icon-size, 34px);
+  line-height: 1;
+}
+
+.veloura-title__line {
+  display: block;
+  height: 3px;
+  width: clamp(44px, 9vw, 110px);
+  max-width: 22%;
+  background: var(--veloura-title-line-color, #111111);
+  flex: 0 1 auto;
+}
+
+.veloura-title--line-none .veloura-title__line {
+  display: none;
+}
+
+.veloura-title__subtitle {
+  margin: 10px 0 0;
+  color: var(--veloura-title-color, #323232);
+  font-size: var(--veloura-subtitle-size, 18px);
+  line-height: 1.6;
+  text-align: inherit;
+}
+
+.veloura-title--align-center .veloura-title__subtitle {
+  text-align: center;
+}
+
+.veloura-title--align-right .veloura-title__subtitle {
+  text-align: right;
+}
+
+.veloura-title--align-left .veloura-title__subtitle {
+  text-align: left;
+}
+
+.veloura-hidden-by-title-block {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.has-veloura-title-before :where(
+  [data-veloura-section-heading],
+  [data-veloura-section-heading-icon],
+  .veloura-component-title,
+  .section-main-title,
+  .s-block__title,
+  .veloura-products__heading-content,
+  .veloura-products__icon,
+  .veloura-products__texts
+) {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-title__heading {
+    gap: 10px;
+    font-size: calc(var(--veloura-title-size, 28px) * .86);
+  }
+
+  .veloura-title__line {
+    width: clamp(28px, 13vw, 70px);
+    max-width: 18%;
+  }
+
+  .veloura-title__content {
+    gap: 8px;
+  }
 }

@@ -10012,6 +10012,30 @@
                     "value": ""
                 },
                 {
+  "id": "veloura_title_icon",
+  "type": "string",
+  "format": "image",
+  "label": "أيقونة العنوان",
+  "description": "اختياري: تظهر الأيقونة بجانب العنوان، واتركها فارغة لإخفائها",
+  "icon": "sicon-image",
+  "value": null,
+  "required": false
+},
+{
+  "id": "veloura_title_icon_size",
+  "type": "number",
+  "format": "slider",
+  "inputType": "range",
+  "label": "حجم أيقونة العنوان",
+  "description": "يعمل فقط عند رفع أيقونة للعنوان",
+  "icon": "sicon-resize",
+  "value": "34",
+  "required": false,
+  "step": "1",
+  "minimum": "16",
+  "maximum": "90"
+},
+                {
                     "id": "veloura_title_color",
                     "type": "string",
                     "format": "color",
