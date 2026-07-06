@@ -4282,172 +4282,11 @@
 
 
 /* ================================
-   Veloura Title Block Clean Fix
-   - الأيقونة Icon font فقط، وتكبر وتصغر مع حجم العنوان
-   - لا يوجد width/height للأيقونة
-   - لا تكرار لقواعد العنوان
-   - يخفي عنوان/أيقونة القسم التالي عند تفعيل عنوان للقسم التالي
-================================ */
-
-.veloura-title {
-  text-align: var(--veloura-title-align, center);
-}
-
-/* إذا عنصر العنوان نفسه عليه container، لا نعطيه padding إضافي هنا.
-   المسافة العامة أو container هي التي تتحكم بالعرض. */
-.veloura-title__inner {
-  width: 100%;
-}
-
-.veloura-title__heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  width: 100%;
-  margin: 0;
-  color: var(--veloura-title-color, #323232);
-  font-size: var(--veloura-title-size, 28px);
-  line-height: 1.35;
-  font-weight: 800;
-  text-align: var(--veloura-title-align, center);
-}
-
-.veloura-title--align-right .veloura-title__heading {
-  justify-content: flex-start;
-  text-align: right;
-}
-
-.veloura-title--align-center .veloura-title__heading {
-  justify-content: center;
-  text-align: center;
-}
-
-.veloura-title--align-left .veloura-title__heading {
-  justify-content: flex-end;
-  text-align: left;
-}
-
-.veloura-title__content {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .38em;
-  max-width: 100%;
-  color: inherit;
-  line-height: inherit;
-  flex: 0 1 auto;
-}
-
-.veloura-title--align-right .veloura-title__content {
-  justify-content: flex-start;
-}
-
-.veloura-title--align-left .veloura-title__content {
-  justify-content: flex-end;
-}
-
-.veloura-title__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em;
-  width: 1em;
-  height: 1em;
-  line-height: 1;
-  color: inherit;
-  flex: 0 0 auto;
-}
-
-.veloura-title__icon::before {
-  line-height: 1;
-}
-
-.veloura-title__text {
-  display: inline-block;
-  line-height: inherit;
-}
-
-.veloura-title__line {
-  display: block;
-  height: 2px;
-  width: clamp(44px, 9vw, 110px);
-  max-width: 22%;
-  background: var(--veloura-title-line-color, #111111);
-  flex: 0 1 auto;
-}
-
-.veloura-title--line-none .veloura-title__line {
-  display: none !important;
-}
-
-.veloura-title__subtitle {
-  margin: 10px 0 0;
-  color: var(--veloura-title-color, #323232);
-  font-size: var(--veloura-subtitle-size, 18px);
-  line-height: 1.6;
-  text-align: var(--veloura-title-align, center);
-}
-
-.veloura-title--align-center .veloura-title__subtitle {
-  text-align: center;
-}
-
-.veloura-title--align-right .veloura-title__subtitle {
-  text-align: right;
-}
-
-.veloura-title--align-left .veloura-title__subtitle {
-  text-align: left;
-}
-
-/* عند استخدام عنصر العنوان كعنوان للقسم التالي */
-.veloura-hidden-by-title-block,
-.veloura-products__icon.veloura-hidden-by-title-block {
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.has-veloura-title-before :where(
-  [data-veloura-section-heading],
-  [data-veloura-section-heading-icon],
-  .veloura-component-title,
-  .section-main-title,
-  .s-block__title,
-  .veloura-products__heading-content,
-  .veloura-products__icon,
-  .veloura-products__texts
-) {
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-@media (max-width: 767px) {
-  .veloura-title__heading {
-    gap: 10px;
-    font-size: calc(var(--veloura-title-size, 28px) * .86);
-  }
-
-  .veloura-title__content {
-    gap: .32em;
-  }
-
-  .veloura-title__line {
-    width: clamp(28px, 13vw, 70px);
-    max-width: 18%;
-  }
-}
-
-
-
-
-/* ================================
-   Veloura Title Icon Switch Fix
-   - الأيقونة من Salla Icon Font وليست صورة
+   Veloura Title Icon Final Fix
+   - نفس طريقة أيقونة المميزات
+   - الأيقونة Icon Font فقط
    - حجم الأيقونة يتبع حجم العنوان تلقائياً
-   - لا يوجد تحكم منفصل بحجم الأيقونة
+   - بدون تكرار
 ================================ */
 
 .veloura-title {
@@ -4458,7 +4297,6 @@
   width: 100%;
 }
 
-/* العنوان الأساسي */
 .veloura-title__heading {
   display: flex;
   align-items: center;
@@ -4473,7 +4311,6 @@
   text-align: var(--veloura-title-align, center);
 }
 
-/* المحاذاة */
 .veloura-title--align-right .veloura-title__heading {
   justify-content: flex-start;
   text-align: right;
@@ -4489,7 +4326,6 @@
   text-align: left;
 }
 
-/* النص + الأيقونة */
 .veloura-title__content {
   display: inline-flex;
   align-items: center;
@@ -4499,15 +4335,28 @@
   color: inherit;
   line-height: inherit;
   flex: 0 1 auto;
+  direction: inherit;
 }
 
-/* مهم للغة العربية: الأيقونة تظهر قبل النص بصرياً */
+.veloura-title--align-right .veloura-title__content {
+  justify-content: flex-start;
+}
+
+.veloura-title--align-center .veloura-title__content {
+  justify-content: center;
+}
+
+.veloura-title--align-left .veloura-title__content {
+  justify-content: flex-end;
+}
+
+/* الأيقونة نفس طريقة المميزات:
+   <span class="veloura-title__icon sicon-store"></span>
+*/
 .veloura-title__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1em;
-  height: 1em;
   font-size: 1em;
   line-height: 1;
   color: inherit;
@@ -4525,7 +4374,6 @@
   line-height: inherit;
 }
 
-/* الخطوط يمين ويسار */
 .veloura-title__line {
   display: block;
   height: 2px;
@@ -4535,7 +4383,6 @@
   flex: 0 1 auto;
 }
 
-/* إخفاء الخطوط حسب الخيار */
 .veloura-title--line-none .veloura-title__line {
   display: none !important;
 }
@@ -4548,7 +4395,6 @@
   display: none !important;
 }
 
-/* العنوان الفرعي */
 .veloura-title__subtitle {
   margin: 10px 0 0;
   color: var(--veloura-title-color, #323232);
@@ -4569,7 +4415,7 @@
   text-align: left;
 }
 
-/* إخفاء عنوان/أيقونة القسم التالي عند تفعيل "جعله عنوان للقسم التالي" */
+/* إخفاء عنوان/أيقونة القسم التالي */
 .veloura-hidden-by-title-block,
 .veloura-products__icon.veloura-hidden-by-title-block {
   display: none !important;
@@ -4592,7 +4438,6 @@
   padding: 0 !important;
 }
 
-/* الجوال */
 @media (max-width: 767px) {
   .veloura-title__heading {
     gap: 10px;
