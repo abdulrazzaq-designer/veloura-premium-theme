@@ -625,3 +625,316 @@
 .store-footer.veloura-footer-enabled.veloura-footer-compact .veloura-footer-grid {
   padding: 40px 0;
 }
+
+
+/* ================================
+   Veloura Footer V2.2 - Contact/Social Shape Fix
+   - يمنع تكرار/تداخل السوشيال
+   - يجعل "عنوان + أيقونة + إطار فقط" بدون رقم/إيميل
+   - يضبط الأيقونة يمين والنص يسار داخل الزر
+================================ */
+
+/* تنظيف أي ستايلات قديمة من سلة على روابط السوشيال بعد ما صارت cards */
+.store-footer.veloura-footer-enabled .veloura-footer-social .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled .veloura-footer-social .veloura-footer-contact-card.s-social-link,
+.store-footer.veloura-footer-enabled .veloura-footer-social a.veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled .veloura-footer-social button.veloura-footer-contact-card {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  border-radius: var(--veloura-footer-contact-radius) !important;
+}
+
+/* اجعل كل العناصر بنفس اتجاه الزر المطلوب */
+.store-footer.veloura-footer-enabled .veloura-footer-contact-card {
+  direction: rtl !important;
+}
+
+/* الشكل المطلوب: عنوان + أيقونة + إطار فقط */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-contact-card {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  width: auto !important;
+  min-width: 118px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  padding: 0 18px !important;
+  border: 1.5px solid var(--veloura-footer-contact-border) !important;
+  border-radius: var(--veloura-footer-contact-radius) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+/* الأيقونة يمين */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-contact-card__icon,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-contact-card__icon {
+  order: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--veloura-footer-icon-color) !important;
+  font-size: 17px !important;
+  line-height: 1 !important;
+}
+
+/* النص يسار الأيقونة */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-contact-card__texts,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-contact-card__texts {
+  order: 2 !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  line-height: 1 !important;
+}
+
+/* يظهر العنوان فقط */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-contact-card__label,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-contact-card__label {
+  display: inline-flex !important;
+  color: var(--veloura-footer-text) !important;
+  font-size: var(--veloura-footer-text-size) !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-contact-card__value,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-contact-card__value {
+  display: none !important;
+}
+
+/* إصلاح السوشيال خصوصاً حتى لا يصير النص داخل الدائرة */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-social .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-social .veloura-footer-contact-card {
+  min-width: 112px !important;
+}
+
+/* أيقونات فقط: لازم كلهم جنب بعض بدون نص */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons-only .veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  max-width: 46px !important;
+  padding: 0 !important;
+  border: 1px solid var(--veloura-footer-contact-border) !important;
+  border-radius: var(--veloura-footer-contact-radius) !important;
+  background: var(--veloura-footer-contact-item-bg) !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card__texts,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons-only .veloura-footer-contact-card__texts {
+  display: none !important;
+}
+
+/* في حالة أيقونة مع نص: امنع التداخل */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card {
+  width: auto !important;
+  min-width: 150px !important;
+  height: auto !important;
+  min-height: 52px !important;
+  padding: 10px 14px !important;
+}
+
+/* الجوال */
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline_label .veloura-footer-contact-card,
+  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-outline-label .veloura-footer-contact-card {
+    min-width: 104px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding-inline: 14px !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card,
+  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card {
+    min-width: 140px !important;
+  }
+}
+
+
+/* ================================
+   Veloura Footer V3 - Final Contact Options
+   الخيارات النهائية:
+   1) icons_only
+   2) icon_text_border
+   3) default
+   السوشيال يأخذ شكل الاتصال فقط عند الدمج.
+================================ */
+
+/* Alias support: القيمة الجديدة icon_text_border */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text_border .veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  min-height: 42px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  padding: var(--veloura-footer-contact-padding-y, 9px) var(--veloura-footer-contact-padding-x, 18px) !important;
+  border: 1.5px solid var(--veloura-footer-contact-border) !important;
+  border-radius: var(--veloura-footer-contact-radius) !important;
+  background: transparent !important;
+  color: var(--veloura-footer-text) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  direction: rtl !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text_border .veloura-footer-contact-card__icon {
+  order: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--veloura-footer-icon-color) !important;
+  font-size: 17px !important;
+  line-height: 1 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text_border .veloura-footer-contact-card__texts {
+  order: 2 !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  line-height: 1 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text_border .veloura-footer-contact-card__label {
+  display: inline-flex !important;
+  color: var(--veloura-footer-text) !important;
+  font-size: var(--veloura-footer-text-size) !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text_border .veloura-footer-contact-card__value {
+  display: none !important;
+}
+
+/* مهم: السوشيال في الوضع الطبيعي أو المفصول لا يأخذ شكل الاتصال؛ يبقى أيقونات فقط */
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card.s-social-link,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social a.veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social button.veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  max-width: 42px !important;
+  padding: 0 !important;
+  border: 1px solid var(--veloura-footer-contact-border) !important;
+  border-radius: var(--veloura-footer-contact-radius) !important;
+  background: var(--veloura-footer-icon-bg) !important;
+  color: var(--veloura-footer-icon-color) !important;
+  overflow: hidden !important;
+  gap: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card__texts,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card__label,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card__value {
+  display: none !important;
+}
+
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card__icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--veloura-footer-icon-color) !important;
+  font-size: 17px !important;
+  line-height: 1 !important;
+}
+
+/* عند الدمج فقط: السوشيال يتبع نفس خيار وسائل الاتصال */
+.store-footer.veloura-footer-enabled.veloura-footer-merge-social .veloura-footer-social .veloura-footer-contact-card {
+  max-width: 100% !important;
+}
+
+/* إصلاح خيار أيقونات فقط */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  max-width: 46px !important;
+  padding: 0 !important;
+  border: 1px solid var(--veloura-footer-contact-border) !important;
+  border-radius: var(--veloura-footer-contact-radius) !important;
+  background: var(--veloura-footer-contact-item-bg) !important;
+  gap: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card__texts {
+  display: none !important;
+}
+
+/* الشكل الأساسي: أيقونة + القيمة الحقيقية */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-default .veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-direction: row !important;
+  gap: 12px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-default .veloura-footer-contact-card__label {
+  display: none !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-default .veloura-footer-contact-card__value {
+  display: inline-flex !important;
+}
+
+/* ترتيب الجوال */
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text_border .veloura-footer-contact-card {
+    min-height: 40px !important;
+    padding-inline: 16px !important;
+  }
+}

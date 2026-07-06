@@ -2768,37 +2768,32 @@
   "id": "veloura_footer_contact_display_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "شكل وسائل الاتصال والسوشيال",
+  "label": "شكل وسائل الاتصال",
   "icon": "sicon-list",
   "source": "Manual",
   "required": false,
   "selected": [
     {
-      "label": "عنوان + أيقونة + إطار فقط",
-      "value": "outline_label",
-      "key": "veloura-footer-contact-outline-label-2026"
+      "label": "أيقونة مع نص وإطار",
+      "value": "icon_text_border",
+      "key": "veloura-footer-contact-icon-text-border-2026"
     }
   ],
   "options": [
     {
-      "label": "الافتراضي - أيقونة مع الرقم أو الإيميل",
-      "value": "default",
-      "key": "veloura-footer-contact-default-2026"
-    },
-    {
-      "label": "عنوان + أيقونة + إطار فقط",
-      "value": "outline_label",
-      "key": "veloura-footer-contact-outline-label-2026"
-    },
-    {
-      "label": "أيقونة مع نص",
-      "value": "icon_text",
-      "key": "veloura-footer-contact-icon-text-2026"
-    },
-    {
       "label": "أيقونات فقط",
       "value": "icons_only",
       "key": "veloura-footer-contact-icons-only-2026"
+    },
+    {
+      "label": "أيقونة مع نص وإطار",
+      "value": "icon_text_border",
+      "key": "veloura-footer-contact-icon-text-border-2026"
+    },
+    {
+      "label": "الشكل الأساسي - أيقونة مع الرقم أو الإيميل",
+      "value": "default",
+      "key": "veloura-footer-contact-default-2026"
     }
   ],
   "conditions": [
@@ -2808,8 +2803,9 @@
       "value": true
     }
   ],
-  "value": "outline_label",
-  "default": "outline_label"
+  "value": "icon_text_border",
+  "default": "icon_text_border",
+  "description": "اختر طريقة عرض الهاتف والإيميل. السوشيال يأخذ نفس الشكل فقط عند تفعيل الدمج مع وسائل الاتصال"
 },
 {
   "id": "veloura_footer_contact_layout_2026",

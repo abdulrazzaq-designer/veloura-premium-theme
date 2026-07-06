@@ -68,7 +68,7 @@
   {% set footer_columns = footer_columns[0].value %}
 {% endif %}
 
-{% set footer_contact_display = theme.settings.get('veloura_footer_contact_display_2026', 'outline_label') %}
+{% set footer_contact_display = theme.settings.get('veloura_footer_contact_display_2026', 'icon_text_border') %}
 {% if footer_contact_display.selected is defined and footer_contact_display.selected[0].value is defined %}
   {% set footer_contact_display = footer_contact_display.selected[0].value %}
 {% elseif footer_contact_display.value is defined %}
@@ -76,8 +76,11 @@
 {% elseif footer_contact_display is iterable and footer_contact_display[0].value is defined %}
   {% set footer_contact_display = footer_contact_display[0].value %}
 {% endif %}
-{% if footer_contact_display not in ['default', 'outline_label', 'icon_text', 'icons_only'] %}
-  {% set footer_contact_display = 'outline_label' %}
+{% if footer_contact_display == 'outline_label' or footer_contact_display == 'icon_text' %}
+  {% set footer_contact_display = 'icon_text_border' %}
+{% endif %}
+{% if footer_contact_display not in ['default', 'icon_text_border', 'icons_only'] %}
+  {% set footer_contact_display = 'icon_text_border' %}
 {% endif %}
 
 {% set footer_contact_layout = theme.settings.get('veloura_footer_contact_layout_2026', 'row') %}
