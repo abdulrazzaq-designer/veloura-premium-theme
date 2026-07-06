@@ -472,12 +472,20 @@
       }
 
       function initVelouraFooterContacts() {
-        document.querySelectorAll('.store-footer.veloura-footer-enabled [data-veloura-footer-contacts] a[href]').forEach(function (link) {
-          normalizeLink(link, 'contact');
-        });
+        document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
+          const merged = footer.classList.contains('veloura-footer-merge-social');
 
-        document.querySelectorAll('.store-footer.veloura-footer-enabled [data-veloura-footer-social] a[href], .store-footer.veloura-footer-enabled [data-veloura-footer-social] button').forEach(function (link) {
-          normalizeLink(link, 'social');
+          footer.querySelectorAll('[data-veloura-footer-contacts] a[href]').forEach(function (link) {
+            normalizeLink(link, 'contact');
+          });
+
+          /* السوشيال يأخذ نفس شكل الاتصال فقط عند تفعيل الدمج.
+             بدون دمج نترك salla-social طبيعي أيقونات فقط حتى لا تظهر الأسماء. */
+          if (merged) {
+            footer.querySelectorAll('[data-veloura-footer-social] a[href], [data-veloura-footer-social] button').forEach(function (link) {
+              normalizeLink(link, 'social');
+            });
+          }
         });
       }
 
