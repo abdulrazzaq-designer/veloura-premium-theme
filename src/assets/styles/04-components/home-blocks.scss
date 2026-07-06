@@ -3875,3 +3875,233 @@
     }
   }
 }
+
+
+/* =========================================================
+   Veloura Home Components Container + Title Bridge
+   ضع هذا الملف أو محتواه في:
+   src/assets/styles/04-components/home-blocks.scss
+   بعد أكواد عناصر فيلورا الموجودة.
+   ========================================================= */
+
+/* ---------- Base container behavior ---------- */
+.veloura-faq__container,
+.veloura-store-features__container,
+.ultra-square-images__container,
+.veloura-animated-articles__container,
+.veloura-before-after__container,
+.veloura-branches__container,
+.veloura-brands__container,
+.veloura-products__container,
+.veloura-purchase-steps__container,
+.veloura-quick-links__container,
+.veloura-testimonials__container,
+.veloura-title__container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* بدون مسافة مخصصة: الحاوية تبقى مثل عناصر الثيم الطبيعية */
+.veloura-faq:not(.has-spacing) .veloura-faq__container,
+.veloura-store-features:not(.has-spacing) .veloura-store-features__container,
+.ultra-square-images:not(.has-spacing) .ultra-square-images__container,
+.veloura-animated-articles:not(.has-spacing) .veloura-animated-articles__container,
+.veloura-before-after:not(.has-spacing) .veloura-before-after__container,
+.veloura-branches:not(.has-spacing) .veloura-branches__container,
+.veloura-brands:not(.has-spacing) .veloura-brands__container,
+.veloura-products:not(.has-spacing) .veloura-products__container,
+.veloura-products:not(.has-custom-spacing) .veloura-products__container,
+.veloura-purchase-steps:not(.has-spacing) .veloura-purchase-steps__container,
+.veloura-quick-links:not(.has-spacing) .veloura-quick-links__container,
+.veloura-quick-links:not(.has-custom-spacing) .veloura-quick-links__container,
+.veloura-testimonials:not(.has-spacing) .veloura-testimonials__container,
+.veloura-title:not(.has-spacing) .veloura-title__container {
+  margin-inline: auto;
+}
+
+/* مع مسافة مخصصة: يخرج من container ويأخذ Padding من إعداد العنصر */
+.veloura-faq.has-spacing .veloura-faq__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--faq-spacing, 0px);
+}
+
+.veloura-store-features.has-spacing .veloura-store-features__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-custom-spacing, 0px);
+}
+
+.ultra-square-images.has-spacing .ultra-square-images__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--ultra-horizontal-spacing, 0px);
+}
+
+.veloura-animated-articles.has-spacing .veloura-animated-articles__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-articles-spacing, 0px);
+}
+
+.veloura-before-after.has-spacing .veloura-before-after__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-before-after-spacing, 0px);
+}
+
+.veloura-branches.has-spacing .veloura-branches__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-branches-spacing, 0px);
+}
+
+.veloura-brands.has-spacing .veloura-brands__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-brands-spacing, 0px);
+}
+
+.veloura-products.has-spacing .veloura-products__container,
+.veloura-products.has-custom-spacing .veloura-products__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-products-spacing, 0px);
+}
+
+.veloura-purchase-steps.has-spacing .veloura-purchase-steps__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-steps-spacing, 0px);
+}
+
+.veloura-quick-links.has-spacing .veloura-quick-links__container,
+.veloura-quick-links.has-custom-spacing .veloura-quick-links__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--quick-spacing, 0px);
+}
+
+.veloura-testimonials.has-spacing .veloura-testimonials__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-testimonials-spacing, 0px);
+}
+
+.veloura-title.has-spacing .veloura-title__container {
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--veloura-title-spacing, 0px);
+}
+
+/* ---------- Common section title bridge ---------- */
+.veloura-component-title,
+[data-veloura-section-heading] {
+  box-sizing: border-box;
+}
+
+.veloura-hidden-by-title-block {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
+
+.has-veloura-title-before {
+  margin-top: 1rem !important;
+  padding-top: 0 !important;
+}
+
+.has-veloura-title-before > :first-child {
+  margin-top: 0;
+}
+
+/* في حال عنوان خارجي سبق العنصر، نقلل فراغ العنوان الداخلي المخفي */
+[data-veloura-has-external-title="true"] .veloura-component-title,
+[data-veloura-has-external-title="true"] [data-veloura-section-heading] {
+  display: none !important;
+}
+
+/* ---------- Show only mobile / desktop helpers ---------- */
+.veloura-show-mobile-only,
+.veloura-faq-mobile-only,
+.ultra-mobile-only,
+.veloura-animated-articles--mobile-only,
+.veloura-before-after--mobile-only,
+.veloura-branches--mobile-only,
+.veloura-brands--mobile-only,
+.veloura-mobile-only,
+.veloura-purchase-steps--mobile-only,
+.veloura-testimonials--mobile-only,
+.veloura-title-mobile-only,
+.veloura-popup--mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-show-mobile-only,
+  .veloura-faq-mobile-only,
+  .ultra-mobile-only,
+  .veloura-animated-articles--mobile-only,
+  .veloura-before-after--mobile-only,
+  .veloura-branches--mobile-only,
+  .veloura-brands--mobile-only,
+  .veloura-mobile-only,
+  .veloura-purchase-steps--mobile-only,
+  .veloura-testimonials--mobile-only,
+  .veloura-title-mobile-only,
+  .veloura-popup--mobile-only {
+    display: block !important;
+  }
+
+  .veloura-show-desktop-only,
+  .veloura-faq-desktop-only,
+  .ultra-desktop-only,
+  .veloura-animated-articles--desktop-only,
+  .veloura-before-after--desktop-only,
+  .veloura-branches--desktop-only,
+  .veloura-brands--desktop-only,
+  .veloura-desktop-only,
+  .veloura-purchase-steps--desktop-only,
+  .veloura-testimonials--desktop-only,
+  .veloura-title-desktop-only,
+  .veloura-popup--desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .veloura-show-desktop-only,
+  .veloura-faq-desktop-only,
+  .ultra-desktop-only,
+  .veloura-animated-articles--desktop-only,
+  .veloura-before-after--desktop-only,
+  .veloura-branches--desktop-only,
+  .veloura-brands--desktop-only,
+  .veloura-desktop-only,
+  .veloura-purchase-steps--desktop-only,
+  .veloura-testimonials--desktop-only,
+  .veloura-title-desktop-only,
+  .veloura-popup--desktop-only {
+    display: block !important;
+  }
+}
+
+/* إذا كان العنصر الأصلي flex/grid، لا نكسر المحتوى الداخلي */
+.veloura-store-features__grid,
+.ultra-square-images__grid,
+.veloura-purchase-steps__grid {
+  box-sizing: border-box;
+}
+
+/* تحسينات للسلايدرات داخل الحاويات المخصصة */
+.veloura-quick-links__container salla-slider,
+.veloura-products__container salla-products-slider,
+.veloura-brands__container salla-slider,
+.veloura-testimonials__container salla-slider,
+.veloura-animated-articles__container salla-slider,
+.ultra-square-images__container salla-slider {
+  width: 100%;
+}

@@ -20,10 +20,10 @@
 
 {% set title_classes = [
   's-block',
-  'container',
   'veloura-title',
   component.veloura_title_line_type == 'both' ? 'has-side-lines' : '',
   component.veloura_title_for_next_section ? 'is-title-next-section' : '',
+  component.veloura_title_enable_custom_spacing ? 'has-spacing' : '',
   component.veloura_title_custom_classes ?: ''
 ] %}
 
@@ -47,22 +47,113 @@
     --veloura-title-spacing: {{ component.veloura_title_enable_custom_spacing ? component.veloura_title_custom_spacing|default(0) : 0 }}px;
   "
 >
-  <div class="veloura-title__inner">
+  {% if component.veloura_title_enable_custom_spacing %}
+    <div class="veloura-title__container">
+  {% else %}
+    <div class="container veloura-title__container">
+  {% endif %}
 
-    {% if component.veloura_title_text %}
-      <h2 class="veloura-title__heading {{ component.veloura_title_line_type == 'both' ? 'has-lines' : '' }}">
-        <span>{{ component.veloura_title_text }}</span>
-      </h2>
-    {% endif %}
+    <div class="veloura-title__inner">
 
-    {% if component.veloura_title_subtitle %}
-      <p class="veloura-title__subtitle">
-        {{ component.veloura_title_subtitle }}
-      </p>
-    {% endif %}
+      {% if component.veloura_title_text %}
+        <h2 class="veloura-title__heading {{ component.veloura_title_line_type == 'both' ? 'has-lines' : '' }}">
+          <span>{{ component.veloura_title_text }}</span>
+        </h2>
+      {% endif %}
+
+      {% if component.veloura_title_subtitle %}
+        <p class="veloura-title__subtitle">
+          {{ component.veloura_title_subtitle }}
+        </p>
+      {% endif %}
+
+    </div>
 
   </div>
 </section>
+
+{% if component.veloura_title_for_next_section %}
+<script>
+  window.__velouraTitleNextSectionFix2026 = window.__velouraTitleNextSectionFix2026 || false;
+
+  if (!window.__velouraTitleNextSectionFix2026) {
+    window.__velouraTitleNextSectionFix2026 = true;
+
+    (function () {
+      function findNextSection(titleBlock) {
+        var next = titleBlock.nextElementSibling;
+
+        while (next) {
+          if (
+            next.classList &&
+            next.classList.contains('s-block') &&
+            !next.classList.contains('veloura-title')
+          ) {
+            return next;
+          }
+
+          next = next.nextElementSibling;
+        }
+
+        return null;
+      }
+
+      function hideNextSectionTitle(section) {
+        if (!section) return;
+
+        section.classList.add('has-veloura-title-before');
+        section.setAttribute('data-veloura-has-external-title', 'true');
+
+        var selectors = [
+          '[data-veloura-section-heading]',
+          '.veloura-component-title',
+          '.section-main-title',
+          '.s-block__title',
+          '.s-block__heading',
+          '.s-block__header',
+          '.s-slider-block__title',
+          '.home-block-title',
+          '.veloura-faq__heading',
+          '.veloura-store-features__heading',
+          '.ultra-square-images__heading',
+          '.veloura-animated-articles__heading',
+          '.veloura-before-after__heading',
+          '.veloura-branches__heading',
+          '.veloura-brands__heading',
+          '.veloura-products__texts',
+          '.veloura-purchase-steps__heading',
+          '.veloura-quick-links__heading',
+          '.veloura-testimonials__heading'
+        ];
+
+        var headings = section.querySelectorAll(selectors.join(','));
+
+        headings.forEach(function (heading) {
+          heading.classList.add('veloura-hidden-by-title-block');
+          heading.style.setProperty('display', 'none', 'important');
+          heading.style.setProperty('margin', '0', 'important');
+          heading.style.setProperty('padding', '0', 'important');
+        });
+      }
+
+      function applyVelouraTitleNextSection() {
+        document.querySelectorAll('.veloura-title.is-title-next-section').forEach(function (titleBlock) {
+          var nextSection = findNextSection(titleBlock);
+          hideNextSectionTitle(nextSection);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', applyVelouraTitleNextSection);
+      document.addEventListener('theme::ready', applyVelouraTitleNextSection);
+      window.addEventListener('load', applyVelouraTitleNextSection);
+
+      setTimeout(applyVelouraTitleNextSection, 250);
+      setTimeout(applyVelouraTitleNextSection, 900);
+      setTimeout(applyVelouraTitleNextSection, 1800);
+    })();
+  }
+</script>
+{% endif %}
 {% endif %}
 
 {% endif %}
