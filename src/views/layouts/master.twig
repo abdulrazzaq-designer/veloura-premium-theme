@@ -1599,6 +1599,133 @@
 
     {# tracking services, custom css feature. #}
     {% hook 'head:end' %}
+    {# ================================
+   Veloura Global Container Bridge 2026
+   يربط إعدادات عرض الحاوية والمسافة العامة بأغلب عناصر المتجر
+================================ #}
+
+{% set v_global_spacing = theme.settings.get('veloura_site_horizontal_spacing_2026', 12) %}
+{% if v_global_spacing.value is defined %}
+  {% set v_global_spacing = v_global_spacing.value %}
+{% endif %}
+{% set v_global_spacing = v_global_spacing + 0 %}
+{% if v_global_spacing < 0 %}{% set v_global_spacing = 0 %}{% endif %}
+{% if v_global_spacing > 80 %}{% set v_global_spacing = 80 %}{% endif %}
+
+{% set v_global_container_extra = theme.settings.get('veloura_site_container_width_2026', 180) %}
+{% if v_global_container_extra.value is defined %}
+  {% set v_global_container_extra = v_global_container_extra.value %}
+{% endif %}
+{% set v_global_container_extra = v_global_container_extra + 0 %}
+{% if v_global_container_extra < 0 %}{% set v_global_container_extra = 0 %}{% endif %}
+{% if v_global_container_extra > 700 %}{% set v_global_container_extra = 700 %}{% endif %}
+
+{% set v_global_container_width = 1100 + v_global_container_extra %}
+
+<style id="veloura-global-container-bridge-2026">
+  :root {
+    --veloura-global-spacing: {{ v_global_spacing }}px;
+    --veloura-global-container: {{ v_global_container_width }}px;
+  }
+
+  body :where(
+    .container,
+    .s-block__container,
+    .index-outer,
+    .container--products-list,
+    .veloura-category-page > .container
+  ) {
+    width: 100%;
+    max-width: var(--veloura-global-container) !important;
+    margin-inline: auto !important;
+    padding-inline: var(--veloura-global-spacing) !important;
+    box-sizing: border-box;
+  }
+
+  body :where(
+    .s-block.container,
+    .s-block--banners.container,
+    .pro-square-images.container,
+    .animated-banners.container,
+    .photos-slider.container,
+    .products-slider.container,
+    .fixed-banner.container,
+    .main-links.container
+  ) {
+    max-width: var(--veloura-global-container) !important;
+    margin-inline: auto !important;
+    padding-inline: var(--veloura-global-spacing) !important;
+    box-sizing: border-box;
+  }
+
+  body :where(
+    .ultra-square-images:not(.has-spacing) .ultra-square-images__container
+  ) {
+    width: 100%;
+    max-width: var(--veloura-global-container) !important;
+    margin-inline: auto !important;
+    padding-inline: var(--veloura-global-spacing) !important;
+    box-sizing: border-box;
+  }
+
+  body :where(
+    .ultra-square-images.has-spacing .ultra-square-images__container
+  ) {
+    width: 100%;
+    max-width: none !important;
+    margin-inline: auto !important;
+    padding-inline: var(--ultra-horizontal-spacing, var(--veloura-global-spacing)) !important;
+    box-sizing: border-box;
+  }
+
+  body :where(
+    .is-full-width-desktop,
+    .full-banner,
+    .fullwidth-slider
+  ) {
+    max-width: none !important;
+  }
+
+  body :where(
+    .full-banner,
+    .is-full-width-desktop
+  ) {
+    padding-inline: 0 !important;
+  }
+
+  body :where(
+    .s-block,
+    .ultra-square-images,
+    .pro-square-images,
+    .animated-banners,
+    .veloura-category-banner,
+    .veloura-category-children,
+    .veloura-category-products-wrap
+  ) {
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 767px) {
+    body :where(
+      .container,
+      .s-block__container,
+      .index-outer,
+      .container--products-list,
+      .veloura-category-page > .container,
+      .s-block.container,
+      .s-block--banners.container,
+      .pro-square-images.container,
+      .animated-banners.container,
+      .photos-slider.container,
+      .products-slider.container,
+      .fixed-banner.container,
+      .main-links.container,
+      .ultra-square-images:not(.has-spacing) .ultra-square-images__container
+    ) {
+      padding-inline: var(--veloura-global-spacing) !important;
+    }
+  }
+</style>
 </head>
 
 <body id="app" class="theme-raed overflow-x-hidden {% hook 'body:classes' %}
