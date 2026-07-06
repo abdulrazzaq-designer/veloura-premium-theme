@@ -1,8 +1,19 @@
 {% set footer_enabled = true %}
 
-{# =========================
-   Logo / assets
-========================= #}
+{% macro veloura_select_value(raw, fallback) %}
+  {% if raw.selected is defined and raw.selected[0].value is defined %}
+    {{ raw.selected[0].value }}
+  {% elseif raw.value is defined %}
+    {{ raw.value }}
+  {% elseif raw is iterable and raw[0].value is defined %}
+    {{ raw[0].value }}
+  {% elseif raw %}
+    {{ raw }}
+  {% else %}
+    {{ fallback }}
+  {% endif %}
+{% endmacro %}
+
 {% set light_logo_url = theme.settings.get('veloura_light_logo_url_2026') %}
 {% set light_logo_image = theme.settings.get('veloura_light_logo_2026') %}
 {% set veloura_light_logo = light_logo_url ?: light_logo_image %}
@@ -10,13 +21,10 @@
 {% set footer_logo_url = theme.settings.get('veloura_footer_logo_url_2026') %}
 {% set footer_logo_image = theme.settings.get('veloura_footer_logo_image_2026') %}
 {% set footer_logo = footer_logo_url ?: footer_logo_image ?: veloura_light_logo ?: store.logo|cdn(175) %}
-
 {% set footer_logo_lower = footer_logo|lower %}
 {% set footer_logo_is_video = footer_logo_lower ends with '.webm' or footer_logo_lower ends with '.mp4' %}
 
-{# =========================
-   Colors
-========================= #}
+{# Colors #}
 {% set footer_bg = theme.settings.get('veloura_footer_bg_color_2026', '#f8fafc') %}
 {% if footer_bg.value is defined %}{% set footer_bg = footer_bg.value %}{% endif %}
 
@@ -35,9 +43,6 @@
 {% set footer_icon_color = theme.settings.get('veloura_footer_icon_color_2026', '#26265c') %}
 {% if footer_icon_color.value is defined %}{% set footer_icon_color = footer_icon_color.value %}{% endif %}
 
-{% set footer_contact_item_bg = theme.settings.get('veloura_footer_contact_item_bg_2026', '#ffffff') %}
-{% if footer_contact_item_bg.value is defined %}{% set footer_contact_item_bg = footer_contact_item_bg.value %}{% endif %}
-
 {% set footer_contact_border = theme.settings.get('veloura_footer_contact_border_color_2026', '#26265c') %}
 {% if footer_contact_border.value is defined %}{% set footer_contact_border = footer_contact_border.value %}{% endif %}
 
@@ -47,111 +52,27 @@
 {% set footer_bottom_text_color = theme.settings.get('veloura_footer_bottom_text_color_2026', '#334155') %}
 {% if footer_bottom_text_color.value is defined %}{% set footer_bottom_text_color = footer_bottom_text_color.value %}{% endif %}
 
-{# =========================
-   Helper dropdown parser pattern
-========================= #}
-{% set footer_radius = theme.settings.get('veloura_footer_radius_2026', 'medium') %}
-{% if footer_radius.selected is defined and footer_radius.selected[0].value is defined %}
-  {% set footer_radius = footer_radius.selected[0].value %}
-{% elseif footer_radius.value is defined %}
-  {% set footer_radius = footer_radius.value %}
-{% elseif footer_radius is iterable and footer_radius[0].value is defined %}
-  {% set footer_radius = footer_radius[0].value %}
+{# Dropdowns #}
+{% set footer_radius = _self.veloura_select_value(theme.settings.get('veloura_footer_radius_2026', 'medium'), 'medium')|trim %}
+{% set footer_columns = _self.veloura_select_value(theme.settings.get('veloura_footer_columns_desktop_2026', '4'), '4')|trim %}
+{% set footer_contact_display = _self.veloura_select_value(theme.settings.get('veloura_footer_contact_display_2026', 'icon_text'), 'icon_text')|trim %}
+{% set footer_title_size_key = _self.veloura_select_value(theme.settings.get('veloura_footer_title_size_2026', 'large'), 'large')|trim %}
+{% set footer_text_size_key = _self.veloura_select_value(theme.settings.get('veloura_footer_text_size_2026', 'medium'), 'medium')|trim %}
+{% set footer_logo_size_key = _self.veloura_select_value(theme.settings.get('veloura_footer_logo_size_2026', 'medium'), 'medium')|trim %}
+
+{% if footer_contact_display not in ['icons_only', 'icon_text'] %}
+  {% set footer_contact_display = 'icon_text' %}
 {% endif %}
 
-{% set footer_columns = theme.settings.get('veloura_footer_columns_desktop_2026', '4') %}
-{% if footer_columns.selected is defined and footer_columns.selected[0].value is defined %}
-  {% set footer_columns = footer_columns.selected[0].value %}
-{% elseif footer_columns.value is defined %}
-  {% set footer_columns = footer_columns.value %}
-{% elseif footer_columns is iterable and footer_columns[0].value is defined %}
-  {% set footer_columns = footer_columns[0].value %}
-{% endif %}
-
-{% set footer_contact_display = theme.settings.get('veloura_footer_contact_display_2026', 'icon_text_border') %}
-{% if footer_contact_display.selected is defined and footer_contact_display.selected[0].value is defined %}
-  {% set footer_contact_display = footer_contact_display.selected[0].value %}
-{% elseif footer_contact_display.value is defined %}
-  {% set footer_contact_display = footer_contact_display.value %}
-{% elseif footer_contact_display is iterable and footer_contact_display[0].value is defined %}
-  {% set footer_contact_display = footer_contact_display[0].value %}
-{% endif %}
-{% if footer_contact_display == 'outline_label' or footer_contact_display == 'icon_text' %}
-  {% set footer_contact_display = 'icon_text_border' %}
-{% endif %}
-{% if footer_contact_display not in ['default', 'icon_text_border', 'icons_only'] %}
-  {% set footer_contact_display = 'icon_text_border' %}
-{% endif %}
-
-{% set footer_contact_layout = theme.settings.get('veloura_footer_contact_layout_2026', 'row') %}
-{% if footer_contact_layout.selected is defined and footer_contact_layout.selected[0].value is defined %}
-  {% set footer_contact_layout = footer_contact_layout.selected[0].value %}
-{% elseif footer_contact_layout.value is defined %}
-  {% set footer_contact_layout = footer_contact_layout.value %}
-{% elseif footer_contact_layout is iterable and footer_contact_layout[0].value is defined %}
-  {% set footer_contact_layout = footer_contact_layout[0].value %}
-{% endif %}
-{% if footer_contact_layout not in ['row', 'column'] %}{% set footer_contact_layout = 'row' %}{% endif %}
-
-{% set footer_icon_radius = theme.settings.get('veloura_footer_icon_radius_2026', 'round') %}
-{% if footer_icon_radius.selected is defined and footer_icon_radius.selected[0].value is defined %}
-  {% set footer_icon_radius = footer_icon_radius.selected[0].value %}
-{% elseif footer_icon_radius.value is defined %}
-  {% set footer_icon_radius = footer_icon_radius.value %}
-{% elseif footer_icon_radius is iterable and footer_icon_radius[0].value is defined %}
-  {% set footer_icon_radius = footer_icon_radius[0].value %}
-{% endif %}
-{% if footer_icon_radius not in ['sharp', 'soft', 'round'] %}{% set footer_icon_radius = 'round' %}{% endif %}
-
-{% set footer_title_size_key = theme.settings.get('veloura_footer_title_size_2026', 'large') %}
-{% if footer_title_size_key.selected is defined and footer_title_size_key.selected[0].value is defined %}
-  {% set footer_title_size_key = footer_title_size_key.selected[0].value %}
-{% elseif footer_title_size_key.value is defined %}
-  {% set footer_title_size_key = footer_title_size_key.value %}
-{% elseif footer_title_size_key is iterable and footer_title_size_key[0].value is defined %}
-  {% set footer_title_size_key = footer_title_size_key[0].value %}
-{% endif %}
-
-{% set footer_text_size_key = theme.settings.get('veloura_footer_text_size_2026', 'medium') %}
-{% if footer_text_size_key.selected is defined and footer_text_size_key.selected[0].value is defined %}
-  {% set footer_text_size_key = footer_text_size_key.selected[0].value %}
-{% elseif footer_text_size_key.value is defined %}
-  {% set footer_text_size_key = footer_text_size_key.value %}
-{% elseif footer_text_size_key is iterable and footer_text_size_key[0].value is defined %}
-  {% set footer_text_size_key = footer_text_size_key[0].value %}
-{% endif %}
-
-{% set footer_logo_size_key = theme.settings.get('veloura_footer_logo_size_2026', 'medium') %}
-{% if footer_logo_size_key.selected is defined and footer_logo_size_key.selected[0].value is defined %}
-  {% set footer_logo_size_key = footer_logo_size_key.selected[0].value %}
-{% elseif footer_logo_size_key.value is defined %}
-  {% set footer_logo_size_key = footer_logo_size_key.value %}
-{% elseif footer_logo_size_key is iterable and footer_logo_size_key[0].value is defined %}
-  {% set footer_logo_size_key = footer_logo_size_key[0].value %}
-{% endif %}
-
-{% set footer_apps_size_key = theme.settings.get('veloura_footer_apps_badge_size_2026', 'medium') %}
-{% if footer_apps_size_key.selected is defined and footer_apps_size_key.selected[0].value is defined %}
-  {% set footer_apps_size_key = footer_apps_size_key.selected[0].value %}
-{% elseif footer_apps_size_key.value is defined %}
-  {% set footer_apps_size_key = footer_apps_size_key.value %}
-{% elseif footer_apps_size_key is iterable and footer_apps_size_key[0].value is defined %}
-  {% set footer_apps_size_key = footer_apps_size_key[0].value %}
-{% endif %}
-
-{% set title_size_map = {'small':'16px','medium':'20px','large':'24px','xlarge':'30px','xxlarge':'36px'} %}
-{% set text_size_map = {'small':'13px','medium':'15px','large':'17px','xlarge':'19px'} %}
-{% set logo_size_map = {'small':'64px','medium':'84px','large':'108px','xlarge':'132px'} %}
-{% set apps_size_map = {'small':'34px','medium':'42px','large':'50px','xlarge':'60px'} %}
+{% set title_size_map = {'small':'16px','medium':'20px','large':'24px','xlarge':'30px'} %}
+{% set text_size_map = {'small':'13px','medium':'15px','large':'17px'} %}
+{% set logo_size_map = {'small':'64px','medium':'84px','large':'108px'} %}
 
 {% set footer_title_size = title_size_map[footer_title_size_key]|default('24px') %}
 {% set footer_text_size = text_size_map[footer_text_size_key]|default('15px') %}
 {% set footer_logo_size = logo_size_map[footer_logo_size_key]|default('84px') %}
-{% set footer_apps_badge_height = apps_size_map[footer_apps_size_key]|default('42px') %}
 
-{# =========================
-   Switches
-========================= #}
+{# Switches #}
 {% set footer_center_all = theme.settings.get('veloura_footer_center_all_2026', false) %}
 {% if footer_center_all.value is defined %}{% set footer_center_all = footer_center_all.value %}{% endif %}
 
@@ -161,39 +82,27 @@
 {% set footer_hide_apps = theme.settings.get('veloura_footer_hide_apps_2026', false) %}
 {% if footer_hide_apps.value is defined %}{% set footer_hide_apps = footer_hide_apps.value %}{% endif %}
 
+{% set footer_hide_apps_title = theme.settings.get('veloura_footer_hide_apps_title_2026', false) %}
+{% if footer_hide_apps_title.value is defined %}{% set footer_hide_apps_title = footer_hide_apps_title.value %}{% endif %}
+
+{% set footer_featured_apps = theme.settings.get('veloura_footer_featured_apps_2026', false) %}
+{% if footer_featured_apps.value is defined %}{% set footer_featured_apps = footer_featured_apps.value %}{% endif %}
+
 {% set footer_hide_links = theme.settings.get('veloura_footer_hide_links_2026', false) %}
 {% if footer_hide_links.value is defined %}{% set footer_hide_links = footer_hide_links.value %}{% endif %}
 
 {% set footer_hide_payments = theme.settings.get('veloura_footer_hide_payments_2026', false) %}
 {% if footer_hide_payments.value is defined %}{% set footer_hide_payments = footer_hide_payments.value %}{% endif %}
 
-{% set footer_compact = theme.settings.get('veloura_footer_compact_2026', false) %}
-{% if footer_compact.value is defined %}{% set footer_compact = footer_compact.value %}{% endif %}
-
-{% set footer_transparent_home = theme.settings.get('veloura_footer_transparent_home_2026', false) %}
-{% if footer_transparent_home.value is defined %}{% set footer_transparent_home = footer_transparent_home.value %}{% endif %}
-
-{% set footer_social_separate = theme.settings.get('veloura_footer_social_separate_2026', false) %}
-{% if footer_social_separate.value is defined %}{% set footer_social_separate = footer_social_separate.value %}{% endif %}
-
 {% set footer_merge_social = theme.settings.get('veloura_footer_merge_social_with_contacts_2026', false) %}
 {% if footer_merge_social.value is defined %}{% set footer_merge_social = footer_merge_social.value %}{% endif %}
 
-{% set footer_apps_center = theme.settings.get('veloura_footer_apps_center_2026', true) %}
-{% if footer_apps_center.value is defined %}{% set footer_apps_center = footer_apps_center.value %}{% endif %}
-
-{% set footer_hide_apps_title = theme.settings.get('veloura_footer_hide_apps_title_2026', false) %}
-{% if footer_hide_apps_title.value is defined %}{% set footer_hide_apps_title = footer_hide_apps_title.value %}{% endif %}
-
-{# =========================
-   Texts
-========================= #}
+{# Texts #}
 {% set footer_store_title = theme.settings.get('veloura_footer_store_title_2026') ?: store.name %}
 {% set footer_store_description = theme.settings.get('veloura_footer_store_description_2026') ?: store.description %}
 {% set footer_links_title = theme.settings.get('veloura_footer_links_title_2026') ?: trans('blocks.footer.pages_links') %}
 {% set footer_contact_title = theme.settings.get('veloura_footer_contact_title_2026') ?: 'تواصل معنا' %}
 {% set footer_apps_title = theme.settings.get('veloura_footer_apps_title_2026') ?: 'تحميل تطبيق الجوال' %}
-{% set footer_social_title = theme.settings.get('veloura_footer_social_title_2026') ?: 'تابعنا' %}
 {% set footer_bottom_text = theme.settings.get('veloura_footer_bottom_text_2026') %}
 
 {% set footer_bg_image = theme.settings.get('veloura_footer_bg_image_2026') %}
@@ -202,18 +111,13 @@
 <footer
   class="store-footer
   veloura-footer-enabled
-  {{ footer_compact ? 'veloura-footer-compact' : '' }}
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
-  {{ footer_transparent_home and is_page('index') ? 'veloura-footer-transparent-home' : '' }}
-  {{ footer_apps_center ? 'veloura-footer-apps-center' : '' }}
-  {{ footer_hide_apps_title ? 'veloura-footer-hide-apps-title' : '' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
-  {{ footer_social_separate and not footer_merge_social ? 'veloura-footer-social-separated' : '' }}
+  {{ footer_featured_apps ? 'veloura-footer-featured-apps' : '' }}
+  {{ footer_hide_apps_title ? 'veloura-footer-hide-apps-title' : '' }}
   veloura-footer-radius-{{ footer_radius }}
   veloura-footer-cols-{{ footer_columns }}
   veloura-footer-contact-display-{{ footer_contact_display }}
-  veloura-footer-contact-layout-{{ footer_contact_layout }}
-  veloura-footer-icon-radius-{{ footer_icon_radius }}
   "
   style="
     --veloura-footer-bg: {{ footer_bg }};
@@ -222,14 +126,12 @@
     --veloura-footer-link: {{ footer_link_color }};
     --veloura-footer-icon-bg: {{ footer_icon_bg }};
     --veloura-footer-icon-color: {{ footer_icon_color }};
-    --veloura-footer-contact-item-bg: {{ footer_contact_item_bg }};
     --veloura-footer-contact-border: {{ footer_contact_border }};
     --veloura-footer-bottom-bg: {{ footer_bottom_bg }};
     --veloura-footer-bottom-text: {{ footer_bottom_text_color }};
     --veloura-footer-title-size: {{ footer_title_size }};
     --veloura-footer-text-size: {{ footer_text_size }};
     --veloura-footer-logo-size: {{ footer_logo_size }};
-    --veloura-footer-app-badge-height: {{ footer_apps_badge_height }};
     {% if footer_bg_image %}
       --veloura-footer-bg-image: url('{{ footer_bg_image }}');
     {% endif %}
@@ -239,7 +141,6 @@
     <div class="veloura-footer-container">
       <div class="veloura-footer-grid">
 
-        {# Store Info #}
         <div class="veloura-footer-block veloura-footer-store">
           {% if not footer_hide_logo %}
             <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
@@ -259,8 +160,7 @@
             </div>
           {% endif %}
 
-          {# الطبيعي: السوشيال تحت معلومات المتجر، بدون عنوان #}
-          {% if not footer_social_separate and not footer_merge_social %}
+          {% if not footer_merge_social %}
             <div class="veloura-footer-social veloura-footer-social-store" data-veloura-footer-social>
               <salla-social></salla-social>
             </div>
@@ -294,7 +194,6 @@
           </div>
         </div>
 
-        {# Footer Links #}
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
             <h3 class="veloura-footer-title">{{ footer_links_title }}</h3>
@@ -302,7 +201,6 @@
           </div>
         {% endif %}
 
-        {# Contacts + optional merged social #}
         <div class="veloura-footer-block veloura-footer-contact">
           <h3 class="veloura-footer-title">{{ footer_contact_title }}</h3>
 
@@ -319,17 +217,6 @@
           </div>
         </div>
 
-        {# Separate Social #}
-        {% if footer_social_separate and not footer_merge_social %}
-          <div class="veloura-footer-block veloura-footer-social-block">
-            <h3 class="veloura-footer-title">{{ footer_social_title }}</h3>
-            <div class="veloura-footer-social veloura-footer-social-separated-list" data-veloura-footer-social>
-              <salla-social></salla-social>
-            </div>
-          </div>
-        {% endif %}
-
-        {# Apps #}
         {% if not footer_hide_apps %}
           <div class="veloura-footer-block veloura-footer-apps">
             {% if not footer_hide_apps_title %}
@@ -415,14 +302,12 @@
         if (/tel:|phone|mobile|call|هاتف|جوال|sicon-phone/.test(source)) return 'phone';
         if (sourceType === 'social') return 'website';
         if (/https?:\/\//.test(source)) return 'website';
-
         return 'contact';
       }
 
       function getValue(link, kind, sourceType) {
-        const href = (link.getAttribute('href') || '').trim();
-
         if (sourceType === 'social') return '';
+        const href = (link.getAttribute('href') || '').trim();
 
         if (kind === 'email' && href.indexOf('mailto:') === 0) {
           return href.replace(/^mailto:/i, '').split('?')[0];
@@ -447,7 +332,6 @@
         if (oldIcon && oldIcon.tagName && oldIcon.tagName.toLowerCase() === 'i' && oldIcon.className) {
           return '<i class="' + oldIcon.className + '"></i>';
         }
-
         return '<i class="' + (iconMap[kind] || iconMap.contact) + '"></i>';
       }
 
@@ -471,7 +355,7 @@
           '</span>';
       }
 
-      function initVelouraFooterContacts() {
+      function initFooterContacts() {
         document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
           const merged = footer.classList.contains('veloura-footer-merge-social');
 
@@ -479,8 +363,6 @@
             normalizeLink(link, 'contact');
           });
 
-          /* السوشيال يأخذ نفس شكل الاتصال فقط عند تفعيل الدمج.
-             بدون دمج نترك salla-social طبيعي أيقونات فقط حتى لا تظهر الأسماء. */
           if (merged) {
             footer.querySelectorAll('[data-veloura-footer-social] a[href], [data-veloura-footer-social] button').forEach(function (link) {
               normalizeLink(link, 'social');
@@ -489,19 +371,39 @@
         });
       }
 
-      document.addEventListener('DOMContentLoaded', initVelouraFooterContacts);
-      document.addEventListener('theme::ready', initVelouraFooterContacts);
-      setTimeout(initVelouraFooterContacts, 300);
-      setTimeout(initVelouraFooterContacts, 900);
-      setTimeout(initVelouraFooterContacts, 1800);
-      setTimeout(initVelouraFooterContacts, 3000);
+      function initFeaturedApps() {
+        document.querySelectorAll('.store-footer.veloura-footer-featured-apps .veloura-footer-apps salla-apps-icons a[href]').forEach(function (link) {
+          if (link.dataset.velouraAppReady === '1') return;
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const observer = new MutationObserver(initVelouraFooterContacts);
-        document.querySelectorAll('.store-footer.veloura-footer-enabled salla-contacts, .store-footer.veloura-footer-enabled salla-social').forEach(function (el) {
-          observer.observe(el, { childList: true, subtree: true });
+          const source = ((link.getAttribute('href') || '') + ' ' + cleanText(link) + ' ' + Array.from(link.querySelectorAll('img')).map(img => ((img.getAttribute('alt') || '') + ' ' + (img.getAttribute('src') || ''))).join(' ')).toLowerCase();
+
+          const isApple = /apple|app store|ios/.test(source);
+          const label = isApple ? 'App Store' : 'Google Play';
+
+          const svg = isApple
+            ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.7 13.1c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.4-1.1-.9-2.4-.7-3-.4-.6.3-1.2.4-1.8.4s-1.3-.4-2.1-.4c-1.1 0-2.1.6-2.7 1.5-1.2 2.1-.3 5.2.8 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.2-.6s1.3.6 2.2.6 1.5-.8 2.1-1.7c.7-1 1-2 1-2.1 0 0-2.1-.8-2.1-3.8ZM14.2 7c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1Z"/></svg>'
+            : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 3.8v16.4c0 .6.7.9 1.2.6l9.1-8.2c.3-.3.3-.8 0-1.1L6.2 3.2C5.7 2.9 5 3.2 5 3.8Zm11.5 7.1 2.1-1.2c.6-.4.6-1.2 0-1.5L8.3 2.4l8.2 8.5Zm0 2.2-8.2 8.5 10.3-5.8c.6-.3.6-1.2 0-1.5l-2.1-1.2Z"/></svg>';
+
+          link.classList.add('veloura-footer-app-button');
+          link.innerHTML =
+            '<span class="veloura-footer-app-button__icon">' + svg + '</span>' +
+            '<span class="veloura-footer-app-button__text">' + label + '</span>';
+
+          link.dataset.velouraAppReady = '1';
         });
-      });
+      }
+
+      function initVelouraFooter() {
+        initFooterContacts();
+        initFeaturedApps();
+      }
+
+      document.addEventListener('DOMContentLoaded', initVelouraFooter);
+      document.addEventListener('theme::ready', initVelouraFooter);
+      setTimeout(initVelouraFooter, 300);
+      setTimeout(initVelouraFooter, 900);
+      setTimeout(initVelouraFooter, 1800);
+      setTimeout(initVelouraFooter, 3000);
     })();
   </script>
 
