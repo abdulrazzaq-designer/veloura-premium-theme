@@ -27,10 +27,9 @@
   {% endif %}
 
   {% set veloura_hide_product_count_raw = theme.settings.get('veloura_category_hide_product_count_2026', false) %}
+  {# نقرأ قيمة الزر الحقيقية فقط حتى لا تتأثر الصفحة بأي selected قديم أو مكرر من twilight.json #}
   {% if veloura_hide_product_count_raw.value is defined %}
     {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.value %}
-  {% elseif veloura_hide_product_count_raw.selected is defined %}
-    {% set veloura_hide_product_count_raw = veloura_hide_product_count_raw.selected %}
   {% endif %}
 
   {% set veloura_hide_product_count =
