@@ -266,19 +266,6 @@
             style="--veloura-cat-banner-radius: {{ veloura_cat_banner_radius }};"
           ></div>
 
-          <div class="mt-4 mb-4 sm:mt-5 sm:mb-6 flex justify-between items-center veloura-category-head veloura-category-head--below-banner">
-            <h1
-              class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title"
-              id="page-main-title"
-              data-veloura-clean-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
-            >
-              {% if veloura_hide_product_count %}
-                {{ category.name|default(page.title)|striptags }}
-              {% else %}
-                {{ page.title|raw }}
-              {% endif %}
-            </h1>
-          </div>
 
           <style>
             .veloura-category-banner-root {
@@ -307,21 +294,35 @@
               border-radius: inherit;
             }
 
-            .veloura-category-head--below-banner {
-              width: 100%;
-            }
-
-            .veloura-category-head--below-banner .veloura-category-main-title {
-              margin: 0;
-            }
 
             .veloura-category-products-toolbar {
               width: 100%;
+              margin-top: 18px;
+            }
+
+            .veloura-category-products-toolbar__title .veloura-category-main-title {
+              margin: 0 !important;
+              padding: 0 !important;
+              line-height: 1.4;
+              text-align: start;
+            }
+
+            .veloura-category-products-toolbar__actions {
+              margin-inline-start: auto;
             }
 
             @media (max-width: 767px) {
               .veloura-category-products-toolbar {
-                margin-top: 6px;
+                margin-top: 12px;
+                gap: 10px;
+              }
+
+              .veloura-category-products-toolbar__title .veloura-category-main-title {
+                font-size: 17px;
+              }
+
+              .veloura-category-products-toolbar__actions {
+                max-width: 58%;
               }
 
               .veloura-category-products-toolbar .veloura-category-sort {
@@ -413,11 +414,23 @@
             </section>
           {% endif %}
 
-          {% if sort_options|length or filters %}
-            <div class="veloura-category-products-toolbar mb-5 flex items-center justify-between gap-3">
-              <div class="veloura-category-products-toolbar__spacer flex-1"></div>
+          <div class="veloura-category-products-toolbar mb-5 flex items-center justify-between gap-3">
+            <div class="veloura-category-products-toolbar__title flex-1 min-w-0">
+              <h1
+                class="font-bold text-xl rtl:pl-3 ltr:pr-3 veloura-category-main-title"
+                id="page-main-title"
+                data-veloura-clean-title="{{ category.name|default(page.title)|striptags|e('html_attr') }}"
+              >
+                {% if veloura_hide_product_count %}
+                  {{ category.name|default(page.title)|striptags }}
+                {% else %}
+                  {{ page.title|raw }}
+                {% endif %}
+              </h1>
+            </div>
 
-              <div class="flex items-center gap-3 rtl:space-x-reverse">
+            {% if sort_options|length or filters %}
+              <div class="veloura-category-products-toolbar__actions flex items-center gap-3 rtl:space-x-reverse shrink-0">
                 {% if filters %}
                   <a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden">
                     <i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
@@ -440,8 +453,8 @@
                   </div>
                 {% endif %}
               </div>
-            </div>
-          {% endif %}
+            {% endif %}
+          </div>
 
           {% if not (veloura_hide_products_if_children and has_sub_categories) %}
 
