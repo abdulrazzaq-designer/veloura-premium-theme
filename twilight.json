@@ -10012,6 +10012,15 @@
                     "value": ""
                 },
                 {
+  "id": "veloura_title_enable_icon",
+  "type": "boolean",
+  "format": "switch",
+  "label": "إظهار أيقونة بجانب العنوان",
+  "description": "فعّل الخيار لاختيار أيقونة تظهر بجانب العنوان",
+  "value": false,
+  "required": false
+},
+{
   "id": "veloura_title_icon",
   "type": "string",
   "format": "icon",
@@ -10020,8 +10029,16 @@
   "labelHTML": null,
   "icon": "sicon-star",
   "value": "",
-  "required": false
-},
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_title_enable_icon",
+      "operation": "=",
+      "value": true
+    }
+  ]
+}
+,
                 {
                     "id": "veloura_title_color",
                     "type": "string",

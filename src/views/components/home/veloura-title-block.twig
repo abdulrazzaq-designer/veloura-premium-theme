@@ -16,15 +16,7 @@
   'xxl': '34px'
 } %}
 
-{% set title_size_raw = component.veloura_title_size|default('medium') %}
-{% if title_size_raw is iterable and title_size_raw[0].value is defined %}
-  {% set title_size = title_size_raw[0].value %}
-{% elseif title_size_raw.value is defined %}
-  {% set title_size = title_size_raw.value %}
-{% else %}
-  {% set title_size = title_size_raw %}
-{% endif %}
-
+{# align value #}
 {% set title_align_raw = component.veloura_title_align|default('center') %}
 {% if title_align_raw is iterable and title_align_raw[0].value is defined %}
   {% set title_align = title_align_raw[0].value %}
@@ -33,11 +25,11 @@
 {% else %}
   {% set title_align = title_align_raw %}
 {% endif %}
-
 {% if title_align not in ['right', 'center', 'left'] %}
   {% set title_align = 'center' %}
 {% endif %}
 
+{# line type value #}
 {% set line_type_raw = component.veloura_title_line_type|default('both') %}
 {% if line_type_raw is iterable and line_type_raw[0].value is defined %}
   {% set line_type = line_type_raw[0].value %}
@@ -46,12 +38,18 @@
 {% else %}
   {% set line_type = line_type_raw %}
 {% endif %}
-
 {% if line_type not in ['none', 'right', 'left', 'both'] %}
   {% set line_type = 'both' %}
 {% endif %}
 
-{# icon field: type string / format icon. No image, no size option. #}
+{# icon switch value #}
+{% set icon_enabled_raw = component.veloura_title_enable_icon|default(false) %}
+{% if icon_enabled_raw.value is defined %}
+  {% set icon_enabled_raw = icon_enabled_raw.value %}
+{% endif %}
+{% set icon_enabled = icon_enabled_raw == true or icon_enabled_raw == 'true' or icon_enabled_raw == 1 or icon_enabled_raw == '1' %}
+
+{# icon class value from format: icon. Salla may return string, object, or array. #}
 {% set title_icon_raw = component.veloura_title_icon|default('') %}
 {% if title_icon_raw is iterable and title_icon_raw[0].value is defined %}
   {% set title_icon = title_icon_raw[0].value %}
@@ -61,18 +59,18 @@
   {% set title_icon = title_icon_raw %}
 {% endif %}
 
-{% set title_icon = title_icon|trim %}
+{% set show_icon = icon_enabled and title_icon %}
 
 {% if not component.veloura_title_hide_section %}
 
 {% set title_classes = [
   's-block',
-  'container',
   'veloura-title',
   'veloura-title--align-' ~ title_align,
   'veloura-title--line-' ~ line_type,
-  title_icon ? 'has-icon' : '',
+  show_icon ? 'has-icon' : '',
   component.veloura_title_for_next_section ? 'is-title-next-section' : '',
+  component.veloura_title_enable_custom_spacing ? 'has-spacing' : '',
   component.veloura_title_custom_classes ?: ''
 ] %}
 
@@ -84,114 +82,145 @@
   {% set title_classes = title_classes|merge(['veloura-title-desktop-only']) %}
 {% endif %}
 
-{% if component.veloura_title_text or component.veloura_title_subtitle or title_icon %}
+{% if component.veloura_title_text or component.veloura_title_subtitle or show_icon %}
 <section
   class="{{ title_classes|join(' ') }}"
   style="
     --veloura-title-color: {{ component.veloura_title_color|default('#323232') }};
     --veloura-title-line-color: {{ component.veloura_title_line_color|default('#111111') }};
     --veloura-title-align: {{ title_align }};
-    --veloura-title-size: {{ title_size_map[title_size]|default('28px') }};
-    --veloura-subtitle-size: {{ subtitle_size_map[title_size]|default('18px') }};
+    --veloura-title-size: {{ title_size_map[component.veloura_title_size|default('medium')]|default('28px') }};
+    --veloura-subtitle-size: {{ subtitle_size_map[component.veloura_title_size|default('medium')]|default('18px') }};
     --veloura-title-spacing: {{ component.veloura_title_enable_custom_spacing ? component.veloura_title_custom_spacing|default(0) : 0 }}px;
   "
   {% if component.veloura_title_for_next_section %}data-veloura-title-next="true"{% endif %}
 >
-  <div class="veloura-title__inner">
+  {% if component.veloura_title_enable_custom_spacing %}
+    <div class="veloura-title__container">
+  {% else %}
+    <div class="container veloura-title__container">
+  {% endif %}
 
-    {% if component.veloura_title_text or title_icon %}
-      <h2 class="veloura-title__heading" data-veloura-title-heading data-veloura-section-heading>
-        {% if line_type == 'right' or line_type == 'both' %}
-          <span class="veloura-title__line veloura-title__line--right" aria-hidden="true"></span>
-        {% endif %}
+    <div class="veloura-title__inner">
 
-        <span class="veloura-title__content">
-          {% if title_icon %}
-            <i class="veloura-title__icon {{ title_icon|e('html_attr') }}" aria-hidden="true"></i>
+      {% if component.veloura_title_text or show_icon %}
+        <h2 class="veloura-title__heading" data-veloura-title-heading>
+          {% if line_type == 'right' or line_type == 'both' %}
+            <span class="veloura-title__line veloura-title__line--right" aria-hidden="true"></span>
           {% endif %}
 
-          {% if component.veloura_title_text %}
-            <span class="veloura-title__text">{{ component.veloura_title_text }}</span>
+          <span class="veloura-title__content">
+            {% if show_icon %}
+              <i class="veloura-title__icon {{ title_icon|e('html_attr') }}" aria-hidden="true"></i>
+            {% endif %}
+
+            {% if component.veloura_title_text %}
+              <span class="veloura-title__text">{{ component.veloura_title_text }}</span>
+            {% endif %}
+          </span>
+
+          {% if line_type == 'left' or line_type == 'both' %}
+            <span class="veloura-title__line veloura-title__line--left" aria-hidden="true"></span>
           {% endif %}
-        </span>
+        </h2>
+      {% endif %}
 
-        {% if line_type == 'left' or line_type == 'both' %}
-          <span class="veloura-title__line veloura-title__line--left" aria-hidden="true"></span>
-        {% endif %}
-      </h2>
-    {% endif %}
+      {% if component.veloura_title_subtitle %}
+        <p class="veloura-title__subtitle">
+          {{ component.veloura_title_subtitle }}
+        </p>
+      {% endif %}
 
-    {% if component.veloura_title_subtitle %}
-      <p class="veloura-title__subtitle">
-        {{ component.veloura_title_subtitle }}
-      </p>
-    {% endif %}
+    </div>
 
   </div>
 </section>
-{% endif %}
-
-{% endif %}
 
 {% if component.veloura_title_for_next_section %}
 <script>
-  (function () {
-    function velouraApplyTitleToNextSection() {
-      document.querySelectorAll('.veloura-title.is-title-next-section').forEach(function (titleBlock) {
-        if (titleBlock.dataset.velouraTitleNextDone === '1') return;
+  window.__velouraTitleNextSectionFix2026 = window.__velouraTitleNextSectionFix2026 || false;
 
-        let next = titleBlock.nextElementSibling;
+  if (!window.__velouraTitleNextSectionFix2026) {
+    window.__velouraTitleNextSectionFix2026 = true;
 
-        while (next && (!next.classList || !next.classList.contains('s-block'))) {
+    (function () {
+      function findNextSection(titleBlock) {
+        var next = titleBlock.nextElementSibling;
+
+        while (next) {
+          if (
+            next.classList &&
+            next.classList.contains('s-block') &&
+            !next.classList.contains('veloura-title')
+          ) {
+            return next;
+          }
+
           next = next.nextElementSibling;
         }
 
-        if (!next) return;
+        return null;
+      }
 
-        titleBlock.dataset.velouraTitleNextDone = '1';
-        next.classList.add('has-veloura-title-before');
-        next.style.setProperty('margin-top', '1rem', 'important');
-        next.style.setProperty('padding-top', '0', 'important');
+      function hideNextSectionTitle(section) {
+        if (!section) return;
 
-        const selectors = [
+        section.classList.add('has-veloura-title-before');
+        section.setAttribute('data-veloura-has-external-title', 'true');
+
+        var selectors = [
           '[data-veloura-section-heading]',
           '[data-veloura-section-heading-icon]',
           '.veloura-component-title',
           '.section-main-title',
           '.s-block__title',
-
-          /* Veloura products title + icon */
-          '.veloura-products__heading-content',
-          '.veloura-products__icon',
-          '.veloura-products__texts',
-
-          /* Other Veloura component headings */
-          '.veloura-store-features__heading',
+          '.s-block__heading',
+          '.s-block__header',
+          '.s-slider-block__title',
+          '.home-block-title',
           '.veloura-faq__heading',
+          '.veloura-store-features__heading',
           '.ultra-square-images__heading',
           '.veloura-animated-articles__heading',
           '.veloura-before-after__heading',
           '.veloura-branches__heading',
           '.veloura-brands__heading',
+          '.veloura-products__heading-content',
+          '.veloura-products__texts',
+          '.veloura-products__icon',
           '.veloura-purchase-steps__heading',
           '.veloura-quick-links__heading',
           '.veloura-testimonials__heading'
         ];
 
-        next.querySelectorAll(selectors.join(',')).forEach(function (item) {
-          item.classList.add('veloura-hidden-by-title-block');
-          item.style.setProperty('display', 'none', 'important');
-          item.style.setProperty('margin', '0', 'important');
-          item.style.setProperty('padding', '0', 'important');
-        });
-      });
-    }
+        var headings = section.querySelectorAll(selectors.join(','));
 
-    document.addEventListener('DOMContentLoaded', velouraApplyTitleToNextSection);
-    document.addEventListener('theme::ready', velouraApplyTitleToNextSection);
-    setTimeout(velouraApplyTitleToNextSection, 300);
-    setTimeout(velouraApplyTitleToNextSection, 900);
-    setTimeout(velouraApplyTitleToNextSection, 1800);
-  })();
+        headings.forEach(function (heading) {
+          heading.classList.add('veloura-hidden-by-title-block');
+          heading.style.setProperty('display', 'none', 'important');
+          heading.style.setProperty('margin', '0', 'important');
+          heading.style.setProperty('padding', '0', 'important');
+        });
+      }
+
+      function applyVelouraTitleNextSection() {
+        document.querySelectorAll('.veloura-title.is-title-next-section').forEach(function (titleBlock) {
+          var nextSection = findNextSection(titleBlock);
+          hideNextSectionTitle(nextSection);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', applyVelouraTitleNextSection);
+      document.addEventListener('theme::ready', applyVelouraTitleNextSection);
+      window.addEventListener('load', applyVelouraTitleNextSection);
+
+      setTimeout(applyVelouraTitleNextSection, 250);
+      setTimeout(applyVelouraTitleNextSection, 900);
+      setTimeout(applyVelouraTitleNextSection, 1800);
+    })();
+  }
 </script>
+{% endif %}
+{% endif %}
+
 {% endif %}
