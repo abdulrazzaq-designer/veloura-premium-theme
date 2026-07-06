@@ -86,7 +86,8 @@
 {% set hide_cart_total_mobile = theme.settings.get('veloura_top_hide_cart_total_mobile_2026', true) %}
 {% if hide_cart_total_mobile.value is defined %}{% set hide_cart_total_mobile = hide_cart_total_mobile.value %}{% endif %}
 
-{% set full_width_desktop = theme.settings.get('veloura_top_full_width_desktop_2026', true) %}
+{# false = الهيدر يحترم كونتينر اللابتوب افتراضياً، وإذا فعّلت خيار العرض الكامل من الإعدادات يصير Full Width #}
+{% set full_width_desktop = theme.settings.get('veloura_top_full_width_desktop_2026', false) %}
 {% if full_width_desktop.value is defined %}{% set full_width_desktop = full_width_desktop.value %}{% endif %}
 
 {% set show_wishlist = theme.settings.get('veloura_top_show_wishlist_2026', false) %}

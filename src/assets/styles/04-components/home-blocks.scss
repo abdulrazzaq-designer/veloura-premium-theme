@@ -1528,6 +1528,7 @@
 /* =========================
    Veloura Products Slider
 ========================= */
+
 .veloura-mobile-only {
   @media (min-width: 768px) {
     display: none !important;
@@ -1546,16 +1547,47 @@
   overflow: hidden;
 }
 
+.veloura-products__container,
 .veloura-products__inner {
   width: 100%;
   overflow: hidden;
 }
 
-.veloura-products.has-custom-spacing {
-  .container {
-    padding-inline: var(--veloura-products-spacing, 16px) !important;
+/* =========================
+   Custom Spacing
+   المسافة المخصصة للجوال فقط
+========================= */
+
+/* لابتوب / تابلت: يرجع يحترم الكونتينر */
+@media (min-width: 768px) {
+  .veloura-products.has-custom-spacing {
+    .container,
+    .veloura-products__container {
+      padding-inline: var(--veloura-home-container-padding, 0px) !important;
+      max-width: var(--veloura-home-container-width, var(--veloura-global-container, 1280px)) !important;
+      margin-inline: auto !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 }
+
+/* جوال فقط: هنا تشتغل المسافة المخصصة */
+@media (max-width: 767px) {
+  .veloura-products.has-custom-spacing {
+    .container,
+    .veloura-products__container {
+      padding-inline: var(--veloura-products-spacing, 16px) !important;
+      max-width: none !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+/* =========================
+   Heading
+========================= */
 
 .veloura-products__heading {
   display: flex;
@@ -1586,7 +1618,7 @@
 
 .veloura-products__texts p {
   margin: 0;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .veloura-products__button {
@@ -1596,6 +1628,10 @@
   margin-top: 0;
   flex-shrink: 0;
 }
+
+/* =========================
+   Centered Products Header
+========================= */
 
 .veloura-products.is-centered {
   .veloura-products__heading,
@@ -1615,6 +1651,47 @@
   }
 }
 
+/* =========================
+   When External Title Is Used
+   لما عنوان فيلورا يصير عنوان لهذا القسم
+========================= */
+
+.veloura-products.has-veloura-title-before {
+  padding-top: 10px;
+}
+
+/* نخفي عنوان المنتجات الأصلي والأيقونة فقط */
+.veloura-products.has-veloura-title-before {
+  .veloura-products__heading-content {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* نخلي زر عرض الكل ظاهر ومرتب تحت العنوان الخارجي */
+  .veloura-products__heading {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .veloura-products__button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-inline: auto;
+    margin-top: 0;
+  }
+}
+
+/* =========================
+   Grid Mode
+========================= */
+
 .veloura-products.as-grid {
   .s-products-list-wrapper {
     display: grid !important;
@@ -1622,6 +1699,10 @@
     gap: 24px !important;
   }
 }
+
+/* =========================
+   Slider Mode
+========================= */
 
 .veloura-products.as-slider {
   salla-products-slider,
@@ -1664,13 +1745,16 @@
   }
 }
 
+/* عرض كامل للمنتجات فقط إذا خيار التوسيع مفعّل */
 .veloura-products.as-slider.is-products-wide {
-  .container {
+  .container,
+  .veloura-products__container {
     max-width: none !important;
     width: 100% !important;
   }
 }
 
+/* توسيط السلايدر على الديسكتوب */
 @media (min-width: 768px) {
   .veloura-products.as-slider.is-products-centered {
     .swiper-wrapper.s-slider-swiper-wrapper {
@@ -1679,7 +1763,16 @@
   }
 }
 
+/* =========================
+   Mobile
+========================= */
+
 @media (max-width: 767px) {
+  .veloura-products {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
   .veloura-products.as-grid {
     .s-products-list-wrapper {
       grid-template-columns: repeat(var(--mob-products-cols, 2), minmax(0, 1fr)) !important;
@@ -1690,11 +1783,44 @@
   .veloura-products__heading {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .veloura-products__heading-content {
+    gap: 10px;
+  }
+
+  .veloura-products__icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .veloura-products__texts h2 {
+    font-size: 24px;
+  }
+
+  .veloura-products__button {
+    margin-top: 4px;
   }
 
   .veloura-products.is-centered {
     .veloura-products__heading {
       align-items: center;
+      text-align: center;
+    }
+  }
+
+  .veloura-products.has-veloura-title-before {
+    .veloura-products__heading {
+      align-items: center;
+      justify-content: center;
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+
+    .veloura-products__button {
+      margin-inline: auto;
     }
   }
 }

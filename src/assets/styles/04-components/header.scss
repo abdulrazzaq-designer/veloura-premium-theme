@@ -324,9 +324,9 @@ salla-menu[topnav]:not(.hydrated) {
 
   .veloura-header-container {
     width: 100%;
-    max-width: 1280px;
+    max-width: var(--veloura-home-container-width, var(--veloura-global-container, 1280px));
     margin-inline: auto;
-    padding-inline: 16px;
+    padding-inline: var(--veloura-home-container-padding, var(--veloura-global-spacing, 16px));
     box-sizing: border-box;
   }
 
@@ -550,8 +550,9 @@ body.dark {
   .store-header.veloura-top-enabled {
     .veloura-header-container {
       width: 100%;
-      max-width: none;
-      padding-inline: 14px;
+      max-width: none !important;
+      padding-inline: 14px !important;
+      box-sizing: border-box;
     }
 
     .veloura-header-grid {
@@ -640,15 +641,20 @@ body.dark {
 @media (min-width: 1024px) {
   .store-header.veloura-top-enabled {
     .veloura-header-container {
-      padding-inline: 32px;
+      width: 100% !important;
+      max-width: var(--veloura-home-container-width, var(--veloura-global-container, 1280px)) !important;
+      margin-inline: auto !important;
+      padding-inline: var(--veloura-home-container-padding, var(--veloura-global-spacing, 32px)) !important;
+      box-sizing: border-box;
     }
 
+    /* العرض الكامل فقط إذا خيار الهيدر Full Width مفعّل */
     &.veloura-top-full-width-desktop {
       .veloura-header-container {
-        width: 100vw;
-        max-width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
+        width: 100% !important;
+        max-width: none !important;
+        margin-inline: auto !important;
+        padding-inline: 32px !important;
       }
     }
 
@@ -1870,3 +1876,18 @@ html[dir="ltr"] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   right: -100% !important;
   left: auto !important;
 }
+
+/* ================================
+   Veloura Header Container Control - Final Guard
+   لازم يبقى بعد كود الهيدر إذا صار أي تعارض
+================================ */
+@media (min-width: 1024px) {
+  .store-header.veloura-top-enabled:not(.veloura-top-full-width-desktop) .veloura-header-container {
+    width: 100% !important;
+    max-width: var(--veloura-home-container-width, var(--veloura-global-container, 1280px)) !important;
+    margin-inline: auto !important;
+    padding-inline: var(--veloura-home-container-padding, var(--veloura-global-spacing, 32px)) !important;
+    box-sizing: border-box !important;
+  }
+}
+
