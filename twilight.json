@@ -2742,6 +2742,24 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
+  "label": "عرض وسائل التواصل جنب بعض بخلفية فضية",
+  "description": "عند التفعيل تتحول وسائل التواصل من عامود واحد إلى بطاقات أفقية فضية بجانب بعض",
+  "id": "veloura_footer_contact_inline_silver_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
   "label": "توسيط وسائل التواصل",
   "description": "عند التفعيل يتم توسيط وسائل التواصل داخل العمود",
   "id": "veloura_footer_contact_center_2026",

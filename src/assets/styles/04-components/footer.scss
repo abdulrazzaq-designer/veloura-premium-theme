@@ -1,23 +1,24 @@
+
 .store-footer {
   @apply relative bg-darker text-white mt-8 sm:mt-16;
 
-  a {
+  a{
     @apply transition-opacity hover:opacity-75;
   }
 
-  &__inner {
+  &__inner{
     @apply bg-dark py-8 lg:py-16 border-b border-dashed border-b-white/10;
-  }
+  }  
 
-  h3 {
+  h3{
     @apply text-lg font-bold mb-3 lg:mb-5;
   }
 
   .social-link {
-    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm;
+    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm
   }
 
-  .contact-social {
+  .contact-social{
     @apply mt-5 pt-5 border-t border-white/10;
 
     ul {
@@ -36,167 +37,160 @@
       @apply border-gray-300;
     }
 
-    .contact-social {
+    .contact-social{
       @apply border-gray-100;
     }
   }
 }
 
-.copyright-text p {
+
+.copyright-text p{
   @apply text-gray-700;
 }
 
+
+
+
+
+
+
+
+
+
 /* ================================
-   Veloura Footer 2026 - Clean Premium Layout
-   - Desktop داخل الكونتينر العام
-   - Mobile مرتب ومضغوط
-   - Contact / Social / Apps محسنة
+   Veloura Footer 2026 - Fixed
 ================================ */
 
 .store-footer.veloura-footer-enabled {
   --veloura-footer-real-radius: 0px;
-  --veloura-footer-container-width: var(--veloura-home-container-width, var(--veloura-global-container, 1280px));
-  --veloura-footer-container-padding: var(--veloura-home-container-padding, var(--veloura-global-spacing, 16px));
 
   position: relative;
-  width: 100%;
-  margin-top: 48px;
   background: transparent !important;
   color: var(--veloura-footer-text) !important;
-  font-size: var(--veloura-footer-text-size, 14px);
+  font-size: var(--veloura-footer-text-size);
   overflow: visible !important;
 }
 
-/* Radius values */
-.store-footer.veloura-footer-enabled.veloura-footer-radius-sharp { --veloura-footer-real-radius: 0px; }
-.store-footer.veloura-footer-enabled.veloura-footer-radius-soft { --veloura-footer-real-radius: 14px; }
-.store-footer.veloura-footer-enabled.veloura-footer-radius-medium { --veloura-footer-real-radius: 28px; }
-.store-footer.veloura-footer-enabled.veloura-footer-radius-large { --veloura-footer-real-radius: 46px; }
+/* قيم الحواف */
+.store-footer.veloura-footer-enabled.veloura-footer-radius-sharp {
+  --veloura-footer-real-radius: 0px;
+}
 
-/* Main body */
+.store-footer.veloura-footer-enabled.veloura-footer-radius-soft {
+  --veloura-footer-real-radius: 14px;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-radius-medium {
+  --veloura-footer-real-radius: 28px;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-radius-large {
+  --veloura-footer-real-radius: 46px;
+}
+
+/* الجسم الرئيسي للفوتر */
 .store-footer.veloura-footer-enabled .store-footer__inner,
 .store-footer.veloura-footer-enabled .veloura-footer-main {
   position: relative;
-  padding: 0 !important;
   background-color: var(--veloura-footer-bg) !important;
   color: var(--veloura-footer-text) !important;
   background-image: var(--veloura-footer-bg-image) !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
-  border: 0 !important;
   border-radius: var(--veloura-footer-real-radius) var(--veloura-footer-real-radius) 0 0 !important;
   overflow: hidden !important;
 }
 
-/* Overlay only if background image exists */
+/* طبقة خفيفة حتى النص يظل واضح فوق الصورة */
 .store-footer.veloura-footer-enabled .store-footer__inner::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, .72);
   pointer-events: none;
+  z-index: 0;
 }
 
+.store-footer.veloura-footer-enabled .veloura-footer-container,
+.store-footer.veloura-footer-enabled .veloura-footer-grid,
+.store-footer.veloura-footer-enabled .veloura-footer-block {
+  position: relative;
+  z-index: 1;
+}
+
+/* عند عدم وجود صورة خلفية لا نحتاج طبقة */
 .store-footer.veloura-footer-enabled:not([style*="--veloura-footer-bg-image"]) .store-footer__inner::before {
   display: none;
 }
 
+/* الوضع الشفاف في الرئيسية */
 .store-footer.veloura-footer-enabled.veloura-footer-transparent-home .store-footer__inner,
 .store-footer.veloura-footer-enabled.veloura-footer-transparent-home .veloura-footer-main {
   background-color: transparent !important;
 }
 
-/* Shared container */
+/* الحاوية */
 .store-footer.veloura-footer-enabled .veloura-footer-container {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: var(--veloura-footer-container-width) !important;
-  margin-inline: auto !important;
-  padding-inline: var(--veloura-footer-container-padding) !important;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
   box-sizing: border-box;
 }
 
-/* Grid */
+/* الشبكة */
 .store-footer.veloura-footer-enabled .veloura-footer-grid {
-  position: relative;
-  z-index: 1;
+  padding: 56px 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
-  padding-block: 44px;
-  align-items: start;
-  direction: rtl;
+  gap: 34px;
 }
 
-.store-footer.veloura-footer-enabled .veloura-footer-block {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-}
-
-/* Titles */
+/* العناوين */
 .store-footer.veloura-footer-enabled .veloura-footer-title {
-  margin: 0 0 14px !important;
+  margin: 0 0 18px;
   color: var(--veloura-footer-title) !important;
-  font-size: clamp(17px, var(--veloura-footer-title-size, 16px), 24px) !important;
-  font-weight: 800 !important;
-  line-height: 1.45 !important;
-  letter-spacing: -0.01em;
+  font-size: var(--veloura-footer-title-size);
+  font-weight: 800;
+  line-height: 1.6;
 }
 
-/* Text */
+/* النصوص */
 .store-footer.veloura-footer-enabled .veloura-footer-description {
-  max-width: 420px;
+  max-width: 360px;
   color: var(--veloura-footer-text) !important;
-  font-size: var(--veloura-footer-text-size, 14px) !important;
   line-height: 1.9;
-  opacity: 0.86;
+  opacity: .88;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-description p {
   margin: 0 0 10px;
 }
 
-/* Logo */
+/* الشعار */
 .store-footer.veloura-footer-enabled .veloura-footer-logo {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-logo__media {
-  max-height: var(--veloura-footer-logo-size, 76px);
+  max-height: var(--veloura-footer-logo-size);
   width: auto;
   max-width: 220px;
   object-fit: contain;
   display: block;
 }
 
-/* Links */
+/* الروابط */
 .store-footer.veloura-footer-enabled a,
 .store-footer.veloura-footer-enabled salla-menu a,
 .store-footer.veloura-footer-enabled salla-contacts a {
   color: var(--veloura-footer-link) !important;
-  text-decoration: none !important;
 }
 
-.store-footer.veloura-footer-enabled .veloura-footer-links salla-menu,
-.store-footer.veloura-footer-enabled .veloura-footer-links salla-menu ul {
-  display: block !important;
-}
-
-.store-footer.veloura-footer-enabled .veloura-footer-links salla-menu li,
-.store-footer.veloura-footer-enabled .veloura-footer-links salla-menu a {
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 2.05 !important;
-  font-size: var(--veloura-footer-text-size, 14px) !important;
-}
-
-/* Hide internal duplicated headings */
+/* إخفاء العناوين الداخلية المكررة من مكونات سلة */
 .store-footer.veloura-footer-enabled .veloura-footer-contact salla-contacts h3,
 .store-footer.veloura-footer-enabled .veloura-footer-contact salla-contacts h4,
 .store-footer.veloura-footer-enabled .veloura-footer-contact salla-contacts .title,
@@ -209,25 +203,25 @@
   display: none !important;
 }
 
-/* Store social */
+/* السوشيال */
 .store-footer.veloura-footer-enabled .veloura-footer-social {
-  margin-top: 18px;
+  margin-top: 22px;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-social-title {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: var(--veloura-footer-title) !important;
-  font-size: max(14px, calc(var(--veloura-footer-title-size, 16px) - 2px));
-  font-weight: 750;
-  line-height: 1.4;
+  font-size: calc(var(--veloura-footer-title-size) - 2px);
+  font-weight: 700;
 }
 
+/* تدوير خلفية أيقونات التواصل */
 .store-footer.veloura-footer-enabled salla-social,
 .store-footer.veloura-footer-enabled salla-social div {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .store-footer.veloura-footer-enabled salla-social a,
@@ -245,349 +239,125 @@
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(0, 0, 0, .06) !important;
 }
 
-/* Trust / tax */
+/* تدوير أيقونات التواصل/الكونتاكت */
+.store-footer.veloura-footer-enabled salla-contacts .s-contacts-item-icon,
+.store-footer.veloura-footer-enabled .s-contacts-item-icon,
+.store-footer.veloura-footer-enabled salla-contacts i,
+.store-footer.veloura-footer-enabled .veloura-footer-contact i {
+  border-radius: 999px !important;
+  background: var(--veloura-footer-icon-bg) !important;
+  color: var(--veloura-footer-link) !important;
+}
+
+/* الثقة والضريبة */
 .store-footer.veloura-footer-enabled .veloura-footer-trust {
-  margin-top: 18px;
+  margin-top: 22px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-tax {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--veloura-footer-text) !important;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-tax img {
-  width: 38px;
+  width: 40px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-tax p {
-  margin: 0 0 3px;
+  margin: 0 0 4px;
   font-size: 12px;
-  opacity: 0.7;
+  opacity: .7;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-tax b {
   font-size: 13px;
-  color: var(--veloura-footer-text) !important;
+  color: var(--veloura-footer-text);
 }
 
-/* Contact - modern */
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-modern .veloura-footer-contact salla-contacts {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 10px !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-modern .veloura-footer-contact salla-contacts :where(a, li, .s-contacts-item, .s-contact-item) {
-  direction: rtl;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 11px !important;
-  min-height: 42px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  color: var(--veloura-footer-link) !important;
-  width: fit-content !important;
-  max-width: 100% !important;
-  font-size: var(--veloura-footer-text-size, 14px) !important;
-  line-height: 1.45 !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-modern .veloura-footer-contact salla-contacts :where(.s-contacts-item-icon, i, svg) {
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  min-height: 36px !important;
-  border-radius: 999px !important;
-  background: var(--veloura-footer-icon-bg) !important;
-  color: var(--veloura-footer-link) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 16px !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
-}
-
-/* Contact - icons only */
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact salla-contacts {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact salla-contacts :where(a, li, .s-contacts-item, .s-contact-item) {
-  width: 40px !important;
-  height: 40px !important;
-  min-width: 40px !important;
-  min-height: 40px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border-radius: 999px !important;
-  background: var(--veloura-footer-icon-bg) !important;
-  color: var(--veloura-footer-link) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  font-size: 0 !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact salla-contacts :where(span, p, b, strong, small, .s-contacts-item-label, .s-contacts-item-value, .s-contact-label, .s-contact-value) {
-  display: none !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact salla-contacts :where(i, svg, .s-contacts-item-icon) {
-  width: auto !important;
-  height: auto !important;
-  min-width: auto !important;
-  min-height: auto !important;
-  background: transparent !important;
-  color: var(--veloura-footer-link) !important;
-  font-size: 18px !important;
-  display: inline-flex !important;
-}
-
-/* Center contact */
-.store-footer.veloura-footer-enabled.veloura-footer-contact-center .veloura-footer-contact,
-.store-footer.veloura-footer-enabled.veloura-footer-contact-center .veloura-footer-contact .veloura-footer-title {
-  text-align: center !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-center .veloura-footer-contact salla-contacts {
-  align-items: center !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-center.veloura-footer-contact-display-modern .veloura-footer-contact salla-contacts :where(a, li, .s-contacts-item, .s-contact-item) {
-  justify-content: center !important;
-  margin-inline: auto !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-contact-center.veloura-footer-contact-display-icons_only .veloura-footer-contact salla-contacts {
-  justify-content: center !important;
-}
-
-/* Apps */
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons {
-  display: block !important;
-  max-width: 100% !important;
-}
-
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(div, ul) {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(a, img) {
-  max-width: 100% !important;
-}
-
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
-  height: var(--veloura-footer-app-badge-height, 46px) !important;
-  width: auto !important;
-  max-width: 158px !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-apps-center .veloura-footer-apps,
-.store-footer.veloura-footer-enabled.veloura-footer-apps-center .veloura-footer-apps .veloura-footer-title {
-  text-align: center !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-apps-center .veloura-footer-apps salla-apps-icons,
-.store-footer.veloura-footer-enabled.veloura-footer-apps-center .veloura-footer-apps salla-apps-icons :where(div, ul) {
-  justify-content: center !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-hide-apps-title .veloura-footer-apps .veloura-footer-title {
-  display: none !important;
-}
-
-/* Social center */
-.store-footer.veloura-footer-enabled.veloura-footer-social-center .veloura-footer-social,
-.store-footer.veloura-footer-enabled.veloura-footer-social-center .veloura-footer-social-title {
-  text-align: center !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-social-center salla-social,
-.store-footer.veloura-footer-enabled.veloura-footer-social-center salla-social div {
-  justify-content: center !important;
-}
-
-/* Bottom bar */
+/* الشريط السفلي */
 .store-footer.veloura-footer-enabled .veloura-footer-bottom {
   background: var(--veloura-footer-bottom-bg) !important;
   color: var(--veloura-footer-bottom-text) !important;
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, .06);
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-bottom__inner {
   min-height: 58px;
-  padding-block: 12px;
+  padding-block: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
 }
 
-.store-footer.veloura-footer-enabled .veloura-footer-copyright,
-.store-footer.veloura-footer-enabled .veloura-footer-copyright p {
-  margin: 0 !important;
+.store-footer.veloura-footer-enabled .veloura-footer-copyright {
   color: var(--veloura-footer-bottom-text) !important;
   font-size: 13px;
-  line-height: 1.6;
 }
 
-.store-footer.veloura-footer-enabled salla-payments,
-.store-footer.veloura-footer-enabled salla-payments div,
-.store-footer.veloura-footer-enabled salla-payments ul {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  gap: 8px !important;
-  flex-wrap: wrap !important;
-}
-
-/* Desktop / laptop */
+/* عدد الأعمدة */
 @media (min-width: 1024px) {
-  .store-footer.veloura-footer-enabled {
-    margin-top: 64px;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-container {
-    padding-inline: var(--veloura-footer-container-padding, 32px) !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-grid {
-    padding-block: 54px;
-    gap: 34px;
-  }
-
   .store-footer.veloura-footer-enabled.veloura-footer-cols-3 .veloura-footer-grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: 1.4fr 1fr 1fr;
   }
 
   .store-footer.veloura-footer-enabled.veloura-footer-cols-3 .veloura-footer-apps {
     grid-column: 1 / -1;
-    max-width: 560px;
-    justify-self: center;
   }
 
   .store-footer.veloura-footer-enabled.veloura-footer-cols-4 .veloura-footer-grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1.05fr);
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-cols-4 .veloura-footer-apps {
-    justify-self: stretch;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   }
 }
 
-/* Mobile / tablet */
+/* الجوال */
 @media (max-width: 1023px) {
-  .store-footer.veloura-footer-enabled {
-    margin-top: 34px;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-container {
-    max-width: min(100%, 560px) !important;
-    padding-inline: 22px !important;
-  }
-
   .store-footer.veloura-footer-enabled .veloura-footer-grid {
-    padding-block: 36px;
-    gap: 30px;
-    text-align: center;
-    justify-items: center;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-block {
-    width: 100%;
-    max-width: 460px;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-title {
-    margin-bottom: 12px !important;
-    font-size: clamp(18px, calc(var(--veloura-footer-title-size, 16px) + 2px), 28px) !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-description {
-    margin-inline: auto;
-    max-width: 360px;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-logo,
-  .store-footer.veloura-footer-enabled .veloura-footer-trust,
-  .store-footer.veloura-footer-enabled .veloura-footer-tax {
-    justify-content: center;
-  }
-
-  .store-footer.veloura-footer-enabled salla-social,
-  .store-footer.veloura-footer-enabled salla-social div {
-    justify-content: center !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-modern .veloura-footer-contact salla-contacts {
-    align-items: center !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-contact-display-modern .veloura-footer-contact salla-contacts :where(a, li, .s-contacts-item, .s-contact-item) {
-    justify-content: center !important;
-    margin-inline: auto !important;
-    min-height: 40px !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(div, ul) {
-    justify-content: center !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
-    height: min(var(--veloura-footer-app-badge-height, 46px), 48px) !important;
-    max-width: 150px !important;
+    padding: 42px 0;
   }
 
   .store-footer.veloura-footer-enabled .veloura-footer-bottom__inner {
-    min-height: auto;
-    padding-block: 16px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
   }
 
-  .store-footer.veloura-footer-enabled salla-payments,
-  .store-footer.veloura-footer-enabled salla-payments div,
-  .store-footer.veloura-footer-enabled salla-payments ul {
-    justify-content: center !important;
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile {
+    text-align: center;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile .veloura-footer-logo,
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile .veloura-footer-trust,
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile .veloura-footer-tax {
+    justify-content: center;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile .veloura-footer-description {
+    margin-inline: auto;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile salla-social,
+  .store-footer.veloura-footer-enabled.veloura-footer-center-mobile salla-social div {
+    justify-content: center;
   }
 }
 
-/* Compact mode */
+/* الوضع المصغر */
 .store-footer.veloura-footer-enabled.veloura-footer-compact {
-  max-width: min(calc(100% - 32px), var(--veloura-footer-container-width));
-  margin-inline: auto;
+  max-width: calc(100% - 32px);
+  margin: 24px auto;
   border-radius: var(--veloura-footer-real-radius) !important;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, .08);
   overflow: hidden !important;
 }
 
@@ -598,5 +368,390 @@
 }
 
 .store-footer.veloura-footer-enabled.veloura-footer-compact .veloura-footer-grid {
-  padding-block: 38px;
+  padding: 42px 0;
+}
+
+
+
+/* ================================
+   Veloura Footer Contact + Apps - Final
+   - أسماء عربية: الهاتف / واتساب / البريد الإلكتروني / تلجرام
+   - السويتش الجديد يحوّل وسائل التواصل إلى بطاقات فضية جنب بعض
+   - وضع أيقونات فقط صار جنب بعض وليس عامود
+================================ */
+
+.store-footer.veloura-footer-enabled {
+  .veloura-footer-contact-list {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .veloura-footer-contact-list salla-contacts,
+  .veloura-footer-contact-list salla-contacts > div,
+  .veloura-footer-contact-list salla-contacts ul {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    width: 100% !important;
+  }
+
+  .veloura-footer-contact-list salla-contacts li {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    width: 100% !important;
+  }
+
+  .veloura-footer-contact-list a.veloura-contact-item {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row-reverse !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    text-decoration: none !important;
+    color: var(--veloura-footer-link) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+
+  .veloura-footer-contact-list a.veloura-contact-item:hover {
+    transform: translateY(-1px);
+  }
+
+  .veloura-contact-icon {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    border-radius: 999px !important;
+    background: var(--veloura-footer-icon-bg) !important;
+    color: var(--veloura-footer-link) !important;
+    border: 1px solid rgba(15, 23, 42, .08) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, .06);
+  }
+
+  .veloura-contact-icon i,
+  .veloura-contact-icon svg,
+  .veloura-contact-icon img {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    line-height: 1 !important;
+    object-fit: contain !important;
+    color: inherit !important;
+    fill: currentColor !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .veloura-contact-texts {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    min-width: 0 !important;
+    text-align: start !important;
+  }
+
+  .veloura-contact-label {
+    display: block !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    color: var(--veloura-footer-title) !important;
+  }
+
+  .veloura-contact-value {
+    display: block !important;
+    font-size: var(--veloura-footer-text-size) !important;
+    font-weight: 500 !important;
+    line-height: 1.45 !important;
+    color: var(--veloura-footer-link) !important;
+    opacity: .9 !important;
+    direction: ltr !important;
+    unicode-bidi: plaintext !important;
+    word-break: break-word !important;
+  }
+}
+
+/* ===== الشكل الحديث: عامود مرتب مع اسم عربي + القيمة ===== */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-modern {
+  .veloura-footer-contact-list a.veloura-contact-item {
+    width: 100% !important;
+    max-width: 360px !important;
+    padding: 12px 14px !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, .55) !important;
+    border: 1px solid rgba(15, 23, 42, .07) !important;
+  }
+
+  &.veloura-footer-contact-center {
+    .veloura-footer-contact-list salla-contacts,
+    .veloura-footer-contact-list salla-contacts > div,
+    .veloura-footer-contact-list salla-contacts ul {
+      align-items: center !important;
+    }
+
+    .veloura-footer-contact-list a.veloura-contact-item {
+      margin-inline: auto !important;
+    }
+  }
+}
+
+/* ===== السويتش الجديد: بطاقات فضية جنب بعض ===== */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-inline-silver {
+  .veloura-footer-contact-list salla-contacts,
+  .veloura-footer-contact-list salla-contacts > div,
+  .veloura-footer-contact-list salla-contacts ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .veloura-footer-contact-list li {
+    width: auto !important;
+    flex: 1 1 calc(50% - 8px) !important;
+    min-width: 220px !important;
+  }
+
+  .veloura-footer-contact-list a.veloura-contact-item {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 66px !important;
+    padding: 12px 14px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, #f3f4f6, #e8edf3) !important;
+    border: 1px solid rgba(15, 23, 42, .08) !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, .055) !important;
+  }
+
+  .veloura-contact-icon {
+    background: #ffffff !important;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, .08) !important;
+  }
+
+  &.veloura-footer-contact-center {
+    .veloura-footer-contact-list salla-contacts,
+    .veloura-footer-contact-list salla-contacts > div,
+    .veloura-footer-contact-list salla-contacts ul {
+      justify-content: center !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .veloura-footer-contact-list li {
+      flex: 1 1 100% !important;
+      min-width: 100% !important;
+    }
+  }
+}
+
+/* ===== أيقونات فقط بدون نص: جنب بعض دائمًا ===== */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only {
+  .veloura-footer-contact-list salla-contacts,
+  .veloura-footer-contact-list salla-contacts > div,
+  .veloura-footer-contact-list salla-contacts ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .veloura-footer-contact-list li {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+
+  .veloura-footer-contact-list a.veloura-contact-item {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    max-width: 46px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+
+  .veloura-contact-texts {
+    display: none !important;
+  }
+
+  .veloura-contact-icon {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+  }
+
+  &.veloura-footer-contact-inline-silver {
+    .veloura-footer-contact-list a.veloura-contact-item {
+      background: #eef2f7 !important;
+      border: 1px solid rgba(15, 23, 42, .08) !important;
+      border-radius: 999px !important;
+    }
+
+    .veloura-contact-icon {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+  }
+
+  &.veloura-footer-contact-center {
+    .veloura-footer-contact-list salla-contacts,
+    .veloura-footer-contact-list salla-contacts > div,
+    .veloura-footer-contact-list salla-contacts ul {
+      justify-content: center !important;
+    }
+  }
+}
+
+/* ===== الشكل الافتراضي ===== */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-default:not(.veloura-footer-contact-inline-silver) {
+  .veloura-footer-contact-list a.veloura-contact-item {
+    width: 100% !important;
+    max-width: 320px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .veloura-contact-icon {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+  }
+}
+
+/* ===== توسيط التواصل ===== */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-center {
+  .veloura-footer-contact,
+  .veloura-footer-contact .veloura-footer-title {
+    text-align: center !important;
+  }
+
+  .veloura-footer-contact-list salla-contacts,
+  .veloura-footer-contact-list salla-contacts > div,
+  .veloura-footer-contact-list salla-contacts ul {
+    align-items: center !important;
+  }
+}
+
+/* ===== السوشيال ===== */
+.store-footer.veloura-footer-enabled {
+  salla-social,
+  salla-social div {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  salla-social a,
+  salla-social button,
+  salla-social .s-social-link,
+  .s-social-link {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    border-radius: 999px !important;
+    background: var(--veloura-footer-icon-bg) !important;
+    color: var(--veloura-footer-link) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(0, 0, 0, .06) !important;
+  }
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-social-center {
+  .veloura-footer-social,
+  .veloura-footer-social-title {
+    text-align: center !important;
+  }
+
+  salla-social,
+  salla-social div {
+    justify-content: center !important;
+  }
+}
+
+/* ===== شعارات تطبيق الجوال ===== */
+.store-footer.veloura-footer-enabled {
+  .veloura-footer-apps {
+    min-width: 0;
+  }
+
+  .veloura-footer-apps salla-apps-icons {
+    display: block !important;
+  }
+
+  .veloura-footer-apps salla-apps-icons :where(div, ul) {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  .veloura-footer-apps salla-apps-icons :where(a, img) {
+    max-width: 100% !important;
+  }
+
+  .veloura-footer-apps salla-apps-icons img {
+    height: var(--veloura-footer-app-badge-height) !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-apps-center {
+  .veloura-footer-apps {
+    text-align: center !important;
+  }
+
+  .veloura-footer-apps .veloura-footer-title {
+    text-align: center !important;
+  }
+
+  .veloura-footer-apps salla-apps-icons,
+  .veloura-footer-apps salla-apps-icons :where(div, ul) {
+    justify-content: center !important;
+  }
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-hide-apps-title {
+  .veloura-footer-apps .veloura-footer-title {
+    display: none !important;
+  }
 }
