@@ -2431,7 +2431,7 @@
   "id": "veloura_footer_icon_bg_color_2026",
   "type": "string",
   "format": "color",
-  "label": "لون خلفية أيقونات القسم السفلي",
+  "label": "لون خلفية أيقونات التواصل والاتصال",
   "value": "#ffffff",
   "conditions": [
     {
@@ -2439,7 +2439,52 @@
       "operation": "=",
       "value": true
     }
+  ],
+  "description": "لون خلفية الأيقونات داخل عناصر الاتصال والسوشيال"
+},
+{
+  "id": "veloura_footer_icon_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون أيقونات التواصل والاتصال",
+  "value": "#26265c",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
   ]
+},
+{
+  "id": "veloura_footer_contact_item_bg_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية عناصر التواصل والاتصال",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "يستخدم في شكل أيقونة مع نص أو البطاقات"
+},
+{
+  "id": "veloura_footer_contact_border_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون إطار عناصر التواصل والاتصال",
+  "value": "#26265c",
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "يستخدم في شكل عنوان + أيقونة + إطار فقط"
 },
 {
   "id": "veloura_footer_title_size_2026",
@@ -2596,6 +2641,42 @@
   ]
 },
 {
+  "id": "veloura_footer_align_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "محاذاة الفوتر بالكامل",
+  "icon": "sicon-align-center",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "الوضع الطبيعي - يمين",
+      "value": "default",
+      "key": "veloura_footer_align_2026-default"
+    }
+  ],
+  "options": [
+    {
+      "label": "الوضع الطبيعي - يمين",
+      "value": "default",
+      "key": "veloura-footer-align-default-2026"
+    },
+    {
+      "label": "توسيط كامل الفوتر",
+      "value": "center",
+      "key": "veloura-footer-align-center-2026"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "اختر توسيط كل محتوى الفوتر أو تركه بالوضع الطبيعي يمين"
+},
+{
   "type": "boolean",
   "icon": "sicon-toggle-off",
   "label": "توسيع عناصر الفوتر في الجوال",
@@ -2666,6 +2747,24 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
+  "label": "دمج السوشيال مع وسائل الاتصال",
+  "id": "veloura_footer_merge_social_with_contacts_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "عند التفعيل تظهر أيقونات السوشيال مع الهاتف والإيميل بنفس الشكل والترتيب"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
   "label": "إظهار أيقونات التواصل في قسم معلومات المتجر",
   "description": "عند التفعيل تظهر أيقونات التواصل أسفل معلومات المتجر",
   "id": "veloura_footer_social_under_store_2026",
@@ -2678,6 +2777,11 @@
       "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
+    },
+    {
+      "id": "veloura_footer_merge_social_with_contacts_2026",
+      "operation": "=",
+      "value": false
     }
   ]
 },
@@ -2696,6 +2800,11 @@
       "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
+    },
+    {
+      "id": "veloura_footer_merge_social_with_contacts_2026",
+      "operation": "=",
+      "value": false
     }
   ]
 },
@@ -2703,27 +2812,33 @@
   "id": "veloura_footer_contact_display_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "طريقة عرض وسائل التواصل",
+  "label": "شكل وسائل التواصل والاتصال",
+  "description": "ينطبق على الهاتف، الإيميل، تلجرام، واتساب، والسوشيال عند تفعيل الدمج",
   "icon": "sicon-list",
   "source": "Manual",
   "required": true,
   "selected": [
     {
-      "label": "شكل حديث - أيقونة مع النص",
-      "value": "modern",
-      "key": "veloura-footer-contact-modern-2026"
+      "label": "عنوان + أيقونة + إطار فقط",
+      "value": "outline_label",
+      "key": "veloura-footer-contact-outline-label-2026"
     }
   ],
   "options": [
     {
-      "label": "الشكل الافتراضي",
+      "label": "الشكل الافتراضي - أيقونة مع الرقم أو الإيميل",
       "value": "default",
       "key": "veloura-footer-contact-default-2026"
     },
     {
-      "label": "شكل حديث - أيقونة مع النص",
-      "value": "modern",
-      "key": "veloura-footer-contact-modern-2026"
+      "label": "عنوان + أيقونة + إطار فقط",
+      "value": "outline_label",
+      "key": "veloura-footer-contact-outline-label-2026"
+    },
+    {
+      "label": "أيقونة مع نص",
+      "value": "icon_text",
+      "key": "veloura-footer-contact-icon-text-2026"
     },
     {
       "label": "أيقونات فقط بدون نص",
@@ -2740,58 +2855,86 @@
   ]
 },
 {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "عرض وسائل التواصل جنب بعض بخلفية فضية",
-  "description": "عند التفعيل تتحول وسائل التواصل من عامود واحد إلى بطاقات أفقية فضية بجانب بعض",
-  "id": "veloura_footer_contact_inline_silver_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
+  "id": "veloura_footer_contact_layout_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "ترتيب وسائل التواصل والاتصال",
+  "icon": "sicon-grid",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "جنب بعض",
+      "value": "row",
+      "key": "veloura_footer_contact_layout_2026-row"
+    }
+  ],
+  "options": [
+    {
+      "label": "عامود واحد",
+      "value": "column",
+      "key": "veloura-footer-contact-layout-column-2026"
+    },
+    {
+      "label": "جنب بعض",
+      "value": "row",
+      "key": "veloura-footer-contact-layout-row-2026"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "description": "اختر هل تظهر وسائل التواصل تحت بعضها أو جنب بعض"
 },
 {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "توسيط وسائل التواصل",
-  "description": "عند التفعيل يتم توسيط وسائل التواصل داخل العمود",
-  "id": "veloura_footer_contact_center_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
+  "id": "veloura_footer_icon_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "حواف عناصر وأيقونات التواصل",
+  "icon": "sicon-magic-wand",
+  "source": "Manual",
+  "required": true,
+  "selected": [
+    {
+      "label": "ناعمة",
+      "value": "soft",
+      "key": "veloura_footer_icon_radius_2026-soft"
+    }
+  ],
+  "options": [
+    {
+      "label": "حادة",
+      "value": "sharp",
+      "key": "veloura-footer-icon-radius-sharp-2026"
+    },
+    {
+      "label": "ناعمة",
+      "value": "soft",
+      "key": "veloura-footer-icon-radius-soft-2026"
+    },
+    {
+      "label": "ناعمة جداً",
+      "value": "large",
+      "key": "veloura-footer-icon-radius-large-2026"
+    },
+    {
+      "label": "دائرية",
+      "value": "round",
+      "key": "veloura-footer-icon-radius-round-2026"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
     }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "توسيط أيقونات السوشيال",
-  "description": "عند التفعيل يتم توسيط أيقونات إنستغرام، إكس، يوتيوب وغيرها",
-  "id": "veloura_footer_social_center_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_footer_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
+  ],
+  "description": "يتحكم بحواف أزرار التواصل والسوشيال"
 },
 {
   "type": "boolean",
