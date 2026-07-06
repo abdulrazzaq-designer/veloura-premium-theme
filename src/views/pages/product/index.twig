@@ -1249,20 +1249,27 @@
     });
   </script>
 
-  {% if veloura_hide_product_count %}
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const title = document.getElementById('page-main-title');
+  {# Veloura: إصلاح عنوان التصنيف إذا رجع من سلة كعدد منتجات مثل "منتج واحد" #}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const title = document.getElementById('page-main-title');
+      if (!title) return;
 
-        if (!title) return;
+      const cleanTitle = (title.getAttribute('data-veloura-clean-title') || '').trim();
+      const currentTitle = (title.textContent || '').trim();
 
-        const cleanTitle = title.getAttribute('data-veloura-clean-title');
+      if (!cleanTitle) return;
 
-        if (cleanTitle) {
-          title.textContent = cleanTitle;
-        }
-      });
-    </script>
-  {% endif %}
+      const looksLikeProductCount =
+        /منتج/.test(currentTitle) ||
+        /products?/i.test(currentTitle) ||
+        /^\d+/.test(currentTitle) ||
+        /\d+$/.test(currentTitle);
+
+      if (looksLikeProductCount) {
+        title.textContent = cleanTitle;
+      }
+    });
+  </script>
 
 {% endblock %}
