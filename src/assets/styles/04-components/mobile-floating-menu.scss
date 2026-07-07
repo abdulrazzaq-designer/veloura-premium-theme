@@ -616,3 +616,151 @@
     z-index: 11 !important;
   }
 }
+
+
+/* ======================================================
+   Veloura Mobile Floating Menu FINAL OVERRIDE
+   المطلوب:
+   - خياران فقط: full_width متصل / pill كبسولة
+   - إزالة فراغ body الأبيض تحت الفوتر
+   - الكبسولة تدخل ضمن الكونتينر وليست لاصقة بالأسفل
+   - بعرض الشاشة متصل بالحافة السفلية
+   لازم يبقى هذا آخر شيء في ملف القائمة / الهيدر
+====================================================== */
+
+@media (max-width: 767px) {
+  /* لا نستخدم padding-bottom على body لأنه يخلق فراغاً خارج الفوتر */
+  body.veloura-mobile-floating-menu-enabled {
+    padding-bottom: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* نعطي الفوتر نفسه مساحة من الداخل حتى اللون الأسود/لون الفوتر يمتد خلف القائمة */
+  body.veloura-mobile-floating-menu-enabled .store-footer,
+  body.veloura-mobile-floating-menu-enabled footer.store-footer,
+  body.veloura-mobile-floating-menu-enabled .store-footer.veloura-footer-enabled {
+    margin-bottom: 0 !important;
+  }
+
+  body.veloura-mobile-floating-menu-enabled .store-footer .veloura-footer-bottom,
+  body.veloura-mobile-floating-menu-enabled .store-footer .store-footer__inner:last-child,
+  body.veloura-mobile-floating-menu-enabled .store-footer.veloura-footer-enabled .veloura-footer-bottom {
+    padding-bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      var(--veloura-mobile-floating-menu-bottom, 0px) +
+      env(safe-area-inset-bottom, 0px) +
+      18px
+    ) !important;
+  }
+
+  /* أساس ثابت للقائمة */
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+    position: fixed !important;
+    z-index: 2147483600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    pointer-events: none !important;
+    overflow: visible !important;
+  }
+
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner {
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  /* الخيار الأول: بعرض الشاشة متصل */
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full_width {
+    left: 0 !important;
+    right: 0 !important;
+    inset-inline-start: 0 !important;
+    inset-inline-end: 0 !important;
+    bottom: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 24px 0 0 !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full_width .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius:
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      0
+      0 !important;
+  }
+
+  /* الخيار الثاني: كبسولة عائمة ضمن الكونتينر */
+  body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--pill {
+    left: 50% !important;
+    right: auto !important;
+    inset-inline-start: auto !important;
+    inset-inline-end: auto !important;
+    bottom: calc(
+      var(--veloura-mobile-floating-menu-bottom, 14px) +
+      env(safe-area-inset-bottom, 0px)
+    ) !important;
+    transform: translateX(-50%) !important;
+
+    width: 100% !important;
+    max-width: var(--veloura-home-container-width, var(--veloura-site-container-width, var(--veloura-global-container, 1280px))) !important;
+    min-width: 0 !important;
+
+    padding-inline: var(--veloura-home-container-padding, var(--veloura-global-spacing, var(--veloura-site-spacing, 16px))) !important;
+    padding-top: 22px !important;
+    padding-bottom: 0 !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--pill .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    border-radius: var(--veloura-mobile-floating-menu-radius, 999px) !important;
+  }
+
+  /* دعم قيمة قديمة إذا بقيت مخزنة عند العميل */
+  body.veloura-mobile-floating-menu-position-floating_center .veloura-mobile-floating-menu,
+  body.veloura-mobile-floating-menu-position-floating-center .veloura-mobile-floating-menu {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: auto !important;
+    transform: none !important;
+    padding: 24px 0 0 !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-floating_center .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-position-floating-center .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    border-radius:
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      0
+      0 !important;
+  }
+
+  /* عند فتح التصنيفات، ارفع Bottom Sheet فوق القائمة حسب الوضع */
+  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-ocd__content,
+  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__content,
+  .mm-ocd.ocd-categs.veloura-native-bottom .mm-ocd__content {
+    bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      var(--veloura-mobile-floating-menu-bottom, 0px) +
+      env(safe-area-inset-bottom, 0px) +
+      12px
+    ) !important;
+  }
+}

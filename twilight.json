@@ -5990,27 +5990,24 @@
   "type": "items",
   "format": "dropdown-list",
   "label": "مكان القائمة",
-  "description": "اختر طريقة تموضع القائمة أسفل شاشة الجوال",
+  "description": "اختر شكل القائمة أسفل شاشة الجوال",
   "icon": "sicon-list",
   "source": "Manual",
-  "required": true,
+  "required": false,
+  "value": "full_width",
+  "default": "full_width",
   "selected": [
     {
-      "label": "عائمة في المنتصف",
-      "value": "floating_center",
-      "key": "veloura-mobile-floating-menu-position-floating-center-2026"
+      "label": "بعرض الشاشة متصل",
+      "value": "full_width",
+      "key": "veloura-mobile-floating-menu-position-full-width-connected-2026"
     }
   ],
   "options": [
     {
-      "label": "عائمة في المنتصف",
-      "value": "floating_center",
-      "key": "veloura-mobile-floating-menu-position-floating-center-2026"
-    },
-    {
-      "label": "بعرض الشاشة",
+      "label": "بعرض الشاشة متصل",
       "value": "full_width",
-      "key": "veloura-mobile-floating-menu-position-full-width-2026"
+      "key": "veloura-mobile-floating-menu-position-full-width-connected-2026"
     },
     {
       "label": "كبسولة عائمة",

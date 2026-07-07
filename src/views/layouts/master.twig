@@ -710,13 +710,21 @@
 {# التأثير يبقى شغال دائمًا حتى لو زر الإعداد العام مطفأ #}
 {% set vmfm_enabled = true %}
 
-{% set vmfm_position_raw = theme.settings.get('veloura_mobile_floating_menu_position_2026', 'floating_center') %}
+{% set vmfm_position_raw = theme.settings.get('veloura_mobile_floating_menu_position_2026', 'full_width') %}
 {% if vmfm_position_raw is iterable and vmfm_position_raw[0].value is defined %}
   {% set vmfm_position = vmfm_position_raw[0].value %}
 {% elseif vmfm_position_raw.value is defined %}
   {% set vmfm_position = vmfm_position_raw.value %}
 {% else %}
   {% set vmfm_position = vmfm_position_raw %}
+{% endif %}
+
+{# legacy support: old option floating_center now becomes full_width #}
+{% if vmfm_position == 'floating_center' %}
+  {% set vmfm_position = 'full_width' %}
+{% endif %}
+{% if vmfm_position not in ['full_width', 'pill'] %}
+  {% set vmfm_position = 'full_width' %}
 {% endif %}
 
 {% set vmfm_height_value = theme.settings.get('veloura_mobile_floating_menu_height_2026', 8) %}
@@ -728,8 +736,11 @@
 {% if vmfm_height_value > 24 %}{% set vmfm_height_value = 24 %}{% endif %}
 {% set vmfm_height = 48 + vmfm_height_value %}
 
-{# تم إلغاء خيار المسافة من الأسفل: القائمة تلتصق بأسفل الشاشة #}
-{% set vmfm_bottom = 0 %}
+{# 
+  full_width = متصل بأسفل الشاشة
+  pill = كبسولة عائمة فوق الأسفل قليلاً
+#}
+{% set vmfm_bottom = vmfm_position == 'pill' ? 14 : 0 %}
 
 {% set vmfm_bg_color = theme.settings.get('veloura_mobile_floating_menu_bg_color_2026', '#ffffff') %}
 {% if vmfm_bg_color.value is defined %}{% set vmfm_bg_color = vmfm_bg_color.value %}{% endif %}
@@ -937,7 +948,7 @@
 {% endif %}
         {% if vmfm_enabled %}
           --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
-          --veloura-mobile-floating-menu-bottom: 0px;
+          --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
           --veloura-mobile-floating-menu-bg: {{ vmfm_bg_color }};
           --veloura-mobile-floating-menu-text: {{ vmfm_text_color }};
           --veloura-mobile-floating-menu-active: {{ vmfm_active_color }};
@@ -2412,11 +2423,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 {% if vmfm_enabled %}
   <nav
-    class="veloura-mobile-floating-menu"
+    class="veloura-mobile-floating-menu veloura-mobile-floating-menu--{{ vmfm_position }}"
     aria-label="قائمة الجوال العائمة"
     style="
       --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
-      --veloura-mobile-floating-menu-bottom: 0px;
+      --veloura-mobile-floating-menu-bottom: {{ vmfm_bottom }}px;
       --veloura-mobile-floating-menu-bg: {{ vmfm_bg_color }};
       --veloura-mobile-floating-menu-text: {{ vmfm_text_color }};
       --veloura-mobile-floating-menu-active: {{ vmfm_active_color }};
