@@ -295,8 +295,6 @@ salla-menu[topnav]:not(.hydrated) {
 }
 
 
-
-
 /* ================================
    Veloura Header 2026 - Clean Final
 ================================ */
@@ -773,19 +771,6 @@ body.dark {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ================================
    Veloura Dark Toggle + Cart Fix
 ================================ */
@@ -873,12 +858,6 @@ body.dark,
     inset-inline-start: -8px !important;
   }
 }
-
-
-
-
-
-
 
 
 /* ================================
@@ -1464,13 +1443,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn .btn--close-sm {
 }
 
 
-
-
-
-
-
-
-
 /* ================================
    Veloura Side Categories Final Override V3
    لازم يكون آخر شيء في _header.scss
@@ -1604,54 +1576,6 @@ html[dir="ltr"] .mm-ocd #mobile-menu.mm-spn img.veloura-side-menu-img {
 }
 
 /* ================================
-   Veloura Floating Menu Above Categories + Glass Side Menu
-   لازم يكون آخر شيء في _header.scss
-================================ */
-
-@media (max-width: 767px) {
-  /*
-    نخلي القائمة العائمة فوق قائمة التصنيفات عند فتحها.
-    هذا يعالج المشكلة أنها صارت تحت القائمة.
-  */
-  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
-    z-index: 2147483600 !important;
-  }
-
-  body.veloura-mobile-floating-menu-enabled:has(.mm-ocd.mm-ocd--open) .veloura-mobile-floating-menu,
-  body.veloura-ocd-bottom-active .veloura-mobile-floating-menu {
-    z-index: 2147483600 !important;
-    pointer-events: none !important;
-  }
-
-  body.veloura-mobile-floating-menu-enabled:has(.mm-ocd.mm-ocd--open) .veloura-mobile-floating-menu__inner,
-  body.veloura-ocd-bottom-active .veloura-mobile-floating-menu__inner {
-    pointer-events: auto !important;
-  }
-
-  /*
-    نخلي طبقة القائمة أقل من العائمة.
-    القائمة نفسها تبقى فوق الموقع، لكن تحت القائمة العائمة.
-  */
-  body:has(.mm-ocd.mm-ocd--open) .mm-ocd.mm-ocd--open {
-    z-index: 2147483000 !important;
-  }
-
-  /*
-    لو القائمة بنظام Bottom Sheet، نخليها تبدأ فوق القائمة العائمة.
-  */
-  body.veloura-ocd-bottom-active .mm-ocd.ocd-categs .mm-ocd__content,
-  .mm-ocd.ocd-categs.ocd-bottom .mm-ocd__content,
-  .mm-ocd.ocd-categs.veloura-native-bottom .mm-ocd__content {
-    bottom: calc(
-      var(--veloura-mobile-floating-menu-height, 56px) +
-      var(--veloura-mobile-floating-menu-bottom, 0px) +
-      env(safe-area-inset-bottom, 0px) +
-      12px
-    ) !important;
-  }
-}
-
-/* ================================
    Veloura Side Categories Glass Effect
    نفس فكرة القائمة العائمة البلورية
 ================================ */
@@ -1727,49 +1651,6 @@ html.veloura-side-cats-glass .mm-ocd .mm-ocd__content::before {
 html.veloura-side-cats-glass .mm-ocd #mobile-menu.mm-spn {
   position: relative !important;
   z-index: 2 !important;
-}
-
-
-/* ================================
-   Veloura HARD Fix
-   Floating menu above side menu + iPhone glass
-   لازم يكون آخر CSS نهائيًا
-================================ */
-
-@media (max-width: 767px) {
-  html.veloura-side-menu-open body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu,
-  body.veloura-side-menu-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu,
-  body.veloura-side-categories-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
-    z-index: 2147483647 !important;
-    pointer-events: none !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  html.veloura-side-menu-open body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner,
-  body.veloura-side-menu-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner,
-  body.veloura-side-categories-open.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner {
-    pointer-events: auto !important;
-  }
-
-  html.veloura-side-menu-open .mm-ocd.mm-ocd--open,
-  body.veloura-side-menu-open .mm-ocd.mm-ocd--open,
-  body.veloura-side-categories-open .mm-ocd.mm-ocd--open {
-    z-index: 2147483000 !important;
-  }
-
-  html.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__backdrop,
-  body.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__backdrop,
-  body.veloura-side-categories-open .mm-ocd.mm-ocd--open .mm-ocd__backdrop {
-    z-index: 0 !important;
-  }
-
-  html.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__content,
-  body.veloura-side-menu-open .mm-ocd.mm-ocd--open .mm-ocd__content,
-  body.veloura-side-categories-open .mm-ocd.mm-ocd--open .mm-ocd__content {
-    z-index: 1 !important;
-  }
 }
 
 /* التأثير البلوري للقائمة الجانبية */
@@ -1852,10 +1733,6 @@ body.veloura-side-cats-glass .mm-ocd.mm-ocd--open #mobile-menu.mm-spn li > span 
 }
 
 
-
-
-
-
 /* ================================
    Veloura Safe mmenu Panel Offset Fix
    حل التداخل بدون التأثير على باقي الموقع
@@ -1890,4 +1767,3 @@ html[dir="ltr"] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     box-sizing: border-box !important;
   }
 }
-

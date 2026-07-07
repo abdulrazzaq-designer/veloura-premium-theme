@@ -760,3 +760,104 @@
     ) !important;
   }
 }
+
+
+/* ======================================================
+   Veloura Mobile Floating Menu HARD GUARD V3
+   خليه آخر الملف
+====================================================== */
+@media (max-width: 767px) {
+  html body.veloura-mobile-floating-menu-enabled {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  html body.veloura-mobile-floating-menu-enabled .app-inner {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  html body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu {
+    position: fixed !important;
+    z-index: 2147483600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu__inner {
+    pointer-events: auto !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    height: var(--veloura-mobile-floating-menu-height, 56px) !important;
+    min-height: var(--veloura-mobile-floating-menu-height, 56px) !important;
+  }
+
+  html body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu,
+  html body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full_width,
+  html body.veloura-mobile-floating-menu-position-floating_center .veloura-mobile-floating-menu,
+  html body.veloura-mobile-floating-menu-position-floating-center .veloura-mobile-floating-menu {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 18px 0 0 !important;
+  }
+
+  html body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner,
+  html body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full_width .veloura-mobile-floating-menu__inner,
+  html body.veloura-mobile-floating-menu-position-floating_center .veloura-mobile-floating-menu__inner,
+  html body.veloura-mobile-floating-menu-position-floating-center .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 24px 24px 0 0 !important;
+  }
+
+  html body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu,
+  html body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--pill {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-inline: var(--veloura-home-container-padding, var(--veloura-global-spacing, var(--veloura-site-spacing, 14px))) !important;
+  }
+
+  html body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu__inner,
+  html body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--pill .veloura-mobile-floating-menu__inner {
+    width: 100% !important;
+    max-width: min(430px, 100%) !important;
+    margin-inline: auto !important;
+    border-radius: var(--veloura-mobile-floating-menu-radius, 999px) !important;
+  }
+
+  /* المساحة داخل الفوتر فقط حتى لا تغطي القائمة محتوى أسفل الفوتر */
+  html body.veloura-mobile-floating-menu-position-full_width .store-footer .veloura-footer-bottom,
+  html body.veloura-mobile-floating-menu-position-full_width .store-footer.veloura-footer-enabled .veloura-footer-bottom {
+    padding-bottom: calc(var(--veloura-mobile-floating-menu-height, 56px) + env(safe-area-inset-bottom, 0px) + 12px) !important;
+  }
+
+  html body.veloura-mobile-floating-menu-position-pill .store-footer .veloura-footer-bottom,
+  html body.veloura-mobile-floating-menu-position-pill .store-footer.veloura-footer-enabled .veloura-footer-bottom {
+    padding-bottom: calc(var(--veloura-mobile-floating-menu-height, 56px) + env(safe-area-inset-bottom, 0px) + 88px) !important;
+  }
+}
+
+/* ======================================================
+   Veloura Split Ownership Note
+   هذا الملف هو المصدر الوحيد لتنسيق القائمة العائمة.
+   لا تضف أي CSS للقائمة داخل _header.scss.
+====================================================== */
