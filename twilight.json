@@ -2804,8 +2804,8 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "تفعيل شكل مميز لأيقونات التطبيقات",
-  "description": "يحوّل Google Play و App Store إلى أزرار SVG بإطار ونص قابل للتلوين.",
+  "label": "تفعيل أزرار التطبيقات المخصصة",
+  "description": "حل جذري: عند التفعيل لا نعتمد على مكون سلة، بل نعرض أزرار SVG مباشرة من روابط Google Play و App Store.",
   "id": "veloura_footer_featured_apps_2026",
   "format": "switch",
   "required": false,
@@ -2825,11 +2825,61 @@
   ]
 },
 {
+  "id": "veloura_footer_google_play_url_2026",
+  "type": "string",
+  "format": "url",
+  "label": "رابط Google Play",
+  "placeholder": "https://play.google.com/store/apps/details?id=...",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_footer_hide_apps_2026",
+      "operation": "=",
+      "value": false
+    },
+    {
+      "id": "veloura_footer_featured_apps_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_footer_app_store_url_2026",
+  "type": "string",
+  "format": "url",
+  "label": "رابط App Store",
+  "placeholder": "https://apps.apple.com/app/...",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_footer_hide_apps_2026",
+      "operation": "=",
+      "value": false
+    },
+    {
+      "id": "veloura_footer_featured_apps_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "id": "veloura_footer_app_svg_color_2026",
   "type": "string",
   "format": "color",
   "inputType": "color",
-  "label": "لون SVG تطبيقات الجوال",
+  "label": "لون SVG أزرار التطبيقات",
   "icon": "sicon-format-fill",
   "value": "#26265c",
   "required": false,

@@ -109,6 +109,12 @@
 {% set footer_featured_apps = theme.settings.get('veloura_footer_featured_apps_2026', false) %}
 {% if footer_featured_apps.value is defined %}{% set footer_featured_apps = footer_featured_apps.value %}{% endif %}
 
+{% set footer_google_play_url = theme.settings.get('veloura_footer_google_play_url_2026') %}
+{% if footer_google_play_url.value is defined %}{% set footer_google_play_url = footer_google_play_url.value %}{% endif %}
+
+{% set footer_app_store_url = theme.settings.get('veloura_footer_app_store_url_2026') %}
+{% if footer_app_store_url.value is defined %}{% set footer_app_store_url = footer_app_store_url.value %}{% endif %}
+
 {% set footer_hide_links = theme.settings.get('veloura_footer_hide_links_2026', false) %}
 {% if footer_hide_links.value is defined %}{% set footer_hide_links = footer_hide_links.value %}{% endif %}
 
@@ -246,7 +252,30 @@
             {% if not footer_hide_apps_title %}
               <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
             {% endif %}
-            <salla-apps-icons></salla-apps-icons>
+
+            {% if footer_featured_apps %}
+              <div class="veloura-footer-apps-custom">
+                {% if footer_google_play_url %}
+                  <a class="veloura-footer-app-button veloura-footer-app-button-google" href="{{ footer_google_play_url }}" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+                    <span class="veloura-footer-app-button__icon" aria-hidden="true"><svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M5.5 3.4c-.3.2-.5.6-.5 1v15.2c0 .4.2.8.5 1l8.7-8.6-8.7-8.6Zm9.8 7.5 2.1-2.1L7.8 3.3l7.5 7.6Zm0 2.2-7.5 7.6 9.6-5.5-2.1-2.1Zm.9-1.1 2.6 2.6c.5-.4.5-1.2 0-1.5L16.2 12Z"/></svg></span>
+                    <span class="veloura-footer-app-button__text">Google Play</span>
+                  </a>
+                {% endif %}
+
+                {% if footer_app_store_url %}
+                  <a class="veloura-footer-app-button veloura-footer-app-button-apple" href="{{ footer_app_store_url }}" target="_blank" rel="noopener noreferrer" aria-label="App Store">
+                    <span class="veloura-footer-app-button__icon" aria-hidden="true"><svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.7 13.1c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.4-1.1-.9-2.4-.7-3-.4-.6.3-1.2.4-1.8.4s-1.3-.4-2.1-.4c-1.1 0-2.1.6-2.7 1.5-1.2 2.1-.3 5.2.8 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.2-.6s1.3.6 2.2.6 1.5-.8 2.1-1.7c.7-1 1-2 1-2.1 0 0-2.1-.8-2.1-3.8ZM14.2 7c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1Z"/></svg></span>
+                    <span class="veloura-footer-app-button__text">App Store</span>
+                  </a>
+                {% endif %}
+
+                {% if not footer_google_play_url and not footer_app_store_url %}
+                  <salla-apps-icons></salla-apps-icons>
+                {% endif %}
+              </div>
+            {% else %}
+              <salla-apps-icons></salla-apps-icons>
+            {% endif %}
           </div>
         {% endif %}
 
@@ -272,8 +301,22 @@
 
   <script>
     (function () {
-      const APP_STORE_SVG = `<svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.7 13.1c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.4-1.1-.9-2.4-.7-3-.4-.6.3-1.2.4-1.8.4s-1.3-.4-2.1-.4c-1.1 0-2.1.6-2.7 1.5-1.2 2.1-.3 5.2.8 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.2-.6s1.3.6 2.2.6 1.5-.8 2.1-1.7c.7-1 1-2 1-2.1 0 0-2.1-.8-2.1-3.8ZM14.2 7c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1Z"/></svg>`;
-      const GOOGLE_PLAY_SVG = `<svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M5.5 3.4c-.3.2-.5.6-.5 1v15.2c0 .4.2.8.5 1l8.7-8.6-8.7-8.6Zm9.8 7.5 2.1-2.1L7.8 3.3l7.5 7.6Zm0 2.2-7.5 7.6 9.6-5.5-2.1-2.1Zm.9-1.1 2.6 2.6c.5-.4.5-1.2 0-1.5L16.2 12Z"/></svg>`;
+      const SVG = {
+        phone: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.6 10.8c1.6 3.1 3.5 5 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.6 21.4 2.6 13.4 2.6 3.4c0-.7.5-1.2 1.2-1.2h3.5c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.8.6 4 .1.4 0 .9-.3 1.2l-2.2 2.2Z"/></svg>',
+        whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.4a9.4 9.4 0 0 0-8.1 14.2L2.7 21.6l5.1-1.2A9.4 9.4 0 1 0 12 2.4Zm0 17.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-3 .7.7-2.9-.2-.3A7.6 7.6 0 1 1 12 19.5Zm4.3-5.7c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.1 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/></svg>',
+        email: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm8 8.1L4.4 8.2V17h15.2V8.2L12 13.1Zm0-2L19.1 7H4.9L12 11.1Z"/></svg>',
+        telegram: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M21.7 3.6 18.4 20c-.2 1-.8 1.2-1.6.7l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L6.9 14.1 2.5 12.7c-1-.3-1-1 .2-1.4L20 4.6c.8-.3 1.5.2 1.7 1Z"/></svg>',
+        instagram: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9a4.7 4.7 0 0 1-4.7-4.7v-9a4.7 4.7 0 0 1 4.7-4.7Zm0 2A2.7 2.7 0 0 0 4.8 7.5v9a2.7 2.7 0 0 0 2.7 2.7h9a2.7 2.7 0 0 0 2.7-2.7v-9a2.7 2.7 0 0 0-2.7-2.7h-9ZM12 7.3a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 2a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4Zm5-2.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>',
+        twitter: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 3.5h4.1l4.4 6.1 5.3-6.1h2.3l-6.5 7.5 7.1 9.5h-4.1l-4.8-6.5-5.7 6.5H3.8l6.9-8L4 3.5Zm3.1 1.7 10.4 13.6h1L8.2 5.2H7.1Z"/></svg>',
+        youtube: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M21.6 7.2c-.2-.8-.8-1.4-1.6-1.6C18.6 5.2 12 5.2 12 5.2s-6.6 0-8 .4c-.8.2-1.4.8-1.6 1.6C2 8.6 2 12 2 12s0 3.4.4 4.8c.2.8.8 1.4 1.6 1.6 1.4.4 8 .4 8 .4s6.6 0 8-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.8.4-4.8s0-3.4-.4-4.8ZM10 14.9V9.1l5.2 2.9L10 14.9Z"/></svg>',
+        tiktok: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M15.4 3c.4 2.6 1.9 4.2 4.5 4.4v3.1c-1.5.1-2.9-.4-4.4-1.3v6.2c0 3.1-2.1 5.4-5.2 5.6-2.8.2-5.3-1.7-5.8-4.4-.7-3.8 2.5-7 6.2-6.3v3.2c-.5-.2-1-.3-1.5-.2-1.2.2-2 1.2-1.9 2.4.1 1.2 1.1 2.1 2.3 2.1 1.5 0 2.4-1 2.4-2.7V3h3.4Z"/></svg>',
+        facebook: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M14 8.1V6.3c0-.9.2-1.3 1.4-1.3H17V2.2c-.8-.1-1.6-.2-2.4-.2-2.4 0-4 1.5-4 4.1v2H8v3.1h2.6V22H14V11.2h2.7l.4-3.1H14Z"/></svg>',
+        snapchat: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.5c3 0 5 2.2 5 5.4v2.3c.3.2.8.1 1.2 0 .6-.2 1 .5.6 1-.4.5-.9.8-1.4 1 .2 1.1 1.1 2.4 3.1 3 .7.2.7 1.1.1 1.4-.9.4-1.8.5-2.6.6-.3.5-.8 1-1.5 1-.6 0-1.1-.2-1.7-.4-.7.7-1.6 1.2-2.8 1.2s-2.1-.5-2.8-1.2c-.6.2-1.1.4-1.7.4-.7 0-1.2-.5-1.5-1-.8-.1-1.7-.2-2.6-.6-.6-.3-.6-1.2.1-1.4 2-.6 2.9-1.9 3.1-3-.5-.2-1-.5-1.4-1-.4-.5 0-1.2.6-1 .4.1.9.2 1.2 0V7.9c0-3.2 2-5.4 5-5.4Z"/></svg>',
+        website: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.2c-.1-2-.6-3.8-1.4-5.2A8 8 0 0 1 18.9 11ZM12 4.1c.7 1 1.5 3.3 1.7 6.9h-3.4c.2-3.6 1-5.9 1.7-6.9ZM4.3 13h3.2c.1 2 .6 3.8 1.4 5.2A8 8 0 0 1 4.3 13Zm3.2-2H4.3a8 8 0 0 1 4.6-5.2C8.1 7.2 7.6 9 7.5 11ZM12 19.9c-.7-1-1.5-3.3-1.7-6.9h3.4c-.2 3.6-1 5.9-1.7 6.9Zm3.1-1.7c.8-1.4 1.3-3.2 1.4-5.2h3.2a8 8 0 0 1-4.6 5.2Z"/></svg>',
+        contact: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.6V20h14v-1.4C19 16 16 14 12 14Z"/></svg>',
+        apple: '<svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.7 13.1c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.4-1.1-.9-2.4-.7-3-.4-.6.3-1.2.4-1.8.4s-1.3-.4-2.1-.4c-1.1 0-2.1.6-2.7 1.5-1.2 2.1-.3 5.2.8 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.2-.6s1.3.6 2.2.6 1.5-.8 2.1-1.7c.7-1 1-2 1-2.1 0 0-2.1-.8-2.1-3.8ZM14.2 7c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1Z"/></svg>',
+        google: '<svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M5.5 3.4c-.3.2-.5.6-.5 1v15.2c0 .4.2.8.5 1l8.7-8.6-8.7-8.6Zm9.8 7.5 2.1-2.1L7.8 3.3l7.5 7.6Zm0 2.2-7.5 7.6 9.6-5.5-2.1-2.1Zm.9-1.1 2.6 2.6c.5-.4.5-1.2 0-1.5L16.2 12Z"/></svg>'
+      };
 
       const labelMap = {
         phone: 'جوال',
@@ -290,21 +333,6 @@
         contact: 'تواصل'
       };
 
-      const iconMap = {
-        phone: 'sicon-phone',
-        whatsapp: 'sicon-whatsapp',
-        email: 'sicon-mail',
-        telegram: 'sicon-telegram',
-        instagram: 'sicon-instagram',
-        twitter: 'sicon-twitter',
-        youtube: 'sicon-youtube',
-        snapchat: 'sicon-snapchat',
-        tiktok: 'sicon-tiktok',
-        facebook: 'sicon-facebook',
-        website: 'sicon-globe',
-        contact: 'sicon-phone'
-      };
-
       function cleanText(el) {
         return (el.textContent || '').replace(/\s+/g, ' ').trim();
       }
@@ -317,27 +345,19 @@
         const text = cleanText(link).toLowerCase();
         const source = `${href} ${aria} ${title} ${classes} ${text}`;
 
-        if (/wa\.me|whatsapp|واتساب|sicon-whatsapp/.test(source)) return 'whatsapp';
-        if (/mailto:|email|mail|إيميل|بريد|envelope|sicon-mail/.test(source)) return 'email';
-        if (/t\.me|telegram|تلجرام|paper-plane|sicon-telegram/.test(source)) return 'telegram';
-        if (/instagram|انستغرام|sicon-instagram/.test(source)) return 'instagram';
-        if (/twitter|x\.com|إكس|sicon-twitter/.test(source)) return 'twitter';
-        if (/youtube|youtu\.be|يوتيوب|sicon-youtube/.test(source)) return 'youtube';
-        if (/snapchat|snap|سناب|sicon-snapchat/.test(source)) return 'snapchat';
-        if (/tiktok|تيك|sicon-tiktok/.test(source)) return 'tiktok';
-        if (/facebook|فيسبوك|sicon-facebook/.test(source)) return 'facebook';
-        if (/tel:|phone|mobile|call|هاتف|جوال|sicon-phone/.test(source)) return 'phone';
+        if (/wa\.me|whatsapp|واتساب/.test(source)) return 'whatsapp';
+        if (/mailto:|email|mail|إيميل|بريد|envelope/.test(source)) return 'email';
+        if (/t\.me|telegram|تلجرام|paper-plane/.test(source)) return 'telegram';
+        if (/instagram|انستغرام/.test(source)) return 'instagram';
+        if (/twitter|x\.com|إكس/.test(source)) return 'twitter';
+        if (/youtube|youtu\.be|يوتيوب/.test(source)) return 'youtube';
+        if (/snapchat|snap|سناب/.test(source)) return 'snapchat';
+        if (/tiktok|تيك/.test(source)) return 'tiktok';
+        if (/facebook|فيسبوك/.test(source)) return 'facebook';
+        if (/tel:|phone|mobile|call|هاتف|جوال/.test(source)) return 'phone';
         if (sourceType === 'social') return 'website';
         if (/https?:\/\//.test(source)) return 'website';
         return 'contact';
-      }
-
-      function getBestIcon(link, kind) {
-        const oldIcon = link.querySelector('i[class], svg, img');
-        if (oldIcon && oldIcon.tagName && oldIcon.tagName.toLowerCase() === 'i' && oldIcon.className) {
-          return '<i class="' + oldIcon.className + '"></i>';
-        }
-        return '<i class="' + (iconMap[kind] || iconMap.contact) + '"></i>';
       }
 
       function normalizeLink(link, sourceType) {
@@ -345,59 +365,75 @@
 
         const kind = detectKind(link, sourceType);
         const label = labelMap[kind] || labelMap.contact;
+        const icon = SVG[kind] || SVG.contact;
 
         link.classList.add('veloura-footer-contact-card', 'veloura-footer-contact-kind-' + kind);
         link.dataset.velouraFooterReady = '1';
 
         link.innerHTML =
-          '<span class="veloura-footer-contact-card__icon" aria-hidden="true">' + getBestIcon(link, kind) + '</span>' +
+          '<span class="veloura-footer-contact-card__icon" aria-hidden="true">' + icon + '</span>' +
           '<span class="veloura-footer-contact-card__text">' + label + '</span>';
       }
 
       function initContacts() {
         document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
-          const merged = footer.classList.contains('veloura-footer-merge-social');
-
           footer.querySelectorAll('[data-veloura-footer-contacts] a[href]').forEach(function (link) {
             normalizeLink(link, 'contact');
           });
 
-          if (merged) {
-            footer.querySelectorAll('[data-veloura-footer-social] a[href], [data-veloura-footer-social] button').forEach(function (link) {
-              normalizeLink(link, 'social');
-            });
-          }
+          footer.querySelectorAll('[data-veloura-footer-social] a[href], [data-veloura-footer-social] button').forEach(function (link) {
+            normalizeLink(link, 'social');
+          });
         });
       }
 
+      function appKind(link) {
+        const source = (
+          (link.getAttribute('href') || '') + ' ' +
+          cleanText(link) + ' ' +
+          Array.from(link.querySelectorAll('img')).map(function (img) {
+            return (img.getAttribute('alt') || '') + ' ' + (img.getAttribute('src') || '');
+          }).join(' ')
+        ).toLowerCase();
+
+        return /apple|app store|ios/.test(source) ? 'apple' : 'google';
+      }
+
       function initFeaturedApps() {
-        document.querySelectorAll('.store-footer.veloura-footer-featured-apps .veloura-footer-apps salla-apps-icons a[href]').forEach(function (link) {
-          if (link.dataset.velouraAppReady === '1') return;
+        document.querySelectorAll('.store-footer.veloura-footer-featured-apps .veloura-footer-apps').forEach(function (block) {
+          const source = block.querySelector('[data-veloura-apps-source]');
+          const custom = block.querySelector('[data-veloura-apps-custom]');
+          if (!source || !custom) return;
 
-          const source = (
-            (link.getAttribute('href') || '') + ' ' +
-            cleanText(link) + ' ' +
-            Array.from(link.querySelectorAll('img')).map(function (img) {
-              return (img.getAttribute('alt') || '') + ' ' + (img.getAttribute('src') || '');
-            }).join(' ')
-          ).toLowerCase();
+          const links = Array.from(source.querySelectorAll('a[href]'));
+          if (!links.length) return;
 
-          const isApple = /apple|app store|ios/.test(source);
-          const label = isApple ? 'App Store' : 'Google Play';
-          const svg = isApple ? APP_STORE_SVG : GOOGLE_PLAY_SVG;
+          custom.innerHTML = '';
 
-          link.classList.add('veloura-footer-app-button');
-          link.innerHTML =
-            '<span class="veloura-footer-app-button__icon">' + svg + '</span>' +
-            '<span class="veloura-footer-app-button__text">' + label + '</span>';
+          links.forEach(function (oldLink) {
+            const kind = appKind(oldLink);
+            const label = kind === 'apple' ? 'App Store' : 'Google Play';
+            const a = document.createElement('a');
 
-          link.dataset.velouraAppReady = '1';
+            a.className = 'veloura-footer-app-button veloura-footer-app-button-' + kind;
+            a.href = oldLink.href;
+            a.target = oldLink.target || '_blank';
+            a.rel = oldLink.rel || 'noopener noreferrer';
+            a.innerHTML =
+              '<span class="veloura-footer-app-button__icon">' + (kind === 'apple' ? SVG.apple : SVG.google) + '</span>' +
+              '<span class="veloura-footer-app-button__text">' + label + '</span>';
+
+            custom.appendChild(a);
+          });
+
+          custom.hidden = false;
+          source.hidden = true;
+          source.style.display = 'none';
         });
       }
 
       function initVelouraFooter() {
         initContacts();
-        initFeaturedApps();
       }
 
       document.addEventListener('DOMContentLoaded', initVelouraFooter);
