@@ -28395,6 +28395,333 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   white-space: nowrap !important;
   line-height: 1 !important;
 }
+/* ================================
+   Veloura Footer Radical Icon Fix
+   - لا نعتمد على أيقونات سلة
+   - كل أيقونات التواصل والسوشيال inline SVG
+   - تطبيقات الجوال custom buttons من روابط Salla
+================================ */
+/* أي SVG داخل كروت التواصل */
+.store-footer.veloura-footer-enabled .veloura-footer-contact-card__icon svg {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+}
+/* أيقونة + نص وإطار */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  width: auto !important;
+  min-width: 108px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  max-width: 100% !important;
+  padding: 0 18px !important;
+  border: 1.5px solid #26265c !important;
+  border: 1.5px solid var(--veloura-footer-contact-border, #26265c) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #0f172a !important;
+  color: var(--veloura-footer-text, #0f172a) !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  direction: rtl !important;
+  font-size: 15px !important;
+  font-size: var(--veloura-footer-text-size, 15px) !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card__icon,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card__icon {
+  order: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-icon-color, #26265c) !important;
+  line-height: 1 !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card__text,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card__text {
+  order: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #0f172a !important;
+  color: var(--veloura-footer-text, #0f172a) !important;
+  font-size: 15px !important;
+  font-size: var(--veloura-footer-text-size, 15px) !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+/* أيقونات فقط */
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons-only .veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  max-width: 46px !important;
+  padding: 0 !important;
+  border: 1px solid #26265c !important;
+  border: 1px solid var(--veloura-footer-contact-border, #26265c) !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+  background: var(--veloura-footer-icon-bg, #fff) !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-icon-color, #26265c) !important;
+  overflow: hidden !important;
+  gap: 0 !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card__text,
+.store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons-only .veloura-footer-contact-card__text {
+  display: none !important;
+}
+/* السوشيال بدون دمج: دائماً أيقونات فقط مع SVG */
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  max-width: 42px !important;
+  padding: 0 !important;
+  border: 1px solid #26265c !important;
+  border: 1px solid var(--veloura-footer-contact-border, #26265c) !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+  background: var(--veloura-footer-icon-bg, #fff) !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-icon-color, #26265c) !important;
+  overflow: hidden !important;
+  gap: 0 !important;
+}
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card__text {
+  display: none !important;
+}
+.store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card__icon {
+  display: inline-flex !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-icon-color, #26265c) !important;
+}
+/* تطبيقات الجوال: الحل الجذري */
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-apps-source[hidden],
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps [data-veloura-apps-source][hidden] {
+  display: none !important;
+}
+.store-footer.veloura-footer-enabled .veloura-footer-apps-custom[hidden] {
+  display: none !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-apps-custom {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-featured-apps .veloura-footer-apps-custom {
+  justify-content: center !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  min-height: 42px !important;
+  padding: 0 18px !important;
+  border: 1.5px solid #26265c !important;
+  border: 1.5px solid var(--veloura-footer-contact-border, #26265c) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-app-svg-color, var(--veloura-footer-icon-color, #26265c)) !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  overflow: visible !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button__icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-app-svg-color, var(--veloura-footer-icon-color, #26265c)) !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-svg {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button__text {
+  display: inline-flex !important;
+  color: #0f172a !important;
+  color: var(--veloura-footer-text, #0f172a) !important;
+  font-size: 15px !important;
+  font-size: var(--veloura-footer-text-size, 15px) !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+/* ======================================================
+   Veloura Apps Direct Render Final Fix
+   حل جذري للتطبيقات: الأزرار تنرسم من Twig مباشرة من الروابط
+====================================================== */
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-apps-custom {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-featured-apps .veloura-footer-apps-custom {
+  justify-content: center !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  min-height: 42px !important;
+  padding: 0 18px !important;
+  border: 1.5px solid #26265c !important;
+  border: 1.5px solid var(--veloura-footer-contact-border, var(--veloura-footer-icon-color, #26265c)) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-app-svg-color, var(--veloura-footer-icon-color, #26265c)) !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  overflow: visible !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button__icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  color: #26265c !important;
+  color: var(--veloura-footer-app-svg-color, var(--veloura-footer-icon-color, #26265c)) !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-svg {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button__text {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #0f172a !important;
+  color: var(--veloura-footer-text, #0f172a) !important;
+  font-size: 15px !important;
+  font-size: var(--veloura-footer-text-size, 15px) !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+/* ======================================================
+   Veloura Footer Clean Final Fix
+   - إزالة خيارات/ستايلات تطبيقات SVG المخصصة
+   - إزالة الإطار المنقط
+   - جعل نهاية الفوتر متصلة مع أسفل المتجر مع مراعاة القائمة العائمة
+   - إخفاء تكرار نفس رقم الهاتف/الرابط
+====================================================== */
+/* إزالة الإطار المنقط القديم */
+.store-footer,
+.store-footer .store-footer__inner,
+.store-footer.veloura-footer-enabled,
+.store-footer.veloura-footer-enabled .store-footer__inner,
+.store-footer.veloura-footer-enabled .veloura-footer-main,
+.store-footer.veloura-footer-enabled .veloura-footer-bottom {
+  border-bottom: 0 !important;
+  border-top-style: solid !important;
+  border-bottom-style: solid !important;
+  border-style: none !important;
+}
+/* عنصر مكرر تم إخفاؤه من السكربت */
+.store-footer.veloura-footer-enabled [data-veloura-hidden-duplicate="1"] {
+  display: none !important;
+}
+/* أيقونات التواصل والسوشيال تبقى ظاهرة */
+.store-footer.veloura-footer-enabled .veloura-footer-contact-card__icon svg {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+}
+/* سلة التطبيقات الأصلية فقط */
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons {
+  display: block !important;
+}
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(div, ul) {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+}
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons :where(div, ul) {
+  justify-content: center !important;
+}
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(a, img) {
+  max-width: 100% !important;
+}
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
+  height: 42px !important;
+  width: auto !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  display: block !important;
+}
+/* تنظيف أي ستايلات قديمة خاصة بتطبيقات SVG المخصصة */
+.store-footer.veloura-footer-enabled .veloura-footer-apps-custom,
+.store-footer.veloura-footer-enabled .veloura-footer-app-button,
+.store-footer.veloura-footer-enabled .veloura-footer-app-button__icon,
+.store-footer.veloura-footer-enabled .veloura-footer-app-button__text,
+.store-footer.veloura-footer-enabled .veloura-footer-app-svg {
+  all: unset;
+}
+/* اتصال نهاية الفوتر بأسفل المتجر مع ترك مساحة للقائمة العائمة في الجوال */
+.store-footer.veloura-footer-enabled {
+  margin-bottom: 0 !important;
+}
+.store-footer.veloura-footer-enabled .veloura-footer-bottom {
+  background: #000 !important;
+  background: var(--veloura-footer-bottom-bg, var(--veloura-footer-bg, #000)) !important;
+}
+/* على الجوال: خليه ممتد لتحت وما يختفي خلف القائمة العائمة */
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-bottom {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-bottom__inner {
+    padding-bottom: 0 !important;
+  }
+}
 .main-menu > li > a[href*=offer]{
     --tw-text-opacity: 1;
     color: rgba(153, 27, 27, 1);

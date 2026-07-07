@@ -1015,3 +1015,96 @@
   line-height: 1 !important;
   white-space: nowrap !important;
 }
+
+
+/* ======================================================
+   Veloura Footer Clean Final Fix
+   - إزالة خيارات/ستايلات تطبيقات SVG المخصصة
+   - إزالة الإطار المنقط
+   - جعل نهاية الفوتر متصلة مع أسفل المتجر مع مراعاة القائمة العائمة
+   - إخفاء تكرار نفس رقم الهاتف/الرابط
+====================================================== */
+
+/* إزالة الإطار المنقط القديم */
+.store-footer,
+.store-footer .store-footer__inner,
+.store-footer.veloura-footer-enabled,
+.store-footer.veloura-footer-enabled .store-footer__inner,
+.store-footer.veloura-footer-enabled .veloura-footer-main,
+.store-footer.veloura-footer-enabled .veloura-footer-bottom {
+  border-bottom: 0 !important;
+  border-top-style: solid !important;
+  border-bottom-style: solid !important;
+  border-style: none !important;
+}
+
+/* عنصر مكرر تم إخفاؤه من السكربت */
+.store-footer.veloura-footer-enabled [data-veloura-hidden-duplicate="1"] {
+  display: none !important;
+}
+
+/* أيقونات التواصل والسوشيال تبقى ظاهرة */
+.store-footer.veloura-footer-enabled .veloura-footer-contact-card__icon svg {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+}
+
+/* سلة التطبيقات الأصلية فقط */
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons {
+  display: block !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(div, ul) {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons :where(div, ul) {
+  justify-content: center !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(a, img) {
+  max-width: 100% !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
+  height: 42px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* تنظيف أي ستايلات قديمة خاصة بتطبيقات SVG المخصصة */
+.store-footer.veloura-footer-enabled .veloura-footer-apps-custom,
+.store-footer.veloura-footer-enabled .veloura-footer-app-button,
+.store-footer.veloura-footer-enabled .veloura-footer-app-button__icon,
+.store-footer.veloura-footer-enabled .veloura-footer-app-button__text,
+.store-footer.veloura-footer-enabled .veloura-footer-app-svg {
+  all: unset;
+}
+
+/* اتصال نهاية الفوتر بأسفل المتجر مع ترك مساحة للقائمة العائمة في الجوال */
+.store-footer.veloura-footer-enabled {
+  margin-bottom: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-bottom {
+  background: var(--veloura-footer-bottom-bg, var(--veloura-footer-bg, #000)) !important;
+}
+
+/* على الجوال: خليه ممتد لتحت وما يختفي خلف القائمة العائمة */
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-bottom {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-bottom__inner {
+    padding-bottom: 0 !important;
+  }
+}

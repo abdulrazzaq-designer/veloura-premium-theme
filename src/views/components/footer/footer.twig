@@ -60,8 +60,6 @@
 {% set footer_bottom_text_color = theme.settings.get('veloura_footer_bottom_text_color_2026', '#334155') %}
 {% if footer_bottom_text_color.value is defined %}{% set footer_bottom_text_color = footer_bottom_text_color.value %}{% endif %}
 
-{% set footer_app_svg_color = theme.settings.get('veloura_footer_app_svg_color_2026', '#26265c') %}
-{% if footer_app_svg_color.value is defined %}{% set footer_app_svg_color = footer_app_svg_color.value %}{% endif %}
 
 {# =========================
    Dropdowns
@@ -106,15 +104,6 @@
 {% set footer_hide_apps_title = theme.settings.get('veloura_footer_hide_apps_title_2026', false) %}
 {% if footer_hide_apps_title.value is defined %}{% set footer_hide_apps_title = footer_hide_apps_title.value %}{% endif %}
 
-{% set footer_featured_apps = theme.settings.get('veloura_footer_featured_apps_2026', false) %}
-{% if footer_featured_apps.value is defined %}{% set footer_featured_apps = footer_featured_apps.value %}{% endif %}
-
-{% set footer_google_play_url = theme.settings.get('veloura_footer_google_play_url_2026') %}
-{% if footer_google_play_url.value is defined %}{% set footer_google_play_url = footer_google_play_url.value %}{% endif %}
-
-{% set footer_app_store_url = theme.settings.get('veloura_footer_app_store_url_2026') %}
-{% if footer_app_store_url.value is defined %}{% set footer_app_store_url = footer_app_store_url.value %}{% endif %}
-
 {% set footer_hide_links = theme.settings.get('veloura_footer_hide_links_2026', false) %}
 {% if footer_hide_links.value is defined %}{% set footer_hide_links = footer_hide_links.value %}{% endif %}
 
@@ -140,7 +129,6 @@
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
   {{ footer_contact_inline ? 'veloura-footer-contact-inline' : 'veloura-footer-contact-column' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
-  {{ footer_featured_apps ? 'veloura-footer-featured-apps' : '' }}
   {{ footer_hide_apps_title ? 'veloura-footer-hide-apps-title' : '' }}
   veloura-footer-radius-{{ footer_radius }}
   veloura-footer-cols-{{ footer_columns }}
@@ -156,7 +144,6 @@
     --veloura-footer-contact-border: {{ footer_contact_border }};
     --veloura-footer-bottom-bg: {{ footer_bottom_bg }};
     --veloura-footer-bottom-text: {{ footer_bottom_text_color }};
-    --veloura-footer-app-svg-color: {{ footer_app_svg_color }};
     --veloura-footer-title-size: {{ footer_title_size }};
     --veloura-footer-text-size: {{ footer_text_size }};
     --veloura-footer-logo-size: {{ footer_logo_size }};
@@ -252,30 +239,7 @@
             {% if not footer_hide_apps_title %}
               <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
             {% endif %}
-
-            {% if footer_featured_apps %}
-              <div class="veloura-footer-apps-custom">
-                {% if footer_google_play_url %}
-                  <a class="veloura-footer-app-button veloura-footer-app-button-google" href="{{ footer_google_play_url }}" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
-                    <span class="veloura-footer-app-button__icon" aria-hidden="true"><svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M5.5 3.4c-.3.2-.5.6-.5 1v15.2c0 .4.2.8.5 1l8.7-8.6-8.7-8.6Zm9.8 7.5 2.1-2.1L7.8 3.3l7.5 7.6Zm0 2.2-7.5 7.6 9.6-5.5-2.1-2.1Zm.9-1.1 2.6 2.6c.5-.4.5-1.2 0-1.5L16.2 12Z"/></svg></span>
-                    <span class="veloura-footer-app-button__text">Google Play</span>
-                  </a>
-                {% endif %}
-
-                {% if footer_app_store_url %}
-                  <a class="veloura-footer-app-button veloura-footer-app-button-apple" href="{{ footer_app_store_url }}" target="_blank" rel="noopener noreferrer" aria-label="App Store">
-                    <span class="veloura-footer-app-button__icon" aria-hidden="true"><svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.7 13.1c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.4-1.1-.9-2.4-.7-3-.4-.6.3-1.2.4-1.8.4s-1.3-.4-2.1-.4c-1.1 0-2.1.6-2.7 1.5-1.2 2.1-.3 5.2.8 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.2-.6s1.3.6 2.2.6 1.5-.8 2.1-1.7c.7-1 1-2 1-2.1 0 0-2.1-.8-2.1-3.8ZM14.2 7c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1Z"/></svg></span>
-                    <span class="veloura-footer-app-button__text">App Store</span>
-                  </a>
-                {% endif %}
-
-                {% if not footer_google_play_url and not footer_app_store_url %}
-                  <salla-apps-icons></salla-apps-icons>
-                {% endif %}
-              </div>
-            {% else %}
-              <salla-apps-icons></salla-apps-icons>
-            {% endif %}
+            <salla-apps-icons></salla-apps-icons>
           </div>
         {% endif %}
 
@@ -375,6 +339,28 @@
           '<span class="veloura-footer-contact-card__text">' + label + '</span>';
       }
 
+      function dedupeLinks(root) {
+        const seen = new Set();
+
+        root.querySelectorAll('a[href], button').forEach(function (link) {
+          const href = (link.getAttribute('href') || '').trim().toLowerCase();
+          const aria = (link.getAttribute('aria-label') || '').trim().toLowerCase();
+          const text = cleanText(link).toLowerCase();
+          const key = href || aria || text;
+
+          if (!key) return;
+
+          if (seen.has(key)) {
+            const parent = link.closest('li, div') || link;
+            parent.style.display = 'none';
+            parent.setAttribute('data-veloura-hidden-duplicate', '1');
+            return;
+          }
+
+          seen.add(key);
+        });
+      }
+
       function initContacts() {
         document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
           footer.querySelectorAll('[data-veloura-footer-contacts] a[href]').forEach(function (link) {
@@ -384,51 +370,10 @@
           footer.querySelectorAll('[data-veloura-footer-social] a[href], [data-veloura-footer-social] button').forEach(function (link) {
             normalizeLink(link, 'social');
           });
-        });
-      }
 
-      function appKind(link) {
-        const source = (
-          (link.getAttribute('href') || '') + ' ' +
-          cleanText(link) + ' ' +
-          Array.from(link.querySelectorAll('img')).map(function (img) {
-            return (img.getAttribute('alt') || '') + ' ' + (img.getAttribute('src') || '');
-          }).join(' ')
-        ).toLowerCase();
-
-        return /apple|app store|ios/.test(source) ? 'apple' : 'google';
-      }
-
-      function initFeaturedApps() {
-        document.querySelectorAll('.store-footer.veloura-footer-featured-apps .veloura-footer-apps').forEach(function (block) {
-          const source = block.querySelector('[data-veloura-apps-source]');
-          const custom = block.querySelector('[data-veloura-apps-custom]');
-          if (!source || !custom) return;
-
-          const links = Array.from(source.querySelectorAll('a[href]'));
-          if (!links.length) return;
-
-          custom.innerHTML = '';
-
-          links.forEach(function (oldLink) {
-            const kind = appKind(oldLink);
-            const label = kind === 'apple' ? 'App Store' : 'Google Play';
-            const a = document.createElement('a');
-
-            a.className = 'veloura-footer-app-button veloura-footer-app-button-' + kind;
-            a.href = oldLink.href;
-            a.target = oldLink.target || '_blank';
-            a.rel = oldLink.rel || 'noopener noreferrer';
-            a.innerHTML =
-              '<span class="veloura-footer-app-button__icon">' + (kind === 'apple' ? SVG.apple : SVG.google) + '</span>' +
-              '<span class="veloura-footer-app-button__text">' + label + '</span>';
-
-            custom.appendChild(a);
+          footer.querySelectorAll('[data-veloura-footer-contacts], [data-veloura-footer-social]').forEach(function (root) {
+            dedupeLinks(root);
           });
-
-          custom.hidden = false;
-          source.hidden = true;
-          source.style.display = 'none';
         });
       }
 
