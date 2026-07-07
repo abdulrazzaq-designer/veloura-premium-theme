@@ -2420,7 +2420,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 {% if vmfm_enabled %}
   <nav
-    class="veloura-mobile-floating-menu veloura-mobile-floating-menu--{{ vmfm_position }}"
+    class="veloura-mobile-floating-menu veloura-mobile-floating-menu--{{ vmfm_position }}{% if vmfm_position == 'full_width' %} veloura-mobile-floating-menu--full-width{% endif %}{% if vmfm_position == 'pill' %} veloura-mobile-floating-menu--pill{% endif %}"
     aria-label="قائمة الجوال العائمة"
     style="
       --veloura-mobile-floating-menu-height: {{ vmfm_height }}px;
