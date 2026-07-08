@@ -2679,9 +2679,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closeVisibleModalLikeThings() {
-      var forceSearchClosed = forceCloseSearchOverlay();
-      var forceLoginClosed = forceCloseLoginOverlay();
-
       var closed = clickFirst([
         'salla-login-modal button[aria-label*="إغلاق"]',
         'salla-login-modal button[aria-label*="close"]',
@@ -2706,7 +2703,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       document.body.classList.remove('overflow-hidden');
 
-      return closed || forceSearchClosed || forceLoginClosed;
+      return closed;
     }
 
     function clearFloatingMenuActive() {
@@ -3135,83 +3132,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
 
-
-    function forceCloseSearchOverlay() {
-      var closed = false;
-
-      if (window.salla && window.salla.event && typeof window.salla.event.dispatch === 'function') {
-        ['search::close', 'search.close', 'search::hide'].forEach(function (eventName) {
-          try {
-            window.salla.event.dispatch(eventName);
-            closed = true;
-          } catch (error) {}
-        });
-      }
-
-      closed = clickFirst([
-        'salla-search button[aria-label*="إغلاق"]',
-        'salla-search button[aria-label*="close"]',
-        'salla-search .s-modal-close',
-        'salla-search .s-modal__close',
-        'salla-search .sicon-cancel',
-        '.s-search-modal button[aria-label*="إغلاق"]',
-        '.s-search-modal button[aria-label*="close"]',
-        '.s-search-modal .s-modal-close',
-        '.s-search-modal .s-modal__close',
-        '.s-modal-search button[aria-label*="إغلاق"]',
-        '.s-modal-search button[aria-label*="close"]',
-        '.search-modal button[aria-label*="إغلاق"]',
-        '.search-modal button[aria-label*="close"]',
-        '.search-modal .modal-close',
-        '.search-modal .s-modal-close'
-      ]) || closed;
-
-      document.body.classList.remove('search-open');
-      document.body.classList.remove('s-search-open');
-      document.body.classList.remove('salla-search-open');
-      document.body.classList.remove('overflow-hidden');
-
-      return closed;
-    }
-
-    function forceCloseLoginOverlay() {
-      var closed = false;
-
-      if (window.salla && window.salla.event && typeof window.salla.event.dispatch === 'function') {
-        ['login::close', 'auth::close', 'login.close', 'login::hide'].forEach(function (eventName) {
-          try {
-            window.salla.event.dispatch(eventName);
-            closed = true;
-          } catch (error) {}
-        });
-      }
-
-      closed = clickFirst([
-        'salla-login-modal button[aria-label*="إغلاق"]',
-        'salla-login-modal button[aria-label*="close"]',
-        'salla-login-modal .s-modal-close',
-        'salla-login-modal .s-modal__close',
-        'salla-login-modal .sicon-cancel',
-        '.s-login-modal button[aria-label*="إغلاق"]',
-        '.s-login-modal button[aria-label*="close"]',
-        '.s-login-modal .s-modal-close',
-        '.s-auth-modal button[aria-label*="إغلاق"]',
-        '.s-auth-modal button[aria-label*="close"]',
-        '.login-modal button[aria-label*="إغلاق"]',
-        '.login-modal button[aria-label*="close"]',
-        '.login-modal .modal-close',
-        '.login-modal .s-modal-close'
-      ]) || closed;
-
-      document.body.classList.remove('login-open');
-      document.body.classList.remove('s-login-open');
-      document.body.classList.remove('salla-login-open');
-      document.body.classList.remove('overflow-hidden');
-
-      return closed;
-    }
-
-
     function getFloatingItemByAction(action) {
       if (action === 'search') {
         return menu.querySelector('[data-vmfm-action="search"], [data-vmfm-match="search"]');
@@ -3401,22 +3321,14 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         /*
-         * إذا البحث مفتوح وضغطت نفس زر البحث مرة ثانية: إغلاق حقيقي.
+         * إذا البحث مفتوح وضغطت نفس الزر مرة ثانية: إغلاق.
          */
         if (transientAction === 'search' || isSearchModalOpen()) {
-          forceCloseSearchOverlay();
           closeVisibleModalLikeThings();
           clearTransientAction();
           scheduleFloatingMenuSync();
           return;
         }
-
-        closeOpenOverlays('search');
-        setTransientAction('search', actionItem);
-        openSearchFallback();
-        scheduleFloatingMenuSync();
-        return;
-      }
 
         closeOpenOverlays('search');
         setTransientAction('search', actionItem);
@@ -3446,22 +3358,14 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         /*
-         * إذا نافذة تسجيل الدخول مفتوحة وضغطت نفس الزر مرة ثانية: إغلاق حقيقي.
+         * إذا نافذة تسجيل الدخول مفتوحة وضغطت نفس الزر مرة ثانية: إغلاق.
          */
         if (transientAction === 'login' || isLoginModalOpen()) {
-          forceCloseLoginOverlay();
           closeVisibleModalLikeThings();
           clearTransientAction();
           scheduleFloatingMenuSync();
           return;
         }
-
-        closeOpenOverlays('login');
-        setTransientAction('login', actionItem);
-        openLoginModal();
-        scheduleFloatingMenuSync();
-        return;
-      }
 
         closeOpenOverlays('login');
         setTransientAction('login', actionItem);
