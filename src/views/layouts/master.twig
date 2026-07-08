@@ -737,7 +737,7 @@
 {% set vmfm_height = 48 + vmfm_height_value %}
 
 {# full_width متصل / pill كبسولة عائمة #}
-{% set vmfm_bottom = vmfm_position == 'pill' ? 6 : 0 %}
+{% set vmfm_bottom = vmfm_position == 'pill' ? 18 : 0 %}
 
 {% set vmfm_bg_color = theme.settings.get('veloura_mobile_floating_menu_bg_color_2026', '#ffffff') %}
 {% if vmfm_bg_color.value is defined %}{% set vmfm_bg_color = vmfm_bg_color.value %}{% endif %}
