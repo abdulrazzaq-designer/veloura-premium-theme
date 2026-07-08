@@ -3382,6 +3382,448 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 {% endif %}
 
+
+<script data-cfasync="false" id="veloura-mobile-floating-menu-external-sync-fix">
+/*
+  Veloura Mobile Floating Menu External Sync Fix
+  - لا يغير سكربت القائمة الأساسي
+  - يضيف مزامنة من الهيدر للقائمة السفلية
+  - يغلق تسجيل الدخول عند الضغط على نفس زر حسابي مرة ثانية
+*/
+(function () {
+  function closest(target, selector) {
+    if (!target || target === document) return null;
+    if (target.closest) return target.closest(selector);
+
+    var node = target;
+    while (node && node !== document) {
+      if (node.matches && node.matches(selector)) return node;
+      node = node.parentNode;
+    }
+
+    return null;
+  }
+
+  function menu() {
+    return document.querySelector('.veloura-mobile-floating-menu');
+  }
+
+  function items() {
+    var m = menu();
+    return m ? Array.prototype.slice.call(m.querySelectorAll('.veloura-mobile-floating-menu__item')) : [];
+  }
+
+  function clearActive() {
+    items().forEach(function (item) {
+      item.classList.remove('is-active');
+    });
+  }
+
+  function activate(selector) {
+    var m = menu();
+    if (!m) return;
+
+    var item = m.querySelector(selector);
+    if (!item) return;
+
+    clearActive();
+    item.classList.add('is-active');
+  }
+
+  function activateByAction(action) {
+    if (action === 'categories') {
+      activate('[data-vmfm-action="categories"], [data-vmfm-match="categories"]');
+      return;
+    }
+
+    if (action === 'search') {
+      activate('[data-vmfm-action="search"], [data-vmfm-match="search"]');
+      return;
+    }
+
+    if (action === 'login') {
+      activate('[data-vmfm-action="login"], [data-vmfm-match="account"]');
+      return;
+    }
+  }
+
+  function restoreRouteActive() {
+    var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+
+    clearActive();
+
+    if (path === '/') {
+      activate('[data-vmfm-match="home"]');
+      return;
+    }
+
+    if (path.indexOf('/cart') !== -1) {
+      activate('[data-vmfm-match="cart"]');
+      return;
+    }
+
+    if (
+      path.indexOf('/categories') !== -1 ||
+      path.indexOf('/category') !== -1 ||
+      path.indexOf('/c/') !== -1
+    ) {
+      activate('[data-vmfm-match="categories"]');
+      return;
+    }
+
+    if (path.indexOf('/search') !== -1) {
+      activate('[data-vmfm-match="search"]');
+      return;
+    }
+
+    if (
+      path.indexOf('/account') !== -1 ||
+      path.indexOf('/profile') !== -1 ||
+      path.indexOf('/login') !== -1
+    ) {
+      activate('[data-vmfm-match="account"]');
+    }
+  }
+
+  function visible(el) {
+    if (!el) return false;
+
+    var style = window.getComputedStyle(el);
+    var rect = el.getBoundingClientRect();
+
+    return (
+      style.display !== 'none' &&
+      style.visibility !== 'hidden' &&
+      style.opacity !== '0' &&
+      rect.width > 0 &&
+      rect.height > 0
+    );
+  }
+
+  function anyVisible(selectors) {
+    for (var i = 0; i < selectors.length; i++) {
+      var nodes = document.querySelectorAll(selectors[i]);
+
+      for (var j = 0; j < nodes.length; j++) {
+        var node = nodes[j];
+
+        if (
+          node.hasAttribute('open') ||
+          node.hasAttribute('opened') ||
+          node.classList.contains('is-open') ||
+          node.classList.contains('active') ||
+          node.classList.contains('s-modal-is-open') ||
+          visible(node)
+        ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  function isSearchOpen() {
+    return (
+      document.body.classList.contains('search-open') ||
+      document.body.classList.contains('s-search-open') ||
+      document.body.classList.contains('salla-search-open') ||
+      anyVisible([
+        'salla-search[open]',
+        'salla-search[opened]',
+        'salla-search.is-open',
+        'salla-search.active',
+        '.s-search-modal',
+        '.s-modal-search',
+        '.search-modal.open',
+        '.search-modal.active',
+        '[class*="search"][class*="modal"]'
+      ])
+    );
+  }
+
+  function isLoginOpen() {
+    return (
+      document.body.classList.contains('login-open') ||
+      document.body.classList.contains('s-login-open') ||
+      document.body.classList.contains('salla-login-open') ||
+      anyVisible([
+        'salla-login-modal[open]',
+        'salla-login-modal[opened]',
+        'salla-login-modal.is-open',
+        'salla-login-modal.active',
+        '.s-login-modal',
+        '.s-auth-modal',
+        '.s-user-modal',
+        '.login-modal.open',
+        '.login-modal.active',
+        '[class*="login"][class*="modal"]',
+        '[class*="auth"][class*="modal"]'
+      ])
+    );
+  }
+
+  function isCategoriesOpen() {
+    var drawer = document.querySelector('.mm-ocd.ocd-categs') || document.querySelector('.mm-ocd--right.ocd-categs') || document.querySelector('.mm-ocd');
+
+    return !!(
+      drawer &&
+      (
+        drawer.classList.contains('mm-ocd--open') ||
+        document.body.classList.contains('menu-opened') ||
+        document.body.classList.contains('mm-ocd-opened') ||
+        document.body.classList.contains('veloura-ocd-bottom-active') ||
+        document.body.classList.contains('veloura-side-categories-open')
+      )
+    );
+  }
+
+  function triggerClick(selectors) {
+    for (var i = 0; i < selectors.length; i++) {
+      var el = document.querySelector(selectors[i]);
+      if (!el) continue;
+
+      try {
+        el.click();
+        return true;
+      } catch (error) {}
+    }
+
+    return false;
+  }
+
+  function dispatchSalla(events) {
+    if (!window.salla || !window.salla.event || typeof window.salla.event.dispatch !== 'function') {
+      return false;
+    }
+
+    var ok = false;
+
+    events.forEach(function (eventName) {
+      try {
+        window.salla.event.dispatch(eventName);
+        ok = true;
+      } catch (error) {}
+    });
+
+    return ok;
+  }
+
+  function closeLogin() {
+    var closed = false;
+
+    closed = dispatchSalla(['login::close', 'auth::close', 'login.close', 'auth.close']) || closed;
+
+    closed = triggerClick([
+      'salla-login-modal button[aria-label*="إغلاق"]',
+      'salla-login-modal button[aria-label*="close"]',
+      'salla-login-modal .s-modal-close',
+      'salla-login-modal .s-modal__close',
+      'salla-login-modal .sicon-cancel',
+      '.s-login-modal button[aria-label*="إغلاق"]',
+      '.s-login-modal button[aria-label*="close"]',
+      '.s-login-modal .s-modal-close',
+      '.s-auth-modal button[aria-label*="إغلاق"]',
+      '.s-auth-modal button[aria-label*="close"]',
+      '.s-auth-modal .s-modal-close',
+      '.login-modal button[aria-label*="إغلاق"]',
+      '.login-modal button[aria-label*="close"]',
+      '.login-modal .modal-close',
+      '.login-modal .s-modal-close',
+      '.s-modal .s-modal-close',
+      '.s-modal .s-modal__close'
+    ]) || closed;
+
+    document.body.classList.remove('login-open', 's-login-open', 'salla-login-open', 'overflow-hidden');
+
+    setTimeout(restoreRouteActive, 180);
+    setTimeout(restoreRouteActive, 500);
+
+    return closed;
+  }
+
+  function closeSearch() {
+    var closed = false;
+
+    closed = dispatchSalla(['search::close', 'search.close', 'search::hide']) || closed;
+
+    closed = triggerClick([
+      'salla-search button[aria-label*="إغلاق"]',
+      'salla-search button[aria-label*="close"]',
+      'salla-search .s-modal-close',
+      'salla-search .s-modal__close',
+      'salla-search .sicon-cancel',
+      '.s-search-modal button[aria-label*="إغلاق"]',
+      '.s-search-modal button[aria-label*="close"]',
+      '.s-search-modal .s-modal-close',
+      '.s-modal-search button[aria-label*="إغلاق"]',
+      '.s-modal-search button[aria-label*="close"]',
+      '.search-modal button[aria-label*="إغلاق"]',
+      '.search-modal button[aria-label*="close"]',
+      '.search-modal .modal-close',
+      '.search-modal .s-modal-close'
+    ]) || closed;
+
+    document.body.classList.remove('search-open', 's-search-open', 'salla-search-open', 'overflow-hidden');
+
+    setTimeout(restoreRouteActive, 180);
+    setTimeout(restoreRouteActive, 500);
+
+    return closed;
+  }
+
+  function isHeaderSearchTarget(target) {
+    return closest(target, [
+      '[data-search-open]',
+      '[data-open-search]',
+      '[data-search]',
+      '.s-search-modal-trigger',
+      '.s-header-search',
+      '.search-trigger',
+      '.search-btn',
+      '.veloura-header-search',
+      '.veloura-header-search-trigger',
+      '.header-search',
+      'button[aria-label*="بحث"]',
+      'button[aria-label*="search"]',
+      'a[aria-label*="بحث"]',
+      'a[aria-label*="search"]'
+    ].join(','));
+  }
+
+  function isHeaderLoginTarget(target) {
+    return closest(target, [
+      '#mobile-nav .mob-login a',
+      '.mobile-nav .mob-login a',
+      '.mob-login .mobile-nav--item',
+      '[data-login]',
+      '[data-open-login]',
+      '[data-login-open]',
+      '.s-login-modal-trigger',
+      '.login-trigger',
+      '.s-user-menu-trigger',
+      'button[aria-label*="تسجيل"]',
+      'button[aria-label*="دخول"]',
+      'button[aria-label*="login"]',
+      'a[href*="/login"]',
+      'a[href*="/account"]'
+    ].join(','));
+  }
+
+  function isHeaderCategoriesTarget(target) {
+    return closest(target, [
+      '.veloura-menu-trigger-mobile[href="#mobile-menu"]',
+      'a.mburger[href="#mobile-menu"]',
+      'a[href="#mobile-menu"]',
+      '[data-open-categories]',
+      '[data-categories-open]',
+      '[aria-label*="تصنيفات"]',
+      '[aria-label*="القائمة"]',
+      '[aria-label*="categories"]',
+      '[aria-controls="mobile-menu"]'
+    ].join(','));
+  }
+
+  function delayedSync(action) {
+    activateByAction(action);
+
+    setTimeout(function () {
+      if (action === 'search' && isSearchOpen()) activateByAction('search');
+      if (action === 'login' && isLoginOpen()) activateByAction('login');
+      if (action === 'categories' && isCategoriesOpen()) activateByAction('categories');
+    }, 180);
+
+    setTimeout(function () {
+      if (action === 'search' && isSearchOpen()) activateByAction('search');
+      else if (action === 'login' && isLoginOpen()) activateByAction('login');
+      else if (action === 'categories' && isCategoriesOpen()) activateByAction('categories');
+      else restoreRouteActive();
+    }, 800);
+  }
+
+  /*
+    Capture listener:
+    - إذا ضغطت زر حسابي من القائمة وهي مفتوحة: إغلاق قبل السكربت الأساسي.
+    - إذا ضغطت زر البحث من القائمة وهو مفتوح: إغلاق قبل السكربت الأساسي.
+    - إذا ضغطت من الهيدر: فعّل زر القائمة السفلي الموافق.
+  */
+  document.addEventListener('click', function (event) {
+    var item = closest(event.target, '.veloura-mobile-floating-menu__item');
+    var insideBottomMenu = closest(event.target, '.veloura-mobile-floating-menu');
+
+    if (insideBottomMenu && item) {
+      var action = item.getAttribute('data-vmfm-action');
+
+      if (action === 'login' && isLoginOpen()) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        closeLogin();
+        return false;
+      }
+
+      if (action === 'search' && isSearchOpen()) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        closeSearch();
+        return false;
+      }
+
+      return;
+    }
+
+    if (isHeaderSearchTarget(event.target)) {
+      delayedSync('search');
+      return;
+    }
+
+    if (isHeaderLoginTarget(event.target)) {
+      delayedSync('login');
+      return;
+    }
+
+    if (isHeaderCategoriesTarget(event.target)) {
+      delayedSync('categories');
+    }
+  }, true);
+
+  /*
+    Observer خفيف: لو انفتحت النوافذ بدون كليك مباشر، فعّل الزر المناسب.
+  */
+  var lastState = '';
+
+  function syncOpenState() {
+    var state = '';
+
+    if (isCategoriesOpen()) state = 'categories';
+    else if (isSearchOpen()) state = 'search';
+    else if (isLoginOpen()) state = 'login';
+
+    if (state && state !== lastState) {
+      activateByAction(state);
+    }
+
+    if (!state && lastState) {
+      restoreRouteActive();
+    }
+
+    lastState = state;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    restoreRouteActive();
+    setInterval(syncOpenState, 450);
+  });
+
+  document.addEventListener('theme::ready', function () {
+    restoreRouteActive();
+  });
+
+  window.addEventListener('pageshow', restoreRouteActive);
+})();
+</script>
+
 <script data-cfasync="false" id="veloura-product-card-native-actions-sync-2026">
 /* Veloura Product Card Native Actions Sync V7
    يضيف كلاسات فقط، لا ينقل المفضلة ولا العرض السريع
