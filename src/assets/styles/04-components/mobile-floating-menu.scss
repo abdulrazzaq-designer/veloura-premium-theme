@@ -547,3 +547,69 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
   }
 }
+
+
+/* ======================================================
+   Veloura Mobile Floating Menu - Radius + Footer Space Fix
+   المطلوب:
+   - full_width يحترم إعداد الحواف بدل 24px ثابتة
+   - زيادة بسيطة للمسافة بين وسائل الدفع والقائمة المتصلة
+   - بقاء الوضع الزجاجي البلوري كما هو
+   ملاحظة: هذا البلوك لازم يكون آخر ملف القائمة
+====================================================== */
+
+@media (max-width: 767px) {
+  /*
+    في وضع بعرض الشاشة متصل:
+    نخلي الحواف من إعدادات الثيم، لكن من الأسفل تبقى 0 حتى تظل متصلة بالحافة.
+  */
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full_width .veloura-mobile-floating-menu__inner,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full_width .veloura-mobile-floating-menu__inner,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner {
+    border-radius:
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      0
+      0 !important;
+  }
+
+  body.veloura-mobile-floating-menu-position-full_width .veloura-mobile-floating-menu__inner::before,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full_width .veloura-mobile-floating-menu__inner::before,
+  body.veloura-mobile-floating-menu-enabled .veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner::before,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full_width .veloura-mobile-floating-menu__inner::before,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--full-width .veloura-mobile-floating-menu__inner::before {
+    border-radius:
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      var(--veloura-mobile-floating-menu-radius, 24px)
+      0
+      0 !important;
+  }
+
+  /*
+    زيادة بسيطة للمسافة داخل الفوتر في وضع المتصل
+    حتى وسائل الدفع لا تلتصق بالقائمة.
+  */
+  body.veloura-mobile-floating-menu-position-full_width .store-footer .veloura-footer-bottom,
+  body.veloura-mobile-floating-menu-position-full_width .store-footer.veloura-footer-enabled .veloura-footer-bottom,
+  body.veloura-mobile-floating-menu-position-full_width footer.store-footer .veloura-footer-bottom {
+    padding-bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      env(safe-area-inset-bottom, 0px) +
+      28px
+    ) !important;
+  }
+
+  /*
+    احتياط للمتاجر التي تستخدم store-footer__inner فقط بدون veloura-footer-bottom.
+  */
+  body.veloura-mobile-floating-menu-position-full_width footer.store-footer > .store-footer__inner:last-child,
+  body.veloura-mobile-floating-menu-position-full_width .store-footer > .store-footer__inner:last-child {
+    padding-bottom: calc(
+      var(--veloura-mobile-floating-menu-height, 56px) +
+      env(safe-area-inset-bottom, 0px) +
+      28px
+    ) !important;
+  }
+}

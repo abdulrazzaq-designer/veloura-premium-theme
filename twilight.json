@@ -6027,7 +6027,7 @@
   "id": "veloura_mobile_floating_menu_height_2026",
   "type": "number",
   "format": "slider",
-  "label": "ارتفاع القائمة1",
+  "label": "ارتفاع القائمة",
   "description": "القيمة الفعلية = 48 + قيمة السلايدر",
   "inputType": "range",
   "icon": "sicon-pin",
