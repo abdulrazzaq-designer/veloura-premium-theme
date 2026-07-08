@@ -15,85 +15,200 @@ class Product extends BasePage {
         });
 
         this.initProductOptionValidations();
+        this.initVelouraCouponCopy();
 
-        if(imageZoom){
-            // call the function when the page is ready
+        const velouraProductPage = document.querySelector('.veloura-product-page');
+
+        /*
+         * الزوم يعمل فقط إذا:
+         * 1. خيار الزوم مفعل من إعدادات بيانات صفحة المنتج
+         * أو لا يوجد كلاس veloura-product-page أصلاً حتى لا نكسر الثيم القديم.
+         */
+        const velouraZoomAllowed =
+            !velouraProductPage ||
+            velouraProductPage.classList.contains('veloura-product-zoom-enabled');
+
+        const themeZoomEnabled =
+            typeof imageZoom !== 'undefined' && imageZoom;
+
+        if (themeZoomEnabled && velouraZoomAllowed) {
             this.initImagesZooming();
-            // listen to screen resizing
             window.addEventListener('resize', () => this.initImagesZooming());
         }
     }
 
     initProductOptionValidations() {
-      document.querySelector('.product-form')?.addEventListener('change', function(){
-        this.reportValidity() && salla.product.getPrice(new FormData(this));
-      });
+        document.querySelector('.product-form')?.addEventListener('change', function () {
+            this.reportValidity() && salla.product.getPrice(new FormData(this));
+        });
     }
 
     initImagesZooming() {
-      // skip if the screen is not desktop or if glass magnifier
-      // is already crated for the image before
-      const imageZoom = document.querySelector('.image-slider .magnify-wrapper.swiper-slide-active .img-magnifier-glass');
-      if (window.innerWidth  < 1024 || imageZoom) return;
-      setTimeout(() => {
-          // set delay after the resizing is done, start creating the glass
-          // to create the glass in the proper position
-          const image = document.querySelector('.image-slider .swiper-slide-active img');
-          zoom(image?.id, 2);
-      }, 250);
-  
+        const slider = document.querySelector('salla-slider.details-slider');
 
-      document.querySelector('salla-slider.details-slider').addEventListener('slideChange', (e) => {
-          // set delay till the active class is ready
-          setTimeout(() => {
-              const imageZoom = document.querySelector('.image-slider .swiper-slide-active .img-magnifier-glass');
-    
-              // if the zoom glass is already created skip
-              if (window.innerWidth  < 1024 || imageZoom) return;
-              const image = document.querySelector('.image-slider .magnify-wrapper.swiper-slide-active img');
-              zoom(image?.id, 2);
-          }, 250)
-      })
+        if (!slider) {
+            return;
+        }
+
+        /*
+         * لا نعمل الزوم على الجوال.
+         * ولا ننشئ العدسة إذا كانت موجودة مسبقاً.
+         */
+        const existingZoom = document.querySelector(
+            '.image-slider .magnify-wrapper.swiper-slide-active .img-magnifier-glass'
+        );
+
+        if (window.innerWidth < 1024 || existingZoom) {
+            return;
+        }
+
+        setTimeout(() => {
+            const image = document.querySelector(
+                '.image-slider .magnify-wrapper.swiper-slide-active img'
+            );
+
+            if (!image || !image.id) {
+                return;
+            }
+
+            zoom(image.id, 2);
+        }, 250);
+
+        /*
+         * حتى لا نكرر event listener أكثر من مرة عند resize.
+         */
+        if (slider.dataset.velouraZoomReady === '1') {
+            return;
+        }
+
+        slider.dataset.velouraZoomReady = '1';
+
+        slider.addEventListener('slideChange', () => {
+            setTimeout(() => {
+                const existingZoom = document.querySelector(
+                    '.image-slider .magnify-wrapper.swiper-slide-active .img-magnifier-glass'
+                );
+
+                if (window.innerWidth < 1024 || existingZoom) {
+                    return;
+                }
+
+                const image = document.querySelector(
+                    '.image-slider .magnify-wrapper.swiper-slide-active img'
+                );
+
+                if (!image || !image.id) {
+                    return;
+                }
+
+                zoom(image.id, 2);
+            }, 250);
+        });
+    }
+
+    initVelouraCouponCopy() {
+        document.querySelectorAll('.veloura-product-coupon__code').forEach(button => {
+            if (button.dataset.velouraCouponReady === '1') {
+                return;
+            }
+
+            button.dataset.velouraCouponReady = '1';
+
+            button.addEventListener('click', async () => {
+                const code =
+                    button.getAttribute('data-code') ||
+                    button.textContent.trim();
+
+                if (!code) {
+                    return;
+                }
+
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(code);
+                    } else {
+                        const input = document.createElement('input');
+                        input.value = code;
+                        document.body.appendChild(input);
+                        input.select();
+                        document.execCommand('copy');
+                        input.remove();
+                    }
+
+                    const oldText = button.textContent;
+                    button.classList.add('is-copied');
+                    button.textContent = 'تم النسخ';
+
+                    setTimeout(() => {
+                        button.textContent = oldText;
+                        button.classList.remove('is-copied');
+                    }, 1200);
+                } catch (error) {
+                    console.warn('Veloura coupon copy failed:', error);
+                }
+            });
+        });
     }
 
     registerEvents() {
-      salla.event.on('product::price.updated.failed',()=>{
-        app.element('.price-wrapper').classList.add('hidden');
-        const outOfStock = app.element('.out-of-stock');
-        outOfStock.classList.remove('hidden');
-        outOfStock.classList.remove('scale-pulse');
-        void outOfStock.offsetWidth; // trigger reflow
-        outOfStock.classList.add('scale-pulse');
-      })
-      salla.product.event.onPriceUpdated((res) => {
+        salla.event.on('product::price.updated.failed', () => {
+            app.element('.price-wrapper')?.classList.add('hidden');
 
-        app.element('.out-of-stock').classList.add('hidden')
-        app.element('.price-wrapper').classList.remove('hidden')
+            const outOfStock = app.element('.out-of-stock');
 
-        let data = res.data,
-            is_on_sale = data.has_sale_price && data.regular_price > data.price;
+            if (!outOfStock) {
+                return;
+            }
 
-        app.startingPriceTitle?.classList.add('hidden');
+            outOfStock.classList.remove('hidden');
+            outOfStock.classList.remove('scale-pulse');
 
-        app.productWeight.forEach((el) => {el.innerHTML = data.weight || ''});
-        app.totalPrice.forEach((el) => {el.innerHTML = salla.money(data.price)});
-        app.beforePrice.forEach((el) => {el.innerHTML = salla.money(data.regular_price)});
-        app.productSku.forEach((el) => {el.innerHTML = data.sku || ''});
+            void outOfStock.offsetWidth;
 
-        app.toggleClassIf('.price_is_on_sale','showed','hidden', ()=> is_on_sale)
-        app.toggleClassIf('.starting-or-normal-price','hidden','showed', ()=> is_on_sale)
-
-        document.querySelectorAll('.total-price, .product-weight').forEach(el => {
-          el.classList.remove('scale-pulse');
-          void el.offsetWidth; // trigger reflow
-          el.classList.add('scale-pulse');
+            outOfStock.classList.add('scale-pulse');
         });
-      });
 
-      app.onClick('#btn-show-more', e => app.all('#more-content', div => {
-        e.target.classList.add('is-expanded');
-        div.style = `max-height:${div.scrollHeight}px`;
-      }) || e.target.remove());
+        salla.product.event.onPriceUpdated((res) => {
+            app.element('.out-of-stock')?.classList.add('hidden');
+            app.element('.price-wrapper')?.classList.remove('hidden');
+
+            let data = res.data;
+            let is_on_sale = data.has_sale_price && data.regular_price > data.price;
+
+            app.startingPriceTitle?.classList.add('hidden');
+
+            app.productWeight.forEach((el) => {
+                el.innerHTML = data.weight || '';
+            });
+
+            app.totalPrice.forEach((el) => {
+                el.innerHTML = salla.money(data.price);
+            });
+
+            app.beforePrice.forEach((el) => {
+                el.innerHTML = salla.money(data.regular_price);
+            });
+
+            app.productSku.forEach((el) => {
+                el.innerHTML = data.sku || '';
+            });
+
+            app.toggleClassIf('.price_is_on_sale', 'showed', 'hidden', () => is_on_sale);
+            app.toggleClassIf('.starting-or-normal-price', 'hidden', 'showed', () => is_on_sale);
+
+            document.querySelectorAll('.total-price, .product-weight').forEach(el => {
+                el.classList.remove('scale-pulse');
+                void el.offsetWidth;
+                el.classList.add('scale-pulse');
+            });
+        });
+
+        app.onClick('#btn-show-more', e =>
+            app.all('#more-content', div => {
+                e.target.classList.add('is-expanded');
+                div.style = `max-height:${div.scrollHeight}px`;
+            }) || e.target.remove()
+        );
     }
 }
 
