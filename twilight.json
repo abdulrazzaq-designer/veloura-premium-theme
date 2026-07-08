@@ -5946,6 +5946,1090 @@
   ]
 },
 {
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_settings_title_2026",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-tag'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بيانات صفحة المنتج</strong><span style=\"display:block;font-size:12px;opacity:.85\">إعدادات العرض، الصور، الشراء، البراند، التصنيف، العروض والمنتجات المرتبطة</span></div></div>",
+  "variant": "h1",
+  "icon": "sicon-tag"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل إعدادات بيانات صفحة المنتج",
+  "id": "veloura_product_page_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "id": "veloura_product_page_line_main_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_subtitle_images_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0f9ff;color:#075985;text-align:right;font-weight:800;border-right:4px solid #38bdf8\">الصور والمسار والمظهر العام</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء مسار التنقل في صفحة المنتج",
+  "id": "veloura_product_hide_breadcrumb_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء صور المنتج المصغرة",
+  "id": "veloura_product_hide_thumbnails_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_thumbnails_position_desktop_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض الصور المصغرة في اللابتوب",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": false,
+  "value": "below_image",
+  "default": "below_image",
+  "selected": [
+    {
+      "label": "أسفل صورة المنتج",
+      "value": "below_image",
+      "key": "veloura_product_thumbnails_position_desktop_2026-below_image"
+    }
+  ],
+  "options": [
+    {
+      "label": "أسفل صورة المنتج",
+      "value": "below_image",
+      "key": "veloura_product_thumbnails_position_desktop_2026-below_image"
+    },
+    {
+      "label": "على الجانب الأيمن",
+      "value": "right_side",
+      "key": "veloura_product_thumbnails_position_desktop_2026-right_side"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_hide_thumbnails_2026",
+      "operation": "=",
+      "value": false
+    }
+  ],
+  "description": "يعمل للمنتجات التي تحتوي على صورتين أو أكثر"
+},
+{
+  "id": "veloura_product_images_height_mode_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "ارتفاع الصور في صفحة المنتج",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": false,
+  "value": "auto_each",
+  "default": "auto_each",
+  "selected": [
+    {
+      "label": "ارتفاع مختلف لكل صورة",
+      "value": "auto_each",
+      "key": "veloura_product_images_height_mode_2026-auto_each"
+    }
+  ],
+  "options": [
+    {
+      "label": "ارتفاع مختلف لكل صورة",
+      "value": "auto_each",
+      "key": "veloura_product_images_height_mode_2026-auto_each"
+    },
+    {
+      "label": "ارتفاع ثابت لجميع الصور",
+      "value": "fixed_all",
+      "key": "veloura_product_images_height_mode_2026-fixed_all"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تكبير الصور في سلايدر صور المنتج",
+  "id": "veloura_product_images_zoom_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "عدسة مكبرة Zoom لتسهيل رؤية تفاصيل الصورة"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "خلفية منتجات شفافة في صفحة المنتج",
+  "id": "veloura_product_transparent_background_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_subtitle_info_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4\">معلومات المنتج الأساسية</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "عرض حالة توفر المنتج داخل صفحة المنتج",
+  "id": "veloura_product_show_availability_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار شارة متوفر مع مؤشر بعد السعر",
+  "id": "veloura_product_show_stock_radar_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "دائرة خضراء ونبض خفيف يظهر أسفل السعر عند توفر المنتج"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار تصنيف المنتج أسفل اسم المنتج",
+  "id": "veloura_product_show_category_under_title_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_category_label_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلمة تصنيف المنتج",
+  "value": "التصنيف:",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_show_category_under_title_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار براند المنتج في صفحة المنتج",
+  "id": "veloura_product_show_brand_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_brand_label_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان الماركة",
+  "value": "ماركة أصلية 100%",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_show_brand_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار عنوان البراند والصورة فقط",
+  "id": "veloura_product_brand_title_image_only_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_show_brand_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار طرق الدفع في صفحة المنتج",
+  "id": "veloura_product_show_payment_methods_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "تظهر بعد وصف المنتج"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء قيمة الخصم في صفحة المنتج",
+  "id": "veloura_product_hide_discount_value_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار عداد انتهاء خصم المنتج",
+  "id": "veloura_product_show_discount_countdown_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "يظهر فقط إذا كان للمنتج خصم بتاريخ انتهاء"
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_subtitle_content_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#334155;text-align:right;font-weight:800;border-right:4px solid #64748b\">الوصف والخيارات والتقييمات</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء وصف المنتج المختصر",
+  "id": "veloura_product_hide_short_description_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار وصف المنتج بشكل منفصل",
+  "id": "veloura_product_show_description_separate_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "عرض زر تفاصيل أكثر لوصف المنتج",
+  "id": "veloura_product_show_description_more_button_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار خيارات المنتج بشكل منفصل",
+  "id": "veloura_product_show_options_separate_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار تقييمات المنتج بشكل منفصل",
+  "id": "veloura_product_show_reviews_separate_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "عرض خيارات المنتج على شكل أزرار بدلاً من قائمة",
+  "id": "veloura_product_options_as_buttons_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار الشكل الجديد لعنصر خيار واحد",
+  "id": "veloura_product_single_option_new_style_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_options_as_buttons_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار الشكل الجديد لعنصر عدة اختيارات",
+  "id": "veloura_product_multi_option_new_style_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_options_as_buttons_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_subtitle_sticky_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e\">الشريط المثبت أسفل الجوال</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تثبيت زر الإضافة والكمية أسفل شاشة الجوال",
+  "id": "veloura_product_mobile_sticky_cart_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار ملخص سعر المنتج في القائمة المثبتة أسفل شاشة الجوال",
+  "id": "veloura_product_mobile_sticky_price_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_mobile_sticky_cart_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_mobile_quantity_style_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "شكل أزرار الكمية في الجوال",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": false,
+  "value": "modern",
+  "default": "modern",
+  "selected": [
+    {
+      "label": "حديث",
+      "value": "modern",
+      "key": "veloura_product_mobile_quantity_style_2026-modern"
+    }
+  ],
+  "options": [
+    {
+      "label": "حديث",
+      "value": "modern",
+      "key": "veloura_product_mobile_quantity_style_2026-modern"
+    },
+    {
+      "label": "الشكل القديم",
+      "value": "old",
+      "key": "veloura_product_mobile_quantity_style_2026-old"
+    },
+    {
+      "label": "مصغر لليسار",
+      "value": "mini_left",
+      "key": "veloura_product_mobile_quantity_style_2026-mini_left"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_mobile_sticky_cart_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تصغير حجم أزرار الإضافة والشراء الآن",
+  "id": "veloura_product_mobile_buttons_compact_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_mobile_sticky_cart_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "يناسب الشاشات الصغيرة ويخفف ضغط الشريط السفلي"
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_subtitle_marketing_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c\">العروض والتسويق داخل صفحة المنتج</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل كود خصم داخل صفحة المنتج",
+  "id": "veloura_product_coupon_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_coupon_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان كود الخصم",
+  "value": "خصم إضافي 10%",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_coupon_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_coupon_subtitle_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان فرعي لكود الخصم",
+  "value": "انسخ الكود واحصل على خصم إضافي عند الدفع",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_coupon_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_coupon_code_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كود الخصم",
+  "value": "",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_coupon_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "placeholder": "مثال: angel20"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل قسم عادة ما يتم شراؤها معاً",
+  "id": "veloura_product_bought_together_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_bought_together_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان قسم عادة يتم شراؤها معاً",
+  "value": "عادةً ما يتم شراؤها معاً",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_bought_together_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_bought_together_rules_2026",
+  "type": "collection",
+  "format": "collection",
+  "label": "قواعد منتجات يتم شراؤها مع هذا المنتج",
+  "description": "لكل قاعدة اختر المنتج الأساسي ثم المنتجات المقترحة معه",
+  "button_label": "إضافة قاعدة",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_bought_together_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "fields": [
+    {
+      "id": "base_product",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حدد صفحة المنتج المطلوبة",
+      "source": "products",
+      "required": false
+    },
+    {
+      "id": "related_products",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "حدد منتجات يتم شراؤها مع هذا المنتج",
+      "source": "products",
+      "required": false
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إضافة شرط ظهور لعداد مرات شراء المنتج",
+  "id": "veloura_product_purchase_count_condition_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_purchase_count_min_2026",
+  "type": "number",
+  "format": "number",
+  "label": "إظهار العداد إذا تجاوز عدد الشراء",
+  "value": 10,
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_purchase_count_condition_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل عداد متحرك من الصفر لعدد مرات شراء المنتج",
+  "id": "veloura_product_purchase_count_animated_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_purchase_count_condition_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_product_page_subtitle_tags_related_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899\">الوسوم والمنتجات المقترحة</div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل الوسوم",
+  "id": "veloura_product_tags_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء الوسوم من صفحة المنتج مع إبقائها لمحركات البحث",
+  "id": "veloura_product_hide_tags_visual_only_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_tags_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "description": "يتم إخفاؤها بصرياً فقط بدون التأثير على ظهورها في محركات البحث SEO"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء قسم منتجات قد تعجبك في صفحة المنتج",
+  "id": "veloura_product_hide_liked_products_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_liked_title_2026",
+  "type": "string",
+  "format": "text",
+  "label": "عنوان منتجات قد تعجبك",
+  "value": "منتجات قد تعجبك",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_hide_liked_products_2026",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تخصيص منتجات قد تعجبك",
+  "id": "veloura_product_custom_related_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_hide_liked_products_2026",
+      "operation": "=",
+      "value": false
+    }
+  ]
+},
+{
+  "id": "veloura_product_custom_related_rules_2026",
+  "type": "collection",
+  "format": "collection",
+  "label": "منتج أو منتجات مرتبطة به",
+  "description": "استخدمها فقط إذا أردت اقتراحات مخصصة بدل اقتراحات المتجر التلقائية",
+  "button_label": "إضافة قاعدة",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_product_custom_related_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ],
+  "fields": [
+    {
+      "id": "products",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "منتجات",
+      "description": "استعمل هذا في حال أردت تحديد منتجات محددة",
+      "source": "products",
+      "required": false
+    },
+    {
+      "id": "category",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختر التصنيف",
+      "description": "يشمل أي منتجات تصنيفها الأساسي هو هذا التصنيف",
+      "source": "categories",
+      "required": false
+    },
+    {
+      "id": "show_all_store_products",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار لجميع منتجات المتجر",
+      "value": false,
+      "required": false
+    },
+    {
+      "id": "related_products",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "منتجات مرتبطة",
+      "source": "products",
+      "required": false
+    },
+    {
+      "id": "related_category",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "تصنيف مرتبط",
+      "source": "categories",
+      "required": false
+    }
+  ]
+},
+{
   "id": "veloura_mobile_floating_menu_line_2026",
   "type": "static",
   "format": "line",
