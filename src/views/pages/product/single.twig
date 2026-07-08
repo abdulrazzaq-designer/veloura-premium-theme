@@ -184,19 +184,29 @@
                         auto-height
                         listen-to-thumbnails-option
                         show-thumbs-controls="false">
-                    {% if product.promotion_title %}
-                        <div class="promotion-title">{{ product.promotion_title }}</div>
-                    {% endif %}
+                    <div class="veloura-product-media-actions">
+                        <div class="veloura-product-media-actions__left">
+                            <salla-button
+                                    class="btn--wishlist animated sws veloura-product-media-wishlist"
+                                    data-id="{{ product.id }}"
+                                    onclick="salla.wishlist.toggle('{{ product.id }}')"
+                                    shape="icon"
+                                    fill="outline"
+                                    color="light"
+                                    aria-label="add to wishlist">
+                                <i class="sicon-heart"></i>
+                            </salla-button>
 
-                    <salla-button
-                            class="btn--wishlist animated sws"
-                            data-id="{{ product.id }}"
-                            onclick="salla.wishlist.toggle('{{ product.id }}')"
-                            shape="icon"
-                            fill="outline"
-                            color="light">
-                        <i class="sicon-heart"></i>
-                    </salla-button>
+                            <salla-social-share
+                                    class="veloura-product-media-share"
+                                    aria-label="social share">
+                            </salla-social-share>
+                        </div>
+
+                        {% if product.promotion_title %}
+                            <div class="promotion-title veloura-product-media-promo">{{ product.promotion_title }}</div>
+                        {% endif %}
+                    </div>
 
                     {# Calories Badge #}
                     {% if product.calories %}
@@ -381,20 +391,7 @@
                     </div>
                 {% endif %}
 
-                <div class="flex rtl:space-x-reverse space-x-3">
-                    <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share>
-
-                    <salla-button
-                            class="btn--wishlist animated hidden sm:inline-flex"
-                            data-id="{{ product.id }}"
-                            onclick="salla.wishlist.toggle('{{ product.id }}')"
-                            shape="icon"
-                            fill="outline"
-                            color="light"
-							aria-label="add to wishlist">
-                        <i class="sicon-heart"></i>
-                    </salla-button>
-                </div>
+                {# Veloura: wishlist/share moved above product image #}
 
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
                     <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
