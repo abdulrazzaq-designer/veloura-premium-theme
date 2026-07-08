@@ -3131,6 +3131,86 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
       }
 
+
+    function getFloatingItemByAction(action) {
+      if (action === 'search') {
+        return menu.querySelector('[data-vmfm-action="search"], [data-vmfm-match="search"]');
+      }
+
+      if (action === 'login') {
+        return menu.querySelector('[data-vmfm-action="login"], [data-vmfm-match="account"]');
+      }
+
+      return null;
+    }
+
+    function isSearchTriggerTarget(target) {
+      return closestFromTarget(
+        target,
+        [
+          '[data-search-open]',
+          '[data-open-search]',
+          '[data-search]',
+          '.s-search-modal-trigger',
+          '.s-header-search',
+          '.search-trigger',
+          '.search-btn',
+          '.veloura-header-search',
+          '.veloura-header-search-trigger',
+          '.header-search',
+          'button[aria-label*="بحث"]',
+          'button[aria-label*="search"]',
+          'a[aria-label*="بحث"]',
+          'a[aria-label*="search"]'
+        ].join(',')
+      );
+    }
+
+    function isLoginTriggerTarget(target) {
+      return closestFromTarget(
+        target,
+        [
+          '#mobile-nav .mob-login a',
+          '.mobile-nav .mob-login a',
+          '.mob-login .mobile-nav--item',
+          '[data-login]',
+          '[data-open-login]',
+          '[data-login-open]',
+          '.s-login-modal-trigger',
+          '.login-trigger',
+          '.s-user-menu-trigger',
+          'button[aria-label*="تسجيل"]',
+          'button[aria-label*="دخول"]',
+          'button[aria-label*="login"]',
+          'a[href*="/login"]',
+          'a[href*="/account"]'
+        ].join(',')
+      );
+    }
+
+    function syncTransientFromExternalClick(action) {
+      var item = getFloatingItemByAction(action);
+
+      if (!item) {
+        return;
+      }
+
+      setTimeout(function () {
+        if (isTransientModalOpen(action)) {
+          setTransientAction(action, item);
+        } else if (transientAction === action) {
+          clearTransientAction();
+        }
+      }, 180);
+
+      setTimeout(function () {
+        if (isTransientModalOpen(action)) {
+          setTransientAction(action, item);
+        }
+      }, 650);
+    }
+
+
       if (window.salla && window.salla.event && typeof window.salla.event.dispatch === 'function') {
         try {
           window.salla.event.dispatch('login::open');
@@ -3162,6 +3242,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (insideMenu) {
           return;
+        }
+
+        /*
+         * إذا فتح المستخدم البحث أو تسجيل الدخول من الهيدر،
+         * نخلي زر القائمة السفلية الموافق يصير نشط.
+         */
+        if (isSearchTriggerTarget(event.target)) {
+          syncTransientFromExternalClick('search');
+        }
+
+        if (isLoginTriggerTarget(event.target)) {
+          syncTransientFromExternalClick('login');
         }
 
         if (closeBtn || backdrop || modalClose) {
@@ -3227,6 +3319,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (action === 'search') {
         event.preventDefault();
+
+        /*
+         * إذا البحث مفتوح وضغطت نفس الزر مرة ثانية: إغلاق.
+         */
+        if (transientAction === 'search' || isSearchModalOpen()) {
+          closeVisibleModalLikeThings();
+          clearTransientAction();
+          scheduleFloatingMenuSync();
+          return;
+        }
+
         closeOpenOverlays('search');
         setTransientAction('search', actionItem);
         openSearchFallback();
@@ -3253,6 +3356,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (action === 'login') {
         event.preventDefault();
+
+        /*
+         * إذا نافذة تسجيل الدخول مفتوحة وضغطت نفس الزر مرة ثانية: إغلاق.
+         */
+        if (transientAction === 'login' || isLoginModalOpen()) {
+          closeVisibleModalLikeThings();
+          clearTransientAction();
+          scheduleFloatingMenuSync();
+          return;
+        }
+
         closeOpenOverlays('login');
         setTransientAction('login', actionItem);
         openLoginModal();

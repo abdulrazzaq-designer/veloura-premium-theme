@@ -613,3 +613,82 @@
     ) !important;
   }
 }
+
+
+/* ======================================================
+   Veloura Mobile Floating Menu - Pill Fade + Active Sync UI
+   المطلوب:
+   - ظل/تدرج خلف الكبسولة من الأسفل مثل Telegram
+   - يخفي العناصر تحت القائمة بشكل ناعم
+   - لا يلغي الوضع الزجاجي البلوري
+   ملاحظة: هذا البلوك لازم يكون آخر ملف القائمة
+====================================================== */
+
+@media (max-width: 767px) {
+  /*
+    خلفية تدرج خلف الكبسولة فقط.
+    تطلع فوق المحتوى وتحت القائمة، وتخفي العناصر اللي تحتها بشكل ناعم.
+  */
+  body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu::before,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--pill::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(-1 * (var(--veloura-mobile-floating-menu-bottom, 18px) + env(safe-area-inset-bottom, 0px) + 18px));
+    height: calc(var(--veloura-mobile-floating-menu-height, 56px) + var(--veloura-mobile-floating-menu-bottom, 18px) + env(safe-area-inset-bottom, 0px) + 70px);
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+      linear-gradient(
+        to top,
+        color-mix(
+          in srgb,
+          var(--veloura-footer-bottom-bg, var(--veloura-footer-bg, #000000)) 92%,
+          transparent
+        ) 0%,
+        color-mix(
+          in srgb,
+          var(--veloura-footer-bottom-bg, var(--veloura-footer-bg, #000000)) 68%,
+          transparent
+        ) 38%,
+        color-mix(
+          in srgb,
+          var(--veloura-footer-bottom-bg, var(--veloura-footer-bg, #000000)) 28%,
+          transparent
+        ) 68%,
+        transparent 100%
+      );
+  }
+
+  body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu__inner,
+  .veloura-mobile-floating-menu.veloura-mobile-floating-menu--pill .veloura-mobile-floating-menu__inner {
+    z-index: 2;
+  }
+
+  /*
+    في حال المتصفح لا يدعم color-mix:
+    fallback بسيط وخفيف.
+  */
+  @supports not (color: color-mix(in srgb, #000 50%, transparent)) {
+    body.veloura-mobile-floating-menu-position-pill .veloura-mobile-floating-menu::before,
+    .veloura-mobile-floating-menu.veloura-mobile-floating-menu--pill::before {
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, .72) 0%,
+          rgba(0, 0, 0, .44) 38%,
+          rgba(0, 0, 0, .18) 68%,
+          transparent 100%
+        );
+    }
+  }
+
+  /*
+    تنعيم العنصر النشط حتى ما يطلع مربع قاسي فوق الكبسولة.
+  */
+  .veloura-mobile-floating-menu__item.is-active {
+    border-radius: calc(var(--veloura-mobile-floating-menu-radius, 999px) - 8px) !important;
+  }
+}
