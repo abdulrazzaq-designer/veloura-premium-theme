@@ -120,6 +120,7 @@
     {% endmacro %}
 
     {% set vpp_enabled = _self.veloura_bool(theme.settings.get('veloura_product_page_enabled_2026', true), true)|trim == 'true' %}
+    {% set vpp_content_layout = _self.veloura_select(theme.settings.get('veloura_product_content_layout_2026', 'normal'), 'normal')|trim %}
 
     {% set vpp_hide_breadcrumb = _self.veloura_bool(theme.settings.get('veloura_product_hide_breadcrumb_2026', false), false)|trim == 'true' %}
     {% set vpp_hide_thumbnails = _self.veloura_bool(theme.settings.get('veloura_product_hide_thumbnails_2026', false), false)|trim == 'true' %}
@@ -165,7 +166,7 @@
     {% set vpp_hide_liked_products = _self.veloura_bool(theme.settings.get('veloura_product_hide_liked_products_2026', false), false)|trim == 'true' %}
     {% set vpp_liked_title = theme.settings.get('veloura_product_liked_title_2026', trans('pages.products.similar_products')) ?: trans('pages.products.similar_products') %}
 
-    <div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_show_description_separate ? 'veloura-product-description-separate' : '' }} {{ vpp_show_options_separate ? 'veloura-product-options-separate' : '' }} {{ vpp_show_reviews_separate ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}">
+    <div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} veloura-product-content-{{ vpp_content_layout }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_description_separate) ? 'veloura-product-description-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_options_separate) ? 'veloura-product-options-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_reviews_separate) ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}">
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -186,21 +187,21 @@
                         show-thumbs-controls="false">
                     <div class="veloura-product-media-actions">
                         <div class="veloura-product-media-actions__left">
-                            <salla-button
-                                    class="btn--wishlist animated sws veloura-product-media-wishlist"
+                            <button type="button"
+                                    class="veloura-product-media-action-btn veloura-product-media-wishlist"
                                     data-id="{{ product.id }}"
                                     onclick="salla.wishlist.toggle('{{ product.id }}')"
-                                    shape="icon"
-                                    fill="outline"
-                                    color="light"
                                     aria-label="add to wishlist">
                                 <i class="sicon-heart"></i>
-                            </salla-button>
+                            </button>
 
-                            <salla-social-share
-                                    class="veloura-product-media-share"
+                            <button type="button"
+                                    class="veloura-product-media-action-btn veloura-product-media-share-btn"
                                     aria-label="social share">
-                            </salla-social-share>
+                                <i class="sicon-share"></i>
+                            </button>
+
+                            <salla-social-share class="veloura-product-native-share" aria-label="social share"></salla-social-share>
                         </div>
 
                         {% if product.promotion_title %}
@@ -565,6 +566,33 @@
 {% endblock %}
 
 {% block scripts %}
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.veloura-product-media-share-btn').forEach(function (btn) {
+          if (btn.dataset.velouraShareReady === '1') return;
+          btn.dataset.velouraShareReady = '1';
+
+          btn.addEventListener('click', function () {
+            var wrap = btn.closest('.veloura-product-media-actions');
+            var nativeShare = wrap ? wrap.querySelector('.veloura-product-native-share') : null;
+
+            if (!nativeShare) return;
+
+            var clickable = nativeShare.shadowRoot
+              ? nativeShare.shadowRoot.querySelector('button, a, [role="button"]')
+              : nativeShare.querySelector('button, a, [role="button"]');
+
+            if (clickable) {
+              clickable.click();
+            } else {
+              nativeShare.click();
+            }
+          });
+        });
+      });
+    </script>
+
     <script defer src="{{ 'product.js' | asset }}"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {

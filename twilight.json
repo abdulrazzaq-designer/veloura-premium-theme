@@ -5949,14 +5949,14 @@
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-tag'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بيانات صفحة المنتج</strong></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-tag'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بيانات صفحة المنتج</strong><span style=\"display:block;font-size:12px;opacity:.85\">إعدادات العرض، الصور، الشراء، البراند، التصنيف، العروض والمنتجات المرتبطة</span></div></div>",
   "variant": "h1",
   "icon": "sicon-tag"
 },
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "تفعيل إعدادات بيانات صفحة المنتج1",
+  "label": "تفعيل إعدادات بيانات صفحة المنتج",
   "id": "veloura_product_page_enabled_2026",
   "format": "switch",
   "required": false,
@@ -6342,6 +6342,49 @@
   "id": "veloura_product_page_subtitle_content_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#334155;text-align:right;font-weight:800;border-right:4px solid #64748b\">الوصف والخيارات والتقييمات</div>",
   "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_content_layout_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "طريقة عرض تفاصيل المنتج",
+  "description": "فصل الوصف والخيارات والتقييمات يعمل فقط عند اختيار التابات",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": false,
+  "value": "normal",
+  "default": "normal",
+  "selected": [
+    {
+      "label": "الوضع الطبيعي",
+      "value": "normal",
+      "key": "veloura-product-content-normal-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "الوضع الطبيعي",
+      "value": "normal",
+      "key": "veloura-product-content-normal-2026"
+    },
+    {
+      "label": "كروت منفصلة",
+      "value": "cards",
+      "key": "veloura-product-content-cards-2026"
+    },
+    {
+      "label": "تابات",
+      "value": "tabs",
+      "key": "veloura-product-content-tabs-2026"
+    }
+  ],
   "conditions": [
     {
       "id": "veloura_product_page_enabled_2026",
