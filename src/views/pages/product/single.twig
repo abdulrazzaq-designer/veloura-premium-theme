@@ -167,10 +167,12 @@
     {% set vpp_liked_title = theme.settings.get('veloura_product_liked_title_2026', trans('pages.products.similar_products')) ?: trans('pages.products.similar_products') %}
 
     {# ألوان/تدوير عام من الإعدادات العامة #}
-    {% set vpp_section_bg = theme.settings.get('veloura_site_second_bg_color_2026', '#f8fafc') %}
+    {# خلفية أجزاء المنتج = لون الخلفية الأساسي للمتجر #}
+    {% set vpp_section_bg = theme.settings.get('veloura_site_bg_color_2026', '#ffffff') %}
     {% if vpp_section_bg.value is defined %}{% set vpp_section_bg = vpp_section_bg.value %}{% endif %}
 
-    {% set vpp_dark_section_bg = theme.settings.get('veloura_dark_secondary_bg_2026', '#010612') %}
+    {# في الوضع الداكن = لون الخلفية الأساسي الداكن #}
+    {% set vpp_dark_section_bg = theme.settings.get('veloura_dark_body_bg_2026', '#010202') %}
     {% if vpp_dark_section_bg.value is defined %}{% set vpp_dark_section_bg = vpp_dark_section_bg.value %}{% endif %}
 
     {% set vpp_general_radius_key = _self.veloura_select(theme.settings.get('veloura_global_radius_2026', 'large'), 'large')|trim %}
@@ -184,8 +186,7 @@
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-
-    <div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} veloura-product-content-{{ vpp_content_layout }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_description_separate) ? 'veloura-product-description-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_options_separate) ? 'veloura-product-options-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_reviews_separate) ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-section-bg: {{ vpp_section_bg }}; --veloura-product-dark-section-bg: {{ vpp_dark_section_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} veloura-product-content-{{ vpp_content_layout }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_description_separate) ? 'veloura-product-description-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_options_separate) ? 'veloura-product-options-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_reviews_separate) ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-section-bg: {{ vpp_section_bg }}; --veloura-product-dark-section-bg: {{ vpp_dark_section_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
