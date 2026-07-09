@@ -862,3 +862,202 @@ salla-slider.details-slider.image-slider > .btn--wishlist:not(.veloura-product-m
     font-size: 12px !important;
   }
 }
+
+
+
+/* ======================================================
+   Veloura Product Page V3
+   - كروت تفاصيل المنتج تأخذ لون الخلفية الثانوي
+   - بدون ظل وبدون إطار حسب طلبك
+   - تحكم عام بالتدوير من إعدادات عامة veloura_global_radius_2026
+   ضع هذا آخر ملف SCSS الخاص بالمنتج
+====================================================== */
+
+/* متغيرات الصفحة */
+.veloura-product-page {
+  --veloura-product-primary: var(--color-primary, #004d65);
+  --veloura-product-radius: var(--veloura-product-radius, 28px);
+}
+
+/* في الداكن: خذ الخلفية الثانوية الداكنة */
+body.dark .veloura-product-page {
+  --veloura-product-section-bg: var(--veloura-product-dark-section-bg, var(--veloura-dark-secondary-bg, #010612));
+}
+
+/* العنوان الترويجي يأخذ لون المتجر الأساسي */
+.details-slider.image-slider .promotion-title.veloura-product-media-promo,
+salla-slider.details-slider.image-slider .promotion-title.veloura-product-media-promo,
+.image-slider .promotion-title.veloura-product-media-promo,
+.promotion-title.veloura-product-media-promo {
+  background: var(--veloura-product-primary) !important;
+  color: #fff !important;
+  border-radius: var(--veloura-product-radius) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* أزرار المفضلة والمشاركة فوق الصورة */
+.details-slider.image-slider,
+salla-slider.details-slider.image-slider,
+.image-slider {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: var(--veloura-product-radius) !important;
+}
+
+.veloura-product-media-actions {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 999 !important;
+  pointer-events: none !important;
+}
+
+.veloura-product-media-actions__left {
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  right: auto !important;
+  z-index: 1001 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  pointer-events: auto !important;
+}
+
+.veloura-product-media-action-btn {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: var(--veloura-product-radius) !important;
+  border: 0 !important;
+  background: var(--veloura-product-section-bg, var(--veloura-site-second-bg, #f8fafc)) !important;
+  color: var(--veloura-product-primary) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.veloura-product-media-action-btn i {
+  display: inline-flex !important;
+  font-size: 19px !important;
+  line-height: 1 !important;
+  color: inherit !important;
+}
+
+/* نخفي مشاركة سلة الأصلية بصرياً فقط */
+.veloura-product-native-share {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 1px !important;
+  min-height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+/* الكروت/الأجزاء البيضاء في الصورة */
+.veloura-product-page .main-content > section.bg-white,
+.veloura-product-page .main-content .product__description,
+.veloura-product-page .main-content .veloura-product-options-wrap,
+.veloura-product-page .main-content .sticky-product-bar,
+.veloura-product-page .main-content .veloura-product-sticky-bar,
+.veloura-product-page .main-content .bg-white.rounded-md,
+.veloura-product-page .veloura-product-coupon,
+.veloura-product-page .veloura-product-discount-countdown,
+.veloura-product-page .product-brand,
+.veloura-product-page .veloura-product-brand,
+.veloura-product-page .veloura-product-category-under-title {
+  background: var(--veloura-product-section-bg, var(--veloura-site-second-bg, #f8fafc)) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: var(--veloura-product-radius) !important;
+}
+
+/* عناصر السلايدر والصورة */
+.veloura-product-page .details-slider,
+.veloura-product-page .image-slider,
+.veloura-product-page .swiper-slide,
+.veloura-product-page .magnify-wrapper {
+  border-radius: var(--veloura-product-radius) !important;
+}
+
+/* حقول الخيارات */
+.veloura-product-page .veloura-product-options-wrap select,
+.veloura-product-page .veloura-product-options-wrap .s-form-control,
+.veloura-product-page .veloura-product-options-wrap .s-product-options-option select,
+.veloura-product-page .s-form-control,
+.veloura-product-page .form-input {
+  background: var(--veloura-product-section-bg, var(--veloura-site-second-bg, #f8fafc)) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: var(--veloura-product-radius) !important;
+}
+
+/* زر الإضافة والشراء */
+.veloura-product-page salla-add-product-button,
+.veloura-product-page salla-button,
+.veloura-product-page .sticky-product-bar__btn,
+.veloura-product-page button {
+  border-radius: var(--veloura-product-radius) !important;
+}
+
+/* لا نفصل الوصف/الخيارات إلا إذا اخترت تابات */
+.veloura-product-content-normal .product__description,
+.veloura-product-content-normal .veloura-product-options-wrap,
+.veloura-product-content-cards .product__description,
+.veloura-product-content-cards .veloura-product-options-wrap {
+  box-shadow: none !important;
+}
+
+/* فصل حقيقي فقط في وضع التابات */
+.veloura-product-content-tabs.veloura-product-description-separate .product__description,
+.veloura-product-content-tabs.veloura-product-options-separate .veloura-product-options-wrap,
+.veloura-product-content-tabs.veloura-product-reviews-separate .veloura-product-reviews {
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  background: var(--veloura-product-section-bg, var(--veloura-site-second-bg, #f8fafc)) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: var(--veloura-product-radius) !important;
+}
+
+/* لو الثيم القديم ترك مشاركة/مفضلة داخل التفاصيل */
+.veloura-product-page .flex:has(> salla-social-share.inline-flex.mb-5),
+.product-single .flex:has(> salla-social-share.inline-flex.mb-5) {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-product-media-actions__left {
+    top: 10px !important;
+    left: 10px !important;
+    gap: 7px !important;
+  }
+
+  .veloura-product-media-action-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .details-slider.image-slider .promotion-title.veloura-product-media-promo,
+  salla-slider.details-slider.image-slider .promotion-title.veloura-product-media-promo,
+  .image-slider .promotion-title.veloura-product-media-promo,
+  .promotion-title.veloura-product-media-promo {
+    top: 10px !important;
+    right: 10px !important;
+    max-width: calc(100% - 112px) !important;
+    min-height: 38px !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+}

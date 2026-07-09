@@ -334,6 +334,65 @@
             ]
         },
         {
+  "type": "static",
+  "format": "title",
+  "id": "veloura_global_shape_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #64748b;box-shadow:inset 0 0 0 1px rgba(100,116,139,.08)\">الشكل العام للعناصر</div>",
+  "variant": "h6",
+  "icon": "sicon-magic"
+},
+{
+  "id": "veloura_global_radius_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "تدوير العناصر العامة",
+  "description": "يتحكم بتدوير كروت تفاصيل المنتج، الوصف، الخيارات، الأزرار والأجزاء العامة التي تدعم متغير Veloura",
+  "icon": "sicon-border-radius",
+  "source": "Manual",
+  "required": false,
+  "value": "large",
+  "default": "large",
+  "selected": [
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "veloura-global-radius-large-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "بدون تدوير",
+      "value": "sharp",
+      "key": "veloura-global-radius-sharp-2026"
+    },
+    {
+      "label": "خفيف",
+      "value": "soft",
+      "key": "veloura-global-radius-soft-2026"
+    },
+    {
+      "label": "متوسط",
+      "value": "medium",
+      "key": "veloura-global-radius-medium-2026"
+    },
+    {
+      "label": "كبير",
+      "value": "large",
+      "key": "veloura-global-radius-large-2026"
+    },
+    {
+      "label": "ضخم",
+      "value": "xl",
+      "key": "veloura-global-radius-xl-2026"
+    },
+    {
+      "label": "دائري كامل",
+      "value": "round",
+      "key": "veloura-global-radius-round-2026"
+    }
+  ]
+},
+        {
             "id": "veloura_site_bg_color_2026",
             "type": "string",
             "format": "color",
