@@ -166,11 +166,16 @@
     {% set vpp_hide_liked_products = _self.veloura_bool(theme.settings.get('veloura_product_hide_liked_products_2026', false), false)|trim == 'true' %}
     {% set vpp_liked_title = theme.settings.get('veloura_product_liked_title_2026', trans('pages.products.similar_products')) ?: trans('pages.products.similar_products') %}
 
+    {% set vpp_custom_related_enabled = _self.veloura_bool(theme.settings.get('veloura_product_custom_related_enabled_2026', false), false)|trim == 'true' %}
+    {% set vpp_custom_related_source = _self.veloura_select(theme.settings.get('veloura_product_custom_related_source_2026', 'selected'), 'selected')|trim %}
+    {% set vpp_custom_related_products = theme.settings.get('veloura_product_custom_related_products_2026', []) %}
+    {% set vpp_custom_related_category = theme.settings.get('veloura_product_custom_related_category_2026', []) %}
+
+
     {% set vpp_purchase_count_enabled = _self.veloura_bool(theme.settings.get('veloura_product_purchase_count_condition_enabled_2026', false), false)|trim == 'true' %}
     {% set vpp_purchase_count_min = theme.settings.get('veloura_product_purchase_count_min_2026', 10) %}
     {% if vpp_purchase_count_min.value is defined %}{% set vpp_purchase_count_min = vpp_purchase_count_min.value %}{% endif %}
     {% set vpp_purchase_count_animated = _self.veloura_bool(theme.settings.get('veloura_product_purchase_count_animated_2026', true), true)|trim == 'true' %}
-    {% set vpp_custom_related_enabled = _self.veloura_bool(theme.settings.get('veloura_product_custom_related_enabled_2026', false), false)|trim == 'true' %}
 
 
     {# ألوان/تدوير عام من الإعدادات العامة #}
@@ -197,7 +202,7 @@
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} veloura-product-content-{{ vpp_content_layout }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_description_separate) ? 'veloura-product-description-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_options_separate) ? 'veloura-product-options-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_reviews_separate) ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -334,7 +339,7 @@
                     </div>
                 {% endif %}
 
-                {% if product.subtitle %}
+                {% if product.subtitle and not (vpp_enabled and vpp_hide_short_description) %}
                     <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
                         {{ product.subtitle }}
                     </h2>
@@ -362,21 +367,10 @@
                   </div>
                 </div>
 
-                {% if vpp_enabled and vpp_show_stock_radar and product.is_available %}
-                    <div class="veloura-product-stock-radar">
+                {% if vpp_enabled and vpp_show_availability and product.is_available %}
+                    <div class="veloura-product-stock-radar {{ vpp_show_stock_radar ? 'is-pulse' : 'is-simple' }}">
                         <span class="veloura-product-stock-radar__dot"></span>
                         <span>متوفر</span>
-                    </div>
-                {% endif %}
-
-                {% set vpp_purchase_count_value = product.sold_quantity ?: product.sold_count ?: product.sales_count ?: product.orders_count ?: 0 %}
-                {% if vpp_enabled and vpp_purchase_count_enabled and vpp_purchase_count_value >= vpp_purchase_count_min %}
-                    <div class="veloura-product-purchase-count {{ vpp_purchase_count_animated ? 'is-animated' : '' }}"
-                         data-veloura-count="{{ vpp_purchase_count_value }}">
-                        <i class="sicon-fire"></i>
-                        <span>تم شراؤه</span>
-                        <strong class="veloura-product-purchase-count__number">{{ vpp_purchase_count_value }}</strong>
-                        <span>مرة</span>
                     </div>
                 {% endif %}
 
@@ -400,7 +394,6 @@
                     </div>
                 {% endif %}
 
-                {% if not (vpp_enabled and vpp_hide_short_description) %}
                 <div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3">
                     {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
                     {% if product.has_read_more %}
@@ -419,7 +412,6 @@
                         </article>
                     {% endif %}
                 </div>
-                {% endif %}
 
                 {% if product.tags|length and ((vpp_enabled and vpp_tags_enabled) or (not vpp_enabled and theme.settings.get('show_tags', true))) %}
                     <div class="mb-3">
@@ -433,8 +425,10 @@
 
                 {# Veloura: wishlist/share moved above product image #}
 
-                {% if product.sold_quantity or product.can_show_remained_quantity %}
-                    <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
+                {% set vpp_purchase_count_value = product.sold_quantity ?: 0 %}
+                {% set vpp_show_original_purchase_count = (not vpp_enabled) or (not vpp_purchase_count_enabled) or (vpp_purchase_count_value >= vpp_purchase_count_min) %}
+                {% if vpp_show_original_purchase_count and (product.sold_quantity or product.can_show_remained_quantity) %}
+                    <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm veloura-product-original-purchase-count {{ vpp_purchase_count_animated ? 'is-animated' : '' }}">
                         {% if product.sold_quantity %}
                             <div class="px-4 !text-red-800">
                                 <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i> {{ trans('pages.products.sold') }}
@@ -464,6 +458,7 @@
                 {# Payment / Installment Methods #}
                 {% if not vpp_enabled or vpp_show_payment_methods %}
                     <div class="veloura-product-payment-methods">
+                        <salla-payments></salla-payments>
                         <salla-installment price="{{ product.price }}"></salla-installment>
                         {% hook 'product:single.payment_methods' %}
                     </div>
@@ -601,8 +596,46 @@
     
     {# Similar Products Area #}
     {% if not vpp_enabled or not vpp_hide_liked_products %}
-        <div class="container veloura-product-related-products" data-veloura-custom-related-enabled="{{ vpp_custom_related_enabled ? 'true' : 'false' }}">
-            <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{ vpp_liked_title }}" display-all-url></salla-products-slider>
+        {% set veloura_related_source = 'related' %}
+        {% set veloura_related_source_value = product.id %}
+
+        {% if vpp_enabled and vpp_custom_related_enabled and vpp_custom_related_source == 'selected' and vpp_custom_related_products %}
+            {% set veloura_product_ids = [] %}
+            {% for related_product in vpp_custom_related_products %}
+                {% if related_product.id is defined %}
+                    {% set veloura_product_ids = veloura_product_ids|merge([related_product.id]) %}
+                {% elseif related_product.value is defined %}
+                    {% set veloura_product_ids = veloura_product_ids|merge([related_product.value]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if veloura_product_ids|length %}
+                {% set veloura_related_source = 'selected' %}
+                {% set veloura_related_source_value = veloura_product_ids %}
+            {% endif %}
+        {% elseif vpp_enabled and vpp_custom_related_enabled and vpp_custom_related_source == 'categories' and vpp_custom_related_category %}
+            {% set veloura_category_ids = [] %}
+            {% for related_category in vpp_custom_related_category %}
+                {% if related_category.id is defined %}
+                    {% set veloura_category_ids = veloura_category_ids|merge([related_category.id]) %}
+                {% elseif related_category.value is defined %}
+                    {% set veloura_category_ids = veloura_category_ids|merge([related_category.value]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if veloura_category_ids|length %}
+                {% set veloura_related_source = 'categories' %}
+                {% set veloura_related_source_value = veloura_category_ids %}
+            {% endif %}
+        {% endif %}
+
+        <div class="container veloura-product-related-products">
+            <salla-products-slider
+                source="{{ veloura_related_source }}"
+                source-value="{{ veloura_related_source_value|json_encode }}"
+                block-title="{{ vpp_liked_title }}"
+                display-all-url>
+            </salla-products-slider>
         </div>
     {% endif %}
 {% endblock %}

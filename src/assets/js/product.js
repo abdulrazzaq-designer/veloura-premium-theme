@@ -18,12 +18,6 @@ class Product extends BasePage {
         this.initVelouraCouponCopy();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
-
-        /*
-         * الزوم يعمل فقط إذا:
-         * 1. خيار الزوم مفعل من إعدادات بيانات صفحة المنتج
-         * أو لا يوجد كلاس veloura-product-page أصلاً حتى لا نكسر الثيم القديم.
-         */
         const velouraZoomAllowed =
             !velouraProductPage ||
             velouraProductPage.classList.contains('veloura-product-zoom-enabled');
@@ -50,10 +44,6 @@ class Product extends BasePage {
             return;
         }
 
-        /*
-         * لا نعمل الزوم على الجوال.
-         * ولا ننشئ العدسة إذا كانت موجودة مسبقاً.
-         */
         const existingZoom = document.querySelector(
             '.image-slider .magnify-wrapper.swiper-slide-active .img-magnifier-glass'
         );
@@ -74,9 +64,6 @@ class Product extends BasePage {
             zoom(image.id, 2);
         }, 250);
 
-        /*
-         * حتى لا نكرر event listener أكثر من مرة عند resize.
-         */
         if (slider.dataset.velouraZoomReady === '1') {
             return;
         }
