@@ -202,7 +202,7 @@
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div data-veloura-product-page="1" class="container veloura-product-page veloura-product-clean-layout veloura-product-hide-floating-menu {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -310,7 +310,7 @@
                 </salla-slider>
             </div>
 
-            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
+            <div class="main-content md:sticky top-24 w-full md:w-2/4 md:pb-16">
 
                 {% hook 'product:single.description.start' %}
 
@@ -354,19 +354,7 @@
                 {% if product.is_taxable %}
                     <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
                 {% endif %}
-                {# Price #}
-                <div class="flex whitespace-nowrap gap-4 items-center">
-                  <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                      <p class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</p>
-                      <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
-                  </div>
-                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                      {% if product.starting_price %} 
-                          <span class="">{{ trans('pages.products.starting_price') }}</span>
-                      {% endif %} 
-                          <p class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</p>
-                  </div>
-                </div>
+                {# Veloura Clean: السعر يظهر مرة واحدة فقط داخل كرت السعر في الفورم لتجنب التكرار #}
 
                 {% if vpp_enabled and vpp_show_availability and product.is_available %}
                     <div class="veloura-product-stock-radar {{ vpp_show_stock_radar ? 'is-pulse' : 'is-simple' }}">
@@ -389,7 +377,7 @@
                             <strong>{{ vpp_coupon_title }}</strong>
                             <span>{{ vpp_coupon_subtitle }}</span>
                         </div>
-                        <button type="button" class="veloura-product-coupon__code" onclick="navigator.clipboard && navigator.clipboard.writeText('{{ vpp_coupon_code }}')">
+                        <button type="button" class="veloura-product-coupon__code" data-code="{{ vpp_coupon_code }}">
                             {{ vpp_coupon_code }}
                         </button>
                     </div>
@@ -502,13 +490,13 @@
 
                     {% hook 'product:single.form.start' %}
 
-                    <div class="veloura-product-options-wrap">
+                    <div class="veloura-product-options-wrap" aria-label="product options">
                         {% include 'pages.partials.product.options' %}
                     </div>
 
                     {% hook 'product:single.form.end' %}
 
-                    <section class="flex bg-white p-5 rounded-md veloura-product-price-card">
+                    <section class="flex bg-white p-5 rounded-md veloura-product-price-card" aria-label="product price">
                         <div class="center-between w-full">
                             <label class="form-label">
                                 <b class="block">
@@ -539,7 +527,7 @@
                         </section>
                     {% endif %}
 
-                    <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md">
+                    <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md" aria-label="product actions">
                         {% if vpp_enabled and vpp_mobile_sticky_price %}
                             <div class="veloura-product-sticky-price-summary">
                                 <span>{{ trans('pages.products.price') }}</span>
@@ -649,21 +637,6 @@
 {% block scripts %}
 
     <script defer src="{{ 'product.js' | asset }}"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.veloura-product-coupon__code').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            btn.classList.add('is-copied');
-            const oldText = btn.textContent;
-            btn.textContent = 'تم النسخ';
-            setTimeout(function () {
-              btn.textContent = oldText;
-              btn.classList.remove('is-copied');
-            }, 1200);
-          });
-        });
-      });
-    </script>
     {% if product.has_3d_image %}
         <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {% endif %}
