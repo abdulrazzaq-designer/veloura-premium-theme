@@ -6390,7 +6390,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "إخفاء العنوان الفرعي للمنتج",
+  "label": "اختصار وصف المنتج وإظهار زر عرض المزيد",
   "id": "veloura_product_hide_short_description_2026",
   "format": "switch",
   "required": false,
@@ -6403,7 +6403,7 @@
       "value": true
     }
   ],
-  "description": "لا يخفي وصف المنتج الطويل"
+  "description": "يعرض جزءاً من الوصف داخل حدود الكرت ثم يظهر زر عرض المزيد"
 },
 {
   "type": "static",
