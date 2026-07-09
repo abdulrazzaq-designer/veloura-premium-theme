@@ -6046,6 +6046,36 @@
 {
   "type": "static",
   "format": "title",
+  "id": "veloura_product_page_settings_title_2026",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-tag'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بيانات صفحة المنتج</strong><span style=\"display:block;font-size:12px;opacity:.85\">خيارات ثابتة ومربوطة فعلياً بدون إعدادات تكسّر الصفحة</span></div></div>",
+  "variant": "h1",
+  "icon": "sicon-tag"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل إعدادات بيانات صفحة المنتج",
+  "id": "veloura_product_page_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "static",
+  "id": "veloura_product_page_line_main_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_product_page_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
   "id": "veloura_product_page_subtitle_images_2026",
   "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #64748b;box-shadow:inset 0 0 0 1px rgba(100,116,139,.10)\">الصور والمسار</div>",
   "variant": "h6",
