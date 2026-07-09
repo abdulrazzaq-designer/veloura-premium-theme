@@ -254,92 +254,99 @@
             "icon": "sicon-settings"
         },
         {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تفعيل الإعدادات العامة المتقدمة",
-            "description": "عند التفعيل ستظهر جميع خيارات التحكم العامة",
-            "id": "veloura_general_enabled_2026",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true
-        },
-        {
-            "type": "static",
-            "id": "veloura_general_line_2026",
-            "format": "line",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "title",
-            "id": "veloura_general_subtitle_logo_2026",
-            "value": "<div >الشعار العام</div>",
-            "variant": "h6",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_light_logo_2026",
-            "type": "string",
-            "format": "image",
-            "label": "شعار الوضع الفاتح",
-            "description": "ارفع شعار خاص بالوضع الفاتح، وعند تركه فارغاً سيتم استخدام شعار المتجر الأساسي",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_light_logo_url_2026",
-            "type": "string",
-            "format": "url",
-            "label": "أو شعار متحرك للوضع الفاتح",
-            "description": "في حال وضع رابط سيتم تجاهل صورة الشعار السابقة. الصيغ المقبولة svg, jpeg, jpg, webp, gif, png, webm",
-            "placeholder": "e.g. jhmi.me/logo.gif",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "title",
-            "id": "veloura_general_subtitle_background_2026",
-            "value": "<div >خلفية الموقع</div>",
-            "variant": "h6",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل الإعدادات العامة المتقدمة",
+  "description": "عند التفعيل ستظهر جميع خيارات التحكم العامة",
+  "id": "veloura_general_enabled_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "type": "static",
+  "id": "veloura_general_line_2026",
+  "format": "line",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_logo_2026",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#eff6ff;color:#1e3a8a;text-align:right;font-weight:800;border-right:4px solid #3b82f6;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:28px;height:28px;border-radius:999px;background:#3b82f6;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto\">◆</span><span>الشعار العام</span></div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_light_logo_2026",
+  "type": "string",
+  "format": "image",
+  "label": "شعار الوضع الفاتح",
+  "description": "ارفع شعار خاص بالوضع الفاتح، وعند تركه فارغاً سيتم استخدام شعار المتجر الأساسي",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_light_logo_url_2026",
+  "type": "string",
+  "format": "url",
+  "label": "أو شعار متحرك للوضع الفاتح",
+  "description": "في حال وضع رابط سيتم تجاهل صورة الشعار السابقة. الصيغ المقبولة svg, jpeg, jpg, webp, gif, png, webm",
+  "placeholder": "e.g. jhmi.me/logo.gif",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_background_2026",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#ecfdf5;color:#065f46;text-align:right;font-weight:800;border-right:4px solid #10b981;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:28px;height:28px;border-radius:999px;background:#10b981;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto\">◆</span><span>خلفية الموقع</span></div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
   "type": "static",
   "format": "title",
   "id": "veloura_global_shape_title_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#0f172a;text-align:right;font-weight:800;border-right:4px solid #64748b;box-shadow:inset 0 0 0 1px rgba(100,116,139,.08)\">الشكل العام للعناصر</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #f97316;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:28px;height:28px;border-radius:999px;background:#f97316;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto\">◆</span><span>الشكل العام للعناصر</span></div>",
   "variant": "h6",
-  "icon": "sicon-magic"
+  "icon": "sicon-magic",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
 },
 {
   "id": "veloura_global_radius_2026",
@@ -384,268 +391,270 @@
       "label": "ضخم",
       "value": "xl",
       "key": "veloura-global-radius-xl-2026"
-    },
+    }
+  ],
+  "conditions": [
     {
-      "label": "دائري كامل",
-      "value": "round",
-      "key": "veloura-global-radius-round-2026"
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
     }
   ]
 },
-        {
-            "id": "veloura_site_bg_color_2026",
-            "type": "string",
-            "format": "color",
-            "label": "لون خلفية الموقع في الوضع الفاتح",
-            "description": "هذا اللون يظهر خلف كل الصفحات والأقسام",
-            "value": "#ffffff",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_site_second_bg_color_2026",
-            "type": "string",
-            "format": "color",
-            "label": "لون الخلفية الثانوي في الوضع الفاتح",
-            "description": "يستخدم للأقسام أو الكروت التي تحتاج خلفية مختلفة",
-            "value": "#f8fafc",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_site_bg_image_2026",
-            "type": "string",
-            "format": "image",
-            "label": "خلفية المتجر صورة في الوضع الفاتح",
-            "description": "المقاس المفضل 1600 × 900 وتظهر في جميع الصفحات",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تفعيل صورة الخلفية في الصفحة الرئيسية فقط",
-            "description": "عند التفعيل تظهر صورة الخلفية في الصفحة الرئيسية فقط ولا تظهر في باقي الصفحات",
-            "id": "veloura_site_bg_image_home_only_2026",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false,
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تثبيت صورة الخلفية أثناء التمرير",
-            "description": "تعطي تأثيراً بصرياً أفضل عند النزول في الصفحة",
-            "id": "veloura_site_bg_fixed_2026",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false,
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                },
-                {
-                    "id": "veloura_site_bg_image_2026",
-                    "operation": "!=",
-                    "value": null
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "title",
-            "id": "veloura_general_subtitle_spacing_2026",
-            "value": "<div >المسافات والحاويات</div>",
-            "variant": "h6",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_site_horizontal_spacing_2026",
-            "type": "number",
-            "format": "slider",
-            "label": "المسافة الأفقية العامة (الهامش يمين ويسار) لكل الصفحات",
-            "description": "القيمة المفضلة 12، لا تعمل في اللابتوب",
-            "inputType": "range",
-            "icon": "sicon-pin",
-            "value": "12",
-            "required": false,
-            "step": "1",
-            "minimum": "0",
-            "maximum": "50",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_site_container_width_2026",
-            "type": "number",
-            "format": "slider",
-            "label": "عرض حاوية الموقع في اللابتوب",
-            "description": "القيمة الفعلية = 1100 + قيمة السلايدر، والقيمة المفضلة 1280",
-            "inputType": "range",
-            "icon": "sicon-pin",
-            "value": "180",
-            "required": false,
-            "step": "10",
-            "minimum": "0",
-            "maximum": "500",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تفعيل عرض كامل للأقسام الأساسية",
-            "description": "عند التفعيل يتم السماح لبعض الأقسام بالخروج من حاوية الموقع",
-            "id": "veloura_site_sections_full_width_2026",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false,
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "title",
-            "id": "veloura_general_subtitle_classes_2026",
-            "value": "<div >الكلاسات والأوضاع الخاصة</div>",
-            "variant": "h6",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_body_classes_2026",
-            "type": "string",
-            "format": "text",
-            "label": "كلاسات لكل الصفحات body classes",
-            "description": "تستخدم لتفعيل خواص معينة أو وضع كلاس عام لكل الصفحات. مثال: px-6 أو glass-mode أو home-dark",
-            "placeholder": "e.g. px-6 glass-mode",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_index_body_classes_2026",
-            "type": "string",
-            "format": "text",
-            "label": "كلاسات الصفحة الرئيسية فقط",
-            "description": "تضاف فقط لصفحة الرئيسية، مفيدة لتفعيل شكل خاص للواجهة",
-            "placeholder": "e.g. home-special hero-glass",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "veloura_product_body_classes_2026",
-            "type": "string",
-            "format": "text",
-            "label": "كلاسات صفحات المنتجات فقط",
-            "description": "تضاف فقط لصفحات المنتجات",
-            "placeholder": "e.g. product-clean product-wide",
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تفعيل تأثير الزجاج العام",
-            "description": "يضيف تأثير زجاجي خفيف على بعض الكروت والأقسام",
-            "id": "veloura_general_glass_effect_2026",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false,
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "إخفاء الحدود الافتراضية لبعض الأقسام",
-            "description": "مفيد للحصول على شكل أنظف وأكثر بساطة",
-            "id": "veloura_general_clean_borders_2026",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false,
-            "conditions": [
-                {
-                    "id": "veloura_general_enabled_2026",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
+{
+  "id": "veloura_site_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية الموقع في الوضع الفاتح",
+  "description": "هذا اللون يظهر خلف كل الصفحات والأقسام",
+  "value": "#ffffff",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_second_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون الخلفية الثانوي في الوضع الفاتح",
+  "description": "يستخدم للأقسام أو الكروت التي تحتاج خلفية مختلفة",
+  "value": "#f8fafc",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_bg_image_2026",
+  "type": "string",
+  "format": "image",
+  "label": "خلفية المتجر صورة في الوضع الفاتح",
+  "description": "المقاس المفضل 1600 × 900 وتظهر في جميع الصفحات",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل صورة الخلفية في الصفحة الرئيسية فقط",
+  "description": "عند التفعيل تظهر صورة الخلفية في الصفحة الرئيسية فقط ولا تظهر في باقي الصفحات",
+  "id": "veloura_site_bg_image_home_only_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تثبيت صورة الخلفية أثناء التمرير",
+  "description": "تعطي تأثيراً بصرياً أفضل عند النزول في الصفحة",
+  "id": "veloura_site_bg_fixed_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_site_bg_image_2026",
+      "operation": "!=",
+      "value": null
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_spacing_2026",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#f5f3ff;color:#5b21b6;text-align:right;font-weight:800;border-right:4px solid #8b5cf6;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:28px;height:28px;border-radius:999px;background:#8b5cf6;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto\">◆</span><span>المسافات والحاويات</span></div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_horizontal_spacing_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "المسافة الأفقية العامة (الهامش يمين ويسار) لكل الصفحات",
+  "description": "القيمة المفضلة 12، لا تعمل في اللابتوب",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "12",
+  "required": false,
+  "step": "1",
+  "minimum": "0",
+  "maximum": "50",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_site_container_width_2026",
+  "type": "number",
+  "format": "slider",
+  "label": "عرض حاوية الموقع في اللابتوب",
+  "description": "القيمة الفعلية = 1100 + قيمة السلايدر، والقيمة المفضلة 1280",
+  "inputType": "range",
+  "icon": "sicon-pin",
+  "value": "180",
+  "required": false,
+  "step": "10",
+  "minimum": "0",
+  "maximum": "500",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل عرض كامل للأقسام الأساسية",
+  "description": "عند التفعيل يتم السماح لبعض الأقسام بالخروج من حاوية الموقع",
+  "id": "veloura_site_sections_full_width_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_general_subtitle_classes_2026",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:28px;height:28px;border-radius:999px;background:#ec4899;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto\">◆</span><span>الكلاسات والأوضاع الخاصة</span></div>",
+  "variant": "h6",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_body_classes_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلاسات لكل الصفحات body classes",
+  "description": "تستخدم لتفعيل خواص معينة أو وضع كلاس عام لكل الصفحات. مثال: px-6 أو glass-mode أو home-dark",
+  "placeholder": "e.g. px-6 glass-mode",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_index_body_classes_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلاسات الصفحة الرئيسية فقط",
+  "description": "تضاف فقط لصفحة الرئيسية، مفيدة لتفعيل شكل خاص للواجهة",
+  "placeholder": "e.g. home-special hero-glass",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "id": "veloura_product_body_classes_2026",
+  "type": "string",
+  "format": "text",
+  "label": "كلاسات صفحات المنتجات فقط",
+  "description": "تضاف فقط لصفحات المنتجات",
+  "placeholder": "e.g. product-clean product-wide",
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل تأثير الزجاج العام",
+  "description": "يضيف تأثير زجاجي خفيف على بعض الكروت والأقسام",
+  "id": "veloura_general_glass_effect_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إخفاء الحدود الافتراضية لبعض الأقسام",
+  "description": "مفيد للحصول على شكل أنظف وأكثر بساطة",
+  "id": "veloura_general_clean_borders_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_general_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
         
 
 
@@ -6008,7 +6017,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_settings_title_2026",
-  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-tag'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بيانات صفحة المنتج</strong><span style=\"display:block;font-size:12px;opacity:.85\">إعدادات العرض، الصور، الشراء، البراند، التصنيف، العروض والمنتجات المرتبطة</span></div></div>",
+  "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(49,46,129,.20)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-tag'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">بيانات صفحة المنتج</strong><span style=\"display:block;font-size:12px;opacity:.85\">إعدادات مختارة بدون خيارات مربكة: الصور، الدفع، الكوبون، العداد والمنتجات المقترحة</span></div></div>",
   "variant": "h1",
   "icon": "sicon-tag"
 },
@@ -6038,7 +6047,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_subtitle_images_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0f9ff;color:#075985;text-align:right;font-weight:800;border-right:4px solid #38bdf8\">الصور والمسار والمظهر العام</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#eff6ff;color:#1e3a8a;text-align:right;font-weight:800;border-right:4px solid #3b82f6;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:32px;height:32px;border-radius:999px;background:#3b82f6;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto\"><i class='sicon-image'></i></span><span style=\"display:flex;flex-direction:column;gap:2px\"><strong style=\"font-size:15px;line-height:1.4\">الصور والمسار</strong><small style=\"font-size:11px;opacity:.75;font-weight:600;line-height:1.4\">المسار، المصغرات، ارتفاع الصور والزوم</small></span></div>",
   "variant": "h6",
   "conditions": [
     {
@@ -6129,7 +6138,7 @@
   "id": "veloura_product_images_height_mode_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "ارتفاع الصور في صفحة المنتج",
+  "label": "ارتفاع صور المنتج",
   "icon": "sicon-list",
   "source": "Manual",
   "required": false,
@@ -6139,19 +6148,19 @@
     {
       "label": "ارتفاع مختلف لكل صورة",
       "value": "auto_each",
-      "key": "veloura_product_images_height_mode_2026-auto_each"
+      "key": "veloura-product-images-auto-each-2026"
     }
   ],
   "options": [
     {
       "label": "ارتفاع مختلف لكل صورة",
       "value": "auto_each",
-      "key": "veloura_product_images_height_mode_2026-auto_each"
+      "key": "veloura-product-images-auto-each-2026"
     },
     {
       "label": "ارتفاع ثابت لجميع الصور",
       "value": "fixed_all",
-      "key": "veloura_product_images_height_mode_2026-fixed_all"
+      "key": "veloura-product-images-fixed-all-2026"
     }
   ],
   "conditions": [
@@ -6160,7 +6169,8 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "description": "اتركه مختلف لكل صورة غالباً، أو اختر ارتفاع ثابت إذا كانت صورك غير متناسقة"
 },
 {
   "type": "boolean",
@@ -6201,7 +6211,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_subtitle_info_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4\">معلومات المنتج الأساسية</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#ecfeff;color:#155e75;text-align:right;font-weight:800;border-right:4px solid #06b6d4;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:32px;height:32px;border-radius:999px;background:#06b6d4;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto\"><i class='sicon-tag'></i></span><span style=\"display:flex;flex-direction:column;gap:2px\"><strong style=\"font-size:15px;line-height:1.4\">معلومات المنتج الأساسية</strong><small style=\"font-size:11px;opacity:.75;font-weight:600;line-height:1.4\">التوفر، التصنيف، البراند، طرق الدفع والسعر</small></span></div>",
   "variant": "h6",
   "conditions": [
     {
@@ -6323,29 +6333,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "إظهار عنوان البراند والصورة فقط",
-  "id": "veloura_product_brand_title_image_only_2026",
-  "format": "switch",
-  "required": false,
-  "value": true,
-  "selected": true,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_product_show_brand_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار طرق الدفع في صفحة المنتج",
+  "label": "إظهار طرق الدفع / التقسيط في صفحة المنتج",
   "id": "veloura_product_show_payment_methods_2026",
   "format": "switch",
   "required": false,
@@ -6358,7 +6346,7 @@
       "value": true
     }
   ],
-  "description": "تظهر بعد وصف المنتج"
+  "description": "يعرض مكون التقسيط/الدفع بعد وصف المنتج إذا كان متاحاً"
 },
 {
   "type": "boolean",
@@ -6399,51 +6387,8 @@
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_subtitle_content_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f8fafc;color:#334155;text-align:right;font-weight:800;border-right:4px solid #64748b\">الوصف والخيارات والتقييمات</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#f8fafc;color:#334155;text-align:right;font-weight:800;border-right:4px solid #64748b;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:32px;height:32px;border-radius:999px;background:#64748b;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto\"><i class='sicon-align-left'></i></span><span style=\"display:flex;flex-direction:column;gap:2px\"><strong style=\"font-size:15px;line-height:1.4\">الوصف والمحتوى</strong><small style=\"font-size:11px;opacity:.75;font-weight:600;line-height:1.4\">خيارات بسيطة لا تكسر ترتيب صفحة المنتج</small></span></div>",
   "variant": "h6",
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_product_content_layout_2026",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "طريقة عرض تفاصيل المنتج",
-  "description": "فصل الوصف والخيارات والتقييمات يعمل فقط عند اختيار التابات",
-  "icon": "sicon-list",
-  "source": "Manual",
-  "required": false,
-  "value": "normal",
-  "default": "normal",
-  "selected": [
-    {
-      "label": "الوضع الطبيعي",
-      "value": "normal",
-      "key": "veloura-product-content-normal-2026"
-    }
-  ],
-  "options": [
-    {
-      "label": "الوضع الطبيعي",
-      "value": "normal",
-      "key": "veloura-product-content-normal-2026"
-    },
-    {
-      "label": "كروت منفصلة",
-      "value": "cards",
-      "key": "veloura-product-content-cards-2026"
-    },
-    {
-      "label": "تابات",
-      "value": "tabs",
-      "key": "veloura-product-content-tabs-2026"
-    }
-  ],
   "conditions": [
     {
       "id": "veloura_product_page_enabled_2026",
@@ -6470,139 +6415,10 @@
   ]
 },
 {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار وصف المنتج بشكل منفصل",
-  "id": "veloura_product_show_description_separate_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "عرض زر تفاصيل أكثر لوصف المنتج",
-  "id": "veloura_product_show_description_more_button_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار خيارات المنتج بشكل منفصل",
-  "id": "veloura_product_show_options_separate_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار تقييمات المنتج بشكل منفصل",
-  "id": "veloura_product_show_reviews_separate_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "عرض خيارات المنتج على شكل أزرار بدلاً من قائمة",
-  "id": "veloura_product_options_as_buttons_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار الشكل الجديد لعنصر خيار واحد",
-  "id": "veloura_product_single_option_new_style_2026",
-  "format": "switch",
-  "required": false,
-  "value": true,
-  "selected": true,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_product_options_as_buttons_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار الشكل الجديد لعنصر عدة اختيارات",
-  "id": "veloura_product_multi_option_new_style_2026",
-  "format": "switch",
-  "required": false,
-  "value": true,
-  "selected": true,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_product_options_as_buttons_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_subtitle_sticky_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e\">الشريط المثبت أسفل الجوال</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:32px;height:32px;border-radius:999px;background:#22c55e;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto\"><i class='sicon-mobile'></i></span><span style=\"display:flex;flex-direction:column;gap:2px\"><strong style=\"font-size:15px;line-height:1.4\">الشريط المثبت أسفل الجوال</strong><small style=\"font-size:11px;opacity:.75;font-weight:600;line-height:1.4\">السعر والكمية وأزرار الشراء على الجوال</small></span></div>",
   "variant": "h6",
   "conditions": [
     {
@@ -6665,24 +6481,24 @@
     {
       "label": "حديث",
       "value": "modern",
-      "key": "veloura_product_mobile_quantity_style_2026-modern"
+      "key": "veloura-product-qty-modern-2026"
     }
   ],
   "options": [
     {
       "label": "حديث",
       "value": "modern",
-      "key": "veloura_product_mobile_quantity_style_2026-modern"
+      "key": "veloura-product-qty-modern-2026"
     },
     {
       "label": "الشكل القديم",
       "value": "old",
-      "key": "veloura_product_mobile_quantity_style_2026-old"
+      "key": "veloura-product-qty-old-2026"
     },
     {
       "label": "مصغر لليسار",
       "value": "mini_left",
-      "key": "veloura_product_mobile_quantity_style_2026-mini_left"
+      "key": "veloura-product-qty-mini-left-2026"
     }
   ],
   "conditions": [
@@ -6701,7 +6517,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "تصغير حجم أزرار الإضافة والشراء الآن",
+  "label": "تصغير أزرار الشراء والإضافة في الجوال",
   "id": "veloura_product_mobile_buttons_compact_2026",
   "format": "switch",
   "required": false,
@@ -6719,13 +6535,13 @@
       "value": true
     }
   ],
-  "description": "يناسب الشاشات الصغيرة ويخفف ضغط الشريط السفلي"
+  "description": "مفيد للشاشات الصغيرة"
 },
 {
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_subtitle_marketing_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c\">العروض والتسويق داخل صفحة المنتج</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#fff7ed;color:#9a3412;text-align:right;font-weight:800;border-right:4px solid #fb923c;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:32px;height:32px;border-radius:999px;background:#fb923c;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto\"><i class='sicon-fire'></i></span><span style=\"display:flex;flex-direction:column;gap:2px\"><strong style=\"font-size:15px;line-height:1.4\">العروض داخل صفحة المنتج</strong><small style=\"font-size:11px;opacity:.75;font-weight:600;line-height:1.4\">كود الخصم وعداد مرات الشراء</small></span></div>",
   "variant": "h6",
   "conditions": [
     {
@@ -6816,82 +6632,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "تفعيل قسم عادة ما يتم شراؤها معاً",
-  "id": "veloura_product_bought_together_enabled_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_product_bought_together_title_2026",
-  "type": "string",
-  "format": "text",
-  "label": "عنوان قسم عادة يتم شراؤها معاً",
-  "value": "عادةً ما يتم شراؤها معاً",
-  "required": false,
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_product_bought_together_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ]
-},
-{
-  "id": "veloura_product_bought_together_rules_2026",
-  "type": "collection",
-  "format": "collection",
-  "label": "قواعد منتجات يتم شراؤها مع هذا المنتج",
-  "description": "لكل قاعدة اختر المنتج الأساسي ثم المنتجات المقترحة معه",
-  "button_label": "إضافة قاعدة",
-  "conditions": [
-    {
-      "id": "veloura_product_page_enabled_2026",
-      "operation": "=",
-      "value": true
-    },
-    {
-      "id": "veloura_product_bought_together_enabled_2026",
-      "operation": "=",
-      "value": true
-    }
-  ],
-  "fields": [
-    {
-      "id": "base_product",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "حدد صفحة المنتج المطلوبة",
-      "source": "products",
-      "required": false
-    },
-    {
-      "id": "related_products",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "حدد منتجات يتم شراؤها مع هذا المنتج",
-      "source": "products",
-      "required": false
-    }
-  ]
-},
-{
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إضافة شرط ظهور لعداد مرات شراء المنتج",
+  "label": "إظهار عداد مرات شراء المنتج",
   "id": "veloura_product_purchase_count_condition_enabled_2026",
   "format": "switch",
   "required": false,
@@ -6903,7 +6644,8 @@
       "operation": "=",
       "value": true
     }
-  ]
+  ],
+  "description": "يظهر إذا كان عدد الشراء متوفراً من بيانات المنتج وتجاوز الرقم المحدد"
 },
 {
   "id": "veloura_product_purchase_count_min_2026",
@@ -6951,7 +6693,7 @@
   "type": "static",
   "format": "title",
   "id": "veloura_product_page_subtitle_tags_related_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899\">الوسوم والمنتجات المقترحة</div>",
+  "value": "<div style=\"width:100%;padding:10px 14px;border-radius:14px;background:#fdf2f8;color:#9d174d;text-align:right;font-weight:800;border-right:4px solid #ec4899;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);display:flex;align-items:center;gap:10px;justify-content:flex-start\"><span style=\"width:32px;height:32px;border-radius:999px;background:#ec4899;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto\"><i class='sicon-star'></i></span><span style=\"display:flex;flex-direction:column;gap:2px\"><strong style=\"font-size:15px;line-height:1.4\">الوسوم والمنتجات المقترحة</strong><small style=\"font-size:11px;opacity:.75;font-weight:600;line-height:1.4\">الوسوم وتخصيص المنتجات المرتبطة</small></span></div>",
   "variant": "h6",
   "conditions": [
     {
@@ -7058,20 +6800,26 @@
       "operation": "=",
       "value": false
     }
-  ]
+  ],
+  "description": "استخدمه إذا أردت اقتراحات مخصصة بدل اقتراحات سلة التلقائية"
 },
 {
   "id": "veloura_product_custom_related_rules_2026",
   "type": "collection",
   "format": "collection",
-  "label": "منتج أو منتجات مرتبطة به",
-  "description": "استخدمها فقط إذا أردت اقتراحات مخصصة بدل اقتراحات المتجر التلقائية",
+  "label": "قواعد المنتجات المرتبطة",
+  "description": "اختيار المنتجات أو التصنيفات المرتبطة حسب المنتج الحالي",
   "button_label": "إضافة قاعدة",
   "conditions": [
     {
       "id": "veloura_product_page_enabled_2026",
       "operation": "=",
       "value": true
+    },
+    {
+      "id": "veloura_product_hide_liked_products_2026",
+      "operation": "=",
+      "value": false
     },
     {
       "id": "veloura_product_custom_related_enabled_2026",

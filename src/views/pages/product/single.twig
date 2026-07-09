@@ -166,14 +166,26 @@
     {% set vpp_hide_liked_products = _self.veloura_bool(theme.settings.get('veloura_product_hide_liked_products_2026', false), false)|trim == 'true' %}
     {% set vpp_liked_title = theme.settings.get('veloura_product_liked_title_2026', trans('pages.products.similar_products')) ?: trans('pages.products.similar_products') %}
 
-    {# ألوان/تدوير عام من الإعدادات العامة #}
-    {# خلفية أجزاء المنتج = لون الخلفية الأساسي للمتجر #}
-    {% set vpp_section_bg = theme.settings.get('veloura_site_bg_color_2026', '#ffffff') %}
-    {% if vpp_section_bg.value is defined %}{% set vpp_section_bg = vpp_section_bg.value %}{% endif %}
+    {% set vpp_purchase_count_enabled = _self.veloura_bool(theme.settings.get('veloura_product_purchase_count_condition_enabled_2026', false), false)|trim == 'true' %}
+    {% set vpp_purchase_count_min = theme.settings.get('veloura_product_purchase_count_min_2026', 10) %}
+    {% if vpp_purchase_count_min.value is defined %}{% set vpp_purchase_count_min = vpp_purchase_count_min.value %}{% endif %}
+    {% set vpp_purchase_count_animated = _self.veloura_bool(theme.settings.get('veloura_product_purchase_count_animated_2026', true), true)|trim == 'true' %}
+    {% set vpp_custom_related_enabled = _self.veloura_bool(theme.settings.get('veloura_product_custom_related_enabled_2026', false), false)|trim == 'true' %}
 
-    {# في الوضع الداكن = لون الخلفية الأساسي الداكن #}
-    {% set vpp_dark_section_bg = theme.settings.get('veloura_dark_body_bg_2026', '#010202') %}
-    {% if vpp_dark_section_bg.value is defined %}{% set vpp_dark_section_bg = vpp_dark_section_bg.value %}{% endif %}
+
+    {# ألوان/تدوير عام من الإعدادات العامة #}
+    {# الأساسي للعناصر الداخلية / الثانوي للكروت الخارجية #}
+    {% set vpp_basic_bg = theme.settings.get('veloura_site_bg_color_2026', '#ffffff') %}
+    {% if vpp_basic_bg.value is defined %}{% set vpp_basic_bg = vpp_basic_bg.value %}{% endif %}
+
+    {% set vpp_second_bg = theme.settings.get('veloura_site_second_bg_color_2026', '#f8fafc') %}
+    {% if vpp_second_bg.value is defined %}{% set vpp_second_bg = vpp_second_bg.value %}{% endif %}
+
+    {% set vpp_dark_basic_bg = theme.settings.get('veloura_dark_body_bg_2026', '#010202') %}
+    {% if vpp_dark_basic_bg.value is defined %}{% set vpp_dark_basic_bg = vpp_dark_basic_bg.value %}{% endif %}
+
+    {% set vpp_dark_second_bg = theme.settings.get('veloura_dark_secondary_bg_2026', '#111111') %}
+    {% if vpp_dark_second_bg.value is defined %}{% set vpp_dark_second_bg = vpp_dark_second_bg.value %}{% endif %}
 
     {% set vpp_general_radius_key = _self.veloura_select(theme.settings.get('veloura_global_radius_2026', 'large'), 'large')|trim %}
     {% set vpp_radius_map = {
@@ -181,12 +193,11 @@
       'soft': '10px',
       'medium': '16px',
       'large': '28px',
-      'xl': '36px',
-      'round': '999px'
+      'xl': '36px'
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} veloura-product-content-{{ vpp_content_layout }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_description_separate) ? 'veloura-product-description-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_options_separate) ? 'veloura-product-options-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_reviews_separate) ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-section-bg: {{ vpp_section_bg }}; --veloura-product-dark-section-bg: {{ vpp_dark_section_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} veloura-product-content-{{ vpp_content_layout }} {{ vpp_transparent_background ? 'veloura-product-transparent-bg' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_description_separate) ? 'veloura-product-description-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_options_separate) ? 'veloura-product-options-separate' : '' }} {{ (vpp_content_layout == 'tabs' and vpp_show_reviews_separate) ? 'veloura-product-reviews-separate' : '' }} {{ vpp_options_as_buttons ? 'veloura-product-options-buttons' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -215,60 +226,10 @@
                                 <i class="sicon-heart"></i>
                             </button>
 
-                            <div class="veloura-product-share-wrap">
-                                <button type="button"
-                                        class="veloura-product-media-action-btn veloura-product-media-share-btn"
-                                        aria-label="social share"
-                                        aria-expanded="false">
-                                    <i class="sicon-share"></i>
-                                </button>
-
-                                <div class="veloura-product-share-menu" aria-hidden="true">
-                                    <button type="button"
-                                            class="veloura-product-share-close"
-                                            aria-label="إغلاق المشاركة">
-                                        <i class="sicon-cancel"></i>
-                                    </button>
-
-                                    <div class="veloura-product-share-list">
-                                        <a class="veloura-product-share-item veloura-share-facebook"
-                                           href="#"
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           aria-label="Facebook">
-                                            <i class="sicon-facebook"></i>
-                                        </a>
-
-                                        <a class="veloura-product-share-item veloura-share-x"
-                                           href="#"
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           aria-label="X">
-                                            <i class="sicon-x"></i>
-                                        </a>
-
-                                        <a class="veloura-product-share-item veloura-share-whatsapp"
-                                           href="#"
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           aria-label="WhatsApp">
-                                            <i class="sicon-whatsapp"></i>
-                                        </a>
-
-                                        <a class="veloura-product-share-item veloura-share-email"
-                                           href="#"
-                                           aria-label="Email">
-                                            <i class="sicon-mail"></i>
-                                        </a>
-
-                                        <button type="button"
-                                                class="veloura-product-share-item veloura-share-copy"
-                                                aria-label="نسخ الرابط">
-                                            <i class="sicon-link"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <salla-social-share
+                                    class="veloura-product-media-action-btn veloura-product-media-share"
+                                    aria-label="social share">
+                            </salla-social-share>
                         </div>
 
                         {% if product.promotion_title %}
@@ -352,32 +313,90 @@
                         {% if not vpp_brand_title_image_only %}
                             <span class="veloura-product-brand__label">{{ vpp_brand_label }}</span>
                         {% endif %}
+                        <a class="brand-logo veloura-product-brand__logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
+                            {% if product.brand.logo %}
+                                <img width="100%" height="100%" class="max-h-full object-contain"
+                                     src="{{ product.brand.logo }}"
+                                     title="{{ product.brand.name }}"
+                                     alt="{{ product.brand.name }}">
+                            {% endif %}
+                            <span class="veloura-product-brand__name">{{ product.brand.name }}</span>
+                        </a>
+                    </div>
+                {% endif %}
 
-                        {% set veloura_brand_url = product.brand.url ?: product.brand.permalink ?: product.brand.link %}
-                        {% if veloura_brand_url %}
-                            <a class="brand-logo veloura-product-brand__logo"
-                               href="{{ veloura_brand_url }}"
-                               title="{{ product.brand.name }}"
-                               aria-label="{{ product.brand.name }}">
-                                {% if product.brand.logo %}
-                                    <img width="100%" height="100%" class="max-h-full object-contain"
-                                         src="{{ product.brand.logo }}"
-                                         title="{{ product.brand.name }}"
-                                         alt="{{ product.brand.name }}">
-                                {% endif %}
-                                <span class="veloura-product-brand__name">{{ product.brand.name }}</span>
-                            </a>
-                        {% else %}
-                            <div class="brand-logo veloura-product-brand__logo" title="{{ product.brand.name }}">
-                                {% if product.brand.logo %}
-                                    <img width="100%" height="100%" class="max-h-full object-contain"
-                                         src="{{ product.brand.logo }}"
-                                         title="{{ product.brand.name }}"
-                                         alt="{{ product.brand.name }}">
-                                {% endif %}
-                                <span class="veloura-product-brand__name">{{ product.brand.name }}</span>
-                            </div>
-                        {% endif %}
+                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
+
+                {% if vpp_enabled and vpp_show_category and product.category.name %}
+                    <div class="veloura-product-category-under-title">
+                        <span>{{ vpp_category_label }}</span>
+                        <a href="{{ product.category.url }}">{{ product.category.name }}</a>
+                    </div>
+                {% endif %}
+
+                {% if product.subtitle %}
+                    <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
+                        {{ product.subtitle }}
+                    </h2>
+                {% endif %}
+
+                {% if product.rating %}
+                    <salla-rating-stars value="{{ product.rating.stars }}"
+                                        reviews="{{ product.rating.count }}"></salla-rating-stars>
+                {% endif %}
+
+                {% if product.is_taxable %}
+                    <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
+                {% endif %}
+                {# Price #}
+                <div class="flex whitespace-nowrap gap-4 items-center">
+                  <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
+                      <p class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</p>
+                      <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
+                  </div>
+                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                      {% if product.starting_price %} 
+                          <span class="">{{ trans('pages.products.starting_price') }}</span>
+                      {% endif %} 
+                          <p class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</p>
+                  </div>
+                </div>
+
+                {% if vpp_enabled and vpp_show_stock_radar and product.is_available %}
+                    <div class="veloura-product-stock-radar">
+                        <span class="veloura-product-stock-radar__dot"></span>
+                        <span>متوفر</span>
+                    </div>
+                {% endif %}
+
+                {% set vpp_purchase_count_value = product.sold_quantity ?: product.sold_count ?: product.sales_count ?: product.orders_count ?: 0 %}
+                {% if vpp_enabled and vpp_purchase_count_enabled and vpp_purchase_count_value >= vpp_purchase_count_min %}
+                    <div class="veloura-product-purchase-count {{ vpp_purchase_count_animated ? 'is-animated' : '' }}"
+                         data-veloura-count="{{ vpp_purchase_count_value }}">
+                        <i class="sicon-fire"></i>
+                        <span>تم شراؤه</span>
+                        <strong class="veloura-product-purchase-count__number">{{ vpp_purchase_count_value }}</strong>
+                        <span>مرة</span>
+                    </div>
+                {% endif %}
+
+                {% if vpp_enabled and vpp_show_discount_countdown and product.discount_ends %}
+                    <div class="veloura-product-discount-countdown">
+                        <i class="sicon-clock"></i>
+                        <span>ينتهي الخصم قريباً</span>
+                        <salla-count-down date="{{ product.discount_ends }}"></salla-count-down>
+                    </div>
+                {% endif %}
+
+                {% if vpp_enabled and vpp_coupon_enabled and vpp_coupon_code %}
+                    <div class="veloura-product-coupon" data-veloura-copy-coupon="{{ vpp_coupon_code }}">
+                        <div>
+                            <strong>{{ vpp_coupon_title }}</strong>
+                            <span>{{ vpp_coupon_subtitle }}</span>
+                        </div>
+                        <button type="button" class="veloura-product-coupon__code" onclick="navigator.clipboard && navigator.clipboard.writeText('{{ vpp_coupon_code }}')">
+                            {{ vpp_coupon_code }}
+                        </button>
                     </div>
                 {% endif %}
 
@@ -442,9 +461,12 @@
                 {% endif %}
                 {% hook 'product:single.description' %}
 
-                {# Installment Methods #}
+                {# Payment / Installment Methods #}
                 {% if not vpp_enabled or vpp_show_payment_methods %}
-                    <salla-installment price="{{ product.price }}"></salla-installment>
+                    <div class="veloura-product-payment-methods">
+                        <salla-installment price="{{ product.price }}"></salla-installment>
+                        {% hook 'product:single.payment_methods' %}
+                    </div>
                 {% endif %}
                 {% if product.has_metadata %}
                 <salla-metadata></salla-metadata>
@@ -573,125 +595,19 @@
     </div>
 
     {# Comments Area #}
-    {% if store.settings.rating.show_on_product and (not vpp_enabled or vpp_show_reviews_separate) %}
+    {% if store.settings.rating.show_on_product %}
         <salla-comments item-id="{{product.id}}" type="product" class="veloura-product-reviews"></salla-comments>
     {% endif %}
     
     {# Similar Products Area #}
     {% if not vpp_enabled or not vpp_hide_liked_products %}
-        <div class="container veloura-product-related-products">
+        <div class="container veloura-product-related-products" data-veloura-custom-related-enabled="{{ vpp_custom_related_enabled ? 'true' : 'false' }}">
             <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{ vpp_liked_title }}" display-all-url></salla-products-slider>
         </div>
     {% endif %}
 {% endblock %}
 
 {% block scripts %}
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        function closeAllShareMenus(exceptMenu) {
-          document.querySelectorAll('.veloura-product-share-menu.is-open').forEach(function (menu) {
-            if (menu === exceptMenu) return;
-
-            menu.classList.remove('is-open');
-            menu.setAttribute('aria-hidden', 'true');
-
-            var btn = menu.closest('.veloura-product-share-wrap')?.querySelector('.veloura-product-media-share-btn');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
-          });
-        }
-
-        function setupShareMenu(wrap) {
-          if (!wrap || wrap.dataset.velouraShareMenuReady === '1') return;
-          wrap.dataset.velouraShareMenuReady = '1';
-
-          var btn = wrap.querySelector('.veloura-product-media-share-btn');
-          var menu = wrap.querySelector('.veloura-product-share-menu');
-          var closeBtn = wrap.querySelector('.veloura-product-share-close');
-
-          if (!btn || !menu) return;
-
-          var pageUrl = window.location.href;
-          var pageTitle = document.title || '{{ product.name|e('js') }}';
-
-          var facebook = wrap.querySelector('.veloura-share-facebook');
-          var x = wrap.querySelector('.veloura-share-x');
-          var whatsapp = wrap.querySelector('.veloura-share-whatsapp');
-          var email = wrap.querySelector('.veloura-share-email');
-          var copy = wrap.querySelector('.veloura-share-copy');
-
-          if (facebook) facebook.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
-          if (x) x.href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl) + '&text=' + encodeURIComponent(pageTitle);
-          if (whatsapp) whatsapp.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(pageTitle + ' ' + pageUrl);
-          if (email) email.href = 'mailto:?subject=' + encodeURIComponent(pageTitle) + '&body=' + encodeURIComponent(pageUrl);
-
-          btn.addEventListener('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            var isOpen = menu.classList.contains('is-open');
-
-            closeAllShareMenus(menu);
-
-            menu.classList.toggle('is-open', !isOpen);
-            menu.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
-            btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-          });
-
-          if (closeBtn) {
-            closeBtn.addEventListener('click', function (event) {
-              event.preventDefault();
-              event.stopPropagation();
-
-              menu.classList.remove('is-open');
-              menu.setAttribute('aria-hidden', 'true');
-              btn.setAttribute('aria-expanded', 'false');
-            });
-          }
-
-          if (copy) {
-            copy.addEventListener('click', async function (event) {
-              event.preventDefault();
-              event.stopPropagation();
-
-              try {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                  await navigator.clipboard.writeText(pageUrl);
-                } else {
-                  var input = document.createElement('input');
-                  input.value = pageUrl;
-                  document.body.appendChild(input);
-                  input.select();
-                  document.execCommand('copy');
-                  input.remove();
-                }
-
-                copy.classList.add('is-copied');
-                setTimeout(function () {
-                  copy.classList.remove('is-copied');
-                }, 900);
-              } catch (error) {
-                console.warn('Veloura share copy failed:', error);
-              }
-            });
-          }
-        }
-
-        document.querySelectorAll('.veloura-product-share-wrap').forEach(setupShareMenu);
-
-        document.addEventListener('click', function (event) {
-          if (event.target.closest('.veloura-product-share-wrap')) return;
-          closeAllShareMenus();
-        });
-
-        document.addEventListener('keyup', function (event) {
-          if (event.key === 'Escape') {
-            closeAllShareMenus();
-          }
-        });
-      });
-    </script>
-
 
     <script defer src="{{ 'product.js' | asset }}"></script>
     <script>
