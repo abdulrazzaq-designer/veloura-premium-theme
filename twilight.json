@@ -6090,7 +6090,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "إخفاء مسار التنقل في صفحة المنتج",
+  "label": "إخفاء مسار التنقل في صفحة المنتج1",
   "id": "veloura_product_hide_breadcrumb_2026",
   "format": "switch",
   "required": false,
