@@ -1769,7 +1769,7 @@
   {{ veloura_index_body_classes }}
   {{ veloura_product_body_classes }}
 
-  {{ (vmfm_enabled and not is_page('product.single')) ? ' veloura-mobile-floating-menu-enabled' : '' }}
+  {{ (vmfm_enabled and not veloura_is_product_page) ? ' veloura-mobile-floating-menu-enabled' : '' }}
 {{ (vmfm_enabled and not is_page('product.single')) ? ' veloura-mobile-floating-menu-position-' ~ vmfm_position : '' }}
 {{ (vmfm_enabled and not is_page('product.single')) ? ' veloura-mobile-floating-menu-active-' ~ vmfm_active_style : '' }}
 {{ (vmfm_enabled and not is_page('product.single') and vmfm_glass) ? ' veloura-mobile-floating-menu-glass' : '' }}
@@ -2419,7 +2419,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-{% if vmfm_enabled and not is_page('product.single') %}
+{% set veloura_is_product_page = is_page('product.single') or product is defined or page.slug == 'product.single' %}
+
+{% if vmfm_enabled and not veloura_is_product_page %}
   <nav
     class="veloura-mobile-floating-menu veloura-mobile-floating-menu--{{ vmfm_position }}{% if vmfm_position == 'full_width' %} veloura-mobile-floating-menu--full-width{% endif %}{% if vmfm_position == 'pill' %} veloura-mobile-floating-menu--pill{% endif %}"
     aria-label="قائمة الجوال العائمة"
