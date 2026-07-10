@@ -354,19 +354,7 @@
                 {% if product.is_taxable %}
                     <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
                 {% endif %}
-                {# Price #}
-                <div class="flex whitespace-nowrap gap-4 items-center">
-                  <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                      <p class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</p>
-                      <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
-                  </div>
-                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                      {% if product.starting_price %} 
-                          <span class="">{{ trans('pages.products.starting_price') }}</span>
-                      {% endif %} 
-                          <p class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</p>
-                  </div>
-                </div>
+                {# Veloura: السعر العلوي القديم مخفي لمنع التكرار، السعر المعتمد داخل كرت السعر بالأسفل #}
 
                 {% if vpp_enabled and vpp_show_availability and product.is_available %}
                     <div class="veloura-product-stock-radar {{ vpp_show_stock_radar ? 'is-pulse' : 'is-simple' }}">
@@ -495,7 +483,7 @@
 				{% endif %}
 				{# End Digital Files Settings #}
 
-                <form class="form product-form" enctype="multipart/form-data" method="post"
+                <form class="form product-form veloura-product-form" enctype="multipart/form-data" method="post"
                       onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
                     <input type="hidden" name="id" value="{{ product.id }}">
 
@@ -508,15 +496,15 @@
 
                     {% hook 'product:single.form.end' %}
 
-                    <section class="flex bg-white p-5 rounded-md veloura-product-price-card">
-                        <div class="center-between w-full">
-                            <label class="form-label">
+                    <section class="veloura-product-price-card">
+                        <div class="veloura-price-row">
+                            <label class="form-label veloura-price-label">
                                 <b class="block">
                                     {{ trans('pages.products.price') }}
                                 </b>
                             </label>
 
-                            <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
+                            <div class="price-wrapper veloura-price-values">
                               <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
                                 <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
                                 <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
@@ -539,7 +527,7 @@
                         </section>
                     {% endif %}
 
-                    <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md">
+                    <section class="sticky-product-bar veloura-product-sticky-bar veloura-product-actions-card">
                         {% if vpp_enabled and vpp_mobile_sticky_price %}
                             <div class="veloura-product-sticky-price-summary">
                                 <span>{{ trans('pages.products.price') }}</span>
@@ -550,7 +538,7 @@
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
                         {% else %}
-                            <div class="sticky-product-bar__quantity center-between mb-5">
+                            <div class="sticky-product-bar__quantity veloura-quantity-row">
                                 <label class="form-label font-bold">
                                     {{ trans('pages.products.quantity') }}
                                 </label>
@@ -561,7 +549,6 @@
                         {# Add to cart #}
                         <salla-add-product-button
                                 {{product.can_quick_buy ? 'quick-buy' : ''}}
-                                {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}}
                                 {{product.is_require_shipping ? 'required-shipping' : ''}}
                                 {{product.has_preorder_campaign ? 'has-pre-order' : ''}}
                                 amount="{{ product.base_currency_price }}"

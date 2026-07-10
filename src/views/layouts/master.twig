@@ -1764,15 +1764,16 @@
   {{ veloura_glass_effect ? ' veloura-glass-effect' : '' }}
   {{ veloura_clean_borders ? ' veloura-clean-borders' : '' }}
   {{ is_page('index') ? ' veloura-page-index' : '' }}
+  {{ is_page('product.single') ? ' veloura-is-product-page' : '' }}
   {{ veloura_body_classes }}
   {{ veloura_index_body_classes }}
   {{ veloura_product_body_classes }}
 
-  {{ vmfm_enabled ? ' veloura-mobile-floating-menu-enabled' : '' }}
-{{ vmfm_enabled ? ' veloura-mobile-floating-menu-position-' ~ vmfm_position : '' }}
-{{ vmfm_enabled ? ' veloura-mobile-floating-menu-active-' ~ vmfm_active_style : '' }}
-{{ vmfm_enabled and vmfm_glass ? ' veloura-mobile-floating-menu-glass' : '' }}
-{{ vmfm_enabled and not vmfm_show_labels ? ' veloura-mobile-floating-menu-no-labels' : '' }}
+  {{ (vmfm_enabled and not is_page('product.single')) ? ' veloura-mobile-floating-menu-enabled' : '' }}
+{{ (vmfm_enabled and not is_page('product.single')) ? ' veloura-mobile-floating-menu-position-' ~ vmfm_position : '' }}
+{{ (vmfm_enabled and not is_page('product.single')) ? ' veloura-mobile-floating-menu-active-' ~ vmfm_active_style : '' }}
+{{ (vmfm_enabled and not is_page('product.single') and vmfm_glass) ? ' veloura-mobile-floating-menu-glass' : '' }}
+{{ (vmfm_enabled and not is_page('product.single') and not vmfm_show_labels) ? ' veloura-mobile-floating-menu-no-labels' : '' }}
 ">
 
 {# ================================
@@ -2418,7 +2419,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-{% if vmfm_enabled %}
+{% if vmfm_enabled and not is_page('product.single') %}
   <nav
     class="veloura-mobile-floating-menu veloura-mobile-floating-menu--{{ vmfm_position }}{% if vmfm_position == 'full_width' %} veloura-mobile-floating-menu--full-width{% endif %}{% if vmfm_position == 'pill' %} veloura-mobile-floating-menu--pill{% endif %}"
     aria-label="قائمة الجوال العائمة"

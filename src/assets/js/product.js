@@ -14,6 +14,7 @@ class Product extends BasePage {
             productSku: '.product-sku',
         });
 
+        this.initVelouraProductPageGuard();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
 
@@ -29,6 +30,48 @@ class Product extends BasePage {
             this.initImagesZooming();
             window.addEventListener('resize', () => this.initImagesZooming());
         }
+    }
+
+    initVelouraProductPageGuard() {
+        document.documentElement.classList.add('veloura-is-product-page');
+        document.body?.classList.add('veloura-is-product-page');
+
+        const hideFloatingMenu = () => {
+            document
+                .querySelectorAll([
+                    '.veloura-mobile-floating-menu',
+                    '.veloura-floating-menu',
+                    '.veloura-bottom-navigation',
+                    '.veloura-mobile-bottom-menu',
+                    '.mobile-floating-menu',
+                    '.mobile-bottom-menu',
+                    '.mobile-bottom-nav',
+                    '.bottom-nav',
+                    '.floating-menu',
+                    '#veloura-mobile-floating-menu',
+                    '[data-veloura-mobile-floating-menu]',
+                ].join(','))
+                .forEach((menu) => {
+                    menu.setAttribute('hidden', 'hidden');
+                    menu.setAttribute('aria-hidden', 'true');
+                    menu.style.setProperty('display', 'none', 'important');
+                    menu.style.setProperty('visibility', 'hidden', 'important');
+                    menu.style.setProperty('opacity', '0', 'important');
+                    menu.style.setProperty('pointer-events', 'none', 'important');
+                });
+        };
+
+        hideFloatingMenu();
+
+        if (this.velouraFloatingMenuObserver) {
+            this.velouraFloatingMenuObserver.disconnect();
+        }
+
+        this.velouraFloatingMenuObserver = new MutationObserver(hideFloatingMenu);
+        this.velouraFloatingMenuObserver.observe(document.body, {
+            childList: true,
+            subtree: true,
+        });
     }
 
     initProductOptionValidations() {
