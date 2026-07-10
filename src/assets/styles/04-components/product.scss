@@ -1444,3 +1444,62 @@ html.dark .veloura-product-page h1,
     margin-top: 16px !important;
   }
 }
+
+
+
+
+
+/* ======================================================
+   Veloura Quantity Style Real Control
+   يخلي إعداد شكل الكمية يشتغل فعلياً
+====================================================== */
+
+@media (max-width: 767px) {
+
+  /* حديث */
+  .veloura-product-page.veloura-product-qty-modern salla-quantity-input,
+  .veloura-product-page.veloura-product-qty-modern .s-quantity-input-container,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-modern salla-quantity-input,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-modern .s-quantity-input-container {
+    width: 132px !important;
+    max-width: 132px !important;
+    min-width: 132px !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+
+  /* الشكل القديم */
+  .veloura-product-page.veloura-product-qty-old salla-quantity-input,
+  .veloura-product-page.veloura-product-qty-old .s-quantity-input-container,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-old salla-quantity-input,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-old .s-quantity-input-container {
+    width: 170px !important;
+    max-width: 170px !important;
+    min-width: 170px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  /* مصغر لليسار */
+  .veloura-product-page.veloura-product-qty-mini_left salla-quantity-input,
+  .veloura-product-page.veloura-product-qty-mini_left .s-quantity-input-container,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-mini_left salla-quantity-input,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-mini_left .s-quantity-input-container {
+    width: 104px !important;
+    max-width: 104px !important;
+    min-width: 104px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+
+  .veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity,
+  body > .veloura-product-sticky-fixed.veloura-product-qty-mini_left .sticky-product-bar__quantity {
+    justify-content: flex-start !important;
+  }
+}
