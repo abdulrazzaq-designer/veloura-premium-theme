@@ -210,6 +210,17 @@ class Product extends BasePage {
             document.documentElement.classList.add('veloura-product-sticky-active');
             document.body.classList.add('veloura-product-sticky-active');
             stickyBar.classList.add('veloura-product-sticky-fixed');
+            stickyBar.classList.remove(
+    'veloura-product-qty-modern',
+    'veloura-product-qty-old',
+    'veloura-product-qty-mini_left'
+);
+
+['veloura-product-qty-modern', 'veloura-product-qty-old', 'veloura-product-qty-mini_left'].forEach(cls => {
+    if (productPage.classList.contains(cls)) {
+        stickyBar.classList.add(cls);
+    }
+});
         } else {
             if (placeholder.parentNode && stickyBar.parentNode !== placeholder.parentNode) {
                 placeholder.parentNode.insertBefore(stickyBar, placeholder.nextSibling);

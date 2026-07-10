@@ -6496,30 +6496,25 @@
   "icon": "sicon-list",
   "source": "Manual",
   "required": false,
-  "value": "modern",
-  "default": "modern",
+  "value": "normal",
+  "default": "normal",
   "selected": [
     {
-      "label": "حديث",
-      "value": "modern",
-      "key": "veloura_product_mobile_quantity_style_2026-modern"
+      "label": "عادي",
+      "value": "normal",
+      "key": "veloura_product_mobile_quantity_style_2026-normal"
     }
   ],
   "options": [
     {
-      "label": "حديث",
-      "value": "modern",
-      "key": "veloura_product_mobile_quantity_style_2026-modern"
+      "label": "عادي",
+      "value": "normal",
+      "key": "veloura_product_mobile_quantity_style_2026-normal"
     },
     {
-      "label": "الشكل القديم",
-      "value": "old",
-      "key": "veloura_product_mobile_quantity_style_2026-old"
-    },
-    {
-      "label": "مصغر لليسار",
-      "value": "mini_left",
-      "key": "veloura_product_mobile_quantity_style_2026-mini_left"
+      "label": "مصغر",
+      "value": "mini",
+      "key": "veloura_product_mobile_quantity_style_2026-mini"
     }
   ],
   "conditions": [

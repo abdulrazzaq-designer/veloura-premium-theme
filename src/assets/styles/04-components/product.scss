@@ -1493,3 +1493,70 @@ html.dark .veloura-product-page h1,
     justify-content: flex-start !important;
   }
 }
+
+/* ======================================================
+   Veloura Quantity Options
+   عادي / مصغر
+   الكمية يمين + أزرار الكمية يسار
+====================================================== */
+
+@media (max-width: 767px) {
+
+  .veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity,
+  .veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity,
+  .sticky-product-bar.veloura-product-qty-modern .sticky-product-bar__quantity,
+  .sticky-product-bar.veloura-product-qty-mini_left .sticky-product-bar__quantity {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    direction: rtl !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    margin: 0 0 12px !important;
+  }
+
+  .veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity .form-label,
+  .veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity .form-label,
+  .sticky-product-bar.veloura-product-qty-modern .sticky-product-bar__quantity .form-label,
+  .sticky-product-bar.veloura-product-qty-mini_left .sticky-product-bar__quantity .form-label {
+    order: 1 !important;
+    margin: 0 !important;
+    text-align: right !important;
+    font-weight: 900 !important;
+    white-space: nowrap !important;
+  }
+
+  .veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity salla-quantity-input,
+  .veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity salla-quantity-input,
+  .sticky-product-bar.veloura-product-qty-modern .sticky-product-bar__quantity salla-quantity-input,
+  .sticky-product-bar.veloura-product-qty-mini_left .sticky-product-bar__quantity salla-quantity-input {
+    order: 2 !important;
+    margin-inline-start: auto !important;
+    margin-inline-end: 0 !important;
+  }
+
+  /* عادي */
+  .veloura-product-page.veloura-product-qty-modern salla-quantity-input,
+  .veloura-product-page.veloura-product-qty-modern .s-quantity-input-container,
+  .sticky-product-bar.veloura-product-qty-modern salla-quantity-input,
+  .sticky-product-bar.veloura-product-qty-modern .s-quantity-input-container {
+    width: 138px !important;
+    max-width: 138px !important;
+    min-width: 138px !important;
+    height: 50px !important;
+    min-height: 50px !important;
+  }
+
+  /* مصغر */
+  .veloura-product-page.veloura-product-qty-mini_left salla-quantity-input,
+  .veloura-product-page.veloura-product-qty-mini_left .s-quantity-input-container,
+  .sticky-product-bar.veloura-product-qty-mini_left salla-quantity-input,
+  .sticky-product-bar.veloura-product-qty-mini_left .s-quantity-input-container {
+    width: 104px !important;
+    max-width: 104px !important;
+    min-width: 104px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+  }
+}
