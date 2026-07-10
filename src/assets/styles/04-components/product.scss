@@ -1354,3 +1354,90 @@ html.dark .veloura-product-page h1,
     font-size: 12px !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================
+   Veloura Product Step 2
+   تثبيت شريط الشراء على الجوال فقط + منع تكرار السعر داخله
+====================================================== */
+
+@media (min-width: 768px) {
+  .veloura-product-page .sticky-product-bar,
+  .veloura-product-page .veloura-product-sticky-bar {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    margin: 16px 0 0 !important;
+    z-index: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .veloura-product-page {
+    padding-bottom: 185px !important;
+  }
+
+  .veloura-product-page .sticky-product-bar,
+  .veloura-product-page .veloura-product-sticky-bar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2147483000 !important;
+
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+
+    border-radius: 24px 24px 0 0 !important;
+    background: var(--veloura-product-card-bg, #f3f4f6) !important;
+    box-shadow: 0 -10px 30px rgba(15, 23, 42, .14) !important;
+    overflow: hidden !important;
+  }
+
+  /* منع تكرار السعر داخل الشريط المثبت */
+  .veloura-product-page .veloura-product-sticky-price-summary {
+    display: none !important;
+  }
+
+  .veloura-product-page .sticky-product-bar__quantity {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    margin: 0 0 12px !important;
+  }
+
+  .veloura-product-page .sticky-product-bar__quantity .form-label {
+    margin: 0 !important;
+    font-weight: 900 !important;
+    white-space: nowrap !important;
+  }
+
+  .veloura-product-page salla-quantity-input,
+  .veloura-product-page .s-quantity-input-container {
+    width: 132px !important;
+    max-width: 132px !important;
+    min-width: 118px !important;
+    height: 50px !important;
+  }
+
+  .veloura-product-page .sticky-product-bar__btn,
+  .veloura-product-page salla-add-product-button,
+  .veloura-product-page salla-add-product-button .s-button-element,
+  .veloura-product-page salla-add-product-button button {
+    width: 100% !important;
+    min-height: 54px !important;
+    margin: 0 !important;
+    border-radius: var(--veloura-product-radius-final, 24px) !important;
+  }
+}
