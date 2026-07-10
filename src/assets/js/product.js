@@ -199,37 +199,54 @@ class Product extends BasePage {
     placeholder.className = 'veloura-sticky-product-placeholder';
     stickyBar.parentNode.insertBefore(placeholder, stickyBar);
 
+    const quantityClasses = [
+        'veloura-product-qty-modern',
+        'veloura-product-qty-mini_left'
+    ];
+
+    const syncQuantityClass = () => {
+        stickyBar.classList.remove(...quantityClasses);
+
+        quantityClasses.forEach(cls => {
+            if (productPage.classList.contains(cls)) {
+                stickyBar.classList.add(cls);
+            }
+        });
+
+        if (!stickyBar.classList.contains('veloura-product-qty-modern') &&
+            !stickyBar.classList.contains('veloura-product-qty-mini_left')) {
+            stickyBar.classList.add('veloura-product-qty-modern');
+        }
+    };
+
+    const restoreStickyBar = () => {
+        if (placeholder.parentNode && stickyBar.parentNode !== placeholder.parentNode) {
+            placeholder.parentNode.insertBefore(stickyBar, placeholder.nextSibling);
+        }
+
+        document.documentElement.classList.remove('veloura-product-sticky-active');
+        document.body.classList.remove('veloura-product-sticky-active');
+        stickyBar.classList.remove('veloura-product-sticky-fixed');
+    };
+
     const moveStickyBar = () => {
         const isMobile = window.innerWidth <= 767;
+        const stickyEnabled = productPage.classList.contains('veloura-product-mobile-sticky-enabled');
 
-        if (isMobile) {
-            if (!document.body.contains(stickyBar) || stickyBar.parentNode !== document.body) {
-                document.body.appendChild(stickyBar);
-            }
+        syncQuantityClass();
 
-            document.documentElement.classList.add('veloura-product-sticky-active');
-            document.body.classList.add('veloura-product-sticky-active');
-            stickyBar.classList.add('veloura-product-sticky-fixed');
-            stickyBar.classList.remove(
-    'veloura-product-qty-modern',
-    'veloura-product-qty-old',
-    'veloura-product-qty-mini_left'
-);
-
-['veloura-product-qty-modern', 'veloura-product-qty-old', 'veloura-product-qty-mini_left'].forEach(cls => {
-    if (productPage.classList.contains(cls)) {
-        stickyBar.classList.add(cls);
-    }
-});
-        } else {
-            if (placeholder.parentNode && stickyBar.parentNode !== placeholder.parentNode) {
-                placeholder.parentNode.insertBefore(stickyBar, placeholder.nextSibling);
-            }
-
-            document.documentElement.classList.remove('veloura-product-sticky-active');
-            document.body.classList.remove('veloura-product-sticky-active');
-            stickyBar.classList.remove('veloura-product-sticky-fixed');
+        if (!isMobile || !stickyEnabled) {
+            restoreStickyBar();
+            return;
         }
+
+        if (stickyBar.parentNode !== document.body) {
+            document.body.appendChild(stickyBar);
+        }
+
+        document.documentElement.classList.add('veloura-product-sticky-active');
+        document.body.classList.add('veloura-product-sticky-active');
+        stickyBar.classList.add('veloura-product-sticky-fixed');
     };
 
     moveStickyBar();

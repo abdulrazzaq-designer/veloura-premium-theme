@@ -6533,7 +6533,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "تصغير حجم أزرار الإضافة والشراء الآن",
+  "label": "تصغير حجم أزرار الإضافة والشراء الآن1",
   "id": "veloura_product_mobile_buttons_compact_2026",
   "format": "switch",
   "required": false,
