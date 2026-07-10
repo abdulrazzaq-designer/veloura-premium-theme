@@ -17,6 +17,7 @@ class Product extends BasePage {
         this.initVelouraProductPageGuard();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
+        this.initVelouraMobileStickyBar();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
         const velouraZoomAllowed =
@@ -179,6 +180,52 @@ class Product extends BasePage {
             });
         });
     }
+
+    initVelouraMobileStickyBar() {
+    const productPage = document.querySelector('.veloura-product-page');
+    const stickyBar = document.querySelector('.veloura-product-page .sticky-product-bar');
+
+    if (!productPage || !stickyBar) {
+        return;
+    }
+
+    if (stickyBar.dataset.velouraMobileStickyReady === '1') {
+        return;
+    }
+
+    stickyBar.dataset.velouraMobileStickyReady = '1';
+
+    const placeholder = document.createElement('div');
+    placeholder.className = 'veloura-sticky-product-placeholder';
+    stickyBar.parentNode.insertBefore(placeholder, stickyBar);
+
+    const moveStickyBar = () => {
+        const isMobile = window.innerWidth <= 767;
+
+        if (isMobile) {
+            if (!document.body.contains(stickyBar) || stickyBar.parentNode !== document.body) {
+                document.body.appendChild(stickyBar);
+            }
+
+            document.documentElement.classList.add('veloura-product-sticky-active');
+            document.body.classList.add('veloura-product-sticky-active');
+            stickyBar.classList.add('veloura-product-sticky-fixed');
+        } else {
+            if (placeholder.parentNode && stickyBar.parentNode !== placeholder.parentNode) {
+                placeholder.parentNode.insertBefore(stickyBar, placeholder.nextSibling);
+            }
+
+            document.documentElement.classList.remove('veloura-product-sticky-active');
+            document.body.classList.remove('veloura-product-sticky-active');
+            stickyBar.classList.remove('veloura-product-sticky-fixed');
+        }
+    };
+
+    moveStickyBar();
+
+    window.addEventListener('resize', moveStickyBar);
+    window.addEventListener('orientationchange', moveStickyBar);
+}
 
     registerEvents() {
         salla.event.on('product::price.updated.failed', () => {
