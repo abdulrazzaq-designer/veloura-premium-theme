@@ -434,12 +434,12 @@
                     </div>
                 {% endif %}
                 {% if product.sku %}
-                    <div class="mb-4 flex justify-between sm:grid sm:grid-cols-3 bg-white rounded-md px-4 py-2">
-                        <div class="flex items-center">
-                            <i class="sicon-barcode mx-1"></i>
-                            {{ trans('pages.products.sku') }}
+                    <div class="veloura-product-sku-card mb-4 bg-white rounded-md px-4 py-3">
+                        <div class="veloura-product-sku-card__label">
+                            <i class="sicon-barcode"></i>
+                            <span>{{ trans('pages.products.sku') }}</span>
                         </div>
-                        <div class="text-unicode product-sku">{{ product.sku }}</div>
+                        <div class="text-unicode product-sku" dir="ltr">{{ product.sku }}</div>
                     </div>
                 {% endif %}
                 {% hook 'product:single.description' %}
@@ -533,7 +533,7 @@
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
                         {% else %}
-                            <div class="sticky-product-bar__quantity center-between mb-5">
+                            <div class="sticky-product-bar__quantity">
                                 <label class="form-label font-bold">
                                     {{ trans('pages.products.quantity') }}
                                 </label>

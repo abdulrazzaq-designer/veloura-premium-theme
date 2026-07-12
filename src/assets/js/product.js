@@ -12,11 +12,13 @@ class Product extends BasePage {
             beforePrice: '.before-price',
             startingPriceTitle: '.starting-price-title',
             productSku: '.product-sku',
+            stickySummaryPrice: '.veloura-product-sticky-price-summary strong',
         });
 
         this.initVelouraProductPageState();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
+        this.initVelouraSliderFix();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
         const velouraZoomAllowed =
@@ -114,6 +116,39 @@ class Product extends BasePage {
         });
     }
 
+
+    initVelouraSliderFix() {
+        const slider = document.querySelector('salla-slider.details-slider');
+
+        if (!slider) {
+            return;
+        }
+
+        const refreshSlides = () => {
+            document
+                .querySelectorAll('.image-slider .swiper-slide img')
+                .forEach((img) => {
+                    img.style.opacity = '1';
+                    img.style.visibility = 'visible';
+                    img.removeAttribute('hidden');
+                });
+
+            const swiper = slider.swiper || slider.slider || null;
+
+            if (swiper?.update) {
+                swiper.update();
+            }
+
+            if (swiper?.updateAutoHeight) {
+                swiper.updateAutoHeight(0);
+            }
+        };
+
+        setTimeout(refreshSlides, 250);
+        slider.addEventListener('slideChange', () => setTimeout(refreshSlides, 100));
+        window.addEventListener('resize', () => setTimeout(refreshSlides, 100));
+    }
+
     initVelouraCouponCopy() {
         document.querySelectorAll('.veloura-product-coupon__code').forEach(button => {
             if (button.dataset.velouraCouponReady === '1') {
@@ -199,6 +234,10 @@ class Product extends BasePage {
 
             app.productSku.forEach((el) => {
                 el.innerHTML = data.sku || '';
+            });
+
+            app.stickySummaryPrice?.forEach((el) => {
+                el.innerHTML = salla.money(data.price);
             });
 
             app.toggleClassIf('.price_is_on_sale', 'showed', 'hidden', () => isOnSale);
