@@ -6920,7 +6920,7 @@
   "id": "veloura_mobile_floating_menu_title_2026",
   "type": "static",
   "format": "title",
-  "label": "قائمة الجوال العائمة",
+  "label": "قائمة الجوال العائمة122",
   "value": "<div style=\"width:100%;padding:10px;border-radius:9999px;background:linear-gradient(135deg,#004d65,#006b7a,#00a6a6);color:#fff;display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:right;box-shadow:0 10px 25px rgba(0,77,101,.22)\"><div style=\"width:45px;height:45px;border-radius:999px;background:#fff;color:#005369;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0\"><i class='sicon-airplay-screen'></i></div><div style=\"flex:1\"><strong style=\"display:block;font-size:22px;font-weight:800;line-height:1.4\">قائمة الجوال العائمة</strong></div></div>",
   "icon": "sicon-mobile"
 },
