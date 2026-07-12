@@ -6462,7 +6462,7 @@
   "id": "veloura_product_mobile_quantity_style_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "شكل أزرار الكمية في الجوال",
+  "label": "شكل حقل الكمية في الجوال",
   "icon": "sicon-list",
   "source": "Manual",
   "required": false,
@@ -6470,21 +6470,16 @@
   "default": "modern",
   "selected": [
     {
-      "label": "حديث",
+      "label": "عادي عريض",
       "value": "modern",
       "key": "veloura_product_mobile_quantity_style_2026-modern"
     }
   ],
   "options": [
     {
-      "label": "حديث",
+      "label": "عادي عريض",
       "value": "modern",
       "key": "veloura_product_mobile_quantity_style_2026-modern"
-    },
-    {
-      "label": "الشكل القديم",
-      "value": "old",
-      "key": "veloura_product_mobile_quantity_style_2026-old"
     },
     {
       "label": "مصغر لليسار",
@@ -6497,13 +6492,9 @@
       "id": "veloura_product_page_enabled_2026",
       "operation": "=",
       "value": true
-    },
-    {
-      "id": "veloura_product_mobile_sticky_cart_2026",
-      "operation": "=",
-      "value": true
     }
-  ]
+  ],
+  "description": "العادي بعرض كامل مثل أزرار الشراء، والمصغر يضع كلمة الكمية يميناً والأزرار يساراً"
 },
 {
   "type": "boolean",

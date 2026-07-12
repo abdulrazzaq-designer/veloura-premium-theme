@@ -14,6 +14,7 @@ class Product extends BasePage {
             productSku: '.product-sku',
         });
 
+        this.initVelouraProductPageState();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
 
@@ -29,6 +30,26 @@ class Product extends BasePage {
             this.initImagesZooming();
             window.addEventListener('resize', () => this.initImagesZooming());
         }
+    }
+
+    initVelouraProductPageState() {
+        const page = document.querySelector('.veloura-product-page');
+
+        if (!page) {
+            return;
+        }
+
+        document.documentElement.classList.add('veloura-is-product-page');
+        document.body.classList.add('veloura-is-product-page');
+
+        const stickyEnabled = page.classList.contains(
+            'veloura-product-mobile-sticky-enabled'
+        );
+
+        document.body.classList.toggle(
+            'veloura-product-sticky-active',
+            stickyEnabled
+        );
     }
 
     initProductOptionValidations() {
@@ -159,8 +180,8 @@ class Product extends BasePage {
             app.element('.out-of-stock')?.classList.add('hidden');
             app.element('.price-wrapper')?.classList.remove('hidden');
 
-            let data = res.data;
-            let is_on_sale = data.has_sale_price && data.regular_price > data.price;
+            const data = res.data;
+            const isOnSale = data.has_sale_price && data.regular_price > data.price;
 
             app.startingPriceTitle?.classList.add('hidden');
 
@@ -180,8 +201,8 @@ class Product extends BasePage {
                 el.innerHTML = data.sku || '';
             });
 
-            app.toggleClassIf('.price_is_on_sale', 'showed', 'hidden', () => is_on_sale);
-            app.toggleClassIf('.starting-or-normal-price', 'hidden', 'showed', () => is_on_sale);
+            app.toggleClassIf('.price_is_on_sale', 'showed', 'hidden', () => isOnSale);
+            app.toggleClassIf('.starting-or-normal-price', 'hidden', 'showed', () => isOnSale);
 
             document.querySelectorAll('.total-price, .product-weight').forEach(el => {
                 el.classList.remove('scale-pulse');

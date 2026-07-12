@@ -354,21 +354,7 @@
                 {% if product.is_taxable %}
                     <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
                 {% endif %}
-                {# Price #}
-                <div class="flex whitespace-nowrap gap-4 items-center">
-                  <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                      <p class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</p>
-                      <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
-                  </div>
-                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                      {% if product.starting_price %} 
-                          <span class="">{{ trans('pages.products.starting_price') }}</span>
-                      {% endif %} 
-                          <p class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</p>
-                  </div>
-                </div>
-
-                {% if vpp_enabled and vpp_show_availability and product.is_available %}
+{% if vpp_enabled and vpp_show_availability and product.is_available %}
                     <div class="veloura-product-stock-radar {{ vpp_show_stock_radar ? 'is-pulse' : 'is-simple' }}">
                         <span class="veloura-product-stock-radar__dot"></span>
                         <span>متوفر</span>
@@ -389,7 +375,10 @@
                             <strong>{{ vpp_coupon_title }}</strong>
                             <span>{{ vpp_coupon_subtitle }}</span>
                         </div>
-                        <button type="button" class="veloura-product-coupon__code" onclick="navigator.clipboard && navigator.clipboard.writeText('{{ vpp_coupon_code }}')">
+                        <button type="button"
+                                class="veloura-product-coupon__code"
+                                data-code="{{ vpp_coupon_code|e }}"
+                                aria-label="نسخ كود الخصم">
                             {{ vpp_coupon_code }}
                         </button>
                     </div>
@@ -507,32 +496,7 @@
                     </div>
 
                     {% hook 'product:single.form.end' %}
-
-                    <section class="flex bg-white p-5 rounded-md veloura-product-price-card">
-                        <div class="center-between w-full">
-                            <label class="form-label">
-                                <b class="block">
-                                    {{ trans('pages.products.price') }}
-                                </b>
-                            </label>
-
-                            <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
-                              <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                                <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
-                                <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
-                              </div>
-                              <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                                {% if product.starting_price %} 
-                                  <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                                {% endif %} 
-                                <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                              </div>
-                            </div>
-
-                            <div class="out-of-stock min-h-7 leading-7 hidden text-base text-red-600 !opacity-50 font-bold">{{ trans('pages.products.out_of_stock')}}</div>
-                        </div>
-                    </section>
-                    {# Pre-order Campaign #}
+{# Pre-order Campaign #}
                     {% if product.has_preorder_campaign %}
                         <section class="mt-5 p-5">
                             <salla-count-down pre-order='{{ product.preorder|json_encode}}' boxed labeled></salla-count-down>
@@ -540,12 +504,31 @@
                     {% endif %}
 
                     <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md">
-                        {% if vpp_enabled and vpp_mobile_sticky_price %}
-                            <div class="veloura-product-sticky-price-summary">
-                                <span>{{ trans('pages.products.price') }}</span>
-                                <strong>{{ product.starting_price ? product.starting_price|money : product.price|money }}</strong>
+                        {# Canonical live price: one price only, inside the purchase card #}
+                        <div class="veloura-product-price-row">
+                            <label class="form-label veloura-product-price-label">
+                                {{ trans('pages.products.price') }}
+                            </label>
+
+                            <div class="price-wrapper">
+                                <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale">
+                                    <h2 class="total-price">{{ product.sale_price|money }}</h2>
+                                    <span class="before-price">{{ product.regular_price|money }}</span>
+                                </div>
+
+                                <div class="starting-or-normal-price {{ product.is_on_sale ? 'hidden' : '' }}">
+                                    {% if product.starting_price %}
+                                        <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
+                                    {% endif %}
+                                    <h2 class="total-price">{{ product.starting_price ? product.starting_price|money : product.price|money }}</h2>
+                                </div>
                             </div>
-                        {% endif %}
+
+                            <div class="out-of-stock hidden">
+                                {{ trans('pages.products.out_of_stock') }}
+                            </div>
+                        </div>
+
                         {# Quantity #}
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
@@ -561,11 +544,11 @@
                         {# Add to cart #}
                         <salla-add-product-button
                                 {{product.can_quick_buy ? 'quick-buy' : ''}}
-                                {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}}
+                                {{ ((vpp_enabled and vpp_mobile_sticky_cart) or (not vpp_enabled and theme.settings.get('sticky_add_to_cart'))) ? ' support-sticky-bar' : '' }}
                                 {{product.is_require_shipping ? 'required-shipping' : ''}}
                                 {{product.has_preorder_campaign ? 'has-pre-order' : ''}}
                                 amount="{{ product.base_currency_price }}"
-                                class="mt-5 w-full sticky-product-bar__btn"
+                                class="w-full sticky-product-bar__btn"
                                 product-status="{{ product.status }}"
                                 product-type="{{ product.type }}"
                                 product-id="{{ product.id }}"
@@ -649,21 +632,6 @@
 {% block scripts %}
 
     <script defer src="{{ 'product.js' | asset }}"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.veloura-product-coupon__code').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            btn.classList.add('is-copied');
-            const oldText = btn.textContent;
-            btn.textContent = 'تم النسخ';
-            setTimeout(function () {
-              btn.textContent = oldText;
-              btn.classList.remove('is-copied');
-            }, 1200);
-          });
-        });
-      });
-    </script>
     {% if product.has_3d_image %}
         <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {% endif %}
