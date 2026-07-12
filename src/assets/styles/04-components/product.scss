@@ -418,13 +418,13 @@ salla-quantity-input[max='1']{
 
 
 /* ======================================================
-   Veloura Product Page Clean Fix V13
-   الهدف:
-   - إخفاء القائمة العائمة داخل صفحة المنتج فقط
-   - منع تكرار السعر
-   - ترتيب خيارات المنتج بدون فراغات طويلة
-   - جعل شريط الشراء داخل الصفحة وعدم تغطيته للمحتوى
-   - تثبيت شكل الجوال والـ RTL
+   Veloura Product Page Final Clean CSS
+   استبدل الملف السابق بالكامل بهذا الملف فقط
+   ملاحظة: لا تدمجه مع V10/V11/V12/V13 القديمة
+====================================================== */
+
+/* ======================================================
+   0) تعريف الصفحة + إخفاء القائمة العائمة داخل صفحة المنتج
 ====================================================== */
 
 html.veloura-is-product-page,
@@ -432,7 +432,6 @@ body.veloura-is-product-page {
   scroll-padding-bottom: 24px !important;
 }
 
-/* إخفاء القائمة العائمة داخل صفحة المنتج فقط */
 html.veloura-is-product-page .veloura-mobile-floating-menu,
 html.veloura-is-product-page .veloura-floating-menu,
 html.veloura-is-product-page .veloura-bottom-navigation,
@@ -466,11 +465,20 @@ body:has(.veloura-product-page) {
   padding-bottom: 0 !important;
 }
 
-/* متغيرات الصفحة */
+/* ======================================================
+   1) متغيرات صفحة المنتج
+====================================================== */
+
 .veloura-product-page {
   --veloura-product-primary: var(--color-primary, #004d65);
-  --veloura-product-basic-bg: var(--veloura-product-bg-inline, var(--veloura-site-bg-color, var(--veloura-site-bg, #ffffff)));
-  --veloura-product-secondary-bg: var(--veloura-product-secondary-bg-inline, var(--veloura-site-second-bg-color, var(--veloura-site-second-bg, #f8fafc)));
+  --veloura-product-basic-bg: var(
+    --veloura-product-bg-inline,
+    var(--veloura-site-bg-color, var(--veloura-site-bg, #ffffff))
+  );
+  --veloura-product-secondary-bg: var(
+    --veloura-product-secondary-bg-inline,
+    var(--veloura-site-second-bg-color, var(--veloura-site-second-bg, #f8fafc))
+  );
   --veloura-product-card-bg: var(--veloura-product-secondary-bg);
   --veloura-product-inner-bg: var(--veloura-product-basic-bg);
   --veloura-product-radius-final: var(--veloura-product-radius, 28px);
@@ -484,10 +492,21 @@ html.dark .veloura-product-page,
 .dark .veloura-product-page,
 body.veloura-dark .veloura-product-page,
 html.veloura-dark .veloura-product-page {
-  --veloura-product-basic-bg: var(--veloura-product-dark-bg-inline, var(--veloura-dark-body-bg, #010202));
-  --veloura-product-secondary-bg: var(--veloura-product-dark-secondary-bg-inline, var(--veloura-dark-secondary-bg, #111111));
+  --veloura-product-basic-bg: var(
+    --veloura-product-dark-bg-inline,
+    var(--veloura-dark-body-bg, #010202)
+  );
+  --veloura-product-secondary-bg: var(
+    --veloura-product-dark-secondary-bg-inline,
+    var(--veloura-dark-secondary-bg, #111111)
+  );
   --veloura-product-card-bg: var(--veloura-product-secondary-bg);
   --veloura-product-inner-bg: var(--veloura-product-basic-bg);
+}
+
+.veloura-product-page .main-content,
+.veloura-product-page .sidebar {
+  overflow: visible !important;
 }
 
 .veloura-product-hide-breadcrumb .breadcrumbs,
@@ -495,27 +514,8 @@ html.veloura-dark .veloura-product-page {
   display: none !important;
 }
 
-.veloura-product-page .main-content {
-  overflow: visible !important;
-}
-
-.veloura-product-page .sidebar {
-  overflow: visible !important;
-}
-
-/* منع تكرار السعر القديم */
-.veloura-hidden-legacy-price,
-.veloura-product-page > .flex.whitespace-nowrap.gap-4.items-center,
-.veloura-product-page .main-content > .flex.whitespace-nowrap.gap-4.items-center:not(.price-wrapper),
-.veloura-product-page .main-content > div.flex.whitespace-nowrap.gap-4.items-center:not(.price-wrapper):not(.veloura-product-price-card *) {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
 /* ======================================================
-   الكروت والعناصر العامة
+   2) إعادة ضبط عامة بدون تضخيم
 ====================================================== */
 
 .veloura-product-page .main-content > section,
@@ -523,26 +523,29 @@ html.veloura-dark .veloura-product-page {
 .veloura-product-page .main-content .bg-white.rounded-md,
 .veloura-product-page .product__description,
 .veloura-product-page .veloura-product-options-wrap,
+.veloura-product-page .s-product-options-wrapper,
+.veloura-product-page .veloura-product-price-card,
 .veloura-product-page .sticky-product-bar,
 .veloura-product-page .veloura-product-sticky-bar,
+.veloura-product-page .veloura-product-payment-methods,
 .veloura-product-page .veloura-product-coupon,
 .veloura-product-page .veloura-product-discount-countdown,
 .veloura-product-page .product-brand,
 .veloura-product-page .veloura-product-brand,
 .veloura-product-page .veloura-product-category-under-title,
-.veloura-product-page .price-wrapper,
-.veloura-product-page .out-of-stock,
-.veloura-product-page .cart-options,
-.veloura-product-page .s-product-options-wrapper,
-.veloura-product-page .veloura-product-payment-methods,
 .veloura-product-page .veloura-product-original-purchase-count,
-.veloura-product-page .product-sku {
+.veloura-product-page .product-sku,
+.veloura-product-page .out-of-stock {
   background: var(--veloura-product-card-bg) !important;
   background-color: var(--veloura-product-card-bg) !important;
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
   border-radius: var(--veloura-product-radius-final) !important;
+}
+
+.veloura-product-page [class*="shadow"] {
+  box-shadow: none !important;
 }
 
 .veloura-product-page .border,
@@ -553,14 +556,7 @@ html.veloura-dark .veloura-product-page {
   border-color: transparent !important;
 }
 
-.veloura-product-page .shadow,
-.veloura-product-page .shadow-sm,
-.veloura-product-page .shadow-md,
-.veloura-product-page .shadow-lg,
-.veloura-product-page [class*="shadow"] {
-  box-shadow: none !important;
-}
-
+/* لا نخفي عناصر المنتج الأساسية */
 .veloura-product-page h1,
 .veloura-product-page .product-entry__sub-title,
 .veloura-product-page .price-wrapper,
@@ -574,18 +570,19 @@ html.veloura-dark .veloura-product-page {
   opacity: 1 !important;
 }
 
-.veloura-product-page h1 {
-  color: var(--color-text, #1f2937) !important;
-}
-
-body.dark .veloura-product-page h1,
-html.dark .veloura-product-page h1,
-.dark .veloura-product-page h1 {
-  color: var(--veloura-dark-primary-text, #ffffff) !important;
+/* منع بقايا السعر القديم أو السعر المكرر فقط */
+.veloura-hidden-legacy-price,
+.veloura-product-page > .flex.whitespace-nowrap.gap-4.items-center,
+.veloura-product-page .main-content > .flex.whitespace-nowrap.gap-4.items-center:not(.price-wrapper),
+.veloura-product-page .main-content > div.flex.whitespace-nowrap.gap-4.items-center:not(.price-wrapper):not(.veloura-product-price-card *) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* ======================================================
-   الصور + المفضلة + المشاركة
+   3) الصورة + المفضلة + مشاركة سلة الافتراضية
 ====================================================== */
 
 .veloura-product-page .details-slider.image-slider,
@@ -602,6 +599,7 @@ html.dark .veloura-product-page h1,
 .veloura-product-page .image-slider .magnify-wrapper,
 .veloura-product-page .image-slider img {
   border-radius: var(--veloura-product-radius-final) !important;
+  overflow: hidden !important;
 }
 
 .veloura-product-media-actions {
@@ -699,9 +697,24 @@ html.dark .veloura-product-page h1,
   display: none !important;
 }
 
-/* المصغرات */
+/* ======================================================
+   4) الصور المصغرة: بسيطة وثابتة
+====================================================== */
+
 .veloura-product-page.veloura-product-hide-thumbs .details-slider [slot="thumbs"],
 .veloura-product-page.veloura-product-hide-thumbs salla-slider::part(thumbs) {
+  display: none !important;
+}
+
+.veloura-product-page .details-slider.image-slider [slot="thumbs"],
+.veloura-product-page .details-slider.image-slider .s-slider-thumbs,
+.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper {
+  scrollbar-width: none !important;
+}
+
+.veloura-product-page .details-slider.image-slider [slot="thumbs"]::-webkit-scrollbar,
+.veloura-product-page .details-slider.image-slider .s-slider-thumbs::-webkit-scrollbar,
+.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper::-webkit-scrollbar {
   display: none !important;
 }
 
@@ -716,21 +729,78 @@ html.dark .veloura-product-page h1,
   min-height: 116px !important;
   border-radius: var(--veloura-product-radius-final) !important;
   overflow: hidden !important;
-  background: var(--veloura-product-card-bg) !important;
+  background: var(--veloura-product-inner-bg) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 .veloura-product-page .veloura-product-thumb-item img,
 .veloura-product-page .details-slider.image-slider [slot="thumbs"] img,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs img {
+.veloura-product-page .details-slider.image-slider .s-slider-thumbs img,
+.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   border-radius: inherit !important;
 }
 
+/* أسفل الصورة */
+.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider,
+.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider {
+  margin-bottom: 64px !important;
+}
+
+.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider [slot="thumbs"],
+.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider .s-slider-thumbs,
+.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider .s-slider-thumbs-wrapper,
+.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider [slot="thumbs"],
+.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider .s-slider-thumbs,
+.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider .s-slider-thumbs-wrapper {
+  position: relative !important;
+  z-index: 30 !important;
+  margin-top: -52px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  padding: 0 10px 8px !important;
+}
+
+/* يمين على اللابتوب */
+@media (min-width: 768px) {
+  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider {
+    margin-bottom: 0 !important;
+    padding-inline-end: 88px !important;
+  }
+
+  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider [slot="thumbs"],
+  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider .s-slider-thumbs,
+  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider .s-slider-thumbs-wrapper {
+    position: absolute !important;
+    inset-inline-end: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 30 !important;
+    width: 76px !important;
+    max-height: calc(100% - 32px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* الجوال: أسفل فقط + إخفاء الأسهم */
 @media (max-width: 767px) {
   .veloura-product-page .details-slider.image-slider {
-    margin-bottom: 60px !important;
+    margin-bottom: 58px !important;
     padding-inline-end: 0 !important;
   }
 
@@ -738,7 +808,7 @@ html.dark .veloura-product-page h1,
   .veloura-product-page .details-slider.image-slider .s-slider-thumbs,
   .veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper {
     position: relative !important;
-    margin-top: -50px !important;
+    margin-top: -44px !important;
     inset: auto !important;
     transform: none !important;
     width: auto !important;
@@ -749,12 +819,6 @@ html.dark .veloura-product-page h1,
     gap: 10px !important;
     overflow-x: auto !important;
     overflow-y: visible !important;
-    scrollbar-width: none !important;
-  }
-
-  .veloura-product-page .details-slider.image-slider [slot="thumbs"]::-webkit-scrollbar,
-  .veloura-product-page .details-slider.image-slider .s-slider-thumbs::-webkit-scrollbar {
-    display: none !important;
   }
 
   .veloura-product-page .details-slider.image-slider .s-slider-next,
@@ -781,8 +845,21 @@ html.dark .veloura-product-page h1,
   }
 }
 
+.veloura-product-images-fixed_all .image-slider .swiper,
+.veloura-product-images-fixed_all .image-slider .swiper-wrapper,
+.veloura-product-images-fixed_all .image-slider .swiper-slide,
+.veloura-product-images-fixed_all .image-slider .magnify-wrapper {
+  height: clamp(420px, 52vw, 650px) !important;
+}
+
+.veloura-product-images-fixed_all .image-slider img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
 /* ======================================================
-   براند / تصنيف / توفر / كوبون
+   5) التصنيف / البراند / التوفر / الكوبون
 ====================================================== */
 
 .veloura-product-category-under-title,
@@ -793,37 +870,6 @@ html.dark .veloura-product-page h1,
   gap: 8px !important;
   margin-bottom: 14px !important;
   padding: 8px 12px !important;
-}
-
-.veloura-product-brand__label {
-  font-size: 12px !important;
-  font-weight: 800 !important;
-  color: #64748b !important;
-}
-
-.veloura-product-brand__logo,
-.veloura-product-brand a.veloura-product-brand__logo {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-.veloura-product-brand__logo img {
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 999px !important;
-  object-fit: contain !important;
-  flex: 0 0 auto !important;
-}
-
-.veloura-product-brand__name {
-  font-size: 13px !important;
-  font-weight: 800 !important;
-  color: #0f172a !important;
 }
 
 .veloura-product-stock-radar {
@@ -841,6 +887,9 @@ html.dark .veloura-product-page h1,
   height: 9px !important;
   border-radius: 999px !important;
   background: #22c55e !important;
+}
+
+.veloura-product-stock-radar.is-pulse .veloura-product-stock-radar__dot {
   box-shadow: 0 0 0 0 rgba(34, 197, 94, .45) !important;
   animation: veloura-stock-pulse 1.5s infinite !important;
 }
@@ -854,15 +903,6 @@ html.dark .veloura-product-page h1,
 .veloura-product-discount-countdown {
   margin: 14px 0 !important;
   padding: 14px !important;
-  color: #9a3412 !important;
-}
-
-.veloura-product-discount-countdown {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
-  font-weight: 800 !important;
 }
 
 .veloura-product-coupon {
@@ -880,7 +920,6 @@ html.dark .veloura-product-page h1,
 .veloura-product-coupon span {
   margin-top: 4px !important;
   font-size: 12px !important;
-  color: #7c2d12 !important;
 }
 
 .veloura-product-coupon__code {
@@ -893,14 +932,8 @@ html.dark .veloura-product-page h1,
   cursor: pointer !important;
 }
 
-.veloura-product-coupon__code.is-copied {
-  background: #dcfce7 !important;
-  border-color: #22c55e !important;
-  color: #166534 !important;
-}
-
 /* ======================================================
-   الوصف
+   6) الوصف
 ====================================================== */
 
 .veloura-product-page .product__description {
@@ -941,7 +974,7 @@ html.dark .veloura-product-page h1,
 }
 
 /* ======================================================
-   خيارات المنتج: نظيفة ومضغوطة
+   7) خيارات المنتج: compact
 ====================================================== */
 
 .veloura-product-page .veloura-product-options-wrap,
@@ -1051,13 +1084,6 @@ html.dark .veloura-product-page h1,
   padding-inline: 18px !important;
 }
 
-.veloura-product-page .s-product-options-option small,
-.veloura-product-page .s-product-options-option .text-red-500,
-.veloura-product-page .s-product-options-option .text-danger {
-  display: inline-block !important;
-  margin-inline-start: 4px !important;
-}
-
 @media (max-width: 767px) {
   .veloura-product-page .veloura-product-options-wrap,
   .veloura-product-page .s-product-options-wrapper {
@@ -1068,21 +1094,13 @@ html.dark .veloura-product-page h1,
   .veloura-product-page .s-product-options-option:not(div.s-product-options-option-booking) {
     flex-direction: column !important;
     align-items: stretch !important;
-    justify-content: flex-start !important;
     gap: 8px !important;
     margin: 0 0 16px !important;
   }
 
   .veloura-product-page .s-product-options-option-label,
   .veloura-product-page .s-product-options-option > label,
-  .veloura-product-page .s-product-options-option .form-label {
-    flex: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    text-align: right !important;
-    font-size: 15px !important;
-  }
-
+  .veloura-product-page .s-product-options-option .form-label,
   .veloura-product-page .s-product-options-option-content,
   .veloura-product-page .s-product-options-option-values,
   .veloura-product-page .s-product-options-option select,
@@ -1093,17 +1111,10 @@ html.dark .veloura-product-page h1,
     width: 100% !important;
     max-width: 100% !important;
   }
-
-  .veloura-product-page .s-product-options-option select,
-  .veloura-product-page .s-product-options-option .s-form-control,
-  .veloura-product-page .s-product-options-option .s-select-control {
-    height: 54px !important;
-    min-height: 54px !important;
-  }
 }
 
 /* ======================================================
-   السعر + الشراء
+   8) السعر والشراء
 ====================================================== */
 
 .veloura-product-page .veloura-product-price-card {
@@ -1168,10 +1179,6 @@ html.dark .veloura-product-page h1,
 .veloura-product-page .starting-price-title {
   line-height: 1.2 !important;
   white-space: nowrap !important;
-}
-
-.veloura-product-page .total-price {
-  color: var(--veloura-product-primary) !important;
 }
 
 .veloura-product-page .before-price {
@@ -1254,29 +1261,10 @@ html.dark .veloura-product-page h1,
 }
 
 @media (max-width: 767px) {
-  .veloura-product-page .veloura-product-price-card {
-    padding: 16px 18px !important;
-  }
-
-  .veloura-product-page .veloura-product-price-card .center-between {
-    gap: 10px !important;
-  }
-
-  .veloura-product-page .price-wrapper .price_is_on_sale:not(.hidden),
-  .veloura-product-page .price-wrapper .starting-or-normal-price:not(.hidden) {
-    justify-content: flex-end !important;
-    gap: 6px !important;
-  }
-
+  .veloura-product-page .veloura-product-price-card,
   .veloura-product-page .sticky-product-bar,
-  .veloura-product-page .veloura-product-sticky-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-disabled .sticky-product-bar {
+  .veloura-product-page .veloura-product-sticky-bar {
     padding: 16px 18px !important;
-  }
-
-  .veloura-product-page .sticky-product-bar__quantity {
-    margin-bottom: 12px !important;
   }
 
   .veloura-product-page salla-quantity-input,
@@ -1287,12 +1275,22 @@ html.dark .veloura-product-page h1,
 }
 
 /* ======================================================
-   إضافات / وسوم / منتجات مشابهة
+   9) الدفع / الوسوم / المنتجات المشابهة
 ====================================================== */
 
 .veloura-product-payment-methods {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   margin: 16px 0 !important;
   padding: 16px !important;
+}
+
+.veloura-product-payment-methods salla-payments,
+.veloura-product-payment-methods salla-installment {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .veloura-product-tags-visual-hidden .mb-3:has(a[href*="tag"]) {
@@ -1306,287 +1304,4 @@ html.dark .veloura-product-page h1,
 
 .veloura-product-related-products {
   margin-top: 24px !important;
-}
-
-@media (max-width: 767px) {
-  .veloura-product-page {
-    padding-bottom: 0 !important;
-  }
-
-  .veloura-product-page .sidebar,
-  .veloura-product-page .main-content {
-    width: 100% !important;
-  }
-
-  .veloura-product-media-actions__left {
-    top: 10px !important;
-    left: 10px !important;
-    gap: 7px !important;
-  }
-
-  .veloura-product-media-action-btn,
-  .veloura-product-media-wishlist,
-  .veloura-product-media-share,
-  .veloura-product-media-share::part(button),
-  .veloura-product-media-share button,
-  .veloura-product-media-share a {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
-  }
-
-  .veloura-product-media-action-btn i,
-  .veloura-product-media-wishlist i,
-  .veloura-product-media-share i,
-  .veloura-product-media-share svg {
-    width: 18px !important;
-    height: 18px !important;
-    font-size: 18px !important;
-  }
-
-  .veloura-product-page .promotion-title.veloura-product-media-promo {
-    top: 10px !important;
-    right: 10px !important;
-    max-width: calc(100% - 112px) !important;
-    min-height: 38px !important;
-    padding: 8px 12px !important;
-    font-size: 12px !important;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* ======================================================
-   Veloura Product Mobile Sticky - JS Moved Bar
-   شريط شراء ثابت على الجوال فقط
-====================================================== */
-
-@media (max-width: 767px) {
-  html.veloura-product-sticky-active,
-  body.veloura-product-sticky-active {
-    padding-bottom: 172px !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed {
-    position: fixed !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    top: auto !important;
-
-    z-index: 2147483000 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-
-    margin: 0 !important;
-    padding: 14px 18px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
-
-    background: var(--veloura-product-card-bg, #f8fafc) !important;
-    border-radius: 24px 24px 0 0 !important;
-    box-shadow: 0 -10px 28px rgba(15, 23, 42, .14) !important;
-
-    transform: none !important;
-    overflow: hidden !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed .veloura-product-sticky-price-summary,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed .veloura-product-sticky-price-summary {
-    display: none !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed .sticky-product-bar__quantity,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed .sticky-product-bar__quantity {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 12px !important;
-    margin: 0 0 12px !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed .sticky-product-bar__quantity .form-label,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed .sticky-product-bar__quantity .form-label {
-    margin: 0 !important;
-    font-weight: 900 !important;
-    white-space: nowrap !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed salla-quantity-input,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed salla-quantity-input {
-    width: 132px !important;
-    max-width: 132px !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed .sticky-product-bar__btn,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed .sticky-product-bar__btn {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .veloura-sticky-product-placeholder {
-    display: none !important;
-  }
-
-  .veloura-product-page .sticky-product-bar,
-  .veloura-product-page .veloura-product-sticky-bar {
-    position: static !important;
-    margin-top: 16px !important;
-  }
-}
-
-
-
-
-
-/* ======================================================
-   Veloura Product Sticky + Quantity Final
-   عادي: الكمية عريضة مثل زر أضف للسلة
-   مصغر: كلمة الكمية يمين والأزرار يسار
-====================================================== */
-
-@media (max-width: 767px) {
-  html.veloura-product-sticky-active,
-  body.veloura-product-sticky-active {
-    padding-bottom: 178px !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed {
-    position: fixed !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    top: auto !important;
-
-    z-index: 2147483000 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-
-    margin: 0 !important;
-    padding: 14px 18px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
-
-    background: var(--veloura-product-card-bg, #f8fafc) !important;
-    border-radius: 24px 24px 0 0 !important;
-    box-shadow: 0 -10px 28px rgba(15, 23, 42, .14) !important;
-    overflow: hidden !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed .veloura-product-sticky-price-summary,
-  body > .veloura-product-sticky-bar.veloura-product-sticky-fixed .veloura-product-sticky-price-summary {
-    display: none !important;
-  }
-
-  /* =========================
-     الوضع العادي
-     الكمية عريضة مثل الأزرار
-  ========================= */
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-modern .sticky-product-bar__quantity {
-    width: 100% !important;
-    display: block !important;
-    margin: 0 0 12px !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-modern .sticky-product-bar__quantity .form-label {
-    display: none !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-modern salla-quantity-input,
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-modern .s-quantity-input-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    height: 52px !important;
-    min-height: 52px !important;
-    margin: 0 !important;
-    border-radius: 18px !important;
-    overflow: hidden !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-modern .s-quantity-input-input {
-    flex: 1 1 auto !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  /* =========================
-     الوضع المصغر
-     الكمية يمين والأزرار يسار
-  ========================= */
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-mini_left .sticky-product-bar__quantity {
-    width: 100% !important;
-    display: flex !important;
-    direction: rtl !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 12px !important;
-    margin: 0 0 12px !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-mini_left .sticky-product-bar__quantity .form-label {
-    order: 1 !important;
-    display: block !important;
-    margin: 0 !important;
-    text-align: right !important;
-    font-size: 14px !important;
-    font-weight: 900 !important;
-    color: #334155 !important;
-    white-space: nowrap !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-mini_left salla-quantity-input,
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-mini_left .s-quantity-input-container {
-    order: 2 !important;
-    width: 108px !important;
-    max-width: 108px !important;
-    min-width: 108px !important;
-    height: 42px !important;
-    min-height: 42px !important;
-    margin-inline-start: auto !important;
-    margin-inline-end: 0 !important;
-    border-radius: 14px !important;
-    overflow: hidden !important;
-  }
-
-  body > .sticky-product-bar.veloura-product-sticky-fixed.veloura-product-qty-mini_left .s-quantity-input-input {
-    width: 38px !important;
-    min-width: 38px !important;
-    text-align: center !important;
-  }
-
-  /* زر الإضافة والشراء */
-  body > .sticky-product-bar.veloura-product-sticky-fixed .sticky-product-bar__btn,
-  body > .sticky-product-bar.veloura-product-sticky-fixed salla-add-product-button,
-  body > .sticky-product-bar.veloura-product-sticky-fixed .s-button-element {
-    width: 100% !important;
-    margin: 0 !important;
-    min-height: 54px !important;
-    border-radius: var(--veloura-product-radius-final, 24px) !important;
-  }
-}
-
-/* عند إيقاف التثبيت يرجع طبيعي داخل الصفحة */
-@media (max-width: 767px) {
-  .veloura-product-page.veloura-product-mobile-sticky-disabled .sticky-product-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-disabled .veloura-product-sticky-bar {
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    margin-top: 16px !important;
-    transform: none !important;
-    box-shadow: none !important;
-  }
 }
