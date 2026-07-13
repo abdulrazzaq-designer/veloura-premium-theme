@@ -118,6 +118,23 @@ class Product extends BasePage {
 
 
 
+
+    ensureVelouraMobilePriceRow() {
+        const page = document.querySelector('.veloura-product-page');
+        const priceRow = page?.querySelector('.veloura-product-price-row');
+        const label = priceRow?.querySelector('.form-label b');
+
+        if (!priceRow) {
+            return;
+        }
+
+        priceRow.style.display = 'flex';
+
+        if (label && !label.textContent.trim()) {
+            label.textContent = 'السعر';
+        }
+    }
+
     initVelouraSliderFix() {
         const slider = document.querySelector('salla-slider.details-slider');
 
