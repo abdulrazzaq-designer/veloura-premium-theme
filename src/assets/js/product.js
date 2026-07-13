@@ -12,13 +12,13 @@ class Product extends BasePage {
             beforePrice: '.before-price',
             startingPriceTitle: '.starting-price-title',
             productSku: '.product-sku',
-            stickySummaryPrice: '.veloura-product-sticky-price-summary strong',
         });
 
         this.initVelouraProductPageState();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
         this.initVelouraSliderFix();
+        this.cleanupVelouraDuplicatePrices();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
         const velouraZoomAllowed =
@@ -113,6 +113,21 @@ class Product extends BasePage {
 
                 zoom(image.id, 2);
             }, 250);
+        });
+    }
+
+
+    cleanupVelouraDuplicatePrices() {
+        document.querySelectorAll(
+            '.veloura-product-page .sticky-product-bar .price-wrapper, ' +
+            '.veloura-product-page .veloura-product-sticky-bar .price-wrapper, ' +
+            '.veloura-product-page .sticky-product-bar__price, ' +
+            '.veloura-product-page .veloura-product-sticky-price-summary, ' +
+            '.veloura-product-page .veloura-product-price-row, ' +
+            '.veloura-product-page .veloura-product-price-card'
+        ).forEach((element) => {
+            element.hidden = true;
+            element.style.display = 'none';
         });
     }
 
@@ -238,9 +253,7 @@ class Product extends BasePage {
                 el.innerHTML = data.sku || '';
             });
 
-            app.stickySummaryPrice?.forEach((el) => {
-                el.innerHTML = salla.money(data.price);
-            });
+            this.cleanupVelouraDuplicatePrices();
 
             document.querySelectorAll('.total-price, .product-weight').forEach(el => {
                 el.classList.remove('scale-pulse');

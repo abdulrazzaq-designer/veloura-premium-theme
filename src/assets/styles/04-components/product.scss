@@ -1917,3 +1917,187 @@ html.veloura-dark .veloura-product-page {
     gap: 10px !important;
   }
 }
+
+
+/* ======================================================
+   14) V7 exact behavior — quantity modes, direct price, one-line SKU
+====================================================== */
+
+/* Canonical price: direct under the product name/subtitle, with no label/card. */
+.veloura-product-page .veloura-product-header-price {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  margin: 4px 0 14px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.veloura-product-page .veloura-product-header-price__label {
+  display: none !important;
+}
+
+.veloura-product-page .veloura-product-header-price .price-wrapper {
+  width: auto !important;
+  flex: 0 1 auto !important;
+  display: inline-flex !important;
+  align-items: baseline !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  direction: rtl !important;
+  white-space: nowrap !important;
+}
+
+.veloura-product-page .veloura-product-header-price .total-price {
+  font-size: 21px !important;
+  font-weight: 900 !important;
+}
+
+/* Hide every legacy/lower product price; only the header price remains. */
+.veloura-product-page .sticky-product-bar .price-wrapper,
+.veloura-product-page .veloura-product-sticky-bar .price-wrapper,
+.veloura-product-page .sticky-product-bar__price,
+.veloura-product-page .veloura-product-sticky-price-summary,
+.veloura-product-page .veloura-product-price-row,
+.veloura-product-page .veloura-product-price-card,
+.veloura-product-page .product-form > .price-wrapper,
+.veloura-product-page .product-form > section.veloura-product-price-card {
+  display: none !important;
+}
+
+/* SKU/model number must stay in one physical row on every screen. */
+.veloura-product-page .veloura-product-sku-card {
+  width: 100% !important;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  direction: rtl !important;
+  overflow: hidden !important;
+}
+
+.veloura-product-page .veloura-product-sku-card__label {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  white-space: nowrap !important;
+  direction: rtl !important;
+}
+
+.veloura-product-page .veloura-product-sku-card .product-sku {
+  flex: 1 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  direction: ltr !important;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+}
+
+/* WIDE mode works at every breakpoint: hide label, full-width quantity control. */
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity {
+  width: 100% !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity .form-label {
+  display: none !important;
+}
+
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity salla-quantity-input,
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity .s-quantity-input-container {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  height: 46px !important;
+  min-height: 46px !important;
+  margin: 0 !important;
+  direction: ltr !important;
+}
+
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity .s-quantity-input-input,
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity .s-quantity-input-button,
+.veloura-product-page.veloura-product-qty-modern .sticky-product-bar__quantity input {
+  height: 46px !important;
+  min-height: 46px !important;
+}
+
+/* MINI LEFT mode works at every breakpoint: input physically left, label physically right. */
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 118px minmax(0, 1fr) !important;
+  grid-template-areas: "input label" !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  direction: ltr !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity .form-label {
+  grid-area: label !important;
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  color: #334155 !important;
+  font-weight: 900 !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+  direction: rtl !important;
+}
+
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity salla-quantity-input,
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity .s-quantity-input-container {
+  grid-area: input !important;
+  width: 118px !important;
+  min-width: 118px !important;
+  max-width: 118px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  margin: 0 !important;
+  direction: ltr !important;
+}
+
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity .s-quantity-input-input,
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity .s-quantity-input-button,
+.veloura-product-page.veloura-product-qty-mini_left .sticky-product-bar__quantity input {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+/* Keep payment methods as the actual final product-details block. */
+.veloura-product-page .main-content {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.veloura-product-page .veloura-product-payment-methods--last {
+  order: 9999 !important;
+  margin-top: 18px !important;
+}
