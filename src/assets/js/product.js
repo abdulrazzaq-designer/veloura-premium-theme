@@ -19,7 +19,6 @@ class Product extends BasePage {
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
         this.initVelouraSliderFix();
-        this.syncVelouraPriceBlocks();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
         const velouraZoomAllowed =
@@ -118,28 +117,6 @@ class Product extends BasePage {
     }
 
 
-
-    syncVelouraPriceBlocks(data = null) {
-        const page = document.querySelector('.veloura-product-page');
-
-        if (!page) {
-            return;
-        }
-
-        const price = data?.price ?? null;
-        const regularPrice = data?.regular_price ?? null;
-        const hasSale = data
-            ? Boolean(data.has_sale_price && Number(regularPrice) > Number(price))
-            : page.querySelector('.price_is_on_sale .before-price');
-
-        page.querySelectorAll('.price_is_on_sale').forEach((el) => {
-            el.classList.toggle('hidden', !hasSale);
-        });
-
-        page.querySelectorAll('.starting-or-normal-price').forEach((el) => {
-            el.classList.toggle('hidden', !!hasSale);
-        });
-    }
 
     initVelouraSliderFix() {
         const slider = document.querySelector('salla-slider.details-slider');
@@ -240,7 +217,9 @@ class Product extends BasePage {
             app.element('.price-wrapper')?.classList.remove('hidden');
 
             const data = res.data;
-            const isOnSale = data.has_sale_price && data.regular_price > data.price;
+            const price = Number(data.price || 0);
+            const regularPrice = Number(data.regular_price || 0);
+            const isOnSale = Boolean(data.has_sale_price || regularPrice > price) && regularPrice > price;
 
             app.startingPriceTitle?.classList.add('hidden');
 
@@ -254,6 +233,7 @@ class Product extends BasePage {
 
             app.beforePrice.forEach((el) => {
                 el.innerHTML = salla.money(data.regular_price);
+                el.classList.toggle('hidden', !isOnSale);
             });
 
             app.productSku.forEach((el) => {
@@ -263,10 +243,6 @@ class Product extends BasePage {
             app.stickySummaryPrice?.forEach((el) => {
                 el.innerHTML = salla.money(data.price);
             });
-
-            app.toggleClassIf('.price_is_on_sale', 'showed', 'hidden', () => isOnSale);
-            app.toggleClassIf('.starting-or-normal-price', 'hidden', 'showed', () => isOnSale);
-            this.syncVelouraPriceBlocks(data);
 
             document.querySelectorAll('.total-price, .product-weight').forEach(el => {
                 el.classList.remove('scale-pulse');

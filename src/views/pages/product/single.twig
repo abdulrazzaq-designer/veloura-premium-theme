@@ -202,7 +202,7 @@
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-<div class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div data-veloura-product-build="v4" class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -506,22 +506,24 @@
                     <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md">
                         {# Canonical live price: one price only, inside the purchase card #}
                         <div class="veloura-product-price-row">
-                            <label class="form-label veloura-product-price-label">
-                                {{ trans('pages.products.price') }}
+                            <label class="form-label">
+                                <b>{{ trans('pages.products.price') }}</b>
                             </label>
 
-                            <div class="price-wrapper">
-                                <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale">
-                                    <h2 class="total-price">{{ product.sale_price|money }}</h2>
-                                    <span class="before-price">{{ product.regular_price|money }}</span>
-                                </div>
+                            <div class="price-wrapper" data-veloura-single-price>
+                                {% if product.starting_price and not product.is_on_sale %}
+                                    <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
+                                {% endif %}
 
-                                <div class="starting-or-normal-price {{ product.is_on_sale ? 'hidden' : '' }}">
-                                    {% if product.starting_price %}
-                                        <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                                    {% endif %}
-                                    <h2 class="total-price">{{ product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                                </div>
+                                <h2 class="total-price">
+                                    {{ product.is_on_sale
+                                        ? product.sale_price|money
+                                        : (product.starting_price ? product.starting_price|money : product.price|money) }}
+                                </h2>
+
+                                <span class="before-price {{ product.is_on_sale ? '' : 'hidden' }}">
+                                    {{ product.regular_price|money }}
+                                </span>
                             </div>
 
                             <div class="out-of-stock hidden">
@@ -555,6 +557,7 @@
                                 loader-position="end"
                                 type="submit"
                                 width="wide"
+                                size="small"
                                 {# Notify availability props#}
                                 {% if product.notify_availability %}
                                     {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}

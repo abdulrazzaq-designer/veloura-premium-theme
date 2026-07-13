@@ -1741,3 +1741,73 @@ html.veloura-dark .veloura-product-page {
 .veloura-product-page .veloura-product-price-row .price-wrapper {
   gap: 0 !important;
 }
+
+
+/* ======================================================
+   13) V4 definitive fix — single price + official Salla sizing
+====================================================== */
+
+/* This template now contains exactly one current-price node. */
+.veloura-product-page [data-veloura-single-price] {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  justify-content: flex-end !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+}
+
+.veloura-product-page [data-veloura-single-price] .total-price,
+.veloura-product-page [data-veloura-single-price] .before-price,
+.veloura-product-page [data-veloura-single-price] .starting-price-title {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+.veloura-product-page [data-veloura-single-price] .before-price.hidden {
+  display: none !important;
+}
+
+/* Internal Add-to-Cart button receives size="small" from Twig. */
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-add-product-button-main,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn salla-button,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-wrap,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-element {
+  width: 100% !important;
+}
+
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-element {
+  min-height: 44px !important;
+  height: 44px !important;
+  max-height: 44px !important;
+  padding-block: 0 !important;
+  border-radius: 9999px !important;
+}
+
+/* Salla only exposes these variables for the embedded fast-checkout button. */
+.veloura-product-page salla-mini-checkout-widget,
+.veloura-product-page .s-add-product-button-mini-checkout {
+  --salla-fast-checkout-button-height: 44px !important;
+  --salla-fast-checkout-button-width: 100% !important;
+  --salla-fast-checkout-button-border-radius: 9999px !important;
+  width: 100% !important;
+}
+
+.veloura-product-page .s-add-product-button-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+}
+
+.veloura-product-page .s-add-product-button-main > * {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-product-page .s-add-product-button-main {
+    gap: 10px !important;
+  }
+}
