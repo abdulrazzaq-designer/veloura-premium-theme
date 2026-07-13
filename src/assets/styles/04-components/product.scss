@@ -1664,3 +1664,80 @@ html.veloura-dark .veloura-product-page {
     min-width: 0 !important;
   }
 }
+
+
+/* ======================================================
+   12) Hotfix V3 - final size/price fixes
+====================================================== */
+
+/* Never show both sale and normal price blocks together */
+.veloura-product-page .price_is_on_sale.hidden,
+.veloura-product-page .starting-or-normal-price.hidden,
+.veloura-product-page .veloura-product-price-card,
+.veloura-product-page .veloura-product-head-price,
+.veloura-product-page .product-page-price,
+.veloura-product-page .product-price {
+  display: none !important;
+}
+
+/* Make the purchase component row consistent */
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn {
+  width: 100% !important;
+  display: block !important;
+}
+
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn > *,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn > div {
+  width: 100% !important;
+  align-items: stretch !important;
+}
+
+.veloura-product-page .sticky-product-bar__btn,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn,
+.veloura-product-page .sticky-product-bar__btn > *,
+.veloura-product-page .sticky-product-bar__btn > div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Same exact button height for add-to-cart and quick-buy */
+.veloura-product-page .sticky-product-bar__btn .s-button-element,
+.veloura-product-page .sticky-product-bar__btn .s-button-btn,
+.veloura-product-page .sticky-product-bar__btn button,
+.veloura-product-page .sticky-product-bar__btn a,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-element,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-btn,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn button,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn a {
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  line-height: 48px !important;
+  border-radius: 9999px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 768px) {
+  .veloura-product-page .sticky-product-bar__btn .s-button-element,
+  .veloura-product-page .sticky-product-bar__btn .s-button-btn,
+  .veloura-product-page .sticky-product-bar__btn button,
+  .veloura-product-page .sticky-product-bar__btn a,
+  .veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-element,
+  .veloura-product-page salla-add-product-button.sticky-product-bar__btn .s-button-btn,
+  .veloura-product-page salla-add-product-button.sticky-product-bar__btn button,
+  .veloura-product-page salla-add-product-button.sticky-product-bar__btn a {
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    line-height: 44px !important;
+  }
+}
+
+/* Price row compact spacing */
+.veloura-product-page .veloura-product-price-row {
+  gap: 10px !important;
+}
+
+.veloura-product-page .veloura-product-price-row .price-wrapper {
+  gap: 0 !important;
+}
