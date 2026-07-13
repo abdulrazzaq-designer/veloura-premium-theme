@@ -18,7 +18,7 @@ class Product extends BasePage {
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
         this.initVelouraSliderFix();
-        this.cleanupVelouraDuplicatePrices();
+        this.initVelouraPurchaseButtons();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
         const velouraZoomAllowed =
@@ -117,20 +117,6 @@ class Product extends BasePage {
     }
 
 
-    cleanupVelouraDuplicatePrices() {
-        document.querySelectorAll(
-            '.veloura-product-page .sticky-product-bar .price-wrapper, ' +
-            '.veloura-product-page .veloura-product-sticky-bar .price-wrapper, ' +
-            '.veloura-product-page .sticky-product-bar__price, ' +
-            '.veloura-product-page .veloura-product-sticky-price-summary, ' +
-            '.veloura-product-page .veloura-product-price-row, ' +
-            '.veloura-product-page .veloura-product-price-card'
-        ).forEach((element) => {
-            element.hidden = true;
-            element.style.display = 'none';
-        });
-    }
-
     initVelouraSliderFix() {
         const slider = document.querySelector('salla-slider.details-slider');
 
@@ -161,6 +147,50 @@ class Product extends BasePage {
         setTimeout(refreshSlides, 250);
         slider.addEventListener('slideChange', () => setTimeout(refreshSlides, 100));
         window.addEventListener('resize', () => setTimeout(refreshSlides, 100));
+    }
+
+    initVelouraPurchaseButtons() {
+        const component = document.querySelector(
+            '.veloura-product-page salla-add-product-button.sticky-product-bar__btn'
+        );
+
+        if (!component) {
+            return;
+        }
+
+        const normalize = () => {
+            const main = component.querySelector('.s-add-product-button-main');
+
+            if (!main) {
+                return;
+            }
+
+            main.style.setProperty('display', 'flex', 'important');
+            main.style.setProperty('width', '100%', 'important');
+            main.style.setProperty('gap', '12px', 'important');
+            main.style.setProperty('direction', 'rtl', 'important');
+
+            Array.from(main.children).forEach((child) => {
+                child.style.setProperty('flex', '1 1 0', 'important');
+                child.style.setProperty('width', '0', 'important');
+                child.style.setProperty('min-width', '0', 'important');
+                child.style.setProperty('max-width', 'none', 'important');
+            });
+
+            component.querySelectorAll('salla-mini-checkout-widget').forEach((widget) => {
+                widget.style.setProperty('--salla-fast-checkout-button-height', '46px');
+                widget.style.setProperty('--salla-fast-checkout-button-width', '100%');
+                widget.style.setProperty('--salla-fast-checkout-button-border-radius', '9999px');
+            });
+        };
+
+        normalize();
+
+        const observer = new MutationObserver(normalize);
+        observer.observe(component, { childList: true, subtree: true });
+
+        window.setTimeout(normalize, 250);
+        window.setTimeout(normalize, 800);
     }
 
     initVelouraCouponCopy() {
@@ -209,7 +239,7 @@ class Product extends BasePage {
 
     registerEvents() {
         salla.event.on('product::price.updated.failed', () => {
-            app.element('.price-wrapper')?.classList.add('hidden');
+            document.querySelectorAll('.price-wrapper').forEach((el) => el.classList.add('hidden'));
 
             const outOfStock = app.element('.out-of-stock');
 
@@ -226,8 +256,8 @@ class Product extends BasePage {
         });
 
         salla.product.event.onPriceUpdated((res) => {
-            app.element('.out-of-stock')?.classList.add('hidden');
-            app.element('.price-wrapper')?.classList.remove('hidden');
+            document.querySelectorAll('.out-of-stock').forEach((el) => el.classList.add('hidden'));
+            document.querySelectorAll('.price-wrapper').forEach((el) => el.classList.remove('hidden'));
 
             const data = res.data;
             const price = Number(data.price || 0);
@@ -253,8 +283,7 @@ class Product extends BasePage {
                 el.innerHTML = data.sku || '';
             });
 
-            this.cleanupVelouraDuplicatePrices();
-
+    
             document.querySelectorAll('.total-price, .product-weight').forEach(el => {
                 el.classList.remove('scale-pulse');
                 void el.offsetWidth;
@@ -266,6 +295,7 @@ class Product extends BasePage {
             app.all('#more-content', div => {
                 e.target.classList.add('is-expanded');
                 div.style = `max-height:${div.scrollHeight}px`;
+                window.setTimeout(() => e.target.remove(), 320);
             }) || e.target.remove()
         );
     }
