@@ -202,7 +202,7 @@
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-<div data-veloura-product-build="v5" class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div data-veloura-product-build="v6" class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -346,6 +346,34 @@
                     </h2>
                 {% endif %}
 
+
+                {# One canonical live price directly under the product title/subtitle #}
+                <div class="veloura-product-header-price">
+                    <span class="veloura-product-header-price__label">
+                        {{ trans('pages.products.price') }}
+                    </span>
+
+                    <div class="price-wrapper" data-veloura-single-price>
+                        {% if product.starting_price and not product.is_on_sale %}
+                            <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
+                        {% endif %}
+
+                        <h2 class="total-price">
+                            {{ product.is_on_sale
+                                ? product.sale_price|money
+                                : (product.starting_price ? product.starting_price|money : product.price|money) }}
+                        </h2>
+
+                        <span class="before-price {{ product.is_on_sale ? '' : 'hidden' }}">
+                            {{ product.regular_price|money }}
+                        </span>
+                    </div>
+
+                    <div class="out-of-stock hidden">
+                        {{ trans('pages.products.out_of_stock') }}
+                    </div>
+                </div>
+
                 {% if product.rating %}
                     <salla-rating-stars value="{{ product.rating.stars }}"
                                         reviews="{{ product.rating.count }}"></salla-rating-stars>
@@ -444,14 +472,6 @@
                 {% endif %}
                 {% hook 'product:single.description' %}
 
-                {# Payment / Installment Methods #}
-                {% if not vpp_enabled or vpp_show_payment_methods %}
-                    <div class="veloura-product-payment-methods">
-                        <salla-payments></salla-payments>
-                        <salla-installment price="{{ product.price }}"></salla-installment>
-                        {% hook 'product:single.payment_methods' %}
-                    </div>
-                {% endif %}
                 {% if product.has_metadata %}
                 <salla-metadata></salla-metadata>
                 {% endif %}
@@ -504,33 +524,6 @@
                     {% endif %}
 
                     <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md">
-                        {# Canonical live price: one price only, inside the purchase card #}
-                        <div class="veloura-product-price-row">
-                            <label class="form-label">
-                                <b>{{ trans('pages.products.price') }}</b>
-                            </label>
-
-                            <div class="price-wrapper" data-veloura-single-price>
-                                {% if product.starting_price and not product.is_on_sale %}
-                                    <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                                {% endif %}
-
-                                <h2 class="total-price">
-                                    {{ product.is_on_sale
-                                        ? product.sale_price|money
-                                        : (product.starting_price ? product.starting_price|money : product.price|money) }}
-                                </h2>
-
-                                <span class="before-price {{ product.is_on_sale ? '' : 'hidden' }}">
-                                    {{ product.regular_price|money }}
-                                </span>
-                            </div>
-
-                            <div class="out-of-stock hidden">
-                                {{ trans('pages.products.out_of_stock') }}
-                            </div>
-                        </div>
-
                         {# Quantity #}
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
@@ -576,6 +569,15 @@
 
                 {% hook 'product:single.description.end' %}
                 <salla-quick-order class="mt-5 md:-mb-2 block"></salla-quick-order>
+
+                {# Payment methods are intentionally the final product-details element #}
+                {% if not vpp_enabled or vpp_show_payment_methods %}
+                    <div class="veloura-product-payment-methods veloura-product-payment-methods--last">
+                        <salla-payments></salla-payments>
+                        <salla-installment price="{{ product.price }}"></salla-installment>
+                        {% hook 'product:single.payment_methods' %}
+                    </div>
+                {% endif %}
             </div>
         </div>
         <salla-offer></salla-offer>
