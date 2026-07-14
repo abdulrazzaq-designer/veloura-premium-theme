@@ -42,6 +42,9 @@
 {% set footer_title_color = theme.settings.get('veloura_footer_title_color_2026', '#0f172a') %}
 {% if footer_title_color.value is defined %}{% set footer_title_color = footer_title_color.value %}{% endif %}
 
+{% set footer_title_bg = theme.settings.get('veloura_footer_title_bg_color_2026', '#e2e8f0') %}
+{% if footer_title_bg.value is defined %}{% set footer_title_bg = footer_title_bg.value %}{% endif %}
+
 {% set footer_link_color = theme.settings.get('veloura_footer_link_color_2026', '#334155') %}
 {% if footer_link_color.value is defined %}{% set footer_link_color = footer_link_color.value %}{% endif %}
 
@@ -70,6 +73,8 @@
 {% set footer_title_size_key = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_title_size_2026', 'large'), 'large')|trim %}
 {% set footer_text_size_key = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_text_size_2026', 'medium'), 'medium')|trim %}
 {% set footer_logo_size_key = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_logo_size_2026', 'medium'), 'medium')|trim %}
+{% set footer_spacing = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_spacing_2026', 'compact'), 'compact')|trim %}
+{% if footer_spacing not in ['compact', 'normal'] %}{% set footer_spacing = 'compact' %}{% endif %}
 
 {% if footer_contact_display not in ['icons_only', 'icon_text'] %}
   {% set footer_contact_display = 'icon_text' %}
@@ -110,6 +115,12 @@
 {% set footer_hide_payments = theme.settings.get('veloura_footer_hide_payments_2026', false) %}
 {% if footer_hide_payments.value is defined %}{% set footer_hide_payments = footer_hide_payments.value %}{% endif %}
 
+{% set footer_featured_layout = theme.settings.get('veloura_footer_featured_layout_2026', true) %}
+{% if footer_featured_layout.value is defined %}{% set footer_featured_layout = footer_featured_layout.value %}{% endif %}
+
+{% set footer_title_badge = theme.settings.get('veloura_footer_title_badge_2026', false) %}
+{% if footer_title_badge.value is defined %}{% set footer_title_badge = footer_title_badge.value %}{% endif %}
+
 {# =========================
    Texts
 ========================= #}
@@ -124,9 +135,12 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-layout="desktop-v1"
+  data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
   class="store-footer
   veloura-footer-enabled
+  {{ footer_featured_layout ? 'veloura-footer-layout-featured' : 'veloura-footer-layout-normal' }}
+  {{ footer_title_badge ? 'veloura-footer-title-badge' : '' }}
+  veloura-footer-spacing-{{ footer_spacing }}
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
   {{ footer_contact_inline ? 'veloura-footer-contact-inline' : 'veloura-footer-contact-column' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
@@ -140,6 +154,7 @@
     --veloura-footer-bg: {{ footer_bg }};
     --veloura-footer-text: {{ footer_text }};
     --veloura-footer-title: {{ footer_title_color }};
+    --veloura-footer-title-bg: {{ footer_title_bg }};
     --veloura-footer-link: {{ footer_link_color }};
     --veloura-footer-icon-bg: {{ footer_icon_bg }};
     --veloura-footer-icon-color: {{ footer_icon_color }};
