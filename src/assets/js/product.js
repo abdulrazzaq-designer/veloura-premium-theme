@@ -125,62 +125,61 @@ class Product extends BasePage {
             return;
         }
 
-        const prepareImage = (img) => {
-            if (!img) {
-                return;
-            }
-
-            img.loading = 'eager';
-            img.style.opacity = '1';
-            img.style.visibility = 'visible';
-            img.style.display = 'block';
-            img.removeAttribute('hidden');
-
-            const dataSrc = img.getAttribute('data-src');
-            const dataSrcset = img.getAttribute('data-srcset');
-
-            if (!img.getAttribute('src') && dataSrc) {
-                img.setAttribute('src', dataSrc);
-            }
-
-            if (!img.getAttribute('srcset') && dataSrcset) {
-                img.setAttribute('srcset', dataSrcset);
-            }
-
-            if (typeof img.decode === 'function') {
-                img.decode().catch(() => {});
-            }
-        };
-
-        const refreshSlides = () => {
-            slider.querySelectorAll('[slot="items"] img, [slot="thumbs"] img').forEach(prepareImage);
-
-            const activeImage = slider.querySelector(
-                '.swiper-slide-active img, [slot="items"] .swiper-slide-active img'
+        const waitForImages = () => {
+            const images = Array.from(
+                slider.querySelectorAll('[slot="items"] img, .veloura-product-main-image')
             );
-            prepareImage(activeImage);
 
-            const swiper = slider.swiper || slider.slider || null;
+            images.forEach((img) => {
+                img.loading = 'eager';
+                img.removeAttribute('hidden');
+            });
 
-            swiper?.update?.();
-            swiper?.updateSlides?.();
-            swiper?.updateAutoHeight?.(0);
+            return Promise.allSettled(
+                images.map((img) => {
+                    if (img.complete && img.naturalWidth > 0) {
+                        return typeof img.decode === 'function'
+                            ? img.decode().catch(() => undefined)
+                            : Promise.resolve();
+                    }
+
+                    return new Promise((resolve) => {
+                        const done = () => resolve();
+                        img.addEventListener('load', done, { once: true });
+                        img.addEventListener('error', done, { once: true });
+                        window.setTimeout(done, 1500);
+                    });
+                })
+            );
         };
 
-        const refreshSoon = () => {
-            window.requestAnimationFrame(refreshSlides);
-            window.setTimeout(refreshSlides, 60);
-            window.setTimeout(refreshSlides, 180);
+        const updateGallery = async () => {
+            await waitForImages();
+
+            try {
+                await slider.update?.();
+                await slider.updateSlides?.();
+                await slider.updateSlidesClasses?.();
+
+                if (slider.hasAttribute('auto-height')) {
+                    await slider.updateAutoHeight?.(220);
+                }
+            } catch (error) {
+                console.warn('Veloura gallery update skipped:', error);
+            }
         };
 
-        refreshSoon();
-        slider.addEventListener('slideChange', refreshSoon);
-        slider.addEventListener('afterInit', refreshSoon);
-        slider.addEventListener('load', refreshSoon, true);
-        window.addEventListener('resize', refreshSoon);
+        const scheduleUpdate = () => {
+            window.requestAnimationFrame(() => updateGallery());
+        };
 
-        const observer = new MutationObserver(refreshSoon);
-        observer.observe(slider, { childList: true, subtree: true });
+        slider.addEventListener('afterInit', scheduleUpdate);
+        slider.addEventListener('slideChangeTransitionEnd', scheduleUpdate);
+        slider.addEventListener('touchSliderEnd', scheduleUpdate);
+        slider.addEventListener('load', scheduleUpdate, true);
+
+        window.setTimeout(scheduleUpdate, 120);
+        window.setTimeout(scheduleUpdate, 500);
     }
 
     initVelouraPurchaseButtons() {

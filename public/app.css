@@ -1537,6 +1537,9 @@ input:where([type='file']):focus{
 .overflow-hidden{
     overflow: hidden;
 }
+.overflow-visible{
+    overflow: visible;
+}
 .overflow-x-hidden{
     overflow-x: hidden;
 }
@@ -45766,11 +45769,119 @@ html.veloura-dark .veloura-product-page {
     z-index: 1 !important;
   }
 }
+/* ======================================================
+   19) V15 - clean Salla/Swiper product gallery
+   The viewport clips; the moving wrapper must NEVER clip.
+====================================================== */
+.veloura-product-page .sidebar,
+.veloura-product-page .veloura-product-gallery,
+.veloura-product-page salla-slider.veloura-product-gallery {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+
+/* Swiper viewport: this is the ONLY layer that clips slides. */
+.veloura-product-page .veloura-product-gallery .swiper {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  border-radius: 28px !important;
+  border-radius: var(--veloura-product-radius-final, 28px) !important;
+}
+
+/* Moving strip: it must remain open so the next/previous slides exist. */
+.veloura-product-page .veloura-product-gallery .swiper-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Exactly one complete product image per view. */
+.veloura-product-page .veloura-product-gallery .veloura-product-main-slide,
+.veloura-product-page .veloura-product-gallery [slot=items] > .veloura-product-main-slide {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  border-radius: 28px !important;
+  border-radius: var(--veloura-product-radius-final, 28px) !important;
+  background: transparent !important;
+}
+
+.veloura-product-page .veloura-product-gallery .veloura-product-main-image {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -o-object-position: center center !important;
+     object-position: center center !important;
+  border-radius: inherit !important;
+}
+
+/* Fixed-height setting remains available without affecting slide widths. */
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper,
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper-wrapper,
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-slide {
+  height: max(420px, min(52vw, 650px)) !important;
+}
+
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-image {
+  width: 100% !important;
+  height: 100% !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+}
+
+/* Auto-height setting follows the real ratio of the active image. */
+.veloura-product-page.veloura-product-images-auto_each .veloura-product-gallery .swiper,
+.veloura-product-page.veloura-product-images-auto_each .veloura-product-gallery .swiper-wrapper,
+.veloura-product-page.veloura-product-images-auto_each .veloura-product-gallery .veloura-product-main-slide {
+  height: auto !important;
+}
+
+/* Thumbnails may overlap below the main viewport; do not clip their container. */
+.veloura-product-page .veloura-product-gallery [slot=thumbs],
+.veloura-product-page .veloura-product-gallery .s-slider-thumbs,
+.veloura-product-page .veloura-product-gallery .s-slider-thumbs-wrapper {
+  z-index: 35 !important;
+}
+
+.veloura-product-page .veloura-product-gallery .veloura-product-thumb-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .brands-nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .brands-nav > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
     margin-right: calc(0.5rem * 0);
@@ -45787,6 +45898,7 @@ html.veloura-dark .veloura-product-page {
     margin-bottom: calc(0.5rem * 0);
     margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+
 .brands-nav:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 1;
 }
