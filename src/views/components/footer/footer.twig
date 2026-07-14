@@ -115,11 +115,15 @@
 {% set footer_hide_payments = theme.settings.get('veloura_footer_hide_payments_2026', false) %}
 {% if footer_hide_payments.value is defined %}{% set footer_hide_payments = footer_hide_payments.value %}{% endif %}
 
-{% set footer_featured_layout = theme.settings.get('veloura_footer_featured_layout_2026', true) %}
-{% if footer_featured_layout.value is defined %}{% set footer_featured_layout = footer_featured_layout.value %}{% endif %}
+{% set footer_featured_layout_raw = theme.settings.get('veloura_footer_featured_layout_2026', true) %}
+{% if footer_featured_layout_raw.value is defined %}{% set footer_featured_layout_raw = footer_featured_layout_raw.value %}{% endif %}
+{% if footer_featured_layout_raw.selected is defined %}{% set footer_featured_layout_raw = footer_featured_layout_raw.selected %}{% endif %}
+{% set footer_featured_layout = footer_featured_layout_raw == true or footer_featured_layout_raw == 'true' or footer_featured_layout_raw == 1 or footer_featured_layout_raw == '1' or footer_featured_layout_raw == 'on' %}
 
-{% set footer_title_badge = theme.settings.get('veloura_footer_title_badge_2026', false) %}
-{% if footer_title_badge.value is defined %}{% set footer_title_badge = footer_title_badge.value %}{% endif %}
+{% set footer_title_badge_raw = theme.settings.get('veloura_footer_title_badge_2026', false) %}
+{% if footer_title_badge_raw.value is defined %}{% set footer_title_badge_raw = footer_title_badge_raw.value %}{% endif %}
+{% if footer_title_badge_raw.selected is defined %}{% set footer_title_badge_raw = footer_title_badge_raw.selected %}{% endif %}
+{% set footer_title_badge = footer_title_badge_raw == true or footer_title_badge_raw == 'true' or footer_title_badge_raw == 1 or footer_title_badge_raw == '1' or footer_title_badge_raw == 'on' %}
 
 {# =========================
    Texts
