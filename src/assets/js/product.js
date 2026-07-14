@@ -19,6 +19,7 @@ class Product extends BasePage {
         this.initVelouraCouponCopy();
         this.initVelouraSliderFix();
         this.initVelouraPurchaseButtons();
+        this.initVelouraReadMore();
 
         const velouraProductPage = document.querySelector('.veloura-product-page');
         const velouraZoomAllowed =
@@ -226,6 +227,37 @@ class Product extends BasePage {
         window.setTimeout(normalize, 800);
     }
 
+    initVelouraReadMore() {
+        const button = document.querySelector('#btn-show-more');
+        const content = document.querySelector('#more-content');
+
+        if (!button || !content || button.dataset.velouraReadMoreReady === '1') {
+            return;
+        }
+
+        button.dataset.velouraReadMoreReady = '1';
+
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const textNode = button.querySelector('.veloura-product-read-more__text');
+            const moreText = button.dataset.moreText || 'عرض المزيد';
+            const lessText = button.dataset.lessText || 'عرض أقل';
+            const isExpanded = button.classList.toggle('is-expanded');
+
+            content.style.maxHeight = isExpanded ? 'none' : '8.5rem';
+            content.classList.toggle('is-expanded', isExpanded);
+
+            if (textNode) {
+                textNode.textContent = isExpanded ? lessText : moreText;
+            } else {
+                button.textContent = isExpanded ? lessText : moreText;
+            }
+
+            button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        });
+    }
+
     initVelouraCouponCopy() {
         document.querySelectorAll('.veloura-product-coupon__code').forEach(button => {
             if (button.dataset.velouraCouponReady === '1') {
@@ -324,31 +356,7 @@ class Product extends BasePage {
             });
         });
 
-        app.onClick('#btn-show-more', e => {
-            const button = e.currentTarget || e.target.closest('#btn-show-more');
-            const content = document.querySelector('#more-content');
 
-            if (!button || !content) {
-                return;
-            }
-
-            const textNode = button.querySelector('.veloura-product-read-more__text');
-            const moreText = button.dataset.moreText || 'عرض المزيد';
-            const lessText = button.dataset.lessText || 'عرض أقل';
-            const isExpanded = button.classList.toggle('is-expanded');
-
-            content.style.maxHeight = isExpanded
-                ? `${content.scrollHeight}px`
-                : '8.5rem';
-
-            if (textNode) {
-                textNode.textContent = isExpanded ? lessText : moreText;
-            } else {
-                button.textContent = isExpanded ? lessText : moreText;
-            }
-
-            button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-        });
     }
 }
 
