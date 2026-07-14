@@ -2561,7 +2561,87 @@
     }
   ]
 },
-
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_layout_options_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eff6ff;color:#1e3a8a;text-align:right;font-weight:800;border-right:4px solid #3b82f6;box-shadow:inset 0 0 0 1px rgba(59,130,246,.08)\">تخطيط الفوتر على اللابتوب</div>",
+  "variant": "h6"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "تفعيل الوضع المميز للفوتر",
+  "description": "عند التفعيل تظهر معلومات المتجر في صف علوي، ثم الروابط والتواصل والتطبيقات أسفلها. عند التعطيل تظهر جميع أقسام الفوتر جنبًا إلى جنب بالترتيب الطبيعي.",
+  "id": "veloura_footer_featured_layout_2026",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "id": "veloura_footer_spacing_2026",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "تباعد الفوتر على اللابتوب",
+  "icon": "sicon-list",
+  "source": "Manual",
+  "required": true,
+  "value": "compact",
+  "default": "compact",
+  "selected": [
+    {
+      "label": "مضغوط وأنيق",
+      "value": "compact",
+      "key": "veloura-footer-spacing-compact-2026"
+    }
+  ],
+  "options": [
+    {
+      "label": "مضغوط وأنيق",
+      "value": "compact",
+      "key": "veloura-footer-spacing-compact-2026"
+    },
+    {
+      "label": "مريح",
+      "value": "normal",
+      "key": "veloura-footer-spacing-normal-2026"
+    }
+  ]
+},
+{
+  "type": "static",
+  "format": "title",
+  "id": "veloura_footer_title_style_title_2026",
+  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">شكل عناوين الفوتر</div>",
+  "variant": "h6"
+},
+{
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "إظهار خلفية خلف عناوين الفوتر",
+  "description": "عند التفعيل تظهر عناوين أقسام الفوتر داخل شارة ناعمة بحجم النص.",
+  "id": "veloura_footer_title_badge_2026",
+  "format": "switch",
+  "required": false,
+  "value": false,
+  "selected": false
+},
+{
+  "id": "veloura_footer_title_bg_color_2026",
+  "type": "string",
+  "format": "color",
+  "label": "لون خلفية عناوين الفوتر",
+  "value": "#e2e8f0",
+  "required": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_title_badge_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
+},
 {
   "id": "veloura_footer_radius_2026",
   "type": "items",
