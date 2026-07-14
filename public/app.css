@@ -45876,6 +45876,167 @@ html.veloura-dark .veloura-product-page {
   visibility: visible !important;
 }
 
+/* ======================================================
+   20) V16 - final gallery layout reset
+   Fixes the mobile partial-slide and desktop 100%-wide gallery.
+====================================================== */
+/* The previous V15 rule made .sidebar 100% on desktop as well.
+   Restore the product two-column layout explicitly. */
+.veloura-product-page .sidebar,
+.veloura-product-page .main-content {
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-product-page .sidebar,
+  .veloura-product-page .main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 768px) {
+  .veloura-product-page .sidebar {
+    width: calc(50% - 16px) !important;
+    max-width: calc(50% - 16px) !important;
+    flex: 0 0 calc(50% - 16px) !important;
+    margin-right: 32px !important;
+    margin-left: 0 !important;
+  }
+  .veloura-product-page .main-content {
+    width: calc(50% - 16px) !important;
+    max-width: calc(50% - 16px) !important;
+    flex: 0 0 calc(50% - 16px) !important;
+  }
+}
+/* Slider host and viewport */
+.veloura-product-page .veloura-product-gallery,
+.veloura-product-page salla-slider.veloura-product-gallery {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+.veloura-product-page .veloura-product-gallery .swiper {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  border-radius: 28px !important;
+  border-radius: var(--veloura-product-radius-final, 28px) !important;
+}
+
+/* Use Swiper's normal geometry. The wrapper is 100% of the viewport,
+   while its children remain one full viewport each. */
+.veloura-product-page .veloura-product-gallery .swiper-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+  box-sizing: content-box !important;
+  border-radius: 0 !important;
+}
+
+.veloura-product-page .veloura-product-gallery .swiper-slide,
+.veloura-product-page .veloura-product-gallery .veloura-product-main-slide {
+  flex: 0 0 100% !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  position: relative !important;
+  border-radius: 28px !important;
+  border-radius: var(--veloura-product-radius-final, 28px) !important;
+}
+
+.veloura-product-page .veloura-product-gallery .veloura-product-main-image,
+.veloura-product-page .veloura-product-gallery .swiper-slide > img,
+.veloura-product-page .veloura-product-gallery .swiper-slide > picture > img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  -o-object-position: center center !important;
+     object-position: center center !important;
+  border-radius: inherit !important;
+}
+
+/* Fixed height remains an explicit optional mode. */
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper,
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper-wrapper,
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper-slide,
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-slide {
+  height: max(420px, min(52vw, 650px)) !important;
+}
+
+.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-image {
+  height: 100% !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+}
+
+/* Bottom thumbnails: full container width, centered, and never clipped sideways. */
+.veloura-product-page .veloura-product-gallery [slot=thumbs],
+.veloura-product-page .veloura-product-gallery .s-slider-thumbs,
+.veloura-product-page .veloura-product-gallery .s-slider-thumbs-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-product-page .veloura-product-gallery [slot=thumbs],
+  .veloura-product-page .veloura-product-gallery .s-slider-thumbs,
+  .veloura-product-page .veloura-product-gallery .s-slider-thumbs-wrapper {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: -44px auto 0 !important;
+    padding: 0 12px 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    scrollbar-width: none !important;
+  }
+}
+/* The original product row must never overflow the viewport. */
+.veloura-product-page [id^=product-] {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
 .brands-nav{
     display: flex;
     flex-wrap: wrap;

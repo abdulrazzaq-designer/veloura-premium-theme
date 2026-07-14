@@ -121,65 +121,37 @@ class Product extends BasePage {
     initVelouraSliderFix() {
         const slider = document.querySelector('salla-slider.details-slider');
 
-        if (!slider) {
+        if (!slider || slider.dataset.velouraGalleryReady === '1') {
             return;
         }
 
-        const waitForImages = () => {
-            const images = Array.from(
-                slider.querySelectorAll('[slot="items"] img, .veloura-product-main-image')
-            );
+        slider.dataset.velouraGalleryReady = '1';
 
-            images.forEach((img) => {
+        const updateGallery = () => {
+            slider.querySelectorAll('[slot="items"] img, .veloura-product-main-image').forEach((img) => {
                 img.loading = 'eager';
                 img.removeAttribute('hidden');
+                img.style.opacity = '1';
+                img.style.visibility = 'visible';
             });
 
-            return Promise.allSettled(
-                images.map((img) => {
-                    if (img.complete && img.naturalWidth > 0) {
-                        return typeof img.decode === 'function'
-                            ? img.decode().catch(() => undefined)
-                            : Promise.resolve();
-                    }
-
-                    return new Promise((resolve) => {
-                        const done = () => resolve();
-                        img.addEventListener('load', done, { once: true });
-                        img.addEventListener('error', done, { once: true });
-                        window.setTimeout(done, 1500);
-                    });
-                })
-            );
-        };
-
-        const updateGallery = async () => {
-            await waitForImages();
-
-            try {
-                await slider.update?.();
-                await slider.updateSlides?.();
-                await slider.updateSlidesClasses?.();
-
-                if (slider.hasAttribute('auto-height')) {
-                    await slider.updateAutoHeight?.(220);
+            window.requestAnimationFrame(() => {
+                try {
+                    slider.update?.();
+                    slider.updateAutoHeight?.(220);
+                } catch (error) {
+                    console.warn('Veloura gallery update skipped:', error);
                 }
-            } catch (error) {
-                console.warn('Veloura gallery update skipped:', error);
-            }
+            });
         };
 
-        const scheduleUpdate = () => {
-            window.requestAnimationFrame(() => updateGallery());
-        };
+        slider.addEventListener('afterInit', updateGallery);
+        slider.addEventListener('slideChangeTransitionEnd', updateGallery);
+        slider.addEventListener('load', updateGallery, true);
+        window.addEventListener('resize', updateGallery);
 
-        slider.addEventListener('afterInit', scheduleUpdate);
-        slider.addEventListener('slideChangeTransitionEnd', scheduleUpdate);
-        slider.addEventListener('touchSliderEnd', scheduleUpdate);
-        slider.addEventListener('load', scheduleUpdate, true);
-
-        window.setTimeout(scheduleUpdate, 120);
-        window.setTimeout(scheduleUpdate, 500);
+        window.setTimeout(updateGallery, 120);
+        window.setTimeout(updateGallery, 500);
     }
 
     initVelouraPurchaseButtons() {
