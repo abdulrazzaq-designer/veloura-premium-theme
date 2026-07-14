@@ -2289,3 +2289,71 @@ html.veloura-dark .veloura-product-page {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+
+/* ======================================================
+   17) Hotfix V13 - truly sharp mobile sticky bottom edge
+   + smooth read-more / read-less animation
+====================================================== */
+
+/* The actual fixed purchase bar, regardless of which sticky class Salla adds. */
+@media (max-width: 767px) {
+  body.veloura-product-sticky-active .veloura-product-page .sticky-product-bar,
+  body.veloura-product-sticky-active .veloura-product-page .veloura-product-sticky-bar,
+  .is-sticky-product-bar .veloura-product-page .sticky-product-bar,
+  .is-sticky-product-bar .veloura-product-page .veloura-product-sticky-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+    position: fixed !important;
+    top: auto !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    inset-inline: 0 !important;
+
+    width: 100% !important;
+    width: 100dvw !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+
+    margin: 0 !important;
+    transform: none !important;
+    translate: none !important;
+
+    border-radius: 22px 22px 0 0 !important;
+    border-start-start-radius: 22px !important;
+    border-start-end-radius: 22px !important;
+    border-end-start-radius: 0 !important;
+    border-end-end-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    clip-path: none !important;
+    overflow: hidden !important;
+    background-clip: padding-box !important;
+
+    padding-inline-start: max(14px, env(safe-area-inset-left)) !important;
+    padding-inline-end: max(14px, env(safe-area-inset-right)) !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* Smooth description opening/closing instead of a single-frame jump. */
+.veloura-product-page #more-content {
+  overflow: hidden !important;
+  transition: max-height 440ms cubic-bezier(.22, .61, .36, 1) !important;
+  will-change: max-height !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more:active {
+  transform: scale(.98) !important;
+}

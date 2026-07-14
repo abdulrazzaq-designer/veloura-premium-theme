@@ -237,24 +237,64 @@ class Product extends BasePage {
 
         button.dataset.velouraReadMoreReady = '1';
 
+        const textNode = button.querySelector('.veloura-product-read-more__text');
+        const moreText = button.dataset.moreText || 'عرض المزيد';
+        const lessText = button.dataset.lessText || 'عرض أقل';
+        const rootFontSize = parseFloat(
+            window.getComputedStyle(document.documentElement).fontSize
+        ) || 16;
+        const collapsedHeight = 8.5 * rootFontSize;
+
+        content.style.overflow = 'hidden';
+        content.style.transition = 'max-height 440ms cubic-bezier(.22, .61, .36, 1)';
+        content.style.maxHeight = `${collapsedHeight}px`;
+
+        const setButtonText = (expanded) => {
+            if (textNode) {
+                textNode.textContent = expanded ? lessText : moreText;
+            } else {
+                button.textContent = expanded ? lessText : moreText;
+            }
+
+            button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        };
+
         button.addEventListener('click', (event) => {
             event.preventDefault();
 
-            const textNode = button.querySelector('.veloura-product-read-more__text');
-            const moreText = button.dataset.moreText || 'عرض المزيد';
-            const lessText = button.dataset.lessText || 'عرض أقل';
-            const isExpanded = button.classList.toggle('is-expanded');
+            const willExpand = !button.classList.contains('is-expanded');
+            const currentHeight = content.getBoundingClientRect().height;
 
-            content.style.maxHeight = isExpanded ? 'none' : '8.5rem';
-            content.classList.toggle('is-expanded', isExpanded);
+            content.style.maxHeight = `${currentHeight}px`;
+            void content.offsetHeight;
 
-            if (textNode) {
-                textNode.textContent = isExpanded ? lessText : moreText;
-            } else {
-                button.textContent = isExpanded ? lessText : moreText;
+            button.classList.toggle('is-expanded', willExpand);
+            content.classList.toggle('is-expanded', willExpand);
+            setButtonText(willExpand);
+
+            window.requestAnimationFrame(() => {
+                const targetHeight = willExpand
+                    ? content.scrollHeight
+                    : collapsedHeight;
+
+                content.style.maxHeight = `${targetHeight}px`;
+            });
+        });
+
+        content.addEventListener('transitionend', (event) => {
+            if (event.propertyName !== 'max-height') {
+                return;
             }
 
-            button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            if (button.classList.contains('is-expanded')) {
+                content.style.maxHeight = `${content.scrollHeight}px`;
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            content.style.maxHeight = button.classList.contains('is-expanded')
+                ? `${content.scrollHeight}px`
+                : `${collapsedHeight}px`;
         });
     }
 
