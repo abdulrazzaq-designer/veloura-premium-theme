@@ -1111,207 +1111,131 @@
 
 
 /* ======================================================
-   Veloura Footer Professional Desktop Layout V1
-   - compact: store | links | contact | apps side-by-side
-   - featured: store identity above, three sections below
-   - 20px maximum visual gap between columns
+   Veloura Footer Safe Layout Final
+   - Built on the last stable footer files
+   - No runtime app detection and no early hiding of images
 ====================================================== */
 
-.store-footer.veloura-footer-enabled .veloura-footer-apps[hidden] {
-  display: none !important;
+.store-footer.veloura-footer-enabled .veloura-footer-grid {
+  gap: 20px !important;
+  padding-block: 32px !important;
+  align-items: start !important;
 }
 
-/* Professional full-width heading background */
-.store-footer.veloura-footer-enabled.veloura-footer-title-background .veloura-footer-title {
+.store-footer.veloura-footer-enabled .veloura-footer-block {
+  min-width: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-logo {
+  margin-bottom: 10px !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-description {
+  margin: 0 0 10px !important;
+  max-width: none !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-store-title {
+  margin-top: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-contact-wrap {
+  gap: 12px !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-social-contact,
+.store-footer.veloura-footer-enabled .veloura-footer-social-contact salla-social,
+.store-footer.veloura-footer-enabled .veloura-footer-social-contact salla-social > div,
+.store-footer.veloura-footer-enabled .veloura-footer-social-contact salla-social ul {
   display: flex !important;
+  flex-wrap: wrap !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  width: 100% !important;
-  min-height: 42px !important;
-  margin: 0 0 14px !important;
-  padding: 9px 14px !important;
-  border: 1px solid rgba(15, 23, 42, .08) !important;
-  border-inline-start: 4px solid var(--veloura-footer-title, #0f172a) !important;
-  border-radius: 12px !important;
-  background: var(--veloura-footer-title-bg, #eef2f7) !important;
-  color: var(--veloura-footer-title, #0f172a) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.42) !important;
-  text-align: right !important;
-  box-sizing: border-box !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-title-background.veloura-footer-center-all .veloura-footer-title {
-  justify-content: flex-start !important;
-  text-align: right !important;
+/* Full-width professional footer titles */
+.store-footer.veloura-footer-enabled.veloura-footer-title-bg .veloura-footer-title:not(.veloura-footer-store-title) {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 0 14px !important;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  border-inline-start: 4px solid var(--veloura-footer-title) !important;
+  background: var(--veloura-footer-title-bg) !important;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .08) !important;
 }
 
 @media (min-width: 1024px) {
-  .store-footer.veloura-footer-enabled .veloura-footer-grid {
-    display: grid !important;
-    align-items: start !important;
-    padding-block: 30px !important;
-    row-gap: 20px !important;
+  /* Compact: store | links | contact | apps */
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-compact .veloura-footer-grid {
+    grid-template-columns: minmax(220px, 1.35fr) minmax(170px, .9fr) minmax(240px, 1.15fr) minmax(190px, 1fr) !important;
     column-gap: 20px !important;
+    row-gap: 20px !important;
   }
 
-  .store-footer.veloura-footer-enabled .veloura-footer-block,
-  .store-footer.veloura-footer-enabled .veloura-footer-title {
-    min-width: 0 !important;
-    text-align: right !important;
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-compact.veloura-footer-no-apps .veloura-footer-grid {
+    grid-template-columns: minmax(240px, 1.35fr) minmax(190px, .9fr) minmax(260px, 1.15fr) !important;
   }
 
-  .store-footer.veloura-footer-enabled .veloura-footer-block {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-logo {
-    margin-bottom: 10px !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-description {
-    max-width: none !important;
-    line-height: 1.7 !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-trust {
-    margin-top: 14px !important;
-  }
-
-  /* Compact mode: right-to-left = store, links, contact, apps */
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact .veloura-footer-grid {
-    grid-template-columns: minmax(170px, .85fr) minmax(210px, 1fr) minmax(160px, .78fr) minmax(230px, 1.25fr) !important;
-    grid-template-areas: "apps contact links store" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact.veloura-footer-no-apps .veloura-footer-grid {
-    grid-template-columns: minmax(210px, 1fr) minmax(170px, .8fr) minmax(250px, 1.25fr) !important;
-    grid-template-areas: "contact links store" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact.veloura-footer-no-links:not(.veloura-footer-no-apps) .veloura-footer-grid {
-    grid-template-columns: minmax(180px, .85fr) minmax(220px, 1fr) minmax(260px, 1.2fr) !important;
-    grid-template-areas: "apps contact store" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact.veloura-footer-no-links.veloura-footer-no-apps .veloura-footer-grid {
-    grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.25fr) !important;
-    grid-template-areas: "contact store" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact .veloura-footer-store {
-    grid-area: store !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-
-  /* Latest requested order inside compact identity: logo, description, store name */
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact .veloura-footer-store .veloura-footer-logo {
-    order: 1 !important;
-    align-self: flex-start !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact .veloura-footer-store .veloura-footer-description {
-    order: 2 !important;
-    margin-bottom: 10px !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact .veloura-footer-store > .veloura-footer-title {
-    order: 3 !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-compact .veloura-footer-store .veloura-footer-trust {
-    order: 4 !important;
-  }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-links { grid-area: links !important; }
-  .store-footer.veloura-footer-enabled .veloura-footer-contact { grid-area: contact !important; }
-  .store-footer.veloura-footer-enabled .veloura-footer-apps { grid-area: apps !important; }
-
-  /* Featured comfortable mode */
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured .veloura-footer-grid {
+  /* Featured: store across top, three sections below */
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-areas:
-      "store store store"
-      "apps contact links" !important;
-    padding-block: 34px !important;
+    column-gap: 20px !important;
+    row-gap: 20px !important;
   }
 
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-no-apps .veloura-footer-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-areas: "contact store links" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-no-links:not(.veloura-footer-no-apps) .veloura-footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-template-areas:
-      "store store"
-      "apps contact" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-no-links.veloura-footer-no-apps .veloura-footer-grid {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr) !important;
-    grid-template-areas: "contact store" !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured .veloura-footer-store {
-    grid-area: store !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured:not(.veloura-footer-no-apps) .veloura-footer-store,
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-apps-detecting .veloura-footer-store {
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store {
+    grid-column: 1 / -1 !important;
     display: grid !important;
     grid-template-columns: auto minmax(0, 1fr) !important;
     grid-template-areas:
-      "logo title"
       "logo description"
+      "logo title"
       "trust trust" !important;
-    align-items: start !important;
-    column-gap: 18px !important;
-    row-gap: 4px !important;
-    padding-bottom: 18px !important;
-    border-bottom: 1px solid rgba(15, 23, 42, .09) !important;
+    align-items: center !important;
+    column-gap: 20px !important;
+    row-gap: 6px !important;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid rgba(15, 23, 42, .10) !important;
   }
 
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured:not(.veloura-footer-no-apps) .veloura-footer-logo,
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-apps-detecting .veloura-footer-logo {
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-logo {
     grid-area: logo !important;
     margin: 0 !important;
   }
 
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured:not(.veloura-footer-no-apps) .veloura-footer-store > .veloura-footer-title,
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-apps-detecting .veloura-footer-store > .veloura-footer-title {
-    grid-area: title !important;
-    margin-bottom: 4px !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured:not(.veloura-footer-no-apps) .veloura-footer-description,
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-apps-detecting .veloura-footer-description {
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-description {
     grid-area: description !important;
-    max-width: 760px !important;
+    margin: 0 !important;
   }
 
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured:not(.veloura-footer-no-apps) .veloura-footer-trust,
-  .store-footer.veloura-footer-enabled.veloura-footer-mode-featured.veloura-footer-apps-detecting .veloura-footer-trust {
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store-title {
+    grid-area: title !important;
+    margin: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-trust {
     grid-area: trust !important;
+    margin-top: 10px !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps .veloura-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(div, ul) {
     gap: 10px !important;
   }
-
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
-    height: 40px !important;
-    width: auto !important;
-    max-width: 170px !important;
-    object-fit: contain !important;
-  }
 }
 
 @media (max-width: 1023px) {
   .store-footer.veloura-footer-enabled .veloura-footer-grid {
+    grid-template-columns: 1fr !important;
     gap: 20px !important;
     padding-block: 28px !important;
   }
 }
+

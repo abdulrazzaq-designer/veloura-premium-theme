@@ -2631,7 +2631,7 @@
   "id": "veloura_footer_title_bg_color_2026",
   "type": "string",
   "format": "color",
-  "label": "لون خلفية عناوين الفوتر",
+  "label": "لون خلفية عناوين الفوتر1111",
   "value": "#e2e8f0",
   "required": false,
   "conditions": [
