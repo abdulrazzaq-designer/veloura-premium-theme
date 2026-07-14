@@ -2186,7 +2186,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "تفعيل إعدادات القسم السفلي المتقدمة222",
+  "label": "تفعيل إعدادات القسم السفلي المتقدمة",
   "id": "veloura_footer_enabled_2026",
   "format": "switch",
   "required": false,

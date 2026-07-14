@@ -2126,3 +2126,122 @@ html.veloura-dark .veloura-product-page {
     z-index: 1 !important;
   }
 }
+
+
+/* ======================================================
+   18) V18 — centered overlapping thumbnails
+   The thumbnail center sits exactly on the lower edge of the main image.
+====================================================== */
+
+.veloura-product-page .details-slider.image-slider,
+.veloura-product-page salla-slider.details-slider.image-slider {
+  position: relative !important;
+  overflow: visible !important;
+  margin-bottom: 68px !important;
+}
+
+/* The large image stays clipped only inside its own viewport. */
+.veloura-product-page .details-slider.image-slider .swiper {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: var(--veloura-product-radius-final) !important;
+}
+
+/* Native Salla thumbnail slot: centered and half-overlapping the image edge. */
+.veloura-product-page .details-slider.image-slider > [slot="thumbs"],
+.veloura-product-page salla-slider.details-slider.image-slider > [slot="thumbs"] {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 0 !important;
+  z-index: 35 !important;
+
+  width: calc(100% - 24px) !important;
+  max-width: calc(100% - 24px) !important;
+  height: auto !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+
+  margin: 0 !important;
+  padding: 0 4px !important;
+  transform: translate(-50%, 50%) !important;
+
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  pointer-events: auto !important;
+}
+
+.veloura-product-page .details-slider.image-slider > [slot="thumbs"]::-webkit-scrollbar,
+.veloura-product-page salla-slider.details-slider.image-slider > [slot="thumbs"]::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Full-height portrait thumbnails without cropping. */
+.veloura-product-page .veloura-product-thumb-item,
+.veloura-product-page .details-slider.image-slider > [slot="thumbs"] .slide--one-fourth {
+  flex: 0 0 76px !important;
+  width: 76px !important;
+  min-width: 76px !important;
+  max-width: 76px !important;
+  height: 112px !important;
+  min-height: 112px !important;
+  max-height: 112px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  background: var(--veloura-product-inner-bg, #fff) !important;
+  box-shadow: none !important;
+}
+
+.veloura-product-page .veloura-product-thumb-item img,
+.veloura-product-page .details-slider.image-slider > [slot="thumbs"] .slide--one-fourth img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  border-radius: inherit !important;
+  background: transparent !important;
+}
+
+@media (max-width: 767px) {
+  .veloura-product-page .details-slider.image-slider,
+  .veloura-product-page salla-slider.details-slider.image-slider {
+    margin-bottom: 62px !important;
+  }
+
+  .veloura-product-page .details-slider.image-slider > [slot="thumbs"],
+  .veloura-product-page salla-slider.details-slider.image-slider > [slot="thumbs"] {
+    width: calc(100% - 16px) !important;
+    max-width: calc(100% - 16px) !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding-inline: 8px !important;
+  }
+
+  .veloura-product-page .veloura-product-thumb-item,
+  .veloura-product-page .details-slider.image-slider > [slot="thumbs"] .slide--one-fourth {
+    flex-basis: 68px !important;
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    height: 102px !important;
+    min-height: 102px !important;
+    max-height: 102px !important;
+    border-radius: 22px !important;
+  }
+}
