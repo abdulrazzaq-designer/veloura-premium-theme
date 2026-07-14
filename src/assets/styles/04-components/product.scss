@@ -2220,22 +2220,6 @@ html.veloura-dark .veloura-product-page {
   .veloura-product-page .veloura-product-coupon {
     border-radius: var(--veloura-product-radius-final, 28px) !important;
   }
-
-  /* Only the fixed lower purchase menu has sharp lower corners. */
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
-    right: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin: 0 !important;
-    border-radius: 22px 22px 0 0 !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    overflow: hidden !important;
-    clip-path: inset(0 round 22px 22px 0 0) !important;
-  }
 }
 
 /* Read more stays in normal flow, so "عرض أقل" cannot move outside the card. */
@@ -2296,49 +2280,6 @@ html.veloura-dark .veloura-product-page {
    + smooth read-more / read-less animation
 ====================================================== */
 
-/* The actual fixed purchase bar, regardless of which sticky class Salla adds. */
-@media (max-width: 767px) {
-  body.veloura-product-sticky-active .veloura-product-page .sticky-product-bar,
-  body.veloura-product-sticky-active .veloura-product-page .veloura-product-sticky-bar,
-  .is-sticky-product-bar .veloura-product-page .sticky-product-bar,
-  .is-sticky-product-bar .veloura-product-page .veloura-product-sticky-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
-    position: fixed !important;
-    top: auto !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    inset-inline: 0 !important;
-
-    width: 100% !important;
-    width: 100dvw !important;
-    min-width: 100% !important;
-    max-width: none !important;
-    box-sizing: border-box !important;
-
-    margin: 0 !important;
-    transform: none !important;
-    translate: none !important;
-
-    border-radius: 22px 22px 0 0 !important;
-    border-start-start-radius: 22px !important;
-    border-start-end-radius: 22px !important;
-    border-end-start-radius: 0 !important;
-    border-end-end-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-
-    clip-path: none !important;
-    overflow: hidden !important;
-    background-clip: padding-box !important;
-
-    padding-inline-start: max(14px, env(safe-area-inset-left)) !important;
-    padding-inline-end: max(14px, env(safe-area-inset-right)) !important;
-    padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
-  }
-}
-
 /* Smooth description opening/closing instead of a single-frame jump. */
 .veloura-product-page #more-content {
   overflow: hidden !important;
@@ -2359,41 +2300,73 @@ html.veloura-dark .veloura-product-page {
 }
 
 
-/* =========================================
-   Final mobile sticky cart edge fix
-========================================= */
+/* ======================================================
+   18) Hotfix V14 - remove 100vw/100dvw overflow completely
+   and force a visually square bottom edge
+====================================================== */
 @media (max-width: 767px) {
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+  html body.veloura-product-sticky-active .veloura-product-page .sticky-product-bar.veloura-product-sticky-bar,
+  html body.veloura-product-sticky-active .veloura-product-page section.sticky-product-bar,
+  html .is-sticky-product-bar .veloura-product-page .sticky-product-bar.veloura-product-sticky-bar,
+  html .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar.veloura-product-sticky-bar {
     position: fixed !important;
-    left: 0 !important;
+    top: auto !important;
     right: 0 !important;
     bottom: 0 !important;
+    left: 0 !important;
+    inset: auto 0 0 0 !important;
+    inset-inline: 0 !important;
+
     width: auto !important;
-    max-width: none !important;
     min-width: 0 !important;
+    max-width: none !important;
     margin: 0 !important;
     transform: none !important;
-    inset-inline: 0 !important;
+    translate: none !important;
+    box-sizing: border-box !important;
 
     border-top-left-radius: 22px !important;
     border-top-right-radius: 22px !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
+    border-start-start-radius: 22px !important;
+    border-start-end-radius: 22px !important;
+    border-end-start-radius: 0 !important;
+    border-end-end-radius: 0 !important;
 
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-    padding-bottom: max(14px, env(safe-area-inset-bottom)) !important;
-    z-index: 999 !important;
-  }
-
-  /* مهم: أي قاعدة قديمة تسبب بروز من اليسار */
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
-  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
     clip-path: none !important;
+    overflow: visible !important;
+    background: var(--veloura-product-card-bg, #f8fafc) !important;
+    background-clip: border-box !important;
+
+    padding-left: max(14px, env(safe-area-inset-left)) !important;
+    padding-right: max(14px, env(safe-area-inset-right)) !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
   }
 
-  body.veloura-product-sticky-active {
-    padding-bottom: 230px !important;
+  /* Covers any old rounded lower pixels left by another radius rule. */
+  html body.veloura-product-sticky-active .veloura-product-page .sticky-product-bar.veloura-product-sticky-bar::after,
+  html body.veloura-product-sticky-active .veloura-product-page section.sticky-product-bar::after,
+  html .is-sticky-product-bar .veloura-product-page .sticky-product-bar.veloura-product-sticky-bar::after,
+  html .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar.veloura-product-sticky-bar::after {
+    content: "" !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -2px !important;
+    height: 24px !important;
+    display: block !important;
+    pointer-events: none !important;
+    border-radius: 0 !important;
+    background: var(--veloura-product-card-bg, #f8fafc) !important;
+  }
+
+  html body.veloura-product-sticky-active .veloura-product-page .sticky-product-bar.veloura-product-sticky-bar > *,
+  html body.veloura-product-sticky-active .veloura-product-page section.sticky-product-bar > *,
+  html .is-sticky-product-bar .veloura-product-page .sticky-product-bar.veloura-product-sticky-bar > *,
+  html .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar.veloura-product-sticky-bar > * {
+    position: relative !important;
+    z-index: 1 !important;
   }
 }
