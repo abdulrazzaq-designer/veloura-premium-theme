@@ -164,7 +164,7 @@
               {% if footer_logo_is_video %}
                 <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
               {% else %}
-                <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="lazy" alt="{{ store.name }}">
+                <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
               {% endif %}
             </a>
           {% endif %}
@@ -370,36 +370,104 @@
         });
       }
 
-      function updateDesktopLayout(footer) {
+      function restoreFooterImages(root) {
+        if (!root) return;
+
+        root.querySelectorAll('img').forEach(function (img) {
+          const dataSrc = img.getAttribute('data-src');
+          const dataSrcset = img.getAttribute('data-srcset');
+
+          if ((!img.getAttribute('src') || img.getAttribute('src') === '') && dataSrc) {
+            img.setAttribute('src', dataSrc);
+          }
+
+          if ((!img.getAttribute('srcset') || img.getAttribute('srcset') === '') && dataSrcset) {
+            img.setAttribute('srcset', dataSrcset);
+          }
+
+          img.hidden = false;
+          img.style.removeProperty('display');
+          img.style.removeProperty('visibility');
+          img.style.removeProperty('opacity');
+        });
+      }
+
+      function resolveAppsLayout(footer, forceFinal) {
         if (!footer) return;
 
         const appsBlock = footer.querySelector('[data-veloura-footer-apps]');
-        const hasApps = !!(
-          appsBlock &&
-          appsBlock.querySelector('a[href], .veloura-footer-app-button, img[src]')
+
+        if (!appsBlock) {
+          footer.classList.remove('veloura-footer-has-apps', 'veloura-footer-layout-detecting');
+          footer.classList.add('veloura-footer-no-apps');
+          return;
+        }
+
+        const component = appsBlock.querySelector('salla-apps-icons');
+        restoreFooterImages(appsBlock);
+
+        const hasApps = !!appsBlock.querySelector(
+          'a[href], .veloura-footer-app-button, img[src]:not([src=""]), img[data-src]'
         );
+
+        const componentReady = !component ||
+          component.classList.contains('hydrated') ||
+          component.hasAttribute('hydrated');
+
+        /* Never hide the Salla component before it hydrates, otherwise its images may never load. */
+        if (!hasApps && !componentReady && !forceFinal) {
+          appsBlock.hidden = false;
+          appsBlock.setAttribute('aria-hidden', 'false');
+          footer.classList.remove('veloura-footer-has-apps', 'veloura-footer-no-apps');
+          footer.classList.add('veloura-footer-layout-detecting');
+          return;
+        }
 
         footer.classList.toggle('veloura-footer-has-apps', hasApps);
         footer.classList.toggle('veloura-footer-no-apps', !hasApps);
         footer.classList.remove('veloura-footer-layout-detecting');
 
-        if (appsBlock) {
-          appsBlock.hidden = !hasApps;
-          appsBlock.setAttribute('aria-hidden', hasApps ? 'false' : 'true');
+        appsBlock.hidden = !hasApps;
+        appsBlock.setAttribute('aria-hidden', hasApps ? 'false' : 'true');
+      }
 
-          if (!appsBlock.dataset.velouraLayoutObserver) {
-            appsBlock.dataset.velouraLayoutObserver = '1';
-            const observer = new MutationObserver(function () {
-              updateDesktopLayout(footer);
-            });
-            observer.observe(appsBlock, { childList: true, subtree: true, attributes: true });
-          }
+      function watchAppsLayout(footer) {
+        const appsBlock = footer.querySelector('[data-veloura-footer-apps]');
+        if (!appsBlock || appsBlock.dataset.velouraLayoutObserver === '1') return;
+
+        appsBlock.dataset.velouraLayoutObserver = '1';
+
+        const observer = new MutationObserver(function () {
+          restoreFooterImages(appsBlock);
+          resolveAppsLayout(footer, false);
+        });
+
+        /* childList only: observing attributes caused a loop when hidden/aria-hidden changed. */
+        observer.observe(appsBlock, { childList: true, subtree: true });
+
+        const component = appsBlock.querySelector('salla-apps-icons');
+        if (component && typeof component.componentOnReady === 'function') {
+          component.componentOnReady().then(function () {
+            restoreFooterImages(appsBlock);
+            resolveAppsLayout(footer, true);
+          });
+        } else if (window.customElements && customElements.whenDefined) {
+          customElements.whenDefined('salla-apps-icons').then(function () {
+            window.setTimeout(function () {
+              restoreFooterImages(appsBlock);
+              resolveAppsLayout(footer, true);
+            }, 0);
+          });
         }
       }
 
       function initVelouraFooter() {
         initContacts();
-        document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(updateDesktopLayout);
+        document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
+          restoreFooterImages(footer);
+          resolveAppsLayout(footer, false);
+          watchAppsLayout(footer);
+        });
       }
 
       document.addEventListener('DOMContentLoaded', initVelouraFooter);
@@ -407,7 +475,12 @@
       setTimeout(initVelouraFooter, 300);
       setTimeout(initVelouraFooter, 900);
       setTimeout(initVelouraFooter, 1800);
-      setTimeout(initVelouraFooter, 3000);
+      setTimeout(function () {
+        document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
+          restoreFooterImages(footer);
+          resolveAppsLayout(footer, true);
+        });
+      }, 4500);
     })();
   </script>
 

@@ -36363,6 +36363,48 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     align-items: center !important;
   }
 }
+/* ======================================================
+   Veloura Footer Image Loading Safety Fix
+   يمنع إخفاء مكوّن تطبيقات سلة قبل اكتمال تحميله
+====================================================== */
+.store-footer.veloura-footer-enabled .veloura-footer-logo__media,
+.store-footer.veloura-footer-enabled .veloura-footer-apps img,
+.store-footer.veloura-footer-enabled salla-apps-icons img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* أثناء انتظار Hydration: أبقِ المكوّن موجودًا في DOM لكن خارج المشهد، ولا تستخدم display:none */
+.store-footer.veloura-footer-enabled.veloura-footer-layout-detecting .veloura-footer-apps {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 1px !important;
+  min-height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  left: -9999px !important;
+  display: block !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-apps {
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  left: auto !important;
+  display: block !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-no-apps .veloura-footer-apps,
+.store-footer.veloura-footer-enabled .veloura-footer-apps[hidden] {
+  display: none !important;
+}
+
 .main-menu > li > a[href*=offer]{
     --tw-text-opacity: 1;
     color: rgba(153, 27, 27, 1);
