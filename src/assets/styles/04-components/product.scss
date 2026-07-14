@@ -2087,3 +2087,119 @@ html.veloura-dark .veloura-product-page {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+
+/* ======================================================
+   15) Hotfix V11 - spacing normalization, mobile sharp corners,
+   persistent read-more toggle, and top-spacing cleanup
+====================================================== */
+
+/* Reduce excessive top spacing above the product title/content */
+.veloura-product-page .main-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.veloura-product-page .product-brand {
+  margin-bottom: 10px !important;
+}
+
+.veloura-product-page h1.text-xl.md\:text-2xl {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  line-height: 1.6 !important;
+}
+
+.veloura-product-page .veloura-product-category-under-title,
+.veloura-product-page .product-entry__sub-title,
+.veloura-product-page .veloura-product-header-price,
+.veloura-product-page .veloura-product-stock-radar,
+.veloura-product-page .veloura-product-discount-countdown,
+.veloura-product-page .veloura-product-coupon,
+.veloura-product-page .veloura-product-sku-card,
+.veloura-product-page .veloura-product-options-wrap,
+.veloura-product-page .sticky-product-bar,
+.veloura-product-page .veloura-product-payment-methods--last,
+.veloura-product-page .product__description {
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+}
+
+.veloura-product-page .main-content > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Normalize spacing between the main detail cards */
+.veloura-product-page .veloura-product-stock-radar,
+.veloura-product-page .veloura-product-sku-card,
+.veloura-product-page .veloura-product-payment-methods,
+.veloura-product-page .product__description,
+.veloura-product-page .veloura-product-options-wrap,
+.veloura-product-page .sticky-product-bar {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+/* On mobile, keep lower corners sharp on the card-like blocks that still looked rounded */
+@media (max-width: 767px) {
+  .veloura-product-page .sticky-product-bar,
+  .veloura-product-page .veloura-product-sticky-bar,
+  .veloura-product-page .veloura-product-payment-methods,
+  .veloura-product-page .veloura-product-options-wrap,
+  .veloura-product-page .product__description,
+  .veloura-product-page .veloura-product-sku-card,
+  .veloura-product-page .veloura-product-stock-radar,
+  .veloura-product-page .veloura-product-coupon {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+/* Read more button: no shadow, persistent toggle text */
+.veloura-product-page .product__description {
+  margin-bottom: 34px !important;
+  padding-bottom: 26px !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more {
+  min-width: 170px !important;
+  min-height: 40px !important;
+  padding: 9px 28px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 7px var(--veloura-product-bg-inline, #ffffff) !important;
+  background: var(--color-primary, var(--veloura-product-primary, #004d65)) !important;
+  color: #ffffff !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more .veloura-product-read-more__text {
+  display: inline-block !important;
+  color: inherit !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more:hover,
+.veloura-product-page #btn-show-more.veloura-product-read-more:focus,
+.veloura-product-page #btn-show-more.veloura-product-read-more.is-expanded {
+  box-shadow: 0 0 0 7px var(--veloura-product-bg-inline, #ffffff) !important;
+  background: var(--color-primary, var(--veloura-product-primary, #004d65)) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Slightly tighter option block spacing and right alignment */
+.veloura-product-page .s-product-options-option {
+  margin-bottom: 14px !important;
+}
+
+.veloura-product-page .s-product-options-option-label,
+.veloura-product-page .s-product-options-option > label,
+.veloura-product-page .s-product-options-option .form-label {
+  text-align: right !important;
+}
+
+.veloura-product-page .s-product-options-option small,
+.veloura-product-page .s-product-options-option .text-sm {
+  display: block !important;
+  text-align: right !important;
+  margin-top: 2px !important;
+}

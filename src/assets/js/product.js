@@ -325,26 +325,27 @@ class Product extends BasePage {
         });
 
         app.onClick('#btn-show-more', e => {
-            const button = e.currentTarget || e.target;
+            const button = e.currentTarget || e.target.closest('#btn-show-more');
             const content = document.querySelector('#more-content');
 
             if (!button || !content) {
                 return;
             }
 
-            if (!button.dataset.moreText) {
-                button.dataset.moreText = button.textContent.trim() || 'عرض المزيد';
-            }
-
+            const textNode = button.querySelector('.veloura-product-read-more__text');
+            const moreText = button.dataset.moreText || 'عرض المزيد';
+            const lessText = button.dataset.lessText || 'عرض أقل';
             const isExpanded = button.classList.toggle('is-expanded');
 
             content.style.maxHeight = isExpanded
                 ? `${content.scrollHeight}px`
                 : '8.5rem';
 
-            button.textContent = isExpanded
-                ? 'عرض أقل'
-                : button.dataset.moreText;
+            if (textNode) {
+                textNode.textContent = isExpanded ? lessText : moreText;
+            } else {
+                button.textContent = isExpanded ? lessText : moreText;
+            }
 
             button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
         });

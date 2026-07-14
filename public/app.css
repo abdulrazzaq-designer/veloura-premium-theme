@@ -2254,6 +2254,12 @@ input:where([type='file']):focus{
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
 }
+
+.veloura-product-page .s-product-options-option .\!btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .\!btn:hover{
     opacity: 0.8;
 }
@@ -2284,6 +2290,12 @@ input:where([type='file']):focus{
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
 }
+
+.veloura-product-page .s-product-options-option .btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .btn:hover{
     opacity: 0.8;
 }
@@ -2296,6 +2308,12 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(17, 24, 39, 1);
     color: rgba(17, 24, 39, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .form-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .has-error .s-form-label{
     color: #ff443a;
@@ -2499,6 +2517,12 @@ input:where([type='file']):focus{
 .veloura-product-page .s-input {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-input:focus{
     border-color: #414042;
     border-color: var(--color-primary);
@@ -2595,6 +2619,12 @@ textarea.s-input{
 .veloura-product-page .s-form-control {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-form-control {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-form-control:focus{
     border-color: #414042;
     border-color: var(--color-primary);
@@ -2604,21 +2634,36 @@ textarea.s-input{
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 rgba(0,0,0,0));
 }
 .s-form-label{
+    margin-bottom: 0.25rem;
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
     color: rgba(17, 24, 39, 1);
     color: rgba(17, 24, 39, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-form-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
+.s-form-label{
     margin-bottom: 0.625rem;
     display: block;
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
     --tw-text-opacity: 1;
-    color: rgb(55 65 81 / 1);
+    color: rgba(55, 65, 81, 1);
+    color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
 
-@supports (color: rgb(0 0 0 / 0)) and (top: var(--f)){
-.s-form-label{
-        color: rgb(55 65 81 / var(--tw-text-opacity, 1));
-    }
+.veloura-product-page .s-product-options-option .s-form-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 640px){
     .s-form-label{
@@ -2751,6 +2796,10 @@ textarea.s-input{
   direction: rtl;
   text-align: right;
   white-space: nowrap;
+}
+
+.veloura-product-page .s-product-options-option .s-form-label {
+  text-align: right;
 }
 .s-form-group{
     margin-top: 0.75rem;
@@ -3002,6 +3051,12 @@ textarea.s-input{
 .s-accordion-head-wrapper [slot='progress']:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
+
+.veloura-product-page .s-product-options-option .s-accordion-head-wrapper [slot='progress'] {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-accordion-head-wrapper [slot='note']{
     display: flex;
     flex-shrink: 0;
@@ -3013,6 +3068,12 @@ textarea.s-input{
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-accordion-head-wrapper [slot='note'] {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-accordion-head-wrapper-toggle{
     display: flex;
@@ -3461,6 +3522,12 @@ textarea.s-input{
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-advertisement-content-main {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-advertisement-content-icon{
     display: inline-block;
     vertical-align: middle;
@@ -3701,6 +3768,12 @@ textarea.s-input{
     line-height: 1.25rem;
     font-weight: 400;
 }
+
+.veloura-product-page .s-product-options-option .s-app-install-alert-sub-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-app-install-alert-cta{
     color: #414042;
     color: var(--color-primary);
@@ -3786,6 +3859,12 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
 .s-badge-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-badge-sm {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-badge-sm svg{
     height: 1rem;
@@ -4010,6 +4089,11 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     color: rgba(186, 243, 230, 1);
     color: rgba(186, 243, 230, var(--tw-text-opacity, 1));
 }
+.veloura-product-page h1.s-bottom-alert-logo-text.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-bottom-alert-icon svg{
     height: 1rem;
     width: 1rem;
@@ -4022,6 +4106,12 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-bottom-alert-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bottom-alert-message-highlight{
     cursor: default;
@@ -4061,6 +4151,12 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     color: #414042;
     color: var(--color-primary);
 }
+
+.veloura-product-page .s-product-options-option .s-bottom-alert-action button {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bottom-alert-actions-group{
     display: flex;
     align-items: center;
@@ -4081,6 +4177,12 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
 }
 .s-bottom-alert-action-link * {
   pointer-events: none;
+}
+
+.veloura-product-page .s-product-options-option .s-bottom-alert-action-link {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bottom-alert-action-link:hover{
     opacity: 0.8;
@@ -4270,6 +4372,12 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-bought-together-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bought-together-list{
     margin-bottom: 1rem;
     display: flex;
@@ -4388,12 +4496,24 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     line-height: 1.25rem;
     line-height: 1.375;
 }
+
+.veloura-product-page .s-product-options-option .s-bought-together-item-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bought-together-item-price{
     flex-shrink: 0;
     white-space: nowrap;
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 600;
+}
+
+.veloura-product-page .s-product-options-option .s-bought-together-item-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bought-together-btn{
     width: 100%;
@@ -4428,6 +4548,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     align-items: center;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-breadcrumb-wrapper {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-breadcrumb-item{
     display: inline-block;
@@ -4504,12 +4630,23 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     font-weight: 700;
     color: var(--color-primary-dark);
 }
+.veloura-product-page h1.s-bullet-delivery-title.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-bullet-delivery-subtitle{
     margin-top: 0.25rem;
     display: block;
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: var(--color-primary-dark);
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-tabs{
     margin-bottom: 1.5rem;
@@ -4561,6 +4698,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
 
 .veloura-product-page .s-bullet-delivery-tab {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-tab {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-tab:hover{
     background-color: rgba(65, 64, 66, 0.05);
@@ -4622,6 +4765,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     line-height: 1.25rem;
     line-height: 1.4;
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-allocation-out-of-coverage-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-allocation-out-of-coverage-icon{
     display: inline-flex;
     flex-shrink: 0;
@@ -4654,6 +4803,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-error{
     margin-top: 0.25rem;
     display: block;
@@ -4662,6 +4817,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
     color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-error {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-footer{
     display: grid;
@@ -4749,6 +4910,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-saved-addresses-empty-desc {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-addresses-list{
     display: flex;
@@ -4883,6 +5050,12 @@ input[type=radio].sr-only:checked ~ div.s-bought-together-checkbox {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-address-line2 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-address-map-icon{
     display: grid;
     height: 2.5rem;
@@ -5009,6 +5182,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-branch-search-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-branch-search-input::-moz-placeholder{
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
@@ -5053,6 +5232,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
 }
 .veloura-product-page .s-bullet-delivery-location-btn {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-location-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-location-btn:hover{
     --tw-bg-opacity: 1;
@@ -5151,6 +5336,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     color: rgba(29, 31, 31, 1);
     color: rgba(29, 31, 31, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-branch-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-branch-prep{
     text-align: left;
     font-size: 0.875rem;
@@ -5166,6 +5357,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
 .s-bullet-delivery-branch-prep:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-branch-prep {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-branch-time{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -5173,6 +5370,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-branch-time {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-branch-time:where([dir="ltr"], [dir="ltr"] *){
     text-align: right;
@@ -5641,6 +5844,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-market-warning-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-bullet-delivery-market-warning-actions{
     display: flex;
     gap: 0.75rem;
@@ -5707,6 +5916,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
     margin-top: 0.125rem;
+}
+
+.veloura-product-page .s-product-options-option .s-bullet-delivery-cart-view-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-bullet-delivery-cart-view-icon{
     display: flex;
@@ -5780,6 +5995,12 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
+}
+
+.veloura-product-page .s-product-options-option .s-button-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-button-btn:hover{
     opacity: 0.8;
@@ -6195,6 +6416,11 @@ input[type=radio].sr-only:checked ~ div.s-bullet-delivery-search-icon {
     font-size: 1.25rem;
     line-height: 1.75rem;
 }
+.veloura-product-page h1.s-button-large.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-button-wide{
     width: 100%;
 }
@@ -6332,6 +6558,12 @@ input[type=radio].sr-only:checked ~ div.s-button-loader-center .s-button-loader 
     --tw-text-opacity: 1;
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-cart-coupons-coupon-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-cart-coupons-coupon-input-container{
     position: relative;
@@ -6513,6 +6745,11 @@ input[type=radio].sr-only:checked ~ div.s-button-loader-center .s-button-loader 
     --tw-text-opacity: 1;
     color: rgba(0, 0, 0, 1);
     color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
+}
+.veloura-product-page h1.s-cart-coupons-discount-values .s-cart-coupons-main-amount.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-cart-coupons-discount-values .s-cart-coupons-secondary-info{
     margin: 0px;
@@ -6781,6 +7018,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-coupons-card:after {
 .veloura-product-hide-discount .s-cart-item-offers-regular-price {
   display: none;
 }
+
+.veloura-product-page .s-product-options-option .s-cart-item-offers-regular-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-cart-item-offers-free-label{
     margin-left: 0.5rem;
     margin-right: 0.5rem;
@@ -6790,6 +7033,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-coupons-card:after {
     --tw-text-opacity: 1;
     color: rgba(153, 27, 27, 1);
     color: rgba(153, 27, 27, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-cart-item-offers-free-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-cart-item-offers-details{
     display: flex;
@@ -6822,6 +7071,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-coupons-card:after {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-cart-item-offers-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-cart-item-offers-discount{
     margin-top: 0px;
     font-size: 0.75rem;
@@ -6841,6 +7096,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-coupons-card:after {
     align-items: center;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-cart-item-offers-show-more-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-cart-item-offers-show-more-btn:hover{
     --tw-text-opacity: 1;
@@ -6931,6 +7192,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     color: rgba(17, 24, 39, 1);
     color: rgba(17, 24, 39, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-cart-summary-card-sheet-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-cart-summary-card-line{
     margin-bottom: 0.5rem;
     display: flex;
@@ -6938,6 +7205,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     justify-content: space-between;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-cart-summary-card-line {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-cart-summary-card-line span{
     --tw-text-opacity: 1;
@@ -7246,6 +7519,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-cashback-banner-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-cashback-banner-value{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -7253,6 +7532,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     --tw-text-opacity: 1;
     color: rgba(46, 16, 101, 1);
     color: rgba(46, 16, 101, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-cashback-banner-value {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-color-picker-main{
     margin: 0.25rem;
@@ -7376,6 +7661,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
 .veloura-product-page .s-comment-form-input {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-comment-form-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-comment-form-input:focus{
     border-color: #414042;
     border-color: var(--color-primary);
@@ -7469,6 +7760,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-comments-item-wrapper {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-comments-item-inner{
     display: flex;
 }
@@ -7544,6 +7841,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     --tw-text-opacity: 1;
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-comments-item-timestamp {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .dark *.s-comments-item-timestamp{
     --tw-text-opacity: 1;
@@ -7634,6 +7937,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-comments-item-has-order-check-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-comments-item-has-order-check-text:where([dir="ltr"], [dir="ltr"] *){
     margin-left: 0.25rem;
 }
@@ -7721,6 +8030,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     --tw-text-opacity: 1;
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-comments-item-rated-widget {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-comments-item-rated-widget:where([dir="ltr"], [dir="ltr"] *){
     margin-left: 0.25rem;
@@ -8006,6 +8321,11 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     font-weight: 700;
     color: var(--color-primary-dark);
 }
+.veloura-product-page h1.s-conditional-offer-title.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-conditional-offer-subtitle{
     display: inline-flex;
     align-items: center;
@@ -8096,6 +8416,12 @@ input[type=radio].sr-only:checked ~ div.s-cart-summary-count {
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-conditional-offer-item-avatar-content {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-conditional-offer-item-avatar-content.active{
     color: var(--color-primary-dark);
@@ -8294,6 +8620,12 @@ input[type=radio].sr-only:checked ~ div.s-conditional-offer-checkpoint-label {
 .veloura-product-page .s-contacts-topnav-link {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-contacts-topnav-link {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-contacts-topnav-link:hover{
     opacity: 0.8;
 }
@@ -8317,6 +8649,12 @@ input[type=radio].sr-only:checked ~ div.s-conditional-offer-checkpoint-label {
     font-size: 0.875rem;
     line-height: 1.25rem;
     line-height: 1;
+}
+
+.veloura-product-page .s-product-options-option .s-contacts-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-contacts-icon{
     display: flex;
@@ -8411,6 +8749,12 @@ input[type=radio].sr-only:checked ~ div.s-conditional-offer-checkpoint-label {
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
     opacity: 0.4;
+}
+
+.veloura-product-page .s-product-options-option .s-count-down-item-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-count-down-boxed .s-count-down-item{
     border-radius: .75rem;
@@ -8545,6 +8889,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     color: rgba(37, 99, 235, 1);
     color: rgba(37, 99, 235, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-count-down-info-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-count-down-pre-order{
     display: flex;
     flex: 1 1 0%;
@@ -8662,6 +9012,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
 }
+
+.veloura-product-page .s-product-options-option .s-count-down-horizontal .s-count-down-list .s-count-down-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-count-down-horizontal .s-count-down-list .s-count-down-item::after{
     font-weight: 600;
     content: var(--tw-content);
@@ -8702,6 +9058,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     color: #414042;
     color: var(--color-primary);
 }
+
+.veloura-product-page .s-product-options-option .s-count-down-prefix-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-custom-fields-wrapper{
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -8737,6 +9099,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     --tw-text-opacity: 1;
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-custom-fields-field-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-custom-fields-skeleton-wrapper{
     display: grid;
@@ -8789,6 +9157,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
 }
 .veloura-product-page .s-datetime-picker-input {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-datetime-picker-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-datetime-picker-input:focus{
     border-color: #414042;
@@ -8911,6 +9285,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     color: #2b2d34;
     color: var(--color-text-primary,#2b2d34);
 }
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-delivery-promise-arrow{
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -8944,6 +9324,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     color: #dc3545;
     color: var(--color-danger,#dc3545);
 }
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-error {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-delivery-promise-city-modal .s-modal-title{
     font-weight: 700;
     color: #414042;
@@ -8955,6 +9341,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     line-height: 1.45;
     color: #5c6c7c;
     color: var(--color-text-secondary,#5c6c7c);
+}
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-city-modal .s-modal-sub-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-delivery-promise-city-modal .s-modal-body{
     overflow: visible !important;
@@ -8990,6 +9382,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     font-weight: 500;
     color: #2b2d34;
     color: var(--color-text-primary,#2b2d34);
+}
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-modal-field-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-delivery-promise-modal-required{
     color: #dc3545;
@@ -9031,6 +9429,12 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     color: var(--color-text-primary,#333);
     outline: 2px solid transparent;
     outline-offset: 2px;
+}
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-modal-search input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-delivery-promise-modal-search input::-moz-placeholder{
     color: #999;
@@ -9124,6 +9528,12 @@ input[type=radio].sr-only:checked ~ div.s-delivery-promise-modal-popover {
     color: #414042;
     color: var(--color-primary,#00897b);
 }
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-modal-item .sicon-check {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-delivery-promise-modal-empty{
     padding-left: 1rem;
     padding-right: 1rem;
@@ -9134,6 +9544,12 @@ input[type=radio].sr-only:checked ~ div.s-delivery-promise-modal-popover {
     line-height: 1.25rem;
     color: #999;
     color: var(--color-text-secondary,#999);
+}
+
+.veloura-product-page .s-product-options-option .s-delivery-promise-modal-empty {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-drawer-container{
     position: fixed;
@@ -9414,6 +9830,12 @@ input[type=radio].sr-only:checked ~ div.s-drawer-close {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-drawer-sub-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 640px){
     .s-drawer-sub-title{
@@ -10060,6 +10482,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-file-upload-hint {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-filters-checkbox{
     height: 1.25rem;
     width: 1.25rem;
@@ -10139,6 +10567,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
 }
 .s-filters-label * {
   pointer-events: none;
+}
+
+.veloura-product-page .s-product-options-option .s-filters-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-filters-label:last-child{
     margin-bottom: 0px;
@@ -10260,6 +10694,11 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
+.veloura-product-page h1.s-filters-widget-arrow.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-filters-widget-arrow svg{
     height: 1.25rem;
     width: 1.25rem;
@@ -10290,6 +10729,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
 }
 .s-filters-widget-more * {
   pointer-events: none;
+}
+
+.veloura-product-page .s-product-options-option .s-filters-widget-more {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-filters-widget-plusminus{
     position: relative;
@@ -10437,6 +10882,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     color: #2b2d34;
     color: var(--color-text-primary,#2b2d34);
 }
+
+.veloura-product-page .s-product-options-option .s-fulfillment-methods-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-fulfillment-methods-subtitle{
     font-size: 0.75rem;
     line-height: 1rem;
@@ -10582,6 +11033,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     color: rgba(29, 78, 216, 1);
     color: rgba(29, 78, 216, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-gifting-info {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-gifting-info svg{
     height: 1.25rem;
     width: 1.25rem;
@@ -10708,6 +11165,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-gifting-modal-badge {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-gifting-modal-badge:where([dir="rtl"], [dir="rtl"] *){
     margin-right: 0px;
     margin-left: 0.5rem;
@@ -10727,6 +11190,12 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-gifting-modal-uploader-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-gifting-steps-wrapper{
     position: relative;
@@ -11136,6 +11605,12 @@ input[type=radio].sr-only:checked ~ div.s-gifting-remove-preview {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-list-tile-item-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loading-fill-color{
     fill: #414042;
     fill: var(--color-primary);
@@ -11161,6 +11636,12 @@ input[type=radio].sr-only:checked ~ div.s-gifting-remove-preview {
     transition-duration: 150ms;
   flex-grow: 0;
   flex-basis: 0;
+}
+
+.veloura-product-page .s-product-options-option .s-localization-modal-trigger-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-localization-modal-trigger-btn:hover{
     background-color: rgba(229, 231, 235, 0.7);
@@ -11281,6 +11762,12 @@ input[type=radio].sr-only:checked ~ div.s-gifting-remove-preview {
 
 .veloura-product-page .s-localization-modal-select {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-localization-modal-select {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-localization-modal-select:focus{
     border-color: #414042;
@@ -11445,6 +11932,12 @@ input[type=radio].sr-only:checked ~ div.s-gifting-remove-preview {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-prize-item-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-prize-item-check{
     position: absolute;
     height: 1rem;
@@ -11497,6 +11990,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
 .veloura-product-page .s-loyalty-prize-item-points {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-prize-item-points {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-redeem-btn{
     overflow: hidden;
     transition-property: all;
@@ -11536,12 +12035,23 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
     font-size: 1.25rem;
     line-height: 1.75rem;
 }
+.veloura-product-page h1.s-loyalty-header-title.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-loyalty-header-subtitle{
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-header-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-activator-icon{
     display: flex;
@@ -11748,9 +12258,21 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
     color: rgba(209, 180, 76, 1);
     color: rgba(209, 180, 76, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-points-banner-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-points-banner-description{
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-points-banner-description {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-points-history-balance-container{
     display: flex;
@@ -11762,6 +12284,11 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: 600;
+}
+.veloura-product-page h1.s-loyalty-points-history-balance-value.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-loyalty-points-history-balance-label{
     font-weight: 400;
@@ -12012,6 +12539,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
 .s-loyalty-points-history-table-head-tr-th:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-points-history-table-head-tr-th {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-points-history-table-head-tr-th:where([dir="ltr"], [dir="ltr"] *){
     text-align: left;
 }
@@ -12067,6 +12600,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
     white-space: nowrap;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-points-history-table-tbody-tr-td {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-points-history-table-tbody-tr-td:first-child{
     font-weight: 700;
@@ -12156,6 +12695,11 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-points-history-table-tbody-tr 
     line-height: 1.75rem;
     font-weight: 700;
 }
+.veloura-product-page h1.s-loyalty-points-history-table-placeholder-title.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-loyalty-points-history-table-placeholder-sub-title{
     text-align: center;
     font-size: 0.875rem;
@@ -12164,6 +12708,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-points-history-table-tbody-tr 
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-points-history-table-placeholder-sub-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-points-history-load-more{
     margin-top: 1rem;
@@ -12353,6 +12903,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-icon {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-description {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-section{
     margin-left: auto;
@@ -12804,6 +13360,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     line-height: 1.25rem;
     font-weight: 500;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-reward-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 768px){
     .s-loyalty-program-reward-name{
         font-size: 1.125rem;
@@ -12840,6 +13402,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-rewards-container .s-tabs-header-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-rewards-container .s-tabs-bg-normal{
     background-color: transparent;
     --tw-text-opacity: 1;
@@ -12865,6 +13433,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     padding-right: 1rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-rewards-container-cart .s-tabs-header-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-rewards-container-cart .s-tabs-content-wrapper{
     padding: 0px;
@@ -12924,10 +13498,21 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     line-height: 1.75rem;
     font-weight: 700;
 }
+.veloura-product-page h1.s-loyalty-program-panel-content h1.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-loyalty-program-panel-content p{
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 400;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-panel-content p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-points-wrapper{
     padding-left: 1rem;
@@ -13390,6 +13975,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-point-details-branches p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-profile-container{
     display: flex;
     align-items: center;
@@ -13430,6 +14021,11 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: 700;
+}
+.veloura-product-page h1.s-loyalty-program-profile-points-value.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-loyalty-program-profile-icon{
     display: grid;
@@ -13474,6 +14070,11 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-hero-footer {
     width: 3.5rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
+}
+.veloura-product-page h1.s-loyalty-program-circle-size-sm.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-loyalty-program-circle-size-md{
     height: 4rem;
@@ -13645,6 +14246,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-aspect-container img {
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-terms-and-conditions-heading {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-terms-and-conditions-list{
     margin-top: 0.5rem;
 }
@@ -13695,6 +14302,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-aspect-container img {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-reward-info-message-heading {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-reward-info-message-content{
     font-size: 0.75rem;
@@ -13815,6 +14428,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-aspect-container img {
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-reward-details-categories-heading {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-reward-details-categories-list{
     margin-top: 0.5rem;
     display: flex;
@@ -13899,6 +14518,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-aspect-container img {
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-reward-details-items-brands > div h2 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-reward-details-items-brands > div salla-slider{
     margin-top: 0.75rem;
     padding-left: 1rem;
@@ -13944,6 +14569,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-aspect-container img {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-reward-details-items-products h2 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-reward-details-products-grid{
     margin-top: 0.75rem;
@@ -14205,6 +14836,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-exchange-loading {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-after-exchange .s-list-tile-item .s-list-tile-item-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-loyalty-program-after-exchange-title{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -14212,6 +14849,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-exchange-loading {
     --tw-text-opacity: 1;
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-after-exchange-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-after-exchange-reset{
     height: 1.5rem;
@@ -14222,6 +14865,12 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-program-exchange-loading {
     border-color: rgba(248, 113, 113, var(--tw-border-opacity, 1));
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-loyalty-program-after-exchange-reset button {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-loyalty-program-after-exchange-reset button span{
     display: flex;
@@ -14399,6 +15048,12 @@ input[type=radio].sr-only:checked ~ div.s-maintenance-alert-close {
     font-weight: 700;
     line-height: 1.4;
 }
+
+.veloura-product-page .s-product-options-option .s-maintenance-alert-text h2 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 640px){
     .s-maintenance-alert-text h2{
         font-size: 1.5rem;
@@ -14453,6 +15108,12 @@ input[type=radio].sr-only:checked ~ div.s-maintenance-alert-close {
 }
 .veloura-product-page .s-maintenance-alert-btn {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-maintenance-alert-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-maintenance-alert-btn:hover{
     --tw-bg-opacity: 1;
@@ -14604,6 +15265,12 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
     line-height: 1.25rem;
     line-height: 1;
 }
+
+.veloura-product-page .s-product-options-option .s-menu-footer-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-menu-footer-item:last-child{
     margin-bottom: 0px;
 }
@@ -14667,6 +15334,12 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
 
 .veloura-product-page .s-menu-topnav-item {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-menu-topnav-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-menu-topnav-item:hover{
     opacity: 0.8;
@@ -14756,6 +15429,12 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
     --tw-text-opacity: 1;
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-metadata-row-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-modal-container{
     position: fixed;
@@ -15032,6 +15711,12 @@ input[type=radio].sr-only:checked ~ div.s-modal-close {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-modal-sub-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 640px){
     .s-modal-sub-title{
@@ -15780,6 +16465,12 @@ input[type=radio].sr-only:checked ~ div.s-next-order-coupon-badge-bg {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-next-order-coupon-meta {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-next-order-coupon-actions{
     display: flex;
     flex-direction: column;
@@ -15983,6 +16674,11 @@ input[type=radio].sr-only:checked ~ div.s-next-order-coupon-badge-bg {
 .veloura-product-page .s-notifications-item-icon {
   border-color: transparent;
 }
+.veloura-product-page h1.s-notifications-item-icon.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-notifications-item-icon-new{
     --tw-text-opacity: 1;
     color: rgba(248, 113, 113, 1);
@@ -16008,10 +16704,22 @@ input[type=radio].sr-only:checked ~ div.s-next-order-coupon-badge-bg {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
+
+.veloura-product-page .s-product-options-option .s-notifications-item-content-leading h4 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-notifications-item-content-leading p{
     margin-bottom: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-notifications-item-content-leading p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 768px){
     .s-notifications-item-content-leading p{
@@ -16023,6 +16731,12 @@ input[type=radio].sr-only:checked ~ div.s-next-order-coupon-badge-bg {
     align-items: center;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-notifications-item-content-trailing {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-notifications-item-content-trailing-icon:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 0.375rem;
@@ -16205,6 +16919,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-corner-badge {
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-offer-slide-cat-entry h4 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-slide-one-fourth{
     height: auto;
     width: auto;
@@ -16282,6 +17002,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-corner-badge {
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-slide-offer-entry-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-slide-offer-entry-price-amount{
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -16299,6 +17025,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-corner-badge {
     padding: 0.5rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-offer-slide-offer-entry-price-amount-percent {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-slide-offer-entry-price-amount-percent span{
     font-weight: 700;
@@ -16330,6 +17062,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-corner-badge {
 .s-offer-discount-list-item-discount{
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-offer-discount-list-item-discount {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-discount-list-item-discount span{
     font-weight: 700;
@@ -16483,6 +17221,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-bank-message p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-bank-message-amount{
     font-weight: 700;
     --tw-text-opacity: 1;
@@ -16625,6 +17369,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-card-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-card-description{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -16632,6 +17382,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     --tw-text-opacity: 1;
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-offer-card-description {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-card-details{
     display: flex;
@@ -16698,6 +17454,11 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+.veloura-product-page h1.s-offer-drawer-card .s-offer-card-icon.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-offer-drawer-card .s-offer-card-content{
     min-width: 0px;
     flex: 1 1 0%;
@@ -16715,6 +17476,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-drawer-card .s-offer-card-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-drawer-card .s-offer-card-description{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -16722,6 +17489,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     --tw-text-opacity: 1;
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-offer-drawer-card .s-offer-card-description {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-drawer-card .s-accordion-wrapper{
     margin: 0px;
@@ -16876,6 +17649,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-products-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-products-accordion-content{
     --tw-bg-opacity: 1;
     background-color: rgba(249, 250, 251, 1);
@@ -16910,6 +17689,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
     text-decoration-line: underline;
+}
+
+.veloura-product-page .s-product-options-option .s-offer-products-link-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-products-link-icon{
     font-size: 15px;
@@ -17111,6 +17896,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-discount-table-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-show-more-card{
     pointer-events: auto;
     display: flex;
@@ -17136,6 +17927,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
     color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-offer-show-more-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-drawer-card .s-products-list-compact-cards{
     margin-bottom: 0px !important;
@@ -17173,6 +17970,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-modal-badge {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-modal-badge:where([dir="ltr"], [dir="ltr"] *){
     margin-left: 0.625rem;
 }
@@ -17197,6 +18000,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+.veloura-product-page .s-product-options-option .s-offer-modal-badge-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-modal-cat-item.swiper-slide{
     margin-top: 1rem;
@@ -17474,6 +18283,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-offer-modal-product-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 768px){
     .s-offer-modal-product-price{
         margin-bottom: 0px;
@@ -17572,6 +18387,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-modal-footer {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 640px){
     .s-offer-modal-footer{
         margin-top: 2rem;
@@ -17598,6 +18419,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
 }
 .s-offer-modal-remember-label * {
   pointer-events: none;
+}
+
+.veloura-product-page .s-product-options-option .s-offer-modal-remember-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-offer-modal-remember-label:hover{
     --tw-text-opacity: 1;
@@ -17740,6 +18567,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     color: rgba(119, 119, 119, 1);
     color: rgba(119, 119, 119, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-offer-modal-discount-table table {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-offer-modal-discount-table tr{
     border-bottom-width: 1px;
     --tw-border-opacity: 1;
@@ -17843,6 +18676,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     line-height: 1.45;
     color: #1d1d1d;
     color: var(--color-text-primary,#1d1d1d);
+}
+
+.veloura-product-page .s-product-options-option .s-order-branch-info-value {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-branch-hours-card .s-order-branch-info-text{
     gap: 0.5rem;
@@ -18095,6 +18934,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
 .veloura-product-page .s-order-branch-map-link {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-order-branch-map-link {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-branch-action-icon{
     display: inline-flex;
     align-items: center;
@@ -18102,6 +18947,12 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: currentColor;
+}
+
+.veloura-product-page .s-product-options-option .s-order-branch-action-icon {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-branch-action-icon svg{
     height: 1em;
@@ -18207,6 +19058,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
         justify-content: space-between;
     }
 }
+
+.veloura-product-page .s-product-options-option .s-order-cancel-cancelled-header-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 768px){
     .s-order-cancel-cancelled-header-item{
         width: auto;
@@ -18285,6 +19142,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-cancel-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-cancel-reasons{
     display: flex;
     min-height: 0px;
@@ -18325,6 +19188,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
 }
 .s-order-cancel-reason-label:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
+}
+
+.veloura-product-page .s-product-options-option .s-order-cancel-reason-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-cancel-radio{
     margin: 0px;
@@ -18430,6 +19299,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
 }
 .veloura-product-page .s-order-cancel-textarea {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-order-cancel-textarea {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-cancel-textarea:focus{
     border-color: #414042;
@@ -18567,6 +19442,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     line-height: 1.25rem;
     font-weight: 700;
 }
+
+.veloura-product-page .s-product-options-option .s-order-details-bundle-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-details-product{
     display: flex;
     align-items: center;
@@ -18656,6 +19537,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
     text-decoration-line: none;
 }
+
+.veloura-product-page .s-product-options-option .s-order-details-product-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-details-product-name:hover{
     color: #414042;
     color: var(--color-primary);
@@ -18667,6 +19554,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     --tw-text-opacity: 1;
     color: rgba(17, 24, 39, 1);
     color: rgba(17, 24, 39, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-details-product-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-details-product-price-sale{
     --tw-text-opacity: 1;
@@ -18721,6 +19614,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-details-option-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-details-option-value{
     text-align: right;
     font-size: 0.875rem;
@@ -18728,6 +19627,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-details-option-value {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-details-option-value:where([dir="rtl"], [dir="rtl"] *){
     text-align: left;
@@ -18738,6 +19643,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+.veloura-product-page .s-product-options-option .s-order-details-options-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-details-options-container{
     margin-bottom: 0.5rem;
@@ -18788,6 +19699,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     --tw-text-opacity: 1;
     color: rgba(29, 31, 31, 1);
     color: rgba(29, 31, 31, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-details-options-list {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-details-options-item{
     display: flex;
@@ -18872,6 +19789,12 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     color: var(--color-primary);
     text-decoration-line: underline;
 }
+
+.veloura-product-page .s-product-options-option .s-order-details-option-file-link {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-details-option-color-picker{
     display: flex;
     width: -moz-fit-content;
@@ -18954,11 +19877,23 @@ salla-modal.s-order-cancel-modal .s-modal-title:where([dir="rtl"], [dir="rtl"] *
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-details-option-color-picker-icon {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-details-option-map-button{
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: #414042;
     color: var(--color-primary);
+}
+
+.veloura-product-page .s-product-options-option .s-order-details-option-map-button {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-details-option-default-text{
     font-size: 0.75rem;
@@ -19233,6 +20168,11 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+.veloura-product-page h1.s-order-edit-no-content-placeholder .icon.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-order-edit-actions{
     position: sticky;
     bottom: 1.5rem;
@@ -19374,6 +20314,12 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
 .s-order-edit-modal-subtitle:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-edit-modal-items{
     display: flex;
     flex-direction: column;
@@ -19411,12 +20357,24 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     color: rgba(17, 24, 39, 1);
     color: rgba(17, 24, 39, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-item-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-edit-modal-item-options{
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-item-options {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-edit-modal-item-end{
     display: flex;
@@ -19428,12 +20386,24 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     line-height: 1.25rem;
     font-weight: 500;
 }
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-item-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-edit-modal-item-quantity{
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-item-quantity {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-edit-modal-row{
     display: flex;
@@ -19459,6 +20429,12 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-tax-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-edit-modal-tax-icon{
     --tw-text-opacity: 1;
@@ -19491,6 +20467,11 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     line-height: 1.75rem;
     font-weight: 500;
 }
+.veloura-product-page h1.s-order-edit-modal-total-value.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-order-edit-modal-refund{
     display: flex;
     align-items: flex-start;
@@ -19520,6 +20501,12 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     flex: 1 1 0%;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-order-edit-modal-refund-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-edit-modal-btn-wrapper{
     margin-top: 0.5rem;
@@ -19574,6 +20561,11 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+}
+.veloura-product-page h1.s-order-edit-expired .icon.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-order-edit-add-modal{
     display: flex;
@@ -19751,6 +20743,12 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-edit-item-weight {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-edit-item-quantity{
     margin-top: 1.25rem;
     display: flex;
@@ -19885,6 +20883,11 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+.veloura-product-page h1.s-order-edit-product-card-placeholder.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-order-edit-product-card-content{
     display: flex;
     flex: 1 1 0%;
@@ -19960,6 +20963,12 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-options-modal-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-options-modal-fields{
     display: flex;
     flex-direction: column;
@@ -20023,6 +21032,12 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
     font-weight: 700;
     color: #414042;
     color: var(--color-primary);
+}
+
+.veloura-product-page .s-product-options-option .s-order-summary-item-download {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-summary-code-item-wrapper{
     margin-bottom: 0.5rem;
@@ -20178,6 +21193,12 @@ input[type=radio].s-order-totals-card-heading:checked ~ div.absolute {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-order-totals-card-list {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-order-totals-card-list > .s-order-totals-card-row{
     border-bottom-width: 1px;
 }
@@ -20272,6 +21293,12 @@ input[type=radio].s-order-totals-card-heading:checked ~ div.absolute {
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
     color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-order-totals-card-refund-icon {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-order-totals-card-refund-value{
     font-weight: 500;
@@ -20518,6 +21545,12 @@ input[type=radio].s-order-totals-card-heading:checked ~ div.absolute {
 .s-orders-table-head-tr-th:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
+
+.veloura-product-page .s-product-options-option .s-orders-table-head-tr-th {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-orders-table-head-tr-th:where([dir="ltr"], [dir="ltr"] *){
     text-align: left;
 }
@@ -20576,6 +21609,12 @@ input[type=radio].s-order-totals-card-heading:checked ~ div.absolute {
     white-space: nowrap;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-orders-table-tbody-tr-td {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-orders-table-tbody-tr-td:first-child{
     font-weight: 700;
@@ -20698,6 +21737,12 @@ input[type=radio].sr-only:checked ~ div.s-orders-table-tbody-tr a {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-placeholder-description {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-placeholder-icon{
     margin-bottom: 1rem;
@@ -20939,6 +21984,12 @@ input[type=radio].sr-only:checked ~ div.s-price-range-right-handle {
 .veloura-product-page .s-price-range-number-input {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-price-range-number-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-price-range-number-input:focus{
     --tw-border-opacity: 1;
     border-color: rgba(156, 163, 175, 1);
@@ -20950,6 +22001,12 @@ input[type=radio].sr-only:checked ~ div.s-price-range-right-handle {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-price-range-gray-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-price-range-currency{
     pointer-events: none;
@@ -21011,6 +22068,12 @@ input[type=radio].sr-only:checked ~ div.s-price-range-currency {
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .s-product-availability-subscribed {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-availability-subs-icon svg{
     margin-left: 0.5rem;
@@ -21083,6 +22146,12 @@ input[type=radio].sr-only:checked ~ div.s-price-range-currency {
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-availability-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-availability-label:where([dir="ltr"], [dir="ltr"] *){
     text-align: left;
 }
@@ -21120,6 +22189,12 @@ input[type=radio].sr-only:checked ~ div.s-price-range-currency {
 
 .veloura-product-page .s-product-availability-input {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-product-availability-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-availability-input:focus{
     border-color: #414042;
@@ -21543,6 +22618,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-card-content-subtitle {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-card-special .s-product-card-content-main, special .s-product-card-content-sub{
     padding-right: 6rem;
 }
@@ -21559,6 +22640,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-product-card-donation-input label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-card-donation-input label span{
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
@@ -21572,6 +22659,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
     --tw-text-opacity: 1;
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-product-card-content-title a {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-card-content-title a:hover{
     color: #414042;
@@ -21603,6 +22696,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-product-card-rating {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-card-rating:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 1;
@@ -21639,6 +22738,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
     color: rgba(248, 113, 113, 1);
     color: rgba(248, 113, 113, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-card-sale-price h4 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-card-sale-price span{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -21650,6 +22755,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
 
 .veloura-product-hide-discount .s-product-card-sale-price span {
   display: none;
+}
+
+.veloura-product-page .s-product-options-option .s-product-card-sale-price span {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-card-starting-price{
     display: flex;
@@ -21666,10 +22777,22 @@ input[type=radio].sr-only:checked ~ div.s-product-card-out-badge {
     color: rgba(248, 113, 113, 1);
     color: rgba(248, 113, 113, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-card-starting-price h4 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-card-price{
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+.veloura-product-page .s-product-options-option .s-product-card-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-card-image-cover{
     -o-object-fit: cover;
@@ -21734,6 +22857,11 @@ input[type=radio].sr-only:checked ~ div.s-product-card-content-pie span {
     font-weight: 700;
     color: #414042;
     color: var(--color-primary);
+}
+.veloura-product-page h1.s-product-card-content-pie span b.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-product-card-content-extra-padding{
     padding-right: 6rem;
@@ -21946,6 +23074,12 @@ input[type=radio].sr-only:checked ~ div.s-product-card-full-image .s-product-car
     --tw-text-opacity: 1;
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-product-card-compact .s-product-card-content-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-card-compact .s-product-card-content-title a{
     overflow: hidden;
@@ -22179,6 +23313,12 @@ article:has(salla-product-card-embed)::after{
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-options-option-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 640px){
     .s-product-options-option-label{
         margin-top: 1px;
@@ -22264,6 +23404,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-colors-wrapper input[t
     --tw-text-opacity: 1;
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-product-options-colors-wrapper input[type=radio] + label div {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-options-colors-wrapper input[type=radio] + label div p{
     font-size: 0.75rem;
@@ -22356,12 +23502,24 @@ input[type=radio].sr-only:checked ~ div.s-product-options-colors-wrapper input[t
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-options-donation-progress-target-text {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-options-donation-progress-amount{
     margin-bottom: 0.625rem;
     display: flex;
     justify-content: space-between;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-product-options-donation-progress-amount {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-options-donation-progress-wrapper{
     height: 1rem;
@@ -22405,6 +23563,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-colors-wrapper input[t
     color: rgba(248, 113, 113, 1);
     color: rgba(248, 113, 113, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-options-donation-progress-target-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-options-donation-wrapper{
     position: relative;
     margin-top: 1.25rem;
@@ -22442,6 +23606,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-colors-wrapper input[t
     flex: 1 1 0%;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-product-options-donation-amount-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-options-donation-amount-input-container{
     position: relative;
@@ -22561,6 +23731,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-donation-amount-currun
 }
 .s-product-options-multiple-options-wrapper span * {
   pointer-events: none;
+}
+
+.veloura-product-page .s-product-options-option .s-product-options-multiple-options-wrapper span {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-options-multiple-options-wrapper span:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0px;
@@ -22762,6 +23938,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-thumbnails-wrapper div
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-product-options-thumbnails-wrapper div p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-product-options-image-input .s-file-upload-wrapper{
     min-height: 120px;
 }
@@ -22913,6 +24095,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-donation-amount-curren
 
 .veloura-product-page .s-product-options-donation-options-item label {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-product-options-donation-options-item label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-options-donation-options-item input{
     display: none;
@@ -23087,6 +24275,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-donation-amount-curren
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-product-options-grid-mode-span-checkbox {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-product-options-grid-mode input:checked + div{
     border-color: #414042;
@@ -23427,12 +24621,24 @@ input[type=radio].sr-only:checked ~ div.s-product-options-grid-mode input[type=r
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-progress-bar-header {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-progress-bar-target-section{
     margin-bottom: 0.625rem;
     display: flex;
     justify-content: space-between;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-progress-bar-target-section {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-progress-bar-wrapper{
     margin-bottom: 0.375rem;
@@ -23463,6 +24669,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-grid-mode input[type=r
     color: rgba(248, 113, 113, 1);
     color: rgba(248, 113, 113, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-progress-bar-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-progress-bar-wrapper .s-progress-bar-progress-stripped{
     background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
     background-size: 30px 30px;
@@ -23488,6 +24700,12 @@ input[type=radio].sr-only:checked ~ div.s-product-options-grid-mode input[type=r
 }
 .veloura-product-page .s-quantity-input-container {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-quantity-input-container {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-quantity-input-input{
     width: 3rem;
@@ -23667,6 +24885,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     color: rgba(185, 28, 28, 1);
     color: rgba(185, 28, 28, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-quick-order-errors p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-quick-order-confirm{
     display: flex;
     align-items: center;
@@ -23788,6 +25012,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
+}
+
+.veloura-product-page .s-product-options-option .s-rating-modal-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-rating-modal-btn:hover{
     color: var(--color-primary-dark);
@@ -23954,6 +25184,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
 .veloura-product-page .s-rating-modal-comment {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-rating-modal-comment {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-rating-modal-comment:focus{
     border-color: #414042;
     border-color: var(--color-primary);
@@ -24055,6 +25291,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     font-weight: 700;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-rating-modal-product-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-rating-modal-thanks{
     padding-left: 2rem;
     padding-right: 2rem;
@@ -24094,6 +25336,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-rating-modal-thanks-msg {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-rating-modal-thanks-btn{
     height: 2.5rem;
     flex: none;
@@ -24122,6 +25370,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .s-rating-modal-thanks-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-rating-modal-thanks-btn:hover{
     opacity: 0.8;
@@ -24164,6 +25418,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .s-rating-modal-thanks-btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-rating-modal-thanks-btn:hover{
     opacity: 0.8;
@@ -24224,6 +25484,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-rating-modal-thanks-time {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-rating-modal-stars-company{
     margin-bottom: 1.25rem;
 }
@@ -24240,6 +25506,12 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 500;
+}
+
+.veloura-product-page .s-product-options-option .s-rating-modal-upload-count {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-rating-modal-bg-gray{
     --tw-bg-opacity: 1;
@@ -24482,6 +25754,12 @@ unicode{
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-rating-modal-delete-wrapper p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-rating-modal-delete-actions{
     margin-top: 1.25rem;
     display: flex;
@@ -24697,6 +25975,12 @@ input[type=radio].sr-only:checked ~ div.s-review-card-slider-dots {
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
     word-wrap: anywhere;
 }
+
+.veloura-product-page .s-product-options-option .s-review-card-review-content {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-review-card-product-container{
     display: flex;
     gap: 0.5rem;
@@ -24725,6 +26009,12 @@ input[type=radio].sr-only:checked ~ div.s-review-card-slider-dots {
     color: #414042;
     color: var(--color-primary);
     word-wrap: anywhere;
+}
+
+.veloura-product-page .s-product-options-option .s-review-card-product-details-name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-review-card-product-details-purchase-count{
     display: flex;
@@ -24792,6 +26082,12 @@ input[type=radio].sr-only:checked ~ div.s-review-card-slider-dots {
 
 .veloura-product-page .s-review-factors-tags-factor-tag {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-review-factors-tags-factor-tag {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-review-factors-tags-factor-name{
     font-weight: 600;
@@ -24866,6 +26162,12 @@ input[type=radio].sr-only:checked ~ div.s-review-card-slider-dots {
     line-height: 1.25rem;
     font-weight: 700;
     opacity: 0.8;
+}
+
+.veloura-product-page .s-product-options-option .s-reviews-display-all {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-reviews-display-all:hover{
     opacity: 1;
@@ -25151,6 +26453,12 @@ input[type=radio].sr-only:checked ~ div.s-reviews-testimonial__icon svg {
 .veloura-product-page .veloura-product-cart-price-row .price-wrapper.s-reviews-testimonial__rating {
   display: none;
 }
+
+.veloura-product-page .s-product-options-option .s-reviews-testimonial__rating {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-reviews-testimonial__info h2{
     font-size: 0.75rem;
     line-height: 1rem;
@@ -25328,6 +26636,11 @@ input[type=radio].sr-only:checked ~ div.s-reviews-testimonial__icon svg {
     font-weight: 700;
     line-height: 0.75rem;
 }
+.veloura-product-page h1.s-reviews-page-title.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-reviews-page-count{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -25335,6 +26648,12 @@ input[type=radio].sr-only:checked ~ div.s-reviews-testimonial__icon svg {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-reviews-page-count {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-reviews-page-filter{
     height: auto;
@@ -25580,6 +26899,11 @@ input[type=radio].sr-only:checked ~ div.s-reviews-testimonial__icon svg {
     font-size: 1.25rem;
     line-height: 1.75rem;
 }
+.veloura-product-page h1.s-scopes-header-subtitle.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-scopes-header-subtitle:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
@@ -25635,6 +26959,12 @@ input[type=radio].sr-only:checked ~ div.s-scopes-search-icon {
 }
 .veloura-product-page .s-scopes-search-input {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-scopes-search-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-scopes-search-input:focus{
     --tw-ring-color: var(--color-primary);
@@ -25711,6 +27041,12 @@ input[type=radio].sr-only:checked ~ div.s-scopes-search-icon {
 
 .veloura-product-page .s-scopes-select {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-scopes-select {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-scopes-select:focus{
     border-color: #414042;
@@ -25993,6 +27329,12 @@ input[type=radio].s-scopes-sr-only:checked ~ div.absolute {
 .veloura-product-page .s-search-input {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .s-search-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-search-input:focus{
     --tw-border-opacity: 1;
     border-color: rgba(229, 231, 235, 1);
@@ -26102,6 +27444,12 @@ input[type=radio].sr-only:checked ~ div.s-search-results {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-search-no-results-placeholder {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-search-product{
     display: flex;
@@ -26213,6 +27561,12 @@ input[type=radio].sr-only:checked ~ div.s-search-results {
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-search-product-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-search-product-price{
     display: flex;
     width: 100%;
@@ -26222,6 +27576,12 @@ input[type=radio].sr-only:checked ~ div.s-search-results {
     font-weight: 700;
     color: #414042;
     color: var(--color-primary);
+}
+
+.veloura-product-page .s-product-options-option .s-search-product-price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-search-product-regular-price{
     padding-left: 0.75rem;
@@ -26311,6 +27671,12 @@ input[type=radio].sr-only:checked ~ div.s-search-action {
     color: #374151;
     color: var(--color-text-primary,#374151);
 }
+
+.veloura-product-page .s-product-options-option .s-searchable-dropdown-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-searchable-dropdown-required{
     color: #ef4444;
     color: var(--color-danger,#ef4444);
@@ -26359,6 +27725,12 @@ input[type=radio].sr-only:checked ~ div.s-search-action {
 }
 .veloura-product-page .s-searchable-dropdown-trigger {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-searchable-dropdown-trigger {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-searchable-dropdown-trigger:hover{
     border-color: #d1d5db;
@@ -26486,6 +27858,12 @@ input[type=radio].sr-only:checked ~ div.s-searchable-dropdown-panel {
     outline: 2px solid transparent;
     outline-offset: 2px;
 }
+
+.veloura-product-page .s-product-options-option .s-searchable-dropdown-search-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-searchable-dropdown-search-input::-moz-placeholder{
     color: #9ca3af;
     color: var(--color-text-secondary,#9ca3af);
@@ -26542,6 +27920,12 @@ input[type=radio].sr-only:checked ~ div.s-searchable-dropdown-panel {
 .s-searchable-dropdown-item * {
   pointer-events: none;
 }
+
+.veloura-product-page .s-product-options-option .s-searchable-dropdown-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-searchable-dropdown-item:last-child{
     border-bottom-width: 0px;
 }
@@ -26573,6 +27957,12 @@ input[type=radio].sr-only:checked ~ div.s-searchable-dropdown-panel {
     color: #414042;
     color: var(--color-primary);
 }
+
+.veloura-product-page .s-product-options-option .s-searchable-dropdown-item-check {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-searchable-dropdown-empty{
     display: flex;
     align-items: center;
@@ -26585,6 +27975,12 @@ input[type=radio].sr-only:checked ~ div.s-searchable-dropdown-panel {
     line-height: 1.25rem;
     color: #9ca3af;
     color: var(--color-text-secondary,#9ca3af);
+}
+
+.veloura-product-page .s-product-options-option .s-searchable-dropdown-empty {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-searchable-dropdown-loading{
     display: flex;
@@ -26749,6 +28145,12 @@ input[type=radio].sr-only:checked ~ div.s-searchable-dropdown-panel {
     line-height: 1.25rem;
     opacity: 0.6;
 }
+
+.veloura-product-page .s-product-options-option .s-slider-block__title p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 768px){
     .s-slider-block__title p:where([dir="ltr"], [dir="ltr"] *){
         padding-right: 4rem;
@@ -26895,6 +28297,12 @@ input[type=radio].sr-only:checked ~ div.s-slider-v-centered .s-slider-block__tit
     color: #414042;
     color: var(--color-primary);
 }
+
+.veloura-product-page .s-product-options-option .s-slider-block__display-all {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-slider-block__display-all:hover{
     opacity: 0.8;
 }
@@ -26917,6 +28325,11 @@ input[type=radio].sr-only:checked ~ div.s-slider-v-centered .s-slider-block__tit
 }
 .veloura-product-page .s-slider-nav-arrow {
   border-color: transparent;
+}
+.veloura-product-page h1.s-slider-nav-arrow.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .s-slider-nav-arrow svg{
     width: 22px;
@@ -27445,6 +28858,11 @@ salla-slider .model-entry:before{
     font-size: 1.25rem;
     line-height: 1.75rem;
 }
+.veloura-product-page h1.s-slider-thumbs .swiper-slide.video-entry.md\:text-2xl:before,.veloura-product-page h1 .s-slider-thumbs .swiper-slide.model-entry.md\:text-2xl:before {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .s-slider-thumbs .s-slider-thumbs-container .swiper-slide.swiper-slide-thumb-active:after{
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -27521,6 +28939,12 @@ salla-slider .model-entry:before{
 }
 .veloura-product-page .s-social-link a {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-social-link a {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-social-link a:hover{
     opacity: 0.75;
@@ -27644,6 +29068,12 @@ input[type=radio].sr-only:checked ~ div.s-social-share-list {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-tabs-header-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 768px){
     .s-tabs-header-item{
         padding-left: 1.75rem;
@@ -27722,6 +29152,12 @@ input[type=radio].sr-only:checked ~ div.s-social-share-list {
 
 .veloura-product-page .s-tel-input-control {
   border-color: transparent;
+}
+
+.veloura-product-page .s-product-options-option .s-tel-input-control {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-tel-input-control:focus{
     border-color: #414042;
@@ -27964,6 +29400,12 @@ input[type=radio].sr-only:checked ~ div.s-tiered-offer-progress-fill {
     line-height: 1.25rem;
     font-weight: 500;
 }
+
+.veloura-product-page .s-product-options-option .s-tiered-offer-milestone-name span {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 640px){
     .s-tiered-offer-milestone-name span{
         font-size: 0.75rem;
@@ -28037,6 +29479,12 @@ input[type=radio].sr-only:checked ~ div.s-tiered-offer-progress-fill {
 }
 .s-tiered-offer-tab-header * {
   pointer-events: none;
+}
+
+.veloura-product-page .s-product-options-option .s-tiered-offer-tab-header {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 640px){
     .s-tiered-offer-tab-header{
@@ -28162,6 +29610,12 @@ input[type=radio].sr-only:checked ~ div.s-tiered-offer-progress-fill {
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-tiered-offer-benefit-description {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-tiered-offer-skeleton-wrapper{
     padding: 1.25rem;
 }
@@ -28195,9 +29649,21 @@ input[type=radio].sr-only:checked ~ div.s-tiered-offer-progress-fill {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+
+.veloura-product-page .s-product-options-option .s-trust-badges-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-trust-badges-number{
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-trust-badges-number {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 salla-user-menu div[slot='trigger']{
     display: none;
@@ -28241,6 +29707,12 @@ salla-user-menu div[slot='trigger']{
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .s-user-menu-trigger {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-user-menu-trigger-icon svg{
     height: 1.25rem;
@@ -28426,6 +29898,12 @@ salla-user-menu div[slot='trigger']{
     --tw-text-opacity: 1;
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-user-menu-trigger-text-value {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-user-menu-dropdown{
     visibility: hidden;
@@ -28763,6 +30241,12 @@ input[type=radio].sr-only:checked ~ div.s-user-menu-red-dot .s-user-menu-avatar-
     color: rgba(55, 65, 81, 1);
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-user-profile-field-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-user-profile-field-error{
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
@@ -28991,12 +30475,24 @@ input[type=radio].sr-only:checked ~ div.s-user-menu-red-dot .s-user-menu-avatar-
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-verify-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-verify-label{
     margin-bottom: 1rem;
     display: block;
     text-align: center;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-verify-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-verify-codes{
     margin-left: -0.25rem;
@@ -29106,6 +30602,12 @@ input[type=radio].sr-only:checked ~ div.s-user-menu-red-dot .s-user-menu-avatar-
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-verify-resend-message {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-verify-error-message{
     margin-bottom: 1.25rem;
     display: block;
@@ -29144,6 +30646,12 @@ input[type=radio].sr-only:checked ~ div.s-user-menu-red-dot .s-user-menu-avatar-
     line-height: 1.25rem;
     color: #414042;
     color: var(--color-primary);
+}
+
+.veloura-product-page .s-product-options-option .s-verify-resend {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-verify-back{
     position: absolute;
@@ -29419,6 +30927,12 @@ input[type=radio].sr-only:checked ~ div.s-verify-back {
 .s-wallet-table-head-tr-th:where([dir="rtl"], [dir="rtl"] *){
     text-align: right;
 }
+
+.veloura-product-page .s-product-options-option .s-wallet-table-head-tr-th {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-wallet-table-head-tr-th:where([dir="ltr"], [dir="ltr"] *){
     text-align: left;
 }
@@ -29474,6 +30988,12 @@ input[type=radio].sr-only:checked ~ div.s-verify-back {
     white-space: nowrap;
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.veloura-product-page .s-product-options-option .s-wallet-table-tbody-tr-td {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-wallet-table-tbody-tr-td:first-child{
     font-weight: 700;
@@ -29635,9 +31155,24 @@ h2{
     line-height: 1.75rem;
 }
 
+.veloura-product-page h1h2.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
 h3{
     font-size: 1.25rem;
     line-height: 1.75rem;
+}
+
+.veloura-product-page h1h3.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+h3 {
   line-height: 38px;
 }
 
@@ -29891,6 +31426,12 @@ salla-modal:not(.hydrated) {
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page h1.grid-trigger.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 .flex-center{
@@ -30179,6 +31720,12 @@ salla-modal:not(.hydrated) {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 400;
+}
+
+.veloura-product-page .s-product-options-option .s-app-install-banner-sub-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-app-install-banner-cta{
     color: #414042;
@@ -30575,6 +32122,13 @@ input[type=text]:disabled {
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
 
+
+.veloura-product-page .s-product-options-option .form-label {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
+
 @media (min-width: 640px){
     .form-label{
         margin-top: 1px;
@@ -30614,6 +32168,13 @@ input[type=text]:disabled {
 
 .veloura-product-page .form-input {
   border-color: transparent;
+}
+
+
+.veloura-product-page .s-product-options-option .form-input {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 
 .form-input:focus{
@@ -30741,6 +32302,13 @@ salla-button.copied i:before {
   border-radius: var(--veloura-product-radius-final);
 }
 
+
+.veloura-product-page .s-product-options-option .btn {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
+
 .btn:hover{
     opacity: 0.8;
 }
@@ -30833,6 +32401,12 @@ salla-button.copied i:before {
     transition-duration: 150ms;
   flex-grow: 0;
 }
+
+.veloura-product-page .s-product-options-option .btn--rounded-gray {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .btn--rounded-gray:hover{
     background-color: rgba(229, 231, 235, 0.7);
 }
@@ -30854,6 +32428,12 @@ salla-button.copied i:before {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
+}
+
+.veloura-product-page .s-product-options-option .btn--circle-gray {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .btn--circle-gray:hover{
     background-color: rgba(229, 231, 235, 0.5);
@@ -30996,6 +32576,11 @@ input[type=radio].sr-only:checked ~ div.btn--close {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
+.veloura-product-page h1.btn--close-sm.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .btn--close-sm:where([dir="ltr"], [dir="ltr"] *){
     right: 0px;
 }
@@ -31027,6 +32612,12 @@ input[type=radio].sr-only:checked ~ div.btn--close {
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .btn--collapse {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 480px){
     .btn--collapse:where([dir="ltr"], [dir="ltr"] *){
@@ -31597,6 +33188,13 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   border-color: transparent;
 }
 
+
+.veloura-product-page .s-product-options-option .topnav-link-item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
+
 .topnav-link-item:hover{
     opacity: 0.8;
 }
@@ -31776,6 +33374,11 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 
 .veloura-product-page .header-btn__icon {
   border-color: transparent;
+}
+.veloura-product-page h1.header-btn__icon.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .header-btn__icon.icon{
     margin-right: 9px;
@@ -33447,6 +35050,12 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
 .veloura-product-page .store-footer .social-link {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .store-footer .social-link {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .store-footer .social-link:hover{
     opacity: 0.75;
 }
@@ -34683,6 +36292,13 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 300ms;
     }
+
+
+.veloura-product-page .s-product-options-option .main-menu li > a {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
   .main-menu li > a:hover{
         color: #414042;
         color: var(--color-primary);
@@ -35275,6 +36891,12 @@ input[type=radio].sr-only:checked ~ div.dropdown__menu {
 .veloura-product-page .tag {
   border-color: transparent;
 }
+
+.veloura-product-page .s-product-options-option .tag {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .tag--primary{
     border-color: #414042;
     border-color: var(--color-primary);
@@ -35412,6 +37034,11 @@ input[type=radio].sr-only:checked ~ div.dropdown__menu {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.veloura-product-page h1.form--user-profile .s-file-upload-wrapper .profile-filepond-placholder-icon i.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 
 /* 
 * thank you page 
@@ -35547,6 +37174,12 @@ input[type=radio].sr-only:checked ~ div.dropdown__menu {
     line-height: 1.25rem;
     opacity: 0.6;
 }
+
+.veloura-product-page .s-product-options-option .s-block__title p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 640px){
     .s-block__title p{
         overflow: hidden;
@@ -35623,6 +37256,12 @@ input[type=radio].sr-only:checked ~ div.dropdown__menu {
     line-height: 1.25rem;
     font-weight: 700;
     opacity: 0.8;
+}
+
+.veloura-product-page .s-product-options-option .s-block__display-all {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-block__display-all:hover{
     opacity: 1;
@@ -36279,6 +37918,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
 }
+
+.veloura-product-page .s-product-options-option .s-block--slider-with-bg .s-slider-block__display-all {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-block--slider-with-bg .s-slider-block__display-all:hover{
     opacity: 0.8;
 }
@@ -36308,6 +37953,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .s-block--slider-with-bg .s-slider-block__display-all {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-block--slider-with-bg .s-slider-block__display-all:hover{
     opacity: 0.8;
@@ -36496,6 +38147,12 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+.veloura-product-page .s-product-options-option .slide--cat-entry h2 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 
 /*
@@ -36710,12 +38367,24 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-block--features__item h2 {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-block--features__item p{
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-block--features__item p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .s-block--features__item:hover .feature-icon i {
   animation: toRightFromLeft 0.3s forwards;
@@ -40853,6 +42522,13 @@ input[type=radio].sr-only:checked ~ div.promotion-title {
   border-color: var(--color-main);
 }
 
+
+.veloura-product-page .s-product-options-option .promotion-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
+
 .promotion-title:where([dir="ltr"], [dir="ltr"] *){
     left: 0px;
     border-top-right-radius: 0.375rem;
@@ -41839,6 +43515,11 @@ input[type=radio].sr-only:checked ~ div.model-viewer__poster {
   color: #7c8082;
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.veloura-product-page h1.product-option-uploader .s-file-upload-wrapper .product-option-uploader-placholder-icon i.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 @media (max-width: 640px) {
@@ -43808,6 +45489,124 @@ html.veloura-dark .veloura-product-page {
   visibility: visible !important;
 }
 
+/* ======================================================
+   15) Hotfix V11 - spacing normalization, mobile sharp corners,
+   persistent read-more toggle, and top-spacing cleanup
+====================================================== */
+/* Reduce excessive top spacing above the product title/content */
+.veloura-product-page .main-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.veloura-product-page .product-brand {
+  margin-bottom: 10px !important;
+}
+
+.veloura-product-page h1.text-xl.md\:text-2xl {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  line-height: 1.6 !important;
+}
+
+.veloura-product-page .veloura-product-category-under-title,
+.veloura-product-page .product-entry__sub-title,
+.veloura-product-page .veloura-product-header-price,
+.veloura-product-page .veloura-product-stock-radar,
+.veloura-product-page .veloura-product-discount-countdown,
+.veloura-product-page .veloura-product-coupon,
+.veloura-product-page .veloura-product-sku-card,
+.veloura-product-page .veloura-product-options-wrap,
+.veloura-product-page .sticky-product-bar,
+.veloura-product-page .veloura-product-payment-methods--last,
+.veloura-product-page .product__description {
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+}
+
+.veloura-product-page .main-content > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Normalize spacing between the main detail cards */
+.veloura-product-page .veloura-product-stock-radar,
+.veloura-product-page .veloura-product-sku-card,
+.veloura-product-page .veloura-product-payment-methods,
+.veloura-product-page .product__description,
+.veloura-product-page .veloura-product-options-wrap,
+.veloura-product-page .sticky-product-bar {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+/* On mobile, keep lower corners sharp on the card-like blocks that still looked rounded */
+@media (max-width: 767px) {
+  .veloura-product-page .sticky-product-bar,
+  .veloura-product-page .veloura-product-sticky-bar,
+  .veloura-product-page .veloura-product-payment-methods,
+  .veloura-product-page .veloura-product-options-wrap,
+  .veloura-product-page .product__description,
+  .veloura-product-page .veloura-product-sku-card,
+  .veloura-product-page .veloura-product-stock-radar,
+  .veloura-product-page .veloura-product-coupon {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+/* Read more button: no shadow, persistent toggle text */
+.veloura-product-page .product__description {
+  margin-bottom: 34px !important;
+  padding-bottom: 26px !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more {
+  min-width: 170px !important;
+  min-height: 40px !important;
+  padding: 9px 28px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 7px #ffffff !important;
+  box-shadow: 0 0 0 7px var(--veloura-product-bg-inline, #ffffff) !important;
+  background: #414042 !important;
+  background: var(--color-primary, var(--veloura-product-primary, #004d65)) !important;
+  color: #ffffff !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more .veloura-product-read-more__text {
+  display: inline-block !important;
+  color: inherit !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more:hover,
+.veloura-product-page #btn-show-more.veloura-product-read-more:focus,
+.veloura-product-page #btn-show-more.veloura-product-read-more.is-expanded {
+  box-shadow: 0 0 0 7px #ffffff !important;
+  box-shadow: 0 0 0 7px var(--veloura-product-bg-inline, #ffffff) !important;
+  background: #414042 !important;
+  background: var(--color-primary, var(--veloura-product-primary, #004d65)) !important;
+  color: #ffffff !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+}
+
+/* Slightly tighter option block spacing and right alignment */
+.veloura-product-page .s-product-options-option {
+  margin-bottom: 14px !important;
+}
+
+.veloura-product-page .s-product-options-option-label,
+.veloura-product-page .s-product-options-option > label,
+.veloura-product-page .s-product-options-option .form-label {
+  text-align: right !important;
+}
+
+.veloura-product-page .s-product-options-option small,
+.veloura-product-page .s-product-options-option .text-sm {
+  display: block !important;
+  text-align: right !important;
+  margin-top: 2px !important;
+}
+
 .brands-nav{
     display: flex;
     flex-wrap: wrap;
@@ -43872,6 +45671,12 @@ html.veloura-dark .veloura-product-page {
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+.veloura-product-page .s-product-options-option .brands-nav__item {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .brands-nav__item:hover{
     --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -43983,6 +45788,13 @@ html.veloura-dark .veloura-product-page {
 
 .veloura-product-page .brand-char {
   border-color: transparent;
+}
+
+
+.veloura-product-page .s-product-options-option .brand-char {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 
 .brand-char:hover{
@@ -44268,6 +46080,12 @@ html.veloura-dark .veloura-product-page {
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .loyalty__banner .loyalty-points {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .loyalty__banner .loyalty-points .count-number{
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -44414,12 +46232,23 @@ input[type=radio].sr-only:checked ~ div.points-ways__list .way-item__icon span {
     line-height: 1.75rem;
     font-weight: 700;
 }
+.veloura-product-page h1.points-ways__list .way-item__content h4.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 .points-ways__list .way-item__content p{
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .points-ways__list .way-item__content p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 .points-ways__list .way-item__action{
     margin-top: auto;
@@ -44577,6 +46406,12 @@ input[type=radio].sr-only:checked ~ div.points-ways__list .way-item__icon span {
     color: rgba(136, 136, 136, 1);
     color: rgba(136, 136, 136, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .landing-page > header .header-content-inner > p {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 @media (min-width: 768px){
     .landing-page > header .header-content-inner > p{
         font-size: 1rem;
@@ -44593,6 +46428,11 @@ input[type=radio].sr-only:checked ~ div.points-ways__list .way-item__icon span {
     --tw-text-opacity: 1;
     color: rgba(234, 84, 85, 1);
     color: rgba(234, 84, 85, var(--tw-text-opacity, 1));
+}
+.veloura-product-page h1.landing-page > header .header-content-offer p.md\:text-2xl {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 .landing-page > header .header-content-offer h3{
     margin-bottom: 4rem;
@@ -44890,6 +46730,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
 }
+
+.veloura-product-page .s-product-options-option .s-add-product-toast__title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-add-product-toast__close{
     display: flex;
     height: 1.5rem;
@@ -44987,6 +46833,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
+
+.veloura-product-page .s-product-options-option .s-add-product-toast__name {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .s-add-product-toast__name:hover{
     color: #414042;
     color: var(--color-primary);
@@ -45010,6 +46862,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
         font-size: 0.875rem;
         line-height: 1.25rem;
     }
+
+
+.veloura-product-page .s-product-options-option .s-add-product-toast__options span {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 }
 .s-add-product-toast__show-more{
     margin-top: 0.125rem;
@@ -45028,6 +46887,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
         font-size: 0.875rem;
         line-height: 1.25rem;
     }
+
+
+.veloura-product-page .s-product-options-option .s-add-product-toast__show-more {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 }
 .s-add-product-toast__price{
     display: flex;
@@ -45041,6 +46907,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     --tw-text-opacity: 1;
     color: rgba(31, 41, 55, 1);
     color: rgba(31, 41, 55, var(--tw-text-opacity, 1));
+}
+
+.veloura-product-page .s-product-options-option .s-add-product-toast__price {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 @media (min-width: 768px) {
   .s-add-product-toast__price{
@@ -45071,6 +46943,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
         font-size: 0.875rem;
         line-height: 1.25rem;
     }
+
+
+.veloura-product-page .s-product-options-option .s-add-product-toast__price-original {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 }
 .s-add-product-toast__actions{
     display: flex;
@@ -46595,6 +48474,12 @@ iframe.tawk-widget {
     font-size: 0.875rem;
     line-height: 1.5rem;
 }
+
+.veloura-product-page .s-product-options-option .swal2-container .swal2-popup.swal2-toast .swal2-title {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
+}
 .swal2-container .swal2-popup.swal2-toast .swal2-close{
     flex-shrink: 0;
     --tw-scale-x: .75;
@@ -47581,6 +49466,13 @@ body.dark .veloura-category-card__title {
   outline: 0;
   box-shadow: none;
   border-radius: var(--veloura-product-radius-final);
+}
+
+
+.veloura-product-page .s-product-options-option .target\:btn:target {
+  display: block;
+  text-align: right;
+  margin-top: 2px;
 }
 
 .target\:btn:target:hover{
