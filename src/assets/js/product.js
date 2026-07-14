@@ -126,14 +126,39 @@ class Product extends BasePage {
 
         const refreshSlides = () => {
             document
+                .querySelectorAll('.image-slider .swiper-slide, .image-slider .swiper-slide > a, .image-slider .swiper-slide picture, .image-slider .swiper-slide .magnify-wrapper')
+                .forEach((node) => {
+                    node.style.opacity = '1';
+                    node.style.visibility = 'visible';
+                    node.style.display = node.classList?.contains('swiper-slide') ? 'flex' : 'block';
+                    node.removeAttribute?.('hidden');
+                });
+
+            document
                 .querySelectorAll('.image-slider .swiper-slide img')
                 .forEach((img) => {
                     img.style.opacity = '1';
                     img.style.visibility = 'visible';
+                    img.style.display = 'block';
                     img.removeAttribute('hidden');
+
+                    const dataSrc = img.getAttribute('data-src');
+                    const dataSrcset = img.getAttribute('data-srcset');
+
+                    if ((!img.getAttribute('src') || img.getAttribute('src') === '') && dataSrc) {
+                        img.setAttribute('src', dataSrc);
+                    }
+
+                    if ((!img.getAttribute('srcset') || img.getAttribute('srcset') === '') && dataSrcset) {
+                        img.setAttribute('srcset', dataSrcset);
+                    }
                 });
 
             const swiper = slider.swiper || slider.slider || null;
+
+            if (swiper?.lazy?.load) {
+                swiper.lazy.load();
+            }
 
             if (swiper?.update) {
                 swiper.update();
@@ -144,9 +169,20 @@ class Product extends BasePage {
             }
         };
 
-        setTimeout(refreshSlides, 250);
-        slider.addEventListener('slideChange', () => setTimeout(refreshSlides, 100));
-        window.addEventListener('resize', () => setTimeout(refreshSlides, 100));
+        const delayedRefresh = () => {
+            window.requestAnimationFrame(refreshSlides);
+            window.setTimeout(refreshSlides, 80);
+            window.setTimeout(refreshSlides, 220);
+        };
+
+        delayedRefresh();
+        slider.addEventListener('slideChange', delayedRefresh);
+        slider.addEventListener('transitionend', delayedRefresh, true);
+        slider.addEventListener('click', delayedRefresh, true);
+        window.addEventListener('resize', delayedRefresh);
+
+        const observer = new MutationObserver(delayedRefresh);
+        observer.observe(slider, { childList: true, subtree: true, attributes: true });
     }
 
     initVelouraPurchaseButtons() {

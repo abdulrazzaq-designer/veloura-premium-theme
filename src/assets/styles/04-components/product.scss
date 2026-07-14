@@ -1923,3 +1923,88 @@ html.veloura-dark .veloura-product-page {
     padding-bottom: 225px !important;
   }
 }
+
+
+/* ======================================================
+   14) Hotfix V9 - purchase card order, mobile bottom corners,
+   read-more polish, and stronger image slider recovery
+====================================================== */
+
+/* Keep purchase card order explicit: quantity > price > buttons */
+.veloura-product-page .sticky-product-bar__quantity {
+  order: 1 !important;
+}
+
+.veloura-product-page .veloura-product-cart-price-row {
+  order: 2 !important;
+}
+
+.veloura-product-page .sticky-product-bar__btn,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn {
+  order: 3 !important;
+}
+
+/* Mobile sticky purchase bar: bottom corners must stay sharp */
+@media (max-width: 767px) {
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+    border-top-left-radius: 22px !important;
+    border-top-right-radius: 22px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Read more button: wider, ring uses card/background color, button uses store primary color */
+.veloura-product-page .product__description {
+  margin-bottom: 42px !important;
+  padding-bottom: 30px !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more {
+  min-width: 156px !important;
+  min-height: 42px !important;
+  padding: 10px 34px !important;
+  border: 6px solid var(--veloura-product-card-bg, #f8fafc) !important;
+  background: var(--veloura-product-primary, var(--color-primary, #004d65)) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, .15) !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more:hover,
+.veloura-product-page #btn-show-more.veloura-product-read-more:focus {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  opacity: .96 !important;
+}
+
+/* Stronger media visibility rules for the product gallery */
+.veloura-product-page .image-slider,
+.veloura-product-page .image-slider .swiper,
+.veloura-product-page .image-slider .swiper-wrapper,
+.veloura-product-page .image-slider .swiper-slide,
+.veloura-product-page .image-slider .magnify-wrapper,
+.veloura-product-page .image-slider .swiper-slide > a,
+.veloura-product-page .image-slider .swiper-slide > picture,
+.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper,
+.veloura-product-page .image-slider .swiper-slide picture,
+.veloura-product-page .image-slider .swiper-slide source,
+.veloura-product-page .image-slider .swiper-slide img {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.veloura-product-page .image-slider .swiper-slide,
+.veloura-product-page .image-slider .swiper-slide > a,
+.veloura-product-page .image-slider .swiper-slide > picture,
+.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.veloura-product-page .image-slider .swiper-slide img[hidden],
+.veloura-product-page .image-slider .swiper-slide [hidden] {
+  display: block !important;
+}
