@@ -17,7 +17,6 @@ class Product extends BasePage {
         this.initVelouraProductPageState();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
-        this.initVelouraSliderFix();
         this.initVelouraPurchaseButtons();
         this.initVelouraReadMore();
 
@@ -117,42 +116,6 @@ class Product extends BasePage {
         });
     }
 
-
-    initVelouraSliderFix() {
-        const slider = document.querySelector('salla-slider.details-slider');
-
-        if (!slider || slider.dataset.velouraGalleryReady === '1') {
-            return;
-        }
-
-        slider.dataset.velouraGalleryReady = '1';
-
-        const updateGallery = () => {
-            slider.querySelectorAll('[slot="items"] img, .veloura-product-main-image').forEach((img) => {
-                img.loading = 'eager';
-                img.removeAttribute('hidden');
-                img.style.opacity = '1';
-                img.style.visibility = 'visible';
-            });
-
-            window.requestAnimationFrame(() => {
-                try {
-                    slider.update?.();
-                    slider.updateAutoHeight?.(220);
-                } catch (error) {
-                    console.warn('Veloura gallery update skipped:', error);
-                }
-            });
-        };
-
-        slider.addEventListener('afterInit', updateGallery);
-        slider.addEventListener('slideChangeTransitionEnd', updateGallery);
-        slider.addEventListener('load', updateGallery, true);
-        window.addEventListener('resize', updateGallery);
-
-        window.setTimeout(updateGallery, 120);
-        window.setTimeout(updateGallery, 500);
-    }
 
     initVelouraPurchaseButtons() {
         const component = document.querySelector(

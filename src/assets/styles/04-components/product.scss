@@ -575,24 +575,29 @@ html.veloura-dark .veloura-product-page {
 
 
 /* ======================================================
-   3) Main Image + Wishlist + Default Salla Share
+   3–4) Product Gallery — Raed-native geometry
+   Do not override Swiper wrapper/slide width, display, transform or overflow.
 ====================================================== */
 
 .veloura-product-page .details-slider.image-slider,
-.veloura-product-page salla-slider.details-slider.image-slider,
-.veloura-product-page .image-slider {
+.veloura-product-page salla-slider.details-slider.image-slider {
   position: relative !important;
-  overflow: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
   border-radius: var(--veloura-product-radius-final) !important;
 }
 
-.veloura-product-page .image-slider .swiper,
-.veloura-product-page .image-slider .swiper-wrapper,
-.veloura-product-page .image-slider .swiper-slide,
-.veloura-product-page .image-slider .magnify-wrapper,
-.veloura-product-page .image-slider img {
+/* Only the actual Swiper viewport clips the visible image. */
+.veloura-product-page .details-slider.image-slider .swiper {
   border-radius: var(--veloura-product-radius-final) !important;
   overflow: hidden !important;
+}
+
+/* Never modify .swiper-wrapper or .swiper-slide geometry here. */
+.veloura-product-page .details-slider.image-slider img {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .veloura-product-media-actions {
@@ -608,11 +613,9 @@ html.veloura-dark .veloura-product-page {
   left: 14px !important;
   right: auto !important;
   z-index: 21 !important;
-
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-
   pointer-events: auto !important;
 }
 
@@ -625,33 +628,26 @@ html.veloura-dark .veloura-product-page {
   height: 42px !important;
   min-width: 42px !important;
   min-height: 42px !important;
-
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-
   padding: 0 !important;
   margin: 0 !important;
-
   border-radius: var(--veloura-product-radius-final) !important;
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
-
   background: var(--veloura-product-inner-bg) !important;
   color: var(--veloura-product-primary) !important;
-
   cursor: pointer !important;
   opacity: 1 !important;
   visibility: visible !important;
-  overflow: visible !important;
 }
 
 .veloura-product-media-action-btn i,
 .veloura-product-media-wishlist i,
 .veloura-product-media-share i,
 .veloura-product-media-share svg {
-  display: inline-flex !important;
   width: 19px !important;
   height: 19px !important;
   font-size: 19px !important;
@@ -665,227 +661,54 @@ html.veloura-dark .veloura-product-page {
   top: 14px !important;
   right: 14px !important;
   left: auto !important;
-  bottom: auto !important;
   z-index: 21 !important;
-
-  width: auto !important;
   max-width: calc(100% - 128px) !important;
   min-height: 42px !important;
-
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-
   padding: 9px 15px !important;
   margin: 0 !important;
-
   border-radius: var(--veloura-product-radius-final) !important;
   border: 0 !important;
   box-shadow: none !important;
-
   background: var(--veloura-product-primary) !important;
-  color: #ffffff !important;
-
+  color: #fff !important;
   font-size: 13px !important;
   font-weight: 900 !important;
   line-height: 1.35 !important;
   text-align: center !important;
-  white-space: normal !important;
-
   pointer-events: auto !important;
-  transform: none !important;
 }
 
-/* Hide old/duplicate wishlist/share under details */
-.veloura-product-page .details-slider.image-slider > .btn--wishlist:not(.veloura-product-media-wishlist),
-.veloura-product-page .image-slider > .btn--wishlist:not(.veloura-product-media-wishlist),
-.product-single .veloura-product-native-share {
+.veloura-product-page.veloura-product-hide-thumbs .details-slider [slot="thumbs"] {
   display: none !important;
 }
 
-
-/* ======================================================
-   4) Image Slider Arrows + Thumbnails
-====================================================== */
-
-/* Hide huge slider arrows */
-.veloura-product-page .details-slider.image-slider .s-slider-next,
-.veloura-product-page .details-slider.image-slider .s-slider-prev,
-.veloura-product-page .details-slider.image-slider .swiper-button-next,
-.veloura-product-page .details-slider.image-slider .swiper-button-prev,
-.veloura-product-page .details-slider.image-slider button.s-slider-next,
-.veloura-product-page .details-slider.image-slider button.s-slider-prev,
-.veloura-product-page .details-slider.image-slider button[class*="next"],
-.veloura-product-page .details-slider.image-slider button[class*="prev"],
-.veloura-product-page .image-slider .s-slider-next,
-.veloura-product-page .image-slider .s-slider-prev,
-.veloura-product-page .image-slider .swiper-button-next,
-.veloura-product-page .image-slider .swiper-button-prev,
-.veloura-product-page .image-slider button[class*="next"],
-.veloura-product-page .image-slider button[class*="prev"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-.veloura-product-page.veloura-product-hide-thumbs .details-slider [slot="thumbs"],
-.veloura-product-page.veloura-product-hide-thumbs .veloura-product-thumbs {
-  display: none !important;
-}
-
-.veloura-product-page .details-slider.image-slider [slot="thumbs"],
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper {
-  scrollbar-width: none !important;
-}
-
-.veloura-product-page .details-slider.image-slider [slot="thumbs"]::-webkit-scrollbar,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs::-webkit-scrollbar,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper::-webkit-scrollbar {
-  display: none !important;
-}
-
+/* Style slotted thumbnails only; Salla controls their track and dimensions. */
 .veloura-product-page .veloura-product-thumb-item,
-.veloura-product-page .details-slider.image-slider [slot="thumbs"] .slide--one-fourth,
-.veloura-product-page .details-slider.image-slider [slot="thumbs"] .swiper-slide,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs .swiper-slide,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper .swiper-slide {
-  width: 64px !important;
-  height: 104px !important;
-  min-width: 64px !important;
-  min-height: 104px !important;
-
+.veloura-product-page .veloura-product-thumb-item img {
   border-radius: var(--veloura-product-radius-final) !important;
-  overflow: hidden !important;
+}
 
+.veloura-product-page .veloura-product-thumb-item {
+  overflow: hidden !important;
   background: var(--veloura-product-inner-bg) !important;
   border: 0 !important;
-  outline: 0 !important;
   box-shadow: none !important;
 }
 
-.veloura-product-page .veloura-product-thumb-item img,
-.veloura-product-page .details-slider.image-slider [slot="thumbs"] img,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs img,
-.veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper img {
+.veloura-product-page .veloura-product-thumb-item img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: inherit !important;
 }
 
-/* Bottom thumbnails */
-.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider,
-.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider {
-  margin-bottom: 64px !important;
+/* Hide duplicate legacy actions only. */
+.veloura-product-page .details-slider.image-slider > .btn--wishlist:not(.veloura-product-media-wishlist),
+.product-single .veloura-product-native-share {
+  display: none !important;
 }
-
-.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider [slot="thumbs"],
-.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider .s-slider-thumbs,
-.veloura-product-page:not(.veloura-product-thumbs-right) .details-slider.image-slider .s-slider-thumbs-wrapper,
-.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider [slot="thumbs"],
-.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider .s-slider-thumbs,
-.veloura-product-page.veloura-product-thumbs-below .details-slider.image-slider .s-slider-thumbs-wrapper {
-  position: relative !important;
-  z-index: 30 !important;
-  margin-top: -54px !important;
-
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 12px !important;
-
-  overflow-x: auto !important;
-  overflow-y: visible !important;
-  padding: 0 10px 8px !important;
-}
-
-/* Right thumbnails on desktop */
-@media (min-width: 768px) {
-  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider {
-    margin-bottom: 0 !important;
-    padding-inline-end: 84px !important;
-  }
-
-  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider [slot="thumbs"],
-  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider .s-slider-thumbs,
-  .veloura-product-page.veloura-product-thumbs-right .details-slider.image-slider .s-slider-thumbs-wrapper {
-    position: absolute !important;
-    inset-inline-end: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 30 !important;
-
-    width: 72px !important;
-    max-height: calc(100% - 32px) !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 0 !important;
-    margin-top: 0 !important;
-  }
-}
-
-/* Mobile thumbnails */
-@media (max-width: 767px) {
-  .veloura-product-page .details-slider.image-slider {
-    margin-bottom: 58px !important;
-    padding-inline-end: 0 !important;
-  }
-
-  .veloura-product-page .details-slider.image-slider [slot="thumbs"],
-  .veloura-product-page .details-slider.image-slider .s-slider-thumbs,
-  .veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper {
-    position: relative !important;
-    margin-top: -44px !important;
-    inset: auto !important;
-    transform: none !important;
-    width: auto !important;
-    max-width: 100% !important;
-
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 10px !important;
-
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-  }
-
-  .veloura-product-page .veloura-product-thumb-item,
-  .veloura-product-page .details-slider.image-slider [slot="thumbs"] .slide--one-fourth,
-  .veloura-product-page .details-slider.image-slider [slot="thumbs"] .swiper-slide,
-  .veloura-product-page .details-slider.image-slider .s-slider-thumbs .swiper-slide,
-  .veloura-product-page .details-slider.image-slider .s-slider-thumbs-wrapper .swiper-slide {
-    width: 58px !important;
-    height: 90px !important;
-    min-width: 58px !important;
-    min-height: 90px !important;
-  }
-}
-
-/* Fixed height mode */
-.veloura-product-images-fixed_all .image-slider .swiper,
-.veloura-product-images-fixed_all .image-slider .swiper-wrapper,
-.veloura-product-images-fixed_all .image-slider .swiper-slide,
-.veloura-product-images-fixed_all .image-slider .magnify-wrapper {
-  height: clamp(420px, 52vw, 650px) !important;
-}
-
-.veloura-product-images-fixed_all .image-slider img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-}
-
 
 /* ======================================================
    5) Category / Brand / Stock / Coupon
@@ -1506,25 +1329,6 @@ html.veloura-dark .veloura-product-page {
    clean final behavior for images, prices, options, purchase card and read-more
 ====================================================== */
 
-/* ---------- Product image swipe safety ---------- */
-.veloura-product-page .image-slider .swiper,
-.veloura-product-page .image-slider .swiper-wrapper,
-.veloura-product-page .image-slider .swiper-slide,
-.veloura-product-page .image-slider .magnify-wrapper {
-  background: transparent !important;
-}
-
-.veloura-product-page .image-slider .swiper-slide > a,
-.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper,
-.veloura-product-page .image-slider .magnify-wrapper,
-.veloura-product-page .image-slider .magnify-wrapper img,
-.veloura-product-page .image-slider .swiper-slide img {
-  display: block !important;
-  width: 100% !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
 /* ---------- Canonical header price under product title ---------- */
 .veloura-product-page .veloura-product-header-price {
   width: 100% !important;
@@ -1979,37 +1783,6 @@ html.veloura-dark .veloura-product-page {
   opacity: .96 !important;
 }
 
-/* Stronger media visibility rules for the product gallery */
-.veloura-product-page .image-slider,
-.veloura-product-page .image-slider .swiper,
-.veloura-product-page .image-slider .swiper-wrapper,
-.veloura-product-page .image-slider .swiper-slide,
-.veloura-product-page .image-slider .magnify-wrapper,
-.veloura-product-page .image-slider .swiper-slide > a,
-.veloura-product-page .image-slider .swiper-slide > picture,
-.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper,
-.veloura-product-page .image-slider .swiper-slide picture,
-.veloura-product-page .image-slider .swiper-slide source,
-.veloura-product-page .image-slider .swiper-slide img {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.veloura-product-page .image-slider .swiper-slide,
-.veloura-product-page .image-slider .swiper-slide > a,
-.veloura-product-page .image-slider .swiper-slide > picture,
-.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.veloura-product-page .image-slider .swiper-slide img[hidden],
-.veloura-product-page .image-slider .swiper-slide [hidden] {
-  display: block !important;
-}
-
-
 /* ======================================================
    15) V10 final corrections
    - Price above quantity
@@ -2071,23 +1844,6 @@ html.veloura-dark .veloura-product-page {
   background: var(--veloura-product-primary, var(--color-primary, #004d65)) !important;
   color: #ffffff !important;
 }
-
-/* Undo risky forced flex rules from the previous hotfix and let Swiper manage slides */
-.veloura-product-page .image-slider .swiper-slide,
-.veloura-product-page .image-slider .swiper-slide > a,
-.veloura-product-page .image-slider .swiper-slide > picture,
-.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper {
-  display: block !important;
-}
-
-.veloura-product-page .image-slider [slot="items"] img,
-.veloura-product-page .image-slider [slot="thumbs"] img,
-.veloura-product-page .image-slider .swiper-slide img {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
 
 /* ======================================================
    15) Hotfix V11 - spacing normalization, mobile sharp corners,
@@ -2369,267 +2125,4 @@ html.veloura-dark .veloura-product-page {
     position: relative !important;
     z-index: 1 !important;
   }
-}
-
-
-/* ======================================================
-   19) V15 - clean Salla/Swiper product gallery
-   The viewport clips; the moving wrapper must NEVER clip.
-====================================================== */
-
-.veloura-product-page .sidebar,
-.veloura-product-page .veloura-product-gallery,
-.veloura-product-page salla-slider.veloura-product-gallery {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow: visible !important;
-}
-
-/* Swiper viewport: this is the ONLY layer that clips slides. */
-.veloura-product-page .veloura-product-gallery .swiper {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
-  border-radius: var(--veloura-product-radius-final, 28px) !important;
-}
-
-/* Moving strip: it must remain open so the next/previous slides exist. */
-.veloura-product-page .veloura-product-gallery .swiper-wrapper {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: stretch !important;
-  width: auto !important;
-  max-width: none !important;
-  min-width: 100% !important;
-  height: auto !important;
-  overflow: visible !important;
-  border-radius: 0 !important;
-  box-sizing: border-box !important;
-}
-
-/* Exactly one complete product image per view. */
-.veloura-product-page .veloura-product-gallery .veloura-product-main-slide,
-.veloura-product-page .veloura-product-gallery [slot="items"] > .veloura-product-main-slide {
-  flex: 0 0 100% !important;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: block !important;
-  position: relative !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-  border-radius: var(--veloura-product-radius-final, 28px) !important;
-  background: transparent !important;
-}
-
-.veloura-product-page .veloura-product-gallery .veloura-product-main-image {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  height: auto !important;
-  max-height: none !important;
-  margin: 0 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  object-position: center center !important;
-  border-radius: inherit !important;
-}
-
-/* Fixed-height setting remains available without affecting slide widths. */
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper,
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper-wrapper,
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-slide {
-  height: clamp(420px, 52vw, 650px) !important;
-}
-
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-}
-
-/* Auto-height setting follows the real ratio of the active image. */
-.veloura-product-page.veloura-product-images-auto_each .veloura-product-gallery .swiper,
-.veloura-product-page.veloura-product-images-auto_each .veloura-product-gallery .swiper-wrapper,
-.veloura-product-page.veloura-product-images-auto_each .veloura-product-gallery .veloura-product-main-slide {
-  height: auto !important;
-}
-
-/* Thumbnails may overlap below the main viewport; do not clip their container. */
-.veloura-product-page .veloura-product-gallery [slot="thumbs"],
-.veloura-product-page .veloura-product-gallery .s-slider-thumbs,
-.veloura-product-page .veloura-product-gallery .s-slider-thumbs-wrapper {
-  z-index: 35 !important;
-}
-
-.veloura-product-page .veloura-product-gallery .veloura-product-thumb-image {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* ======================================================
-   20) V16 - final gallery layout reset
-   Fixes the mobile partial-slide and desktop 100%-wide gallery.
-====================================================== */
-
-/* The previous V15 rule made .sidebar 100% on desktop as well.
-   Restore the product two-column layout explicitly. */
-.veloura-product-page .sidebar,
-.veloura-product-page .main-content {
-  min-width: 0 !important;
-  box-sizing: border-box !important;
-}
-
-@media (max-width: 767px) {
-  .veloura-product-page .sidebar,
-  .veloura-product-page .main-content {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: 0 0 100% !important;
-    margin-inline: 0 !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .veloura-product-page .sidebar {
-    width: calc(50% - 16px) !important;
-    max-width: calc(50% - 16px) !important;
-    flex: 0 0 calc(50% - 16px) !important;
-    margin-inline-end: 32px !important;
-    margin-inline-start: 0 !important;
-  }
-
-  .veloura-product-page .main-content {
-    width: calc(50% - 16px) !important;
-    max-width: calc(50% - 16px) !important;
-    flex: 0 0 calc(50% - 16px) !important;
-  }
-}
-
-/* Slider host and viewport */
-.veloura-product-page .veloura-product-gallery,
-.veloura-product-page salla-slider.veloura-product-gallery {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow: visible !important;
-  box-sizing: border-box !important;
-}
-
-.veloura-product-page .veloura-product-gallery .swiper {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-  border-radius: var(--veloura-product-radius-final, 28px) !important;
-}
-
-/* Use Swiper's normal geometry. The wrapper is 100% of the viewport,
-   while its children remain one full viewport each. */
-.veloura-product-page .veloura-product-gallery .swiper-wrapper {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: stretch !important;
-  width: 100% !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  height: auto !important;
-  overflow: visible !important;
-  box-sizing: content-box !important;
-  border-radius: 0 !important;
-}
-
-.veloura-product-page .veloura-product-gallery .swiper-slide,
-.veloura-product-page .veloura-product-gallery .veloura-product-main-slide {
-  flex: 0 0 100% !important;
-  flex-shrink: 0 !important;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
-  position: relative !important;
-  border-radius: var(--veloura-product-radius-final, 28px) !important;
-}
-
-.veloura-product-page .veloura-product-gallery .veloura-product-main-image,
-.veloura-product-page .veloura-product-gallery .swiper-slide > img,
-.veloura-product-page .veloura-product-gallery .swiper-slide > picture > img {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  height: auto !important;
-  margin: 0 auto !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-  border-radius: inherit !important;
-}
-
-/* Fixed height remains an explicit optional mode. */
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper,
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper-wrapper,
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .swiper-slide,
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-slide {
-  height: clamp(420px, 52vw, 650px) !important;
-}
-
-.veloura-product-page.veloura-product-images-fixed_all .veloura-product-gallery .veloura-product-main-image {
-  height: 100% !important;
-  object-fit: contain !important;
-}
-
-/* Bottom thumbnails: full container width, centered, and never clipped sideways. */
-.veloura-product-page .veloura-product-gallery [slot="thumbs"],
-.veloura-product-page .veloura-product-gallery .s-slider-thumbs,
-.veloura-product-page .veloura-product-gallery .s-slider-thumbs-wrapper {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
-}
-
-@media (max-width: 767px) {
-  .veloura-product-page .veloura-product-gallery [slot="thumbs"],
-  .veloura-product-page .veloura-product-gallery .s-slider-thumbs,
-  .veloura-product-page .veloura-product-gallery .s-slider-thumbs-wrapper {
-    position: relative !important;
-    inset: auto !important;
-    transform: none !important;
-    margin: -44px auto 0 !important;
-    padding: 0 12px 8px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 10px !important;
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-    scrollbar-width: none !important;
-  }
-}
-
-/* The original product row must never overflow the viewport. */
-.veloura-product-page [id^="product-"] {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
 }
