@@ -2008,3 +2008,82 @@ html.veloura-dark .veloura-product-page {
 .veloura-product-page .image-slider .swiper-slide [hidden] {
   display: block !important;
 }
+
+
+/* ======================================================
+   15) V10 final corrections
+   - Price above quantity
+   - Sharp lower corners on mobile
+   - Read-more stays and toggles to "عرض أقل"
+   - Ring uses the actual store background
+   - Safer gallery rendering
+====================================================== */
+
+/* Purchase card order: price first, quantity second, buttons last */
+.veloura-product-page .veloura-product-cart-price-row {
+  order: 1 !important;
+}
+
+.veloura-product-page .sticky-product-bar__quantity {
+  order: 2 !important;
+}
+
+.veloura-product-page .sticky-product-bar__btn,
+.veloura-product-page salla-add-product-button.sticky-product-bar__btn {
+  order: 3 !important;
+}
+
+/* The lower corners are sharp on mobile, whether sticky is enabled or not */
+@media (max-width: 767px) {
+  .veloura-product-page .sticky-product-bar,
+  .veloura-product-page .veloura-product-sticky-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-disabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-disabled .veloura-product-sticky-bar {
+    border-top-left-radius: 22px !important;
+    border-top-right-radius: 22px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+/* Read more: store-primary button with a ring equal to the real store background */
+.veloura-product-page .product__description {
+  margin-bottom: 46px !important;
+  padding-bottom: 30px !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more {
+  min-width: 190px !important;
+  min-height: 44px !important;
+  padding: 10px 38px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: var(--veloura-product-primary, var(--color-primary, #004d65)) !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 0 7px var(--veloura-product-basic-bg, var(--veloura-product-bg-inline, #ffffff)),
+    0 9px 22px rgba(15, 23, 42, .16) !important;
+}
+
+.veloura-product-page #btn-show-more.veloura-product-read-more.is-expanded {
+  background: var(--veloura-product-primary, var(--color-primary, #004d65)) !important;
+  color: #ffffff !important;
+}
+
+/* Undo risky forced flex rules from the previous hotfix and let Swiper manage slides */
+.veloura-product-page .image-slider .swiper-slide,
+.veloura-product-page .image-slider .swiper-slide > a,
+.veloura-product-page .image-slider .swiper-slide > picture,
+.veloura-product-page .image-slider .swiper-slide > .magnify-wrapper {
+  display: block !important;
+}
+
+.veloura-product-page .image-slider [slot="items"] img,
+.veloura-product-page .image-slider [slot="thumbs"] img,
+.veloura-product-page .image-slider .swiper-slide img {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

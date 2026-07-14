@@ -124,65 +124,62 @@ class Product extends BasePage {
             return;
         }
 
+        const prepareImage = (img) => {
+            if (!img) {
+                return;
+            }
+
+            img.loading = 'eager';
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
+            img.style.display = 'block';
+            img.removeAttribute('hidden');
+
+            const dataSrc = img.getAttribute('data-src');
+            const dataSrcset = img.getAttribute('data-srcset');
+
+            if (!img.getAttribute('src') && dataSrc) {
+                img.setAttribute('src', dataSrc);
+            }
+
+            if (!img.getAttribute('srcset') && dataSrcset) {
+                img.setAttribute('srcset', dataSrcset);
+            }
+
+            if (typeof img.decode === 'function') {
+                img.decode().catch(() => {});
+            }
+        };
+
         const refreshSlides = () => {
-            document
-                .querySelectorAll('.image-slider .swiper-slide, .image-slider .swiper-slide > a, .image-slider .swiper-slide picture, .image-slider .swiper-slide .magnify-wrapper')
-                .forEach((node) => {
-                    node.style.opacity = '1';
-                    node.style.visibility = 'visible';
-                    node.style.display = node.classList?.contains('swiper-slide') ? 'flex' : 'block';
-                    node.removeAttribute?.('hidden');
-                });
+            slider.querySelectorAll('[slot="items"] img, [slot="thumbs"] img').forEach(prepareImage);
 
-            document
-                .querySelectorAll('.image-slider .swiper-slide img')
-                .forEach((img) => {
-                    img.style.opacity = '1';
-                    img.style.visibility = 'visible';
-                    img.style.display = 'block';
-                    img.removeAttribute('hidden');
-
-                    const dataSrc = img.getAttribute('data-src');
-                    const dataSrcset = img.getAttribute('data-srcset');
-
-                    if ((!img.getAttribute('src') || img.getAttribute('src') === '') && dataSrc) {
-                        img.setAttribute('src', dataSrc);
-                    }
-
-                    if ((!img.getAttribute('srcset') || img.getAttribute('srcset') === '') && dataSrcset) {
-                        img.setAttribute('srcset', dataSrcset);
-                    }
-                });
+            const activeImage = slider.querySelector(
+                '.swiper-slide-active img, [slot="items"] .swiper-slide-active img'
+            );
+            prepareImage(activeImage);
 
             const swiper = slider.swiper || slider.slider || null;
 
-            if (swiper?.lazy?.load) {
-                swiper.lazy.load();
-            }
-
-            if (swiper?.update) {
-                swiper.update();
-            }
-
-            if (swiper?.updateAutoHeight) {
-                swiper.updateAutoHeight(0);
-            }
+            swiper?.update?.();
+            swiper?.updateSlides?.();
+            swiper?.updateAutoHeight?.(0);
         };
 
-        const delayedRefresh = () => {
+        const refreshSoon = () => {
             window.requestAnimationFrame(refreshSlides);
-            window.setTimeout(refreshSlides, 80);
-            window.setTimeout(refreshSlides, 220);
+            window.setTimeout(refreshSlides, 60);
+            window.setTimeout(refreshSlides, 180);
         };
 
-        delayedRefresh();
-        slider.addEventListener('slideChange', delayedRefresh);
-        slider.addEventListener('transitionend', delayedRefresh, true);
-        slider.addEventListener('click', delayedRefresh, true);
-        window.addEventListener('resize', delayedRefresh);
+        refreshSoon();
+        slider.addEventListener('slideChange', refreshSoon);
+        slider.addEventListener('afterInit', refreshSoon);
+        slider.addEventListener('load', refreshSoon, true);
+        window.addEventListener('resize', refreshSoon);
 
-        const observer = new MutationObserver(delayedRefresh);
-        observer.observe(slider, { childList: true, subtree: true, attributes: true });
+        const observer = new MutationObserver(refreshSoon);
+        observer.observe(slider, { childList: true, subtree: true });
     }
 
     initVelouraPurchaseButtons() {
@@ -327,13 +324,30 @@ class Product extends BasePage {
             });
         });
 
-        app.onClick('#btn-show-more', e =>
-            app.all('#more-content', div => {
-                e.target.classList.add('is-expanded');
-                div.style = `max-height:${div.scrollHeight}px`;
-                window.setTimeout(() => e.target.remove(), 320);
-            }) || e.target.remove()
-        );
+        app.onClick('#btn-show-more', e => {
+            const button = e.currentTarget || e.target;
+            const content = document.querySelector('#more-content');
+
+            if (!button || !content) {
+                return;
+            }
+
+            if (!button.dataset.moreText) {
+                button.dataset.moreText = button.textContent.trim() || 'عرض المزيد';
+            }
+
+            const isExpanded = button.classList.toggle('is-expanded');
+
+            content.style.maxHeight = isExpanded
+                ? `${content.scrollHeight}px`
+                : '8.5rem';
+
+            button.textContent = isExpanded
+                ? 'عرض أقل'
+                : button.dataset.moreText;
+
+            button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        });
     }
 }
 
