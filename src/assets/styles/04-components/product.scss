@@ -2357,3 +2357,43 @@ html.veloura-dark .veloura-product-page {
 .veloura-product-page #btn-show-more.veloura-product-read-more:active {
   transform: scale(.98) !important;
 }
+
+
+/* =========================================
+   Final mobile sticky cart edge fix
+========================================= */
+@media (max-width: 767px) {
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    inset-inline: 0 !important;
+
+    border-top-left-radius: 22px !important;
+    border-top-right-radius: 22px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding-bottom: max(14px, env(safe-area-inset-bottom)) !important;
+    z-index: 999 !important;
+  }
+
+  /* مهم: أي قاعدة قديمة تسبب بروز من اليسار */
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+    clip-path: none !important;
+  }
+
+  body.veloura-product-sticky-active {
+    padding-bottom: 230px !important;
+  }
+}

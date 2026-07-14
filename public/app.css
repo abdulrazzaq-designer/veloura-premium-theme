@@ -45752,12 +45752,45 @@ html.veloura-dark .veloura-product-page {
   transform: scale(0.98) !important;
 }
 
+/* =========================================
+   Final mobile sticky cart edge fix
+========================================= */
+@media (max-width: 767px) {
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    inset-inline: 0 !important;
+    border-top-left-radius: 22px !important;
+    border-top-right-radius: 22px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding-bottom: max(14px, env(safe-area-inset-bottom)) !important;
+    z-index: 999 !important;
+  }
+  /* مهم: أي قاعدة قديمة تسبب بروز من اليسار */
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .sticky-product-bar,
+  .veloura-product-page.veloura-product-mobile-sticky-enabled .veloura-product-sticky-bar {
+    clip-path: none !important;
+  }
+  body.veloura-product-sticky-active {
+    padding-bottom: 230px !important;
+  }
+}
 .brands-nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .brands-nav > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
     margin-right: calc(0.5rem * 0);
@@ -45774,7 +45807,6 @@ html.veloura-dark .veloura-product-page {
     margin-bottom: calc(0.5rem * 0);
     margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
-
 .brands-nav:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 1;
 }
