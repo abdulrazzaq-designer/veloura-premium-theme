@@ -73,10 +73,34 @@
 {% set footer_title_size_key = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_title_size_2026', 'large'), 'large')|trim %}
 {% set footer_text_size_key = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_text_size_2026', 'medium'), 'medium')|trim %}
 {% set footer_logo_size_key = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_logo_size_2026', 'medium'), 'medium')|trim %}
-{% set footer_layout_mode = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_layout_mode_safe_2026', 'compact'), 'compact')|trim %}
-{% if footer_layout_mode not in ['compact', 'featured'] %}
-  {% set footer_layout_mode = 'compact' %}
+{# Robust layout parser: Salla may return the value, selected item, or option key #}
+{% set footer_layout_raw = theme.settings.get('veloura_footer_layout_mode_safe_2026', 'compact') %}
+{% set footer_layout_token = 'compact' %}
+{% if footer_layout_raw.selected is defined %}
+  {% set footer_layout_selected = footer_layout_raw.selected|first %}
+  {% if footer_layout_selected.value is defined %}
+    {% set footer_layout_token = footer_layout_selected.value %}
+  {% elseif footer_layout_selected.key is defined %}
+    {% set footer_layout_token = footer_layout_selected.key %}
+  {% elseif footer_layout_selected %}
+    {% set footer_layout_token = footer_layout_selected %}
+  {% endif %}
+{% elseif footer_layout_raw.value is defined %}
+  {% set footer_layout_token = footer_layout_raw.value %}
+{% elseif footer_layout_raw is iterable and footer_layout_raw|first %}
+  {% set footer_layout_first = footer_layout_raw|first %}
+  {% if footer_layout_first.value is defined %}
+    {% set footer_layout_token = footer_layout_first.value %}
+  {% elseif footer_layout_first.key is defined %}
+    {% set footer_layout_token = footer_layout_first.key %}
+  {% else %}
+    {% set footer_layout_token = footer_layout_first %}
+  {% endif %}
+{% elseif footer_layout_raw %}
+  {% set footer_layout_token = footer_layout_raw %}
 {% endif %}
+{% set footer_layout_token = footer_layout_token|lower|trim %}
+{% set footer_layout_mode = ('featured' in footer_layout_token or 'مريح' in footer_layout_token) ? 'featured' : 'compact' %}
 
 {% if footer_contact_display not in ['icons_only', 'icon_text'] %}
   {% set footer_contact_display = 'icon_text' %}
@@ -117,8 +141,21 @@
 {% set footer_hide_payments = theme.settings.get('veloura_footer_hide_payments_2026', false) %}
 {% if footer_hide_payments.value is defined %}{% set footer_hide_payments = footer_hide_payments.value %}{% endif %}
 
-{% set footer_title_bg_enabled = theme.settings.get('veloura_footer_titles_background_safe_2026', false) %}
-{% if footer_title_bg_enabled.value is defined %}{% set footer_title_bg_enabled = footer_title_bg_enabled.value %}{% endif %}
+{# Robust boolean parser: supports true/false, 1/0, strings, and wrapped values #}
+{% set footer_title_bg_raw = theme.settings.get('veloura_footer_titles_background_safe_2026', false) %}
+{% set footer_title_bg_token = footer_title_bg_raw %}
+{% if footer_title_bg_raw.value is defined %}
+  {% set footer_title_bg_token = footer_title_bg_raw.value %}
+{% elseif footer_title_bg_raw.selected is defined %}
+  {% set footer_title_bg_selected = footer_title_bg_raw.selected|first %}
+  {% if footer_title_bg_selected.value is defined %}
+    {% set footer_title_bg_token = footer_title_bg_selected.value %}
+  {% else %}
+    {% set footer_title_bg_token = footer_title_bg_selected %}
+  {% endif %}
+{% endif %}
+{% set footer_title_bg_string = footer_title_bg_token|default(false)|lower|trim %}
+{% set footer_title_bg_enabled = footer_title_bg_token is same as(true) or footer_title_bg_token == 1 or footer_title_bg_string in ['true', '1', 'yes', 'on', 'enabled'] %}
 
 {# =========================
    Texts
@@ -133,7 +170,9 @@
 {% set footer_bg_image = theme.settings.get('veloura_footer_bg_image_2026') %}
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
-<footer data-veloura-footer-build="safe-final"
+<footer data-veloura-footer-build="options-working-v2"
+  data-veloura-footer-layout="{{ footer_layout_mode }}"
+  data-veloura-footer-title-bg="{{ footer_title_bg_enabled ? 'true' : 'false' }}"
   class="store-footer
   veloura-footer-enabled
   veloura-footer-layout-{{ footer_layout_mode }}

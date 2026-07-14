@@ -2562,13 +2562,6 @@
   ]
 },
 {
-  "type": "static",
-  "format": "title",
-  "id": "veloura_footer_layout_options_title_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#eff6ff;color:#1e3a8a;text-align:right;font-weight:800;border-right:4px solid #3b82f6;box-shadow:inset 0 0 0 1px rgba(59,130,246,.08)\">تخطيط الفوتر على اللابتوب</div>",
-  "variant": "h6"
-},
-{
   "type": "boolean",
   "icon": "sicon-toggle-off",
   "label": "تفعيل الوضع المميز للفوتر",
@@ -2577,7 +2570,14 @@
   "format": "switch",
   "required": false,
   "value": true,
-  "selected": true
+  "selected": true,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
 },
 {
   "id": "veloura_footer_spacing_2026",
@@ -2607,14 +2607,14 @@
       "value": "normal",
       "key": "veloura-footer-spacing-normal-2026"
     }
+  ],
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
   ]
-},
-{
-  "type": "static",
-  "format": "title",
-  "id": "veloura_footer_title_style_title_2026",
-  "value": "<div style=\"padding:10px 14px;border-radius:12px;background:#f0fdf4;color:#166534;text-align:right;font-weight:800;border-right:4px solid #22c55e;box-shadow:inset 0 0 0 1px rgba(34,197,94,.08)\">شكل عناوين الفوتر</div>",
-  "variant": "h6"
 },
 {
   "type": "boolean",
@@ -2625,7 +2625,14 @@
   "format": "switch",
   "required": false,
   "value": false,
-  "selected": false
+  "selected": false,
+  "conditions": [
+    {
+      "id": "veloura_footer_enabled_2026",
+      "operation": "=",
+      "value": true
+    }
+  ]
 },
 {
   "id": "veloura_footer_title_bg_color_2026",
@@ -2637,6 +2644,11 @@
   "conditions": [
     {
       "id": "veloura_footer_title_badge_2026",
+      "operation": "=",
+      "value": true
+    },
+    {
+      "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
     }
