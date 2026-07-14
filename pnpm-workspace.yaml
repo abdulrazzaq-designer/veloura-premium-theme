@@ -1,2 +1,13 @@
 packages:
   - '.'
+allowBuilds:
+  '@parcel/watcher': true
+  bufferutil: true
+  es5-ext: true
+  utf-8-validate: true
+minimumReleaseAgeExclude:
+  - '@salla.sa/applepay@2.14.497'
+  - '@salla.sa/base@2.14.497'
+  - '@salla.sa/twilight-components@2.14.497'
+  - '@salla.sa/twilight-tailwind-theme@2.14.497'
+  - '@salla.sa/twilight@2.14.497'
