@@ -1108,3 +1108,171 @@
     padding-bottom: 0 !important;
   }
 }
+
+
+/* ======================================================
+   Veloura Footer — Desktop hierarchy final
+   With apps:
+     store identity full-width above
+     links (right) | contact/social (middle) | apps (left)
+   Without apps:
+     links (right) | store identity (middle) | contact/social (left)
+====================================================== */
+
+@media (min-width: 1024px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-grid {
+    direction: rtl !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    column-gap: clamp(44px, 7vw, 120px) !important;
+    row-gap: 38px !important;
+    padding-block: 48px !important;
+  }
+
+  /* Actual app links exist: identity above the three columns. */
+  .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-grid {
+    grid-template-areas:
+      "store store store"
+      "links contact apps" !important;
+  }
+
+  /* No actual app links: three balanced columns. */
+  .store-footer.veloura-footer-enabled.veloura-footer-no-apps .veloura-footer-grid,
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-detecting .veloura-footer-grid {
+    grid-template-areas: "links store contact" !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-store {
+    grid-area: store !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-links {
+    grid-area: links !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-contact {
+    grid-area: contact !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps {
+    grid-area: apps !important;
+  }
+
+  /* Identity row when apps exist: full-width, compact, clearly separated. */
+  .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-store {
+    width: 100% !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    grid-template-areas:
+      "logo title"
+      "logo description"
+      "trust trust" !important;
+    align-items: center !important;
+    justify-content: start !important;
+    gap: 4px 22px !important;
+    padding-bottom: 30px !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--veloura-footer-text) 14%, transparent) !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-logo {
+    grid-area: logo !important;
+    margin: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-store > .veloura-footer-title {
+    grid-area: title !important;
+    margin: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-description {
+    grid-area: description !important;
+    max-width: 760px !important;
+    margin: 4px 0 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-trust {
+    grid-area: trust !important;
+    margin-top: 22px !important;
+  }
+
+  /* Identity as the middle column when there is no app. */
+  .store-footer.veloura-footer-enabled.veloura-footer-no-apps .veloura-footer-store,
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-detecting .veloura-footer-store {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    min-width: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-block {
+    min-width: 0 !important;
+    text-align: right !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-title {
+    margin-bottom: 18px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-links salla-menu ul {
+    gap: 10px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-contact-wrap {
+    align-items: flex-start !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-contact-native salla-contacts,
+  .store-footer.veloura-footer-enabled .veloura-footer-contact-native salla-contacts > div,
+  .store-footer.veloura-footer-enabled .veloura-footer-contact-native salla-contacts ul,
+  .store-footer.veloura-footer-enabled .veloura-footer-social,
+  .store-footer.veloura-footer-enabled .veloura-footer-social salla-social,
+  .store-footer.veloura-footer-enabled .veloura-footer-social salla-social > div,
+  .store-footer.veloura-footer-enabled .veloura-footer-social salla-social ul {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-social-contact {
+    margin-top: 16px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons :where(div, ul) {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
+    height: 48px !important;
+    max-width: 190px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps[hidden] {
+    display: none !important;
+  }
+
+  /* Respect the merchant's center option without breaking the hierarchy. */
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title {
+    text-align: center !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-has-apps .veloura-footer-store {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "logo"
+      "title"
+      "description"
+      "trust" !important;
+    justify-items: center !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-wrap,
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons :where(div, ul) {
+    align-items: center !important;
+  }
+}

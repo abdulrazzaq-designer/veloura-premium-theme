@@ -124,12 +124,14 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
+  data-veloura-footer-layout="desktop-v1"
   class="store-footer
   veloura-footer-enabled
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
   {{ footer_contact_inline ? 'veloura-footer-contact-inline' : 'veloura-footer-contact-column' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
   {{ footer_hide_apps_title ? 'veloura-footer-hide-apps-title' : '' }}
+  {{ footer_hide_apps ? 'veloura-footer-no-apps' : 'veloura-footer-layout-detecting' }}
   veloura-footer-radius-{{ footer_radius }}
   veloura-footer-cols-{{ footer_columns }}
   veloura-footer-contact-display-{{ footer_contact_display }}
@@ -172,13 +174,6 @@
           {% if footer_store_description %}
             <div class="veloura-footer-description">
               {{ footer_store_description|raw }}
-            </div>
-          {% endif %}
-
-          {# بدون دمج: السوشيال تحت معلومات المتجر، أيقونات فقط #}
-          {% if not footer_merge_social %}
-            <div class="veloura-footer-social veloura-footer-social-store" data-veloura-footer-social>
-              <salla-social></salla-social>
             </div>
           {% endif %}
 
@@ -225,17 +220,15 @@
               <salla-contacts></salla-contacts>
             </div>
 
-            {# مع الدمج: السوشيال يدخل مع وسائل الاتصال وبنفس الشكل المختار #}
-            {% if footer_merge_social %}
-              <div class="veloura-footer-social veloura-footer-social-merged" data-veloura-footer-social>
-                <salla-social></salla-social>
-              </div>
-            {% endif %}
+            {# السوشيال دائماً ضمن عمود التواصل؛ عند الدمج يأخذ شكل أزرار التواصل، وبدونه يبقى أيقونات فقط #}
+            <div class="veloura-footer-social {{ footer_merge_social ? 'veloura-footer-social-merged' : 'veloura-footer-social-contact' }}" data-veloura-footer-social>
+              <salla-social></salla-social>
+            </div>
           </div>
         </div>
 
         {% if not footer_hide_apps %}
-          <div class="veloura-footer-block veloura-footer-apps">
+          <div class="veloura-footer-block veloura-footer-apps" data-veloura-footer-apps>
             {% if not footer_hide_apps_title %}
               <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
             {% endif %}
@@ -377,8 +370,36 @@
         });
       }
 
+      function updateDesktopLayout(footer) {
+        if (!footer) return;
+
+        const appsBlock = footer.querySelector('[data-veloura-footer-apps]');
+        const hasApps = !!(
+          appsBlock &&
+          appsBlock.querySelector('a[href], .veloura-footer-app-button, img[src]')
+        );
+
+        footer.classList.toggle('veloura-footer-has-apps', hasApps);
+        footer.classList.toggle('veloura-footer-no-apps', !hasApps);
+        footer.classList.remove('veloura-footer-layout-detecting');
+
+        if (appsBlock) {
+          appsBlock.hidden = !hasApps;
+          appsBlock.setAttribute('aria-hidden', hasApps ? 'false' : 'true');
+
+          if (!appsBlock.dataset.velouraLayoutObserver) {
+            appsBlock.dataset.velouraLayoutObserver = '1';
+            const observer = new MutationObserver(function () {
+              updateDesktopLayout(footer);
+            });
+            observer.observe(appsBlock, { childList: true, subtree: true, attributes: true });
+          }
+        }
+      }
+
       function initVelouraFooter() {
         initContacts();
+        document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(updateDesktopLayout);
       }
 
       document.addEventListener('DOMContentLoaded', initVelouraFooter);
