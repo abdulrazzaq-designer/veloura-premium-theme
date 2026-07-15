@@ -118,15 +118,15 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="static-lines-v7"
+  data-veloura-footer-build="static-lines-v8"
   data-veloura-footer-center-all="{{ footer_center_all ? 'true' : 'false' }}"
   dir="rtl"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
-  data-veloura-footer-title-lines="{{ footer_title_lines ? 'true' : 'false' }}"
+  data-veloura-footer-title-lines="true"
   class="store-footer
   veloura-footer-enabled
   {{ footer_featured_layout ? 'veloura-footer-layout-featured' : 'veloura-footer-layout-normal' }}
-  {{ footer_title_lines ? 'veloura-footer-title-lines-enabled' : '' }}
+  veloura-footer-title-lines-enabled
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
   {{ footer_contact_inline ? 'veloura-footer-contact-inline' : 'veloura-footer-contact-column' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
@@ -172,7 +172,7 @@
             </a>
           {% endif %}
 
-          <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
+          <h3 class="veloura-footer-title veloura-footer-store-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_store_title }}</span></h3>
 
           {% if footer_store_description %}
             <div class="veloura-footer-description">
@@ -213,13 +213,13 @@
       <div class="veloura-footer-grid veloura-footer-sections-grid">
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
-            <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_links_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
+            <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_links_title }}</span></h3>
             <salla-menu source="footer" with-cookie-preferences></salla-menu>
           </div>
         {% endif %}
 
         <div class="veloura-footer-block veloura-footer-contact">
-          <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_contact_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
+          <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_contact_title }}</span></h3>
 
           <div class="veloura-footer-contact-wrap">
             <div class="veloura-footer-contact-native" data-veloura-footer-contacts>
@@ -235,7 +235,7 @@
         {% if not footer_hide_apps %}
           <div class="veloura-footer-block veloura-footer-apps" data-veloura-footer-apps>
             {% if not footer_hide_apps_title %}
-              <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_apps_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
+              <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_apps_title }}</span></h3>
             {% endif %}
             <salla-apps-icons class="veloura-footer-apps-icons" data-veloura-footer-apps-icons></salla-apps-icons>
           </div>
@@ -395,6 +395,113 @@
         });
       }
 
+
+      function velouraSetImportant(element, property, value) {
+        if (!element || !element.style) return;
+        element.style.setProperty(property, value, 'important');
+      }
+
+      function forceAppsHorizontal(appsBlock, footer) {
+        if (!appsBlock) return;
+
+        const centered = !!(
+          footer &&
+          (
+            footer.classList.contains('veloura-footer-center-all') ||
+            footer.getAttribute('data-veloura-footer-center-all') === 'true'
+          )
+        );
+
+        const component = appsBlock.querySelector('salla-apps-icons');
+        const roots = [];
+
+        if (component) {
+          roots.push(component);
+
+          if (component.shadowRoot) {
+            roots.push(component.shadowRoot);
+          }
+        } else {
+          roots.push(appsBlock);
+        }
+
+        roots.forEach(function (root) {
+          const host = root && root.host ? root.host : root;
+
+          if (host && host.style) {
+            velouraSetImportant(host, 'display', 'flex');
+            velouraSetImportant(host, 'flex-direction', 'row');
+            velouraSetImportant(host, 'flex-wrap', 'nowrap');
+            velouraSetImportant(host, 'align-items', 'center');
+            velouraSetImportant(host, 'justify-content', centered ? 'center' : 'flex-start');
+            velouraSetImportant(host, 'gap', '10px');
+            velouraSetImportant(host, 'width', '100%');
+            velouraSetImportant(host, 'min-width', '0');
+          }
+
+          if (!root || typeof root.querySelectorAll !== 'function') return;
+
+          const wrappers = Array.from(
+            root.querySelectorAll('div, ul, ol, nav, section, [class*="apps"], [class*="wrapper"], [class*="icons"]')
+          );
+
+          wrappers.forEach(function (wrapper) {
+            const badges = wrapper.querySelectorAll('a[href], img');
+            if (badges.length < 2) return;
+
+            velouraSetImportant(wrapper, 'display', 'flex');
+            velouraSetImportant(wrapper, 'flex-direction', 'row');
+            velouraSetImportant(wrapper, 'flex-wrap', 'nowrap');
+            velouraSetImportant(wrapper, 'align-items', 'center');
+            velouraSetImportant(wrapper, 'justify-content', centered ? 'center' : 'flex-start');
+            velouraSetImportant(wrapper, 'gap', '10px');
+            velouraSetImportant(wrapper, 'width', '100%');
+            velouraSetImportant(wrapper, 'min-width', '0');
+            velouraSetImportant(wrapper, 'margin', '0');
+            velouraSetImportant(wrapper, 'padding', '0');
+          });
+
+          const links = Array.from(root.querySelectorAll('a[href]'));
+          links.forEach(function (link) {
+            velouraSetImportant(link, 'display', 'inline-flex');
+            velouraSetImportant(link, 'align-items', 'center');
+            velouraSetImportant(link, 'justify-content', 'center');
+            velouraSetImportant(link, 'margin', '0');
+            velouraSetImportant(link, 'min-width', '0');
+
+            if (window.matchMedia('(max-width: 767px)').matches) {
+              velouraSetImportant(link, 'flex', '1 1 0');
+              velouraSetImportant(link, 'width', 'calc(50% - 5px)');
+              velouraSetImportant(link, 'max-width', '180px');
+            } else {
+              velouraSetImportant(link, 'flex', '0 1 auto');
+              velouraSetImportant(link, 'width', 'auto');
+              velouraSetImportant(link, 'max-width', 'none');
+            }
+          });
+
+          const images = Array.from(root.querySelectorAll('img'));
+          images.forEach(function (image) {
+            image.hidden = false;
+            velouraSetImportant(image, 'display', 'block');
+            velouraSetImportant(image, 'visibility', 'visible');
+            velouraSetImportant(image, 'opacity', '1');
+            velouraSetImportant(image, 'object-fit', 'contain');
+            velouraSetImportant(image, 'margin', '0');
+
+            if (window.matchMedia('(max-width: 767px)').matches) {
+              velouraSetImportant(image, 'width', '100%');
+              velouraSetImportant(image, 'height', 'auto');
+              velouraSetImportant(image, 'max-height', '48px');
+            } else {
+              velouraSetImportant(image, 'width', 'auto');
+              velouraSetImportant(image, 'height', '48px');
+              velouraSetImportant(image, 'max-height', '48px');
+            }
+          });
+        });
+      }
+
       function resolveAppsLayout(footer, forceFinal) {
         if (!footer) return;
 
@@ -408,6 +515,7 @@
 
         const component = appsBlock.querySelector('salla-apps-icons');
         restoreFooterImages(appsBlock);
+        forceAppsHorizontal(appsBlock, footer);
 
         const hasApps = !!appsBlock.querySelector(
           'a[href], .veloura-footer-app-button, img[src]:not([src=""]), img[data-src]'
@@ -441,6 +549,7 @@
 
         const observer = new MutationObserver(function () {
           restoreFooterImages(appsBlock);
+          forceAppsHorizontal(appsBlock, footer);
           resolveAppsLayout(footer, false);
         });
 
@@ -450,12 +559,14 @@
         if (component && typeof component.componentOnReady === 'function') {
           component.componentOnReady().then(function () {
             restoreFooterImages(appsBlock);
+            forceAppsHorizontal(appsBlock, footer);
             resolveAppsLayout(footer, true);
           });
         } else if (window.customElements && customElements.whenDefined) {
           customElements.whenDefined('salla-apps-icons').then(function () {
             window.setTimeout(function () {
               restoreFooterImages(appsBlock);
+              forceAppsHorizontal(appsBlock, footer);
               resolveAppsLayout(footer, true);
             }, 0);
           });
@@ -470,6 +581,18 @@
           watchAppsLayout(footer);
         });
       }
+
+
+      let velouraFooterResizeTimer = null;
+      window.addEventListener('resize', function () {
+        window.clearTimeout(velouraFooterResizeTimer);
+        velouraFooterResizeTimer = window.setTimeout(function () {
+          document.querySelectorAll('.store-footer.veloura-footer-enabled').forEach(function (footer) {
+            const appsBlock = footer.querySelector('[data-veloura-footer-apps]');
+            forceAppsHorizontal(appsBlock, footer);
+          });
+        }, 120);
+      });
 
       document.addEventListener('DOMContentLoaded', initVelouraFooter);
       document.addEventListener('theme::ready', initVelouraFooter);
