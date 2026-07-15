@@ -36741,6 +36741,133 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     padding-bottom: 26px !important;
   }
 }
+/* ======================================================
+   Veloura Footer - Logo stack + professional title bars
+   - Logo directly above store name
+   - Description under the name
+   - Title alignment follows the existing center-footer option
+====================================================== */
+/* Store identity: always a clean vertical stack */
+@media (min-width: 1024px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-store,
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-store,
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal .veloura-footer-store,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout=normal] .veloura-footer-store {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    text-align: right !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-store .veloura-footer-logo {
+    order: 1 !important;
+    display: inline-flex !important;
+    margin: 0 0 10px !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-store .veloura-footer-store-title {
+    order: 2 !important;
+    width: 100% !important;
+    margin: 0 0 6px !important;
+    padding: 0 !important;
+    text-align: right !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-store .veloura-footer-description {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    margin: 0 !important;
+    text-align: right !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-store .veloura-footer-trust {
+    order: 4 !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+  /* In featured mode, the full-width store identity is centered and compact */
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-store {
+    align-items: center !important;
+    text-align: center !important;
+    padding-bottom: 16px !important;
+  }
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store .veloura-footer-store-title,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-store .veloura-footer-store-title,
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store .veloura-footer-description,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-store .veloura-footer-description {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store .veloura-footer-trust,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-store .veloura-footer-trust {
+    justify-content: center !important;
+  }
+}
+/* Professional full-width section headings */
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 50px !important;
+  margin: 0 0 14px !important;
+  padding: 12px 17px 14px !important;
+  overflow: hidden !important;
+  text-align: right !important;
+  border: 1px solid rgb(175, 182, 192) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, rgb(229, 235, 242) 0%, rgb(220, 226, 234) 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 6px 16px rgba(15, 23, 42, 0.06) !important;
+}
+
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
+  border: 1px solid color-mix(in srgb, var(--veloura-footer-title-bg, #e2e8f0) 76%, var(--veloura-footer-title, #0f172a) 24%) !important;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--veloura-footer-title-bg, #e2e8f0) 88%, #ffffff 12%) 0%, color-mix(in srgb, var(--veloura-footer-title-bg, #e2e8f0) 97%, var(--veloura-footer-title, #0f172a) 3%) 100%) !important;
+}
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 17px !important;
+  bottom: 8px !important;
+  width: 38px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+  background: #0f172a !important;
+  background: var(--veloura-footer-title, #0f172a) !important;
+  opacity: 0.55 !important;
+}
+
+/* Existing center-footer switch controls heading alignment too */
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::after {
+  right: 50% !important;
+  transform: translateX(50%) !important;
+}
+
+/* When title background is off, alignment still follows center-footer switch */
+.store-footer.veloura-footer-enabled:not(.veloura-footer-center-all) .veloura-footer-title:not(.veloura-footer-store-title) {
+  text-align: right !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title:not(.veloura-footer-store-title) {
+  text-align: center !important;
+}
+
 .main-menu > li > a[href*=offer]{
     --tw-text-opacity: 1;
     color: rgba(153, 27, 27, 1);
