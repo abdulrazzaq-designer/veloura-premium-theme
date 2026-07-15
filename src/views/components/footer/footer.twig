@@ -176,23 +176,25 @@
       <div class="veloura-footer-grid">
 
         <div class="veloura-footer-block veloura-footer-store">
-          {% if not footer_hide_logo %}
-            <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
-              {% if footer_logo_is_video %}
-                <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
-              {% else %}
-                <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
-              {% endif %}
-            </a>
-          {% endif %}
+          <div class="veloura-footer-identity">
+            {% if not footer_hide_logo %}
+              <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
+                {% if footer_logo_is_video %}
+                  <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
+                {% else %}
+                  <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
+                {% endif %}
+              </a>
+            {% endif %}
 
-          <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
+            <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
 
-          {% if footer_store_description %}
-            <div class="veloura-footer-description">
-              {{ footer_store_description|raw }}
-            </div>
-          {% endif %}
+            {% if footer_store_description %}
+              <div class="veloura-footer-description">
+                {{ footer_store_description|raw }}
+              </div>
+            {% endif %}
+          </div>
 
           <div class="veloura-footer-trust">
             <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>

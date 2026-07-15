@@ -2582,7 +2582,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "إظهار خلفية خلف عناوين الفوتر111",
+  "label": "إظهار خلفية خلف عناوين الفوتر",
   "description": "عند التفعيل تظهر عناوين أقسام الفوتر داخل شارة ناعمة بحجم النص.",
   "id": "veloura_footer_title_badge_2026",
   "format": "switch",
