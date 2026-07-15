@@ -2665,7 +2665,7 @@
   "id": "veloura_footer_columns_desktop_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "أعمدة الفوتر في اللابتوب111",
+  "label": "أعمدة الفوتر في اللابتوب",
   "icon": "sicon-list",
   "source": "Manual",
   "required": false,
@@ -3005,7 +3005,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "إخفاء شعارات وسائل الدفع",
+  "label": "إخفاء شعارات وسائل الدفع111",
   "id": "veloura_footer_hide_payments_2026",
   "format": "switch",
   "required": false,

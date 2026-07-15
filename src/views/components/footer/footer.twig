@@ -1,8 +1,3 @@
-{% set footer_enabled = true %}
-
-{# =========================
-   Helper parser for dropdown settings
-========================= #}
 {% macro veloura_footer_select_value(raw, fallback) %}
   {% if raw.selected is defined and raw.selected[0].value is defined %}
     {{ raw.selected[0].value }}
@@ -17,9 +12,6 @@
   {% endif %}
 {% endmacro %}
 
-{# =========================
-   Logo / assets
-========================= #}
 {% set light_logo_url = theme.settings.get('veloura_light_logo_url_2026') %}
 {% set light_logo_image = theme.settings.get('veloura_light_logo_2026') %}
 {% set veloura_light_logo = light_logo_url ?: light_logo_image %}
@@ -30,9 +22,6 @@
 {% set footer_logo_lower = footer_logo|lower %}
 {% set footer_logo_is_video = footer_logo_lower ends with '.webm' or footer_logo_lower ends with '.mp4' %}
 
-{# =========================
-   Colors
-========================= #}
 {% set footer_bg = theme.settings.get('veloura_footer_bg_color_2026', '#f8fafc') %}
 {% if footer_bg.value is defined %}{% set footer_bg = footer_bg.value %}{% endif %}
 
@@ -42,7 +31,7 @@
 {% set footer_title_color = theme.settings.get('veloura_footer_title_color_2026', '#0f172a') %}
 {% if footer_title_color.value is defined %}{% set footer_title_color = footer_title_color.value %}{% endif %}
 
-{% set footer_title_bg = theme.settings.get('veloura_footer_title_bg_color_2026', '#14c8c1') %}
+{% set footer_title_bg = theme.settings.get('veloura_footer_title_bg_color_2026', '#000000') %}
 {% if footer_title_bg.value is defined %}{% set footer_title_bg = footer_title_bg.value %}{% endif %}
 
 {% set footer_link_color = theme.settings.get('veloura_footer_link_color_2026', '#334155') %}
@@ -63,10 +52,6 @@
 {% set footer_bottom_text_color = theme.settings.get('veloura_footer_bottom_text_color_2026', '#334155') %}
 {% if footer_bottom_text_color.value is defined %}{% set footer_bottom_text_color = footer_bottom_text_color.value %}{% endif %}
 
-
-{# =========================
-   Dropdowns
-========================= #}
 {% set footer_radius = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_radius_2026', 'medium'), 'medium')|trim %}
 {% set footer_columns = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_columns_desktop_2026', '4'), '4')|trim %}
 {% set footer_contact_display = _self.veloura_footer_select_value(theme.settings.get('veloura_footer_contact_display_2026', 'icon_text'), 'icon_text')|trim %}
@@ -86,9 +71,6 @@
 {% set footer_text_size = text_size_map[footer_text_size_key]|default('15px') %}
 {% set footer_logo_size = logo_size_map[footer_logo_size_key]|default('84px') %}
 
-{# =========================
-   Switches
-========================= #}
 {% set footer_center_all = theme.settings.get('veloura_footer_center_all_2026', false) %}
 {% if footer_center_all.value is defined %}{% set footer_center_all = footer_center_all.value %}{% endif %}
 
@@ -118,14 +100,11 @@
 {% if footer_featured_layout_raw.selected is defined %}{% set footer_featured_layout_raw = footer_featured_layout_raw.selected %}{% endif %}
 {% set footer_featured_layout = footer_featured_layout_raw in [true, 1, '1', 'true', 'on'] %}
 
-{% set footer_title_background_raw = theme.settings.get('veloura_footer_title_badge_2026', false) %}
-{% if footer_title_background_raw.value is defined %}{% set footer_title_background_raw = footer_title_background_raw.value %}{% endif %}
-{% if footer_title_background_raw.selected is defined %}{% set footer_title_background_raw = footer_title_background_raw.selected %}{% endif %}
-{% set footer_title_background = footer_title_background_raw in [true, 1, '1', 'true', 'on'] %}
+{% set footer_title_lines_raw = theme.settings.get('veloura_footer_title_badge_2026', false) %}
+{% if footer_title_lines_raw.value is defined %}{% set footer_title_lines_raw = footer_title_lines_raw.value %}{% endif %}
+{% if footer_title_lines_raw.selected is defined %}{% set footer_title_lines_raw = footer_title_lines_raw.selected %}{% endif %}
+{% set footer_title_lines = footer_title_lines_raw in [true, 1, '1', 'true', 'on'] %}
 
-{# =========================
-   Texts
-========================= #}
 {% set footer_store_title = theme.settings.get('veloura_footer_store_title_2026') ?: store.name %}
 {% set footer_store_description = theme.settings.get('veloura_footer_store_description_2026') ?: store.description %}
 {% set footer_links_title = theme.settings.get('veloura_footer_links_title_2026') ?: trans('blocks.footer.pages_links') %}
@@ -137,18 +116,19 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="animated-lines-v5"
+  data-veloura-footer-build="static-lines-v6"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
-  data-veloura-footer-title-background="{{ footer_title_background ? 'true' : 'false' }}"
+  data-veloura-footer-title-lines="{{ footer_title_lines ? 'true' : 'false' }}"
   class="store-footer
   veloura-footer-enabled
   {{ footer_featured_layout ? 'veloura-footer-layout-featured' : 'veloura-footer-layout-normal' }}
-  {{ footer_title_background ? 'veloura-footer-title-background-enabled' : '' }}
+  {{ footer_title_lines ? 'veloura-footer-title-lines-enabled' : '' }}
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
   {{ footer_contact_inline ? 'veloura-footer-contact-inline' : 'veloura-footer-contact-column' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
   {{ footer_hide_apps_title ? 'veloura-footer-hide-apps-title' : '' }}
   {{ footer_hide_apps ? 'veloura-footer-no-apps' : 'veloura-footer-layout-detecting' }}
+  {{ footer_bg_image ? 'veloura-footer-has-bg-image' : '' }}
   veloura-footer-radius-{{ footer_radius }}
   veloura-footer-cols-{{ footer_columns }}
   veloura-footer-contact-display-{{ footer_contact_display }}
@@ -158,6 +138,7 @@
     --veloura-footer-text: {{ footer_text }};
     --veloura-footer-title: {{ footer_title_color }};
     --veloura-footer-title-bg: {{ footer_title_bg }};
+    --veloura-footer-title-line: {{ footer_title_bg }};
     --veloura-footer-link: {{ footer_link_color }};
     --veloura-footer-icon-bg: {{ footer_icon_bg }};
     --veloura-footer-icon-color: {{ footer_icon_color }};
@@ -241,7 +222,6 @@
               <salla-contacts></salla-contacts>
             </div>
 
-            {# السوشيال دائماً ضمن عمود التواصل؛ عند الدمج يأخذ شكل أزرار التواصل، وبدونه يبقى أيقونات فقط #}
             <div class="veloura-footer-social {{ footer_merge_social ? 'veloura-footer-social-merged' : 'veloura-footer-social-contact' }}" data-veloura-footer-social>
               <salla-social></salla-social>
             </div>
@@ -291,9 +271,7 @@
         facebook: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M14 8.1V6.3c0-.9.2-1.3 1.4-1.3H17V2.2c-.8-.1-1.6-.2-2.4-.2-2.4 0-4 1.5-4 4.1v2H8v3.1h2.6V22H14V11.2h2.7l.4-3.1H14Z"/></svg>',
         snapchat: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.5c3 0 5 2.2 5 5.4v2.3c.3.2.8.1 1.2 0 .6-.2 1 .5.6 1-.4.5-.9.8-1.4 1 .2 1.1 1.1 2.4 3.1 3 .7.2.7 1.1.1 1.4-.9.4-1.8.5-2.6.6-.3.5-.8 1-1.5 1-.6 0-1.1-.2-1.7-.4-.7.7-1.6 1.2-2.8 1.2s-2.1-.5-2.8-1.2c-.6.2-1.1.4-1.7.4-.7 0-1.2-.5-1.5-1-.8-.1-1.7-.2-2.6-.6-.6-.3-.6-1.2.1-1.4 2-.6 2.9-1.9 3.1-3-.5-.2-1-.5-1.4-1-.4-.5 0-1.2.6-1 .4.1.9.2 1.2 0V7.9c0-3.2 2-5.4 5-5.4Z"/></svg>',
         website: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.2c-.1-2-.6-3.8-1.4-5.2A8 8 0 0 1 18.9 11ZM12 4.1c.7 1 1.5 3.3 1.7 6.9h-3.4c.2-3.6 1-5.9 1.7-6.9ZM4.3 13h3.2c.1 2 .6 3.8 1.4 5.2A8 8 0 0 1 4.3 13Zm3.2-2H4.3a8 8 0 0 1 4.6-5.2C8.1 7.2 7.6 9 7.5 11ZM12 19.9c-.7-1-1.5-3.3-1.7-6.9h3.4c-.2 3.6-1 5.9-1.7 6.9Zm3.1-1.7c.8-1.4 1.3-3.2 1.4-5.2h3.2a8 8 0 0 1-4.6 5.2Z"/></svg>',
-        contact: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.6V20h14v-1.4C19 16 16 14 12 14Z"/></svg>',
-        apple: '<svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.7 13.1c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.4-1.1-.9-2.4-.7-3-.4-.6.3-1.2.4-1.8.4s-1.3-.4-2.1-.4c-1.1 0-2.1.6-2.7 1.5-1.2 2.1-.3 5.2.8 6.9.6.8 1.3 1.8 2.2 1.7.9 0 1.2-.6 2.2-.6s1.3.6 2.2.6 1.5-.8 2.1-1.7c.7-1 1-2 1-2.1 0 0-2.1-.8-2.1-3.8ZM14.2 7c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1Z"/></svg>',
-        google: '<svg class="veloura-footer-app-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M5.5 3.4c-.3.2-.5.6-.5 1v15.2c0 .4.2.8.5 1l8.7-8.6-8.7-8.6Zm9.8 7.5 2.1-2.1L7.8 3.3l7.5 7.6Zm0 2.2-7.5 7.6 9.6-5.5-2.1-2.1Zm.9-1.1 2.6 2.6c.5-.4.5-1.2 0-1.5L16.2 12Z"/></svg>'
+        contact: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.6V20h14v-1.4C19 16 16 14 12 14Z"/></svg>'
       };
 
       const labelMap = {
@@ -435,7 +413,6 @@
           component.classList.contains('hydrated') ||
           component.hasAttribute('hydrated');
 
-        /* Never hide the Salla component before it hydrates, otherwise its images may never load. */
         if (!hasApps && !componentReady && !forceFinal) {
           appsBlock.hidden = false;
           appsBlock.setAttribute('aria-hidden', 'false');
@@ -463,7 +440,6 @@
           resolveAppsLayout(footer, false);
         });
 
-        /* childList only: observing attributes caused a loop when hidden/aria-hidden changed. */
         observer.observe(appsBlock, { childList: true, subtree: true });
 
         const component = appsBlock.querySelector('salla-apps-icons');
