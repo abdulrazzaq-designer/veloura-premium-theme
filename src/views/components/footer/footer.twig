@@ -118,7 +118,7 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="static-lines-v9"
+  data-veloura-footer-build="static-lines-v10"
   data-veloura-footer-center-all="{{ footer_center_all ? 'true' : 'false' }}"
   dir="rtl"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
@@ -172,7 +172,7 @@
             </a>
           {% endif %}
 
-          <h3 class="veloura-footer-title veloura-footer-store-title veloura-footer-section-title">
+          <h3 class="veloura-footer-title veloura-footer-store-title veloura-footer-section-title" data-veloura-title-row="true" style="display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;min-width:0!important;direction:rtl!important;">
   <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
   <span class="veloura-footer-title-text">{{ footer_store_title }}</span>
   <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
@@ -217,7 +217,7 @@
       <div class="veloura-footer-grid veloura-footer-sections-grid">
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
-            <h3 class="veloura-footer-title veloura-footer-section-title">
+            <h3 class="veloura-footer-title veloura-footer-section-title" data-veloura-title-row="true" style="display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;min-width:0!important;direction:rtl!important;">
   <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
   <span class="veloura-footer-title-text">{{ footer_links_title }}</span>
   <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
@@ -227,7 +227,7 @@
         {% endif %}
 
         <div class="veloura-footer-block veloura-footer-contact">
-          <h3 class="veloura-footer-title veloura-footer-section-title">
+          <h3 class="veloura-footer-title veloura-footer-section-title" data-veloura-title-row="true" style="display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;min-width:0!important;direction:rtl!important;">
   <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
   <span class="veloura-footer-title-text">{{ footer_contact_title }}</span>
   <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
@@ -247,7 +247,7 @@
         {% if not footer_hide_apps %}
           <div class="veloura-footer-block veloura-footer-apps" data-veloura-footer-apps>
             {% if not footer_hide_apps_title %}
-              <h3 class="veloura-footer-title veloura-footer-section-title">
+              <h3 class="veloura-footer-title veloura-footer-section-title" data-veloura-title-row="true" style="display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;min-width:0!important;direction:rtl!important;">
   <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
   <span class="veloura-footer-title-text">{{ footer_apps_title }}</span>
   <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
