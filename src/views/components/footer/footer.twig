@@ -71,8 +71,10 @@
 {% set footer_text_size = text_size_map[footer_text_size_key]|default('15px') %}
 {% set footer_logo_size = logo_size_map[footer_logo_size_key]|default('84px') %}
 
-{% set footer_center_all = theme.settings.get('veloura_footer_center_all_2026', false) %}
-{% if footer_center_all.value is defined %}{% set footer_center_all = footer_center_all.value %}{% endif %}
+{% set footer_center_all_raw = theme.settings.get('veloura_footer_center_all_2026', false) %}
+{% if footer_center_all_raw.value is defined %}{% set footer_center_all_raw = footer_center_all_raw.value %}{% endif %}
+{% if footer_center_all_raw.selected is defined %}{% set footer_center_all_raw = footer_center_all_raw.selected %}{% endif %}
+{% set footer_center_all = footer_center_all_raw in [true, 1, '1', 'true', 'on'] %}
 
 {% set footer_hide_logo = theme.settings.get('veloura_footer_hide_logo_2026', false) %}
 {% if footer_hide_logo.value is defined %}{% set footer_hide_logo = footer_hide_logo.value %}{% endif %}
@@ -116,7 +118,9 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="static-lines-v6"
+  data-veloura-footer-build="static-lines-v7"
+  data-veloura-footer-center-all="{{ footer_center_all ? 'true' : 'false' }}"
+  dir="rtl"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
   data-veloura-footer-title-lines="{{ footer_title_lines ? 'true' : 'false' }}"
   class="store-footer
@@ -233,7 +237,7 @@
             {% if not footer_hide_apps_title %}
               <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_apps_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
             {% endif %}
-            <salla-apps-icons></salla-apps-icons>
+            <salla-apps-icons class="veloura-footer-apps-icons" data-veloura-footer-apps-icons></salla-apps-icons>
           </div>
         {% endif %}
 

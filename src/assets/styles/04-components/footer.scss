@@ -2383,3 +2383,431 @@
     height: 1px !important;
   }
 }
+
+/* =====================================================================
+   VELOURA FOOTER — FINAL ALIGNMENT + TITLE LINES + APPS ROW FIX
+   This block must stay at the very end of the footer SCSS file.
+===================================================================== */
+
+.store-footer.veloura-footer-enabled {
+  direction: rtl !important;
+}
+
+/* Remove legacy decorative pseudo-elements around section headings. */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after,
+.store-footer.veloura-footer-enabled .veloura-footer-title-text::before,
+.store-footer.veloura-footer-enabled .veloura-footer-title-text::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Base title and line appearance. */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title {
+  width: 100% !important;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  align-items: center !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-text {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: var(--veloura-footer-title) !important;
+  direction: rtl !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+  position: static !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 2px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  outline: 0 !important;
+  clip-path: none !important;
+  box-shadow: none !important;
+  background: var(--veloura-footer-title-line, var(--veloura-footer-title-bg, var(--veloura-footer-title))) !important;
+  background-image: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* The setting is OFF: hide every decorative line. */
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-lines="false"] .veloura-footer-title-rail,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-lines-enabled) .veloura-footer-title-rail {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* =========================================================
+   CENTERING ON
+   - Every footer section is centered.
+   - One line appears on each side of every section heading.
+========================================================= */
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-section-title {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  direction: ltr !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title-text,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-title-text {
+  grid-column: 2 !important;
+  justify-self: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-lines-enabled .veloura-footer-title-rail--start,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"][data-veloura-footer-title-lines="true"] .veloura-footer-title-rail--start {
+  display: block !important;
+  grid-column: 1 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-lines-enabled .veloura-footer-title-rail--end,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"][data-veloura-footer-title-lines="true"] .veloura-footer-title-rail--end {
+  display: block !important;
+  grid-column: 3 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-hero,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-store,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-identity,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-block,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-hero,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-store,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-identity {
+  text-align: center !important;
+  align-items: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-logo,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-description,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-store-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-logo,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-description,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-store-title {
+  margin-inline: auto !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-trust,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-tax,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-trust,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-tax {
+  margin-inline: auto !important;
+  justify-content: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-links salla-menu,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-links salla-menu ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-links salla-menu,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-links salla-menu ul {
+  text-align: center !important;
+  justify-items: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-wrap,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-contact-wrap {
+  align-items: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-native salla-contacts,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-native salla-contacts > div,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-native salla-contacts ul,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social salla-social,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social salla-social > div,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social salla-social ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-contact-native salla-contacts,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-contact-native salla-contacts > div,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-contact-native salla-contacts ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-social,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-social salla-social,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-social salla-social > div,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-social salla-social ul {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-bottom__inner,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-bottom__inner {
+  justify-content: center !important;
+  text-align: center !important;
+  flex-wrap: wrap !important;
+}
+
+/* No lines + centering on: keep the title itself centered without empty columns. */
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-lines="false"] .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"][data-veloura-footer-title-lines="false"] .veloura-footer-section-title {
+  display: block !important;
+  text-align: center !important;
+}
+
+/* =========================================================
+   CENTERING OFF
+   - Every footer section starts from the right.
+   - The heading stays on the right.
+   - Only one decorative line remains, on the heading's left.
+========================================================= */
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-sections-grid,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-sections-grid {
+  direction: rtl !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-section-title {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-title-text,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-title-text {
+  grid-column: 1 !important;
+  justify-self: start !important;
+  justify-content: flex-start !important;
+  text-align: right !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default.veloura-footer-title-lines-enabled .veloura-footer-title-rail--start,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"][data-veloura-footer-title-lines="true"] .veloura-footer-title-rail--start {
+  display: block !important;
+  grid-column: 2 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-title-rail--end,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-title-rail--end {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-block,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-hero,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-store,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-identity,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-block,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-hero,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-store,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-identity {
+  text-align: right !important;
+  align-items: flex-start !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-logo,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-description,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-store-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-logo,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-description,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-store-title {
+  margin-inline: 0 !important;
+  text-align: right !important;
+  justify-content: flex-start !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-trust,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-tax,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-trust,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-tax {
+  margin-inline: 0 !important;
+  justify-content: flex-start !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-links salla-menu,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-links salla-menu ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-links salla-menu,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-links salla-menu ul {
+  direction: rtl !important;
+  text-align: right !important;
+  justify-items: start !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-wrap,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-contact-wrap {
+  align-items: flex-start !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-native salla-contacts,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-native salla-contacts > div,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-native salla-contacts ul,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social salla-social,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social salla-social > div,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social salla-social ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-contact-native salla-contacts,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-contact-native salla-contacts > div,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-contact-native salla-contacts ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-social,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-social salla-social,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-social salla-social > div,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-social salla-social ul {
+  direction: rtl !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-bottom__inner,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-bottom__inner {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* No lines + centering off: remove the unused second grid column. */
+.store-footer.veloura-footer-enabled.veloura-footer-align-default[data-veloura-footer-title-lines="false"] .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"][data-veloura-footer-title-lines="false"] .veloura-footer-section-title {
+  display: block !important;
+  text-align: right !important;
+}
+
+/* =========================================================
+   APP STORE / GOOGLE PLAY
+   Always stay in one horizontal row on desktop and mobile.
+========================================================= */
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps,
+.store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="wrapper"] {
+  direction: rtl !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="wrapper"] {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps-icons,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons [class*="wrapper"],
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-apps-icons,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"] .veloura-footer-apps salla-apps-icons [class*="wrapper"] {
+  justify-content: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps-icons,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps salla-apps-icons [class*="wrapper"],
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-apps-icons,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] .veloura-footer-apps salla-apps-icons [class*="wrapper"] {
+  justify-content: flex-start !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons a {
+  display: inline-flex !important;
+  flex: 0 1 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
+  display: block !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: 42px !important;
+  max-height: 42px !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Keep both badges beside each other even on narrow phones. */
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-section-title {
+    column-gap: 9px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+    height: 2px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="apps"],
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="wrapper"] {
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons a {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    max-width: 160px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 42px !important;
+  }
+}
+
