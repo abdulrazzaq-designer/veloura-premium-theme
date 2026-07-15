@@ -226,13 +226,13 @@
 
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
-            <h3 class="veloura-footer-title">{{ footer_links_title }}</h3>
+            <h3 class="veloura-footer-title veloura-footer-section-title"><span>{{ footer_links_title }}</span></h3>
             <salla-menu source="footer" with-cookie-preferences></salla-menu>
           </div>
         {% endif %}
 
         <div class="veloura-footer-block veloura-footer-contact">
-          <h3 class="veloura-footer-title">{{ footer_contact_title }}</h3>
+          <h3 class="veloura-footer-title veloura-footer-section-title"><span>{{ footer_contact_title }}</span></h3>
 
           <div class="veloura-footer-contact-wrap">
             <div class="veloura-footer-contact-native" data-veloura-footer-contacts>
@@ -249,7 +249,7 @@
         {% if not footer_hide_apps %}
           <div class="veloura-footer-block veloura-footer-apps" data-veloura-footer-apps>
             {% if not footer_hide_apps_title %}
-              <h3 class="veloura-footer-title">{{ footer_apps_title }}</h3>
+              <h3 class="veloura-footer-title veloura-footer-section-title"><span>{{ footer_apps_title }}</span></h3>
             {% endif %}
             <salla-apps-icons></salla-apps-icons>
           </div>

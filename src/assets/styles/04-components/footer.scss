@@ -1979,3 +1979,253 @@
     color-mix(in srgb, var(--veloura-footer-title, #0f172a) 60%, transparent),
     transparent) !important;
 }
+
+
+/* ======================================================
+   Veloura Footer Identity Center + Strong Line Titles V2
+   - Store logo/name/description are always centered
+   - Long description wraps safely on multiple lines
+   - Title decoration follows the existing center-footer switch
+====================================================== */
+
+/* Store identity: always centered and constrained */
+.store-footer.veloura-footer-enabled .veloura-footer-store,
+.store-footer.veloura-footer-enabled .veloura-footer-identity {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-identity {
+  max-width: 820px !important;
+  margin-inline: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 auto 6px !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-logo__media {
+  display: block !important;
+  margin-inline: auto !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-store-title {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-description {
+  width: min(100%, 720px) !important;
+  max-width: 720px !important;
+  margin: 0 auto !important;
+  padding-inline: 16px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  line-height: 1.85 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-description,
+.store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-description * {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-store .veloura-footer-trust {
+  justify-content: center !important;
+  margin-inline: auto !important;
+}
+
+/* Remove every previous title box/underline before applying the final rail style */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 0 18px !important;
+  padding: 2px 0 12px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  direction: ltr !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  color: var(--veloura-footer-title) !important;
+  direction: rtl !important;
+  white-space: nowrap !important;
+  z-index: 1 !important;
+}
+
+/* Small bold accent below the title text */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: -10px !important;
+  width: 34px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+  transform: translateX(-50%) !important;
+  background: var(--veloura-footer-title) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--veloura-footer-title) 9%, transparent) !important;
+  opacity: .82 !important;
+}
+
+/* Decoration ON + normal alignment: title on the right, strong rail to its left */
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title {
+  display: grid !important;
+  grid-template-columns: minmax(48px, 1fr) auto !important;
+  align-items: center !important;
+  column-gap: 16px !important;
+  text-align: right !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title > span,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title > span {
+  grid-column: 2 !important;
+  justify-self: end !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before {
+  content: none !important;
+  display: none !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
+  content: "" !important;
+  display: block !important;
+  grid-column: 1 !important;
+  width: 100% !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--veloura-footer-title) 28%, transparent) 20%,
+      color-mix(in srgb, var(--veloura-footer-title) 76%, transparent) 72%,
+      var(--veloura-footer-title) 100%) !important;
+  box-shadow:
+    0 5px 0 -3px color-mix(in srgb, var(--veloura-footer-title) 36%, transparent),
+    0 0 14px color-mix(in srgb, var(--veloura-footer-title) 16%, transparent) !important;
+  opacity: .9 !important;
+  transform: none !important;
+}
+
+/* Center-footer ON: title in the middle with symmetrical strong rails */
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title {
+  grid-template-columns: minmax(36px, 1fr) auto minmax(36px, 1fr) !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title > span,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title > span {
+  grid-column: 2 !important;
+  justify-self: center !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
+  content: "" !important;
+  display: block !important;
+  width: 100% !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  opacity: .9 !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before {
+  grid-column: 1 !important;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--veloura-footer-title) 42%, transparent) 45%,
+    var(--veloura-footer-title) 100%) !important;
+  box-shadow:
+    0 5px 0 -3px color-mix(in srgb, var(--veloura-footer-title) 34%, transparent),
+    0 0 14px color-mix(in srgb, var(--veloura-footer-title) 15%, transparent) !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
+  grid-column: 3 !important;
+  background: linear-gradient(90deg,
+    var(--veloura-footer-title) 0%,
+    color-mix(in srgb, var(--veloura-footer-title) 42%, transparent) 55%,
+    transparent 100%) !important;
+  box-shadow:
+    0 5px 0 -3px color-mix(in srgb, var(--veloura-footer-title) 34%, transparent),
+    0 0 14px color-mix(in srgb, var(--veloura-footer-title) 15%, transparent) !important;
+}
+
+/* Decoration OFF: clean title, respecting center-footer alignment */
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title {
+  display: block !important;
+  text-align: right !important;
+}
+
+.store-footer.veloura-footer-enabled.veloura-footer-center-all:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title {
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-identity {
+    max-width: 100% !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-identity .veloura-footer-description {
+    width: 100% !important;
+    max-width: 560px !important;
+    padding-inline: 10px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-section-title {
+    margin-bottom: 16px !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title,
+  .store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title {
+    grid-template-columns: minmax(22px, 1fr) auto minmax(22px, 1fr) !important;
+    column-gap: 10px !important;
+  }
+}
