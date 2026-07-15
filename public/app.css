@@ -37471,134 +37471,116 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   }
 }
 /* =====================================================================
-   VELOURA FOOTER — FINAL V8
-   Real heading lines + App Store/Google Play permanently side by side.
+   VELOURA FOOTER — FINAL V9
+   Real span lines beside each title — never above or below it.
    Keep this block at the absolute end of the file.
 ===================================================================== */
 .store-footer.veloura-footer-enabled {
   direction: rtl !important;
 }
 
-/* ---------------------------------------------------------
-   SECTION TITLES
-   The lines are actual pseudo-elements, so old rail settings
-   or hidden spans cannot remove them.
---------------------------------------------------------- */
+/* Completely disable the old pseudo-element lines. */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled .veloura-footer-title-text::before,
+.store-footer.veloura-footer-enabled .veloura-footer-title-text::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Heading row: right line + title + left line. */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
   width: 100% !important;
   min-width: 0 !important;
   margin: 0 0 18px !important;
   padding: 0 !important;
-  display: grid !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  direction: rtl !important;
+  text-align: center !important;
   overflow: visible !important;
-  color: var(--veloura-footer-title) !important;
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
-.store-footer.veloura-footer-enabled .veloura-footer-section-title {
-  --veloura-heading-line-color:
-    var(--veloura-footer-title-line,
-    var(--veloura-footer-title-bg,
-    var(--veloura-footer-title, currentColor)));
-}
 
-/* Disable every obsolete decorative child line from older versions. */
-.store-footer.veloura-footer-enabled .veloura-footer-title-rail {
-  display: none !important;
-}
-
-/* Create one guaranteed line before and one after the title. */
-.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title::after {
-  content: "" !important;
+/* The actual thin lines placed beside the title. */
+.store-footer.veloura-footer-enabled .veloura-footer-title-line {
   display: block !important;
-  width: 100% !important;
-  min-width: 22px !important;
-  height: 3px !important;
+  flex: 1 1 64px !important;
+  width: auto !important;
+  max-width: 90px !important;
+  min-width: 24px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   opacity: 1 !important;
   visibility: visible !important;
-  background: var(--veloura-heading-line-color) !important;
-  background-image: none !important;
+  background: var(--veloura-footer-title-line, var(--veloura-footer-title-bg, var(--veloura-footer-title))) !important;
   border: 0 !important;
   border-radius: 999px !important;
   box-shadow: none !important;
-  animation: none !important;
   transform: none !important;
+  animation: none !important;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-title-text {
   display: inline-flex !important;
+  flex: 0 0 auto !important;
   align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
   color: var(--veloura-footer-title) !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
   direction: rtl !important;
   line-height: 1.35 !important;
   white-space: nowrap !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
-/* Centering enabled: line — title — line. */
+/* Centering ON: keep both lines, one on each side. */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-section-title,
 .store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-section-title {
-  grid-template-columns: minmax(24px, 1fr) auto minmax(24px, 1fr) !important;
-  -moz-column-gap: 14px !important;
-       column-gap: 14px !important;
-  direction: ltr !important;
-  text-align: center !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-section-title::before {
-  grid-column: 1 !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title-text,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-title-text {
-  grid-column: 2 !important;
-  justify-self: center !important;
   justify-content: center !important;
   text-align: center !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-section-title::after {
-  grid-column: 3 !important;
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title-line--right,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title-line--left,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-title-line--right,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-title-line--left {
+  display: block !important;
 }
 
-/* Centering disabled: title on the right + one line on its left. */
+/* Centering OFF: title starts from the right, with only one line on its left. */
 .store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-section-title,
 .store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-section-title {
-  grid-template-columns: auto minmax(24px, 1fr) !important;
-  -moz-column-gap: 14px !important;
-       column-gap: 14px !important;
-  direction: rtl !important;
-  text-align: right !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-section-title::before {
-  display: none !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-title-text,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-title-text {
-  grid-column: 1 !important;
-  justify-self: start !important;
   justify-content: flex-start !important;
   text-align: right !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-section-title::after {
-  display: block !important;
-  grid-column: 2 !important;
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-title-line--right,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-title-line--right {
+  display: none !important;
 }
 
-/* Center all footer content when the switch is on. */
+.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-title-line--left,
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-title-line--left {
+  display: block !important;
+  flex: 0 1 90px !important;
+  width: 90px !important;
+  max-width: 90px !important;
+}
+
+/* Preserve full centering behavior for the footer content. */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-hero,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-store,
@@ -37629,25 +37611,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   align-items: center !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-native salla-contacts,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-native salla-contacts > div,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-contact-native salla-contacts ul,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social salla-social,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social salla-social > div,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-social salla-social ul,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-contact-native salla-contacts,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-contact-native salla-contacts > div,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-contact-native salla-contacts ul,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-social,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-social salla-social,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-social salla-social > div,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-social salla-social ul {
-  justify-content: center !important;
-  align-items: center !important;
-}
-
-/* Put everything on the right when centering is disabled. */
+/* Preserve right alignment when centering is disabled. */
 .store-footer.veloura-footer-enabled.veloura-footer-align-default,
 .store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] {
   direction: rtl !important;
@@ -37666,61 +37630,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   align-items: flex-start !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-logo,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-description,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-trust,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-tax,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-logo,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-description,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-trust,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-tax {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  justify-content: flex-start !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-wrap,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-contact-wrap {
-  align-items: flex-start !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-native salla-contacts,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-native salla-contacts > div,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-contact-native salla-contacts ul,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social salla-social,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social salla-social > div,
-.store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-social salla-social ul,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-contact-native salla-contacts,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-contact-native salla-contacts > div,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-contact-native salla-contacts ul,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-social,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-social salla-social,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-social salla-social > div,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-social salla-social ul {
-  direction: rtl !important;
-  justify-content: flex-start !important;
-  align-items: center !important;
-}
-
-/* ---------------------------------------------------------
-   APP STORE + GOOGLE PLAY
-   These rules override every old desktop/mobile column rule.
---------------------------------------------------------- */
-.store-footer.veloura-footer-enabled .veloura-footer-apps,
-.store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ol,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons nav,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons section,
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*=apps],
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*=wrapper],
-.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*=icons] {
-  direction: rtl !important;
-}
-
+/* App Store and Google Play always stay side by side. */
 .store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
@@ -37735,22 +37645,13 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 10px !important;
   width: 100% !important;
   min-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-}
-
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps-icons,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons > div,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-apps salla-apps-icons ul,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-apps-icons,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-apps salla-apps-icons,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-apps salla-apps-icons > div,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all=true] .veloura-footer-apps salla-apps-icons ul {
-  justify-content: center !important;
+  direction: rtl !important;
 }
 
 .store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-apps-icons,
@@ -37770,13 +37671,11 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   align-items: center !important;
   justify-content: center !important;
   min-width: 0 !important;
-  width: auto !important;
   margin: 0 !important;
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons img {
   display: block !important;
-  flex: 0 1 auto !important;
   width: auto !important;
   height: 48px !important;
   max-height: 48px !important;
@@ -37789,27 +37688,19 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
 
 @media (max-width: 767px) {
   .store-footer.veloura-footer-enabled .veloura-footer-section-title {
-    -moz-column-gap: 9px !important;
-         column-gap: 9px !important;
-  }
-  .store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
-  .store-footer.veloura-footer-enabled .veloura-footer-section-title::after {
-    min-width: 12px !important;
-    height: 3px !important;
-  }
-  .store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ol,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons nav,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons section,
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*=apps],
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*=wrapper],
-  .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*=icons] {
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
     gap: 8px !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-title-line {
+    flex-basis: 42px !important;
+    max-width: 55px !important;
+    min-width: 16px !important;
+    height: 1px !important;
+  }
+  .store-footer.veloura-footer-enabled.veloura-footer-align-default .veloura-footer-title-line--left,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-center-all=false] .veloura-footer-title-line--left {
+    flex-basis: 55px !important;
+    width: 55px !important;
+    max-width: 55px !important;
   }
   .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons a {
     flex: 1 1 0 !important;

@@ -118,7 +118,7 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="static-lines-v8"
+  data-veloura-footer-build="static-lines-v9"
   data-veloura-footer-center-all="{{ footer_center_all ? 'true' : 'false' }}"
   dir="rtl"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
@@ -172,7 +172,11 @@
             </a>
           {% endif %}
 
-          <h3 class="veloura-footer-title veloura-footer-store-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_store_title }}</span></h3>
+          <h3 class="veloura-footer-title veloura-footer-store-title veloura-footer-section-title">
+  <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
+  <span class="veloura-footer-title-text">{{ footer_store_title }}</span>
+  <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
+</h3>
 
           {% if footer_store_description %}
             <div class="veloura-footer-description">
@@ -213,13 +217,21 @@
       <div class="veloura-footer-grid veloura-footer-sections-grid">
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
-            <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_links_title }}</span></h3>
+            <h3 class="veloura-footer-title veloura-footer-section-title">
+  <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
+  <span class="veloura-footer-title-text">{{ footer_links_title }}</span>
+  <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
+</h3>
             <salla-menu source="footer" with-cookie-preferences></salla-menu>
           </div>
         {% endif %}
 
         <div class="veloura-footer-block veloura-footer-contact">
-          <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_contact_title }}</span></h3>
+          <h3 class="veloura-footer-title veloura-footer-section-title">
+  <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
+  <span class="veloura-footer-title-text">{{ footer_contact_title }}</span>
+  <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
+</h3>
 
           <div class="veloura-footer-contact-wrap">
             <div class="veloura-footer-contact-native" data-veloura-footer-contacts>
@@ -235,7 +247,11 @@
         {% if not footer_hide_apps %}
           <div class="veloura-footer-block veloura-footer-apps" data-veloura-footer-apps>
             {% if not footer_hide_apps_title %}
-              <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-text">{{ footer_apps_title }}</span></h3>
+              <h3 class="veloura-footer-title veloura-footer-section-title">
+  <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
+  <span class="veloura-footer-title-text">{{ footer_apps_title }}</span>
+  <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
+</h3>
             {% endif %}
             <salla-apps-icons class="veloura-footer-apps-icons" data-veloura-footer-apps-icons></salla-apps-icons>
           </div>
