@@ -37530,7 +37530,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   }
 }
 /* ======================================================
-   Veloura Footer V4 — definitive centered hero + animated arrows
+   Veloura Footer V5 — centered hero + animated 5px title lines
    This block intentionally overrides all earlier footer experiments.
 ====================================================== */
 /* The identity is structurally outside the columns, so it is always centered
@@ -37640,7 +37640,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* Title = animated arrow + text + animated arrow. */
+/* Title = animated 5px line + text + animated 5px line. */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
   width: 100% !important;
   margin: 0 0 20px !important;
@@ -37655,8 +37655,8 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   overflow: visible !important;
 }
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
-  --veloura-arrow-color: var(--veloura-footer-title-bg, #12c9bf);
-  --veloura-arrow-light: color-mix(in srgb, #ffffff 82%, var(--veloura-arrow-color));
+  --veloura-line-color: var(--veloura-footer-title-bg, #12c9bf);
+  --veloura-line-light: color-mix(in srgb, #ffffff 78%, var(--veloura-line-color));
 }
 
 .store-footer.veloura-footer-enabled .veloura-footer-title-text {
@@ -37671,48 +37671,52 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   line-height: 1.35 !important;
 }
 
+/* Clean 5px bars: no arrows, no black secondary lines, no shadow. */
 .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
   position: relative !important;
   display: block !important;
   width: 100% !important;
   min-width: 58px !important;
-  height: 10px !important;
+  height: 5px !important;
   overflow: hidden !important;
-  background-color: var(--veloura-arrow-color) !important;
-  background-image: linear-gradient(90deg, var(--veloura-arrow-color) 0%, var(--veloura-arrow-color) 30%, var(--veloura-arrow-light) 46%, #ffffff 50%, var(--veloura-arrow-light) 54%, var(--veloura-arrow-color) 70%, var(--veloura-arrow-color) 100%) !important;
-  background-size: 260% 100% !important;
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--veloura-arrow-color) 26%, transparent) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  clip-path: none !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  background-color: var(--veloura-line-color) !important;
+  background-image: linear-gradient(90deg, transparent 0%, transparent 34%, var(--veloura-line-light) 46%, #ffffff 50%, var(--veloura-line-light) 54%, transparent 66%, transparent 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: 220% 100% !important;
   will-change: background-position !important;
 }
 
-/* Arrow on the visual left points right, toward the title. */
+/* Left bar: light travels right, toward the title. */
 .store-footer.veloura-footer-enabled .veloura-footer-title-rail--start {
   grid-column: 1 !important;
-  clip-path: polygon(0 18%, calc(100% - 14px) 18%, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, calc(100% - 14px) 82%, 0 82%) !important;
-  animation: veloura-arrow-light-to-right 1.75s linear infinite !important;
+  animation: veloura-line-light-inward-left 1.8s linear infinite !important;
 }
 
-/* Arrow on the visual right points left, toward the title. */
+/* Right bar: light travels left, toward the title. */
 .store-footer.veloura-footer-enabled .veloura-footer-title-rail--end {
   grid-column: 3 !important;
-  clip-path: polygon(14px 0, 14px 18%, 100% 18%, 100% 82%, 14px 82%, 14px 100%, 0 50%) !important;
-  animation: veloura-arrow-light-to-left 1.75s linear infinite !important;
+  animation: veloura-line-light-inward-right 1.8s linear infinite !important;
 }
 
-@keyframes veloura-arrow-light-to-right {
+@keyframes veloura-line-light-inward-left {
   from {
-    background-position: 130% 0;
+    background-position: 135% 0;
   }
   to {
-    background-position: -130% 0;
+    background-position: -135% 0;
   }
 }
-@keyframes veloura-arrow-light-to-left {
+@keyframes veloura-line-light-inward-right {
   from {
-    background-position: -130% 0;
+    background-position: -135% 0;
   }
   to {
-    background-position: 130% 0;
+    background-position: 135% 0;
   }
 }
 /* Decoration switch OFF: keep title centered, hide arrows. */
@@ -37747,7 +37751,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   }
   .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
     min-width: 36px !important;
-    height: 8px !important;
+    height: 5px !important;
   }
 }
 @media (prefers-reduced-motion: reduce) {
