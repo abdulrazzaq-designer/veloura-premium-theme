@@ -42,7 +42,7 @@
 {% set footer_title_color = theme.settings.get('veloura_footer_title_color_2026', '#0f172a') %}
 {% if footer_title_color.value is defined %}{% set footer_title_color = footer_title_color.value %}{% endif %}
 
-{% set footer_title_bg = theme.settings.get('veloura_footer_title_bg_color_2026', '#e2e8f0') %}
+{% set footer_title_bg = theme.settings.get('veloura_footer_title_bg_color_2026', '#14c8c1') %}
 {% if footer_title_bg.value is defined %}{% set footer_title_bg = footer_title_bg.value %}{% endif %}
 
 {% set footer_link_color = theme.settings.get('veloura_footer_link_color_2026', '#334155') %}
@@ -137,6 +137,7 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
+  data-veloura-footer-build="animated-rails-v3"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
   data-veloura-footer-title-background="{{ footer_title_background ? 'true' : 'false' }}"
   class="store-footer

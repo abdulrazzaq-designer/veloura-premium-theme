@@ -2580,43 +2580,45 @@
   ]
 },
 {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "إظهار خلفية خلف عناوين الفوتر111",
-  "description": "عند التفعيل تظهر عناوين أقسام الفوتر داخل شارة ناعمة بحجم النص.",
-  "id": "veloura_footer_title_badge_2026",
-  "format": "switch",
-  "required": false,
-  "value": false,
-  "selected": false,
-  "conditions": [
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار الخطوط المتحركة بجانب العناوين",
+    "id": "veloura_footer_title_badge_2026",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true,
+    "description": "يظهر خطان متحركان باتجاه عنوان القسم. يتم استخدام لون تختاره مع لمعة فاتحة لإظهار الحركة.",
+    "conditions": [
     {
       "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
     }
   ]
-},
-{
-  "id": "veloura_footer_title_bg_color_2026",
-  "type": "string",
-  "format": "color",
-  "label": "لون خلفية عناوين الفوتر1111",
-  "value": "#e2e8f0",
-  "required": false,
-  "conditions": [
-    {
-      "id": "veloura_footer_title_badge_2026",
-      "operation": "=",
-      "value": true
-    },
+  },
+  {
+    "id": "veloura_footer_title_bg_color_2026",
+    "type": "string",
+    "format": "color",
+    "label": "لون الخطوط المتحركة",
+    "value": "#14c8c1",
+    "required": false,
+    "conditions": [
+      {
+        "id": "veloura_footer_title_badge_2026",
+        "operation": "=",
+        "value": true
+      },
+
     {
       "id": "veloura_footer_enabled_2026",
       "operation": "=",
       "value": true
     }
-  ]
-},
+
+    ]
+  },
 {
   "id": "veloura_footer_radius_2026",
   "type": "items",
