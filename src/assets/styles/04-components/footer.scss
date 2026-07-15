@@ -2468,3 +2468,236 @@
     background-position: center !important;
   }
 }
+
+
+/* ======================================================
+   Veloura Footer V4 — definitive centered hero + animated arrows
+   This block intentionally overrides all earlier footer experiments.
+====================================================== */
+
+/* The identity is structurally outside the columns, so it is always centered
+   against the actual footer container, never against one grid column. */
+.store-footer.veloura-footer-enabled .veloura-footer-hero {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto 28px !important;
+  padding: 0 0 24px !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--veloura-footer-text) 15%, transparent) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-store {
+  width: 100% !important;
+  max-width: 860px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-identity {
+  width: 100% !important;
+  max-width: 820px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-logo,
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-store-title,
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-description,
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-description * {
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-description {
+  display: block !important;
+  width: min(100%, 700px) !important;
+  max-width: 700px !important;
+  line-height: 1.85 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  text-wrap: pretty !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-description * {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-hero .veloura-footer-trust {
+  justify-content: center !important;
+  margin: 16px auto 0 !important;
+}
+
+/* Lower footer columns only. */
+@media (min-width: 1024px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-sections-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+    padding-top: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-no-apps .veloura-footer-sections-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Remove every old title decoration. */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  text-decoration: none !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Title = animated arrow + text + animated arrow. */
+.store-footer.veloura-footer-enabled .veloura-footer-section-title {
+  --veloura-arrow-color: var(--veloura-footer-title-bg, #12c9bf);
+  --veloura-arrow-light: color-mix(in srgb, #ffffff 82%, var(--veloura-arrow-color));
+
+  width: 100% !important;
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(58px, 1fr) auto minmax(58px, 1fr) !important;
+  align-items: center !important;
+  gap: 14px !important;
+  direction: ltr !important;
+  text-align: center !important;
+  overflow: visible !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-text {
+  grid-column: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--veloura-footer-title) !important;
+  direction: rtl !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  line-height: 1.35 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 58px !important;
+  height: 10px !important;
+  overflow: hidden !important;
+  background-color: var(--veloura-arrow-color) !important;
+  background-image: linear-gradient(
+    90deg,
+    var(--veloura-arrow-color) 0%,
+    var(--veloura-arrow-color) 30%,
+    var(--veloura-arrow-light) 46%,
+    #ffffff 50%,
+    var(--veloura-arrow-light) 54%,
+    var(--veloura-arrow-color) 70%,
+    var(--veloura-arrow-color) 100%
+  ) !important;
+  background-size: 260% 100% !important;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--veloura-arrow-color) 26%, transparent) !important;
+  will-change: background-position !important;
+}
+
+/* Arrow on the visual left points right, toward the title. */
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail--start {
+  grid-column: 1 !important;
+  clip-path: polygon(0 18%, calc(100% - 14px) 18%, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, calc(100% - 14px) 82%, 0 82%) !important;
+  animation: veloura-arrow-light-to-right 1.75s linear infinite !important;
+}
+
+/* Arrow on the visual right points left, toward the title. */
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail--end {
+  grid-column: 3 !important;
+  clip-path: polygon(14px 0, 14px 18%, 100% 18%, 100% 82%, 14px 82%, 14px 100%, 0 50%) !important;
+  animation: veloura-arrow-light-to-left 1.75s linear infinite !important;
+}
+
+@keyframes veloura-arrow-light-to-right {
+  from { background-position: 130% 0; }
+  to { background-position: -130% 0; }
+}
+
+@keyframes veloura-arrow-light-to-left {
+  from { background-position: -130% 0; }
+  to { background-position: 130% 0; }
+}
+
+/* Decoration switch OFF: keep title centered, hide arrows. */
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled) .veloura-footer-title-rail,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="false"] .veloura-footer-title-rail {
+  visibility: hidden !important;
+  animation: none !important;
+}
+
+/* Applications side by side. */
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="apps"],
+.store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons [class*="wrapper"] {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-hero {
+    margin-bottom: 22px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-section-title {
+    grid-template-columns: minmax(36px, 1fr) auto minmax(36px, 1fr) !important;
+    gap: 9px !important;
+  }
+
+  .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+    min-width: 36px !important;
+    height: 8px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+    animation: none !important;
+    background-position: center !important;
+  }
+}

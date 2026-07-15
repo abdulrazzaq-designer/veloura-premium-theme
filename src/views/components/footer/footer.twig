@@ -137,7 +137,7 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="animated-rails-v3"
+  data-veloura-footer-build="centered-hero-arrows-v4"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
   data-veloura-footer-title-background="{{ footer_title_background ? 'true' : 'false' }}"
   class="store-footer
@@ -174,66 +174,67 @@
 >
   <div aria-label="footer" class="store-footer__inner veloura-footer-main">
     <div class="veloura-footer-container">
-      <div class="veloura-footer-grid">
-
-        <div class="veloura-footer-block veloura-footer-store">
-          <div class="veloura-footer-identity">
-            {% if not footer_hide_logo %}
-              <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
-                {% if footer_logo_is_video %}
-                  <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
-                {% else %}
-                  <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
-                {% endif %}
-              </a>
-            {% endif %}
-
-            <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
-
-            {% if footer_store_description %}
-              <div class="veloura-footer-description">
-                {{ footer_store_description|raw }}
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="veloura-footer-trust">
-            <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
-
-            {% if store.settings.tax.number %}
-              <div class="veloura-footer-tax">
-                {% if store.settings.tax.certificate %}
-                  <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
-                    <img width="40" height="50" src="{{ 'images/tax.png' | cdn(70,70) }}" loading="lazy" alt="value added tax">
-                  </a>
-                {% endif %}
-
-                <div>
-                  <p>{{ trans('common.elements.tax_number') }}</p>
-                  <b>{{ store.settings.tax.number }}</b>
-                </div>
-              </div>
-
-              {% if store.settings.tax.certificate %}
-                <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
-                  <div class="flex justify-center max-w-full">
-                    <img class="w-full" loading="lazy" data-src="{{ store.settings.tax.certificate }}" alt="{{ store.settings.tax.number }}"/>
-                  </div>
-                </salla-modal>
+      <div class="veloura-footer-hero">
+      <div class="veloura-footer-block veloura-footer-store">
+        <div class="veloura-footer-identity">
+          {% if not footer_hide_logo %}
+            <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
+              {% if footer_logo_is_video %}
+                <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
+              {% else %}
+                <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
               {% endif %}
-            {% endif %}
-          </div>
+            </a>
+          {% endif %}
+
+          <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
+
+          {% if footer_store_description %}
+            <div class="veloura-footer-description">
+              {{ footer_store_description|raw }}
+            </div>
+          {% endif %}
         </div>
 
+        <div class="veloura-footer-trust">
+          <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
+
+          {% if store.settings.tax.number %}
+            <div class="veloura-footer-tax">
+              {% if store.settings.tax.certificate %}
+                <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
+                  <img width="40" height="50" src="{{ 'images/tax.png' | cdn(70,70) }}" loading="lazy" alt="value added tax">
+                </a>
+              {% endif %}
+
+              <div>
+                <p>{{ trans('common.elements.tax_number') }}</p>
+                <b>{{ store.settings.tax.number }}</b>
+              </div>
+            </div>
+
+            {% if store.settings.tax.certificate %}
+              <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
+                <div class="flex justify-center max-w-full">
+                  <img class="w-full" loading="lazy" data-src="{{ store.settings.tax.certificate }}" alt="{{ store.settings.tax.number }}"/>
+                </div>
+              </salla-modal>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+      </div>
+
+      <div class="veloura-footer-grid veloura-footer-sections-grid">
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
-            <h3 class="veloura-footer-title veloura-footer-section-title"><span>{{ footer_links_title }}</span></h3>
+            <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_links_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
             <salla-menu source="footer" with-cookie-preferences></salla-menu>
           </div>
         {% endif %}
 
         <div class="veloura-footer-block veloura-footer-contact">
-          <h3 class="veloura-footer-title veloura-footer-section-title"><span>{{ footer_contact_title }}</span></h3>
+          <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_contact_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
 
           <div class="veloura-footer-contact-wrap">
             <div class="veloura-footer-contact-native" data-veloura-footer-contacts>
@@ -250,7 +251,7 @@
         {% if not footer_hide_apps %}
           <div class="veloura-footer-block veloura-footer-apps" data-veloura-footer-apps>
             {% if not footer_hide_apps_title %}
-              <h3 class="veloura-footer-title veloura-footer-section-title"><span>{{ footer_apps_title }}</span></h3>
+              <h3 class="veloura-footer-title veloura-footer-section-title"><span class="veloura-footer-title-rail veloura-footer-title-rail--start" aria-hidden="true"></span><span class="veloura-footer-title-text">{{ footer_apps_title }}</span><span class="veloura-footer-title-rail veloura-footer-title-rail--end" aria-hidden="true"></span></h3>
             {% endif %}
             <salla-apps-icons></salla-apps-icons>
           </div>
