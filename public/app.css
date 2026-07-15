@@ -35105,20 +35105,12 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     color: rgba(55, 65, 81, var(--tw-text-opacity, 1));
 }
 
-/* ================================
-   Veloura Footer - Simple Final
-   خيارات مبسطة:
-   - أيقونات فقط
-   - أيقونة مع نص وإطار
-   - دمج السوشيال
-   - ترتيب جنب بعض/عامود
-   - SVG التطبيقات مع لون من الإعدادات
-================================ */
 .store-footer.veloura-footer-enabled {
   background: transparent !important;
   color: var(--veloura-footer-text) !important;
   overflow: visible !important;
 }
+
 .store-footer.veloura-footer-enabled {
   --veloura-footer-real-radius: 0px;
   --veloura-footer-contact-radius: 999px;
@@ -35139,7 +35131,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   --veloura-footer-real-radius: 46px;
 }
 
-/* Main body */
 .store-footer.veloura-footer-enabled .store-footer__inner,
 .store-footer.veloura-footer-enabled .veloura-footer-main {
   background-color: var(--veloura-footer-bg) !important;
@@ -35151,6 +35142,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   border-radius: var(--veloura-footer-real-radius) var(--veloura-footer-real-radius) 0 0 !important;
   overflow: hidden !important;
 }
+
 .store-footer.veloura-footer-enabled .store-footer__inner,
 .store-footer.veloura-footer-enabled .veloura-footer-main {
   position: relative;
@@ -35239,7 +35231,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   margin: 0 0 10px;
 }
 
-/* Logo */
 .store-footer.veloura-footer-enabled .veloura-footer-logo {
   display: inline-flex;
   align-items: center;
@@ -35255,7 +35246,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: block;
 }
 
-/* Hide duplicated Salla internal titles */
 .store-footer.veloura-footer-enabled .veloura-footer-contact salla-contacts h3,
 .store-footer.veloura-footer-enabled .veloura-footer-contact salla-contacts h4,
 .store-footer.veloura-footer-enabled .veloura-footer-contact salla-contacts .title,
@@ -35268,7 +35258,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* Center switch */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title {
@@ -35284,9 +35273,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   justify-content: center;
 }
 
-/* ================================
-   Contacts + Social
-================================ */
 .store-footer.veloura-footer-enabled .veloura-footer-contact-wrap {
   display: flex;
   flex-direction: column;
@@ -35294,7 +35280,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   min-width: 0;
 }
 
-/* Contacts and merged social layout */
 .store-footer.veloura-footer-enabled .veloura-footer-contact-native salla-contacts,
 .store-footer.veloura-footer-enabled .veloura-footer-contact-native salla-contacts > div,
 .store-footer.veloura-footer-enabled .veloura-footer-contact-native salla-contacts ul,
@@ -35340,7 +35325,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   align-items: center !important;
 }
 
-/* Normal social: without merge, always icons only under store info */
 .store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social,
 .store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social salla-social,
 .store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social salla-social > div,
@@ -35388,7 +35372,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   height: 18px !important;
 }
 
-/* Generated contact/social cards */
 .store-footer.veloura-footer-enabled .veloura-footer-contact-card {
   box-sizing: border-box !important;
   -webkit-text-decoration: none !important;
@@ -35433,7 +35416,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   white-space: nowrap !important;
 }
 
-/* Option 1: icon + text + border */
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card {
   display: inline-flex !important;
   flex-direction: row !important;
@@ -35468,7 +35450,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   order: 2 !important;
 }
 
-/* Option 2: icons only */
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card {
   display: inline-flex !important;
   align-items: center !important;
@@ -35490,7 +35471,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* Links */
 .store-footer.veloura-footer-enabled .veloura-footer-links salla-menu ul {
   display: grid;
   grid-gap: 8px;
@@ -35500,7 +35480,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   list-style: none;
 }
 
-/* Trust */
 .store-footer.veloura-footer-enabled .veloura-footer-trust {
   margin-top: 22px;
   display: flex;
@@ -35532,7 +35511,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   color: var(--veloura-footer-text);
 }
 
-/* Apps */
 .store-footer.veloura-footer-enabled .veloura-footer-apps {
   min-width: 0;
 }
@@ -35565,7 +35543,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* Featured App SVG Buttons */
 .store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-apps salla-apps-icons :where(div, ul) {
   display: flex !important;
   align-items: center !important;
@@ -35617,11 +35594,11 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* Bottom */
 .store-footer.veloura-footer-enabled .veloura-footer-bottom {
   background: var(--veloura-footer-bottom-bg) !important;
   color: var(--veloura-footer-bottom-text) !important;
 }
+
 .store-footer.veloura-footer-enabled .veloura-footer-bottom {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -35644,7 +35621,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   font-size: 13px;
 }
 
-/* Desktop columns */
 @media (min-width: 1024px) {
   .store-footer.veloura-footer-enabled.veloura-footer-cols-3 .veloura-footer-grid {
     grid-template-columns: 1.4fr 1fr 1fr;
@@ -35684,12 +35660,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     align-items: stretch !important;
   }
 }
-/* ================================
-   Veloura Footer FINAL VISUAL FIX
-   إصلاح ظهور النص داخل الأيقونات + إظهار SVG التطبيقات
-   ضع هذا آخر الملف، وهو مدمج هنا بالفعل
-================================ */
-/* دعم القيم القديمة والجديدة حتى لو Salla رجعتها بشرطة بدل underscore */
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card,
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card {
   display: inline-flex !important;
@@ -35751,7 +35721,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   white-space: nowrap !important;
 }
 
-/* أيقونات فقط: أخفي كل النصوص بقوة */
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons-only .veloura-footer-contact-card,
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card {
   display: inline-flex !important;
@@ -35786,7 +35755,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* السوشيال بدون دمج: أيقونات فقط مهما كان الخيار */
 .store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social :where(a, button, .s-social-link, .veloura-footer-contact-card) {
   display: inline-flex !important;
   align-items: center !important;
@@ -35814,7 +35782,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* تطبيقات الجوال: إظهار SVG واضح بدل النص فقط */
 .store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-app-button {
   display: inline-flex !important;
   align-items: center !important;
@@ -35865,13 +35832,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   line-height: 1 !important;
 }
 
-/* ================================
-   Veloura Footer Radical Icon Fix
-   - لا نعتمد على أيقونات سلة
-   - كل أيقونات التواصل والسوشيال inline SVG
-   - تطبيقات الجوال custom buttons من روابط Salla
-================================ */
-/* أي SVG داخل كروت التواصل */
 .store-footer.veloura-footer-enabled .veloura-footer-contact-card__icon svg {
   display: block !important;
   width: 18px !important;
@@ -35880,7 +35840,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   fill: currentColor !important;
 }
 
-/* أيقونة + نص وإطار */
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon_text .veloura-footer-contact-card,
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icon-text .veloura-footer-contact-card {
   display: inline-flex !important;
@@ -35940,7 +35899,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   white-space: nowrap !important;
 }
 
-/* أيقونات فقط */
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons_only .veloura-footer-contact-card,
 .store-footer.veloura-footer-enabled.veloura-footer-contact-display-icons-only .veloura-footer-contact-card {
   display: inline-flex !important;
@@ -35968,7 +35926,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* السوشيال بدون دمج: دائماً أيقونات فقط مع SVG */
 .store-footer.veloura-footer-enabled:not(.veloura-footer-merge-social) .veloura-footer-social .veloura-footer-contact-card {
   display: inline-flex !important;
   align-items: center !important;
@@ -36000,7 +35957,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   color: var(--veloura-footer-icon-color, #26265c) !important;
 }
 
-/* تطبيقات الجوال: الحل الجذري */
 .store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-apps-source[hidden],
 .store-footer.veloura-footer-enabled.veloura-footer-featured-apps [data-veloura-apps-source][hidden] {
   display: none !important;
@@ -36070,10 +36026,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   line-height: 1 !important;
 }
 
-/* ======================================================
-   Veloura Apps Direct Render Final Fix
-   حل جذري للتطبيقات: الأزرار تنرسم من Twig مباشرة من الروابط
-====================================================== */
 .store-footer.veloura-footer-enabled.veloura-footer-featured-apps .veloura-footer-apps-custom {
   display: flex !important;
   align-items: center !important;
@@ -36135,14 +36087,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   white-space: nowrap !important;
 }
 
-/* ======================================================
-   Veloura Footer Clean Final Fix
-   - إزالة خيارات/ستايلات تطبيقات SVG المخصصة
-   - إزالة الإطار المنقط
-   - جعل نهاية الفوتر متصلة مع أسفل المتجر مع مراعاة القائمة العائمة
-   - إخفاء تكرار نفس رقم الهاتف/الرابط
-====================================================== */
-/* إزالة الإطار المنقط القديم */
 .store-footer,
 .store-footer .store-footer__inner,
 .store-footer.veloura-footer-enabled,
@@ -36155,12 +36099,10 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   border-style: none !important;
 }
 
-/* عنصر مكرر تم إخفاؤه من السكربت */
 .store-footer.veloura-footer-enabled [data-veloura-hidden-duplicate="1"] {
   display: none !important;
 }
 
-/* أيقونات التواصل والسوشيال تبقى ظاهرة */
 .store-footer.veloura-footer-enabled .veloura-footer-contact-card__icon svg {
   display: block !important;
   width: 18px !important;
@@ -36169,7 +36111,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   fill: currentColor !important;
 }
 
-/* سلة التطبيقات الأصلية فقط */
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons {
   display: block !important;
 }
@@ -36198,7 +36139,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: block !important;
 }
 
-/* تنظيف أي ستايلات قديمة خاصة بتطبيقات SVG المخصصة */
 .store-footer.veloura-footer-enabled .veloura-footer-apps-custom,
 .store-footer.veloura-footer-enabled .veloura-footer-app-button,
 .store-footer.veloura-footer-enabled .veloura-footer-app-button__icon,
@@ -36207,7 +36147,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   all: unset;
 }
 
-/* اتصال نهاية الفوتر بأسفل المتجر مع ترك مساحة للقائمة العائمة في الجوال */
 .store-footer.veloura-footer-enabled {
   margin-bottom: 0 !important;
 }
@@ -36217,7 +36156,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   background: var(--veloura-footer-bottom-bg, var(--veloura-footer-bg, #000)) !important;
 }
 
-/* على الجوال: خليه ممتد لتحت وما يختفي خلف القائمة العائمة */
 @media (max-width: 767px) {
   .store-footer.veloura-footer-enabled .veloura-footer-bottom {
     padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
@@ -36226,14 +36164,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     padding-bottom: 0 !important;
   }
 }
-/* ======================================================
-   Veloura Footer — Desktop hierarchy final
-   With apps:
-     store identity full-width above
-     links (right) | contact/social (middle) | apps (left)
-   Without apps:
-     links (right) | store identity (middle) | contact/social (left)
-====================================================== */
 @media (min-width: 1024px) {
   .store-footer.veloura-footer-enabled .veloura-footer-grid {
     direction: rtl !important;
@@ -36248,11 +36178,9 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
   }
-  /* Actual app links exist: identity above the three columns. */
   .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-grid {
     grid-template-areas: "store store store" "links contact apps" !important;
   }
-  /* No actual app links: three balanced columns. */
   .store-footer.veloura-footer-enabled.veloura-footer-no-apps .veloura-footer-grid,
   .store-footer.veloura-footer-enabled.veloura-footer-layout-detecting .veloura-footer-grid {
     grid-template-areas: "links store contact" !important;
@@ -36269,7 +36197,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   .store-footer.veloura-footer-enabled .veloura-footer-apps {
     grid-area: apps !important;
   }
-  /* Identity row when apps exist: full-width, compact, clearly separated. */
   .store-footer.veloura-footer-enabled.veloura-footer-has-apps .veloura-footer-store {
     width: 100% !important;
     max-width: none !important;
@@ -36300,7 +36227,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     grid-area: trust !important;
     margin-top: 22px !important;
   }
-  /* Identity as the middle column when there is no app. */
   .store-footer.veloura-footer-enabled.veloura-footer-no-apps .veloura-footer-store,
   .store-footer.veloura-footer-enabled.veloura-footer-layout-detecting .veloura-footer-store {
     display: flex !important;
@@ -36348,7 +36274,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   .store-footer.veloura-footer-enabled .veloura-footer-apps[hidden] {
     display: none !important;
   }
-  /* Respect the merchant's center option without breaking the hierarchy. */
   .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
   .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-title {
     text-align: center !important;
@@ -36363,10 +36288,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     align-items: center !important;
   }
 }
-/* ======================================================
-   Veloura Footer Image Loading Safety Fix
-   يمنع إخفاء مكوّن تطبيقات سلة قبل اكتمال تحميله
-====================================================== */
 .store-footer.veloura-footer-enabled .veloura-footer-logo__media,
 .store-footer.veloura-footer-enabled .veloura-footer-apps img,
 .store-footer.veloura-footer-enabled salla-apps-icons img {
@@ -36375,7 +36296,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   opacity: 1 !important;
 }
 
-/* أثناء انتظار Hydration: أبقِ المكوّن موجودًا في DOM لكن خارج المشهد، ولا تستخدم display:none */
 .store-footer.veloura-footer-enabled.veloura-footer-layout-detecting .veloura-footer-apps {
   position: absolute !important;
   width: 1px !important;
@@ -36405,11 +36325,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* ======================================================
-   Veloura Footer Layout Controls — Safe Final
-   يعتمد على النسخة المستقرة ولا يغيّر تحميل الصور أو مكونات سلة
-====================================================== */
-/* مسافات عامة مضغوطة */
 .store-footer.veloura-footer-enabled .veloura-footer-grid {
   gap: 24px !important;
 }
@@ -36452,7 +36367,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   margin-top: 12px !important;
 }
 
-/* خلفية اختيارية صغيرة للعناوين */
 .store-footer.veloura-footer-enabled.veloura-footer-title-badge .veloura-footer-title {
   display: inline-flex !important;
   align-items: center !important;
@@ -36474,7 +36388,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
 }
 
 @media (min-width: 1024px) {
-  /* الوضع الطبيعي: جميع البلوكات المتاحة جنباً إلى جنب */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-normal .veloura-footer-grid {
     display: grid !important;
     direction: rtl !important;
@@ -36497,22 +36410,18 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     width: auto !important;
     max-width: none !important;
   }
-  /* الوضع المميز */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-grid {
     display: grid !important;
     direction: rtl !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     align-items: start !important;
   }
-  /* مع تطبيق: معلومات المتجر صف كامل، ثم روابط/تواصل/تطبيق */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-has-apps .veloura-footer-grid {
     grid-template-areas: "store store store" "links contact apps" !important;
   }
-  /* أثناء انتظار تحميل مكون التطبيقات نبقي نفس ترتيب وجود التطبيق حتى لا يقفز الفوتر */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-layout-detecting .veloura-footer-grid {
     grid-template-areas: "store store store" "links contact apps" !important;
   }
-  /* بدون تطبيق: روابط | معلومات المتجر | تواصل */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps .veloura-footer-grid {
     grid-template-areas: "links store contact" !important;
   }
@@ -36579,12 +36488,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     gap: 20px !important;
   }
 }
-/* ======================================================
-   Veloura Footer Final Controls Fix
-   - No spacing dropdown
-   - Featured mode uses one boolean switch
-   - Title background uses one boolean switch + color
-====================================================== */
 .store-footer.veloura-footer-enabled .veloura-footer-grid {
   gap: 20px !important;
   padding-top: 30px !important;
@@ -36595,7 +36498,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   min-width: 0 !important;
 }
 
-/* Title background OFF */
 .store-footer.veloura-footer-enabled .veloura-footer-title:not(.veloura-footer-store-title) {
   display: block !important;
   width: 100% !important;
@@ -36608,7 +36510,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   box-shadow: none !important;
 }
 
-/* Title background ON - full section width */
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
   display: flex !important;
@@ -36635,7 +36536,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
 }
 
 @media (min-width: 1024px) {
-  /* Normal mode: all available sections side by side */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-normal .veloura-footer-grid,
   .store-footer.veloura-footer-enabled[data-veloura-footer-layout=normal] .veloura-footer-grid {
     display: grid !important;
@@ -36668,7 +36568,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     padding-bottom: 0 !important;
     border-bottom: 0 !important;
   }
-  /* Featured mode: store information above, sections below */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-grid,
   .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-grid {
     display: grid !important;
@@ -36741,13 +36640,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     padding-bottom: 26px !important;
   }
 }
-/* ======================================================
-   Veloura Footer - Logo stack + professional title bars
-   - Logo directly above store name
-   - Description under the name
-   - Title alignment follows the existing center-footer option
-====================================================== */
-/* Store identity: always a clean vertical stack */
 @media (min-width: 1024px) {
   .store-footer.veloura-footer-enabled .veloura-footer-store,
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store,
@@ -36785,7 +36677,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     width: 100% !important;
     margin-top: 12px !important;
   }
-  /* In featured mode, the full-width store identity is centered and compact */
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-store,
   .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-store {
     align-items: center !important;
@@ -36805,7 +36696,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     justify-content: center !important;
   }
 }
-/* Professional full-width section headings */
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
   position: relative !important;
@@ -36846,7 +36736,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   opacity: 0.55 !important;
 }
 
-/* Existing center-footer switch controls heading alignment too */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
 .store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
   justify-content: center !important;
@@ -36859,7 +36748,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   transform: translateX(50%) !important;
 }
 
-/* When title background is off, alignment still follows center-footer switch */
 .store-footer.veloura-footer-enabled:not(.veloura-footer-center-all) .veloura-footer-title:not(.veloura-footer-store-title) {
   text-align: right !important;
 }
@@ -36868,13 +36756,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   text-align: center !important;
 }
 
-/* ======================================================
-   Veloura Footer Identity + Line Titles Final Fix
-   - Logo, name and description locked in one vertical group
-   - App badges in one horizontal row
-   - No title background: elegant line decoration instead
-====================================================== */
-/* Identity wrapper prevents old grid rules from separating logo and name */
 .store-footer.veloura-footer-enabled .veloura-footer-identity {
   width: 100% !important;
   display: flex !important;
@@ -36921,7 +36802,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   text-align: right !important;
 }
 
-/* Featured layout: identity centered above all three columns */
 @media (min-width: 1024px) {
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-identity,
   .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-identity {
@@ -36943,7 +36823,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     margin-right: auto !important;
   }
 }
-/* Existing center-all option centers identity in either layout */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-identity {
   align-items: center !important;
   text-align: center !important;
@@ -36962,7 +36841,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   margin-right: auto !important;
 }
 
-/* App Store + Google Play badges in one row */
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
@@ -36993,7 +36871,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   justify-content: center !important;
 }
 
-/* Remove the old large title background completely */
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
   min-height: 0 !important;
@@ -37003,11 +36880,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   background: transparent !important;
   box-shadow: none !important;
   overflow: visible !important;
-}
-
-/* Right aligned: title on right, elegant line extends to the left */
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
   display: flex !important;
   align-items: center !important;
   justify-content: flex-start !important;
@@ -37016,54 +36888,18 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   text-align: right !important;
 }
 
-/*
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::before {
-  content: "" !important;
-  order: 2 !important;
-  flex: 1 1 auto !important;
-  height: 1px !important;
-  min-width: 28px !important;
-  background: linear-gradient(to left,
-    color-mix(in srgb, var(--veloura-footer-title, #0f172a) 55%, transparent),
-    transparent) !important;
-}*/
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::after {
   content: none !important;
   display: none !important;
 }
 
-/* Center-all: title centered with a line on both sides */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title),
 .store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title) {
   justify-content: center !important;
   text-align: center !important;
 }
 
-/*
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::after {
-  content: "" !important;
-  display: block !important;
-  flex: 1 1 0 !important;
-  max-width: 90px !important;
-  height: 1px !important;
-  background: linear-gradient(to right,
-    transparent,
-    color-mix(in srgb, var(--veloura-footer-title, #0f172a) 60%, transparent),
-    transparent) !important;
-}
-*/
-/* ======================================================
-   Veloura Footer Identity Center + Strong Line Titles V2
-   - Store logo/name/description are always centered
-   - Long description wraps safely on multiple lines
-   - Title decoration follows the existing center-footer switch
-====================================================== */
-/* Store identity: always centered and constrained */
 .store-footer.veloura-footer-enabled .veloura-footer-store,
 .store-footer.veloura-footer-enabled .veloura-footer-identity {
   width: 100% !important;
@@ -37137,7 +36973,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   margin-right: auto !important;
 }
 
-/* Remove every previous title box/underline before applying the final rail style */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
   position: relative !important;
   width: 100% !important;
@@ -37164,7 +36999,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   z-index: 1 !important;
 }
 
-/* Small bold accent below the title text */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
   content: "" !important;
   position: absolute !important;
@@ -37179,7 +37013,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   opacity: 0.82 !important;
 }
 
-/* Decoration ON + normal alignment: title on the right, strong rail to its left */
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-section-title {
   display: grid !important;
@@ -37197,35 +37030,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   justify-self: end !important;
 }
 
-/*
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before {
-  content: none !important;
-  display: none !important;
-}*/
-/*
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
-  content: "" !important;
-  display: block !important;
-  grid-column: 1 !important;
-  width: 100% !important;
-  height: 4px !important;
-  border-radius: 999px !important;
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      color-mix(in srgb, var(--veloura-footer-title) 28%, transparent) 20%,
-      color-mix(in srgb, var(--veloura-footer-title) 76%, transparent) 72%,
-      var(--veloura-footer-title) 100%) !important;
-  box-shadow:
-    0 5px 0 -3px color-mix(in srgb, var(--veloura-footer-title) 36%, transparent),
-    0 0 14px color-mix(in srgb, var(--veloura-footer-title) 16%, transparent) !important;
-  opacity: .9 !important;
-  transform: none !important;
-}
-
-/* Center-footer ON: title in the middle with symmetrical strong rails */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-section-title {
   grid-template-columns: minmax(36px, 1fr) auto minmax(36px, 1fr) !important;
@@ -37238,44 +37042,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   justify-self: center !important;
 }
 
-/*
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
-  content: "" !important;
-  display: block !important;
-  width: 100% !important;
-  height: 4px !important;
-  border-radius: 999px !important;
-  opacity: .9 !important;
-}*/
-/*
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before {
-  grid-column: 1 !important;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--veloura-footer-title) 42%, transparent) 45%,
-    var(--veloura-footer-title) 100%) !important;
-  box-shadow:
-    0 5px 0 -3px color-mix(in srgb, var(--veloura-footer-title) 34%, transparent),
-    0 0 14px color-mix(in srgb, var(--veloura-footer-title) 15%, transparent) !important;
-}
-*/ /*
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
-  grid-column: 3 !important;
-  background: linear-gradient(90deg,
-    var(--veloura-footer-title) 0%,
-    color-mix(in srgb, var(--veloura-footer-title) 42%, transparent) 55%,
-    transparent 100%) !important;
-  box-shadow:
-    0 5px 0 -3px color-mix(in srgb, var(--veloura-footer-title) 34%, transparent),
-    0 0 14px color-mix(in srgb, var(--veloura-footer-title) 15%, transparent) !important;
-}
-
-/* Decoration OFF: clean title, respecting center-footer alignment */
 .store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background=false] .veloura-footer-section-title {
   display: block !important;
   text-align: right !important;
@@ -37285,13 +37051,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   text-align: center !important;
 }
 
-/*
-.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title::after {
-  content: none !important;
-  display: none !important;
-}
-*/
 @media (max-width: 767px) {
   .store-footer.veloura-footer-enabled .veloura-footer-identity {
     max-width: 100% !important;
@@ -37312,14 +37071,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
          column-gap: 10px !important;
   }
 }
-/* ======================================================
-   Veloura Footer Animated Rails V3
-   - Featured identity is truly centered across the footer
-   - Long descriptions wrap safely
-   - Section titles use animated directional rails
-   - Rail color comes from veloura_footer_title_bg_color_2026
-====================================================== */
-/* 1) Featured identity: force the store block to span the full footer width. */
 @media (min-width: 1024px) {
   .store-footer.veloura-footer-enabled.veloura-footer-layout-featured .veloura-footer-grid,
   .store-footer.veloura-footer-enabled[data-veloura-footer-layout=featured] .veloura-footer-grid {
@@ -37386,7 +37137,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   word-break: break-word !important;
 }
 
-/* 2) Reset all previous title decorations. */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
   position: relative !important;
   width: 100% !important;
@@ -37407,6 +37157,7 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   direction: ltr !important;
   text-align: center !important;
 }
+
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
   --veloura-rail-color: var(--veloura-footer-title-bg, #14c8c1);
   --veloura-rail-light: color-mix(in srgb, #ffffff 72%, var(--veloura-rail-color));
@@ -37434,81 +37185,17 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   display: none !important;
 }
 
-/* Decoration OFF: titles only, without rails. */ /*
-.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled)[data-veloura-footer-title-background="false"] .veloura-footer-section-title::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* Decoration ON: two directional animated rails. */ /*
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
-  content: "" !important;
-  display: block !important;
-  width: 100% !important;
-  min-width: 44px !important;
-  height: 7px !important;
-  border-radius: 999px !important;
-  opacity: 1 !important;
-  background-color: var(--veloura-rail-color) !important;
-  background-image: linear-gradient(
-    90deg,
-    var(--veloura-rail-color) 0%,
-    var(--veloura-rail-color) 34%,
-    var(--veloura-rail-light) 48%,
-    #ffffff 50%,
-    var(--veloura-rail-light) 52%,
-    var(--veloura-rail-color) 66%,
-    var(--veloura-rail-color) 100%
-  ) !important;
-  background-size: 240% 100% !important;
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--veloura-rail-color) 26%, transparent),
-    0 4px 14px color-mix(in srgb, var(--veloura-rail-color) 22%, transparent) !important;
-  will-change: background-position !important;
-}
-
-/* Left rail: light travels toward the title (left -> right). */
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-section-title::before {
   grid-column: 1 !important;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%) !important;
-  animation: veloura-footer-rail-to-center-left 2.25s linear infinite !important;
 }
 
-/* Right rail: light travels toward the title (right -> left). */ /*
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
-  grid-column: 3 !important;
-  clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%) !important;
-  animation: veloura-footer-rail-to-center-right 2.25s linear infinite !important;
-}*/
-@keyframes veloura-footer-rail-to-center-left {
-  from {
-    background-position: 120% 0;
-  }
-  to {
-    background-position: -120% 0;
-  }
-}
-@keyframes veloura-footer-rail-to-center-right {
-  from {
-    background-position: -120% 0;
-  }
-  to {
-    background-position: 120% 0;
-  }
-}
-/* Respect the existing center-footer switch for content under the title. */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-section-title {
   text-align: center !important;
 }
 
-/* Applications remain side by side. */
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
@@ -37529,36 +37216,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   justify-content: center !important;
 }
 
-/*
-@media (max-width: 767px) {
-  .store-footer.veloura-footer-enabled .veloura-footer-section-title {
-    grid-template-columns: minmax(30px, 1fr) auto minmax(30px, 1fr) !important;
-    column-gap: 10px !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::before,
-  .store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::before,
-  .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-section-title::after,
-  .store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-section-title::after {
-    height: 5px !important;
-  }
-}
-/*
-@media (prefers-reduced-motion: reduce) {
-  .store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
-  .store-footer.veloura-footer-enabled .veloura-footer-section-title::after {
-    animation: none !important;
-    background-position: center !important;
-  }
-}
-
-
-/* ======================================================
-   Veloura Footer V5 — centered hero + animated 5px title lines
-   This block intentionally overrides all earlier footer experiments.
-====================================================== */
-/* The identity is structurally outside the columns, so it is always centered
-   against the actual footer container, never against one grid column. */
 .store-footer.veloura-footer-enabled .veloura-footer-hero {
   width: 100% !important;
   max-width: 100% !important;
@@ -37629,7 +37286,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   margin: 16px auto 0 !important;
 }
 
-/* Lower footer columns only. */
 @media (min-width: 1024px) {
   .store-footer.veloura-footer-enabled .veloura-footer-sections-grid {
     display: grid !important;
@@ -37642,28 +37298,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
-/* Remove every old title decoration. */ /*
-.store-footer.veloura-footer-enabled .veloura-footer-section-title,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::before,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
-  border: 0 !important;
-  background: none !important;
-  box-shadow: none !important;
-  clip-path: none !important;
-  text-decoration: none !important;
-}
-
-.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::before,
-.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* Title = animated 5px line + text + animated 5px line. */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title {
   width: 100% !important;
   margin: 0 0 20px !important;
@@ -37694,7 +37328,6 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   line-height: 1.35 !important;
 }
 
-/* Clean 5px bars: no arrows, no black secondary lines, no shadow. */
 .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
   position: relative !important;
   display: block !important;
@@ -37714,42 +37347,20 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   will-change: background-position !important;
 }
 
-/* Left bar: light travels right, toward the title. */
 .store-footer.veloura-footer-enabled .veloura-footer-title-rail--start {
   grid-column: 1 !important;
-  animation: veloura-line-light-inward-left 1.8s linear infinite !important;
 }
 
-/* Right bar: light travels left, toward the title. */
 .store-footer.veloura-footer-enabled .veloura-footer-title-rail--end {
   grid-column: 3 !important;
-  animation: veloura-line-light-inward-right 1.8s linear infinite !important;
 }
 
-@keyframes veloura-line-light-inward-left {
-  from {
-    background-position: 135% 0;
-  }
-  to {
-    background-position: -135% 0;
-  }
-}
-@keyframes veloura-line-light-inward-right {
-  from {
-    background-position: -135% 0;
-  }
-  to {
-    background-position: 135% 0;
-  }
-}
-/* Decoration switch OFF: keep title centered, hide arrows. */
 .store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled) .veloura-footer-title-rail,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=false] .veloura-footer-title-rail {
   visibility: hidden !important;
   animation: none !important;
 }
 
-/* Applications side by side. */
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons ul,
@@ -37781,6 +37392,82 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
     animation: none !important;
     background-position: center !important;
+  }
+}
+.store-footer.veloura-footer-enabled .veloura-footer-section-title {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  align-items: center !important;
+  grid-column-gap: 14px !important;
+  -moz-column-gap: 14px !important;
+       column-gap: 14px !important;
+  direction: ltr !important;
+  overflow: visible !important;
+}
+.store-footer.veloura-footer-enabled .veloura-footer-section-title {
+  --veloura-line-color: var(--veloura-footer-title-bg, #000000);
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-text,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span {
+  grid-column: 2 !important;
+  direction: rtl !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 1px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  opacity: 1 !important;
+  background: var(--veloura-line-color) !important;
+  background-image: none !important;
+  animation: none !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail--start {
+  grid-column: 1 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-title-rail--end {
+  grid-column: 3 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::before,
+.store-footer.veloura-footer-enabled .veloura-footer-section-title > span::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-background-enabled) .veloura-footer-title-rail,
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=false] .veloura-footer-title-rail {
+  visibility: hidden !important;
+}
+
+@media (max-width: 767px) {
+  .store-footer.veloura-footer-enabled .veloura-footer-section-title {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+    -moz-column-gap: 9px !important;
+         column-gap: 9px !important;
+  }
+  .store-footer.veloura-footer-enabled .veloura-footer-title-rail {
+    min-width: 0 !important;
+    height: 1px !important;
   }
 }
 .main-menu > li > a[href*=offer]{
