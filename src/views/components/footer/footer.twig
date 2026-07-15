@@ -118,15 +118,15 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="static-lines-v10"
+  data-veloura-footer-build="static-lines-v11"
   data-veloura-footer-center-all="{{ footer_center_all ? 'true' : 'false' }}"
   dir="rtl"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
-  data-veloura-footer-title-lines="true"
+  data-veloura-footer-title-lines="{{ footer_title_lines ? 'true' : 'false' }}"
   class="store-footer
   veloura-footer-enabled
   {{ footer_featured_layout ? 'veloura-footer-layout-featured' : 'veloura-footer-layout-normal' }}
-  veloura-footer-title-lines-enabled
+  {{ footer_title_lines ? 'veloura-footer-title-lines-enabled' : '' }}
   {{ footer_center_all ? 'veloura-footer-center-all' : 'veloura-footer-align-default' }}
   {{ footer_contact_inline ? 'veloura-footer-contact-inline' : 'veloura-footer-contact-column' }}
   {{ footer_merge_social ? 'veloura-footer-merge-social' : '' }}
@@ -172,11 +172,7 @@
             </a>
           {% endif %}
 
-          <h3 class="veloura-footer-title veloura-footer-store-title veloura-footer-section-title" data-veloura-title-row="true" style="display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;min-width:0!important;direction:rtl!important;">
-  <span class="veloura-footer-title-line veloura-footer-title-line--right" aria-hidden="true"></span>
-  <span class="veloura-footer-title-text">{{ footer_store_title }}</span>
-  <span class="veloura-footer-title-line veloura-footer-title-line--left" aria-hidden="true"></span>
-</h3>
+          <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
 
           {% if footer_store_description %}
             <div class="veloura-footer-description">

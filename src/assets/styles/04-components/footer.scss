@@ -2385,10 +2385,11 @@
 }
 
 /* =====================================================================
-   VELOURA FOOTER — FINAL V10
-   FLEX/NOWRAP title container:
-   centered = line | title | line
-   not centered = title on right | one line on its left
+   VELOURA FOOTER — FINAL V11
+   - Toggle controls title lines.
+   - Lines exist only on the three lower section titles.
+   - Centered: line | title | line across the full container width.
+   - Not centered: title on the right | one full line on its left.
    Keep this block at the absolute end of the file.
 ===================================================================== */
 
@@ -2396,7 +2397,7 @@
   direction: rtl !important;
 }
 
-/* إلغاء أي خطوط قديمة ناتجة من pseudo-elements. */
+/* Prevent any older pseudo-element decoration from creating extra lines. */
 .store-footer.veloura-footer-enabled .veloura-footer-section-title::before,
 .store-footer.veloura-footer-enabled .veloura-footer-section-title::after,
 .store-footer.veloura-footer-enabled .veloura-footer-title-text::before,
@@ -2405,29 +2406,52 @@
   display: none !important;
 }
 
-/* الحاوي الحقيقي للثلاثة عناصر: خط + عنوان + خط. */
-.store-footer.veloura-footer-enabled h3.veloura-footer-section-title[data-veloura-title-row="true"] {
+/* Store name under the logo: no decorative lines. */
+.store-footer.veloura-footer-enabled .veloura-footer-store-title {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+/* Make the lower footer area use the full available container width. */
+.store-footer.veloura-footer-enabled .veloura-footer-sections-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.store-footer.veloura-footer-enabled .veloura-footer-sections-grid
+> .veloura-footer-block {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Real title row: right span + title span + left span, always one row. */
+.store-footer.veloura-footer-enabled
+h3.veloura-footer-section-title[data-veloura-title-row="true"] {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
   width: 100% !important;
-  min-width: 0 !important;
   max-width: 100% !important;
+  min-width: 0 !important;
   gap: 12px !important;
   margin: 0 0 18px !important;
   padding: 0 !important;
   direction: rtl !important;
   overflow: visible !important;
+  white-space: nowrap !important;
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  white-space: nowrap !important;
 }
 
-/* نص العنوان يبقى في سطر واحد ولا يتمدد. */
-.store-footer.veloura-footer-enabled h3.veloura-footer-section-title[data-veloura-title-row="true"]
+/* Title text never wraps or consumes flexible line space. */
+.store-footer.veloura-footer-enabled
+h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-text {
   display: inline-flex !important;
   flex: 0 0 auto !important;
@@ -2435,26 +2459,27 @@
   justify-content: center !important;
   width: auto !important;
   min-width: max-content !important;
+  max-width: max-content !important;
   margin: 0 !important;
   padding: 0 !important;
   color: var(--veloura-footer-title) !important;
   direction: rtl !important;
   line-height: 1.35 !important;
-  text-align: inherit !important;
   white-space: nowrap !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
 }
 
-/* الخطوط الفعلية الموجودة كـ span يمين ويسار العنوان. */
-.store-footer.veloura-footer-enabled h3.veloura-footer-section-title[data-veloura-title-row="true"]
+/* The two real span lines fill all remaining width to the container edges. */
+.store-footer.veloura-footer-enabled
+h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line {
   display: block !important;
   flex: 1 1 0 !important;
   width: auto !important;
-  min-width: 18px !important;
-  max-width: 90px !important;
+  min-width: 0 !important;
+  max-width: none !important;
   height: 1px !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2473,8 +2498,33 @@
 }
 
 /* =========================================================
-   التوسيط مفعّل:
-   الخطان متساويان والعنوان حصراً في المنتصف.
+   SHOW / HIDE SETTING
+========================================================= */
+
+/* Toggle OFF: hide both line spans completely. */
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-lines="false"]
+h3.veloura-footer-section-title[data-veloura-title-row="true"]
+> .veloura-footer-title-line,
+.store-footer.veloura-footer-enabled:not(.veloura-footer-title-lines-enabled)
+h3.veloura-footer-section-title[data-veloura-title-row="true"]
+> .veloura-footer-title-line {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Toggle ON: allow the alignment rules below to display the needed lines. */
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-lines="true"]
+h3.veloura-footer-section-title[data-veloura-title-row="true"]
+> .veloura-footer-title-line,
+.store-footer.veloura-footer-enabled.veloura-footer-title-lines-enabled
+h3.veloura-footer-section-title[data-veloura-title-row="true"]
+> .veloura-footer-title-line {
+  visibility: visible !important;
+}
+
+/* =========================================================
+   CENTERING ENABLED
+   Both lines remain and expand equally, so the title is exactly centered.
 ========================================================= */
 
 .store-footer.veloura-footer-enabled.veloura-footer-center-all
@@ -2485,28 +2535,36 @@ h3.veloura-footer-section-title[data-veloura-title-row="true"] {
   text-align: center !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-center-all
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-lines-enabled
 h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line--right,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all
+.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-lines-enabled
 h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line--left,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"]
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"][data-veloura-footer-title-lines="true"]
 h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line--right,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"]
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"][data-veloura-footer-title-lines="true"]
 h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line--left {
   display: block !important;
   flex: 1 1 0 !important;
   width: auto !important;
-  max-width: 90px !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+/* Toggle OFF + centered: title stays centered without empty line space. */
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-lines="false"]
+h3.veloura-footer-section-title[data-veloura-title-row="true"],
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="true"][data-veloura-footer-title-lines="false"]
+h3.veloura-footer-section-title[data-veloura-title-row="true"] {
+  justify-content: center !important;
 }
 
 /* =========================================================
-   التوسيط ملغى:
-   العنوان يبدأ من اليمين، والخط الموجود على يمينه يختفي،
-   ويبقى خط واحد فقط على يسار العنوان.
+   CENTERING DISABLED
+   Hide the right line and let the left line fill the entire remaining width.
 ========================================================= */
 
 .store-footer.veloura-footer-enabled.veloura-footer-align-default
@@ -2526,20 +2584,28 @@ h3.veloura-footer-section-title[data-veloura-title-row="true"]
   display: none !important;
 }
 
-.store-footer.veloura-footer-enabled.veloura-footer-align-default
+.store-footer.veloura-footer-enabled.veloura-footer-align-default.veloura-footer-title-lines-enabled
 h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line--left,
-.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"]
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"][data-veloura-footer-title-lines="true"]
 h3.veloura-footer-section-title[data-veloura-title-row="true"]
 > .veloura-footer-title-line--left {
   display: block !important;
-  flex: 0 0 82px !important;
-  width: 82px !important;
-  min-width: 82px !important;
-  max-width: 82px !important;
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
 }
 
-/* توسيط محتويات الفوتر عند تفعيل الخيار. */
+/* Toggle OFF + not centered: title starts directly at the right edge. */
+.store-footer.veloura-footer-enabled.veloura-footer-align-default[data-veloura-footer-title-lines="false"]
+h3.veloura-footer-section-title[data-veloura-title-row="true"],
+.store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"][data-veloura-footer-title-lines="false"]
+h3.veloura-footer-section-title[data-veloura-title-row="true"] {
+  justify-content: flex-start !important;
+}
+
+/* Preserve footer content alignment behavior. */
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-block,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-hero,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all .veloura-footer-store,
@@ -2569,7 +2635,6 @@ h3.veloura-footer-section-title[data-veloura-title-row="true"]
   align-items: center !important;
 }
 
-/* محاذاة جميع عناصر الفوتر لليمين عند إلغاء التوسيط. */
 .store-footer.veloura-footer-enabled.veloura-footer-align-default,
 .store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"] {
   direction: rtl !important;
@@ -2588,7 +2653,7 @@ h3.veloura-footer-section-title[data-veloura-title-row="true"]
   align-items: flex-start !important;
 }
 
-/* App Store وGoogle Play يبقيان أفقيين دائمًا. */
+/* App Store + Google Play remain horizontal. */
 .store-footer.veloura-footer-enabled .veloura-footer-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons,
 .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons > div,
@@ -2652,21 +2717,7 @@ h3.veloura-footer-section-title[data-veloura-title-row="true"]
   .store-footer.veloura-footer-enabled
   h3.veloura-footer-section-title[data-veloura-title-row="true"]
   > .veloura-footer-title-line {
-    min-width: 14px !important;
-    max-width: 55px !important;
     height: 1px !important;
-  }
-
-  .store-footer.veloura-footer-enabled.veloura-footer-align-default
-  h3.veloura-footer-section-title[data-veloura-title-row="true"]
-  > .veloura-footer-title-line--left,
-  .store-footer.veloura-footer-enabled[data-veloura-footer-center-all="false"]
-  h3.veloura-footer-section-title[data-veloura-title-row="true"]
-  > .veloura-footer-title-line--left {
-    flex-basis: 55px !important;
-    width: 55px !important;
-    min-width: 55px !important;
-    max-width: 55px !important;
   }
 
   .store-footer.veloura-footer-enabled .veloura-footer-apps salla-apps-icons a {
