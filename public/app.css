@@ -37046,27 +37046,22 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   text-align: center !important;
 }
 
+/*
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::before,
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::before,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::after {
+.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::after {
   content: "" !important;
   display: block !important;
   flex: 1 1 0 !important;
   max-width: 90px !important;
   height: 1px !important;
-  background: linear-gradient(to right, transparent, rgba(15, 23, 42, 0.6), transparent) !important;
+  background: linear-gradient(to right,
+    transparent,
+    color-mix(in srgb, var(--veloura-footer-title, #0f172a) 60%, transparent),
+    transparent) !important;
 }
-
-@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
-.store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::after {
-  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--veloura-footer-title, #0f172a) 60%, transparent), transparent) !important;
-}
-}
-
+*/
 /* ======================================================
    Veloura Footer Identity Center + Strong Line Titles V2
    - Store logo/name/description are always centered

@@ -1939,7 +1939,7 @@
   width: 100% !important;
   text-align: right !important;
 }
-
+/*
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::before {
   content: "" !important;
@@ -1950,7 +1950,7 @@
   background: linear-gradient(to left,
     color-mix(in srgb, var(--veloura-footer-title, #0f172a) 55%, transparent),
     transparent) !important;
-}
+}*/
 
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::after {
@@ -1964,7 +1964,7 @@
   justify-content: center !important;
   text-align: center !important;
 }
-
+/*
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::before,
 .store-footer.veloura-footer-enabled.veloura-footer-center-all.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
@@ -1979,7 +1979,7 @@
     color-mix(in srgb, var(--veloura-footer-title, #0f172a) 60%, transparent),
     transparent) !important;
 }
-
+*/
 
 /* ======================================================
    Veloura Footer Identity Center + Strong Line Titles V2
