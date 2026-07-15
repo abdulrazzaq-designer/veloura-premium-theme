@@ -2665,7 +2665,7 @@
   "id": "veloura_footer_columns_desktop_2026",
   "type": "items",
   "format": "dropdown-list",
-  "label": "أعمدة الفوتر في اللابتوب111",
+  "label": "أعمدة الفوتر في اللابتوب",
   "icon": "sicon-list",
   "source": "Manual",
   "required": false,
