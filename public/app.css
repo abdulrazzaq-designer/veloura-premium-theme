@@ -37016,23 +37016,18 @@ html[dir=ltr] .mm-ocd.mm-ocd--open #mobile-menu.mm-spn ul.mm-spn--parent {
   text-align: right !important;
 }
 
+/*
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::before {
+.store-footer.veloura-footer-enabled[data-veloura-footer-title-background="true"] .veloura-footer-title:not(.veloura-footer-store-title)::before {
   content: "" !important;
   order: 2 !important;
   flex: 1 1 auto !important;
   height: 1px !important;
   min-width: 28px !important;
-  background: linear-gradient(to left, rgba(15, 23, 42, 0.55), transparent) !important;
-}
-
-@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
-.store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::before,
-.store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::before {
-  background: linear-gradient(to left, color-mix(in srgb, var(--veloura-footer-title, #0f172a) 55%, transparent), transparent) !important;
-}
-}
-
+  background: linear-gradient(to left,
+    color-mix(in srgb, var(--veloura-footer-title, #0f172a) 55%, transparent),
+    transparent) !important;
+}*/
 .store-footer.veloura-footer-enabled.veloura-footer-title-background-enabled .veloura-footer-title:not(.veloura-footer-store-title)::after,
 .store-footer.veloura-footer-enabled[data-veloura-footer-title-background=true] .veloura-footer-title:not(.veloura-footer-store-title)::after {
   content: none !important;
