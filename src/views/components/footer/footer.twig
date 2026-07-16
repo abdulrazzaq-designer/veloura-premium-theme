@@ -118,7 +118,7 @@
 {% if footer_bg_image.value is defined %}{% set footer_bg_image = footer_bg_image.value %}{% endif %}
 
 <footer
-  data-veloura-footer-build="static-lines-v12"
+  data-veloura-footer-build="static-lines-v13"
   data-veloura-footer-center-all="{{ footer_center_all ? 'true' : 'false' }}"
   dir="rtl"
   data-veloura-footer-layout="{{ footer_featured_layout ? 'featured' : 'normal' }}"
@@ -159,110 +159,55 @@
 >
   <div aria-label="footer" class="store-footer__inner veloura-footer-main">
     <div class="veloura-footer-container">
-      {% if footer_featured_layout %}
-      <div class="veloura-footer-hero">
-      <div class="veloura-footer-block veloura-footer-store">
-        <div class="veloura-footer-identity">
-          {% if not footer_hide_logo %}
-            <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
-              {% if footer_logo_is_video %}
-                <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
-              {% else %}
-                <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
-              {% endif %}
-            </a>
-          {% endif %}
-
-          <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
-
-          {% if footer_store_description %}
-            <div class="veloura-footer-description">
-              {{ footer_store_description|raw }}
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="veloura-footer-trust">
-          <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
-
-          {% if store.settings.tax.number %}
-            <div class="veloura-footer-tax">
-              {% if store.settings.tax.certificate %}
-                <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
-                  <img width="40" height="50" src="{{ 'images/tax.png' | cdn(70,70) }}" loading="lazy" alt="value added tax">
-                </a>
-              {% endif %}
-
-              <div>
-                <p>{{ trans('common.elements.tax_number') }}</p>
-                <b>{{ store.settings.tax.number }}</b>
-              </div>
-            </div>
-
-            {% if store.settings.tax.certificate %}
-              <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
-                <div class="flex justify-center max-w-full">
-                  <img class="w-full" loading="lazy" data-src="{{ store.settings.tax.certificate }}" alt="{{ store.settings.tax.number }}"/>
-                </div>
-              </salla-modal>
-            {% endif %}
-          {% endif %}
-        </div>
-      </div>
-      </div>
-      {% endif %}
-
       <div class="veloura-footer-grid veloura-footer-sections-grid">
-        {% if not footer_featured_layout %}
-      <div class="veloura-footer-block veloura-footer-store">
-        <div class="veloura-footer-identity">
-          {% if not footer_hide_logo %}
-            <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
-              {% if footer_logo_is_video %}
-                <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
-              {% else %}
-                <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
-              {% endif %}
-            </a>
-          {% endif %}
-
-          <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
-
-          {% if footer_store_description %}
-            <div class="veloura-footer-description">
-              {{ footer_store_description|raw }}
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="veloura-footer-trust">
-          <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
-
-          {% if store.settings.tax.number %}
-            <div class="veloura-footer-tax">
-              {% if store.settings.tax.certificate %}
-                <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
-                  <img width="40" height="50" src="{{ 'images/tax.png' | cdn(70,70) }}" loading="lazy" alt="value added tax">
-                </a>
-              {% endif %}
-
-              <div>
-                <p>{{ trans('common.elements.tax_number') }}</p>
-                <b>{{ store.settings.tax.number }}</b>
-              </div>
-            </div>
-
-            {% if store.settings.tax.certificate %}
-              <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
-                <div class="flex justify-center max-w-full">
-                  <img class="w-full" loading="lazy" data-src="{{ store.settings.tax.certificate }}" alt="{{ store.settings.tax.number }}"/>
+        <div class="veloura-footer-block veloura-footer-store">
+                <div class="veloura-footer-identity">
+                  {% if not footer_hide_logo %}
+                    <a href="{{ link('/') }}" class="veloura-footer-logo" aria-label="{{ store.name }}">
+                      {% if footer_logo_is_video %}
+                        <video class="veloura-footer-logo__media" src="{{ footer_logo }}" autoplay muted loop playsinline></video>
+                      {% else %}
+                        <img class="veloura-footer-logo__media" src="{{ footer_logo }}" loading="eager" decoding="async" alt="{{ store.name }}">
+                      {% endif %}
+                    </a>
+                  {% endif %}
+        
+                  <h3 class="veloura-footer-title veloura-footer-store-title">{{ footer_store_title }}</h3>
+        
+                  {% if footer_store_description %}
+                    <div class="veloura-footer-description">
+                      {{ footer_store_description|raw }}
+                    </div>
+                  {% endif %}
                 </div>
-              </salla-modal>
-            {% endif %}
-          {% endif %}
-        </div>
-      </div>
-        {% endif %}
+        
+                <div class="veloura-footer-trust">
+                  <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
+        
+                  {% if store.settings.tax.number %}
+                    <div class="veloura-footer-tax">
+                      {% if store.settings.tax.certificate %}
+                        <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
+                          <img width="40" height="50" src="{{ 'images/tax.png' | cdn(70,70) }}" loading="lazy" alt="value added tax">
+                        </a>
+                      {% endif %}
+        
+                      <div>
+                        <p>{{ trans('common.elements.tax_number') }}</p>
+                        <b>{{ store.settings.tax.number }}</b>
+                      </div>
+                    </div>
+        
+                    {% if store.settings.tax.certificate %}
+                      <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
+                        <div class="flex justify-center max-w-full">
+                          <img class="w-full" loading="lazy" data-src="{{ store.settings.tax.certificate }}" alt="{{ store.settings.tax.number }}"/>
+                        </div>
+                      </salla-modal>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
         {% if not footer_hide_links %}
           <div class="veloura-footer-block veloura-footer-links">
             <h3 class="veloura-footer-title veloura-footer-section-title" data-veloura-title-row="true" style="display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;min-width:0!important;direction:rtl!important;">
@@ -481,10 +426,7 @@
 
         if (component) {
           roots.push(component);
-
-          if (component.shadowRoot) {
-            roots.push(component.shadowRoot);
-          }
+          if (component.shadowRoot) roots.push(component.shadowRoot);
         } else {
           roots.push(appsBlock);
         }
@@ -493,75 +435,80 @@
           const host = root && root.host ? root.host : root;
 
           if (host && host.style) {
-            velouraSetImportant(host, 'display', 'flex');
-            velouraSetImportant(host, 'flex-direction', 'row');
-            velouraSetImportant(host, 'flex-wrap', 'nowrap');
-            velouraSetImportant(host, 'align-items', 'center');
-            velouraSetImportant(host, 'justify-content', centered ? 'center' : 'flex-start');
-            velouraSetImportant(host, 'gap', '10px');
+            velouraSetImportant(host, 'display', 'block');
             velouraSetImportant(host, 'width', '100%');
             velouraSetImportant(host, 'min-width', '0');
+            velouraSetImportant(host, 'margin', '0');
+            velouraSetImportant(host, 'padding', '0');
           }
 
           if (!root || typeof root.querySelectorAll !== 'function') return;
 
-          const wrappers = Array.from(
-            root.querySelectorAll('div, ul, ol, nav, section, [class*="apps"], [class*="wrapper"], [class*="icons"]')
+          const candidates = Array.from(
+            root.querySelectorAll(
+              'div, ul, ol, nav, section, [class*="apps"], [class*="wrapper"], [class*="icons"]'
+            )
           );
 
-          wrappers.forEach(function (wrapper) {
-            const badges = wrapper.querySelectorAll('a[href], img');
-            if (badges.length < 2) return;
+          let badgeWrapper = null;
 
-            velouraSetImportant(wrapper, 'display', 'flex');
-            velouraSetImportant(wrapper, 'flex-direction', 'row');
-            velouraSetImportant(wrapper, 'flex-wrap', 'nowrap');
-            velouraSetImportant(wrapper, 'align-items', 'center');
-            velouraSetImportant(wrapper, 'justify-content', centered ? 'center' : 'flex-start');
-            velouraSetImportant(wrapper, 'gap', '10px');
-            velouraSetImportant(wrapper, 'width', '100%');
-            velouraSetImportant(wrapper, 'min-width', '0');
-            velouraSetImportant(wrapper, 'margin', '0');
-            velouraSetImportant(wrapper, 'padding', '0');
-          });
+          candidates.forEach(function (candidate) {
+            if (badgeWrapper) return;
 
-          const links = Array.from(root.querySelectorAll('a[href]'));
-          links.forEach(function (link) {
-            velouraSetImportant(link, 'display', 'inline-flex');
-            velouraSetImportant(link, 'align-items', 'center');
-            velouraSetImportant(link, 'justify-content', 'center');
-            velouraSetImportant(link, 'margin', '0');
-            velouraSetImportant(link, 'min-width', '0');
+            const directLinks = Array.from(candidate.children || []).filter(function (child) {
+              return child.matches && child.matches('a[href]');
+            });
 
-            if (window.matchMedia('(max-width: 767px)').matches) {
-              velouraSetImportant(link, 'flex', '1 1 0');
-              velouraSetImportant(link, 'width', 'calc(50% - 5px)');
-              velouraSetImportant(link, 'max-width', '180px');
-            } else {
-              velouraSetImportant(link, 'flex', '0 1 auto');
-              velouraSetImportant(link, 'width', 'auto');
-              velouraSetImportant(link, 'max-width', 'none');
+            const directImages = Array.from(candidate.children || []).filter(function (child) {
+              return child.matches && child.matches('img');
+            });
+
+            if (directLinks.length >= 2 || directImages.length >= 2) {
+              badgeWrapper = candidate;
             }
           });
 
-          const images = Array.from(root.querySelectorAll('img'));
-          images.forEach(function (image) {
+          if (!badgeWrapper && root.querySelectorAll('a[href]').length >= 2) {
+            badgeWrapper = root.host || root;
+          }
+
+          if (badgeWrapper && badgeWrapper.style) {
+            velouraSetImportant(badgeWrapper, 'display', 'grid');
+            velouraSetImportant(badgeWrapper, 'grid-template-columns', 'repeat(2, minmax(0, 1fr))');
+            velouraSetImportant(badgeWrapper, 'align-items', 'center');
+            velouraSetImportant(badgeWrapper, 'justify-content', centered ? 'center' : 'start');
+            velouraSetImportant(badgeWrapper, 'column-gap', '12px');
+            velouraSetImportant(badgeWrapper, 'row-gap', '0');
+            velouraSetImportant(badgeWrapper, 'width', '100%');
+            velouraSetImportant(badgeWrapper, 'max-width', '390px');
+            velouraSetImportant(badgeWrapper, 'min-width', '0');
+            velouraSetImportant(badgeWrapper, 'margin', centered ? '0 auto' : '0');
+            velouraSetImportant(badgeWrapper, 'padding', '0');
+            velouraSetImportant(badgeWrapper, 'direction', 'rtl');
+          }
+
+          Array.from(root.querySelectorAll('a[href]')).forEach(function (link) {
+            velouraSetImportant(link, 'display', 'flex');
+            velouraSetImportant(link, 'align-items', 'center');
+            velouraSetImportant(link, 'justify-content', 'center');
+            velouraSetImportant(link, 'width', '100%');
+            velouraSetImportant(link, 'min-width', '0');
+            velouraSetImportant(link, 'max-width', '190px');
+            velouraSetImportant(link, 'margin', '0');
+            velouraSetImportant(link, 'padding', '0');
+          });
+
+          Array.from(root.querySelectorAll('img')).forEach(function (image) {
             image.hidden = false;
             velouraSetImportant(image, 'display', 'block');
             velouraSetImportant(image, 'visibility', 'visible');
             velouraSetImportant(image, 'opacity', '1');
+            velouraSetImportant(image, 'width', '100%');
+            velouraSetImportant(image, 'height', 'auto');
+            velouraSetImportant(image, 'max-width', '190px');
+            velouraSetImportant(image, 'max-height', '50px');
             velouraSetImportant(image, 'object-fit', 'contain');
             velouraSetImportant(image, 'margin', '0');
-
-            if (window.matchMedia('(max-width: 767px)').matches) {
-              velouraSetImportant(image, 'width', '100%');
-              velouraSetImportant(image, 'height', 'auto');
-              velouraSetImportant(image, 'max-height', '48px');
-            } else {
-              velouraSetImportant(image, 'width', 'auto');
-              velouraSetImportant(image, 'height', '48px');
-              velouraSetImportant(image, 'max-height', '48px');
-            }
           });
         });
       }
