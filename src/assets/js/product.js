@@ -141,16 +141,17 @@ class Product extends BasePage {
                     return;
                 }
 
+                const finalValue = Math.max(0, target);
+
                 if (!counter.classList.contains('is-animated')) {
-                    number.textContent = String(Math.max(0, target));
+                    number.textContent = String(finalValue);
                     return;
                 }
 
-                const finalValue = Math.max(0, target);
-                const duration = 900;
+                const duration = 850;
                 const startedAt = performance.now();
 
-                const render = (now) => {
+                const draw = (now) => {
                     const progress = Math.min(
                         1,
                         (now - startedAt) / duration
@@ -162,11 +163,11 @@ class Product extends BasePage {
                     );
 
                     if (progress < 1) {
-                        window.requestAnimationFrame(render);
+                        window.requestAnimationFrame(draw);
                     }
                 };
 
-                window.requestAnimationFrame(render);
+                window.requestAnimationFrame(draw);
             });
     }
 
