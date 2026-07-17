@@ -3005,7 +3005,7 @@
 {
   "type": "boolean",
   "icon": "sicon-toggle-off",
-  "label": "إخفاء شعارات وسائل الدفع111",
+  "label": "إخفاء شعارات وسائل الدفع",
   "id": "veloura_footer_hide_payments_2026",
   "format": "switch",
   "required": false,
@@ -6893,7 +6893,7 @@
 {
   "id": "veloura_product_custom_related_products_2026",
   "type": "items",
-  "format": "variable-list",
+  "format": "dropdown-list",
   "label": "اختر المنتجات المقترحة",
   "icon": "sicon-shopping-bag",
   "source": "products",
@@ -6922,12 +6922,15 @@
       "operation": "=",
       "value": "selected"
     }
-  ]
+  ],
+  "selected": [],
+  "options": [],
+  "maxLength": 20
 },
 {
   "id": "veloura_product_custom_related_category_2026",
   "type": "items",
-  "format": "variable-list",
+  "format": "dropdown-list",
   "label": "اختر التصنيف المرتبط",
   "icon": "sicon-folder",
   "source": "categories",
@@ -6956,7 +6959,10 @@
       "operation": "=",
       "value": "categories"
     }
-  ]
+  ],
+  "selected": [],
+  "options": [],
+  "maxLength": 10
 },
 {
   "id": "veloura_mobile_floating_menu_line_2026",
