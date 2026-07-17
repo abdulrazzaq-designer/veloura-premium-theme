@@ -2933,3 +2933,228 @@ h3.veloura-footer-section-title[data-veloura-title-row="true"] {
   }
 }
 
+/* =====================================================================
+   VELOURA FOOTER — FINAL V14 HARD GRID PLACEMENT
+   Fixes old high-specificity rules that forced the store block to span
+   the complete row in featured mode.
+   Keep this block at the absolute end of the file.
+===================================================================== */
+
+@media (min-width: 1024px) {
+
+  /* =========================================================
+     FEATURED + NO APPS
+     Right: links | Center: store | Left: contacts
+     All three are forced onto row 1.
+  ========================================================= */
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps
+  .veloura-footer-sections-grid,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-no-apps
+  .veloura-footer-sections-grid {
+    display: grid !important;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(300px, 1fr)
+      minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    grid-template-areas: none !important;
+    align-items: start !important;
+    direction: ltr !important;
+    column-gap: clamp(34px, 5vw, 84px) !important;
+    row-gap: 0 !important;
+    width: 100% !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-contact,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-contact {
+    grid-area: auto !important;
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+    align-self: start !important;
+    justify-self: stretch !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-store,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-store {
+    grid-area: auto !important;
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: start !important;
+    justify-self: stretch !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-links,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-links {
+    grid-area: auto !important;
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 2 !important;
+    align-self: start !important;
+    justify-self: stretch !important;
+  }
+
+  /* Hide the empty app section completely in this state. */
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-apps,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-no-apps
+  .veloura-footer-sections-grid > .veloura-footer-apps {
+    display: none !important;
+  }
+
+  /* =========================================================
+     FEATURED + APPS
+     Row 1: contacts | store | links
+     Row 2: apps centered under the store
+  ========================================================= */
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-has-apps
+  .veloura-footer-sections-grid,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-has-apps
+  .veloura-footer-sections-grid {
+    display: grid !important;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(300px, 1fr)
+      minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    grid-template-areas: none !important;
+    direction: ltr !important;
+    align-items: start !important;
+    column-gap: clamp(34px, 5vw, 84px) !important;
+    row-gap: 36px !important;
+    width: 100% !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-contact,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-contact {
+    grid-area: auto !important;
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-store,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-store {
+    grid-area: auto !important;
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-links,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-links {
+    grid-area: auto !important;
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 2 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-featured.veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-apps,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="featured"].veloura-footer-has-apps
+  .veloura-footer-sections-grid > .veloura-footer-apps {
+    display: block !important;
+    grid-area: auto !important;
+    grid-column: 2 / 3 !important;
+    grid-row: 2 / 3 !important;
+    width: 100% !important;
+    justify-self: stretch !important;
+  }
+
+  /* =========================================================
+     NORMAL + APPS
+     Right to left:
+     store | links | contacts | apps
+  ========================================================= */
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal.veloura-footer-has-apps
+  .veloura-footer-sections-grid,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="normal"].veloura-footer-has-apps
+  .veloura-footer-sections-grid,
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal.veloura-footer-layout-detecting
+  .veloura-footer-sections-grid,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="normal"].veloura-footer-layout-detecting
+  .veloura-footer-sections-grid {
+    display: grid !important;
+    grid-template-columns:
+      minmax(220px, 1.15fr)
+      minmax(250px, 1.35fr)
+      minmax(180px, .85fr)
+      minmax(250px, 1.35fr) !important;
+    grid-template-rows: auto !important;
+    grid-template-areas: none !important;
+    direction: ltr !important;
+    align-items: start !important;
+    column-gap: clamp(22px, 3vw, 52px) !important;
+    row-gap: 0 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal
+  .veloura-footer-sections-grid > .veloura-footer-apps,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="normal"]
+  .veloura-footer-sections-grid > .veloura-footer-apps {
+    grid-area: auto !important;
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal
+  .veloura-footer-sections-grid > .veloura-footer-contact,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="normal"]
+  .veloura-footer-sections-grid > .veloura-footer-contact {
+    grid-area: auto !important;
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 2 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal
+  .veloura-footer-sections-grid > .veloura-footer-links,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="normal"]
+  .veloura-footer-sections-grid > .veloura-footer-links {
+    grid-area: auto !important;
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 2 !important;
+  }
+
+  .store-footer.veloura-footer-enabled.veloura-footer-layout-normal
+  .veloura-footer-sections-grid > .veloura-footer-store,
+  .store-footer.veloura-footer-enabled[data-veloura-footer-layout="normal"]
+  .veloura-footer-sections-grid > .veloura-footer-store {
+    grid-area: auto !important;
+    grid-column: 4 / 5 !important;
+    grid-row: 1 / 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* The heading container is controlled only by SCSS now, not inline styles. */
+.store-footer.veloura-footer-enabled
+h3.veloura-footer-section-title[data-veloura-title-row="true"] {
+  box-sizing: border-box !important;
+}
+
