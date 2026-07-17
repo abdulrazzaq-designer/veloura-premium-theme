@@ -17,7 +17,6 @@ class Product extends BasePage {
         this.initVelouraProductPageState();
         this.initProductOptionValidations();
         this.initVelouraCouponCopy();
-        this.initVelouraPurchaseCount();
         this.initVelouraPurchaseButtons();
         this.initVelouraReadMore();
 
@@ -117,59 +116,6 @@ class Product extends BasePage {
         });
     }
 
-
-    initVelouraPurchaseCount() {
-        document
-            .querySelectorAll('[data-veloura-purchase-count]')
-            .forEach((counter) => {
-                if (counter.dataset.velouraCountReady === '1') {
-                    return;
-                }
-
-                counter.dataset.velouraCountReady = '1';
-
-                const number = counter.querySelector(
-                    '.veloura-product-purchase-count__number'
-                );
-
-                const target = Number.parseInt(
-                    counter.getAttribute('data-count') || '0',
-                    10
-                );
-
-                if (!number || !Number.isFinite(target)) {
-                    return;
-                }
-
-                const finalValue = Math.max(0, target);
-
-                if (!counter.classList.contains('is-animated')) {
-                    number.textContent = String(finalValue);
-                    return;
-                }
-
-                const duration = 850;
-                const startedAt = performance.now();
-
-                const draw = (now) => {
-                    const progress = Math.min(
-                        1,
-                        (now - startedAt) / duration
-                    );
-
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    number.textContent = String(
-                        Math.round(finalValue * eased)
-                    );
-
-                    if (progress < 1) {
-                        window.requestAnimationFrame(draw);
-                    }
-                };
-
-                window.requestAnimationFrame(draw);
-            });
-    }
 
     initVelouraPurchaseButtons() {
         const component = document.querySelector(

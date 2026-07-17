@@ -48006,59 +48006,6 @@ html.veloura-dark .veloura-product-page {
     padding-right: 10px !important;
   }
 }
-/* ======================================================
-   Veloura V20 — Purchase count card
-====================================================== */
-.veloura-product-page .veloura-product-original-purchase-count {
-  display: inline-flex !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 0 !important;
-  margin: 0 0 18px !important;
-  padding: 10px 0 !important;
-  overflow: hidden !important;
-  background: #f8fafc !important;
-  background: var(--veloura-product-card-bg, #f8fafc) !important;
-  border-radius: 28px !important;
-  border-radius: var(--veloura-product-radius-final, 28px) !important;
-}
-
-.veloura-product-page .veloura-product-purchase-count__sold,
-.veloura-product-page .veloura-product-purchase-count__remaining {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 7px !important;
-  padding: 3px 16px !important;
-  color: inherit !important;
-  white-space: nowrap !important;
-}
-
-.veloura-product-page .veloura-product-purchase-count__remaining {
-  border-left: 1px solid rgba(100, 116, 139, 0.22) !important;
-}
-
-.veloura-product-page .veloura-product-purchase-count__sold i {
-  color: #c2410c !important;
-}
-
-.veloura-product-page .veloura-product-purchase-count__number,
-.veloura-product-page .veloura-product-purchase-count__remaining strong {
-  color: #414042 !important;
-  color: var(--veloura-product-primary, var(--color-primary, #004d65)) !important;
-  font-weight: 900 !important;
-}
-
-@media (max-width: 480px) {
-  .veloura-product-page .veloura-product-original-purchase-count {
-    display: flex !important;
-    width: 100% !important;
-  }
-  .veloura-product-page .veloura-product-purchase-count__sold,
-  .veloura-product-page .veloura-product-purchase-count__remaining {
-    flex: 1 1 auto !important;
-    justify-content: center !important;
-  }
-}
 .brands-nav{
     display: flex;
     flex-wrap: wrap;
