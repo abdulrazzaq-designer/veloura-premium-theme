@@ -4,6 +4,382 @@ import Anime from './partials/anime';
 import initTootTip from './partials/tooltip';
 import AppHelpers from "./app-helpers";
 
+/* ========================================================================
+   Veloura Footer Controller — embedded in the existing app.js
+   No additional JavaScript file is required.
+   ======================================================================== */
+const initVelouraFooter = (() => {
+  /*
+   * Veloura footer controller
+   * - Builds one clean contact-card list from Salla contacts and social links.
+   * - Removes duplicate platforms.
+   * - Detects application badges and updates footer layout classes.
+   * - Keeps App Store and Google Play badges side by side.
+   */
+
+  const SVG = {
+          phone: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.6 10.8c1.6 3.1 3.5 5 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.6 21.4 2.6 13.4 2.6 3.4c0-.7.5-1.2 1.2-1.2h3.5c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.8.6 4 .1.4 0 .9-.3 1.2l-2.2 2.2Z"/></svg>',
+          whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.4a9.4 9.4 0 0 0-8.1 14.2L2.7 21.6l5.1-1.2A9.4 9.4 0 1 0 12 2.4Zm0 17.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-3 .7.7-2.9-.2-.3A7.6 7.6 0 1 1 12 19.5Zm4.3-5.7c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.1 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/></svg>',
+          email: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm8 8.1L4.4 8.2V17h15.2V8.2L12 13.1Zm0-2L19.1 7H4.9L12 11.1Z"/></svg>',
+          telegram: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M21.7 3.6 18.4 20c-.2 1-.8 1.2-1.6.7l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L6.9 14.1 2.5 12.7c-1-.3-1-1 .2-1.4L20 4.6c.8-.3 1.5.2 1.7 1Z"/></svg>',
+          instagram: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9a4.7 4.7 0 0 1-4.7-4.7v-9a4.7 4.7 0 0 1 4.7-4.7Zm0 2A2.7 2.7 0 0 0 4.8 7.5v9a2.7 2.7 0 0 0 2.7 2.7h9a2.7 2.7 0 0 0 2.7-2.7v-9a2.7 2.7 0 0 0-2.7-2.7h-9ZM12 7.3a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 2a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4Zm5-2.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>',
+          twitter: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 3.5h4.1l4.4 6.1 5.3-6.1h2.3l-6.5 7.5 7.1 9.5h-4.1l-4.8-6.5-5.7 6.5H3.8l6.9-8L4 3.5Zm3.1 1.7 10.4 13.6h1L8.2 5.2H7.1Z"/></svg>',
+          youtube: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M21.6 7.2c-.2-.8-.8-1.4-1.6-1.6C18.6 5.2 12 5.2 12 5.2s-6.6 0-8 .4c-.8.2-1.4.8-1.6 1.6C2 8.6 2 12 2 12s0 3.4.4 4.8c.2.8.8 1.4 1.6 1.6 1.4.4 8 .4 8 .4s6.6 0 8-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.8.4-4.8s0-3.4-.4-4.8ZM10 14.9V9.1l5.2 2.9L10 14.9Z"/></svg>',
+          tiktok: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M15.4 3c.4 2.6 1.9 4.2 4.5 4.4v3.1c-1.5.1-2.9-.4-4.4-1.3v6.2c0 3.1-2.1 5.4-5.2 5.6-2.8.2-5.3-1.7-5.8-4.4-.7-3.8 2.5-7 6.2-6.3v3.2c-.5-.2-1-.3-1.5-.2-1.2.2-2 1.2-1.9 2.4.1 1.2 1.1 2.1 2.3 2.1 1.5 0 2.4-1 2.4-2.7V3h3.4Z"/></svg>',
+          facebook: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M14 8.1V6.3c0-.9.2-1.3 1.4-1.3H17V2.2c-.8-.1-1.6-.2-2.4-.2-2.4 0-4 1.5-4 4.1v2H8v3.1h2.6V22H14V11.2h2.7l.4-3.1H14Z"/></svg>',
+          snapchat: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.5c3 0 5 2.2 5 5.4v2.3c.3.2.8.1 1.2 0 .6-.2 1 .5.6 1-.4.5-.9.8-1.4 1 .2 1.1 1.1 2.4 3.1 3 .7.2.7 1.1.1 1.4-.9.4-1.8.5-2.6.6-.3.5-.8 1-1.5 1-.6 0-1.1-.2-1.7-.4-.7.7-1.6 1.2-2.8 1.2s-2.1-.5-2.8-1.2c-.6.2-1.1.4-1.7.4-.7 0-1.2-.5-1.5-1-.8-.1-1.7-.2-2.6-.6-.6-.3-.6-1.2.1-1.4 2-.6 2.9-1.9 3.1-3-.5-.2-1-.5-1.4-1-.4-.5 0-1.2.6-1 .4.1.9.2 1.2 0V7.9c0-3.2 2-5.4 5-5.4Z"/></svg>',
+          website: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.2c-.1-2-.6-3.8-1.4-5.2A8 8 0 0 1 18.9 11ZM12 4.1c.7 1 1.5 3.3 1.7 6.9h-3.4c.2-3.6 1-5.9 1.7-6.9ZM4.3 13h3.2c.1 2 .6 3.8 1.4 5.2A8 8 0 0 1 4.3 13Zm3.2-2H4.3a8 8 0 0 1 4.6-5.2C8.1 7.2 7.6 9 7.5 11ZM12 19.9c-.7-1-1.5-3.3-1.7-6.9h3.4c-.2 3.6-1 5.9-1.7 6.9Zm3.1-1.7c.8-1.4 1.3-3.2 1.4-5.2h3.2a8 8 0 0 1-4.6 5.2Z"/></svg>',
+          contact: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.6V20h14v-1.4C19 16 16 14 12 14Z"/></svg>'
+        };
+
+  const labelMap = {
+          phone: 'جوال',
+          whatsapp: 'واتساب',
+          email: 'إيميل',
+          telegram: 'تلجرام',
+          instagram: 'انستغرام',
+          twitter: 'إكس',
+          youtube: 'يوتيوب',
+          snapchat: 'سناب',
+          tiktok: 'تيك توك',
+          facebook: 'فيسبوك',
+          website: 'الموقع',
+          contact: 'تواصل'
+        };
+
+  let eventsBound = false;
+  let resizeTimer = null;
+
+  function cleanText(element) {
+    return (element?.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function detectKind(link, sourceType) {
+    const href = (link.getAttribute('href') || '').toLowerCase();
+    const aria = (link.getAttribute('aria-label') || '').toLowerCase();
+    const title = (link.getAttribute('title') || '').toLowerCase();
+    const classes = Array.from(link.querySelectorAll('[class]'))
+      .map(element => element.className || '')
+      .join(' ')
+      .toLowerCase();
+    const text = cleanText(link).toLowerCase();
+    const source = [href, aria, title, classes, text].join(' ');
+
+    if (/wa\.me|whatsapp|واتساب/.test(source)) return 'whatsapp';
+    if (/mailto:|email|mail|إيميل|بريد|envelope/.test(source)) return 'email';
+    if (/t\.me|telegram|تلجرام|paper-plane/.test(source)) return 'telegram';
+    if (/instagram|انستغرام/.test(source)) return 'instagram';
+    if (/twitter|x\.com|إكس/.test(source)) return 'twitter';
+    if (/youtube|youtu\.be|يوتيوب/.test(source)) return 'youtube';
+    if (/snapchat|snap|سناب/.test(source)) return 'snapchat';
+    if (/tiktok|تيك/.test(source)) return 'tiktok';
+    if (/facebook|فيسبوك/.test(source)) return 'facebook';
+    if (/tel:|phone|mobile|call|هاتف|جوال/.test(source)) return 'phone';
+    if (sourceType === 'social') return 'website';
+    if (/https?:\/\//.test(source)) return 'website';
+
+    return 'contact';
+  }
+
+  function copySafeAttributes(source, target) {
+    Array.from(source.attributes || []).forEach(attribute => {
+      if (['id', 'class', 'style', 'hidden'].includes(attribute.name)) return;
+      target.setAttribute(attribute.name, attribute.value);
+    });
+  }
+
+  function createContactCard(source, kind) {
+    const isLink = source.tagName === 'A' && source.getAttribute('href');
+    const card = document.createElement(isLink ? 'a' : 'button');
+    const label = labelMap[kind] || labelMap.contact;
+    const icon = SVG[kind] || SVG.contact;
+
+    copySafeAttributes(source, card);
+
+    if (!isLink) {
+      card.type = 'button';
+      card.addEventListener('click', event => {
+        event.preventDefault();
+        source.click();
+      });
+    }
+
+    card.className = `veloura-footer-contact-card veloura-footer-contact-kind-${kind}`;
+    card.dataset.velouraFooterKind = kind;
+    card.setAttribute('aria-label', source.getAttribute('aria-label') || label);
+    card.innerHTML = `
+      <span class="veloura-footer-contact-card__icon" aria-hidden="true">${icon}</span>
+      <span class="veloura-footer-contact-card__text">${label}</span>
+    `;
+
+    return card;
+  }
+
+  function renderContactCards(footer) {
+    const contactWrap = footer.querySelector('.veloura-footer-contact-wrap');
+    if (!contactWrap) return;
+
+    const sources = Array.from(contactWrap.querySelectorAll(
+      '[data-veloura-footer-contacts] a[href], ' +
+      '[data-veloura-footer-social] a[href], ' +
+      '[data-veloura-footer-social] button'
+    ));
+
+    if (!sources.length) return;
+
+    const seen = new Set();
+    const cards = [];
+
+    sources.forEach(source => {
+      const sourceType = source.closest('[data-veloura-footer-social]')
+        ? 'social'
+        : 'contact';
+      const kind = detectKind(source, sourceType);
+      const href = (source.getAttribute('href') || '').trim().toLowerCase();
+      const key = kind === 'contact' ? `${kind}:${href || cleanText(source)}` : kind;
+
+      if (!key || seen.has(key)) return;
+
+      seen.add(key);
+      cards.push(createContactCard(source, kind));
+    });
+
+    if (!cards.length) return;
+
+    let cardsRoot = contactWrap.querySelector(':scope > .veloura-footer-contact-cards');
+
+    if (!cardsRoot) {
+      cardsRoot = document.createElement('div');
+      cardsRoot.className = 'veloura-footer-contact-cards';
+      cardsRoot.dataset.velouraFooterContactCards = '1';
+      contactWrap.appendChild(cardsRoot);
+    }
+
+    cardsRoot.replaceChildren(...cards);
+    contactWrap.classList.add('veloura-footer-contact-ready');
+  }
+
+  function restoreImages(root) {
+    if (!root || typeof root.querySelectorAll !== 'function') return;
+
+    root.querySelectorAll('img').forEach(image => {
+      const dataSrc = image.getAttribute('data-src');
+      const dataSrcset = image.getAttribute('data-srcset');
+
+      if (!image.getAttribute('src') && dataSrc) image.setAttribute('src', dataSrc);
+      if (!image.getAttribute('srcset') && dataSrcset) image.setAttribute('srcset', dataSrcset);
+
+      image.hidden = false;
+      image.style.removeProperty('display');
+      image.style.removeProperty('visibility');
+      image.style.removeProperty('opacity');
+    });
+  }
+
+  function setImportant(element, property, value) {
+    if (!element?.style) return;
+    element.style.setProperty(property, value, 'important');
+  }
+
+  function getApplicationRoots(appsBlock) {
+    const component = appsBlock?.querySelector('salla-apps-icons');
+    const roots = [appsBlock, component].filter(Boolean);
+
+    if (component?.shadowRoot) roots.push(component.shadowRoot);
+
+    return { component, roots };
+  }
+
+  function rootHasApplications(root) {
+    if (!root || typeof root.querySelector !== 'function') return false;
+
+    return Boolean(root.querySelector(
+      'a[href], img[src]:not([src=""]), img[data-src]'
+    ));
+  }
+
+  function arrangeApplications(footer) {
+    const appsBlock = footer.querySelector('[data-veloura-footer-apps]');
+
+    if (!appsBlock) {
+      footer.classList.remove('veloura-footer-has-apps', 'veloura-footer-layout-detecting');
+      footer.classList.add('veloura-footer-no-apps');
+      return;
+    }
+
+    restoreImages(appsBlock);
+
+    const { component, roots } = getApplicationRoots(appsBlock);
+    const centered =
+      footer.classList.contains('veloura-footer-center-all') ||
+      footer.dataset.velouraFooterCenterAll === 'true';
+
+    roots.forEach(root => {
+      if (!root) return;
+
+      const host = root.host || root;
+      setImportant(host, 'width', '100%');
+
+      if (typeof root.querySelectorAll !== 'function') return;
+
+      root.querySelectorAll(
+        'div, ul, ol, nav, section, [class*="apps"], ' +
+        '[class*="wrapper"], [class*="icons"]'
+      ).forEach(wrapper => {
+        if (wrapper.querySelectorAll('a[href], img').length < 2) return;
+
+        setImportant(wrapper, 'display', 'flex');
+        setImportant(wrapper, 'flex-direction', 'row');
+        setImportant(wrapper, 'flex-wrap', window.innerWidth <= 560 ? 'wrap' : 'nowrap');
+        setImportant(wrapper, 'align-items', 'center');
+        setImportant(wrapper, 'justify-content', centered ? 'center' : 'center');
+        setImportant(wrapper, 'gap', '10px');
+        setImportant(wrapper, 'margin', '0');
+        setImportant(wrapper, 'padding', '0');
+      });
+
+      root.querySelectorAll('a[href]').forEach(link => {
+        setImportant(link, 'display', 'inline-flex');
+        setImportant(link, 'flex', '0 0 auto');
+        setImportant(link, 'align-items', 'center');
+        setImportant(link, 'justify-content', 'center');
+        setImportant(link, 'width', 'auto');
+        setImportant(link, 'min-width', '0');
+        setImportant(link, 'max-width', '190px');
+        setImportant(link, 'margin', '0');
+      });
+
+      root.querySelectorAll('img').forEach(image => {
+        setImportant(image, 'display', 'block');
+        setImportant(image, 'visibility', 'visible');
+        setImportant(image, 'opacity', '1');
+        setImportant(image, 'width', 'auto');
+        setImportant(image, 'height', '48px');
+        setImportant(image, 'max-width', '190px');
+        setImportant(image, 'max-height', '48px');
+        setImportant(image, 'object-fit', 'contain');
+        setImportant(image, 'margin', '0');
+      });
+    });
+
+    const hasApps = roots.some(rootHasApplications);
+
+    appsBlock.hidden = !hasApps;
+    appsBlock.setAttribute('aria-hidden', hasApps ? 'false' : 'true');
+    footer.classList.toggle('veloura-footer-has-apps', hasApps);
+    footer.classList.toggle('veloura-footer-no-apps', !hasApps);
+    footer.classList.remove('veloura-footer-layout-detecting');
+
+    if (
+      component &&
+      typeof component.componentOnReady === 'function' &&
+      component.dataset.velouraFooterReadyWatch !== '1'
+    ) {
+      component.dataset.velouraFooterReadyWatch = '1';
+
+      component.componentOnReady().then(() => {
+        restoreImages(appsBlock);
+        arrangeApplications(footer);
+      }).catch(() => {});
+    }
+  }
+
+  function observeContactSources(footer) {
+    footer.querySelectorAll(
+      '[data-veloura-footer-contacts], [data-veloura-footer-social]'
+    ).forEach(sourceRoot => {
+      if (sourceRoot.dataset.velouraFooterObserver === '1') return;
+
+      sourceRoot.dataset.velouraFooterObserver = '1';
+      let scheduled = false;
+
+      const observer = new MutationObserver(() => {
+        if (scheduled) return;
+        scheduled = true;
+
+        window.requestAnimationFrame(() => {
+          scheduled = false;
+          renderContactCards(footer);
+        });
+      });
+
+      observer.observe(sourceRoot, { childList: true, subtree: true });
+
+      window.setTimeout(() => observer.disconnect(), 8000);
+    });
+  }
+
+  function observeApplications(footer) {
+    const appsBlock = footer.querySelector('[data-veloura-footer-apps]');
+    if (!appsBlock || appsBlock.dataset.velouraFooterObserver === '1') return;
+
+    appsBlock.dataset.velouraFooterObserver = '1';
+    let scheduled = false;
+
+    const observer = new MutationObserver(() => {
+      if (scheduled) return;
+      scheduled = true;
+
+      window.requestAnimationFrame(() => {
+        scheduled = false;
+        restoreImages(appsBlock);
+        arrangeApplications(footer);
+      });
+    });
+
+    observer.observe(appsBlock, { childList: true, subtree: true });
+
+    window.setTimeout(() => {
+      observer.disconnect();
+      arrangeApplications(footer);
+    }, 8000);
+  }
+
+  function initFooter(footer) {
+    if (!footer) return;
+
+    restoreImages(footer);
+    renderContactCards(footer);
+    arrangeApplications(footer);
+    observeContactSources(footer);
+    observeApplications(footer);
+  }
+
+  function initAllFooters() {
+    document
+      .querySelectorAll('.store-footer.veloura-footer-enabled')
+      .forEach(initFooter);
+  }
+
+  function initVelouraFooter() {
+    if (eventsBound) {
+      initAllFooters();
+      return;
+    }
+
+    eventsBound = true;
+
+    document.addEventListener('theme::ready', initAllFooters);
+
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(initAllFooters, 150);
+    });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAllFooters, { once: true });
+    } else {
+      initAllFooters();
+    }
+
+    [300, 900, 1800, 3500].forEach(delay => {
+      window.setTimeout(initAllFooters, delay);
+    });
+  }
+
+  return initVelouraFooter;
+})();
+
 class App extends AppHelpers {
   constructor() {
     super();
@@ -12,6 +388,7 @@ class App extends AppHelpers {
 
   loadTheApp() {
     this.commonThings();
+    initVelouraFooter();
     this.initiateNotifier();
     this.initiateMobileMenu();
     if (header_is_sticky) {
@@ -2318,4 +2695,3 @@ document.addEventListener('DOMContentLoaded', () => {
     openQuickView(button);
   }, true);
 })();
-

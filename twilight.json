@@ -1364,7 +1364,7 @@
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
-      "label": "السماح للعميل بالتبديل بين الوضع الداكن والفاتح",
+      "label": "السماح للعميل بالتبديل بين الوضع الداكن والفاتح1111",
       "description": "تظهر أيقونة في المتجر للتبديل بين الوضعين",
       "id": "veloura_dark_toggle_enabled_2026",
       "format": "switch",
