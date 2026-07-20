@@ -1,767 +1,94 @@
-{#
-| Variable                               | Type                        | Description                                                            |
-|----------------------------------------|-----------------------------|------------------------------------------------------------------------|
-| page                                   | object                      |                                                                        |
-| page.title                             | string                      | *could be html                                                         |
-| page.slug                              | string                      | ex: "cat.show"                                                         |
-| product                                | Product                     |                                                                        |
-| product.id                             | int                         |                                                                        |
-| product.name                           | string                      |                                                                        |
-| product.description                    | string                      | HTML                                                                   |
-| product.url                            | string                      |                                                                        |
-| product.promotion_title                | string                      |                                                                        |
-| product.subtitle                       | string                      |                                                                        |
-| product.type                           | string                      | product, service, group_products, codes, digital, food, donating       |
-| product.status                         | string                      | sale, out, out-and-notify                                              |
-| product.weight                         | ?string                     |                                                                        |
-| product.calories                       | ?float                      |                                                                        |
-| product.sku                            | ?string                     |                                                                        |
-| product.rating                         | ?Rating                     |                                                                        |
-| product.rating.count                   | int                         |                                                                        |
-| product.rating.stars                   | int                         |                                                                        |
-| product.price                          | float                       | can be string too `-`, when merchant doesn't want to show zero         |
-| product.sale_price                     | float                       |                                                                        |
-| product.regular_price                  | float                       |                                                                        |
-| product.starting_price                 | ?float                      |                                                                        |
-| product.quantity                       | ?int                        | if it's null, means it's unlimited                                     |
-| product.sold_quantity                  | int                         |                                                                        |
-| product.max_quantity                   | int                         |                                                                        |
-| product.discount_ends                  | ?date                       |                                                                        |
-| product.is_taxable                     | bool                        | Is the tax included in the price                                       |
-| product.category                       | ?Category                   |                                                                        |
-| product.category.name                  | string                      |                                                                        |
-| product.category.url                   | string                      |                                                                        |
-| product.image                          | object                      |                                                                        |
-| product.image.url                      | string                      |                                                                        |
-| product.image.alt                      | ?string                     |                                                                        |
-| product.images                         | array                       |                                                                        |
-| product.images[].id                    | int                         |                                                                        |
-| product.images[].url                   | string                      |                                                                        |
-| product.images[].alt                   | ?string                     |                                                                        |
-| product.images[].video_url             | ?string                     |                                                                        |
-| product.images[].type                  | string                      | `image` `video`                                                        |
-| product.brand                          | ?object                     |                                                                        |
-| product.brand.id                       | int                         |                                                                        |
-| product.brand.url                      | ?string                     |                                                                        |
-| product.brand.name                     | ?string                     |                                                                        |
-| product.brand.logo                     | ?string                     |                                                                        |
-| product.tags                           | ?Tags[] *Collection         |                                                                        |
-| product.tags[].name                    | string                      |                                                                        |
-| product.tags[].url                     | string                      |                                                                        |
-| product.options                        | ProductOption[] *Collection | @see views/pages/partials/product/options.twig                         |
-| product.notify_availability            | ?object                     | does product outOfStock & can visitor subscribe to notify availability |
-| product.notify_availability.channels   | array                       | ex: ['sms', 'email']                                                   |
-| product.notify_availability.subscribed | bool                        | Does user subscribed before                                            |
-| product.donation                       | ?ProductDonation            |                                                                        |
-| product.donation.target_message        | ?string                     | Message if reached to target or target expired                         |
-| product.donation.collected_amount      | float                       |                                                                        |
-| product.donation.target_amount         | float                       |                                                                        |
-| product.donation.target_percent        | float                       |                                                                        |
-| product.donation.target_end_date       | ?Date                       |                                                                        |
-| product.donation.can_donate            | bool                        | `true` When there is no campaign or (target not reached & not expired) |
-| product.has_read_more                  | bool                        |                                                                        |
-| product.can_add_note                   | bool                        |                                                                        |
-| product.can_show_remained_quantity     | bool                        |                                                                        |
-| product.can_show_sold                  | bool                        |                                                                        |
-| product.can_upload_file                | bool                        |                                                                        |
-| product.has_custom_form                | bool                        | Is it for  `Food` or `Custom Service` product                          |
-| product.has_metadata                   | bool                        |                                                                        |
-| product.has_options                    | bool                        |                                                                        |
-| product.is_on_sale                     | bool                        | Product has discounted price                                           |
-| product.is_hidden_quantity             | bool                        | The quantity is hidden by merchant, or product not available           |
-| product.is_available                   | bool                        |                                                                        |
-| product.is_in_wishlist                 | bool                        |                                                                        |
-| product.is_out_of_stock                | bool                        |                                                                        |
-| product.is_require_shipping            | bool                        |                                                                        |
-| product.base_currency_price            | float                       | product.price with base currency (SAR)                                 |
-| product.discount_percentage            | ?string                     | ex: "20%"                                                              |
-| product.has_3d_image                   | bool                        |                                                                        |
-| product.has_size_guide                 | bool                        |                                                                        |
-| product.is_giftable                    | bool                        |                                                                        |
-| product.add_to_cart_label              | string                      |                                                                        |
-| product.currency                       | string                      |                                                                        |
-#}
-{% extends "layouts.master" %}
-{% block content %}
+<footer class="store-footer">
+  <div aria-label="footer" class="store-footer__inner">
+    <div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6">
+      <div class="lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
+        <a href="{{ link('/') }}" class="flex items-center m-0">
+          <h3>{{ store.name }}</h3>
+        </a>
 
-    {# ================================
-       Veloura Product Page Settings 2026
-       ربط آمن لخيارات صفحة المنتج
-    ================================ #}
-
-    {% macro veloura_bool(raw, fallback) %}
-      {% if raw.value is defined %}
-        {% set raw = raw.value %}
-      {% elseif raw.selected is defined %}
-        {% set raw = raw.selected %}
-      {% endif %}
-
-      {% if raw == true or raw == 'true' or raw == 1 or raw == '1' or raw == 'on' %}
-        true
-      {% elseif raw == false or raw == 'false' or raw == 0 or raw == '0' or raw == 'off' %}
-        false
-      {% else %}
-        {{ fallback ? 'true' : 'false' }}
-      {% endif %}
-    {% endmacro %}
-
-    {% macro veloura_select(raw, fallback) %}
-      {% if raw.selected is defined and raw.selected[0].value is defined %}
-        {{ raw.selected[0].value }}
-      {% elseif raw is iterable and raw[0].value is defined %}
-        {{ raw[0].value }}
-      {% elseif raw.value is defined %}
-        {{ raw.value }}
-      {% elseif raw %}
-        {{ raw }}
-      {% else %}
-        {{ fallback }}
-      {% endif %}
-    {% endmacro %}
-
-    {% set vpp_enabled = _self.veloura_bool(theme.settings.get('veloura_product_page_enabled_2026', true), true)|trim == 'true' %}
-    {% set vpp_content_layout = _self.veloura_select(theme.settings.get('veloura_product_content_layout_2026', 'normal'), 'normal')|trim %}
-
-    {% set vpp_hide_breadcrumb = _self.veloura_bool(theme.settings.get('veloura_product_hide_breadcrumb_2026', false), false)|trim == 'true' %}
-    {% set vpp_hide_thumbnails = _self.veloura_bool(theme.settings.get('veloura_product_hide_thumbnails_2026', false), false)|trim == 'true' %}
-    {% set vpp_thumbnails_position = _self.veloura_select(theme.settings.get('veloura_product_thumbnails_position_desktop_2026', 'below_image'), 'below_image')|trim %}
-    {% set vpp_images_height_mode = _self.veloura_select(theme.settings.get('veloura_product_images_height_mode_2026', 'auto_each'), 'auto_each')|trim %}
-    {% set vpp_images_zoom = _self.veloura_bool(theme.settings.get('veloura_product_images_zoom_2026', false), false)|trim == 'true' %}
-    {% set vpp_transparent_background = _self.veloura_bool(theme.settings.get('veloura_product_transparent_background_2026', false), false)|trim == 'true' %}
-
-    {% set vpp_show_availability = _self.veloura_bool(theme.settings.get('veloura_product_show_availability_2026', true), true)|trim == 'true' %}
-    {% set vpp_show_stock_radar = _self.veloura_bool(theme.settings.get('veloura_product_show_stock_radar_2026', true), true)|trim == 'true' %}
-    {% set vpp_show_category = _self.veloura_bool(theme.settings.get('veloura_product_show_category_under_title_2026', false), false)|trim == 'true' %}
-    {% set vpp_category_label = theme.settings.get('veloura_product_category_label_2026', 'التصنيف:') ?: 'التصنيف:' %}
-
-    {% set vpp_show_brand = _self.veloura_bool(theme.settings.get('veloura_product_show_brand_2026', false), false)|trim == 'true' %}
-    {% set vpp_brand_label = theme.settings.get('veloura_product_brand_label_2026', 'ماركة أصلية 100%') ?: 'ماركة أصلية 100%' %}
-    {% set vpp_brand_title_image_only = _self.veloura_bool(theme.settings.get('veloura_product_brand_title_image_only_2026', true), true)|trim == 'true' %}
-
-    {% set vpp_show_payment_methods = _self.veloura_bool(theme.settings.get('veloura_product_show_payment_methods_2026', true), true)|trim == 'true' %}
-    {% set vpp_hide_discount_value = _self.veloura_bool(theme.settings.get('veloura_product_hide_discount_value_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_discount_countdown = _self.veloura_bool(theme.settings.get('veloura_product_show_discount_countdown_2026', false), false)|trim == 'true' %}
-
-    {% set vpp_hide_short_description = _self.veloura_bool(theme.settings.get('veloura_product_hide_short_description_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_description_separate = _self.veloura_bool(theme.settings.get('veloura_product_show_description_separate_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_description_more_button = _self.veloura_bool(theme.settings.get('veloura_product_show_description_more_button_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_options_separate = _self.veloura_bool(theme.settings.get('veloura_product_show_options_separate_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_reviews_separate = _self.veloura_bool(theme.settings.get('veloura_product_show_reviews_separate_2026', false), false)|trim == 'true' %}
-    {% set vpp_options_as_buttons = _self.veloura_bool(theme.settings.get('veloura_product_options_as_buttons_2026', false), false)|trim == 'true' %}
-    {% set vpp_single_option_new_style = _self.veloura_bool(theme.settings.get('veloura_product_single_option_new_style_2026', true), true)|trim == 'true' %}
-    {% set vpp_multi_option_new_style = _self.veloura_bool(theme.settings.get('veloura_product_multi_option_new_style_2026', true), true)|trim == 'true' %}
-
-    {% set vpp_mobile_sticky_cart = _self.veloura_bool(theme.settings.get('veloura_product_mobile_sticky_cart_2026', true), true)|trim == 'true' %}
-    {% set vpp_mobile_sticky_price = _self.veloura_bool(theme.settings.get('veloura_product_mobile_sticky_price_2026', false), false)|trim == 'true' %}
-    {% set vpp_mobile_quantity_style_raw = _self.veloura_select(theme.settings.get('veloura_product_mobile_quantity_style_2026', 'modern'), 'modern')|trim %}
-    {% set vpp_mobile_quantity_style = 'mini_left' in vpp_mobile_quantity_style_raw ? 'mini_left' : 'modern' %}
-    {% set vpp_mobile_buttons_compact = _self.veloura_bool(theme.settings.get('veloura_product_mobile_buttons_compact_2026', true), true)|trim == 'true' %}
-
-    {% set vpp_coupon_enabled = _self.veloura_bool(theme.settings.get('veloura_product_coupon_enabled_2026', false), false)|trim == 'true' %}
-    {% set vpp_coupon_title = theme.settings.get('veloura_product_coupon_title_2026', 'خصم إضافي 10%') ?: 'خصم إضافي 10%' %}
-    {% set vpp_coupon_subtitle = theme.settings.get('veloura_product_coupon_subtitle_2026', 'انسخ الكود واحصل على خصم إضافي عند الدفع') ?: 'انسخ الكود واحصل على خصم إضافي عند الدفع' %}
-    {% set vpp_coupon_code_raw = theme.settings.get('veloura_product_coupon_code_2026', '') %}
-    {% if vpp_coupon_code_raw.value is defined %}
-        {% set vpp_coupon_code_raw = vpp_coupon_code_raw.value %}
-    {% endif %}
-    {% set vpp_coupon_code = vpp_coupon_code_raw|default('')|trim %}
-
-    {% set vpp_tags_enabled = _self.veloura_bool(theme.settings.get('veloura_product_tags_enabled_2026', true), true)|trim == 'true' %}
-    {% set vpp_hide_tags_visual_only = _self.veloura_bool(theme.settings.get('veloura_product_hide_tags_visual_only_2026', false), false)|trim == 'true' %}
-    {% set vpp_hide_liked_products = _self.veloura_bool(theme.settings.get('veloura_product_hide_liked_products_2026', false), false)|trim == 'true' %}
-    {% set vpp_liked_title = theme.settings.get('veloura_product_liked_title_2026', trans('pages.products.similar_products')) ?: trans('pages.products.similar_products') %}
-
-    {% set vpp_custom_related_enabled = _self.veloura_bool(theme.settings.get('veloura_product_custom_related_enabled_2026', false), false)|trim == 'true' %}
-    {% set vpp_custom_related_source = _self.veloura_select(theme.settings.get('veloura_product_custom_related_source_2026', 'selected'), 'selected')|trim %}
-
-    {# تطبيع قيم حقول dropdown-list القادمة من لوحة سلة #}
-    {% set vpp_custom_related_products_raw = theme.settings.get('veloura_product_custom_related_products_2026', []) %}
-    {% if vpp_custom_related_products_raw.selected is defined %}
-        {% set vpp_custom_related_products = vpp_custom_related_products_raw.selected %}
-    {% elseif vpp_custom_related_products_raw.value is defined %}
-        {% set vpp_custom_related_products = vpp_custom_related_products_raw.value is iterable
-            ? vpp_custom_related_products_raw.value
-            : [vpp_custom_related_products_raw.value] %}
-    {% elseif vpp_custom_related_products_raw is iterable %}
-        {% set vpp_custom_related_products = vpp_custom_related_products_raw %}
-    {% elseif vpp_custom_related_products_raw %}
-        {% set vpp_custom_related_products = [vpp_custom_related_products_raw] %}
-    {% else %}
-        {% set vpp_custom_related_products = [] %}
-    {% endif %}
-
-    {% set vpp_custom_related_category_raw = theme.settings.get('veloura_product_custom_related_category_2026', []) %}
-    {% if vpp_custom_related_category_raw.selected is defined %}
-        {% set vpp_custom_related_category = vpp_custom_related_category_raw.selected %}
-    {% elseif vpp_custom_related_category_raw.value is defined %}
-        {% set vpp_custom_related_category = vpp_custom_related_category_raw.value is iterable
-            ? vpp_custom_related_category_raw.value
-            : [vpp_custom_related_category_raw.value] %}
-    {% elseif vpp_custom_related_category_raw is iterable %}
-        {% set vpp_custom_related_category = vpp_custom_related_category_raw %}
-    {% elseif vpp_custom_related_category_raw %}
-        {% set vpp_custom_related_category = [vpp_custom_related_category_raw] %}
-    {% else %}
-        {% set vpp_custom_related_category = [] %}
-    {% endif %}
-
-
-    {% set vpp_purchase_count_enabled = _self.veloura_bool(theme.settings.get('veloura_product_purchase_count_condition_enabled_2026', false), false)|trim == 'true' %}
-    {% set vpp_purchase_count_min = theme.settings.get('veloura_product_purchase_count_min_2026', 10) %}
-    {% if vpp_purchase_count_min.value is defined %}{% set vpp_purchase_count_min = vpp_purchase_count_min.value %}{% endif %}
-    {% set vpp_purchase_count_animated = _self.veloura_bool(theme.settings.get('veloura_product_purchase_count_animated_2026', true), true)|trim == 'true' %}
-
-
-    {# ألوان/تدوير عام من الإعدادات العامة #}
-    {# الأساسي للعناصر الداخلية / الثانوي للكروت الخارجية #}
-    {% set vpp_basic_bg = theme.settings.get('veloura_site_bg_color_2026', '#ffffff') %}
-    {% if vpp_basic_bg.value is defined %}{% set vpp_basic_bg = vpp_basic_bg.value %}{% endif %}
-
-    {% set vpp_second_bg = theme.settings.get('veloura_site_second_bg_color_2026', '#f8fafc') %}
-    {% if vpp_second_bg.value is defined %}{% set vpp_second_bg = vpp_second_bg.value %}{% endif %}
-
-    {% set vpp_dark_basic_bg = theme.settings.get('veloura_dark_body_bg_2026', '#010202') %}
-    {% if vpp_dark_basic_bg.value is defined %}{% set vpp_dark_basic_bg = vpp_dark_basic_bg.value %}{% endif %}
-
-    {% set vpp_dark_second_bg = theme.settings.get('veloura_dark_secondary_bg_2026', '#111111') %}
-    {% if vpp_dark_second_bg.value is defined %}{% set vpp_dark_second_bg = vpp_dark_second_bg.value %}{% endif %}
-
-    {% set vpp_general_radius_key = _self.veloura_select(theme.settings.get('veloura_global_radius_2026', 'large'), 'large')|trim %}
-    {% set vpp_radius_map = {
-      'sharp': '0px',
-      'soft': '10px',
-      'medium': '16px',
-      'large': '28px',
-      'xl': '36px'
-    } %}
-    {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
-
-<div data-veloura-product-build="v20-marketing-related" data-veloura-quantity-style="{{ vpp_mobile_quantity_style }}" class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
-
-        {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
-            <nav class="breadcrumbs w-full py-5 veloura-product-breadcrumb">
-                <salla-breadcrumb></salla-breadcrumb>
-            </nav>
+        {% if store.description %}
+          <div class="max-w-sm leading-6 mb-6">
+            {{ store.description|raw }}
+          </div>
         {% endif %}
-        <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
-            <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0">
-                {% set has_many_images = product.images|length > 1 %}
-                <salla-slider
-                        id="details-slider-{{ product.id }}"
-                        class="details-slider rounded-md image-slider"
-                        type="thumbs"
-                        loop="false"
-                        {{ vpp_images_height_mode == 'fixed_all' ? '' : 'auto-height' }}
-                        listen-to-thumbnails-option
-                        thumbs-position="{{ vpp_thumbnails_position == 'right_side' ? 'right' : 'bottom' }}"
-                        show-thumbs-controls="false">
-                    <div class="veloura-product-media-actions">
-                        <div class="veloura-product-media-actions__left">
-                            <button type="button"
-                                    class="veloura-product-media-action-btn veloura-product-media-wishlist"
-                                    data-id="{{ product.id }}"
-                                    onclick="salla.wishlist.toggle('{{ product.id }}')"
-                                    aria-label="add to wishlist">
-                                <i class="sicon-heart"></i>
-                            </button>
 
-                            <salla-social-share
-                                    class="veloura-product-media-action-btn veloura-product-media-share"
-                                    aria-label="social share">
-                            </salla-social-share>
-                        </div>
-
-                        {% if product.promotion_title %}
-                            <div class="promotion-title veloura-product-media-promo">{{ product.promotion_title }}</div>
-                        {% endif %}
-                    </div>
-
-                    {# Calories Badge #}
-                    {% if product.calories %}
-                        <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-white shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 md:w-24 md:h-24">
-                            <span class="text-red-500 text-xl leading-none font-bold">{{ product.calories }}</span>
-                            <span class="text-xs text-gray-500">{{ trans('pages.products.calories') }}</span>
-                        </div>
-                    {% endif %}
-
-                    <div slot="items">
-                        {% for image in product.images %}
-                            {% if image.three_d_image_url %}
-                                <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full"
-                                    loading="eager" camera-controls
-                                    touch-action="pan-y" auto-rotate
-                                    poster="{{ image.url }}"
-                                    src="{{ image.three_d_image_url }}"
-                                    shadow-intensity="1" alt="{{ image.alt }}">
-                                </model-viewer>
-                                    {% else %}
-                                <a data-fslightbox="product_{{ product.id }}"
-                                   data-img-id="{{ image.id }}"
-                                   data-slid-index="{{ loop.index-1 }}"{% if image.video_url %} data-video-src="{{ image.video_url }}"{% endif %}
-                                   data-caption="{{ image.alt }}"
-                                   data-infinite="false"
-                                   data-type="{{ image.video_url?'youtube':'image' }}"
-                                   href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}"
-                                   aria-label="{{ product.name }}"
-                                   class="swiper-slide magnify-wrapper homeslider__slide {{ image.video_url?'video-entry':'' }}">
-                                    {% if loop.first %}
-                                        <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}"
-                                             alt="{{ image.alt }}"
-                                             class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
-                                    {% else %}
-                                        <img id="{{image.id}}" src="{{ image.url }}"
-                                             loading="lazy"
-                                             alt="{{ image.alt }}"
-                                             class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
-                                    {% endif %}
-                                </a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-
-                    {% if has_many_images and not (vpp_enabled and vpp_hide_thumbnails) %}
-                        <div slot="thumbs">
-                            {% for image in product.images %}
-                                <div class="slide--one-fourth veloura-product-thumb-item {{ image.video_url?'video-entry':'' }} {{ image.three_d_image_url?'model-entry':'' }}" data-caption="{{ image.alt }}">
-                                    {% if loop.index < 5 %}
-                                        <img src="{{ image.url }}"
-                                             loading="eager"
-                                             class="object-contain w-full h-full bg-gray-100 rounded-md overflow-hidden"
-                                             title="{{ image.alt }}"
-                                             alt="{{ image.alt }}"/>
-                                    {% else %}
-                                        <img src="{{ image.url }}"
-                                             loading="lazy"
-                                             class="object-contain w-full h-full bg-gray-100 rounded-md overflow-hidden"
-                                             title="{{ image.alt }}"
-                                             alt="{{ image.alt }}"/>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </salla-slider>
-            </div>
-
-            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
-
-                {% hook 'product:single.description.start' %}
-
-                {% if product.brand.name and (not vpp_enabled or vpp_show_brand) %}
-                    <div class="product-brand veloura-product-brand mb-5">
-                        {% if not vpp_brand_title_image_only %}
-                            <span class="veloura-product-brand__label">{{ vpp_brand_label }}</span>
-                        {% endif %}
-                        <a class="brand-logo veloura-product-brand__logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
-                            {% if product.brand.logo %}
-                                <img width="100%" height="100%" class="max-h-full object-contain"
-                                     src="{{ product.brand.logo }}"
-                                     title="{{ product.brand.name }}"
-                                     alt="{{ product.brand.name }}">
-                            {% endif %}
-                            <span class="veloura-product-brand__name">{{ product.brand.name }}</span>
-                        </a>
-                    </div>
-                {% endif %}
-
-                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
-
-                {% if vpp_enabled and vpp_show_category and product.category.name %}
-                    <div class="veloura-product-category-under-title">
-                        <span>{{ vpp_category_label }}</span>
-                        <a href="{{ product.category.url }}">{{ product.category.name }}</a>
-                    </div>
-                {% endif %}
-
-                {% if product.subtitle and not (vpp_enabled and vpp_hide_short_description) %}
-                    <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
-                        {{ product.subtitle }}
-                    </h2>
-                {% endif %}
-
-
-                {# One canonical live price directly under the product title/subtitle #}
-                <div class="veloura-product-header-price">
-                    <div class="price-wrapper" data-veloura-single-price>
-                        {% if product.starting_price and not product.is_on_sale %}
-                            <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                        {% endif %}
-
-                        <h2 class="total-price">
-                            {{ product.is_on_sale
-                                ? product.sale_price|money
-                                : (product.starting_price ? product.starting_price|money : product.price|money) }}
-                        </h2>
-
-                        <span class="before-price {{ product.is_on_sale ? '' : 'hidden' }}">
-                            {{ product.regular_price|money }}
-                        </span>
-                    </div>
-
-                    <div class="out-of-stock hidden">
-                        {{ trans('pages.products.out_of_stock') }}
-                    </div>
-                </div>
-
-                {% if product.rating %}
-                    <salla-rating-stars value="{{ product.rating.stars }}"
-                                        reviews="{{ product.rating.count }}"></salla-rating-stars>
-                {% endif %}
-
-                {% if product.is_taxable %}
-                    <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
-                {% endif %}
-{% if vpp_enabled and vpp_show_availability and product.is_available %}
-                    <div class="veloura-product-stock-radar {{ vpp_show_stock_radar ? 'is-pulse' : 'is-simple' }}">
-                        <span class="veloura-product-stock-radar__dot"></span>
-                        <span>متوفر</span>
-                    </div>
-                {% endif %}
-
-                {% if vpp_enabled and vpp_show_discount_countdown and product.discount_ends %}
-                    <div class="veloura-product-discount-countdown">
-                        <i class="sicon-clock"></i>
-                        <span>ينتهي الخصم قريباً</span>
-                        <salla-count-down date="{{ product.discount_ends }}"></salla-count-down>
-                    </div>
-                {% endif %}
-
-                {% if vpp_enabled and vpp_coupon_enabled and vpp_coupon_code %}
-                    <div class="veloura-product-coupon" data-veloura-copy-coupon="{{ vpp_coupon_code }}">
-                        <div>
-                            <strong>{{ vpp_coupon_title }}</strong>
-                            <span>{{ vpp_coupon_subtitle }}</span>
-                        </div>
-                        <button type="button"
-                                class="veloura-product-coupon__code"
-                                data-code="{{ vpp_coupon_code|e }}"
-                                aria-label="نسخ كود الخصم">
-                            {{ vpp_coupon_code }}
-                        </button>
-                    </div>
-                {% endif %}
-
-                <div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 {{ vpp_enabled and vpp_hide_short_description ? 'is-collapsed' : '' }}">
-                    {% set product_desc = product.description|replace({"&nbsp;":"
-"}) %}
-                    {% set vpp_desc_should_collapse = product.has_read_more or (vpp_enabled and vpp_hide_short_description) %}
-
-                    <article class="article article--main relative leading-8 overflow-hidden transition-all duration-300 py-4"
-                             id="more-content"
-                             style="{{ vpp_desc_should_collapse ? 'max-height:8.5rem' : 'max-height:none' }}">
-                        {{ product_desc|raw }}
-                    </article>
-
-                    {% if vpp_desc_should_collapse %}
-                        <a id="btn-show-more"
-                           class="veloura-product-read-more link--primary cursor-pointer"
-                           aria-expanded="false"
-                           data-more-text="{{ trans('pages.products.read_more') }}"
-                           data-less-text="عرض أقل">
-                            <span class="veloura-product-read-more__text">{{ trans('pages.products.read_more') }}</span>
-                        </a>
-                    {% endif %}
-                </div>
-
-                {% if product.tags|length and ((vpp_enabled and vpp_tags_enabled) or (not vpp_enabled and theme.settings.get('show_tags', true))) %}
-                    <div class="mb-3">
-                        {% for tag in product.tags %}
-                            <a href="{{ tag.url }}"
-                               class="rtl:ml-2 ltr:mr-2 inline-flex  text-gray-500 hover:text-primary underline text-sm mb-1">{{ tag.name }}
-                                ,</a>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
-                {# Veloura: wishlist/share moved above product image #}
-
-                {% set vpp_purchase_count_value = product.sold_quantity|default(0) %}
-                {% set vpp_purchase_count_min_value = vpp_purchase_count_min|default(0) %}
-                {% set vpp_custom_purchase_count_visible =
-                    vpp_enabled
-                    and vpp_purchase_count_enabled
-                    and vpp_purchase_count_value >= vpp_purchase_count_min_value
-                %}
-
-                {% if vpp_custom_purchase_count_visible %}
-                    <div class="veloura-product-original-purchase-count {{ vpp_purchase_count_animated ? 'is-animated' : '' }}"
-                         data-veloura-purchase-count
-                         data-count="{{ vpp_purchase_count_value }}">
-                        <div class="veloura-product-purchase-count__sold">
-                            <i class="sicon-fire"></i>
-                            <span>{{ trans('pages.products.sold') }}</span>
-                            <strong class="veloura-product-purchase-count__number">
-                                {{ vpp_purchase_count_animated ? 0 : vpp_purchase_count_value }}
-                            </strong>
-                            <span>مرة</span>
-                        </div>
-
-                        {% if product.can_show_remained_quantity %}
-                            <div class="veloura-product-purchase-count__remaining">
-                                <i class="sicon-box-bankers"></i>
-                                <span>{{ trans('pages.products.remained') }}</span>
-                                <strong>{{ product.quantity }}</strong>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% elseif (not vpp_enabled or not vpp_purchase_count_enabled)
-                    and (product.sold_quantity or product.can_show_remained_quantity) %}
-                    <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm veloura-product-original-purchase-count">
-                        {% if product.sold_quantity %}
-                            <div class="px-4 !text-red-800">
-                                <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i>
-                                {{ trans('pages.products.sold') }}
-                                <span>{{ pluralize('pages.products.sold_times', product.sold_quantity)|raw }}</span>
-                            </div>
-                        {% endif %}
-                        {% if product.can_show_remained_quantity %}
-                            <div class="px-4 rtl:even:border-r ltr:even:border-l even:border-gray-200">
-                                <i class="!text-red-800 sicon-box-bankers rtl:ml-1.5 ltr:mr-1.5"></i>
-                                {{ trans('pages.products.remained') }}
-                                <span>{{ product.quantity }}</span>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endif %}
-                {% if product.sku %}
-                    <div class="veloura-product-sku-card mb-4 bg-white rounded-md px-4 py-3">
-                        <div class="veloura-product-sku-card__label">
-                            <i class="sicon-barcode"></i>
-                            <span>{{ trans('pages.products.sku') }}</span>
-                        </div>
-                        <div class="text-unicode product-sku" dir="ltr">{{ product.sku }}</div>
-                    </div>
-                {% endif %}
-                {% hook 'product:single.description' %}
-
-                {% if product.has_metadata %}
-                <salla-metadata></salla-metadata>
-                {% endif %}
-
-                {% if (not vpp_enabled or vpp_show_availability) and product.show_availability %}
-                    <section class="bg-white p-5 rounded-md mb-5 last:mb-0">
-                        <div class="center-between">
-                            <label class="flex items-center text-base">
-                                <span class="sicon-location rtl:ml-1 ltr:mr-1"></span>
-                                <span class="inline-block">{{ trans('pages.products.availability') }}</span>
-                            </label>
-                            <div class="mt-1 sm:mt-0 sm:col-span-2 text-end">
-                                <div class="flex rtl:space-x-reverse space-x-3">
-                                    <a href="#!"
-                                       onclick="salla.event.dispatch('scopes::open', {mode: 'availability', product_id: '{{ product.id }}' })"
-                                       class="group text-primary flex items-center justify-center">
-                                        <span>{{ trans('pages.products.select_branch') }}</span>
-                                        <span class="sicon-keyboard_arrow_left mr-2 transition-all group-hover:-translate-x-1"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                {% endif %}
-
-
-				{# Digital Files Settings #}
-				{% if product.digital_files_settings %}
-					<digital-files-settings settings='{{ product.digital_files_settings|json_encode }}'></digital-files-settings>
-				{% endif %}
-				{# End Digital Files Settings #}
-
-                <form class="form product-form" enctype="multipart/form-data" method="post"
-                      onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
-                    <input type="hidden" name="id" value="{{ product.id }}">
-
-
-                    {% hook 'product:single.form.start' %}
-
-                    <div class="veloura-product-options-wrap">
-                        {% include 'pages.partials.product.options' %}
-                    </div>
-
-                    {% hook 'product:single.form.end' %}
-{# Pre-order Campaign #}
-                    {% if product.has_preorder_campaign %}
-                        <section class="mt-5 p-5">
-                            <salla-count-down pre-order='{{ product.preorder|json_encode}}' boxed labeled></salla-count-down>
-                        </section>
-                    {% endif %}
-
-                    <section class="sticky-product-bar veloura-product-sticky-bar bg-white p-5 rounded-md">
-                        {# Live price inside purchase card: below quantity, above buttons #}
-                        <div class="veloura-product-cart-price-row">
-                            <span class="veloura-product-cart-price-row__label">{{ trans('pages.products.price') }}</span>
-                            <div class="price-wrapper" data-veloura-cart-price>
-                                <h2 class="total-price">
-                                    {{ product.is_on_sale
-                                        ? product.sale_price|money
-                                        : (product.starting_price ? product.starting_price|money : product.price|money) }}
-                                </h2>
-                                <span class="before-price {{ product.is_on_sale ? '' : 'hidden' }}">
-                                    {{ product.regular_price|money }}
-                                </span>
-                            </div>
-                        </div>
-
-                        {# Quantity #}
-                        {% if product.is_hidden_quantity or product.type == 'booking' %}
-                            <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
-                        {% else %}
-                            <div class="sticky-product-bar__quantity">
-                                <label class="form-label font-bold">
-                                    {{ trans('pages.products.quantity') }}
-                                </label>
-                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity"
-                                  class="border-gray-200 flex justify-end"></salla-quantity-input>
-                            </div>
-                        {% endif %}
-
-                        {# Add to cart #}
-                        <salla-add-product-button
-                                {{product.can_quick_buy ? 'quick-buy' : ''}}
-                                {{ ((vpp_enabled and vpp_mobile_sticky_cart) or (not vpp_enabled and theme.settings.get('sticky_add_to_cart'))) ? ' support-sticky-bar' : '' }}
-                                {{product.is_require_shipping ? 'required-shipping' : ''}}
-                                {{product.has_preorder_campaign ? 'has-pre-order' : ''}}
-                                amount="{{ product.base_currency_price }}"
-                                class="w-full sticky-product-bar__btn"
-                                product-status="{{ product.status }}"
-                                product-type="{{ product.type }}"
-                                product-id="{{ product.id }}"
-                                loader-position="end"
-                                type="submit"
-                                width="wide"
-                                {# Notify availability props#}
-                                {% if product.notify_availability %}
-                                    {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
-                                    channels="{{ product.notify_availability.channels|join(',') }}"
-                                    subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}"
-                                    {{ product.notify_availability.options ? 'notify-options-availability' : '' }}
-                                {% endif %}>
-
-                            {{ product.add_to_cart_label }}
-                        </salla-add-product-button>
-                    </section>
-                    {% if product.is_giftable %}
-                        <salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}" {{ product.is_require_shipping ? 'physical-products' : ''  }}></salla-gifting>
-                    {% endif %}
-                </form>
-
-                {% hook 'product:single.description.end' %}
-                <salla-quick-order class="mt-5 md:-mb-2 block"></salla-quick-order>
-
-                {# Payment methods are intentionally the final product-details element #}
-                {% if not vpp_enabled or vpp_show_payment_methods %}
-                    <div class="veloura-product-payment-methods veloura-product-payment-methods--last">
-                        <salla-payments></salla-payments>
-                        <salla-installment price="{{ product.price }}"></salla-installment>
-                        {% hook 'product:single.payment_methods' %}
-                    </div>
-                {% endif %}
-            </div>
+        <div class="hidden lg:block">
+          <salla-social class="block mb-6"></salla-social>
         </div>
-        <salla-offer></salla-offer>
+
+        <div class="flex gap-4">
+          {# Trust badges #}
+          <salla-trust-badges{% if theme.settings.get('footer_is_dark') %} dark{% endif %}></salla-trust-badges>
+
+          {# VAT #}
+          {% if store.settings.tax.number %}
+            <div class="flex rtl:space-x-reverse space-x-2 items-end">
+              {% if store.settings.tax.certificate %}
+                <a
+                  class="load-img-onclick"
+                  data-modal-id="modal-value-tax"
+                  href="#/"
+                  aria-label="{{ trans('common.elements.tax_number') }}"
+                >
+                  <img
+                    width="40"
+                    height="50"
+                    src="{{ 'images/tax.png'|cdn(70, 70) }}"
+                    loading="lazy"
+                    class="w-10 rounded-sm hover:opacity-80 transition-opacity"
+                    alt="{{ trans('common.elements.tax_number') }}"
+                  >
+                </a>
+              {% endif %}
+
+              <div>
+                <p class="text-sm text-text-grey mb-1">{{ trans('common.elements.tax_number') }}</p>
+                <b class="text-sm">{{ store.settings.tax.number }}</b>
+              </div>
+            </div>
+
+            {% if store.settings.tax.certificate %}
+              <salla-modal
+                sub-title-first
+                sub-title="{{ trans('common.elements.tax_number') }}"
+                modal-title="{{ store.settings.tax.number }}"
+                id="modal-value-tax"
+              >
+                <div class="flex justify-center max-w-full">
+                  <img
+                    class="w-full"
+                    loading="lazy"
+                    data-src="{{ store.settings.tax.certificate }}"
+                    alt="{{ store.settings.tax.number }}"
+                  >
+                </div>
+              </salla-modal>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div>
+        <h3>{{ trans('blocks.footer.pages_links') }}</h3>
+        <salla-menu source="footer" with-cookie-preferences></salla-menu>
+      </div>
+
+      <div>
+        <salla-contacts></salla-contacts>
+
+        <div class="lg:hidden contact-social">
+          <salla-social></salla-social>
+        </div>
+      </div>
+
+      <salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>
     </div>
+  </div>
 
-    {# Comments Area #}
-    {% if store.settings.rating.show_on_product %}
-        <salla-comments item-id="{{product.id}}" type="product" class="veloura-product-reviews"></salla-comments>
-    {% endif %}
-    
-    {# Similar Products Area #}
-    {% if not vpp_enabled or not vpp_hide_liked_products %}
-        {% set veloura_related_source = 'related' %}
-        {% set veloura_related_source_value = product.id %}
+  <div class="md:flex items-center justify-between py-4 container text-center">
+    <span class="text-sm copyright-text">{% hook copyright %}</span>
+    <salla-payments></salla-payments>
+  </div>
 
-        {# المنتجات المختارة يدويًا #}
-        {% if vpp_enabled
-            and vpp_custom_related_enabled
-            and vpp_custom_related_source == 'selected'
-            and vpp_custom_related_products|length %}
-
-            {% set veloura_product_ids = [] %}
-
-            {% for related_product in vpp_custom_related_products %}
-                {% set veloura_current_product_id = null %}
-
-                {% if related_product.id is defined %}
-                    {% set veloura_current_product_id = related_product.id %}
-                {% elseif related_product.value is defined and related_product.value.id is defined %}
-                    {% set veloura_current_product_id = related_product.value.id %}
-                {% elseif related_product.value is defined %}
-                    {% set veloura_current_product_id = related_product.value %}
-                {% elseif related_product.key is defined %}
-                    {% set veloura_current_product_id = related_product.key %}
-                {% elseif related_product is not iterable %}
-                    {% set veloura_current_product_id = related_product %}
-                {% endif %}
-
-                {% if veloura_current_product_id and veloura_current_product_id not in veloura_product_ids %}
-                    {% set veloura_product_ids = veloura_product_ids|merge([veloura_current_product_id]) %}
-                {% endif %}
-            {% endfor %}
-
-            {% if veloura_product_ids|length %}
-                {% set veloura_related_source = 'selected' %}
-                {% set veloura_related_source_value = veloura_product_ids %}
-            {% endif %}
-
-        {# المنتجات التابعة للتصنيفات المختارة #}
-        {% elseif vpp_enabled
-            and vpp_custom_related_enabled
-            and vpp_custom_related_source == 'categories'
-            and vpp_custom_related_category|length %}
-
-            {% set veloura_category_ids = [] %}
-
-            {% for related_category in vpp_custom_related_category %}
-                {% set veloura_current_category_id = null %}
-
-                {% if related_category.id is defined %}
-                    {% set veloura_current_category_id = related_category.id %}
-                {% elseif related_category.value is defined and related_category.value.id is defined %}
-                    {% set veloura_current_category_id = related_category.value.id %}
-                {% elseif related_category.value is defined %}
-                    {% set veloura_current_category_id = related_category.value %}
-                {% elseif related_category.key is defined %}
-                    {% set veloura_current_category_id = related_category.key %}
-                {% elseif related_category is not iterable %}
-                    {% set veloura_current_category_id = related_category %}
-                {% endif %}
-
-                {% if veloura_current_category_id and veloura_current_category_id not in veloura_category_ids %}
-                    {% set veloura_category_ids = veloura_category_ids|merge([veloura_current_category_id]) %}
-                {% endif %}
-            {% endfor %}
-
-            {% if veloura_category_ids|length %}
-                {% set veloura_related_source = 'categories' %}
-                {% set veloura_related_source_value = veloura_category_ids %}
-            {% endif %}
-        {% endif %}
-
-        {# related يستقبل product_id، أما selected/categories فتستقبل JSON array من IDs #}
-        {% set veloura_related_source_value_attr = veloura_related_source_value %}
-        {% if veloura_related_source in ['selected', 'categories'] %}
-            {% set veloura_related_source_value_attr = veloura_related_source_value|json_encode %}
-        {% endif %}
-
-        <div class="container veloura-product-related-products">
-            <salla-products-slider
-                source="{{ veloura_related_source }}"
-                source-value="{{ veloura_related_source_value_attr }}"
-                block-title="{{ vpp_liked_title }}"
-                display-all-url>
-            </salla-products-slider>
-        </div>
-    {% endif %}
-{% endblock %}
-
-{% block scripts %}
-
-    <script defer src="{{ 'product.js' | asset }}"></script>
-    {% if product.has_3d_image %}
-        <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    {% endif %}
-    {% if product.digital_files_settings %}
-        <script type="module" defer src="{{ 'digital-files.js'|asset }}"></script>
-    {% endif %}
-{% endblock %}
+  <span class="hidden bottom-2 rtl:pl-24 ltr:pr-24 md:grid-cols-3 opacity-40"></span>
+</footer>

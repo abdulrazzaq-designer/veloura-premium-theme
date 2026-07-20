@@ -6385,6 +6385,29 @@
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
+      "label": "إخفاء عبارة عنوان الماركة",
+      "description": "عند التفعيل تُخفى العبارة المخصصة أعلى شعار الماركة، مع بقاء الشعار واسم الماركة",
+      "id": "veloura_product_brand_title_image_only_2026",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true,
+      "conditions": [
+        {
+          "id": "veloura_product_page_enabled_2026",
+          "operation": "=",
+          "value": true
+        },
+        {
+          "id": "veloura_product_show_brand_2026",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
       "label": "إظهار طرق الدفع / التقسيط في صفحة المنتج",
       "id": "veloura_product_show_payment_methods_2026",
       "format": "switch",

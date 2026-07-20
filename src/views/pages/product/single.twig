@@ -120,15 +120,11 @@
     {% endmacro %}
 
     {% set vpp_enabled = _self.veloura_bool(theme.settings.get('veloura_product_page_enabled_2026', true), true)|trim == 'true' %}
-    {% set vpp_content_layout = _self.veloura_select(theme.settings.get('veloura_product_content_layout_2026', 'normal'), 'normal')|trim %}
-
     {% set vpp_hide_breadcrumb = _self.veloura_bool(theme.settings.get('veloura_product_hide_breadcrumb_2026', false), false)|trim == 'true' %}
     {% set vpp_hide_thumbnails = _self.veloura_bool(theme.settings.get('veloura_product_hide_thumbnails_2026', false), false)|trim == 'true' %}
     {% set vpp_thumbnails_position = _self.veloura_select(theme.settings.get('veloura_product_thumbnails_position_desktop_2026', 'below_image'), 'below_image')|trim %}
     {% set vpp_images_height_mode = _self.veloura_select(theme.settings.get('veloura_product_images_height_mode_2026', 'auto_each'), 'auto_each')|trim %}
     {% set vpp_images_zoom = _self.veloura_bool(theme.settings.get('veloura_product_images_zoom_2026', false), false)|trim == 'true' %}
-    {% set vpp_transparent_background = _self.veloura_bool(theme.settings.get('veloura_product_transparent_background_2026', false), false)|trim == 'true' %}
-
     {% set vpp_show_availability = _self.veloura_bool(theme.settings.get('veloura_product_show_availability_2026', true), true)|trim == 'true' %}
     {% set vpp_show_stock_radar = _self.veloura_bool(theme.settings.get('veloura_product_show_stock_radar_2026', true), true)|trim == 'true' %}
     {% set vpp_show_category = _self.veloura_bool(theme.settings.get('veloura_product_show_category_under_title_2026', false), false)|trim == 'true' %}
@@ -143,14 +139,6 @@
     {% set vpp_show_discount_countdown = _self.veloura_bool(theme.settings.get('veloura_product_show_discount_countdown_2026', false), false)|trim == 'true' %}
 
     {% set vpp_hide_short_description = _self.veloura_bool(theme.settings.get('veloura_product_hide_short_description_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_description_separate = _self.veloura_bool(theme.settings.get('veloura_product_show_description_separate_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_description_more_button = _self.veloura_bool(theme.settings.get('veloura_product_show_description_more_button_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_options_separate = _self.veloura_bool(theme.settings.get('veloura_product_show_options_separate_2026', false), false)|trim == 'true' %}
-    {% set vpp_show_reviews_separate = _self.veloura_bool(theme.settings.get('veloura_product_show_reviews_separate_2026', false), false)|trim == 'true' %}
-    {% set vpp_options_as_buttons = _self.veloura_bool(theme.settings.get('veloura_product_options_as_buttons_2026', false), false)|trim == 'true' %}
-    {% set vpp_single_option_new_style = _self.veloura_bool(theme.settings.get('veloura_product_single_option_new_style_2026', true), true)|trim == 'true' %}
-    {% set vpp_multi_option_new_style = _self.veloura_bool(theme.settings.get('veloura_product_multi_option_new_style_2026', true), true)|trim == 'true' %}
-
     {% set vpp_mobile_sticky_cart = _self.veloura_bool(theme.settings.get('veloura_product_mobile_sticky_cart_2026', true), true)|trim == 'true' %}
     {% set vpp_mobile_sticky_price = _self.veloura_bool(theme.settings.get('veloura_product_mobile_sticky_price_2026', false), false)|trim == 'true' %}
     {% set vpp_mobile_quantity_style_raw = _self.veloura_select(theme.settings.get('veloura_product_mobile_quantity_style_2026', 'modern'), 'modern')|trim %}
@@ -160,7 +148,11 @@
     {% set vpp_coupon_enabled = _self.veloura_bool(theme.settings.get('veloura_product_coupon_enabled_2026', false), false)|trim == 'true' %}
     {% set vpp_coupon_title = theme.settings.get('veloura_product_coupon_title_2026', 'خصم إضافي 10%') ?: 'خصم إضافي 10%' %}
     {% set vpp_coupon_subtitle = theme.settings.get('veloura_product_coupon_subtitle_2026', 'انسخ الكود واحصل على خصم إضافي عند الدفع') ?: 'انسخ الكود واحصل على خصم إضافي عند الدفع' %}
-    {% set vpp_coupon_code = theme.settings.get('veloura_product_coupon_code_2026', '') %}
+    {% set vpp_coupon_code_raw = theme.settings.get('veloura_product_coupon_code_2026', '') %}
+    {% if vpp_coupon_code_raw.value is defined %}
+        {% set vpp_coupon_code_raw = vpp_coupon_code_raw.value %}
+    {% endif %}
+    {% set vpp_coupon_code = vpp_coupon_code_raw|default('')|trim %}
 
     {% set vpp_tags_enabled = _self.veloura_bool(theme.settings.get('veloura_product_tags_enabled_2026', true), true)|trim == 'true' %}
     {% set vpp_hide_tags_visual_only = _self.veloura_bool(theme.settings.get('veloura_product_hide_tags_visual_only_2026', false), false)|trim == 'true' %}
@@ -232,7 +224,7 @@
     } %}
     {% set vpp_general_radius = vpp_radius_map[vpp_general_radius_key]|default('28px') %}
 
-<div data-veloura-product-build="v19-related-categories" data-veloura-quantity-style="{{ vpp_mobile_quantity_style }}" class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
+<div data-veloura-product-build="v20-marketing-related" data-veloura-quantity-style="{{ vpp_mobile_quantity_style }}" class="container veloura-product-page {{ vpp_enabled ? 'veloura-product-enabled' : '' }} {{ vpp_hide_breadcrumb ? 'veloura-product-hide-breadcrumb' : '' }} {{ vpp_hide_thumbnails ? 'veloura-product-hide-thumbs' : '' }} veloura-product-thumbs-{{ vpp_thumbnails_position }} veloura-product-images-{{ vpp_images_height_mode }} {{ vpp_images_zoom ? 'veloura-product-zoom-enabled' : '' }} {{ vpp_enabled and vpp_hide_short_description ? 'veloura-product-desc-collapsed' : '' }} {{ vpp_mobile_sticky_cart ? 'veloura-product-mobile-sticky-enabled' : 'veloura-product-mobile-sticky-disabled' }} {{ vpp_mobile_sticky_price ? 'veloura-product-mobile-sticky-price' : '' }} veloura-product-qty-{{ vpp_mobile_quantity_style }} {{ vpp_mobile_buttons_compact ? 'veloura-product-buttons-compact' : '' }} {{ vpp_hide_discount_value ? 'veloura-product-hide-discount' : '' }} {{ vpp_hide_tags_visual_only ? 'veloura-product-tags-visual-hidden' : '' }}" style="--veloura-product-bg-inline: {{ vpp_basic_bg }}; --veloura-product-secondary-bg-inline: {{ vpp_second_bg }}; --veloura-product-dark-bg-inline: {{ vpp_dark_basic_bg }}; --veloura-product-dark-secondary-bg-inline: {{ vpp_dark_second_bg }}; --veloura-product-radius: {{ vpp_general_radius }};" >
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         {% if not (vpp_enabled and vpp_hide_breadcrumb) %}
@@ -344,7 +336,7 @@
 
                 {% hook 'product:single.description.start' %}
 
-                {% if product.brand.name and (not vpp_enabled or vpp_show_brand) %}
+                {% if product.brand and product.brand.name and (not vpp_enabled or vpp_show_brand) %}
                     <div class="product-brand veloura-product-brand mb-5">
                         {% if not vpp_brand_title_image_only %}
                             <span class="veloura-product-brand__label">{{ vpp_brand_label }}</span>
@@ -363,7 +355,7 @@
 
                 <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
 
-                {% if vpp_enabled and vpp_show_category and product.category.name %}
+                {% if vpp_enabled and vpp_show_category and product.category and product.category.name %}
                     <div class="veloura-product-category-under-title">
                         <span>{{ vpp_category_label }}</span>
                         <a href="{{ product.category.url }}">{{ product.category.name }}</a>
@@ -431,7 +423,7 @@
                         </div>
                         <button type="button"
                                 class="veloura-product-coupon__code"
-                                data-code="{{ vpp_coupon_code|e }}"
+                                data-code="{{ vpp_coupon_code|e('html_attr') }}"
                                 aria-label="نسخ كود الخصم">
                             {{ vpp_coupon_code }}
                         </button>
@@ -439,8 +431,7 @@
                 {% endif %}
 
                 <div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 {{ vpp_enabled and vpp_hide_short_description ? 'is-collapsed' : '' }}">
-                    {% set product_desc = product.description|replace({"&nbsp;":"
-"}) %}
+                    {% set product_desc = product.description|default('')|replace({'&nbsp;': ' '}) %}
                     {% set vpp_desc_should_collapse = product.has_read_more or (vpp_enabled and vpp_hide_short_description) %}
 
                     <article class="article article--main relative leading-8 overflow-hidden transition-all duration-300 py-4"
@@ -472,13 +463,42 @@
 
                 {# Veloura: wishlist/share moved above product image #}
 
-                {% set vpp_purchase_count_value = product.sold_quantity ?: 0 %}
-                {% set vpp_show_original_purchase_count = (not vpp_enabled) or (not vpp_purchase_count_enabled) or (vpp_purchase_count_value >= vpp_purchase_count_min) %}
-                {% if vpp_show_original_purchase_count and (product.sold_quantity or product.can_show_remained_quantity) %}
-                    <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm veloura-product-original-purchase-count {{ vpp_purchase_count_animated ? 'is-animated' : '' }}">
+                {% set vpp_purchase_count_value = product.sold_quantity|default(0) %}
+                {% set vpp_purchase_count_min_value = vpp_purchase_count_min|default(0) %}
+                {% set vpp_custom_purchase_count_visible =
+                    vpp_enabled
+                    and vpp_purchase_count_enabled
+                    and vpp_purchase_count_value >= vpp_purchase_count_min_value
+                %}
+
+                {% if vpp_custom_purchase_count_visible %}
+                    <div class="veloura-product-original-purchase-count {{ vpp_purchase_count_animated ? 'is-animated' : '' }}"
+                         data-veloura-purchase-count
+                         data-count="{{ vpp_purchase_count_value }}">
+                        <div class="veloura-product-purchase-count__sold">
+                            <i class="sicon-fire"></i>
+                            <span>{{ trans('pages.products.sold') }}</span>
+                            <strong class="veloura-product-purchase-count__number">
+                                {{ vpp_purchase_count_animated ? 0 : vpp_purchase_count_value }}
+                            </strong>
+                            <span>مرة</span>
+                        </div>
+
+                        {% if product.can_show_remained_quantity %}
+                            <div class="veloura-product-purchase-count__remaining">
+                                <i class="sicon-box-bankers"></i>
+                                <span>{{ trans('pages.products.remained') }}</span>
+                                <strong>{{ product.quantity }}</strong>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% elseif (not vpp_enabled or not vpp_purchase_count_enabled)
+                    and (product.sold_quantity or product.can_show_remained_quantity) %}
+                    <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm veloura-product-original-purchase-count">
                         {% if product.sold_quantity %}
                             <div class="px-4 !text-red-800">
-                                <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i> {{ trans('pages.products.sold') }}
+                                <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i>
+                                {{ trans('pages.products.sold') }}
                                 <span>{{ pluralize('pages.products.sold_times', product.sold_quantity)|raw }}</span>
                             </div>
                         {% endif %}
@@ -530,7 +550,7 @@
 
 				{# Digital Files Settings #}
 				{% if product.digital_files_settings %}
-					<digital-files-settings settings='{{ product.digital_files_settings|json_encode }}'></digital-files-settings>
+					<digital-files-settings settings='{{ product.digital_files_settings|json_encode|e("html_attr") }}'></digital-files-settings>
 				{% endif %}
 				{# End Digital Files Settings #}
 
@@ -549,7 +569,7 @@
 {# Pre-order Campaign #}
                     {% if product.has_preorder_campaign %}
                         <section class="mt-5 p-5">
-                            <salla-count-down pre-order='{{ product.preorder|json_encode}}' boxed labeled></salla-count-down>
+                            <salla-count-down pre-order='{{ product.preorder|json_encode|e("html_attr") }}' boxed labeled></salla-count-down>
                         </section>
                     {% endif %}
 
@@ -600,7 +620,7 @@
                                 {% if product.notify_availability %}
                                     {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
                                     channels="{{ product.notify_availability.channels|join(',') }}"
-                                    subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}"
+                                    subscribed-options="{{ product.notify_availability.subscribed_options|json_encode|e('html_attr') }}"
                                     {{ product.notify_availability.options ? 'notify-options-availability' : '' }}
                                 {% endif %}>
 
@@ -714,7 +734,7 @@
         <div class="container veloura-product-related-products">
             <salla-products-slider
                 source="{{ veloura_related_source }}"
-                source-value="{{ veloura_related_source_value_attr }}"
+                source-value="{{ veloura_related_source_value_attr|e('html_attr') }}"
                 block-title="{{ vpp_liked_title }}"
                 display-all-url>
             </salla-products-slider>
