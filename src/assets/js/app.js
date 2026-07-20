@@ -245,7 +245,7 @@ const initVelouraFooter = (() => {
         setImportant(link, 'justify-content', 'center');
         setImportant(link, 'width', 'auto');
         setImportant(link, 'min-width', '0');
-        setImportant(link, 'max-width', '190px');
+        setImportant(link, 'max-width', '150px');
         setImportant(link, 'margin', '0');
       });
 
@@ -254,9 +254,9 @@ const initVelouraFooter = (() => {
         setImportant(image, 'visibility', 'visible');
         setImportant(image, 'opacity', '1');
         setImportant(image, 'width', 'auto');
-        setImportant(image, 'height', '48px');
-        setImportant(image, 'max-width', '190px');
-        setImportant(image, 'max-height', '48px');
+        setImportant(image, 'height', '38px');
+        setImportant(image, 'max-width', '150px');
+        setImportant(image, 'max-height', '38px');
         setImportant(image, 'object-fit', 'contain');
         setImportant(image, 'margin', '0');
       });
